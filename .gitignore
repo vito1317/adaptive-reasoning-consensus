@@ -23,3 +23,7 @@ results/raw/
 # secrets — never commit API keys
 .env
 *.key
+
+# stale smoke-test artifacts
+results/*_quick.json
+results/*_run.log
