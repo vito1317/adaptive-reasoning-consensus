@@ -191,10 +191,65 @@ def plot_voi_scale(data: dict, outdir: Path) -> None:
     plt.close(fig)
 
 
+def plot_kappa_sweep(data: dict, outdir: Path) -> None:
+    """The confidence-usage frontier: who wins at each true coupling strength."""
+    sweep = data["sweep"]
+    x = [r["kappa_c"] for r in sweep]
+    series = [
+        ("SC", "SC (ignore confidence)", "#444444", "--", "o"),
+        ("CISC(g=1.0)", "CISC g=1 (always trust)", "#9467bd", ":", "^"),
+        ("ECE-gate", "ECE gate (binary, calibration)", "#1f77b4", "-.", "s"),
+        ("AUC-gate", "AUC gate (binary, discrimination+sign)", "#2ca02c", "-", "D"),
+        ("oracle", "oracle fixed (gamma, sign) on test", "#d62728", "-", "*"),
+    ]
+    fig, ax = plt.subplots(figsize=(8.4, 5.2))
+    for key, label, color, ls, marker in series:
+        ax.plot(x, [r[key] for r in sweep], label=label, color=color, ls=ls, marker=marker, ms=5, lw=1.8)
+    ax.fill_between(
+        x,
+        [r["AUC-gate"] for r in sweep],
+        [r["oracle"] for r in sweep],
+        color="#d62728",
+        alpha=0.08,
+        label="headroom left for a new method",
+    )
+    ax.set_xlabel("true confidence-correctness coupling  $\\kappa_c$")
+    ax.set_ylabel("accuracy @ fixed K")
+    ax.set_title(
+        "Confidence-usage frontier (baselines only)\n"
+        "A trivial sign-corrected AUC gate nearly saturates the homogeneous sweep;\n"
+        "the open ground is monotone distortion, per-item heterogeneity, small dev sets, label-free"
+    )
+    ax.grid(alpha=0.25)
+    ax.legend(fontsize=8, loc="lower left")
+    fig.tight_layout()
+    fig.savefig(outdir / "kappa_sweep.png", dpi=150)
+    plt.close(fig)
+
+    adv = data.get("adversarial", {})
+    if adv:
+        names = list(adv)
+        methods = ["SC", "CISC(g=1.0)", "ECE-gate", "AUC-gate", "oracle"]
+        fig, ax = plt.subplots(figsize=(8.4, 4.4))
+        width = 0.15
+        xs = np.arange(len(names))
+        for j, m in enumerate(methods):
+            ax.bar(xs + (j - 2) * width, [adv[n][m] for n in names], width, label=m)
+        ax.set_xticks(xs, [n.replace("_", "\n") for n in names], fontsize=8)
+        ax.set_ylabel("accuracy @ fixed K")
+        ax.set_title("Adversarial confidence regimes -- where every existing policy leaves headroom")
+        ax.legend(fontsize=8)
+        ax.grid(alpha=0.25, axis="y")
+        fig.tight_layout()
+        fig.savefig(outdir / "kappa_adversarial.png", dpi=150)
+        plt.close(fig)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--frontier", type=Path, default=Path("results/frontier.json"))
     ap.add_argument("--boundary", type=Path, default=Path("results/boundary.json"))
+    ap.add_argument("--kappa", type=Path, default=Path("results/kappa_sweep.json"))
     ap.add_argument("--outdir", type=Path, default=Path("results/figures"))
     args = ap.parse_args()
     args.outdir.mkdir(parents=True, exist_ok=True)
@@ -209,6 +264,9 @@ def main():
     if args.boundary.exists():
         plot_boundary(json.loads(args.boundary.read_text()), args.outdir)
         print("wrote boundary.png, echo_sweep.png")
+    if args.kappa.exists():
+        plot_kappa_sweep(json.loads(args.kappa.read_text()), args.outdir)
+        print("wrote kappa_sweep.png, kappa_adversarial.png")
 
 
 if __name__ == "__main__":
