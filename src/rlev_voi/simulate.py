@@ -138,18 +138,24 @@ def generate_item(cfg: SimConfig, k_max: int, rng: np.random.Generator) -> Trace
     dup = cfg.dup_base * np.clip(sem, 0.0, 1.0) ** 2
     dup = np.clip(dup + rng.normal(scale=0.02, size=dup.shape), 0.0, 1.0)
     dup = 0.5 * (dup + dup.T)
+    # Echo groups must be a CLIQUE, not a chain. `is_echo_of` is a forest: a
+    # trace may echo a source that is itself an echo, so two traces can be
+    # byte-identical siblings without either being the other's ancestor. Walking
+    # only the ancestor chain leaves sibling pairs at the generic leakage value
+    # (~0.5), well below theta_dup, which silently under-arms the guard in the
+    # very regime meant to test it. Group by root instead.
+    root = np.arange(k_max)
     for i in range(k_max):
-        if is_echo_of[i] >= 0:
-            group = [i]
-            src = is_echo_of[i]
-            while src >= 0:
-                group.append(src)
-                src = is_echo_of[src]
-            for a_ in group:
-                for b_ in group:
-                    if a_ != b_:
-                        dup[a_, b_] = dup[b_, a_] = 1.0
-                        sem[a_, b_] = sem[b_, a_] = 1.0
+        r = i
+        while is_echo_of[r] >= 0:
+            r = is_echo_of[r]
+        root[i] = r
+    for r in np.unique(root):
+        members_of_r = np.flatnonzero(root == r)
+        if members_of_r.size > 1:
+            idx = np.ix_(members_of_r, members_of_r)
+            dup[idx] = 1.0
+            sem[idx] = 1.0
     np.fill_diagonal(dup, 1.0)
     np.fill_diagonal(sem, 1.0)
 

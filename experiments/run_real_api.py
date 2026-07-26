@@ -233,14 +233,21 @@ def main():
             "mean_n": frozen.mean_n,
             "guard_fired_rate": frozen.extra["guard_fired_rate"],
         }
-        worst = min(
-            (
-                p.accuracy - (interpolate_accuracy(sc_pts, p.cost) or p.accuracy)
-                for p in by_method.get("RLEV-SAFE", [])
-            ),
-            default=0.0,
-        )
-        checks["worst_gap_vs_SC"] = float(worst)
+        # Only configs whose cost falls inside SC's achievable range can be
+        # compared; `or p.accuracy` would have silently scored every
+        # out-of-range config as a perfect 0.0 gap and hidden real regressions.
+        gaps = [
+            (p.label, p.accuracy - sc_acc)
+            for p in by_method.get("RLEV-SAFE", [])
+            if (sc_acc := interpolate_accuracy(sc_pts, p.cost)) is not None
+        ]
+        n_rlev = len(by_method.get("RLEV-SAFE", []))
+        checks["worst_gap_vs_SC"] = {
+            "gap": float(min(g for _, g in gaps)) if gaps else None,
+            "at_label": min(gaps, key=lambda kv: kv[1])[0] if gaps else None,
+            "n_comparable": len(gaps),
+            "n_out_of_sc_cost_range": n_rlev - len(gaps),
+        }
 
     out = {
         "config": {

@@ -77,14 +77,22 @@ def test_T1_identity_kernel_reduces_to_raw_counts():
 
 
 def test_T1_rlev_voi_matches_adaptive_consistency_at_rho_zero():
-    """The whole pipeline at rho=0 must reproduce ASC's answer AND stopping time."""
+    """The whole pipeline at rho=0 must reproduce ASC's answer AND stopping time.
+
+    Answers are drawn from a *skewed* distribution so a clear leader emerges and
+    both methods actually stop early. With uniform draws over 4 classes neither
+    reaches ``tau`` and the assertion degenerates to ``40 == 40``, which passes
+    regardless of whether the reduction holds.
+    """
     rng = np.random.default_rng(7)
     cfg = DEFAULT.with_(rho=0.0, voi_branch=False, stop_variant="SAFE")
     mp = ModeProbability(n_mc=cfg.n_mc, seed=1)
 
-    for trial in range(25):
+    early_stops = 0
+    for trial in range(30):
         k = 40
-        answers = rng.integers(0, 4, size=k)
+        p = [0.70, 0.15, 0.10, 0.05] if trial % 2 else [0.55, 0.25, 0.12, 0.08]
+        answers = rng.choice(4, size=k, p=p)
         sem = np.clip(rng.uniform(0, 1, size=(k, k)), 0, 1)
         sem = 0.5 * (sem + sem.T)
         np.fill_diagonal(sem, 1.0)
@@ -96,6 +104,8 @@ def test_T1_rlev_voi_matches_adaptive_consistency_at_rho_zero():
         asc = run_adaptive_consistency(pool, cfg, mode_prob=mp)
         assert ours.n_used == asc.n_used, f"trial {trial}: stopping time diverged"
         assert ours.answer == asc.answer, f"trial {trial}: answer diverged"
+        early_stops += ours.n_used < 40
+    assert early_stops >= 25, f"only {early_stops}/30 trials stopped early -- test is vacuous"
 
 
 # ---------------------------------------------------------------- T2

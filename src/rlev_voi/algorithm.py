@@ -22,10 +22,10 @@ from dataclasses import dataclass, field
 import numpy as np
 
 from .config import Config, DEFAULT
-from .consensus import consensus_weights, guarded_answer
+from .consensus import argmax_with_tiebreak, consensus_weights, guarded_answer
 from .kernel import build_kernel
 from .posterior import ModeProbability, posterior_alpha, value_of_information
-from .traces import TracePool, total_cost
+from .traces import PROFILE_FULL, TracePool, total_cost
 from .weights import effective_counts, effective_weights, kish_dispersion, n_eff, raw_counts
 
 
@@ -128,17 +128,27 @@ def run_rlev_voi(
     n_counts = raw_counts(sub.answers, pool.n_answers)
     W = consensus_weights(w, sub.answers, pool.n_answers, sub.confidences, cfg, use_conf)
     mean_conf = _mean_conf_per_answer(sub.answers, sub.confidences, pool.n_answers)
-    if cfg.disable_guard:
-        from .consensus import argmax_with_tiebreak
-
+    if cfg.force_sc_consensus:
+        # Ablation (h): plain majority consensus, effective-count stopping.
         answer, guard_fired = argmax_with_tiebreak(n_counts, n_counts, mean_conf), False
+    elif cfg.disable_guard:
+        # Ablation (f): DDWC with no guard -- what the guard is protecting against.
+        answer, guard_fired = argmax_with_tiebreak(W, n_counts, mean_conf), False
     else:
         answer, guard_fired = guarded_answer(W, n_counts, sub.answers, sub.dup, cfg, mean_conf)
 
     return RunResult(
         answer=answer,
         n_used=n,
-        cost=total_cost(pool, n, cfg.rho_over, uses_similarity=True),
+        cost=total_cost(
+            pool,
+            n,
+            cfg.rho_over,
+            profile=PROFILE_FULL,
+            # P_raw and P_eff every step, plus |A|+1 more when VoI is on.
+            posterior_calls_per_step=2.0 + ((pool.n_answers + 2.0) if cfg.voi_branch else 0.0),
+            kappa_post=cfg.kappa_post,
+        ),
         correct=bool(answer == pool.correct),
         stopped_by=stopped_by,
         guard_fired=guard_fired,

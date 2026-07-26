@@ -92,10 +92,18 @@ class ModeProbability:
         if k > self._u.shape[1]:
             raise ValueError(f"answer vocabulary {k} exceeds max_classes {self._u.shape[1]}")
 
-        leader = int(np.argmax(alpha))
+        # Evaluate on a canonically SORTED alpha. The exact mode probability is
+        # permutation-invariant (a Dirichlet is exchangeable), but the
+        # common-random-numbers estimator is not: cell j is bound to column j of
+        # the fixed uniform matrix, so permuting alpha changes which uniforms
+        # each cell draws and moves the estimate -- measured at up to 0.10
+        # absolute, which dwarfs the distance to tau. Sorting makes the estimator
+        # a genuine function of the multiset, so it no longer depends on the
+        # arbitrary integer coding of answers, and the sorted-key memo is sound.
+        alpha = np.sort(alpha)[::-1]
         # theta_a ∝ Gamma(alpha_a, 1) sampled by inverse CDF under fixed uniforms.
         g = gammaincinv(alpha[None, :], self._u[:, :k])
-        return float(np.mean(np.argmax(g, axis=1) == leader))
+        return float(np.mean(np.argmax(g, axis=1) == 0))
 
 
 def exact_two_class_stability(alpha: np.ndarray) -> float:
@@ -165,19 +173,23 @@ def value_of_information(
     """
     alpha = np.asarray(alpha, dtype=float)
     total = float(np.sum(alpha))
-    base = mode_prob(alpha)
 
+    # The baseline and the candidates must live on the SAME support, otherwise
+    # the difference mixes a k-cell probability with (k+1)-cell probabilities and
+    # is biased by the phantom cell rather than by the information gained. When a
+    # new answer is admissible, the baseline carries the same empty cell.
     if include_new_class:
-        pi = np.concatenate([alpha / total, [alpha0 / total]])
-        pi = pi / pi.sum()
-        candidates = [
-            np.concatenate([alpha, [alpha0]]) + np.eye(alpha.shape[0] + 1)[i] * w_bar
-            for i in range(alpha.shape[0] + 1)
-        ]
+        base_alpha = np.concatenate([alpha, [alpha0]])
+        pi = base_alpha / float(np.sum(base_alpha))
+        eye = np.eye(base_alpha.shape[0])
+        candidates = [base_alpha + eye[i] * w_bar for i in range(base_alpha.shape[0])]
     else:
+        base_alpha = alpha
         pi = alpha / total
-        candidates = [alpha + np.eye(alpha.shape[0])[i] * w_bar for i in range(alpha.shape[0])]
+        eye = np.eye(alpha.shape[0])
+        candidates = [alpha + eye[i] * w_bar for i in range(alpha.shape[0])]
 
+    base = mode_prob(base_alpha)
     expected = sum(p * mode_prob(a) for p, a in zip(pi, candidates))
     return max(float(expected) - base, 0.0)
 

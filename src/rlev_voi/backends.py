@@ -197,7 +197,14 @@ def cached_sample(
 ) -> list[Trace]:
     """Sample once, reuse forever. Keyed by item, K, temperature and prompt."""
     cache_dir.mkdir(parents=True, exist_ok=True)
-    key = hashlib.sha256(f"{item_id}|{k}|{temperature}|{COT_PROMPT}".encode()).hexdigest()[:16]
+    # The key must pin everything that changes the traces: the question text
+    # itself, the model and provider, K, temperature and the prompt template.
+    # Keying on the row index alone silently shares one model's cached traces
+    # with another model, and one dataset's with another dataset.
+    model = getattr(backend, "model", "unknown")
+    provider = type(backend).__name__
+    payload = "|".join([provider, str(model), item_id, question, str(k), str(temperature), COT_PROMPT])
+    key = hashlib.sha256(payload.encode()).hexdigest()[:32]
     path = cache_dir / f"{key}.json"
     if path.exists():
         return [Trace(**d) for d in json.loads(path.read_text())]

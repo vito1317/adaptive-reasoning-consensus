@@ -20,7 +20,7 @@ from .config import Config, DEFAULT
 from .consensus import argmax_with_tiebreak
 from .kernel import hinge_pow
 from .posterior import ModeProbability, posterior_alpha
-from .traces import TracePool, total_cost
+from .traces import PROFILE_DUP_ONLY, PROFILE_NONE, TracePool, total_cost
 from .weights import raw_counts
 
 
@@ -38,7 +38,7 @@ def run_self_consistency(pool: TracePool, k: int, cfg: Config = DEFAULT) -> RunR
     return RunResult(
         answer=answer,
         n_used=n,
-        cost=total_cost(pool, n, cfg.rho_over, uses_similarity=False),
+        cost=total_cost(pool, n, cfg.rho_over, profile=PROFILE_NONE),
         correct=bool(answer == pool.correct),
         stopped_by="fixed_k",
     )
@@ -69,7 +69,7 @@ def run_adaptive_consistency(
     return RunResult(
         answer=answer,
         n_used=n,
-        cost=total_cost(pool, n, cfg.rho_over, uses_similarity=False),
+        cost=total_cost(pool, n, cfg.rho_over, profile=PROFILE_NONE),
         correct=bool(answer == pool.correct),
         stopped_by=stopped_by,
     )
@@ -87,7 +87,7 @@ def run_cisc(pool: TracePool, k: int, cfg: Config = DEFAULT) -> RunResult:
     return RunResult(
         answer=answer,
         n_used=n,
-        cost=total_cost(pool, n, cfg.rho_over, uses_similarity=False),
+        cost=total_cost(pool, n, cfg.rho_over, profile=PROFILE_NONE),
         correct=bool(answer == pool.correct),
         stopped_by="fixed_k",
     )
@@ -114,7 +114,7 @@ def run_dedup_sc(pool: TracePool, k: int, cfg: Config = DEFAULT) -> RunResult:
     return RunResult(
         answer=answer,
         n_used=n,
-        cost=total_cost(pool, n, cfg.rho_over, uses_similarity=True),
+        cost=total_cost(pool, n, cfg.rho_over, profile=PROFILE_DUP_ONLY),
         correct=bool(answer == pool.correct),
         stopped_by="fixed_k",
         diagnostics={"n_kept": int(kept.size)},
@@ -141,7 +141,7 @@ def run_esc(pool: TracePool, cfg: Config = DEFAULT, window: int = 5) -> RunResul
     return RunResult(
         answer=answer,
         n_used=n,
-        cost=total_cost(pool, n, cfg.rho_over, uses_similarity=False),
+        cost=total_cost(pool, n, cfg.rho_over, profile=PROFILE_NONE),
         correct=bool(answer == pool.correct),
         stopped_by=stopped_by,
     )
@@ -169,7 +169,7 @@ def run_sprt(pool: TracePool, cfg: Config = DEFAULT, margin: int = 5) -> RunResu
     return RunResult(
         answer=answer,
         n_used=n,
-        cost=total_cost(pool, n, cfg.rho_over, uses_similarity=False),
+        cost=total_cost(pool, n, cfg.rho_over, profile=PROFILE_NONE),
         correct=bool(answer == pool.correct),
         stopped_by=stopped_by,
     )
@@ -215,7 +215,7 @@ def run_rasc_lite(
     return RunResult(
         answer=answer,
         n_used=n,
-        cost=total_cost(pool, n, cfg.rho_over, uses_similarity=True),
+        cost=total_cost(pool, n, cfg.rho_over, profile=PROFILE_DUP_ONLY),
         correct=bool(answer == pool.correct),
         stopped_by=stopped_by,
     )

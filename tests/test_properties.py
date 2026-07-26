@@ -27,11 +27,11 @@ def pools() -> list[TracePool]:
     return out
 
 
-def test_safe_never_stops_earlier_than_asc(pools):
-    """SAFE uses min(P_raw, P_eff) <= P_raw, so it can never stop before ASC.
+def test_safe_never_stops_earlier_than_asc_with_voi_off(pools):
+    """SAFE uses min(P_raw, P_eff) <= P_raw, so it cannot stop before ASC.
 
-    This is the honest architectural consequence the spec insists on stating:
-    SAFE trades tokens for safety and cannot deliver a token-side win over ASC.
+    The guarantee is about *branch A only*. See the companion test below for what
+    happens once the VoI branch is enabled.
     """
     mp = ModeProbability(n_mc=DEFAULT.n_mc, seed=3)
     cfg = DEFAULT.with_(k_max=24, voi_branch=False, stop_variant="SAFE")
@@ -41,11 +41,39 @@ def test_safe_never_stops_earlier_than_asc(pools):
         assert safe.n_used >= asc.n_used
 
 
+def test_frozen_default_breaks_the_safe_guarantee(pools):
+    """The shipped default does NOT honour 'SAFE never stops earlier than ASC'.
+
+    The guarantee rests on ``min(P_raw, P_eff) <= P_raw``, but the frozen default
+    (spec section 6) sets ``stop_variant='SAFE'`` *and* ``voi_branch=True``, and
+    the two branches are disjunctive: branch B can fire long before branch A. So
+    the guarantee documented in SPEC.md 4.3 / Limitation 4 holds only for the
+    VoI-off configuration.
+
+    This test pins the discrepancy rather than papering over it: if a future
+    change makes the shipped default actually satisfy the guarantee, this test
+    fails and the documentation should be updated to match.
+    """
+    mp = ModeProbability(n_mc=DEFAULT.n_mc, seed=3)
+    cfg = DEFAULT.with_(k_max=24)  # frozen default: SAFE + voi_branch=True
+    violations = sum(
+        run_rlev_voi(p, cfg, mp, use_conf=False).n_used
+        < run_adaptive_consistency(p, cfg, mp).n_used
+        for p in pools
+    )
+    assert violations > 0, (
+        "the frozen default unexpectedly satisfies the SAFE guarantee -- "
+        "update SPEC.md 4.3 and the report if this is now genuinely true"
+    )
+
+
 def test_posterior_never_uses_confidence(pools):
     """Scrambling confidence must not move the stopping time.
 
-    The posterior sees only the redundancy channel; confidence acts on the
-    consensus argmax alone. This is what makes the ASC reduction unconditional.
+    Run with ``use_conf=True`` on purpose: with the channel disabled the test
+    would be blind to precisely the leak it is meant to catch. The posterior sees
+    only the redundancy channel; confidence acts on the consensus argmax alone,
+    which is what makes the ASC reduction unconditional.
     """
     rng = np.random.default_rng(0)
     mp = ModeProbability(n_mc=DEFAULT.n_mc, seed=4)
@@ -60,8 +88,8 @@ def test_posterior_never_uses_confidence(pools):
             correct=pool.correct,
             n_answers=pool.n_answers,
         )
-        a = run_rlev_voi(pool, cfg, mp, use_conf=False)
-        b = run_rlev_voi(scrambled, cfg, mp, use_conf=False)
+        a = run_rlev_voi(pool, cfg, mp, use_conf=True)
+        b = run_rlev_voi(scrambled, cfg, mp, use_conf=True)
         assert a.n_used == b.n_used
 
 
@@ -127,30 +155,72 @@ def test_mode_probability_three_class_against_fresh_monte_carlo():
         assert mp(a) == pytest.approx(ref, abs=0.01)
 
 
-def test_mode_probability_is_permutation_invariant():
-    """Load-bearing for the memoisation: a Dirichlet is exchangeable.
+def test_mode_probability_estimator_is_permutation_invariant():
+    """The ESTIMATOR itself must be permutation-invariant, not just the memo.
 
-    ``P[argmax theta = argmax alpha]`` depends only on the multiset of alpha
-    values, which is why the estimator can be cached on the sorted vector.
+    Regression test for a real defect: the memo keys on the sorted alpha, so a
+    test that calls the public entry point returns a cache hit for every
+    permutation and passes no matter what the estimator does. This calls
+    ``_compute`` directly to bypass the cache.
+
+    Before the fix, common random numbers bound cell ``j`` to column ``j`` of the
+    fixed uniform matrix, so permuting alpha moved the estimate by up to 0.10 --
+    far more than the distance to ``tau`` -- which also made ``P_stable`` depend
+    on the arbitrary integer coding of answers.
     """
     rng = np.random.default_rng(9)
-    mp = ModeProbability(n_mc=512, seed=0, cache_decimals=12)
-    for _ in range(60):
+    mp = ModeProbability(n_mc=512, seed=0)
+    for _ in range(80):
         k = int(rng.integers(2, 7))
         a = rng.uniform(0.5, 30.0, size=k)
-        base = mp(a)
-        for _ in range(3):
-            assert mp(rng.permutation(a)) == pytest.approx(base, abs=1e-12)
+        base = mp._compute(a)
+        for _ in range(4):
+            assert mp._compute(rng.permutation(a)) == pytest.approx(base, abs=1e-12)
+
+
+def test_p_stable_independent_of_answer_labels():
+    """Relabelling answers must not change the stopping time."""
+    rng = np.random.default_rng(21)
+    cfg = DEFAULT.with_(k_max=24, voi_branch=False, stop_variant="AGGRESSIVE")
+    for pool in generate_dataset(REGIMES["R2_correlated_wrong"], 15, 24, seed=77):
+        perm = rng.permutation(pool.n_answers)
+        relabelled = TracePool(
+            answers=perm[pool.answers],
+            confidences=pool.confidences,
+            sem=pool.sem,
+            dup=pool.dup,
+            gen_tokens=pool.gen_tokens,
+            correct=int(perm[pool.correct]),
+            n_answers=pool.n_answers,
+        )
+        a = run_rlev_voi(pool, cfg, ModeProbability(n_mc=DEFAULT.n_mc, seed=1), use_conf=False)
+        b = run_rlev_voi(relabelled, cfg, ModeProbability(n_mc=DEFAULT.n_mc, seed=1), use_conf=False)
+        assert a.n_used == b.n_used
+        assert perm[a.answer] == b.answer
 
 
 def test_cache_rounding_does_not_change_results():
-    """Rounding the cache key to 1e-3 must not perturb the estimate."""
+    """Rounding the cache key to 1e-3 must not perturb the estimate.
+
+    Alphas are drawn as near-neighbours (within 5e-4) so the coarse cache
+    genuinely collides and returns a rounded neighbour's value -- the earlier
+    version drew independent uniforms, which essentially never collide, so it
+    exercised nothing.
+    """
     rng = np.random.default_rng(10)
     coarse = ModeProbability(n_mc=512, seed=0, cache_decimals=3)
     exact = ModeProbability(n_mc=512, seed=0, cache_decimals=12)
-    for _ in range(300):
-        a = rng.uniform(0.5, 30.0, size=int(rng.integers(2, 6)))
-        assert coarse(a) == pytest.approx(exact(a), abs=1e-3)
+    collisions = 0
+    for _ in range(200):
+        a = rng.uniform(0.5, 30.0, size=int(rng.integers(3, 6)))
+        coarse(a)
+        before = coarse.misses
+        neighbour = a + rng.uniform(-5e-4, 5e-4, size=a.shape)
+        got = coarse(neighbour)
+        if coarse.misses == before:
+            collisions += 1
+        assert got == pytest.approx(exact(neighbour), abs=2e-3)
+    assert collisions > 50, f"only {collisions} cache collisions -- test is not exercising rounding"
 
 
 def test_posterior_alpha_reduces_to_asc_at_identity():

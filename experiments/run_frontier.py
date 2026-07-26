@@ -110,13 +110,18 @@ def build_configs(k_max: int, quick: bool, use_conf: bool):
         )
         # Ablation (h) 2x2 cells:
         #   SC-consensus x eff-stop, and DDWC-consensus x raw(ASC)-stop.
-        h_sc = base.with_(tau=tau, voi_branch=False, stop_variant="AGGRESSIVE", disable_guard=True)
+        h_sc = base.with_(tau=tau, voi_branch=False, stop_variant="AGGRESSIVE", force_sc_consensus=True)
         h_raw = base.with_(tau=tau, voi_branch=False, stop_on_raw=True)
         out.append(
             ("abl-h_SCcons_effstop", f"tau={tau}", lambda p, c=h_sc: run_rlev_voi(p, c, MP, use_conf=use_conf))
         )
         out.append(
             ("abl-h_DDWCcons_rawstop", f"tau={tau}", lambda p, c=h_raw: run_rlev_voi(p, c, MP, use_conf=use_conf))
+        )
+        # Ablation (f): DDWC with the guard removed -- what the guard prevents.
+        f_cfg = base.with_(tau=tau, voi_branch=False, stop_variant="AGGRESSIVE", disable_guard=True)
+        out.append(
+            ("abl-f_noguard", f"tau={tau}", lambda p, c=f_cfg: run_rlev_voi(p, c, MP, use_conf=use_conf))
         )
         # Ablation (e): GLOBAL semantic-only kernel -- predicted to backfire.
         g = base.with_(tau=tau, voi_branch=False, stop_variant="AGGRESSIVE", kernel_scope="GLOBAL")
@@ -281,6 +286,7 @@ def analyse_regime(name: str, dataset, k_max: int, quick: bool) -> dict:
         ("RLEV-AGGR", "abl-h_SCcons_effstop"),  # consensus contribution
         ("RLEV-AGGR", "abl-h_DDWCcons_rawstop"),  # stopping contribution
         ("RLEV-AGGR", "abl-e_GLOBAL"),  # kernel scope
+        ("RLEV-AGGR", "abl-f_noguard"),  # what the guard prevents
         ("abl-b_forceconf", "RLEV-AGGR"),  # what the ECE gate costs
         ("RASC-lite", "RLEV-AGGR"),  # does the simple competitor already win?
     ]:

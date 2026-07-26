@@ -76,25 +76,81 @@ def generation_cost(pool: TracePool, n: int) -> float:
     return float(np.sum(pool.gen_tokens[:n]))
 
 
-def overhead_cost(n: int, rho_over: float, uses_similarity: bool) -> float:
+#: Token-equivalent cost of embedding one trace with a local encoder
+#: (SPEC.md 4.4's ``kappa_emb``). Charged only to methods that need embeddings.
+KAPPA_EMB = 1.0
+
+
+def overhead_cost(
+    n: int,
+    rho_over: float,
+    *,
+    channels: int = 0,
+    embeds: bool = False,
+    posterior_calls_per_step: float = 0.0,
+    kappa_post: float = 0.0,
+) -> float:
     """Token-equivalent overhead for a method that ran for ``n`` traces.
 
-    At step ``k`` a similarity-using method embeds the new trace and compares it
-    against the ``k-1`` existing ones on two channels, i.e. ``o_k = rho_over *
-    (2k + 1)`` token-equivalents. Summing over steps gives the total below.
-    Methods that never touch embeddings pay nothing.
+    Charged per the machinery a method actually uses, not as an all-or-nothing
+    flag -- a boolean would bill plain duplicate-dedup for a semantic embedding
+    and a second similarity channel it never computes, roughly doubling its
+    honest overhead and flattering anything compared against it.
+
+    * ``channels``: how many pairwise similarity channels are maintained. At step
+      ``k`` a channel compares the new trace against the ``k-1`` existing ones,
+      so the total is ``channels * sum_k (k-1)``.
+    * ``embeds``: whether a neural embedding is computed per trace
+      (``kappa_emb`` each). Lexical n-gram methods set this False.
+    * ``posterior_calls_per_step`` / ``kappa_post``: Monte-Carlo posterior and
+      VoI work, which SPEC.md 4.4 explicitly puts on the cost axis. Charging it
+      matters for ablation (g), where the VoI variant does several times the
+      posterior work of a plain threshold at otherwise identical cost.
     """
-    if not uses_similarity or n <= 0:
+    if n <= 0:
         return 0.0
     k = np.arange(1, n + 1, dtype=float)
-    return float(rho_over * np.sum(2.0 * k + 1.0))
+    pairs = float(np.sum(k - 1.0))
+    total = channels * pairs
+    if embeds:
+        total += KAPPA_EMB * n
+    total += posterior_calls_per_step * kappa_post * n
+    return float(rho_over * total)
 
 
-def total_cost(pool: TracePool, n: int, rho_over: float, uses_similarity: bool) -> float:
-    """Total token-equivalents: generation + (optional) similarity overhead.
+#: Overhead profiles per method family, so every method is billed for exactly
+#: the machinery it runs. ``posterior`` counts mode-probability evaluations per
+#: step (RLEV evaluates P_raw and P_eff; the VoI branch adds |A|+1 more).
+PROFILE_NONE = dict(channels=0, embeds=False)
+PROFILE_DUP_ONLY = dict(channels=1, embeds=False)
+PROFILE_FULL = dict(channels=2, embeds=True)
+
+
+def total_cost(
+    pool: TracePool,
+    n: int,
+    rho_over: float,
+    uses_similarity: bool | None = None,
+    *,
+    profile: dict | None = None,
+    posterior_calls_per_step: float = 0.0,
+    kappa_post: float = 0.0,
+) -> float:
+    """Total token-equivalents: generation + the overhead the method incurs.
 
     This is the x-axis for every accuracy-vs-cost frontier. Comparing at matched
     *total cost* rather than matched ``K`` is what keeps the comparison fair to
     methods that buy their savings with extra local computation.
+
+    ``uses_similarity`` is retained as a coarse shorthand (True -> full profile)
+    for callers that have not been given an explicit profile.
     """
-    return generation_cost(pool, n) + overhead_cost(n, rho_over, uses_similarity)
+    if profile is None:
+        profile = PROFILE_FULL if uses_similarity else PROFILE_NONE
+    return generation_cost(pool, n) + overhead_cost(
+        n,
+        rho_over,
+        posterior_calls_per_step=posterior_calls_per_step,
+        kappa_post=kappa_post,
+        **profile,
+    )

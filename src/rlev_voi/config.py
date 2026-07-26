@@ -53,7 +53,13 @@ class Config:
     """Ablation (h): stop on the raw ASC posterior while still using DDWC for
     consensus. Isolates the stopping change from the consensus change."""
     disable_guard: bool = False
-    """Ablation (f): never let DDWC overturn the plain majority."""
+    """Ablation (f): run DDWC UNGUARDED (answer = argmax_a W_a).
+
+    This measures the regression the guard prevents, which is the point of the
+    ablation -- suppressing DDWC entirely would instead just re-run SC."""
+    force_sc_consensus: bool = False
+    """Ablation (h): use the plain-SC consensus rule while keeping the effective
+    -count stopping rule, isolating the stopping change from the consensus one."""
 
     # --- estimators -------------------------------------------------------
     n_mc: int = 512
@@ -65,7 +71,14 @@ class Config:
 
     # --- cost accounting --------------------------------------------------
     rho_over: float = 1.0
-    """Overhead scale. Per-step overhead o_n = rho_over * (2K + 1) token-equivalents."""
+    """Overhead scale applied to all non-generation work."""
+    kappa_post: float = 0.05
+    """Token-equivalent cost of ONE Monte-Carlo mode-probability evaluation.
+
+    SPEC.md 4.4 puts posterior/VoI compute on the cost axis. Without it the VoI
+    variant -- which does several times the posterior work of a plain threshold
+    -- would be compared to it at nominally identical cost, and ablation (g)
+    would be decided by an accounting omission."""
 
     def with_(self, **kwargs) -> "Config":
         """Return a copy with fields overridden (keeps the frozen dataclass honest)."""
