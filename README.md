@@ -1,5 +1,15 @@
 # RLEV-VoI — 冗餘折扣共識 + 資訊價值自適應停止
 
+> ### 實測結論：負面結果
+>
+> 診斷的問題是真的。在逐字回音情境下 Self-Consistency 會崩潰到接近隨機（0.320），而且**越取樣越差**（K=1 時 0.403 是它的峰值）。本方法確實能修復（0.880，p≈7e-68）。
+>
+> **但一個簡單得多的基準線贏了。** 單純的 n-gram 近重複去重 + 信心加權 + 穩定度停止（RASC-lite），在每一個情境都以明顯差距支配 RLEV-VoI——R1 準確率更高且成本只有 1/4，R4 同樣準確度只花 1/5 成本。
+>
+> 消融把有效機制精確定位在**逐字重複偵測**（與增益相關 +0.935），而非反相似度加權、設計效應修正或 VoI。SPEC 預先登記的五項證偽條件觸發了四項半。完整數據與歸因見 **[docs/REPORT.md](docs/REPORT.md)**。
+>
+> 實務建議：若你的推理系統受回音之苦，先做最簡單的去重。本研究找不到證據支持更複雜的做法。
+
 針對**凍結 LLM** 的推理期（inference-time）演算法。改良 Self-Consistency 的兩個核心問題：
 
 1. **回音式重複投票**：SC 把每條推理鏈當成獨立一票，但取樣出來的鏈是相關的。一個熱門但錯誤的推理模板可以靠複製自己贏得多數決。
@@ -52,10 +62,14 @@ src/rlev_voi/
   simulate.py    合成軌跡產生器（僅供健全性檢查，非效果證據）
   evaluate.py    frontier、配對統計、McNemar、Holm、ECE
   backends.py    真實 LLM 後端（Anthropic / OpenAI），含軌跡快取
-tests/test_units.py    強制測試 T1–T6 + Kish 反向測試
+tests/
+  test_units.py       強制測試 T1–T6 + Kish 反向測試
+  test_properties.py  架構保證（SAFE 停止序、後驗不吃信心、置換不變性）
+  test_components.py  核函數數值、護欄邊際、VoI、成本模型
 experiments/           frontier / boundary / real-API / 繪圖
-docs/SPEC.md           完整規格、數學推導、證偽條件
-docs/REPORT.md         實驗結果與發現
+docs/SPEC.md           完整英文規格、新穎性定位、證偽條件、紅隊修正紀錄
+docs/ALGORITHM.md      中文版設計動機與數學推導
+docs/REPORT.md         實驗結果、發現與缺陷修正紀錄
 ```
 
 ## 執行

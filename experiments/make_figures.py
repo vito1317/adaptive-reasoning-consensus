@@ -39,8 +39,13 @@ STYLE = {
 def plot_frontiers(data: dict, outdir: Path) -> None:
     regimes = data["regimes"]
     n = len(regimes)
-    fig, axes = plt.subplots(1, n, figsize=(5.2 * n, 4.6), squeeze=False)
-    for ax, (name, r) in zip(axes[0], regimes.items()):
+    ncols = 3
+    nrows = (n + ncols - 1) // ncols
+    fig, axes = plt.subplots(nrows, ncols, figsize=(6.2 * ncols, 4.9 * nrows), squeeze=False)
+    flat = [ax for row in axes for ax in row]
+    for ax in flat[n:]:
+        ax.axis("off")
+    for ax, (name, r) in zip(flat, regimes.items()):
         for method, pts in r["frontiers"].items():
             if method not in STYLE or not pts:
                 continue
@@ -67,13 +72,19 @@ def plot_frontiers(data: dict, outdir: Path) -> None:
                 va="bottom",
                 bbox=dict(boxstyle="round", fc="#fffbe6", ec="#ccc", alpha=0.9),
             )
-    axes[0][-1].legend(fontsize=8, loc="lower right", framealpha=0.9)
+    handles, labels = flat[0].get_legend_handles_labels()
+    legend_ax = flat[n] if n < len(flat) else flat[-1]
+    if n < len(flat):
+        legend_ax.legend(handles, labels, fontsize=11, loc="center", frameon=False)
+    else:
+        flat[-1].legend(fontsize=8, loc="lower right", framealpha=0.9)
     fig.suptitle(
-        "Accuracy vs total cost -- Pareto frontiers (SYNTHETIC data: correctness & "
-        "boundary checks only, not evidence of real-world benefit)",
-        fontsize=11,
+        "Accuracy vs total cost -- Pareto frontiers\n"
+        "SYNTHETIC data: implementation-correctness, no-regret and boundary checks only. "
+        "NOT evidence of benefit on real LLM traces.",
+        fontsize=12,
     )
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0, 1, 0.94))
     fig.savefig(outdir / "frontiers.png", dpi=150)
     plt.close(fig)
 
