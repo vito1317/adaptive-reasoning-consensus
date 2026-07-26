@@ -127,6 +127,32 @@ def test_mode_probability_three_class_against_fresh_monte_carlo():
         assert mp(a) == pytest.approx(ref, abs=0.01)
 
 
+def test_mode_probability_is_permutation_invariant():
+    """Load-bearing for the memoisation: a Dirichlet is exchangeable.
+
+    ``P[argmax theta = argmax alpha]`` depends only on the multiset of alpha
+    values, which is why the estimator can be cached on the sorted vector.
+    """
+    rng = np.random.default_rng(9)
+    mp = ModeProbability(n_mc=512, seed=0, cache_decimals=12)
+    for _ in range(60):
+        k = int(rng.integers(2, 7))
+        a = rng.uniform(0.5, 30.0, size=k)
+        base = mp(a)
+        for _ in range(3):
+            assert mp(rng.permutation(a)) == pytest.approx(base, abs=1e-12)
+
+
+def test_cache_rounding_does_not_change_results():
+    """Rounding the cache key to 1e-3 must not perturb the estimate."""
+    rng = np.random.default_rng(10)
+    coarse = ModeProbability(n_mc=512, seed=0, cache_decimals=3)
+    exact = ModeProbability(n_mc=512, seed=0, cache_decimals=12)
+    for _ in range(300):
+        a = rng.uniform(0.5, 30.0, size=int(rng.integers(2, 6)))
+        assert coarse(a) == pytest.approx(exact(a), abs=1e-3)
+
+
 def test_posterior_alpha_reduces_to_asc_at_identity():
     counts = np.array([4.0, 2.0, 1.0])
     assert np.allclose(posterior_alpha(counts, 1.0), np.array([5.0, 3.0, 2.0]))

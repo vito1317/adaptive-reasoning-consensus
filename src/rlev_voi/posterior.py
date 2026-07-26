@@ -41,15 +41,46 @@ class ModeProbability:
     ``alpha`` are evaluated under common random numbers.
     """
 
-    def __init__(self, n_mc: int = 512, seed: int = 0, max_classes: int = _MAX_CLASSES):
+    def __init__(
+        self,
+        n_mc: int = 512,
+        seed: int = 0,
+        max_classes: int = _MAX_CLASSES,
+        cache_decimals: int = 3,
+        cache_size: int = 500_000,
+    ):
         self.n_mc = n_mc
         rng = np.random.default_rng(seed)
         # Open interval (0, 1) -- gammaincinv is undefined at exactly 0 or 1.
         self._u = rng.uniform(1e-9, 1.0 - 1e-9, size=(n_mc, max_classes))
+        self._cache: dict[tuple, float] = {}
+        self._cache_decimals = cache_decimals
+        self._cache_size = cache_size
+        self.hits = 0
+        self.misses = 0
 
     def __call__(self, alpha: np.ndarray) -> float:
-        """Probability that the current posterior leader is the true mode."""
+        """Probability that the current posterior leader is the true mode.
+
+        Memoised on the *sorted* concentration vector: a Dirichlet is
+        exchangeable in its components, so ``P[argmax theta = argmax alpha]``
+        depends only on the multiset of alpha values, not their order. Raw
+        (integer) count vectors repeat constantly across items, so the hit rate
+        is high and the estimate is unchanged.
+        """
         alpha = np.asarray(alpha, dtype=float)
+        key = tuple(np.sort(np.round(alpha, self._cache_decimals)))
+        cached = self._cache.get(key)
+        if cached is not None:
+            self.hits += 1
+            return cached
+        self.misses += 1
+        value = self._compute(alpha)
+        if len(self._cache) < self._cache_size:
+            self._cache[key] = value
+        return value
+
+    def _compute(self, alpha: np.ndarray) -> float:
         alpha = alpha[alpha > 0] if np.any(alpha <= 0) else alpha
         k = alpha.shape[0]
         if k <= 1:
