@@ -71,6 +71,29 @@ class SimConfig:
     """Probability a trace reports an answer other than its cluster's."""
     kappa_c: float = 0.6
     """Confidence-correctness coupling. ``<= 0`` means miscalibrated."""
+    kappa_c_sd: float = 0.0
+    """Per-item heterogeneity: each item draws ``kappa ~ N(kappa_c, kappa_c_sd)``.
+
+    Nonzero values model corpora where the confidence channel is informative on
+    some questions and useless or inverted on others -- the setting where a
+    single global trust decision is provably suboptimal."""
+    conf_transform: str = "none"
+    """Strictly monotone distortion applied to confidences AFTER coupling.
+
+    Rank-preserving by construction, so the signal's DISCRIMINATION (AUC) is
+    untouched while its CALIBRATION (ECE) is destroyed -- the exact case that
+    separates rank-based trust estimators from ECE-style gates.
+
+    * ``none``          -- identity.
+    * ``compress``      -- ``0.5 + 0.15*(c-0.5)``: everything huddles near 0.5
+      (systematic underconfidence).
+    * ``overconfident`` -- steep sigmoid pushing mass toward 0/1.
+    * ``power``         -- ``c**4``: systematically low, long left tail.
+    """
+    echo_conf: float | None = None
+    """If set, traces in verbatim-echo components report this confidence
+    (plus noise) regardless of correctness -- the 'confident echo' poison that
+    corrupts both the vote and any agreement-based reliability proxy."""
     conf_noise: float = 0.10
     dup_base: float = 0.5
     """Scales the semantic-to-lexical leakage for non-identical traces."""
@@ -85,6 +108,20 @@ class SimConfig:
     silently disable the semantic channel entirely.
     """
     correct_answer: int = 0
+
+
+def _monotone_distort(c: np.ndarray, kind: str) -> np.ndarray:
+    """Strictly monotone confidence distortions (rank/AUC preserved, ECE wrecked)."""
+    if kind == "none":
+        return c
+    if kind == "compress":
+        return 0.5 + 0.15 * (c - 0.5)
+    if kind == "overconfident":
+        # Range on (0,1) already; clipping would create ties and break ranks.
+        return 1.0 / (1.0 + np.exp(-8.0 * (c - 0.5)))
+    if kind == "power":
+        return c**4
+    raise ValueError(f"unknown conf_transform {kind!r}")
 
 
 def generate_item(cfg: SimConfig, k_max: int, rng: np.random.Generator) -> TracePool:
@@ -160,8 +197,18 @@ def generate_item(cfg: SimConfig, k_max: int, rng: np.random.Generator) -> Trace
     np.fill_diagonal(sem, 1.0)
 
     hit = (answers == cfg.correct_answer).astype(float)
-    conf = 0.5 + cfg.kappa_c * (hit - 0.5) + rng.normal(scale=cfg.conf_noise, size=k_max)
+    kappa_item = cfg.kappa_c
+    if cfg.kappa_c_sd > 0:
+        kappa_item = float(rng.normal(cfg.kappa_c, cfg.kappa_c_sd))
+    conf = 0.5 + kappa_item * (hit - 0.5) + rng.normal(scale=cfg.conf_noise, size=k_max)
+    if cfg.echo_conf is not None:
+        # Confident-echo poison: every member of a multi-trace echo component
+        # reports high confidence regardless of correctness.
+        comp_size = np.bincount(root, minlength=k_max)[root]
+        in_echo = comp_size > 1
+        conf[in_echo] = cfg.echo_conf + rng.normal(scale=cfg.conf_noise, size=int(in_echo.sum()))
     conf = np.clip(conf, 0.01, 0.99)
+    conf = _monotone_distort(conf, cfg.conf_transform)
 
     gen_tokens = np.clip(
         rng.normal(cfg.gen_tokens_mean, cfg.gen_tokens_sd, size=k_max), 20.0, None

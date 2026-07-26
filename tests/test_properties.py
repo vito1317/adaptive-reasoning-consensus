@@ -234,3 +234,63 @@ def test_rho_zero_leaves_kernel_identity(pools):
         S = build_kernel(pool.sem, pool.dup, pool.answers, cfg)
         assert np.allclose(S, np.eye(pool.k_max))
         assert np.allclose(effective_weights(S, cfg), 1.0)
+
+
+def test_monotone_distortions_preserve_ranks():
+    """The distortions must wreck calibration while leaving discrimination intact."""
+    from rlev_voi.simulate import _monotone_distort
+
+    rng = np.random.default_rng(42)
+    c = rng.uniform(0.01, 0.99, size=200)
+    for kind in ("compress", "overconfident", "power"):
+        d = _monotone_distort(c, kind)
+        assert np.array_equal(np.argsort(c), np.argsort(d)), kind
+        assert not np.allclose(c, d), kind
+
+
+def test_confident_echo_poison_overrides_confidence():
+    """Echo-component members must report echo_conf regardless of correctness."""
+    from rlev_voi.simulate import Cluster, SimConfig, generate_item
+
+    cfg = SimConfig(
+        clusters=(
+            Cluster(answer=0, weight=0.4, tightness=0.02),
+            Cluster(answer=1, weight=0.6, tightness=0.3, echo_prob=0.9),
+        ),
+        n_answers=2,
+        kappa_c=0.6,
+        echo_conf=0.95,
+    )
+    rng = np.random.default_rng(7)
+    pool = generate_item(cfg, 30, rng)
+    root = pool.meta["is_echo_of"]
+    # find echo members via component reconstruction
+    parent = np.arange(30)
+    for i in range(30):
+        r = i
+        while root[r] >= 0:
+            r = root[r]
+        parent[i] = r
+    comp_size = np.bincount(parent, minlength=30)[parent]
+    echo_members = comp_size > 1
+    if echo_members.sum() >= 3:
+        # echoed WRONG answers must still be confident (the poison)
+        wrong_echo = echo_members & (pool.answers != pool.correct)
+        if wrong_echo.sum() > 0:
+            assert pool.confidences[wrong_echo].mean() > 0.8
+
+
+def test_kappa_heterogeneity_changes_items_not_defaults():
+    from rlev_voi.simulate import REGIMES, SimConfig, generate_dataset
+
+    base = REGIMES["R1_independent"]
+    het = SimConfig(clusters=base.clusters, kappa_c=0.0, kappa_c_sd=0.6)
+    ds = generate_dataset(het, 40, 20, seed=3)
+    # per-item confidence-correctness correlation should vary in sign
+    corrs = []
+    for p in ds:
+        hit = (p.answers == p.correct).astype(float)
+        if hit.std() > 0 and p.confidences.std() > 0:
+            corrs.append(np.corrcoef(p.confidences, hit)[0, 1])
+    corrs = np.asarray(corrs)
+    assert (corrs > 0.2).any() and (corrs < -0.2).any(), "heterogeneous kappa should produce both signs"
