@@ -1,0 +1,9 @@
+# Core (required)
+numpy>=2.0
+scipy>=1.13
+matplotlib>=3.8
+
+# Optional real-LLM backends (only needed to run the real-API experiments).
+# Install with:  pip install anthropic openai
+# anthropic>=0.40
+# openai>=1.40

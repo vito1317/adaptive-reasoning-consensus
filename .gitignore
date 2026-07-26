@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# venv
+.venv/
+venv/
+env/
+
+# caches / os
+.DS_Store
+.pytest_cache/
+.ipynb_checkpoints/
+
+# large / regenerable raw run dumps (keep small summary JSON + figures)
+results/raw/
+*.log
+
+# secrets — never commit API keys
+.env
+*.key

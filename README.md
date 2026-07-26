@@ -1,0 +1,98 @@
+# RLEV-VoI — 冗餘折扣共識 + 資訊價值自適應停止
+
+針對**凍結 LLM** 的推理期（inference-time）演算法。改良 Self-Consistency 的兩個核心問題：
+
+1. **回音式重複投票**：SC 把每條推理鏈當成獨立一票，但取樣出來的鏈是相關的。一個熱門但錯誤的推理模板可以靠複製自己贏得多數決。
+2. **固定 K 浪費算力**：簡單題抽 40 條是浪費，難題抽 5 條又不夠。
+
+## 核心構想
+
+**DDWC（冗餘折扣加權共識）** — 用相似度質量的倒數當作「有效權重」：
+
+```
+s_i = Σ_j S_ij        (相似度質量，S_ii = 1)
+w_i = 1 / s_i          (有效權重，落在 [1/K, 1])
+N_a^eff = Σ_{i:a_i=a} w_i        (答案 a 的有效票數)
+n_eff   = Σ_i w_i = tr(D⁻¹S)     (總有效票數，落在 [1, K])
+```
+
+m 條近乎相同的鏈，總權重會收斂到 **1 票**而不是 m 票：
+
+```
+N_g^eff = m / (1 + (m-1)ρ)   →  1   當 ρ→1（完全回音）
+                             →  m   當 ρ→0（真正獨立）
+```
+
+**VoI-Stop** — 對有效票數維護 Dirichlet 後驗 `α_a = α₀ + N_a^eff`，每抽一條鏈就評估「領先者是真眾數」的機率與每 token 的邊際資訊價值，不划算就停。
+
+> **關鍵修正**：早期版本用 Kish 離散度比 `(Σw)²/Σw²` 當有效樣本數——這是錯的。K 份完全相同的複本權重是均勻的，Kish 會回報 **K**（完全相反）。正確的是權重和 `Σw_i`。這個錯誤由紅隊審查抓出，並固化成單元測試 T2/T3。
+
+## 誠實的新穎性定位
+
+這**不是**全新的統計量。它是既有元件的組合：
+
+- `w_i = 1/Σ_j S_ij` 是 Goldberg–Richardson fitness sharing／逆密度加權，也是 ridge leverage 的廉價 O(K²) 代理。
+- 用有效樣本數修正計數是 **Rao–Scott 設計效應修正**（1981/1984），複雜抽樣統計的四十年老方法。
+- Dirichlet「領先穩定就停」**就是** Adaptive-Consistency（Aggarwal 2023）的準則。
+- VoI/成本停止是教科書的 EVSI-per-cost（Raiffa & Schlaifer 1961）。
+
+真正的貢獻只有三項，且都需要實證支撐：把估計量**修對**、dup-vs-sem 通道拆解當安全閥、以及一個非循環的公平評測協定。完整定位見 [docs/SPEC.md](docs/SPEC.md) §2。
+
+## 專案結構
+
+```
+src/rlev_voi/
+  config.py      凍結預設參數（spec §6）
+  kernel.py      相似度核：dup（逐字重複）/ sem（語意）雙通道分解
+  weights.py     有效權重與有效計數 ← 核心修正在這
+  posterior.py   Dirichlet 後驗、P_stable、VoI
+  consensus.py   DDWC 共識 + never-worse-than-SC 護欄
+  algorithm.py   主串流迴圈（SAFE / AGGRESSIVE 兩種停止）
+  baselines.py   SC / ASC / CISC / dedup-SC / ESC / SPRT / RASC-lite
+  simulate.py    合成軌跡產生器（僅供健全性檢查，非效果證據）
+  evaluate.py    frontier、配對統計、McNemar、Holm、ECE
+  backends.py    真實 LLM 後端（Anthropic / OpenAI），含軌跡快取
+tests/test_units.py    強制測試 T1–T6 + Kish 反向測試
+experiments/           frontier / boundary / real-API / 繪圖
+docs/SPEC.md           完整規格、數學推導、證偽條件
+docs/REPORT.md         實驗結果與發現
+```
+
+## 執行
+
+```bash
+python3.12 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
+```
+
+強制單元測試（演算法極限行為的解析驗證）：
+
+```bash
+./.venv/bin/python -m pytest tests/ -q
+```
+
+合成實驗（**不需要 API key**）：
+
+```bash
+./.venv/bin/python experiments/run_frontier.py --items 400 --out results/frontier.json
+./.venv/bin/python experiments/run_boundary.py --items 150 --out results/boundary.json
+./.venv/bin/python experiments/make_figures.py
+```
+
+真實 LLM 實驗（**需要 API key**，這才是 spec 認定的 headline 證據）：
+
+```bash
+export ANTHROPIC_API_KEY=...
+./.venv/bin/python experiments/run_real_api.py --data data/items.jsonl --items 100 --k-max 40
+```
+
+## 合成實驗能證明什麼、不能證明什麼
+
+| 能 | 不能 |
+|---|---|
+| 實作正確性（T1–T6 解析極限） | 在真實 LLM 軌跡上有效 |
+| ρ=0 精確歸約成 SC、S=I 精確歸約成 ASC | 相似度—正確性混淆在實務上可控 |
+| 護欄在逐字回音下確實觸發 | 逐字回音在真實取樣中真的會發生 |
+| 消融歸因（哪個元件在做事） | 對 RASC/ASC 的 frontier 支配 |
+| **適用邊界**：權重何時塌陷成均勻 | — |
+
+合成資料的生成過程**正好就是** DDWC 假設的區塊叢集結構，所以在 R2/R4 上贏是資料生成方式的產物，不是證據。見 SPEC.md §8.a。

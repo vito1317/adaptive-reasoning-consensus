@@ -1,0 +1,4035 @@
+{
+  "config": {
+    "items": 80,
+    "k_max": 20,
+    "seed": 0,
+    "quick": true,
+    "frozen_defaults": {
+      "rho": 0.7,
+      "theta_dup": 0.9,
+      "gamma_dup": 6.0,
+      "theta_sem": 0.6,
+      "gamma_sem": 3.0,
+      "beta_sem": 0.25,
+      "kernel_scope": "DECOMP",
+      "use_conf_gate": true,
+      "conf_gate_ece": 0.1,
+      "gamma_c": 1.0,
+      "delta": 0.15,
+      "eta_dup": 0.5,
+      "alpha0": 1.0,
+      "tau": 0.95,
+      "tau_floor": 0.8,
+      "lam": 0.001,
+      "k_min": 5,
+      "k_max": 40,
+      "stop_variant": "SAFE",
+      "voi_branch": true,
+      "n_mc": 512,
+      "w_clip_lo": 0.001,
+      "w_clip_hi": 1.0,
+      "rho_over": 1.0
+    }
+  },
+  "regimes": {
+    "R1_independent": {
+      "regime": "R1_independent",
+      "points": [
+        {
+          "method": "SC",
+          "label": "K=1",
+          "accuracy": 0.425,
+          "cost": 255.9460913097377,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=1",
+          "accuracy": 0.425,
+          "cost": 255.9460913097377,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=1",
+          "accuracy": 0.425,
+          "cost": 258.9460913097377,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=5",
+          "accuracy": 0.7375,
+          "cost": 1249.1625811564534,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=5",
+          "accuracy": 0.9,
+          "cost": 1249.1625811564534,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=5",
+          "accuracy": 0.7375,
+          "cost": 1284.1625811564534,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=9",
+          "accuracy": 0.7625,
+          "cost": 2248.5886925884797,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=9",
+          "accuracy": 0.9625,
+          "cost": 2248.5886925884797,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=9",
+          "accuracy": 0.7625,
+          "cost": 2347.5886925884797,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=15",
+          "accuracy": 0.825,
+          "cost": 3721.065844683325,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=15",
+          "accuracy": 0.9875,
+          "cost": 3721.065844683325,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=15",
+          "accuracy": 0.825,
+          "cost": 3976.065844683325,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=25",
+          "accuracy": 0.8375,
+          "cost": 4972.951233130327,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=25",
+          "accuracy": 1.0,
+          "cost": 4972.951233130327,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=25",
+          "accuracy": 0.8375,
+          "cost": 5412.951233130327,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=35",
+          "accuracy": 0.8375,
+          "cost": 4972.951233130327,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=35",
+          "accuracy": 1.0,
+          "cost": 4972.951233130327,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=35",
+          "accuracy": 0.8375,
+          "cost": 5412.951233130327,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.5",
+          "accuracy": 0.7125,
+          "cost": 1661.81970090674,
+          "mean_n": 6.6875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.5",
+          "accuracy": 0.9625,
+          "cost": 1469.073178402977,
+          "mean_n": 5.7,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.5",
+          "accuracy": 0.7125,
+          "cost": 1726.53220090674,
+          "mean_n": 6.6875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.5",
+          "accuracy": 0.7125,
+          "cost": 1726.53220090674,
+          "mean_n": 6.6875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.5",
+          "accuracy": 0.7125,
+          "cost": 1726.53220090674,
+          "mean_n": 6.6875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.5",
+          "accuracy": 0.7125,
+          "cost": 1726.53220090674,
+          "mean_n": 6.6875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.75",
+          "accuracy": 0.8,
+          "cost": 3073.725669476694,
+          "mean_n": 12.375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 57,
+            "k_max": 23
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.75",
+          "accuracy": 1.0,
+          "cost": 2399.1877119487785,
+          "mean_n": 9.1625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 76,
+            "k_max": 4
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.75",
+          "accuracy": 0.8,
+          "cost": 3286.725669476694,
+          "mean_n": 12.375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 57,
+            "k_max": 23
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.75",
+          "accuracy": 0.8,
+          "cost": 3286.725669476694,
+          "mean_n": 12.375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 57,
+            "k_max": 23
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.75",
+          "accuracy": 0.8,
+          "cost": 3286.725669476694,
+          "mean_n": 12.375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 57,
+            "k_max": 23
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.75",
+          "accuracy": 0.8,
+          "cost": 3286.725669476694,
+          "mean_n": 12.375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 57,
+            "k_max": 23
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.9",
+          "accuracy": 0.8375,
+          "cost": 4202.5786160785,
+          "mean_n": 16.95,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 30,
+            "k_max": 50
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.9",
+          "accuracy": 1.0,
+          "cost": 3547.67474032854,
+          "mean_n": 13.35,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 63,
+            "k_max": 17
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.9",
+          "accuracy": 0.825,
+          "cost": 3699.3654784589903,
+          "mean_n": 13.875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 34,
+            "voi": 45
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.9",
+          "accuracy": 0.825,
+          "cost": 3699.3654784589903,
+          "mean_n": 13.875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 34,
+            "voi": 45
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.9",
+          "accuracy": 0.825,
+          "cost": 3699.3654784589903,
+          "mean_n": 13.875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 34,
+            "voi": 45
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.9",
+          "accuracy": 0.8375,
+          "cost": 4546.3286160785,
+          "mean_n": 16.95,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 30,
+            "k_max": 50
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.98",
+          "accuracy": 0.8375,
+          "cost": 4838.3449660596025,
+          "mean_n": 19.4625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 5,
+            "k_max": 75
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.98",
+          "accuracy": 1.0,
+          "cost": 5119.407548708898,
+          "mean_n": 18.9875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 25,
+            "k_max": 55
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.98",
+          "accuracy": 0.825,
+          "cost": 3699.3654784589903,
+          "mean_n": 13.875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 34,
+            "voi": 45
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.98",
+          "accuracy": 0.825,
+          "cost": 3699.3654784589903,
+          "mean_n": 13.875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 34,
+            "voi": 45
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.98",
+          "accuracy": 0.825,
+          "cost": 3699.3654784589903,
+          "mean_n": 13.875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 34,
+            "voi": 45
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.98",
+          "accuracy": 0.8375,
+          "cost": 5261.857466059602,
+          "mean_n": 19.4625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 5,
+            "k_max": 75
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=2",
+          "accuracy": 0.7125,
+          "cost": 1786.5678907948054,
+          "mean_n": 7.2,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 4,
+            "unanimous_window": 76
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=4",
+          "accuracy": 0.8375,
+          "cost": 4507.746333843232,
+          "mean_n": 18.15,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 65,
+            "unanimous_window": 15
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=6",
+          "accuracy": 0.8375,
+          "cost": 4929.09724769648,
+          "mean_n": 19.825,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 79,
+            "unanimous_window": 1
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=2",
+          "accuracy": 0.75,
+          "cost": 2049.740955143542,
+          "mean_n": 8.25,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 79,
+            "k_max": 1
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=4",
+          "accuracy": 0.8375,
+          "cost": 3719.15255068751,
+          "mean_n": 14.975,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 50,
+            "k_max": 30
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=6",
+          "accuracy": 0.8375,
+          "cost": 4497.7511850995925,
+          "mean_n": 18.125,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 29,
+            "k_max": 51
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=10",
+          "accuracy": 0.8375,
+          "cost": 4972.951233130327,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 1,
+            "k_max": 79
+          }
+        }
+      ],
+      "frontiers": {
+        "SC": [
+          [
+            255.9460913097377,
+            0.425,
+            "K=1"
+          ],
+          [
+            1249.1625811564534,
+            0.7375,
+            "K=5"
+          ],
+          [
+            2248.5886925884797,
+            0.7625,
+            "K=9"
+          ],
+          [
+            3721.065844683325,
+            0.825,
+            "K=15"
+          ],
+          [
+            4972.951233130327,
+            0.8375,
+            "K=25"
+          ],
+          [
+            4972.951233130327,
+            0.8375,
+            "K=35"
+          ]
+        ],
+        "CISC": [
+          [
+            255.9460913097377,
+            0.425,
+            "K=1"
+          ],
+          [
+            1249.1625811564534,
+            0.9,
+            "K=5"
+          ],
+          [
+            2248.5886925884797,
+            0.9625,
+            "K=9"
+          ],
+          [
+            3721.065844683325,
+            0.9875,
+            "K=15"
+          ],
+          [
+            4972.951233130327,
+            1.0,
+            "K=25"
+          ],
+          [
+            4972.951233130327,
+            1.0,
+            "K=35"
+          ]
+        ],
+        "dedup-SC": [
+          [
+            258.9460913097377,
+            0.425,
+            "K=1"
+          ],
+          [
+            1284.1625811564534,
+            0.7375,
+            "K=5"
+          ],
+          [
+            2347.5886925884797,
+            0.7625,
+            "K=9"
+          ],
+          [
+            3976.065844683325,
+            0.825,
+            "K=15"
+          ],
+          [
+            5412.951233130327,
+            0.8375,
+            "K=25"
+          ],
+          [
+            5412.951233130327,
+            0.8375,
+            "K=35"
+          ]
+        ],
+        "ASC": [
+          [
+            1661.81970090674,
+            0.7125,
+            "tau=0.5"
+          ],
+          [
+            3073.725669476694,
+            0.8,
+            "tau=0.75"
+          ],
+          [
+            4202.5786160785,
+            0.8375,
+            "tau=0.9"
+          ]
+        ],
+        "RASC-lite": [
+          [
+            1469.073178402977,
+            0.9625,
+            "tau=0.5"
+          ],
+          [
+            2399.1877119487785,
+            1.0,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-VoI-SAFE": [
+          [
+            1726.53220090674,
+            0.7125,
+            "tau=0.5"
+          ],
+          [
+            3286.725669476694,
+            0.8,
+            "tau=0.75"
+          ],
+          [
+            3699.3654784589903,
+            0.825,
+            "tau=0.9"
+          ],
+          [
+            3699.3654784589903,
+            0.825,
+            "tau=0.98"
+          ]
+        ],
+        "RLEV-VoI-AGGR": [
+          [
+            1726.53220090674,
+            0.7125,
+            "tau=0.5"
+          ],
+          [
+            3286.725669476694,
+            0.8,
+            "tau=0.75"
+          ],
+          [
+            3699.3654784589903,
+            0.825,
+            "tau=0.9"
+          ],
+          [
+            3699.3654784589903,
+            0.825,
+            "tau=0.98"
+          ]
+        ],
+        "RLEV-noguard": [
+          [
+            1726.53220090674,
+            0.7125,
+            "tau=0.5"
+          ],
+          [
+            3286.725669476694,
+            0.8,
+            "tau=0.75"
+          ],
+          [
+            3699.3654784589903,
+            0.825,
+            "tau=0.9"
+          ],
+          [
+            3699.3654784589903,
+            0.825,
+            "tau=0.98"
+          ]
+        ],
+        "RLEV-noVoI": [
+          [
+            1726.53220090674,
+            0.7125,
+            "tau=0.5"
+          ],
+          [
+            3286.725669476694,
+            0.8,
+            "tau=0.75"
+          ],
+          [
+            4546.3286160785,
+            0.8375,
+            "tau=0.9"
+          ]
+        ],
+        "ESC": [
+          [
+            1786.5678907948054,
+            0.7125,
+            "w=2"
+          ],
+          [
+            4507.746333843232,
+            0.8375,
+            "w=4"
+          ]
+        ],
+        "SPRT": [
+          [
+            2049.740955143542,
+            0.75,
+            "margin=2"
+          ],
+          [
+            3719.15255068751,
+            0.8375,
+            "margin=4"
+          ]
+        ]
+      },
+      "checks": {
+        "RLEV-VoI-SAFE": {
+          "worst_gap_vs_SC_at_matched_cost": -0.03694109335072027,
+          "at_label": "tau=0.5",
+          "at_cost": 1726.53220090674,
+          "sc_accuracy": 0.7494410933507203,
+          "method_accuracy": 0.7125
+        },
+        "RLEV-VoI-AGGR": {
+          "worst_gap_vs_SC_at_matched_cost": -0.03694109335072027,
+          "at_label": "tau=0.5",
+          "at_cost": 1726.53220090674,
+          "sc_accuracy": 0.7494410933507203,
+          "method_accuracy": 0.7125
+        },
+        "ASC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.035322351873491975,
+          "at_label": "tau=0.5",
+          "at_cost": 1661.81970090674,
+          "sc_accuracy": 0.747822351873492,
+          "method_accuracy": 0.7125
+        },
+        "RASC-lite": {
+          "worst_gap_vs_SC_at_matched_cost": 0.18235966870980425,
+          "at_label": "tau=0.9",
+          "at_cost": 3547.67474032854,
+          "sc_accuracy": 0.8176403312901958,
+          "method_accuracy": 1.0
+        },
+        "dedup-SC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.004202102552964715,
+          "at_label": "K=9",
+          "at_cost": 2347.5886925884797,
+          "sc_accuracy": 0.7667021025529647,
+          "method_accuracy": 0.7625
+        },
+        "CISC": {
+          "worst_gap_vs_SC_at_matched_cost": 0.0,
+          "at_label": "K=1",
+          "at_cost": 255.9460913097377,
+          "sc_accuracy": 0.425,
+          "method_accuracy": 0.425
+        }
+      },
+      "holm": {},
+      "achievable_oracle": {
+        "mean_k": 6.725,
+        "accuracy_at_k_max": 0.8375
+      }
+    },
+    "R2_correlated_wrong": {
+      "regime": "R2_correlated_wrong",
+      "points": [
+        {
+          "method": "SC",
+          "label": "K=1",
+          "accuracy": 0.4625,
+          "cost": 249.70400525501205,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=1",
+          "accuracy": 0.4625,
+          "cost": 249.70400525501205,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=1",
+          "accuracy": 0.4625,
+          "cost": 252.70400525501205,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=5",
+          "accuracy": 0.5,
+          "cost": 1241.378987158591,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=5",
+          "accuracy": 0.925,
+          "cost": 1241.378987158591,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=5",
+          "accuracy": 0.6,
+          "cost": 1276.378987158591,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=9",
+          "accuracy": 0.475,
+          "cost": 2233.541134374221,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=9",
+          "accuracy": 0.9625,
+          "cost": 2233.541134374221,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=9",
+          "accuracy": 0.6875,
+          "cost": 2332.541134374221,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=15",
+          "accuracy": 0.375,
+          "cost": 3734.338019562315,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=15",
+          "accuracy": 0.975,
+          "cost": 3734.338019562315,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=15",
+          "accuracy": 0.7125,
+          "cost": 3989.338019562315,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=25",
+          "accuracy": 0.4,
+          "cost": 4988.201707454269,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=25",
+          "accuracy": 0.9875,
+          "cost": 4988.201707454269,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=25",
+          "accuracy": 0.825,
+          "cost": 5428.201707454269,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=35",
+          "accuracy": 0.4,
+          "cost": 4988.201707454269,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=35",
+          "accuracy": 0.9875,
+          "cost": 4988.201707454269,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=35",
+          "accuracy": 0.825,
+          "cost": 5428.201707454269,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.5",
+          "accuracy": 0.375,
+          "cost": 1340.3156142819194,
+          "mean_n": 5.425,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.5",
+          "accuracy": 0.95,
+          "cost": 1400.7961454911829,
+          "mean_n": 5.4875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.5",
+          "accuracy": 0.475,
+          "cost": 1543.8678601268227,
+          "mean_n": 6.025,
+          "guard_fired_rate": 0.0875,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.5",
+          "accuracy": 0.5625,
+          "cost": 1464.7237299803433,
+          "mean_n": 5.7125,
+          "guard_fired_rate": 0.05,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.5",
+          "accuracy": 0.5125,
+          "cost": 1464.7237299803433,
+          "mean_n": 5.7125,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.5",
+          "accuracy": 0.5625,
+          "cost": 1464.7237299803433,
+          "mean_n": 5.7125,
+          "guard_fired_rate": 0.05,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.75",
+          "accuracy": 0.3625,
+          "cost": 2602.6427915389722,
+          "mean_n": 10.45,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 70,
+            "k_max": 10
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.75",
+          "accuracy": 0.9875,
+          "cost": 2058.8833608566106,
+          "mean_n": 7.9375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 77,
+            "k_max": 3
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.75",
+          "accuracy": 0.6,
+          "cost": 3539.5510978026905,
+          "mean_n": 13.2875,
+          "guard_fired_rate": 0.0875,
+          "stopped_by": {
+            "stability": 29,
+            "k_max": 16,
+            "voi": 35
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.75",
+          "accuracy": 0.625,
+          "cost": 3206.6994375837958,
+          "mean_n": 12.075,
+          "guard_fired_rate": 0.0625,
+          "stopped_by": {
+            "stability": 68,
+            "k_max": 12
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.75",
+          "accuracy": 0.5625,
+          "cost": 3206.6994375837958,
+          "mean_n": 12.075,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 68,
+            "k_max": 12
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.75",
+          "accuracy": 0.625,
+          "cost": 3206.6994375837958,
+          "mean_n": 12.075,
+          "guard_fired_rate": 0.0625,
+          "stopped_by": {
+            "stability": 68,
+            "k_max": 12
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.9",
+          "accuracy": 0.4,
+          "cost": 4099.160627039872,
+          "mean_n": 16.4875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 31,
+            "k_max": 49
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.9",
+          "accuracy": 0.9875,
+          "cost": 3311.8698940539643,
+          "mean_n": 12.45,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 68,
+            "k_max": 12
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.9",
+          "accuracy": 0.5875,
+          "cost": 3593.383995863135,
+          "mean_n": 13.475,
+          "guard_fired_rate": 0.075,
+          "stopped_by": {
+            "stability": 2,
+            "k_max": 20,
+            "voi": 58
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.9",
+          "accuracy": 0.5875,
+          "cost": 3593.383995863135,
+          "mean_n": 13.475,
+          "guard_fired_rate": 0.075,
+          "stopped_by": {
+            "stability": 2,
+            "k_max": 20,
+            "voi": 58
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.9",
+          "accuracy": 0.5125,
+          "cost": 3593.383995863135,
+          "mean_n": 13.475,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 2,
+            "k_max": 20,
+            "voi": 58
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.9",
+          "accuracy": 0.525,
+          "cost": 4473.739122956089,
+          "mean_n": 16.6375,
+          "guard_fired_rate": 0.075,
+          "stopped_by": {
+            "stability": 43,
+            "k_max": 37
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.98",
+          "accuracy": 0.4,
+          "cost": 4815.0048814723905,
+          "mean_n": 19.325,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 8,
+            "k_max": 72
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.98",
+          "accuracy": 0.9875,
+          "cost": 4968.142529169399,
+          "mean_n": 18.4,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 26,
+            "k_max": 54
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.98",
+          "accuracy": 0.5875,
+          "cost": 3593.383995863135,
+          "mean_n": 13.475,
+          "guard_fired_rate": 0.075,
+          "stopped_by": {
+            "stability": 2,
+            "k_max": 20,
+            "voi": 58
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.98",
+          "accuracy": 0.5875,
+          "cost": 3593.383995863135,
+          "mean_n": 13.475,
+          "guard_fired_rate": 0.075,
+          "stopped_by": {
+            "stability": 2,
+            "k_max": 20,
+            "voi": 58
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.98",
+          "accuracy": 0.5125,
+          "cost": 3593.383995863135,
+          "mean_n": 13.475,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 2,
+            "k_max": 20,
+            "voi": 58
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.98",
+          "accuracy": 0.4875,
+          "cost": 5233.023367883556,
+          "mean_n": 19.3125,
+          "guard_fired_rate": 0.0875,
+          "stopped_by": {
+            "stability": 11,
+            "k_max": 69
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=2",
+          "accuracy": 0.4,
+          "cost": 1132.8741813072643,
+          "mean_n": 4.55,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "unanimous_window": 80
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=4",
+          "accuracy": 0.4125,
+          "cost": 4381.7197857082865,
+          "mean_n": 17.6,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 57,
+            "unanimous_window": 23
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=6",
+          "accuracy": 0.4,
+          "cost": 4883.354234105427,
+          "mean_n": 19.6,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 76,
+            "unanimous_window": 4
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=2",
+          "accuracy": 0.35,
+          "cost": 1868.3750993438366,
+          "mean_n": 7.5375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 80
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=4",
+          "accuracy": 0.4,
+          "cost": 3600.9158825316563,
+          "mean_n": 14.4875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 53,
+            "k_max": 27
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=6",
+          "accuracy": 0.4,
+          "cost": 4572.976409550198,
+          "mean_n": 18.375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 24,
+            "k_max": 56
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=10",
+          "accuracy": 0.4,
+          "cost": 4962.614382049122,
+          "mean_n": 19.9,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 2,
+            "k_max": 78
+          }
+        }
+      ],
+      "frontiers": {
+        "SC": [
+          [
+            249.70400525501205,
+            0.4625,
+            "K=1"
+          ],
+          [
+            1241.378987158591,
+            0.5,
+            "K=5"
+          ]
+        ],
+        "CISC": [
+          [
+            249.70400525501205,
+            0.4625,
+            "K=1"
+          ],
+          [
+            1241.378987158591,
+            0.925,
+            "K=5"
+          ],
+          [
+            2233.541134374221,
+            0.9625,
+            "K=9"
+          ],
+          [
+            3734.338019562315,
+            0.975,
+            "K=15"
+          ],
+          [
+            4988.201707454269,
+            0.9875,
+            "K=25"
+          ],
+          [
+            4988.201707454269,
+            0.9875,
+            "K=35"
+          ]
+        ],
+        "dedup-SC": [
+          [
+            252.70400525501205,
+            0.4625,
+            "K=1"
+          ],
+          [
+            1276.378987158591,
+            0.6,
+            "K=5"
+          ],
+          [
+            2332.541134374221,
+            0.6875,
+            "K=9"
+          ],
+          [
+            3989.338019562315,
+            0.7125,
+            "K=15"
+          ],
+          [
+            5428.201707454269,
+            0.825,
+            "K=25"
+          ],
+          [
+            5428.201707454269,
+            0.825,
+            "K=35"
+          ]
+        ],
+        "ASC": [
+          [
+            1340.3156142819194,
+            0.375,
+            "tau=0.5"
+          ],
+          [
+            4099.160627039872,
+            0.4,
+            "tau=0.9"
+          ]
+        ],
+        "RASC-lite": [
+          [
+            1400.7961454911829,
+            0.95,
+            "tau=0.5"
+          ],
+          [
+            2058.8833608566106,
+            0.9875,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-VoI-SAFE": [
+          [
+            1543.8678601268227,
+            0.475,
+            "tau=0.5"
+          ],
+          [
+            3539.5510978026905,
+            0.6,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-VoI-AGGR": [
+          [
+            1464.7237299803433,
+            0.5625,
+            "tau=0.5"
+          ],
+          [
+            3206.6994375837958,
+            0.625,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-noguard": [
+          [
+            1464.7237299803433,
+            0.5125,
+            "tau=0.5"
+          ],
+          [
+            3206.6994375837958,
+            0.5625,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-noVoI": [
+          [
+            1464.7237299803433,
+            0.5625,
+            "tau=0.5"
+          ],
+          [
+            3206.6994375837958,
+            0.625,
+            "tau=0.75"
+          ]
+        ],
+        "ESC": [
+          [
+            1132.8741813072643,
+            0.4,
+            "w=2"
+          ],
+          [
+            4381.7197857082865,
+            0.4125,
+            "w=4"
+          ]
+        ],
+        "SPRT": [
+          [
+            1868.3750993438366,
+            0.35,
+            "margin=2"
+          ],
+          [
+            3600.9158825316563,
+            0.4,
+            "margin=4"
+          ]
+        ]
+      },
+      "checks": {
+        "RLEV-VoI-SAFE": {
+          "worst_gap_vs_SC_at_matched_cost": -0.017378038362551806,
+          "at_label": "tau=0.5",
+          "at_cost": 1543.8678601268227,
+          "sc_accuracy": 0.4923780383625518,
+          "method_accuracy": 0.475
+        },
+        "RLEV-VoI-AGGR": {
+          "worst_gap_vs_SC_at_matched_cost": 0.06812772787312388,
+          "at_label": "tau=0.5",
+          "at_cost": 1464.7237299803433,
+          "sc_accuracy": 0.4943722721268761,
+          "method_accuracy": 0.5625
+        },
+        "ASC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.12250704490689901,
+          "at_label": "tau=0.5",
+          "at_cost": 1340.3156142819194,
+          "sc_accuracy": 0.497507044906899,
+          "method_accuracy": 0.375
+        },
+        "RASC-lite": {
+          "worst_gap_vs_SC_at_matched_cost": 0.4540169129305117,
+          "at_label": "tau=0.5",
+          "at_cost": 1400.7961454911829,
+          "sc_accuracy": 0.49598308706948824,
+          "method_accuracy": 0.95
+        },
+        "dedup-SC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.0001134444269069168,
+          "at_label": "K=1",
+          "at_cost": 252.70400525501205,
+          "sc_accuracy": 0.46261344442690694,
+          "method_accuracy": 0.4625
+        },
+        "CISC": {
+          "worst_gap_vs_SC_at_matched_cost": 0.0,
+          "at_label": "K=1",
+          "at_cost": 249.70400525501205,
+          "sc_accuracy": 0.4625,
+          "method_accuracy": 0.4625
+        }
+      },
+      "holm": {},
+      "achievable_oracle": {
+        "mean_k": 9.275,
+        "accuracy_at_k_max": 0.4
+      }
+    },
+    "R3_easy_correct_cluster": {
+      "regime": "R3_easy_correct_cluster",
+      "points": [
+        {
+          "method": "SC",
+          "label": "K=1",
+          "accuracy": 0.5125,
+          "cost": 247.3541131647884,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=1",
+          "accuracy": 0.5125,
+          "cost": 247.3541131647884,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=1",
+          "accuracy": 0.5125,
+          "cost": 250.3541131647884,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=5",
+          "accuracy": 0.925,
+          "cost": 1249.2406965136154,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=5",
+          "accuracy": 0.9875,
+          "cost": 1249.2406965136154,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=5",
+          "accuracy": 0.925,
+          "cost": 1284.2406965136154,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=9",
+          "accuracy": 0.9875,
+          "cost": 2264.30476827487,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=9",
+          "accuracy": 1.0,
+          "cost": 2264.30476827487,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=9",
+          "accuracy": 0.9875,
+          "cost": 2363.30476827487,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=15",
+          "accuracy": 1.0,
+          "cost": 3771.1904524178076,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=15",
+          "accuracy": 1.0,
+          "cost": 3771.1904524178076,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=15",
+          "accuracy": 1.0,
+          "cost": 4026.1904524178076,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=25",
+          "accuracy": 1.0,
+          "cost": 5028.0489647284785,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=25",
+          "accuracy": 1.0,
+          "cost": 5028.0489647284785,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=25",
+          "accuracy": 1.0,
+          "cost": 5468.0489647284785,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=35",
+          "accuracy": 1.0,
+          "cost": 5028.0489647284785,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=35",
+          "accuracy": 1.0,
+          "cost": 5028.0489647284785,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=35",
+          "accuracy": 1.0,
+          "cost": 5468.0489647284785,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.5",
+          "accuracy": 0.9125,
+          "cost": 1299.1591215644683,
+          "mean_n": 5.2,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.5",
+          "accuracy": 1.0,
+          "cost": 1299.8743151584156,
+          "mean_n": 5.0625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.5",
+          "accuracy": 0.9125,
+          "cost": 1408.4913994591093,
+          "mean_n": 5.45,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.5",
+          "accuracy": 0.9,
+          "cost": 1373.226506106143,
+          "mean_n": 5.325,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.5",
+          "accuracy": 0.9,
+          "cost": 1373.226506106143,
+          "mean_n": 5.325,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.5",
+          "accuracy": 0.9,
+          "cost": 1373.226506106143,
+          "mean_n": 5.325,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.75",
+          "accuracy": 0.975,
+          "cost": 1703.2649273994825,
+          "mean_n": 6.775,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 78,
+            "k_max": 2
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.75",
+          "accuracy": 1.0,
+          "cost": 1385.372669380191,
+          "mean_n": 5.375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.75",
+          "accuracy": 0.9625,
+          "cost": 2991.553858454572,
+          "mean_n": 11.125,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 50,
+            "k_max": 28,
+            "voi": 2
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.75",
+          "accuracy": 0.9625,
+          "cost": 2961.1185184791093,
+          "mean_n": 11.025,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 53,
+            "k_max": 27
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.75",
+          "accuracy": 0.9625,
+          "cost": 2961.1185184791093,
+          "mean_n": 11.025,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 53,
+            "k_max": 27
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.75",
+          "accuracy": 0.9625,
+          "cost": 2961.1185184791093,
+          "mean_n": 11.025,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 53,
+            "k_max": 27
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.9",
+          "accuracy": 1.0,
+          "cost": 2621.8107726144485,
+          "mean_n": 10.45,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 71,
+            "k_max": 9
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.9",
+          "accuracy": 1.0,
+          "cost": 1833.300142615837,
+          "mean_n": 7.05,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.9",
+          "accuracy": 0.9625,
+          "cost": 3607.6450257873266,
+          "mean_n": 13.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 11,
+            "k_max": 41,
+            "voi": 28
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.9",
+          "accuracy": 0.9625,
+          "cost": 3607.6450257873266,
+          "mean_n": 13.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 11,
+            "k_max": 41,
+            "voi": 28
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.9",
+          "accuracy": 0.9625,
+          "cost": 3607.6450257873266,
+          "mean_n": 13.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 11,
+            "k_max": 41,
+            "voi": 28
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.9",
+          "accuracy": 1.0,
+          "cost": 4824.148123965841,
+          "mean_n": 17.675,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 14,
+            "k_max": 66
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.98",
+          "accuracy": 1.0,
+          "cost": 3710.740893453711,
+          "mean_n": 14.75,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 47,
+            "k_max": 33
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.98",
+          "accuracy": 1.0,
+          "cost": 3280.169234381984,
+          "mean_n": 12.275,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 75,
+            "k_max": 5
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.98",
+          "accuracy": 0.9625,
+          "cost": 3607.6450257873266,
+          "mean_n": 13.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 11,
+            "k_max": 41,
+            "voi": 28
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.98",
+          "accuracy": 0.9625,
+          "cost": 3607.6450257873266,
+          "mean_n": 13.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 11,
+            "k_max": 41,
+            "voi": 28
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.98",
+          "accuracy": 0.9625,
+          "cost": 3607.6450257873266,
+          "mean_n": 13.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 11,
+            "k_max": 41,
+            "voi": 28
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.98",
+          "accuracy": 1.0,
+          "cost": 4895.811976052244,
+          "mean_n": 17.9375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 11,
+            "k_max": 69
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=2",
+          "accuracy": 0.9375,
+          "cost": 1124.4190610606,
+          "mean_n": 4.45,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "unanimous_window": 80
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=4",
+          "accuracy": 1.0,
+          "cost": 3135.320867850682,
+          "mean_n": 12.45,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 24,
+            "unanimous_window": 56
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=6",
+          "accuracy": 1.0,
+          "cost": 4511.931321576118,
+          "mean_n": 17.925,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 60,
+            "unanimous_window": 20
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=2",
+          "accuracy": 0.95,
+          "cost": 1475.3267183684413,
+          "mean_n": 5.8625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 80
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=4",
+          "accuracy": 1.0,
+          "cost": 2319.3061943740586,
+          "mean_n": 9.25,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 77,
+            "k_max": 3
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=6",
+          "accuracy": 1.0,
+          "cost": 3203.937505761408,
+          "mean_n": 12.7625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 69,
+            "k_max": 11
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=10",
+          "accuracy": 1.0,
+          "cost": 4433.214006416758,
+          "mean_n": 17.625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 41,
+            "k_max": 39
+          }
+        }
+      ],
+      "frontiers": {
+        "SC": [
+          [
+            247.3541131647884,
+            0.5125,
+            "K=1"
+          ],
+          [
+            1249.2406965136154,
+            0.925,
+            "K=5"
+          ],
+          [
+            2264.30476827487,
+            0.9875,
+            "K=9"
+          ],
+          [
+            3771.1904524178076,
+            1.0,
+            "K=15"
+          ]
+        ],
+        "CISC": [
+          [
+            247.3541131647884,
+            0.5125,
+            "K=1"
+          ],
+          [
+            1249.2406965136154,
+            0.9875,
+            "K=5"
+          ],
+          [
+            2264.30476827487,
+            1.0,
+            "K=9"
+          ]
+        ],
+        "dedup-SC": [
+          [
+            250.3541131647884,
+            0.5125,
+            "K=1"
+          ],
+          [
+            1284.2406965136154,
+            0.925,
+            "K=5"
+          ],
+          [
+            2363.30476827487,
+            0.9875,
+            "K=9"
+          ],
+          [
+            4026.1904524178076,
+            1.0,
+            "K=15"
+          ]
+        ],
+        "ASC": [
+          [
+            1299.1591215644683,
+            0.9125,
+            "tau=0.5"
+          ],
+          [
+            1703.2649273994825,
+            0.975,
+            "tau=0.75"
+          ],
+          [
+            2621.8107726144485,
+            1.0,
+            "tau=0.9"
+          ]
+        ],
+        "RASC-lite": [
+          [
+            1299.8743151584156,
+            1.0,
+            "tau=0.5"
+          ]
+        ],
+        "RLEV-VoI-SAFE": [
+          [
+            1408.4913994591093,
+            0.9125,
+            "tau=0.5"
+          ],
+          [
+            2991.553858454572,
+            0.9625,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-VoI-AGGR": [
+          [
+            1373.226506106143,
+            0.9,
+            "tau=0.5"
+          ],
+          [
+            2961.1185184791093,
+            0.9625,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-noguard": [
+          [
+            1373.226506106143,
+            0.9,
+            "tau=0.5"
+          ],
+          [
+            2961.1185184791093,
+            0.9625,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-noVoI": [
+          [
+            1373.226506106143,
+            0.9,
+            "tau=0.5"
+          ],
+          [
+            2961.1185184791093,
+            0.9625,
+            "tau=0.75"
+          ],
+          [
+            4824.148123965841,
+            1.0,
+            "tau=0.9"
+          ]
+        ],
+        "ESC": [
+          [
+            1124.4190610606,
+            0.9375,
+            "w=2"
+          ],
+          [
+            3135.320867850682,
+            1.0,
+            "w=4"
+          ]
+        ],
+        "SPRT": [
+          [
+            1475.3267183684413,
+            0.95,
+            "margin=2"
+          ],
+          [
+            2319.3061943740586,
+            1.0,
+            "margin=4"
+          ]
+        ]
+      },
+      "checks": {
+        "RLEV-VoI-SAFE": {
+          "worst_gap_vs_SC_at_matched_cost": -0.036143349091179555,
+          "at_label": "tau=0.9",
+          "at_cost": 3607.6450257873266,
+          "sc_accuracy": 0.9986433490911796,
+          "method_accuracy": 0.9625
+        },
+        "RLEV-VoI-AGGR": {
+          "worst_gap_vs_SC_at_matched_cost": -0.036143349091179555,
+          "at_label": "tau=0.9",
+          "at_cost": 3607.6450257873266,
+          "sc_accuracy": 0.9986433490911796,
+          "method_accuracy": 0.9625
+        },
+        "ASC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.01557360062529356,
+          "at_label": "tau=0.5",
+          "at_cost": 1299.1591215644683,
+          "sc_accuracy": 0.9280736006252935,
+          "method_accuracy": 0.9125
+        },
+        "RASC-lite": {
+          "worst_gap_vs_SC_at_matched_cost": 0.004073145886271168,
+          "at_label": "tau=0.98",
+          "at_cost": 3280.169234381984,
+          "sc_accuracy": 0.9959268541137288,
+          "method_accuracy": 1.0
+        },
+        "dedup-SC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.002155036377363251,
+          "at_label": "K=5",
+          "at_cost": 1284.2406965136154,
+          "sc_accuracy": 0.9271550363773633,
+          "method_accuracy": 0.925
+        },
+        "CISC": {
+          "worst_gap_vs_SC_at_matched_cost": 0.0,
+          "at_label": "K=1",
+          "at_cost": 247.3541131647884,
+          "sc_accuracy": 0.5125,
+          "method_accuracy": 0.5125
+        }
+      },
+      "holm": {},
+      "achievable_oracle": {
+        "mean_k": 2.5875,
+        "accuracy_at_k_max": 1.0
+      }
+    },
+    "R4_verbatim_echo": {
+      "regime": "R4_verbatim_echo",
+      "points": [
+        {
+          "method": "SC",
+          "label": "K=1",
+          "accuracy": 0.4,
+          "cost": 248.83330339588215,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=1",
+          "accuracy": 0.4,
+          "cost": 248.83330339588215,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=1",
+          "accuracy": 0.4,
+          "cost": 251.83330339588215,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=5",
+          "accuracy": 0.325,
+          "cost": 1250.6507354299404,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=5",
+          "accuracy": 0.8125,
+          "cost": 1250.6507354299404,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=5",
+          "accuracy": 0.5625,
+          "cost": 1285.6507354299404,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=9",
+          "accuracy": 0.275,
+          "cost": 2271.3836136440414,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=9",
+          "accuracy": 0.9375,
+          "cost": 2271.3836136440414,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=9",
+          "accuracy": 0.825,
+          "cost": 2370.3836136440414,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=15",
+          "accuracy": 0.2,
+          "cost": 3764.4673114677003,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=15",
+          "accuracy": 0.9125,
+          "cost": 3764.4673114677003,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=15",
+          "accuracy": 0.8875,
+          "cost": 4019.4673114677003,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=25",
+          "accuracy": 0.275,
+          "cost": 5022.30266081773,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=25",
+          "accuracy": 0.875,
+          "cost": 5022.30266081773,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=25",
+          "accuracy": 0.9375,
+          "cost": 5462.30266081773,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=35",
+          "accuracy": 0.275,
+          "cost": 5022.30266081773,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=35",
+          "accuracy": 0.875,
+          "cost": 5022.30266081773,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=35",
+          "accuracy": 0.9375,
+          "cost": 5462.30266081773,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.5",
+          "accuracy": 0.3125,
+          "cost": 1257.1683015785707,
+          "mean_n": 5.025,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.5",
+          "accuracy": 0.9625,
+          "cost": 1285.6507354299404,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.5",
+          "accuracy": 0.6375,
+          "cost": 1301.6950714374839,
+          "mean_n": 5.0625,
+          "guard_fired_rate": 0.325,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.5",
+          "accuracy": 0.6375,
+          "cost": 1294.8525052888533,
+          "mean_n": 5.0375,
+          "guard_fired_rate": 0.3125,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.5",
+          "accuracy": 0.325,
+          "cost": 1294.8525052888533,
+          "mean_n": 5.0375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.5",
+          "accuracy": 0.6375,
+          "cost": 1294.8525052888533,
+          "mean_n": 5.0375,
+          "guard_fired_rate": 0.3125,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.75",
+          "accuracy": 0.2625,
+          "cost": 2044.3871811442568,
+          "mean_n": 8.175,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 74,
+            "k_max": 6
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.75",
+          "accuracy": 0.9625,
+          "cost": 1691.8520520625134,
+          "mean_n": 6.475,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.75",
+          "accuracy": 0.8625,
+          "cost": 2895.1982163732805,
+          "mean_n": 10.9,
+          "guard_fired_rate": 0.4125,
+          "stopped_by": {
+            "stability": 41,
+            "k_max": 6,
+            "voi": 33
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.75",
+          "accuracy": 0.8625,
+          "cost": 2649.8334308166923,
+          "mean_n": 9.9875,
+          "guard_fired_rate": 0.3625,
+          "stopped_by": {
+            "stability": 74,
+            "k_max": 6
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.75",
+          "accuracy": 0.5,
+          "cost": 2649.8334308166923,
+          "mean_n": 9.9875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 74,
+            "k_max": 6
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.75",
+          "accuracy": 0.8625,
+          "cost": 2649.8334308166923,
+          "mean_n": 9.9875,
+          "guard_fired_rate": 0.3625,
+          "stopped_by": {
+            "stability": 74,
+            "k_max": 6
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.9",
+          "accuracy": 0.2875,
+          "cost": 3440.0108781455283,
+          "mean_n": 13.6625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 50,
+            "k_max": 30
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.9",
+          "accuracy": 0.9625,
+          "cost": 2782.363190422937,
+          "mean_n": 10.4625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 73,
+            "k_max": 7
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.9",
+          "accuracy": 0.875,
+          "cost": 3040.1650296857506,
+          "mean_n": 11.4,
+          "guard_fired_rate": 0.425,
+          "stopped_by": {
+            "stability": 3,
+            "k_max": 11,
+            "voi": 66
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.9",
+          "accuracy": 0.875,
+          "cost": 3040.1650296857506,
+          "mean_n": 11.4,
+          "guard_fired_rate": 0.425,
+          "stopped_by": {
+            "stability": 3,
+            "k_max": 11,
+            "voi": 66
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.9",
+          "accuracy": 0.45,
+          "cost": 3040.1650296857506,
+          "mean_n": 11.4,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 3,
+            "k_max": 11,
+            "voi": 66
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.9",
+          "accuracy": 0.875,
+          "cost": 4031.2368020128633,
+          "mean_n": 14.95,
+          "guard_fired_rate": 0.55,
+          "stopped_by": {
+            "stability": 51,
+            "k_max": 29
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.98",
+          "accuracy": 0.275,
+          "cost": 4470.658846971784,
+          "mean_n": 17.775,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 20,
+            "k_max": 60
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.98",
+          "accuracy": 0.9625,
+          "cost": 4588.5837778494515,
+          "mean_n": 16.9375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 47,
+            "k_max": 33
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.98",
+          "accuracy": 0.875,
+          "cost": 3040.1650296857506,
+          "mean_n": 11.4,
+          "guard_fired_rate": 0.425,
+          "stopped_by": {
+            "stability": 3,
+            "k_max": 11,
+            "voi": 66
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.98",
+          "accuracy": 0.875,
+          "cost": 3040.1650296857506,
+          "mean_n": 11.4,
+          "guard_fired_rate": 0.425,
+          "stopped_by": {
+            "stability": 3,
+            "k_max": 11,
+            "voi": 66
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.98",
+          "accuracy": 0.45,
+          "cost": 3040.1650296857506,
+          "mean_n": 11.4,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 3,
+            "k_max": 11,
+            "voi": 66
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.98",
+          "accuracy": 0.9125,
+          "cost": 5180.64051348447,
+          "mean_n": 18.9875,
+          "guard_fired_rate": 0.625,
+          "stopped_by": {
+            "stability": 14,
+            "k_max": 66
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=2",
+          "accuracy": 0.225,
+          "cost": 1124.894923988364,
+          "mean_n": 4.5,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "unanimous_window": 80
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=4",
+          "accuracy": 0.2625,
+          "cost": 4027.3979528866867,
+          "mean_n": 16.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 39,
+            "unanimous_window": 41
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=6",
+          "accuracy": 0.275,
+          "cost": 4818.351272984024,
+          "mean_n": 19.175,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 71,
+            "unanimous_window": 9
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=2",
+          "accuracy": 0.25,
+          "cost": 1728.7853589881986,
+          "mean_n": 6.925,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 80
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=4",
+          "accuracy": 0.2875,
+          "cost": 3071.5107226296795,
+          "mean_n": 12.225,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 64,
+            "k_max": 16
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=6",
+          "accuracy": 0.275,
+          "cost": 4187.679643340676,
+          "mean_n": 16.65,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 40,
+            "k_max": 40
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=10",
+          "accuracy": 0.275,
+          "cost": 4822.78512132355,
+          "mean_n": 19.2,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 15,
+            "k_max": 65
+          }
+        }
+      ],
+      "frontiers": {
+        "SC": [
+          [
+            248.83330339588215,
+            0.4,
+            "K=1"
+          ]
+        ],
+        "CISC": [
+          [
+            248.83330339588215,
+            0.4,
+            "K=1"
+          ],
+          [
+            1250.6507354299404,
+            0.8125,
+            "K=5"
+          ],
+          [
+            2271.3836136440414,
+            0.9375,
+            "K=9"
+          ]
+        ],
+        "dedup-SC": [
+          [
+            251.83330339588215,
+            0.4,
+            "K=1"
+          ],
+          [
+            1285.6507354299404,
+            0.5625,
+            "K=5"
+          ],
+          [
+            2370.3836136440414,
+            0.825,
+            "K=9"
+          ],
+          [
+            4019.4673114677003,
+            0.8875,
+            "K=15"
+          ],
+          [
+            5462.30266081773,
+            0.9375,
+            "K=25"
+          ],
+          [
+            5462.30266081773,
+            0.9375,
+            "K=35"
+          ]
+        ],
+        "ASC": [
+          [
+            1257.1683015785707,
+            0.3125,
+            "tau=0.5"
+          ]
+        ],
+        "RASC-lite": [
+          [
+            1285.6507354299404,
+            0.9625,
+            "tau=0.5"
+          ]
+        ],
+        "RLEV-VoI-SAFE": [
+          [
+            1301.6950714374839,
+            0.6375,
+            "tau=0.5"
+          ],
+          [
+            2895.1982163732805,
+            0.8625,
+            "tau=0.75"
+          ],
+          [
+            3040.1650296857506,
+            0.875,
+            "tau=0.9"
+          ],
+          [
+            3040.1650296857506,
+            0.875,
+            "tau=0.98"
+          ]
+        ],
+        "RLEV-VoI-AGGR": [
+          [
+            1294.8525052888533,
+            0.6375,
+            "tau=0.5"
+          ],
+          [
+            2649.8334308166923,
+            0.8625,
+            "tau=0.75"
+          ],
+          [
+            3040.1650296857506,
+            0.875,
+            "tau=0.9"
+          ],
+          [
+            3040.1650296857506,
+            0.875,
+            "tau=0.98"
+          ]
+        ],
+        "RLEV-noguard": [
+          [
+            1294.8525052888533,
+            0.325,
+            "tau=0.5"
+          ],
+          [
+            2649.8334308166923,
+            0.5,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-noVoI": [
+          [
+            1294.8525052888533,
+            0.6375,
+            "tau=0.5"
+          ],
+          [
+            2649.8334308166923,
+            0.8625,
+            "tau=0.75"
+          ],
+          [
+            4031.2368020128633,
+            0.875,
+            "tau=0.9"
+          ],
+          [
+            5180.64051348447,
+            0.9125,
+            "tau=0.98"
+          ]
+        ],
+        "ESC": [
+          [
+            1124.894923988364,
+            0.225,
+            "w=2"
+          ],
+          [
+            4027.3979528866867,
+            0.2625,
+            "w=4"
+          ],
+          [
+            4818.351272984024,
+            0.275,
+            "w=6"
+          ]
+        ],
+        "SPRT": [
+          [
+            1728.7853589881986,
+            0.25,
+            "margin=2"
+          ],
+          [
+            3071.5107226296795,
+            0.2875,
+            "margin=4"
+          ]
+        ]
+      },
+      "checks": {
+        "RLEV-VoI-SAFE": {
+          "worst_gap_vs_SC_at_matched_cost": 0.31500037679284176,
+          "at_label": "tau=0.5",
+          "at_cost": 1301.6950714374839,
+          "sc_accuracy": 0.3224996232071582,
+          "method_accuracy": 0.6375
+        },
+        "RLEV-VoI-AGGR": {
+          "worst_gap_vs_SC_at_matched_cost": 0.31466519771246365,
+          "at_label": "tau=0.5",
+          "at_cost": 1294.8525052888533,
+          "sc_accuracy": 0.3228348022875363,
+          "method_accuracy": 0.6375
+        },
+        "ASC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.023619286805816597,
+          "at_label": "tau=0.75",
+          "at_cost": 2044.3871811442568,
+          "sc_accuracy": 0.2861192868058166,
+          "method_accuracy": 0.2625
+        },
+        "RASC-lite": {
+          "worst_gap_vs_SC_at_matched_cost": 0.6392144544251988,
+          "at_label": "tau=0.5",
+          "at_cost": 1285.6507354299404,
+          "sc_accuracy": 0.32328554557480127,
+          "method_accuracy": 0.9625
+        },
+        "dedup-SC": {
+          "worst_gap_vs_SC_at_matched_cost": 0.0002245918196324137,
+          "at_label": "K=1",
+          "at_cost": 251.83330339588215,
+          "sc_accuracy": 0.3997754081803676,
+          "method_accuracy": 0.4
+        },
+        "CISC": {
+          "worst_gap_vs_SC_at_matched_cost": 0.0,
+          "at_label": "K=1",
+          "at_cost": 248.83330339588215,
+          "sc_accuracy": 0.4,
+          "method_accuracy": 0.4
+        }
+      },
+      "holm": {},
+      "achievable_oracle": {
+        "mean_k": 8.2875,
+        "accuracy_at_k_max": 0.275
+      }
+    },
+    "R5_miscalibrated_conf": {
+      "regime": "R5_miscalibrated_conf",
+      "points": [
+        {
+          "method": "SC",
+          "label": "K=1",
+          "accuracy": 0.4375,
+          "cost": 245.77108298560898,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=1",
+          "accuracy": 0.4375,
+          "cost": 245.77108298560898,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=1",
+          "accuracy": 0.4375,
+          "cost": 248.77108298560898,
+          "mean_n": 1.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=5",
+          "accuracy": 0.3,
+          "cost": 1248.5686283036873,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=5",
+          "accuracy": 0.1,
+          "cost": 1248.5686283036873,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=5",
+          "accuracy": 0.3,
+          "cost": 1283.5686283036873,
+          "mean_n": 5.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=9",
+          "accuracy": 0.425,
+          "cost": 2242.2506383215823,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=9",
+          "accuracy": 0.0125,
+          "cost": 2242.2506383215823,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=9",
+          "accuracy": 0.425,
+          "cost": 2341.2506383215828,
+          "mean_n": 9.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=15",
+          "accuracy": 0.5375,
+          "cost": 3754.309549611223,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=15",
+          "accuracy": 0.0,
+          "cost": 3754.309549611223,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=15",
+          "accuracy": 0.5375,
+          "cost": 4009.309549611223,
+          "mean_n": 15.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=25",
+          "accuracy": 0.5,
+          "cost": 5002.839191397214,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=25",
+          "accuracy": 0.0125,
+          "cost": 5002.839191397214,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=25",
+          "accuracy": 0.5,
+          "cost": 5442.839191397214,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "SC",
+          "label": "K=35",
+          "accuracy": 0.5,
+          "cost": 5002.839191397214,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "CISC",
+          "label": "K=35",
+          "accuracy": 0.0125,
+          "cost": 5002.839191397214,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "dedup-SC",
+          "label": "K=35",
+          "accuracy": 0.5,
+          "cost": 5442.839191397214,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "fixed_k": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.5",
+          "accuracy": 0.4375,
+          "cost": 1369.0897604634408,
+          "mean_n": 5.475,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.5",
+          "accuracy": 0.0875,
+          "cost": 1360.5125076256627,
+          "mean_n": 5.2875,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.5",
+          "accuracy": 0.4375,
+          "cost": 1411.064760463441,
+          "mean_n": 5.475,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.5",
+          "accuracy": 0.4375,
+          "cost": 1411.064760463441,
+          "mean_n": 5.475,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.5",
+          "accuracy": 0.4375,
+          "cost": 1411.064760463441,
+          "mean_n": 5.475,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.5",
+          "accuracy": 0.4375,
+          "cost": 1411.064760463441,
+          "mean_n": 5.475,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 80
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.75",
+          "accuracy": 0.4875,
+          "cost": 2727.4564288286974,
+          "mean_n": 10.9,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 61,
+            "k_max": 19
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.75",
+          "accuracy": 0.025,
+          "cost": 3008.8101012144307,
+          "mean_n": 11.2625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 59,
+            "k_max": 21
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.75",
+          "accuracy": 0.4875,
+          "cost": 2903.5564288286973,
+          "mean_n": 10.9,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 61,
+            "k_max": 19
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.75",
+          "accuracy": 0.4875,
+          "cost": 2892.49428572088,
+          "mean_n": 10.8625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 62,
+            "k_max": 18
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.75",
+          "accuracy": 0.4875,
+          "cost": 2892.49428572088,
+          "mean_n": 10.8625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 62,
+            "k_max": 18
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.75",
+          "accuracy": 0.4875,
+          "cost": 2892.49428572088,
+          "mean_n": 10.8625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 62,
+            "k_max": 18
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.9",
+          "accuracy": 0.5125,
+          "cost": 4088.622518513698,
+          "mean_n": 16.35,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 33,
+            "k_max": 47
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.9",
+          "accuracy": 0.025,
+          "cost": 4410.561639752183,
+          "mean_n": 16.3,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 28,
+            "k_max": 52
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.9",
+          "accuracy": 0.4875,
+          "cost": 3302.743947761667,
+          "mean_n": 12.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 24,
+            "voi": 55
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.9",
+          "accuracy": 0.4875,
+          "cost": 3302.743947761667,
+          "mean_n": 12.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 24,
+            "voi": 55
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.9",
+          "accuracy": 0.4875,
+          "cost": 3302.743947761667,
+          "mean_n": 12.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 24,
+            "voi": 55
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.9",
+          "accuracy": 0.5125,
+          "cost": 4418.80642216106,
+          "mean_n": 16.3625,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 34,
+            "k_max": 46
+          }
+        },
+        {
+          "method": "ASC",
+          "label": "tau=0.98",
+          "accuracy": 0.5,
+          "cost": 4948.005650269994,
+          "mean_n": 19.775,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 2,
+            "k_max": 78
+          }
+        },
+        {
+          "method": "RASC-lite",
+          "label": "tau=0.98",
+          "accuracy": 0.025,
+          "cost": 5356.767290034351,
+          "mean_n": 19.7,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 5,
+            "k_max": 75
+          }
+        },
+        {
+          "method": "RLEV-VoI-SAFE",
+          "label": "tau=0.98",
+          "accuracy": 0.4875,
+          "cost": 3302.743947761667,
+          "mean_n": 12.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 24,
+            "voi": 55
+          }
+        },
+        {
+          "method": "RLEV-VoI-AGGR",
+          "label": "tau=0.98",
+          "accuracy": 0.4875,
+          "cost": 3302.743947761667,
+          "mean_n": 12.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 24,
+            "voi": 55
+          }
+        },
+        {
+          "method": "RLEV-noguard",
+          "label": "tau=0.98",
+          "accuracy": 0.4875,
+          "cost": 3302.743947761667,
+          "mean_n": 12.3375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 1,
+            "k_max": 24,
+            "voi": 55
+          }
+        },
+        {
+          "method": "RLEV-noVoI",
+          "label": "tau=0.98",
+          "accuracy": 0.5,
+          "cost": 5381.480650269992,
+          "mean_n": 19.775,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "stability": 2,
+            "k_max": 78
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=2",
+          "accuracy": 0.3875,
+          "cost": 1233.00213200396,
+          "mean_n": 4.975,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 1,
+            "unanimous_window": 79
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=4",
+          "accuracy": 0.5125,
+          "cost": 4573.264873337417,
+          "mean_n": 18.3,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 62,
+            "unanimous_window": 18
+          }
+        },
+        {
+          "method": "ESC",
+          "label": "w=6",
+          "accuracy": 0.5,
+          "cost": 4953.968320555599,
+          "mean_n": 19.8,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 78,
+            "unanimous_window": 2
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=2",
+          "accuracy": 0.4875,
+          "cost": 1863.1477227637217,
+          "mean_n": 7.45,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 79,
+            "k_max": 1
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=4",
+          "accuracy": 0.5125,
+          "cost": 3538.9536657872923,
+          "mean_n": 14.1375,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 52,
+            "k_max": 28
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=6",
+          "accuracy": 0.5,
+          "cost": 4599.260921832863,
+          "mean_n": 18.425,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "margin": 27,
+            "k_max": 53
+          }
+        },
+        {
+          "method": "SPRT",
+          "label": "margin=10",
+          "accuracy": 0.5,
+          "cost": 5002.839191397214,
+          "mean_n": 20.0,
+          "guard_fired_rate": 0.0,
+          "stopped_by": {
+            "k_max": 80
+          }
+        }
+      ],
+      "frontiers": {
+        "SC": [
+          [
+            245.77108298560898,
+            0.4375,
+            "K=1"
+          ],
+          [
+            3754.309549611223,
+            0.5375,
+            "K=15"
+          ]
+        ],
+        "CISC": [
+          [
+            245.77108298560898,
+            0.4375,
+            "K=1"
+          ]
+        ],
+        "dedup-SC": [
+          [
+            248.77108298560898,
+            0.4375,
+            "K=1"
+          ],
+          [
+            4009.309549611223,
+            0.5375,
+            "K=15"
+          ]
+        ],
+        "ASC": [
+          [
+            1369.0897604634408,
+            0.4375,
+            "tau=0.5"
+          ],
+          [
+            2727.4564288286974,
+            0.4875,
+            "tau=0.75"
+          ],
+          [
+            4088.622518513698,
+            0.5125,
+            "tau=0.9"
+          ]
+        ],
+        "RASC-lite": [
+          [
+            1360.5125076256627,
+            0.0875,
+            "tau=0.5"
+          ]
+        ],
+        "RLEV-VoI-SAFE": [
+          [
+            1411.064760463441,
+            0.4375,
+            "tau=0.5"
+          ],
+          [
+            2903.5564288286973,
+            0.4875,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-VoI-AGGR": [
+          [
+            1411.064760463441,
+            0.4375,
+            "tau=0.5"
+          ],
+          [
+            2892.49428572088,
+            0.4875,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-noguard": [
+          [
+            1411.064760463441,
+            0.4375,
+            "tau=0.5"
+          ],
+          [
+            2892.49428572088,
+            0.4875,
+            "tau=0.75"
+          ]
+        ],
+        "RLEV-noVoI": [
+          [
+            1411.064760463441,
+            0.4375,
+            "tau=0.5"
+          ],
+          [
+            2892.49428572088,
+            0.4875,
+            "tau=0.75"
+          ],
+          [
+            4418.80642216106,
+            0.5125,
+            "tau=0.9"
+          ]
+        ],
+        "ESC": [
+          [
+            1233.00213200396,
+            0.3875,
+            "w=2"
+          ],
+          [
+            4573.264873337417,
+            0.5125,
+            "w=4"
+          ]
+        ],
+        "SPRT": [
+          [
+            1863.1477227637217,
+            0.4875,
+            "margin=2"
+          ],
+          [
+            3538.9536657872923,
+            0.5125,
+            "margin=4"
+          ]
+        ]
+      },
+      "checks": {
+        "RLEV-VoI-SAFE": {
+          "worst_gap_vs_SC_at_matched_cost": -0.016402677945433652,
+          "at_label": "tau=0.9",
+          "at_cost": 3302.743947761667,
+          "sc_accuracy": 0.5039026779454336,
+          "method_accuracy": 0.4875
+        },
+        "RLEV-VoI-AGGR": {
+          "worst_gap_vs_SC_at_matched_cost": -0.016402677945433652,
+          "at_label": "tau=0.9",
+          "at_cost": 3302.743947761667,
+          "sc_accuracy": 0.5039026779454336,
+          "method_accuracy": 0.4875
+        },
+        "ASC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.014958799603740802,
+          "at_label": "tau=0.9",
+          "at_cost": 4088.622518513698,
+          "sc_accuracy": 0.5274587996037408,
+          "method_accuracy": 0.5125
+        },
+        "RASC-lite": {
+          "worst_gap_vs_SC_at_matched_cost": -0.49278925180736377,
+          "at_label": "tau=0.9",
+          "at_cost": 4410.561639752183,
+          "sc_accuracy": 0.5177892518073638,
+          "method_accuracy": 0.025
+        },
+        "dedup-SC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.007365784439245737,
+          "at_label": "K=9",
+          "at_cost": 2341.2506383215828,
+          "sc_accuracy": 0.4323657844392457,
+          "method_accuracy": 0.425
+        },
+        "CISC": {
+          "worst_gap_vs_SC_at_matched_cost": -0.5375,
+          "at_label": "K=15",
+          "at_cost": 3754.309549611223,
+          "sc_accuracy": 0.5375,
+          "method_accuracy": 0.0
+        }
+      },
+      "holm": {},
+      "achievable_oracle": {
+        "mean_k": 8.4375,
+        "accuracy_at_k_max": 0.575
+      }
+    }
+  },
+  "caveat": "SYNTHETIC DATA. Establishes implementation correctness, no-regret behaviour and the useful-regime boundary only. The generator produces the block-cluster structure DDWC assumes, so R2/R4 gains are NOT evidence of benefit on real LLM traces."
+}
