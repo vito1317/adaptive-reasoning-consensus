@@ -76,7 +76,18 @@ class SimConfig:
 
     Nonzero values model corpora where the confidence channel is informative on
     some questions and useless or inverted on others -- the setting where a
-    single global trust decision is provably suboptimal."""
+    single global trust decision is provably suboptimal. With the latent kappa
+    i.i.d. and no observable covariate, per-item label-free adaptation is also
+    IMPOSSIBLE (winner's-curse / two-world unidentifiability -- see
+    REPORT-TACT section on the hier study), so this regime is a floor for
+    every legitimate method."""
+    group_kappas: tuple[float, ...] | None = None
+    """Observable-covariate heterogeneity: each item is assigned a group id
+    (uniform over the tuple, stored in ``meta['group']``) and uses that group's
+    kappa. This is the STRUCTURED heterogeneity of real corpora -- the channel
+    is informative on one domain and inverted on another -- and unlike the
+    i.i.d. case it is exploitable: run the estimator per group. Overrides
+    ``kappa_c``/``kappa_c_sd`` when set."""
     conf_transform: str = "none"
     """Strictly monotone distortion applied to confidences AFTER coupling.
 
@@ -197,9 +208,14 @@ def generate_item(cfg: SimConfig, k_max: int, rng: np.random.Generator) -> Trace
     np.fill_diagonal(sem, 1.0)
 
     hit = (answers == cfg.correct_answer).astype(float)
-    kappa_item = cfg.kappa_c
-    if cfg.kappa_c_sd > 0:
+    group = -1
+    if cfg.group_kappas is not None:
+        group = int(rng.integers(len(cfg.group_kappas)))
+        kappa_item = float(cfg.group_kappas[group])
+    elif cfg.kappa_c_sd > 0:
         kappa_item = float(rng.normal(cfg.kappa_c, cfg.kappa_c_sd))
+    else:
+        kappa_item = cfg.kappa_c
     conf = 0.5 + kappa_item * (hit - 0.5) + rng.normal(scale=cfg.conf_noise, size=k_max)
     if cfg.echo_conf is not None:
         # Confident-echo poison: every member of a multi-trace echo component
@@ -222,7 +238,7 @@ def generate_item(cfg: SimConfig, k_max: int, rng: np.random.Generator) -> Trace
         gen_tokens=gen_tokens,
         correct=cfg.correct_answer,
         n_answers=cfg.n_answers,
-        meta={"is_echo_of": is_echo_of},
+        meta={"is_echo_of": is_echo_of, "group": group},
     )
 
 

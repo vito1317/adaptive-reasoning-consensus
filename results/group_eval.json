@@ -1,0 +1,89 @@
+{
+  "config": {
+    "items": 600,
+    "k": 15,
+    "k_max": 20,
+    "seed": 0,
+    "out": "results/group_eval.json"
+  },
+  "cells": {
+    "grouped": {
+      "acc": {
+        "SC": 0.8083333333333333,
+        "TACT-global-dev": 0.8083333333333333,
+        "TACT-group-dev": 0.9233333333333333,
+        "TACT-group-LF": 0.94,
+        "naive-per-item": 0.8033333333333333,
+        "per-item-link-oracle": 0.9466666666666667
+      },
+      "gammas_dev_by_group": {
+        "0": 4.0,
+        "1": 0.013512162722722943,
+        "2": -4.0
+      },
+      "gammas_lf_by_group": {
+        "0": 2.0,
+        "1": 0.0,
+        "2": -2.0
+      },
+      "gamma_global": 0.0,
+      "paired": {
+        "group-dev_vs_SC": {
+          "a_only": 79,
+          "b_only": 10,
+          "p_value": 1.87368886800412e-14
+        },
+        "group-dev_vs_global": {
+          "a_only": 79,
+          "b_only": 10,
+          "p_value": 1.87368886800412e-14
+        },
+        "group-LF_vs_SC": {
+          "a_only": 79,
+          "b_only": 0,
+          "p_value": 3.308722450212111e-24
+        },
+        "naive_vs_SC": {
+          "a_only": 0,
+          "b_only": 3,
+          "p_value": 0.25
+        }
+      }
+    },
+    "iid": {
+      "acc": {
+        "SC": 0.8266666666666667,
+        "TACT-global-dev": 0.8266666666666667,
+        "TACT-group-dev": 0.8266666666666667,
+        "TACT-group-LF": 0.8266666666666667,
+        "naive-per-item": 0.82,
+        "per-item-link-oracle": 0.9833333333333333
+      },
+      "gammas_dev_by_group": null,
+      "gammas_lf_by_group": null,
+      "gamma_global": 0.0,
+      "paired": {
+        "group-dev_vs_SC": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "group-dev_vs_global": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "group-LF_vs_SC": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "naive_vs_SC": {
+          "a_only": 0,
+          "b_only": 4,
+          "p_value": 0.125
+        }
+      }
+    }
+  }
+}

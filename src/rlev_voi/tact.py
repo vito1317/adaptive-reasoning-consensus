@@ -310,3 +310,53 @@ def estimate_semi_lf(dev: list[TracePool], pools: list[TracePool], k: int, **lf_
         return LFEstimate(gamma=0.0, alarms=lf.alarms, diagnostics=lf.diagnostics | {"semi_sign": 0.0})
     lf = estimate_label_free(pools, k, trusted_sign=sign, **lf_kwargs)
     return LFEstimate(gamma=lf.gamma, alarms=lf.alarms, diagnostics=lf.diagnostics | {"semi_sign": sign})
+
+
+# --------------------------------------------------------------------------
+# TACT-group: structured heterogeneity via an observable covariate
+# --------------------------------------------------------------------------
+
+
+def estimate_dev_by_group(
+    dev: list[TracePool], k: int, min_items: int = 30, cfg: TemperConfig | None = None
+) -> tuple[dict[int, float], DevEstimate]:
+    """Per-group TACT-dev over an observable item covariate (``meta['group']``).
+
+    Real heterogeneity is structured -- the channel is informative on one
+    domain and inverted on another -- and per-group pooling keeps every group
+    inside the existing estimator's operating regime. Groups with fewer than
+    ``min_items`` dev items fall back to the GLOBAL estimate: with i.i.d.
+    latent per-item coupling and no covariate, per-item adaptation is
+    information-theoretically impossible (winner's-curse sign opposition +
+    two-world unidentifiability; pinned by tests), so falling back is not a
+    heuristic compromise but the only defensible behaviour.
+    """
+    global_est = estimate_dev(dev, k, cfg)
+    gammas: dict[int, float] = {}
+    for gid in sorted({p.meta.get("group", -1) for p in dev}):
+        sub = [p for p in dev if p.meta.get("group", -1) == gid]
+        gammas[gid] = estimate_dev(sub, k, cfg).gamma if len(sub) >= min_items else global_est.gamma
+    return gammas, global_est
+
+
+def estimate_lf_by_group(
+    pools: list[TracePool], k: int, min_items: int = 60, **lf_kwargs
+) -> tuple[dict[int, float], LFEstimate]:
+    """Per-group TACT-LF: fully label-free, one estimate per covariate group."""
+    global_est = estimate_label_free(pools, k, **lf_kwargs)
+    gammas: dict[int, float] = {}
+    for gid in sorted({p.meta.get("group", -1) for p in pools}):
+        sub = [p for p in pools if p.meta.get("group", -1) == gid]
+        if len(sub) >= min_items:
+            kw = dict(lf_kwargs)
+            kw.setdefault("min_gated_items", max(25, int(0.4 * len(sub))))
+            gammas[gid] = estimate_label_free(sub, k, **kw).gamma
+        else:
+            gammas[gid] = global_est.gamma
+    return gammas, global_est
+
+
+def group_vote(pool: TracePool, k: int, gammas: dict[int, float], default: float = 0.0) -> int:
+    """Vote with the exponent of the item's observable group."""
+    gamma = gammas.get(pool.meta.get("group", -1), default)
+    return tact_vote(pool.answers[:k], pool.confidences[:k], pool.n_answers, gamma)
