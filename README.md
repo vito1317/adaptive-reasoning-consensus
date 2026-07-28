@@ -1,3 +1,24 @@
+# adaptive-reasoning-consensus
+
+推理期（inference-time）LLM 共識演算法的研究倉庫。兩個階段：
+
+| 階段 | 方法 | 結果 | 報告 |
+|---|---|---|---|
+| 1 | **RLEV-VoI** — 冗餘折扣投票 + VoI 停止 | **負面結果**：簡單去重基線全面勝出；有效機制被定位在逐字重複偵測 | [REPORT.md](docs/REPORT.md) |
+| 2 | **TACT** — 信心穩健加權（有符號、可無標籤） | **正面結果**：四項證偽條件全數存活；無標籤變體零標籤辨識通道正負號 | [REPORT-TACT.md](docs/REPORT-TACT.md) |
+
+階段 2 直接誕生於階段 1 的屍檢：CISC 類方法在信心校準崩壞時毀滅（R5: 0.062），
+二元 ECE 閘門倖存但拋棄了有效訊號——TACT 用「排名統計量 → JS 收縮 → Bayes 判別連結」
+的解析管線給出連續、有符號、可完全無標籤的信任調節。規格見 [SPEC-TACT.md](docs/SPEC-TACT.md)。
+
+```bash
+./.venv/bin/python -m pytest tests/ -q                  # 69 tests
+./.venv/bin/python experiments/run_kappa_sweep.py       # 基線 frontier（問題陳述）
+./.venv/bin/python experiments/run_tact_eval.py         # TACT headline 實驗
+```
+
+---
+
 # RLEV-VoI — 冗餘折扣共識 + 資訊價值自適應停止
 
 > ### 實測結論：負面結果
