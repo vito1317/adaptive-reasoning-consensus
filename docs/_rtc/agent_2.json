@@ -1,0 +1,138 @@
+{
+ "area": "LLM confidence for self-consistency voting: CISC and successors, verbalized/logit confidence quality, adaptive or gated confidence weighting, weighted-SC family, self-evaluation reranking, and label-free reliability estimation applied to LLM vote aggregation",
+ "methods": [
+  {
+   "name": "CISC — Confidence-Informed Self-Consistency (Taubenfeld et al., ACL 2025 Findings)",
+   "key_idea": "Weighted majority vote with softmax-normalized per-trace confidence: w_i = exp(c_i/T)/sum_j exp(c_j/T); T tuned on a 10% held-out labeled set per model x confidence-method. T->inf recovers plain SC, T->0 recovers argmax-confidence. Compares verbal confidence, P(True) (Kadavath-style), and length-normalized response probability. Introduces Within-Question Discrimination (WQD): fraction of within-item (correct, incorrect) pairs where the correct trace gets higher confidence — and shows ECE/Brier are poor predictors of voting utility (most-calibrated verbal confidence performed WORST; least-calibrated P(True) had best WQD and best CISC gains).",
+   "relevance": "The primary baseline AND a partial scoop of two SEED claims: (a) 'discrimination, not calibration, is the right reliability metric' is already published as WQD, in exactly the within-item pairwise (rank/AUC) form SEED idea 4 proposes; (b) dev-tuning T with SC as the T->inf anchor means a dev-calibrated SC<->CISC interpolation already exists as CISC's standard protocol. What CISC lacks: no label-free adaptation, no sign handling (softmax always up-weights high confidence, so anti-correlated confidence poisons it — as the RLEV-VoI R5 collapse shows), and T is tuned globally by grid search, not mapped from a measured reliability statistic. RTC-dev must beat dev-tuned-T CISC, not just a binary ECE gate.",
+   "citation_hint": "arXiv:2502.06233; ACL Anthology 2025.findings-acl.1030; code github.com/taubenfeld/CISC"
+  },
+  {
+   "name": "ReASC — Reliability-Aware Adaptive Self-Consistency (Kim, Yang, Min, Jung, SNU, Apr 2026)",
+   "key_idea": "Two-stage adaptive sampling: Stage 1 accepts a single response if its confidence S(y) (bottom-10% group self-certainty) exceeds a gate tau_gate; Stage 2 accumulates confidence-weighted pseudo-counts in the ASC Beta posterior: v(y_i) += max(1, exp(lambda*z(y_i))) with z standardized by (mu, sigma). Offline calibration uses a labeled set (k=128); ONLINE calibration fits a 2-component GMM to UNLABELED test-time confidence scores (correct/incorrect as latent components, AIC/BIC-validated) to estimate mu, sigma and the gate threshold.",
+   "relevance": "The closest-named prior art ('reliability-aware') and the closest label-free machinery: its online GMM is a moment/mixture method estimating confidence statistics from unlabeled traffic — directly overlapping the SEED's G3b. BUT: 'reliability' here means per-RESPONSE reliability (confidence as evidence strength), NOT the reliability of the confidence CHANNEL. lambda is a fixed sensitivity hyperparameter, never set from an estimated confidence-correctness association; weights are floored at 1 and always monotone-increasing in confidence, so it has no mechanism to shrink to SC or survive anti-correlated confidence. Verified from the PDF, not just the abstract. Must be cited, differentiated, and ideally adapted as a baseline (its GMM can seed RTC's label-free estimator).",
+   "citation_hint": "arXiv:2601.02970 (v2, Apr 2026)"
+  },
+  {
+   "name": "DeepConf — Deep Think with Confidence (Fu et al., Meta AI/UCSD, 2025)",
+   "key_idea": "Token-level self-certainty aggregated into group confidences (bottom-10%, lowest-group, tail); filters low-confidence traces (keep top-eta%) and does confidence-weighted majority voting; online mode sets the filtering threshold from a small warmup set of traces and early-terminates low-confidence generations. No training, no labels.",
+   "relevance": "State-of-the-art fixed-positive-use of internal confidence for voting, and the source of the bottom-10% signal ReASC adopts. Its warmup-set thresholding is a crude online calibration. No reliability estimation of the channel itself; hard filtering is a step-function analog of tempering (eta=100% ~ SC). A natural strong baseline on the kappa_c sweep — expect it to inherit CISC's R5-style collapse.",
+   "citation_hint": "arXiv:2508.15260; github.com/facebookresearch/deepconf"
+  },
+  {
+   "name": "Self-certainty Borda voting (Kang, Xu, Ritter, 2025, NeurIPS 2025)",
+   "key_idea": "Confidence = self-certainty (KL of token distribution from uniform), aggregated by RANK-based Borda voting: trace ranked by self-certainty gets weight (N - rank + 1)^p; Borda with a tuned exponent p beats normalized-weighted-sum. Motivated by scale-robustness of ranks.",
+   "relevance": "Substantially anticipates SEED idea 1: rank-transformed (monotone-invariant) confidence voting with a power exponent is already published. What remains novel for RTC is setting the exponent from an ESTIMATED (signed) reliability rather than tuning a fixed p, and the p=0 => SC anchor as a robustness guarantee. Cite as the origin of rank-based confidence voting and use as a fixed-p baseline.",
+   "citation_hint": "arXiv:2502.18581, 'Scalable Best-of-N Selection for Large Language Models via Self-Certainty'"
+  },
+  {
+   "name": "RASC — Reasoning-Aware Self-Consistency (Wan et al., NAACL 2025)",
+   "key_idea": "Per-sample quality scoring of both rationale and answer feeds a sufficiency classifier that drives early stopping and weighted majority voting; ~70-88% sample reduction.",
+   "relevance": "The SEED's RASC-lite baseline (collapses to 0.062 on R5). Uses confidence positively with no channel-reliability estimation — exemplar of the failure mode RTC targets.",
+   "citation_hint": "arXiv:2408.17017; ACL Anthology 2025.naacl-long.184"
+  },
+  {
+   "name": "Efficient Test-Time Scaling via Self-Calibration (Huang et al., 2025)",
+   "key_idea": "Distills self-consistency-derived confidence back into the model at training time, then uses the calibrated confidence for early-stopping Best-of-N and confidence-weighted SC at inference.",
+   "relevance": "Fixes the confidence channel by TRAINING (not allowed for a frozen LLM in our setting); no test-time reliability adaptation. Positions RTC as the frozen-model, inference-only alternative.",
+   "citation_hint": "arXiv:2503.00031"
+  },
+  {
+   "name": "RISC — Boosting Self-Consistency with Ranking (Marina et al., 2026)",
+   "key_idea": "Recasts SC answer selection as learning-to-rank: a supervised LambdaRank model over five features (answer frequency, semantic centrality, trace-consistency, etc.) scores candidate answers.",
+   "relevance": "A dev-TRAINED aggregator that subsumes 'learn how much to trust each signal' — but needs labels, has no SC/CISC anchor guarantees, and gives no graceful label-free degradation. Useful as an upper-ish supervised baseline for the dev-calibrated variant.",
+   "citation_hint": "arXiv:2606.05054 (verify exact number)"
+  },
+  {
+   "name": "VecCISC (Petullo et al., Findings of ACL 2026)",
+   "key_idea": "Prunes semantically duplicate/degenerate traces before CISC-style confidence evaluation; 47% token reduction at equal-or-better accuracy.",
+   "relevance": "Confirms an active CISC-successor line; orthogonal to reliability tempering (efficiency via dedup, not robustness). Cite to delimit: no CISC follow-up found that adapts the weighting exponent by estimated reliability.",
+   "citation_hint": "arXiv:2605.08070"
+  },
+  {
+   "name": "Soft Self-Consistency (Wang et al., ACL 2024)",
+   "key_idea": "Replaces vote counts with continuous aggregate token-probability scores (product/mean/min) for agent tasks where answers rarely repeat.",
+   "relevance": "Weighted-SC family member; fixed positive use of model probability, no reliability estimation. Baseline lineage citation.",
+   "citation_hint": "arXiv:2402.13212"
+  },
+  {
+   "name": "DiVeRSe (Li et al., ACL 2023)",
+   "key_idea": "Weighted voting where per-trace weights come from a verifier TRAINED with step-aware labels; voting verifier >> plain SC.",
+   "relevance": "Origin of weighted-SC-with-learned-weights. Requires supervised verifier training — contrast class for RTC's no-training constraint.",
+   "citation_hint": "arXiv:2206.02336, 'Making Language Models Better Reasoners with Step-Aware Verifier'"
+  },
+  {
+   "name": "Adaptive-Consistency / ESC (budget-adaptive stopping family)",
+   "key_idea": "Adaptive-Consistency (Aggarwal et al., EMNLP 2023) stops sampling via a Beta-posterior dominance test on vote counts; Early-Stopping SC (Li et al., 2024) stops when a window of answers agrees. Count-based, all votes equal.",
+   "relevance": "The orthogonal efficiency axis RTC composes with (ReASC already married it to confidence). Cite for the Beta-update formalism ReASC extends.",
+   "citation_hint": "arXiv:2305.11860 (Adaptive-Consistency); arXiv:2401.10480 (ESC)"
+  },
+  {
+   "name": "Confidence-quality literature: Kadavath 2022 / Tian 2023 / Xiong 2024",
+   "key_idea": "P(True) self-evaluation is well-calibrated-ish for large models (Kadavath); verbalized confidence from RLHF models is better calibrated than raw logits but systematically overconfident (Tian); verbalized confidence is broadly overconfident with mediocre failure-prediction AUROC across models/tasks (Xiong). Later audits find small instruct models give near-degenerate verbal confidence (>95% ceiling, near-chance type-2 AUROC).",
+   "relevance": "Empirical grounding for the regime sweep: real channels span 'discriminative but miscalibrated' (P(True) in CISC) to 'near-zero discrimination' (small-model verbal confidence). Justifies kappa_c as the primary axis and the monotone-distortion regime. No adaptive weighting proposed in any of these.",
+   "citation_hint": "arXiv:2207.05221 (Kadavath); arXiv:2305.14975 (Tian, EMNLP 2023); arXiv:2306.13063 (Xiong, ICLR 2024)"
+  },
+  {
+   "name": "Rank-Calibration (Huang et al., 2024)",
+   "key_idea": "Argues ECE-style metrics are ill-suited to LM uncertainty; proposes rank-based assessment (lower uncertainty should monotonically imply higher expected quality); empirically ECE and AUROC are nearly uncorrelated across methods.",
+   "relevance": "Independent published support for the SEED's central diagnosis (the binary ECE gate fails because ECE measures calibration, not discrimination). Cite in motivation; it is assessment-only, proposes no voting mechanism.",
+   "citation_hint": "arXiv:2404.03163"
+  },
+  {
+   "name": "FUSE — Ensembling Verifiers with Zero Labeled Data (Lee, ..., Candès, Apr 2026)",
+   "key_idea": "Spectral ensemble-learning algorithms (Parisi-et-al.-lineage) estimate the reliabilities of multiple imperfect verifiers/judges from unlabeled data, controlling conditional dependencies between them, to weight verifier signals for test-time scaling; matches semi-supervised alternatives.",
+   "relevance": "The strongest evidence that the LABEL-FREE half of RTC is not open in the general setting: label-free reliability estimation for LLM-era verification signals is now published, including dependence corrections. RTC's residual gap: FUSE weights an ensemble of DISTINCT verifiers using cross-verifier covariance; RTC has ONE exchangeable confidence channel per trace, so cross-channel covariance is unavailable and the estimand is the channel's within-item discrimination — a different sufficient statistic (agreement-proxy or mixture-based). Must be positioned precisely or reviewers will ask 'why not FUSE?'.",
+   "citation_hint": "arXiv:2604.18547 (verify number)"
+  },
+  {
+   "name": "Beyond Majority Voting: higher-order LLM aggregation (Ai, Pan, Simchi-Levi, Tambe, Xu, 2025)",
+   "key_idea": "Unsupervised per-model reliability weights for multi-LLM answer aggregation from second/higher-order agreement statistics; Dawid-Skene extension; their OW variants beat DS, and DS itself can UNDERPERFORM majority vote under correlated judges.",
+   "relevance": "Prior art for label-free weight estimation from agreement structure in the LLM setting (multi-model, not multi-sample-one-model). Also documents DS fragility under correlation — the same echo-poisoning the SEED flags for the agreement proxy.",
+   "citation_hint": "arXiv:2510.01499"
+  },
+  {
+   "name": "Nine Judges, Two Effective Votes (2026) + When LLMs Agree, Are They Right? (2026)",
+   "key_idea": "Correlated errors collapse the effective vote count of LLM panels; DS-EM and accuracy-weighted voting close at most ~11% of the Condorcet gap even with oracle labels; agreement (self- or cross-model) converges on the same wrong answer often enough to be an unreliable correctness proxy.",
+   "relevance": "Published quantification of the exact poisoning mechanism for RTC's agreement proxy (SEED idea 2's known failure mode). Use to justify the margin-weighted/high-margin-item mitigations and the echo regime (iii), and to pre-empt 'the proxy is consistent' overclaims.",
+   "citation_hint": "arXiv:2605.29800 (Nine Judges); arXiv:2607.08065 (When LLMs Agree) — both (verify numbers)"
+  },
+  {
+   "name": "Hybrid VC+SC and gating lines (Two Samples Are Enough; ACTSC; VCSC audits)",
+   "key_idea": "Combine verbalized confidence with tiny-N self-consistency for better AUROC (rank-average hybrids); ACTSC gates whether to run SC at all via an activation-probe difficulty estimate; audits find no single confidence signal reliably dominates and dev-set rank-combinations work best.",
+   "relevance": "Shows binary/threshold GATING of confidence signals is an active line, but all gates found are on/off or fixed hybrids — none maps an estimated channel reliability to a continuous vote-weight exponent with SC/CISC anchors. Supports F3/F4 baseline design (binary AUROC gate, not just binary ECE gate).",
+   "citation_hint": "OpenReview 66D3rZrNjV (Two Samples Are Enough); ACTSC via emergentmind survey (verify primary source)"
+  },
+  {
+   "name": "To Believe or Not to Believe Your LLM (Yadkori et al., DeepMind 2024)",
+   "key_idea": "Label-free epistemic-uncertainty metric via iterative self-conditioning; information-theoretic decomposition of epistemic vs aleatoric uncertainty for hallucination detection.",
+   "relevance": "Related 'when to trust the model, label-free' machinery, but produces an abstention signal, not vote weights. Peripheral cite.",
+   "citation_hint": "arXiv:2406.02543 (verify)"
+  }
+ ],
+ "novelty_assessment": "Blunt verdict: no paper found that does the full RTC loop — estimate the SIGNED DISCRIMINATION of a frozen model's confidence channel (dev-labeled or label-free) and map it through a continuous shrinkage function to the vote exponent with exact SC (zero trust) and CISC (full trust) anchors and a never-below-SC robustness guarantee. But every component is published somewhere, and three near-misses cut deep. (1) CISC itself (arXiv:2502.06233) already contains a dev-calibrated SC<->CISC interpolation: its softmax temperature T is tuned on a labeled held-out split and T->inf IS plain SC — so 'RTC-dev' as originally sketched is dangerously close to CISC's own standard protocol, and the SEED's F4 baseline ('dev-picked fixed gamma') is literally the published method. RTC-dev's defensible deltas are only: reliability measured as WQD/AUC and mapped analytically (no grid search), explicit sign handling (dev-tuned T never goes below equal weights but also can't exploit a NEGATIVE signal or certify robustness off-distribution), and shrinkage for small dev sets. (2) CISC also already published the 'discrimination, not calibration' insight as its WQD metric (within-item pairwise comparisons — exactly the rank statistic of SEED idea 4), and Rank-Calibration (arXiv:2404.03163) independently makes the ECE-vs-AUROC point; the RLEV-VoI finding that an ECE gate wrongly shuts a discriminative-but-miscalibrated channel is a clean empirical illustration of a KNOWN conceptual point, not a new one. (3) Rank-based confidence voting with a power exponent exists: self-certainty Borda voting (N-rank+1)^p (arXiv:2502.18581) — SEED idea 1 survives only as 'set the exponent adaptively, with sign', not as 'use ranks'. On adaptive tempering specifically: ReASC (arXiv:2601.02970, 'Reliability-Aware Adaptive Self-Consistency', verified against the PDF) is the closest by name and machinery — confidence-weighted Beta pseudo-counts v += max(1, exp(lambda*z)) plus a LABEL-FREE online calibration that fits a 2-component GMM to unlabeled test-time confidence scores — but lambda is a fixed hyperparameter, 'reliability' means per-response evidence strength not channel quality, weights are floored at 1, and nothing estimates or reacts to the confidence-correctness association; it would collapse on R5 like CISC. DeepConf (arXiv:2508.15260) has online warmup thresholding but fixed positive confidence use. Optimal-aggregation work (arXiv:2510.13918) and RISC (arXiv:2606.05054) learn aggregation weights but need labels. On the label-free side the picture is more crowded than the SEED assumes: ReASC's online GMM already estimates confidence-distribution statistics from unlabeled traffic; FUSE (arXiv:2604.18547, Candès group) does spectral zero-label reliability estimation for ensembles of verifiers with dependence corrections; 'Beyond Majority Voting' (arXiv:2510.01499) does unsupervised reliability weighting of multiple LLMs from higher-order agreement; and the crowdsourcing lineage (Dawid-Skene; Parisi et al. PNAS 2014) is the acknowledged ancestor. None of these matches RTC's setting exactly — one exchangeable confidence channel from one frozen model, no cross-classifier covariance available — so the agreement-proxy estimator of the channel's (sign, strength) appears genuinely open, BUT its known failure mode is also published: correlated-error results ('Nine Judges, Two Effective Votes' arXiv:2605.29800; DS underperforming MV under correlation) prove agreement-based reliability estimates break exactly in echo regimes, so RTC's label-free guarantee can only be conditional and the paper must say so. Net: RTC is honestly positioned as a robustification of CISC that combines four known ingredients (WQD-style discrimination measurement, rank transforms, shrinkage tempering, mixture/agreement-based label-free estimation) into one anchored estimator with pre-registered falsifiers; the label-free signed-reliability estimator for a single confidence channel plus the adversarial kappa_c<0 robustness frontier is the novel contribution; nothing else in the SEED is new. Publication risk is highest from ReASC (name collision and GMM overlap) and from CISC's dev-tuned T (F4 must include it, and RTC-dev may only tie it on iid splits — the win must come from label-free operation and distribution shift).",
+ "recommended_baselines": [
+  "Plain SC (Wang et al., arXiv:2203.11171) — the G2 floor",
+  "CISC with softmax temperature tuned on the labeled dev split per the original protocol (arXiv:2502.06233) — this IS the published dev-calibrated SC<->CISC interpolation and must be beaten or matched by RTC-dev; report it separately from a raw gamma-sweep CISC",
+  "CISC with fixed gamma swept in {0.25,0.5,1,2,4} (matched-budget frontier, no adaptation) — the F4 trivial baseline",
+  "Binary ECE gate (prior in-house method, dev ECE>0.10 disables channel) — the F3 reference",
+  "Binary DISCRIMINATION gate: disable channel if dev WQD/AUC < 0.5+delta, else full CISC — isolates 'continuous tempering' vs 'right metric, binary gate'; without this ablation reviewers cannot tell which change did the work",
+  "Sign-corrected binary gate: gamma in {-1, 0, +1} picked on dev — tests whether exploiting negative correlation (not just surviving it) needs continuity",
+  "Self-certainty Borda voting with exponent p swept (arXiv:2502.18581) — published rank-based confidence voting; RTC's rank claim must beat fixed-p ranks",
+  "DeepConf-style bottom-10% group-confidence filtering + confidence-weighted vote with online warmup threshold (arXiv:2508.15260)",
+  "ReASC-online adapted to the harness: confidence-weighted pseudo-counts with GMM-calibrated z-scores on unlabeled traffic (arXiv:2601.02970) — the closest published label-free competitor",
+  "Dawid-Skene one-coin EM adapted to the setting (answer clusters as classes, high/low-confidence votes as annotators), plus its spectral initialization — the crowdsourcing-lineage control, expected to break in echo regimes (cf. arXiv:2605.29800)",
+  "ORACLE-tempered CISC: gamma tuned per-regime with ground truth — upper envelope",
+  "RASC-lite (existing harness baseline, arXiv:2408.17017) — documents the collapse RTC prevents"
+ ],
+ "risks": [
+  "F4 scoop risk: CISC's own dev-tuned temperature is already a dev-calibrated continuous interpolation between SC and argmax-confidence; on iid dev/test splits RTC-dev may only tie it. The claim must be repositioned around label-free operation, sign exploitation, small-dev shrinkage, and dev->test distribution shift — and F4 must explicitly include dev-tuned-T CISC or reviewers will add it for you.",
+  "Name/idea collision with ReASC (arXiv:2601.02970, Apr 2026): 'reliability-aware' + label-free GMM calibration of confidence on unlabeled test traffic already published. RTC must rename its reliability notion (channel discrimination vs per-response evidence) and cite/differentiate in the first related-work paragraph.",
+  "The label-free agreement proxy fails exactly where it matters most: published correlated-error results (Nine Judges arXiv:2605.29800; DS underperforming majority vote under correlation) show agreement-based reliability estimation is poisoned in echo regimes — the same regimes where anti-correlated/high-confidence-wrong voting does maximal damage. G2's 'never significantly below SC' can likely only be guaranteed conditional on an echo detector (margin/stability weighting, dedup similarity from the TracePool), and the paper must present regime (iii) results as a documented limitation, not a solved case.",
+  "Anti-correlated confidence (kappa_c=-0.6) may be attacked as a strawman: audits find real channels degenerate to near-zero discrimination (chance AUROC, ceiling-confidence), not strongly negative. Include at least one realistic near-zero-kappa regime headline and, ideally, one real-model confirmation (small instruct model verbal confidence), or reviewers will discount R5-style collapses.",
+  "Mixture/moment label-free estimators are fragile when the confidence distribution is nearly unimodal (low kappa) — exactly where the estimator must confidently return gamma~0; ReASC's AIC/BIC two-component evidence is dataset-specific. Pre-register the estimator's behavior at kappa=0 and its variance, or F2 can fail from estimator noise alone (gamma_hat jitter making RTC significantly below SC at kappa=0).",
+  "Heterogeneous per-item kappa (regime i) breaks any single global gamma; if the oracle per-item envelope is far above global-RTC, reviewers will ask for per-item tempering, which the agreement proxy cannot support at n=40 traces/item without heavy shrinkage — scope the claim to global/channel-level tempering explicitly.",
+  "Multiple-comparison burden: 'never significantly below SC anywhere on a 7-point sweep x extra regimes' needs paired McNemar with correction (e.g., Holm) and pre-registered non-inferiority margins, otherwise G2 is unfalsifiable as stated.",
+  "Field velocity: ReASC, FUSE, VecCISC, RISC, Nine Judges are all 2026 papers found in this survey; several arXiv numbers above are from search results and marked (verify) — re-run the citation check at submission time, and expect at least one new CISC-successor to appear before review."
+ ]
+}

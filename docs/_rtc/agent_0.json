@@ -1,0 +1,132 @@
+{
+ "area": "Estimating predictor reliability WITHOUT labels: crowdsourcing aggregation (Dawid-Skene EM, GLAD, Karger-Oh-Shah), spectral/moment unsupervised ensembles (Parisi et al. SML), agreement-based pseudo-labeling and its bias under correlated errors — mapped onto the setting where the \"annotator\" is a single frozen LLM's confidence channel measured across items and its traces are exchangeable draws.",
+ "methods": [
+  {
+   "name": "Dawid-Skene EM",
+   "key_idea": "Latent true label per item; per-annotator confusion matrices estimated by EM from inter-annotator agreement patterns under conditional independence given the true label.",
+   "relevance": "The canonical template, but it does NOT map 1:1: our traces are exchangeable draws from one distribution, so there is effectively one 'worker' whose majority vote IS plain SC — a vanilla DS fit over traces-as-workers is degenerate (all confusion matrices equal) and adds nothing over SC. The correct adaptation is a single latent-truth EM with a confidence-conditional correctness model (see Raykar). Use vanilla DS over deduped answer clusters only as a sanity baseline expected to tie SC.",
+   "citation_hint": "Dawid & Skene, JRSS-C 28(1):20-28, 1979"
+  },
+  {
+   "name": "Raykar et al. 'Learning from Crowds' (latent truth + logistic model EM)",
+   "key_idea": "EM jointly infers latent true labels and a logistic regression on features; the M-step's logistic slope is learned against soft pseudo-labels from the E-step.",
+   "relevance": "STRUCTURALLY THE CLOSEST PRIOR ART to label-free RTC. Fit: latent item answer z_q (posterior from vote counts) alternating with logistic p(trace correct | s_i) = sigmoid(a + b*s_i) where s_i is the within-item rank/z-score of c_i. The fitted slope b IS gamma_hat; b→0 recovers SC, large b recovers CISC. RTC(b) is essentially a two-view special case of this machinery applied to a new object (one model's confidence channel). Reviewers will cite this; position explicitly rather than get scooped in rebuttal.",
+   "citation_hint": "Raykar et al., JMLR 11:1297-1322, 2010"
+  },
+  {
+   "name": "Spectral Meta-Learner (Parisi et al.)",
+   "key_idea": "Under conditional independence, the off-diagonal covariance of binary classifiers is rank-one; the leading eigenvector's entries are proportional to balanced accuracies, enabling label-free ranking/weighting. Sign of the eigenvector is unidentifiable and fixed by assuming mean balanced accuracy > 1/2.",
+   "relevance": "The seed's cited anchor — verified: Parisi, Strino, Nadler, Kluger, PNAS 111(4):1253-58, 2014 (arXiv 1303.3257). Direct application fails (one exchangeable 'classifier'), but the two-view analogue works: treat per-trace correctness as latent, with view A = agreement indicator 1[a_i = item majority] and view B = s_i; their cross-item covariance identifies the product of view reliabilities, and anchoring view A via the vote-margin distribution identifies the confidence channel's discrimination. Critically, RTC inherits SML's sign ambiguity: 'majority right + anti-correlated confidence' is statistically indistinguishable from 'majority wrong (echo) + correlated confidence' without labels — a fundamental identifiability limit, not an engineering gap.",
+   "citation_hint": "Parisi, Strino, Nadler, Kluger, PNAS 2014; arXiv 1303.3257"
+  },
+  {
+   "name": "Platanios agreement-rate accuracy estimation + Hui-Walter paradigm",
+   "key_idea": "Error rates of multiple predictors are identified from pairwise/higher-order agreement rates on unlabeled data under independent errors (moment matching); Bayesian and probabilistic-logic extensions relax assumptions. Hui-Walter (1980) is the two-test/no-gold-standard ancestor: two conditionally independent diagnostics identify both sensitivities.",
+   "relevance": "This is the principled justification for the seed's agreement proxy (idea 2): agreement-with-majority x confidence is exactly a Hui-Walter two-test design at the trace level. It also delimits validity: identification collapses when the two views' errors correlate — precisely the echo regime where high confidence attaches to the wrong majority. An online Bayesian Hui-Walter treatment exists (arXiv 2401.09376), relevant to the LABEL-FREE/ONLINE variant.",
+   "citation_hint": "Platanios, Blum, Mitchell, UAI 2014; Platanios et al., ICML 2016; NeurIPS 2017 (arXiv 1705.07086); Hui & Walter, Biometrics 36:167-171, 1980"
+  },
+  {
+   "name": "GLAD (item difficulty x worker ability)",
+   "key_idea": "p(correct) = sigmoid(alpha_worker * beta_item): jointly estimates worker ability and per-item difficulty/discriminability by EM, so hard items don't corrupt ability estimates.",
+   "relevance": "The template for the heterogeneous-per-item-kappa regime and for the margin-weighting mitigation: weighting the agreement proxy by item margin/stability is a GLAD-style move (down-weight low-beta items when estimating the channel's alpha). A full per-item gamma is data-starved at 40 traces/item; a two-level (global gamma + margin-weighted estimation) design is the realistic import.",
+   "citation_hint": "Whitehill et al., NeurIPS 2009"
+  },
+  {
+   "name": "Karger-Oh-Shah",
+   "key_idea": "Budget-optimal crowdsourcing via message passing on sparse random assignment graphs; reliability estimates are the leading singular vector of the worker-task matrix; minimax-optimal under the one-coin model.",
+   "relevance": "Conceptually adjacent (spectral reliability without labels), practically inapplicable: our 'assignment graph' is complete and exchangeable per item, so the sparse-graph machinery and its guarantees don't transfer. Cite for completeness; do not build on it.",
+   "citation_hint": "Karger, Oh, Shah, NeurIPS 2011; Operations Research 62(1):1-24, 2014"
+  },
+  {
+   "name": "Spectral methods meet EM (Zhang-Chen-Zhou-Jordan)",
+   "key_idea": "Method-of-moments (tensor) initialization of Dawid-Skene followed by EM achieves provably optimal rates for multiclass crowdsourcing.",
+   "relevance": "The standard recipe for the RTC label-free estimator: initialize gamma_hat by the two-view moment estimator (robust, closed-form), refine by Raykar-style EM (efficient). Also the source of finite-sample rate arguments if you want theory for the kappa≈0 shrinkage floor.",
+   "citation_hint": "Zhang, Chen, Zhou, Jordan, JMLR 17(102), 2016"
+  },
+  {
+   "name": "Unsupervised ensembles with DEPENDENT classifiers (Jaffe et al.)",
+   "key_idea": "Violations of conditional independence are detected label-free as deviations from the rank-one structure of the covariance matrix; a latent-group model then corrects accuracy estimates.",
+   "relevance": "The prior art for detecting echo. Adaptation: within-item, correlated errors show up as answer-cluster structure (dup/semantic similarity is already in TracePool) plus anomalously high confidence-agreement coupling on low-margin items. A Jaffe-style dependence diagnostic firing => clamp gamma_hat toward 0 (fallback to SC) is the natural mitigation and should be a named component, with the caveat that their fix estimates group structure across many classifiers, which exchangeability weakens here.",
+   "citation_hint": "Jaffe, Fetaya, Nadler, Jiang, Kluger, AISTATS 2016 (arXiv 1510.05830); also Jaffe, Nadler, Kluger, AISTATS 2015 (verify); Shaham et al., ICML 2016 (RBM ~ DS equivalence)"
+  },
+  {
+   "name": "Agreement-as-pseudo-label = learning with noisy labels",
+   "key_idea": "The agreement indicator is a noisy version of per-trace correctness with item-dependent flip rate rho_q = 1 - max(p_q, 1-p_q). Under class-conditional noise, correlations attenuate by (1-2*rho_bar) but preserve sign; AUC/ranking is provably robust to instance-independent label noise (Menon et al.). Sign flips only when noise is both >50% on a subset AND correlated with the score — the echo case.",
+   "relevance": "Gives the exact attenuation formula the seed asks to 'quantify': corr(s, agree) = (1-2*rho_bar)*corr(s, correct) + cov(s, noise) term. This is the analytical backbone for when the proxy is consistent (kappa sweep, regimes i, ii, iv) vs poisoned (regime iii). Noise-rate estimation via anchor points (Liu & Tao; Patrini) and confident learning (Northcutt) are the tools if you want to de-attenuate rather than just shrink.",
+   "citation_hint": "Natarajan et al., NeurIPS 2013; Menon et al., ICML 2015; Liu & Tao, TPAMI 2016; Patrini et al., CVPR 2017; Northcutt et al., JAIR 70:1373-1411, 2021"
+  },
+  {
+   "name": "Surprisingly Popular algorithm",
+   "key_idea": "Elicit both an answer and a prediction of the population's answer distribution; the answer more popular than predicted is correct even when the majority is systematically wrong — the only aggregation principle that provably survives majority-wrong regimes.",
+   "relevance": "The one known escape hatch from the echo identifiability limit, at the cost of an extra elicitation channel (per-trace meta-prediction: 'what fraction of samples will say X?'). LLM adaptations exist (verify recent 2024-25 'SP with LLMs' papers). Worth one harness regime as an optional mitigation baseline; if it rescues regime (iii) it is the strongest possible echo defense in the paper.",
+   "citation_hint": "Prelec, Seung, McCoy, Nature 541:532-535, 2017"
+  },
+  {
+   "name": "CISC — Confidence-Informed Self-Consistency (verified)",
+   "key_idea": "Weighted majority vote with within-question softmax-normalized confidence (WQN) at a temperature; also introduces Within-Question Discrimination (WQD) — essentially within-item AUC of confidence for correctness — explicitly arguing discrimination, not calibration, is the right metric for this use.",
+   "relevance": "The baseline RTC must anchor to, AND prior art for two of the four seed ideas: seed idea 1 (within-item normalization — WQN already does softmax over trace confidences within an item; the rank/z-score version adds full monotone invariance but is an increment) and seed idea 4 (discrimination-not-ECE — already articulated as WQD in the CISC paper itself; verify section, but I am confident it exists). CISC's temperature is fixed/dev-swept, never reliability-adaptive, and the paper never tests anti-correlated confidence — that is RTC's opening. Note their ablation sweeping temperature per dataset IS the F4 'dev-picked fixed gamma' baseline; run it as they specify.",
+   "citation_hint": "Taubenfeld et al., ACL 2025 Findings, arXiv 2502.06233"
+  },
+  {
+   "name": "DeepConf (verified)",
+   "key_idea": "Token-level internal confidence used to filter low-confidence traces (top-eta% kept) plus confidence-weighted voting; fixed percentile thresholds, no learned trust in the signal.",
+   "relevance": "A second strong confidence-using baseline that, like CISC, implicitly assumes the confidence channel is trustworthy and should collapse under kappa_c<0 — strengthening the empirical case that nobody guards this failure mode. Its filtering (as opposed to weighting) also probes regime (iv) (informative only in tails).",
+   "citation_hint": "Fu, ..., Zhao et al. (Meta), arXiv 2508.15260, 2025"
+  },
+  {
+   "name": "Confidence-driven adaptive sampling / stopping (ReASC, RASC, Adaptive-Consistency, ESC, self-certainty BoN)",
+   "key_idea": "Use per-trace confidence or vote-margin dynamics to decide how many samples to draw or when to stop, treating confidence as reliable evidence weight.",
+   "relevance": "ORTHOGONAL axis (budget, not trust) but must be positioned for two reasons: (1) naming collision — 'Reliability-Aware Adaptive Self-Consistency' (ReASC, arXiv 2601.02970, Jan 2026, verified) sounds like RTC but uses confidence to modulate evidence accumulation for early stopping and does not estimate the channel's reliability or handle anti-correlation; (2) the sibling project already showed RASC-lite collapses to 0.062 on R5, the motivating exhibit. Consider renaming RTC to avoid the collision.",
+   "citation_hint": "ReASC arXiv 2601.02970; RASC arXiv 2408.17017 (verify); Aggarwal et al., EMNLP 2023 (arXiv 2305.11860); self-certainty arXiv 2502.18581"
+  },
+  {
+   "name": "Verbalized-confidence reliability literature",
+   "key_idea": "LLM verbalized/elicited confidences are systematically overconfident and miscalibrated yet retain nonzero discrimination; quality varies wildly by model, task, and elicitation format.",
+   "relevance": "Empirical grounding that the kappa_c sweep is realistic: real channels live at unknown, sometimes near-zero or negative, discrimination — the very premise of RTC. Also justifies the rank transform: verbalized confidences are lumpy (mass on 0.8/0.9), which distorts raw-value weighting but not ranks (though ties degrade ranks; see risks).",
+   "citation_hint": "Tian et al., EMNLP 2023 (arXiv 2305.14975, verify); Xiong et al., ICLR 2024 (arXiv 2306.13063, verify); Kadavath et al. 2022 (p(True))"
+  },
+  {
+   "name": "Empirical-Bayes shrinkage / fractional Kelly",
+   "key_idea": "James-Stein/Efron-Morris: shrink noisy effect estimates toward a null in proportion to their estimated noise; positive-part JS never overshoots. Fractional Kelly: bet a fraction of the optimal stake proportional to confidence in your edge estimate.",
+   "relevance": "The exact template for seed idea 3's mapping g(): gamma_hat = gamma_max * max(0, 1 - c*Var(r_hat)/r_hat^2) (positive-part shrinkage of the estimated point-biserial/AUC-derived association), giving gamma_hat=0 at zero estimated reliability (SC anchor) and gamma_hat→gamma_CISC at high SNR (CISC anchor). Prior art for the mapping's FORM; its application to a vote-weight exponent is not previously published to my knowledge.",
+   "citation_hint": "James & Stein 1961; Efron & Morris, JASA 70:311-319, 1975; Kelly 1956; MacLean, Thorp, Ziemba 2011"
+  },
+  {
+   "name": "Correlated errors in LLM ensembles / LLM-as-annotator crowdsourcing",
+   "key_idea": "Panels of distinct LLM judges share failure modes: a 9-judge panel carries ~2 effective independent votes (Apple 2026); Dawid-Skene extensions treating LLMs as annotators with probability outputs exist (NeurIPS 2024 Bayesian crowdsourcing-truths-from-LLMs).",
+   "relevance": "(a) Evidence that the echo regime is the realistic default, not an adversarial corner — within one model, traces are even more correlated than across models; (b) the closest LLM-era crowdsourcing-aggregation work operates across MODELS, not across exchangeable traces of one model, and none of it tempers a confidence channel — supports the novelty claim's precise wording.",
+   "citation_hint": "Apple, 'Nine Judges, Two Effective Votes', arXiv 2605.29800 (verify number); 'A Bayesian Approach Towards Crowdsourcing the Truths from LLMs', NeurIPS 2024 (verify); NTQR arXiv 2312.05392"
+  },
+  {
+   "name": "DiVeRSe / trained-verifier weighted voting",
+   "key_idea": "Train a verifier on labeled data to score reasoning paths; vote weighted by verifier score.",
+   "relevance": "Ancestor of the DEV-CALIBRATED variant taken to the extreme (a whole learned model instead of one scalar gamma). RTC(a)'s selling point against it is sample efficiency (one scalar from a small dev split) and the anchored SC/CISC interpolation guarantee.",
+   "citation_hint": "Li et al., ACL 2023, arXiv 2206.02336 (verify); also Soft Self-Consistency, Wang et al., ACL 2024 (verify)"
+  }
+ ],
+ "novelty_assessment": "Already published, name-by-name: (1) Confidence-weighted SC voting — CISC (arXiv 2502.06233), DiVeRSe, Soft-SC, DeepConf (arXiv 2508.15260). (2) Seed idea 4's core claim (discrimination, not calibration, is the right reliability metric here) is ALREADY IN THE CISC PAPER as their Within-Question Discrimination (WQD) metric — you cannot present it as a contribution, only operationalize it as a control signal. (3) Seed idea 1 (within-item normalization) is substantially anticipated by CISC's within-question softmax normalization; the rank/z-score version adds exact monotone invariance and is worth keeping, but it is an increment, not a pillar. (4) The label-free estimation machinery is mature: Raykar et al. 2010 (EM over latent truth + logistic slope on a covariate — the label-free RTC variant is very nearly a two-view special case of this, with the slope playing gamma), Platanios agreement-rates/Hui-Walter two-test identification (the agreement proxy is a textbook instance), Parisi et al. PNAS 2014 SML, Zhang et al. JMLR 2016 spectral+EM. (5) The echo failure and its label-free detection are known in general form (Jaffe et al. AISTATS 2016; Platanios NeurIPS 2017; for LLM panels, Apple's nine-judges 2026 paper). What I could NOT find anywhere (training knowledge to Jan 2026 plus targeted searches through July 2026): an algorithm that estimates the reliability (sign + discrimination strength) of the confidence channel itself — dev-calibrated or from unlabeled traffic — and uses it to continuously interpolate between SC and CISC with anchor-point and never-below-SC properties; nothing tests confidence-weighted SC under anti-correlated confidence at all. ReASC (arXiv 2601.02970, Jan 2026) sounds identical by name but is adaptive sampling/stopping, orthogonal to channel trust — rename RTC or collide. The crowdsourcing literature does NOT already solve our label-free estimation problem in an equivalent setting: its estimators assume multiple non-exchangeable predictors, whereas here all traces come from one model, collapsing the covariance structure to a two-view (agreement x confidence) problem with an inherited, provably unresolvable sign ambiguity under echo (SML's mean-balanced-accuracy>1/2 assumption in new clothes) — only extra channels (Prelec's surprisingly-popular meta-predictions) escape it. Net: RTC is a novel, well-motivated combination — publishable if and only if the falsifiers survive, especially F4 against CISC-with-dev-tuned-temperature (which CISC's own ablations already contain) and against a binary discrimination (WQD/AUC) gate, which is the obvious crude competitor nobody has published either. The honest headline contribution is the adversarially-robust confidence-usage frontier and the identifiability analysis, not the estimation machinery.",
+ "recommended_baselines": [
+  "Plain SC (majority vote, equal weights)",
+  "CISC with per-dataset dev-tuned softmax temperature (their own ablation protocol) — this IS the F4 'dev-picked fixed gamma' baseline; run it exactly as specified in arXiv 2502.06233",
+  "Binary ECE gate (the sibling project's prior method) — required for F3",
+  "Binary DISCRIMINATION gate: enable CISC iff dev WQD/AUC > 0.5 + tau; isolates 'continuous vs binary tempering' from 'discrimination vs calibration' — the single most dangerous baseline for F4",
+  "Dev-picked fixed gamma from grid {0, 0.25, 0.5, 1, 2}",
+  "Oracle per-regime gamma (ground-truth-tuned upper envelope)",
+  "Raykar-style EM: latent item answer + logistic p(correct | within-item rank of c), slope = label-free gamma_hat — the strongest label-free competitor and the fairest representative of prior crowdsourcing machinery",
+  "Two-view moment estimator (Hui-Walter / Platanios style): covariance of agreement indicator with rank(c), margin-weighted, with positive-part shrinkage — likely a component of RTC(b) itself, so ablate it as a standalone",
+  "Vanilla Dawid-Skene EM over deduped answer clusters (expected to ~tie SC; include to demonstrate the degeneracy argument empirically)",
+  "DeepConf-style top-eta% confidence filtering + weighted vote (arXiv 2508.15260)",
+  "RTC with Jaffe-style dependence diagnostic ON vs OFF (echo-regime ablation)",
+  "Optional: surprisingly-popular vote using an added per-trace meta-prediction channel (Prelec et al. 2017) — the only baseline that can in principle survive regime (iii)"
+ ],
+ "risks": [
+  "F4 failure is genuinely likely: weighted-vote accuracy is typically flat in gamma over wide ranges, so a binary dev-AUC gate or CISC's dev-tuned temperature may match RTC's entire frontier; pre-register and be prepared to publish the negative result.",
+  "G2 for the label-free variant cannot be a theorem: under exchangeable traces, 'majority right + anti-correlated confidence' and 'echo-wrong majority + correlated confidence' are observationally equivalent, so any label-free sign estimate can be confidently wrong in regime (iii); state G2(b) as an empirical claim under a majority-competence assumption, or secure the sign from the dev split (making variant (b) only semi-label-free for the sign bit).",
+  "Near-zero-kappa jitter: at kappa_c in {-0.1, 0, +0.1} the estimator's sampling noise can make gamma_hat oscillate and drop RTC below SC (violating F2) unless positive-part shrinkage plus a significance floor is used; this is where the 400-item/40-trace budget actually binds.",
+  "Heterogeneous per-item kappa (regime i) breaks the single-global-gamma model; a GLAD-style per-item extension is data-starved at 40 traces/item — scope the claim to a global channel reliability and show graceful (not optimal) behavior under heterogeneity.",
+  "Positioning risk: reviewers can frame RTC as 'Raykar 2010 EM applied to self-consistency' plus 'CISC's own WQD metric with a shrinkage knob'; the paper must lead with the anti-correlated-confidence frontier, the identifiability limit, and the falsifier discipline, not the machinery.",
+  "Name collision: ReASC ('Reliability-Aware Adaptive Self-Consistency', arXiv 2601.02970) already occupies adjacent naming space; rename or explicitly disambiguate in the abstract.",
+  "Sim-to-real gap: the linear-Gaussian confidence model is friendly to rank statistics; real verbalized confidences are discrete and tie-heavy (mass at 0.8/0.9), degrading within-item ranks at m=40 — add a tie-heavy/lumpy-confidence regime, and note the agreement proxy also depends on answer-equivalence clustering whose errors correlate with echo.",
+  "Several citations flagged '(verify)' (RASC number, DiVeRSe number, Tian/Xiong arXiv ids, Apple nine-judges id 2605.29800, NeurIPS 2024 Bayesian LLM-crowdsourcing, exact CISC WQD section) must be checked before submission; the load-bearing ones (CISC 2502.06233, Parisi PNAS 2014, Jaffe 1510.05830, Platanios ICML 2016/NeurIPS 2017, Zhang JMLR 2016, DeepConf 2508.15260, ReASC 2601.02970) are verified."
+ ]
+}

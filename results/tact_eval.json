@@ -1,0 +1,1422 @@
+{
+  "config": {
+    "items": 400,
+    "k": 15,
+    "k_max": 20,
+    "seed": 0,
+    "out": "results/tact_eval.json"
+  },
+  "sweep_dev200": [
+    {
+      "acc": {
+        "SC": 0.8075,
+        "CISC(g=0.25)": 0.535,
+        "CISC(g=0.5)": 0.31,
+        "CISC(g=1.0)": 0.06,
+        "CISC(g=2.0)": 0.0,
+        "CISC(g=4.0)": 0.0,
+        "ECE-gate": 0.8075,
+        "CISC-devT": 0.8075,
+        "SignGrid-dev": 1.0,
+        "TACT-dev": 1.0,
+        "TACT-LF": 1.0,
+        "TACT-semi": 1.0
+      },
+      "oracle": {
+        "acc": 1.0,
+        "gamma": -4.0
+      },
+      "gamma": {
+        "TACT-dev": -4.0,
+        "TACT-LF": -2.0,
+        "TACT-semi": -2.0,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": -4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -1.0,
+        "se": 0.02274050389350762,
+        "z": -43.97439936612392,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": -0.8064791133844842,
+        "se_raw": 0.04581233527419102,
+        "z_raw": -17.603973003289024,
+        "alpha_split_half": 0.710077519379845,
+        "k_eff_wrong": 2.429008303453225,
+        "p_hat": 0.8360707112046698,
+        "attenuation_used": 0.7103525499501276,
+        "psi_margin_decoupling": -0.5717470934862239,
+        "n_gated": 129
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 77,
+          "b_only": 0,
+          "p_value": 1.3234889800848443e-23
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 77,
+          "b_only": 0,
+          "p_value": 1.3234889800848443e-23
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 77,
+          "b_only": 0,
+          "p_value": 1.3234889800848443e-23
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 77,
+          "b_only": 0,
+          "p_value": 1.3234889800848443e-23
+        }
+      },
+      "kappa_c": -0.6
+    },
+    {
+      "acc": {
+        "SC": 0.7975,
+        "CISC(g=0.25)": 0.6,
+        "CISC(g=0.5)": 0.455,
+        "CISC(g=1.0)": 0.2075,
+        "CISC(g=2.0)": 0.0125,
+        "CISC(g=4.0)": 0.0,
+        "ECE-gate": 0.7975,
+        "CISC-devT": 0.7975,
+        "SignGrid-dev": 1.0,
+        "TACT-dev": 1.0,
+        "TACT-LF": 1.0,
+        "TACT-semi": 1.0
+      },
+      "oracle": {
+        "acc": 1.0,
+        "gamma": -4.0
+      },
+      "gamma": {
+        "TACT-dev": -4.0,
+        "TACT-LF": -2.0,
+        "TACT-semi": -2.0,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": -4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -0.9944080215966062,
+        "se": 0.02267608675801221,
+        "z": -43.852717279150866,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": -0.7616492516238351,
+        "se_raw": 0.04668179149164071,
+        "z_raw": -16.315767396378167,
+        "alpha_split_half": 0.7180769230769231,
+        "k_eff_wrong": 2.413761000900993,
+        "p_hat": 0.8412078145065225,
+        "attenuation_used": 0.7276843288527791,
+        "psi_margin_decoupling": -0.3143006809848088,
+        "n_gated": 130
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 81,
+          "b_only": 0,
+          "p_value": 8.271806125530277e-25
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 81,
+          "b_only": 0,
+          "p_value": 8.271806125530277e-25
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 81,
+          "b_only": 0,
+          "p_value": 8.271806125530277e-25
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 81,
+          "b_only": 0,
+          "p_value": 8.271806125530277e-25
+        }
+      },
+      "kappa_c": -0.4
+    },
+    {
+      "acc": {
+        "SC": 0.835,
+        "CISC(g=0.25)": 0.7225,
+        "CISC(g=0.5)": 0.6575,
+        "CISC(g=1.0)": 0.5525,
+        "CISC(g=2.0)": 0.2675,
+        "CISC(g=4.0)": 0.07,
+        "ECE-gate": 0.835,
+        "CISC-devT": 0.835,
+        "SignGrid-dev": 0.9925,
+        "TACT-dev": 0.9775,
+        "TACT-LF": 0.9775,
+        "TACT-semi": 0.9775
+      },
+      "oracle": {
+        "acc": 0.9925,
+        "gamma": -4.0
+      },
+      "gamma": {
+        "TACT-dev": -2.7776682079984476,
+        "TACT-LF": -2.0,
+        "TACT-semi": -2.0,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": -4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -0.8393096836049856,
+        "se": 0.02261294933856331,
+        "z": -37.11632972058435,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": -0.6901960784313725,
+        "se_raw": 0.037858918111175484,
+        "z_raw": -18.23073962136375,
+        "alpha_split_half": 0.731679389312977,
+        "k_eff_wrong": 2.480939753089422,
+        "p_hat": 0.8500698118898101,
+        "attenuation_used": 0.7401747624405017,
+        "psi_margin_decoupling": -0.5791186039633245,
+        "n_gated": 131
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 6,
+          "p_value": 0.03125
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 61,
+          "b_only": 4,
+          "p_value": 3.918664438079533e-14
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 61,
+          "b_only": 4,
+          "p_value": 3.918664438079533e-14
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 61,
+          "b_only": 4,
+          "p_value": 3.918664438079533e-14
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 61,
+          "b_only": 4,
+          "p_value": 3.918664438079533e-14
+        }
+      },
+      "kappa_c": -0.2
+    },
+    {
+      "acc": {
+        "SC": 0.7625,
+        "CISC(g=0.25)": 0.67,
+        "CISC(g=0.5)": 0.655,
+        "CISC(g=1.0)": 0.5625,
+        "CISC(g=2.0)": 0.4275,
+        "CISC(g=4.0)": 0.2525,
+        "ECE-gate": 0.7625,
+        "CISC-devT": 0.7625,
+        "SignGrid-dev": 0.8925,
+        "TACT-dev": 0.88,
+        "TACT-LF": 0.885,
+        "TACT-semi": 0.885
+      },
+      "oracle": {
+        "acc": 0.8925,
+        "gamma": -4.0
+      },
+      "gamma": {
+        "TACT-dev": -1.13778930415484,
+        "TACT-LF": -1.0856533340282213,
+        "TACT-semi": -1.0856533340282213,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": -4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -0.5291375291375291,
+        "se": 0.022759624733297297,
+        "z": -23.248956665063183,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": -0.43508032657361073,
+        "se_raw": 0.030146268149470388,
+        "z_raw": -14.432311303555304,
+        "alpha_split_half": 0.7521582733812949,
+        "k_eff_wrong": 2.4534051609062075,
+        "p_hat": 0.8628383546801416,
+        "attenuation_used": 0.7603899406760403,
+        "psi_margin_decoupling": -0.2896483547521536,
+        "n_gated": 139
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 7,
+          "b_only": 12,
+          "p_value": 0.359283447265625
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 63,
+          "b_only": 16,
+          "p_value": 9.439221273488043e-08
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 63,
+          "b_only": 16,
+          "p_value": 9.439221273488043e-08
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 64,
+          "b_only": 15,
+          "p_value": 2.3034395557043568e-08
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 64,
+          "b_only": 15,
+          "p_value": 2.3034395557043568e-08
+        }
+      },
+      "kappa_c": -0.1
+    },
+    {
+      "acc": {
+        "SC": 0.835,
+        "CISC(g=0.25)": 0.75,
+        "CISC(g=0.5)": 0.75,
+        "CISC(g=1.0)": 0.7475,
+        "CISC(g=2.0)": 0.735,
+        "CISC(g=4.0)": 0.6825,
+        "ECE-gate": 0.835,
+        "CISC-devT": 0.835,
+        "SignGrid-dev": 0.835,
+        "TACT-dev": 0.835,
+        "TACT-LF": 0.835,
+        "TACT-semi": 0.835
+      },
+      "oracle": {
+        "acc": 0.835,
+        "gamma": 0.0
+      },
+      "gamma": {
+        "TACT-dev": 0.0,
+        "TACT-LF": 0.0,
+        "TACT-semi": 0.0,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": 0.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -0.0007736943907156638,
+        "se": 0.022852734385508385,
+        "z": -0.03385565935629511,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": -0.010829296095753766,
+        "se_raw": 0.027567201584687395,
+        "z_raw": -0.3928326225817951,
+        "alpha_split_half": 0.75,
+        "k_eff_wrong": 2.4579951079757913,
+        "p_hat": 0.8615085244905676,
+        "attenuation_used": 0.7621544220989676,
+        "psi_margin_decoupling": -0.06666666666666665,
+        "n_gated": 128
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        }
+      },
+      "kappa_c": 0.0
+    },
+    {
+      "acc": {
+        "SC": 0.795,
+        "CISC(g=0.25)": 0.79,
+        "CISC(g=0.5)": 0.8,
+        "CISC(g=1.0)": 0.845,
+        "CISC(g=2.0)": 0.89,
+        "CISC(g=4.0)": 0.9175,
+        "ECE-gate": 0.795,
+        "CISC-devT": 0.9175,
+        "SignGrid-dev": 0.9175,
+        "TACT-dev": 0.9025,
+        "TACT-LF": 0.9025,
+        "TACT-semi": 0.9025
+      },
+      "oracle": {
+        "acc": 0.9175,
+        "gamma": 4.0
+      },
+      "gamma": {
+        "TACT-dev": 1.058411622141445,
+        "TACT-LF": 1.0625675956506722,
+        "TACT-semi": 1.0625675956506722,
+        "CISC-devT": 4.0,
+        "SignGrid-dev": 4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": 0.5029013539651838,
+        "se": 0.022711148374248088,
+        "z": 22.143369664891885,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.44485608435451696,
+        "se_raw": 0.03386167770165617,
+        "z_raw": 13.13744960524384,
+        "alpha_split_half": 0.7686046511627908,
+        "k_eff_wrong": 2.3613540963320947,
+        "p_hat": 0.872783440515624,
+        "attenuation_used": 0.7869700836844264,
+        "psi_margin_decoupling": -0.47678571428571426,
+        "n_gated": 129
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 8,
+          "b_only": 14,
+          "p_value": 0.28627872467041016
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 8,
+          "b_only": 14,
+          "p_value": 0.28627872467041016
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 55,
+          "b_only": 12,
+          "p_value": 1.0273195443541004e-07
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 55,
+          "b_only": 12,
+          "p_value": 1.0273195443541004e-07
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 55,
+          "b_only": 12,
+          "p_value": 1.0273195443541004e-07
+        }
+      },
+      "kappa_c": 0.1
+    },
+    {
+      "acc": {
+        "SC": 0.845,
+        "CISC(g=0.25)": 0.845,
+        "CISC(g=0.5)": 0.8775,
+        "CISC(g=1.0)": 0.925,
+        "CISC(g=2.0)": 0.9725,
+        "CISC(g=4.0)": 0.9925,
+        "ECE-gate": 0.845,
+        "CISC-devT": 0.9925,
+        "SignGrid-dev": 0.9925,
+        "TACT-dev": 0.9875,
+        "TACT-LF": 0.9875,
+        "TACT-semi": 0.9875
+      },
+      "oracle": {
+        "acc": 0.9925,
+        "gamma": 4.0
+      },
+      "gamma": {
+        "TACT-dev": 2.7950121203723124,
+        "TACT-LF": 2.0,
+        "TACT-semi": 2.0,
+        "CISC-devT": 4.0,
+        "SignGrid-dev": 4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": 0.8413035094485153,
+        "se": 0.02267608675801221,
+        "z": 37.100912446952734,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.6743732590529248,
+        "se_raw": 0.036909592166547996,
+        "z_raw": 18.270948538524483,
+        "alpha_split_half": 0.75,
+        "k_eff_wrong": 2.383806798227344,
+        "p_hat": 0.8613573706062475,
+        "attenuation_used": 0.7624105382644142,
+        "psi_margin_decoupling": -0.5925849212924607,
+        "n_gated": 131
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 2,
+          "b_only": 4,
+          "p_value": 0.6875
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 2,
+          "b_only": 4,
+          "p_value": 0.6875
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 60,
+          "b_only": 3,
+          "p_value": 9.048317650695026e-15
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 60,
+          "b_only": 3,
+          "p_value": 9.048317650695026e-15
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 60,
+          "b_only": 3,
+          "p_value": 9.048317650695026e-15
+        }
+      },
+      "kappa_c": 0.2
+    },
+    {
+      "acc": {
+        "SC": 0.8375,
+        "CISC(g=0.25)": 0.905,
+        "CISC(g=0.5)": 0.9525,
+        "CISC(g=1.0)": 0.99,
+        "CISC(g=2.0)": 1.0,
+        "CISC(g=4.0)": 1.0,
+        "ECE-gate": 0.8375,
+        "CISC-devT": 1.0,
+        "SignGrid-dev": 1.0,
+        "TACT-dev": 1.0,
+        "TACT-LF": 1.0,
+        "TACT-semi": 1.0
+      },
+      "oracle": {
+        "acc": 1.0,
+        "gamma": 2.0
+      },
+      "gamma": {
+        "TACT-dev": 4.0,
+        "TACT-LF": 2.0,
+        "TACT-semi": 2.0,
+        "CISC-devT": 2.0,
+        "SignGrid-dev": 2.0
+      },
+      "tact_dev_diag": {
+        "d_hat": 0.9978524014057009,
+        "se": 0.022817317157245453,
+        "z": 43.73224049650557,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.7416617905207724,
+        "se_raw": 0.052058080684025024,
+        "z_raw": 14.246813958094405,
+        "alpha_split_half": 0.7353174603174604,
+        "k_eff_wrong": 2.343217039882944,
+        "p_hat": 0.8520415962711845,
+        "attenuation_used": 0.7451462203141822,
+        "psi_margin_decoupling": -0.5138888888888888,
+        "n_gated": 126
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 65,
+          "b_only": 0,
+          "p_value": 5.421010862427522e-20
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 65,
+          "b_only": 0,
+          "p_value": 5.421010862427522e-20
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 65,
+          "b_only": 0,
+          "p_value": 5.421010862427522e-20
+        }
+      },
+      "kappa_c": 0.4
+    },
+    {
+      "acc": {
+        "SC": 0.7825,
+        "CISC(g=0.25)": 0.8875,
+        "CISC(g=0.5)": 0.9625,
+        "CISC(g=1.0)": 0.9975,
+        "CISC(g=2.0)": 1.0,
+        "CISC(g=4.0)": 1.0,
+        "ECE-gate": 0.7825,
+        "CISC-devT": 1.0,
+        "SignGrid-dev": 1.0,
+        "TACT-dev": 1.0,
+        "TACT-LF": 1.0,
+        "TACT-semi": 1.0
+      },
+      "oracle": {
+        "acc": 1.0,
+        "gamma": 2.0
+      },
+      "gamma": {
+        "TACT-dev": 4.0,
+        "TACT-LF": 2.0,
+        "TACT-semi": 2.0,
+        "CISC-devT": 2.0,
+        "SignGrid-dev": 2.0
+      },
+      "tact_dev_diag": {
+        "d_hat": 1.0,
+        "se": 0.022626356534936082,
+        "z": 44.1962451380962,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.8215446138465383,
+        "se_raw": 0.04031687179874787,
+        "z_raw": 20.377191413745877,
+        "alpha_split_half": 0.7622448979591837,
+        "k_eff_wrong": 2.4245735006279947,
+        "p_hat": 0.8690036517106687,
+        "attenuation_used": 0.7698301486509681,
+        "psi_margin_decoupling": -0.5453190220632081,
+        "n_gated": 147
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 87,
+          "b_only": 0,
+          "p_value": 1.2924697071141057e-26
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 87,
+          "b_only": 0,
+          "p_value": 1.2924697071141057e-26
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 87,
+          "b_only": 0,
+          "p_value": 1.2924697071141057e-26
+        }
+      },
+      "kappa_c": 0.6
+    }
+  ],
+  "sweep_dev50": [
+    {
+      "acc": {
+        "SC": 0.7975,
+        "CISC(g=0.25)": 0.51,
+        "CISC(g=0.5)": 0.3025,
+        "CISC(g=1.0)": 0.03,
+        "CISC(g=2.0)": 0.0,
+        "CISC(g=4.0)": 0.0,
+        "ECE-gate": 0.7975,
+        "CISC-devT": 0.7975,
+        "SignGrid-dev": 1.0,
+        "TACT-dev": 1.0,
+        "TACT-LF": 1.0,
+        "TACT-semi": 1.0
+      },
+      "oracle": {
+        "acc": 1.0,
+        "gamma": -4.0
+      },
+      "gamma": {
+        "TACT-dev": -4.0,
+        "TACT-LF": -2.0,
+        "TACT-semi": -2.0,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": -4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -1.0,
+        "se": 0.04560627741711359,
+        "z": -21.92680605904383,
+        "n_items": 50
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": -0.9071286566316388,
+        "se_raw": 0.032436441858076495,
+        "z_raw": -27.96634293615558,
+        "alpha_split_half": 0.7476923076923077,
+        "k_eff_wrong": 2.4171990213619505,
+        "p_hat": 0.8599898694307209,
+        "attenuation_used": 0.7544615078150005,
+        "psi_margin_decoupling": -0.5,
+        "n_gated": 130
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 81,
+          "b_only": 0,
+          "p_value": 8.271806125530277e-25
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 81,
+          "b_only": 0,
+          "p_value": 8.271806125530277e-25
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 81,
+          "b_only": 0,
+          "p_value": 8.271806125530277e-25
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 81,
+          "b_only": 0,
+          "p_value": 8.271806125530277e-25
+        }
+      },
+      "kappa_c": -0.6
+    },
+    {
+      "acc": {
+        "SC": 0.8175,
+        "CISC(g=0.25)": 0.7175,
+        "CISC(g=0.5)": 0.6425,
+        "CISC(g=1.0)": 0.5,
+        "CISC(g=2.0)": 0.2525,
+        "CISC(g=4.0)": 0.0425,
+        "ECE-gate": 0.8175,
+        "CISC-devT": 0.8175,
+        "SignGrid-dev": 0.99,
+        "TACT-dev": 0.9775,
+        "TACT-LF": 0.9775,
+        "TACT-semi": 0.9775
+      },
+      "oracle": {
+        "acc": 0.99,
+        "gamma": -4.0
+      },
+      "gamma": {
+        "TACT-dev": -2.64505467593829,
+        "TACT-LF": -2.0,
+        "TACT-semi": -2.0,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": -4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -0.8298039215686275,
+        "se": 0.045732956038002356,
+        "z": -18.144550308077434,
+        "n_items": 50
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": -0.7290480065093572,
+        "se_raw": 0.03559423148970259,
+        "z_raw": -20.482195456875388,
+        "alpha_split_half": 0.73125,
+        "k_eff_wrong": 2.386567762473257,
+        "p_hat": 0.8495693135193234,
+        "attenuation_used": 0.7413385121855427,
+        "psi_margin_decoupling": -0.3893557422969188,
+        "n_gated": 136
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 4,
+          "b_only": 9,
+          "p_value": 0.266845703125
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 71,
+          "b_only": 7,
+          "p_value": 1.933200757632093e-14
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 71,
+          "b_only": 7,
+          "p_value": 1.933200757632093e-14
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 71,
+          "b_only": 7,
+          "p_value": 1.933200757632093e-14
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 71,
+          "b_only": 7,
+          "p_value": 1.933200757632093e-14
+        }
+      },
+      "kappa_c": -0.2
+    },
+    {
+      "acc": {
+        "SC": 0.795,
+        "CISC(g=0.25)": 0.795,
+        "CISC(g=0.5)": 0.84,
+        "CISC(g=1.0)": 0.885,
+        "CISC(g=2.0)": 0.9475,
+        "CISC(g=4.0)": 0.9775,
+        "ECE-gate": 0.795,
+        "CISC-devT": 0.9775,
+        "SignGrid-dev": 0.9775,
+        "TACT-dev": 0.96,
+        "TACT-LF": 0.965,
+        "TACT-semi": 0.965
+      },
+      "oracle": {
+        "acc": 0.9775,
+        "gamma": 4.0
+      },
+      "gamma": {
+        "TACT-dev": 3.0089227984824136,
+        "TACT-LF": 1.7605678011239807,
+        "TACT-semi": 1.7605678011239807,
+        "CISC-devT": 4.0,
+        "SignGrid-dev": 4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": 0.863349131121643,
+        "se": 0.04589522605476761,
+        "z": 18.811305779197877,
+        "n_items": 50
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.619821283509342,
+        "se_raw": 0.0437817429071602,
+        "z_raw": 14.157071928901544,
+        "alpha_split_half": 0.7488970588235294,
+        "k_eff_wrong": 2.447072603580808,
+        "p_hat": 0.8608013216246282,
+        "attenuation_used": 0.7664753820070571,
+        "psi_margin_decoupling": -0.5260556418584945,
+        "n_gated": 136
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 2,
+          "b_only": 9,
+          "p_value": 0.0654296875
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 2,
+          "b_only": 9,
+          "p_value": 0.0654296875
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 74,
+          "b_only": 8,
+          "p_value": 1.647020623262653e-14
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 74,
+          "b_only": 6,
+          "p_value": 5.396645380673323e-16
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 74,
+          "b_only": 6,
+          "p_value": 5.396645380673323e-16
+        }
+      },
+      "kappa_c": 0.2
+    },
+    {
+      "acc": {
+        "SC": 0.8025,
+        "CISC(g=0.25)": 0.9075,
+        "CISC(g=0.5)": 0.965,
+        "CISC(g=1.0)": 0.995,
+        "CISC(g=2.0)": 1.0,
+        "CISC(g=4.0)": 1.0,
+        "ECE-gate": 0.8025,
+        "CISC-devT": 1.0,
+        "SignGrid-dev": 1.0,
+        "TACT-dev": 1.0,
+        "TACT-LF": 1.0,
+        "TACT-semi": 1.0
+      },
+      "oracle": {
+        "acc": 1.0,
+        "gamma": 2.0
+      },
+      "gamma": {
+        "TACT-dev": 4.0,
+        "TACT-LF": 2.0,
+        "TACT-semi": 2.0,
+        "CISC-devT": 2.0,
+        "SignGrid-dev": 2.0
+      },
+      "tact_dev_diag": {
+        "d_hat": 1.0,
+        "se": 0.045804863245991714,
+        "z": 21.831742944620796,
+        "n_items": 50
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.8821934317565532,
+        "se_raw": 0.03636550039936517,
+        "z_raw": 24.25907582924264,
+        "alpha_split_half": 0.7622950819672131,
+        "k_eff_wrong": 2.366288225757727,
+        "p_hat": 0.8689273560082518,
+        "attenuation_used": 0.776520487169676,
+        "psi_margin_decoupling": -0.5548494059132357,
+        "n_gated": 122
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 79,
+          "b_only": 0,
+          "p_value": 3.308722450212111e-24
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 79,
+          "b_only": 0,
+          "p_value": 3.308722450212111e-24
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 79,
+          "b_only": 0,
+          "p_value": 3.308722450212111e-24
+        }
+      },
+      "kappa_c": 0.6
+    }
+  ],
+  "adversarial": {
+    "monotone_compress": {
+      "acc": {
+        "SC": 0.795,
+        "CISC(g=0.25)": 0.795,
+        "CISC(g=0.5)": 0.795,
+        "CISC(g=1.0)": 0.815,
+        "CISC(g=2.0)": 0.8825,
+        "CISC(g=4.0)": 0.965,
+        "ECE-gate": 0.795,
+        "CISC-devT": 0.965,
+        "SignGrid-dev": 0.965,
+        "TACT-dev": 1.0,
+        "TACT-LF": 1.0,
+        "TACT-semi": 1.0
+      },
+      "oracle": {
+        "acc": 0.965,
+        "gamma": 4.0
+      },
+      "gamma": {
+        "TACT-dev": 4.0,
+        "TACT-LF": 2.0,
+        "TACT-semi": 2.0,
+        "CISC-devT": 4.0,
+        "SignGrid-dev": 4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": 1.0,
+        "se": 0.022607658706146685,
+        "z": 44.232797964528494,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.729602510460251,
+        "se_raw": 0.05091547831620245,
+        "z_raw": 14.329679983151117,
+        "alpha_split_half": 0.7253571428571428,
+        "k_eff_wrong": 2.4300206214130173,
+        "p_hat": 0.845924323253397,
+        "attenuation_used": 0.7313097526000887,
+        "psi_margin_decoupling": -0.30373037303730366,
+        "n_gated": 140
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 14,
+          "b_only": 0,
+          "p_value": 0.0001220703125
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 14,
+          "b_only": 0,
+          "p_value": 0.0001220703125
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 82,
+          "b_only": 0,
+          "p_value": 4.1359030627651384e-25
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 82,
+          "b_only": 0,
+          "p_value": 4.1359030627651384e-25
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 82,
+          "b_only": 0,
+          "p_value": 4.1359030627651384e-25
+        }
+      }
+    },
+    "monotone_overconf": {
+      "acc": {
+        "SC": 0.795,
+        "CISC(g=0.25)": 0.9525,
+        "CISC(g=0.5)": 0.985,
+        "CISC(g=1.0)": 1.0,
+        "CISC(g=2.0)": 1.0,
+        "CISC(g=4.0)": 1.0,
+        "ECE-gate": 0.795,
+        "CISC-devT": 1.0,
+        "SignGrid-dev": 1.0,
+        "TACT-dev": 1.0,
+        "TACT-LF": 1.0,
+        "TACT-semi": 1.0
+      },
+      "oracle": {
+        "acc": 1.0,
+        "gamma": 1.0
+      },
+      "gamma": {
+        "TACT-dev": 4.0,
+        "TACT-LF": 2.0,
+        "TACT-semi": 2.0,
+        "CISC-devT": 1.0,
+        "SignGrid-dev": 1.0
+      },
+      "tact_dev_diag": {
+        "d_hat": 1.0,
+        "se": 0.022607658706146685,
+        "z": 44.232797964528494,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.729602510460251,
+        "se_raw": 0.05091547831620245,
+        "z_raw": 14.329679983151117,
+        "alpha_split_half": 0.7253571428571428,
+        "k_eff_wrong": 2.4300206214130173,
+        "p_hat": 0.845924323253397,
+        "attenuation_used": 0.7313097526000887,
+        "psi_margin_decoupling": -0.30373037303730366,
+        "n_gated": 140
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 82,
+          "b_only": 0,
+          "p_value": 4.1359030627651384e-25
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 82,
+          "b_only": 0,
+          "p_value": 4.1359030627651384e-25
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 82,
+          "b_only": 0,
+          "p_value": 4.1359030627651384e-25
+        }
+      }
+    },
+    "monotone_power": {
+      "acc": {
+        "SC": 0.795,
+        "CISC(g=0.25)": 0.9925,
+        "CISC(g=0.5)": 1.0,
+        "CISC(g=1.0)": 1.0,
+        "CISC(g=2.0)": 1.0,
+        "CISC(g=4.0)": 1.0,
+        "ECE-gate": 0.795,
+        "CISC-devT": 1.0,
+        "SignGrid-dev": 1.0,
+        "TACT-dev": 1.0,
+        "TACT-LF": 1.0,
+        "TACT-semi": 1.0
+      },
+      "oracle": {
+        "acc": 1.0,
+        "gamma": 0.5
+      },
+      "gamma": {
+        "TACT-dev": 4.0,
+        "TACT-LF": 2.0,
+        "TACT-semi": 2.0,
+        "CISC-devT": 0.5,
+        "SignGrid-dev": 0.5
+      },
+      "tact_dev_diag": {
+        "d_hat": 1.0,
+        "se": 0.022607658706146685,
+        "z": 44.232797964528494,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.729602510460251,
+        "se_raw": 0.05091547831620245,
+        "z_raw": 14.329679983151117,
+        "alpha_split_half": 0.7253571428571428,
+        "k_eff_wrong": 2.4300206214130173,
+        "p_hat": 0.845924323253397,
+        "attenuation_used": 0.7313097526000887,
+        "psi_margin_decoupling": -0.30373037303730366,
+        "n_gated": 140
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 82,
+          "b_only": 0,
+          "p_value": 4.1359030627651384e-25
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 82,
+          "b_only": 0,
+          "p_value": 4.1359030627651384e-25
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 82,
+          "b_only": 0,
+          "p_value": 4.1359030627651384e-25
+        }
+      }
+    },
+    "heterogeneous_kappa": {
+      "acc": {
+        "SC": 0.81,
+        "CISC(g=0.25)": 0.7325,
+        "CISC(g=0.5)": 0.6775,
+        "CISC(g=1.0)": 0.635,
+        "CISC(g=2.0)": 0.5975,
+        "CISC(g=4.0)": 0.545,
+        "ECE-gate": 0.81,
+        "CISC-devT": 0.81,
+        "SignGrid-dev": 0.81,
+        "TACT-dev": 0.81,
+        "TACT-LF": 0.81,
+        "TACT-semi": 0.81
+      },
+      "oracle": {
+        "acc": 0.81,
+        "gamma": 0.0
+      },
+      "gamma": {
+        "TACT-dev": 0.0,
+        "TACT-LF": 0.0,
+        "TACT-semi": 0.0,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": 0.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -0.0476746448725433,
+        "se": 0.06497609111918995,
+        "z": -0.73372596060127,
+        "n_items": 200
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": 0.06985098456625864,
+        "se_raw": 0.07537841892488167,
+        "z_raw": 0.9266708636575225,
+        "alpha_split_half": 0.7485611510791367,
+        "k_eff_wrong": 2.3797862770838925,
+        "p_hat": 0.8604523544851873,
+        "attenuation_used": 0.7593477732797501,
+        "psi_margin_decoupling": -0.12857142857142856,
+        "n_gated": 139
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        }
+      }
+    },
+    "confident_echo": {
+      "acc": {
+        "SC": 0.2,
+        "CISC(g=0.25)": 0.1925,
+        "CISC(g=0.5)": 0.2,
+        "CISC(g=1.0)": 0.145,
+        "CISC(g=2.0)": 0.1025,
+        "CISC(g=4.0)": 0.0575,
+        "ECE-gate": 0.2,
+        "CISC-devT": 0.2,
+        "SignGrid-dev": 0.55,
+        "TACT-dev": 0.585,
+        "TACT-LF": 0.2,
+        "TACT-semi": 0.2
+      },
+      "oracle": {
+        "acc": 0.55,
+        "gamma": -1.0
+      },
+      "gamma": {
+        "TACT-dev": -1.1980115667009015,
+        "TACT-LF": 0.0,
+        "TACT-semi": 0.0,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": -1.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -0.5493941261039228,
+        "se": 0.023224100240614495,
+        "z": -23.656207147398455,
+        "n_items": 199
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": true,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": -0.5636506323089132,
+        "se_raw": 0.0327255204654909,
+        "z_raw": -17.223580382878357,
+        "alpha_split_half": 0.9441666666666667,
+        "k_eff_wrong": 1.0966666666666667,
+        "p_hat": 0.9712957103907817,
+        "attenuation_used": 0.9540098931846903,
+        "psi_margin_decoupling": -0.2997866287339972,
+        "n_gated": 120
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 21,
+          "b_only": 7,
+          "p_value": 0.012540951371192932
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 164,
+          "b_only": 10,
+          "p_value": 4.787244158587412e-37
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 164,
+          "b_only": 10,
+          "p_value": 4.787244158587412e-37
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 0,
+          "b_only": 0,
+          "p_value": 1.0
+        }
+      }
+    }
+  },
+  "falsifiers": {
+    "F1_below_cisc_at_high_kappa": false,
+    "F2_below_SC_dev": false,
+    "F2_below_SC_lf": false,
+    "F3_lf_not_beating_ece_gate": false,
+    "F4_matched_by_CISC-devT": false,
+    "F4_matched_by_SignGrid": false
+  }
+}
