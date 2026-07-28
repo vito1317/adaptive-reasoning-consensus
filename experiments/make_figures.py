@@ -245,11 +245,71 @@ def plot_kappa_sweep(data: dict, outdir: Path) -> None:
         plt.close(fig)
 
 
+def plot_tact_eval(data: dict, outdir: Path) -> None:
+    """TACT vs baselines: the sweep panel and the adversarial-cells panel."""
+    sweep = data["sweep_dev200"]
+    x = [r["kappa_c"] for r in sweep]
+    series = [
+        ("SC", "SC", "#444444", "--", "o"),
+        ("ECE-gate", "ECE gate (prior project)", "#1f77b4", "-.", "s"),
+        ("CISC-devT", "CISC-devT (published protocol)", "#9467bd", ":", "^"),
+        ("SignGrid-dev", "dev sign-grid (trivial best)", "#2ca02c", "-", "D"),
+        ("TACT-dev", "TACT-dev", "#d62728", "-", "*"),
+        ("TACT-LF", "TACT-LF (label-free)", "#ff7f0e", "-", "P"),
+    ]
+    fig, ax = plt.subplots(figsize=(8.6, 5.2))
+    for key, label, color, ls, marker in series:
+        ax.plot(x, [r["acc"][key] for r in sweep], label=label, color=color, ls=ls, marker=marker, ms=6, lw=1.8)
+    ax.plot(x, [r["oracle"]["acc"] for r in sweep], color="#999", ls=":", lw=1.2, label="oracle fixed (gamma, sign)")
+    ax.set_xlabel("true confidence-correctness coupling  $\\kappa_c$")
+    ax.set_ylabel("accuracy @ fixed K")
+    ax.set_title(
+        "TACT on the confidence-usage frontier\n"
+        "the label-free variant recovers the SIGNED channel without any labels"
+    )
+    ax.grid(alpha=0.25)
+    ax.legend(fontsize=8, loc="lower left")
+    fig.tight_layout()
+    fig.savefig(outdir / "tact_sweep.png", dpi=150)
+    plt.close(fig)
+
+    adv = data.get("adversarial", {})
+    if adv:
+        names = list(adv)
+        methods = ["SC", "CISC-devT", "SignGrid-dev", "TACT-dev", "TACT-LF"]
+        colors = ["#444444", "#9467bd", "#2ca02c", "#d62728", "#ff7f0e"]
+        fig, ax = plt.subplots(figsize=(9.0, 4.6))
+        xs = np.arange(len(names))
+        width = 0.16
+        for j, (m, c) in enumerate(zip(methods, colors)):
+            ax.bar(xs + (j - 2) * width, [adv[n]["acc"][m] for n in names], width, label=m, color=c)
+        for i, n in enumerate(names):
+            ax.plot(
+                [i - 3 * width, i + 3 * width],
+                [adv[n]["oracle"]["acc"]] * 2,
+                color="#999",
+                ls=":",
+                lw=1.4,
+            )
+        ax.set_xticks(xs, [n.replace("_", "\n") for n in names], fontsize=8)
+        ax.set_ylabel("accuracy @ fixed K")
+        ax.set_title(
+            "Adversarial regimes (dotted line = oracle over raw-value weights)\n"
+            "rank invariance beats the whole raw-value family under monotone compression"
+        )
+        ax.legend(fontsize=8)
+        ax.grid(alpha=0.25, axis="y")
+        fig.tight_layout()
+        fig.savefig(outdir / "tact_adversarial.png", dpi=150)
+        plt.close(fig)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--frontier", type=Path, default=Path("results/frontier.json"))
     ap.add_argument("--boundary", type=Path, default=Path("results/boundary.json"))
     ap.add_argument("--kappa", type=Path, default=Path("results/kappa_sweep.json"))
+    ap.add_argument("--tact", type=Path, default=Path("results/tact_eval.json"))
     ap.add_argument("--outdir", type=Path, default=Path("results/figures"))
     args = ap.parse_args()
     args.outdir.mkdir(parents=True, exist_ok=True)
@@ -267,6 +327,9 @@ def main():
     if args.kappa.exists():
         plot_kappa_sweep(json.loads(args.kappa.read_text()), args.outdir)
         print("wrote kappa_sweep.png, kappa_adversarial.png")
+    if args.tact.exists():
+        plot_tact_eval(json.loads(args.tact.read_text()), args.outdir)
+        print("wrote tact_sweep.png, tact_adversarial.png")
 
 
 if __name__ == "__main__":
