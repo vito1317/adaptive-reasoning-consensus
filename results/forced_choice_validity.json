@@ -1,0 +1,143 @@
+{
+ "rows": [
+  {
+   "qid": "gsm-29",
+   "gold": "b",
+   "pref": "a",
+   "verdict": "WRONG",
+   "p_a": 1.0,
+   "plurality_correct": false,
+   "n": 8
+  },
+  {
+   "qid": "gsm-44",
+   "gold": "a",
+   "pref": "a",
+   "verdict": "RIGHT",
+   "p_a": 1.0,
+   "plurality_correct": true,
+   "n": 8
+  },
+  {
+   "qid": "gsm-47",
+   "gold": "a",
+   "pref": "a",
+   "verdict": "RIGHT",
+   "p_a": 0.625,
+   "plurality_correct": true,
+   "n": 8
+  },
+  {
+   "qid": "csqa-13",
+   "gold": "b",
+   "pref": "a",
+   "verdict": "WRONG",
+   "p_a": 0.75,
+   "plurality_correct": false,
+   "n": 8
+  },
+  {
+   "qid": "csqa-14",
+   "gold": null,
+   "pref": "b",
+   "verdict": "n/a",
+   "p_a": 0.375,
+   "plurality_correct": false,
+   "n": 8
+  },
+  {
+   "qid": "csqa-17",
+   "gold": null,
+   "pref": "a",
+   "verdict": "n/a",
+   "p_a": 1.0,
+   "plurality_correct": false,
+   "n": 8
+  },
+  {
+   "qid": "csqa-18",
+   "gold": null,
+   "pref": "b",
+   "verdict": "n/a",
+   "p_a": 0.375,
+   "plurality_correct": false,
+   "n": 8
+  },
+  {
+   "qid": "csqa-20",
+   "gold": "b",
+   "pref": "b",
+   "verdict": "RIGHT",
+   "p_a": 0.25,
+   "plurality_correct": false,
+   "n": 8
+  },
+  {
+   "qid": "csqa-22",
+   "gold": "a",
+   "pref": "a",
+   "verdict": "RIGHT",
+   "p_a": 0.875,
+   "plurality_correct": true,
+   "n": 8
+  },
+  {
+   "qid": "csqa-24",
+   "gold": "a",
+   "pref": "a",
+   "verdict": "RIGHT",
+   "p_a": 1.0,
+   "plurality_correct": true,
+   "n": 8
+  },
+  {
+   "qid": "csqa-30",
+   "gold": "a",
+   "pref": "a",
+   "verdict": "RIGHT",
+   "p_a": 0.875,
+   "plurality_correct": true,
+   "n": 8
+  },
+  {
+   "qid": "csqa-31",
+   "gold": "b",
+   "pref": "b",
+   "verdict": "RIGHT",
+   "p_a": 0.125,
+   "plurality_correct": false,
+   "n": 8
+  },
+  {
+   "qid": "csqa-38",
+   "gold": "a",
+   "pref": "a",
+   "verdict": "RIGHT",
+   "p_a": 0.625,
+   "plurality_correct": true,
+   "n": 8
+  },
+  {
+   "qid": "csqa-43",
+   "gold": "b",
+   "pref": "tie",
+   "verdict": "tie",
+   "p_a": 0.5,
+   "plurality_correct": false,
+   "n": 8
+  },
+  {
+   "qid": "csqa-47",
+   "gold": "a",
+   "pref": "a",
+   "verdict": "RIGHT",
+   "p_a": 1.0,
+   "plurality_correct": true,
+   "n": 8
+  }
+ ],
+ "decisive_right": 2,
+ "decisive_n": 4,
+ "overall_right": 9,
+ "overall_n": 11
+}

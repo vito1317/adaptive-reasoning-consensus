@@ -274,6 +274,48 @@ Per-item link oracle (ceiling) & .947 & .983\\
 \subsection{Small dev sets and falsifiers}
 With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; never significantly below \SC{} elsewhere), F3 (sweep means $0.954$ vs.\ $0.811$), and F4 (the distortion and echo cells are unreachable by either grid baseline). Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.005$--$0.015$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.035$), echo ($+0.035$), and label-free operation, which no grid can perform.
 
+\subsection{Verification of the implementation}\label{sec:tests}
+Because every claim in Sections~\ref{sec:method}--\ref{sec:hetero} is a
+mathematical property rather than an empirical trend, the released code pins
+each one with an executable test; the suite is 76 tests for \TACT{} (84
+including the follow-on work) and runs in 14 seconds. Table~\ref{tab:tests}
+maps propositions to the tests that would fail if they stopped holding.
+
+\begin{table}[t]
+\centering
+\caption{What the test suite verifies. Every proposition in the paper has an
+executable counterpart; the counter-tests fail deliberately on rejected
+alternatives so a regression cannot silently reinstate them.}
+\label{tab:tests}
+\setlength{\tabcolsep}{3.4pt}
+\begin{tabular}{p{2.55cm} p{3.05cm} p{2.35cm}}
+\toprule
+Claim & Test & Evidence \\
+\midrule
+Prop.~\ref{prop:sc} (exact \SC) & \texttt{gamma\_zero\_is\_} \texttt{bitwise\_sc} & 200 random pools, identical incl.\ ties \\
+Dead-zone rate & \texttt{dead\_zone\_} \texttt{probability} & $>$70\% under $D{=}0$, 300 trials \\
+Prop.~\ref{prop:cisc} (exact CISC) & \texttt{logval\_phi\_} \texttt{reproduces\_cisc} & identical vote shares, 100 pools \\
+Rank invariance & \texttt{monotone\_} \texttt{invariance} & 3 distortions $\times$ 100 pools \\
+Null variance & \texttt{null\_variance\_} \texttt{matches\_permutation} & 3{,}000-draw permutation, 10\% tol.\ \\
+JS--EB identity & \texttt{js\_eb\_identity} & exact to $10^{-12}$ \\
+Link \eqref{eq:link} & \texttt{link\_values\_and\_} \texttt{mixture\_correction} & closed form, rel.\ $10^{-9}$ \\
+Prop.~\ref{prop:ccn} (attenuation) & \texttt{poisoning\_} \texttt{attenuation\_linear} & $\rho\in\{.1,.25,.4\}$, abs.\ $.06$ \\
+Props.~\ref{prop:selfreinf}--\ref{prop:twoworld} & \texttt{test\_tact\_group.py} & 97.5\% \SC{} agreement; 4\% sign match \\
+Estimator permutation-invariance & \texttt{estimator\_is\_} \texttt{permutation\_invariant} & bypasses the memo (regression test) \\
+Rejected: Kish ESS & \texttt{kish\_fails\_T2\_T3} & asserts the failure \\
+Rejected: SAFE guarantee under VoI & \texttt{frozen\_default\_} \texttt{breaks\_guarantee} & asserts the violation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two entries deserve comment. The permutation-invariance test was added after a
+defect in which the memoisation key made the \emph{test} pass while the
+estimator itself was order-dependent by up to $0.10$; it now calls the internal
+routine directly. And the last two rows are counter-tests that assert
+\emph{failure} of rejected alternatives --- the Kish effective-sample-size
+formulation and the claim that the shipped default honours the SAFE stopping
+guarantee --- so that neither can be silently reinstated by a later change.
+
 \subsection{Real-trace validation}\label{sec:real}
 Validation on real traces used Claude Haiku 4.5 as the frozen model: 100 items
 (50 GSM8K \cite{gsm8k2021}, 50 CommonsenseQA), \emph{12} independent
