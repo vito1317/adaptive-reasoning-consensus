@@ -82,6 +82,16 @@ def main():
                          a_right=(gs is not None and pick == gs),
                          b_right=bool(b_right), scorable=gs is not None))
 
+    # Separation delta = 2*P(vote lands on the correct candidate) - 1, computed
+    # per vote rather than per decided item, so it is directly comparable to the
+    # p_v knob of the simulated instrument and to the delta >= 0.60 threshold
+    # from the quality curve. Stratified: the same-model study showed a healthy
+    # overall epsilon that came entirely from items where the instrument merely
+    # agreed with the plurality. Any instrument must be checked the same way.
+    def delta(subset):
+        pc = [(r["a_p"] if r["gold"] == "a" else 1.0 - r["a_p"]) for r in subset]
+        return (2.0 * float(np.mean(pc)) - 1.0) if pc else float("nan")
+
     scorable = [r for r in rows if r["scorable"]]
     dec = [r for r in scorable if r["a_pick"] != "tie"]
     pw = [r for r in dec if not r["plurality_correct"]]
@@ -92,8 +102,29 @@ def main():
     pwB_right = sum(r["b_right"] for r in pwB)
     agree = sum(r["a_pick"] == r["b_pick"] for r in scorable)
 
+    d_all = delta(scorable)
+    dec_stratum = [r for r in scorable if not r["plurality_correct"]]
+    d_dec = delta(dec_stratum)
+    d_easy = delta([r for r in scorable if r["plurality_correct"]])
+
+    # Votes are clustered within items, so resample ITEMS, not votes. With only
+    # 5 decisive items this interval is wide by construction -- reporting it is
+    # the point: it says how much of the conclusion rests on the point estimate.
+    bs = np.random.default_rng(20260731)
+    boot = [delta([dec_stratum[j] for j in bs.integers(0, len(dec_stratum), len(dec_stratum))])
+            for _ in range(10000)] if dec_stratum else []
+    d_dec_ci = (float(np.percentile(boot, 2.5)), float(np.percentile(boot, 97.5))) if boot else (float("nan"),) * 2
+    p_meets_bar = float(np.mean(np.asarray(boot) >= 0.60)) if boot else float("nan")
+
     out = {
         "n_scorable": len(scorable),
+        "delta_overall": d_all,
+        "delta_decisive_subset": d_dec,
+        "delta_decisive_subset_ci95_cluster_bootstrap": d_dec_ci,
+        "P_delta_decisive_meets_0.60_bar": p_meets_bar,
+        "delta_plurality_already_right": d_easy,
+        "delta_same_model_reference": 0.115,
+        "delta_needed_for_0.90": 0.60,
         "arm_A": {
             "decisive": len(dec),
             "right": a_right,
@@ -114,6 +145,22 @@ def main():
     print(f"  DECISIVE SUBSET (plurality wrong): {pw_right}/{len(pw)}"
           + (f"  CI95 {tuple(round(x,3) for x in out['arm_A']['decisive_subset_ci'])}" if pw else ""))
     print("  [same-model endorsement was 1/5; same-model forced-choice was 2/4]")
+
+    print("\n--- separation delta, stratified (the number ISC actually needs) ---")
+    print(f"  delta OVERALL                        : {d_all:+.3f}   "
+          f"(same-model self-verification: +0.115)")
+    print(f"  delta where plurality ALREADY RIGHT  : {d_easy:+.3f}   (instrument changes nothing here)")
+    print(f"  delta on the DECISIVE SUBSET         : {d_dec:+.3f}   "
+          f"<- the only stratum that matters")
+    print(f"    cluster-bootstrap CI95 over {len(dec_stratum)} items : "
+          f"[{d_dec_ci[0]:+.3f}, {d_dec_ci[1]:+.3f}]")
+    print(f"    P(delta_decisive >= 0.60 | data)   : {p_meets_bar:.3f}"
+          f"   {'<- cannot be excluded at this n' if p_meets_bar > 0.05 else '<- excluded'}")
+    print(f"  delta required for ISC to reach 0.90 : +0.600")
+    if d_all > 0.30 and d_dec < 0.20:
+        print("\n  => Same trap as the same-model study: the headline delta is carried")
+        print("     entirely by items where the instrument agrees with the plurality.")
+        print("     Changing the model raises APPARENT quality, not USABLE quality.")
 
     print("\n=== ARM B: cross-model SOLVE (the confound control) ===")
     print(f"  DECISIVE SUBSET (plurality wrong): {pwB_right}/{len(pwB)}")
