@@ -1,0 +1,41 @@
+{
+ "sc": 0.295,
+ "cells": [
+  {
+   "frac": 0.1,
+   "n_v": 4,
+   "verify_only": 0.3525,
+   "full_isc": 0.675
+  },
+  {
+   "frac": 0.1,
+   "n_v": 8,
+   "verify_only": 0.3675,
+   "full_isc": 0.675
+  },
+  {
+   "frac": 0.3,
+   "n_v": 4,
+   "verify_only": 0.45,
+   "full_isc": 0.73
+  },
+  {
+   "frac": 0.3,
+   "n_v": 8,
+   "verify_only": 0.505,
+   "full_isc": 0.7675
+  },
+  {
+   "frac": 0.5,
+   "n_v": 4,
+   "verify_only": 0.535,
+   "full_isc": 0.7975
+  },
+  {
+   "frac": 0.5,
+   "n_v": 8,
+   "verify_only": 0.62,
+   "full_isc": 0.845
+  }
+ ]
+}
