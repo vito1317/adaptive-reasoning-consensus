@@ -278,27 +278,49 @@ Per-item link oracle (ceiling) & .947 & .983\\
 \subsection{Small dev sets and falsifiers}
 With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; never significantly below \SC{} elsewhere), F3 (sweep means $0.954$ vs.\ $0.811$), and F4 (the distortion and echo cells are unreachable by either grid baseline). Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.005$--$0.015$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.035$), echo ($+0.035$), and label-free operation, which no grid can perform.
 
-\subsection{Preliminary real-trace validation}
-A first validation on real traces was run with Claude Haiku 4.5 as the frozen
-model: 100 items (50 GSM8K \cite{gsm8k2021}, 50 CommonsenseQA) with 3--5
-independent chain-of-thought traces per item and verbalized confidence,
-evaluated at $K{=}3$ with a 40/60 dev/test split. Three observations. First,
-verbalized confidence is extremely tie-heavy on real traces---two values
-($0.99$, $0.95$) cover the majority of all reports---which activates the
-tie-safe degeneration path of \eqref{eq:vdw} exactly as designed. Second, the
-channel carries no measurable within-item discrimination on these benchmarks:
-on GSM8K the traces are $96\%$ correct, so almost no item exhibits both a
-correct and an incorrect trace, and the pooled statistic over the remaining
-informative items is $\Dhat=-0.16$ with $\mathrm{SE}=0.33$ ($z=-0.48$), deep
-inside the dead zone. Third, \TACT{} consequently returns $\gamma=0$ and is
-bit-identical to \SC{} on every test item ($+0/-0$ discordant pairs)---the
-pre-registered null-direction prediction of Section~\ref{sec:limits} confirmed:
-when the channel carries no signal the method costs exactly nothing. The
-saturation also delimits what these benchmarks can test: within-item
-discrimination requires items where the model is genuinely uncertain, so
-harder item pools (and more replicates per item) are required to expose
-non-null coupling on strong models. Scale caveats apply throughout: $3$--$5$
-traces per item, $K{=}3$ voting, one model, and partial sampling.
+\subsection{Real-trace validation}\label{sec:real}
+Validation on real traces used Claude Haiku 4.5 as the frozen model: 100 items
+(50 GSM8K \cite{gsm8k2021}, 50 CommonsenseQA), \emph{12} independent
+chain-of-thought traces per item with verbalized confidence (1{,}200 traces
+total), evaluated at $K{=}12$ with a 40/60 dev/test split. Four findings.
+
+\emph{(a) The calibration--discrimination distinction reverses on real data,
+and \TACT{} reads it correctly.} The channel is \emph{extremely well calibrated}
+in the usual sense: $\mathrm{ECE}=0.016$, far inside the $0.10$ gate, so a
+binary ECE gate \emph{opens} and hands the channel to CISC. Yet the measured
+within-item discrimination is $\Dhat=-0.219$ with $\mathrm{SE}=0.176$
+($z=-1.24$) --- no usable signal, and what little there is points the
+\emph{wrong way} (math $-0.515$, commonsense $-0.173$; both groups negative).
+This is the exact mirror image of the synthetic case in which ECE wrongly
+\emph{closed} the gate on a discriminative channel (Section~\ref{sec:setup}):
+on real traces ECE wrongly \emph{opens} it on a non-discriminative one.
+Calibration is uninformative about voting utility in both directions, and a
+signed discrimination statistic is what distinguishes them.
+
+\emph{(b) The dead zone fires, and costs exactly nothing.} With $|z|<\nu$,
+\TACT-dev, \TACT-LF and \TACT-group all return $\gamma=0$ and are bit-identical
+to \SC{} on every test item ($+0/-0$ discordant pairs, $p=1$). All methods score
+$0.917$. This is the pre-registered null-direction prediction of
+Section~\ref{sec:limits} confirmed on real data: where the channel carries no
+signal, the method is free.
+
+\emph{(c) Saturation is the binding constraint, not the estimator.} Trace-level
+accuracy is $0.958$ on GSM8K and $0.847$ on CommonsenseQA, so only $12$ of $100$
+items contain both a correct and an incorrect trace --- the only items a
+within-item rank statistic can use. The estimator is not underpowered by
+design; the benchmark simply does not present the model with enough genuine
+uncertainty. Exposing non-null coupling on a strong model requires harder item
+pools, not more traces per item.
+
+\emph{(d) Verbalized confidence is tie-heavy.} Two values ($0.99$, $0.95$)
+account for $49\%$ of all reports, activating the tie-safe degeneration path of
+\eqref{eq:vdw} on many items.
+
+Scope: one model, two benchmarks, $K{=}12$. The result is a clean confirmation
+of the null-direction prediction and of the calibration--discrimination
+argument; it is \emph{not} evidence that \TACT{} improves accuracy on real
+traces, which remains untested for want of a benchmark where the channel is
+both informative and the model uncertain.
 
 \section{Discussion and Limitations}\label{sec:limits}
 
