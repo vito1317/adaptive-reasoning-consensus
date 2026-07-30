@@ -1,0 +1,147 @@
+{
+ "config": {
+  "items": 400,
+  "k": 12,
+  "k_max": 20,
+  "data_seed": 42,
+  "est_seed": 7,
+  "p_v": 0.85,
+  "out": "results/isc_eval.json"
+ },
+ "cells": [
+  {
+   "cell": "confident_echo (dedup CAN help)",
+   "SC@K": 0.295,
+   "SC@K+8": 0.215,
+   "dedup-SC@K": 0.8575,
+   "dedup-SC@K+8": 0.96,
+   "TACT-LF": 0.295,
+   "TACT-LF_gamma": 0.0,
+   "TACT-LF_alarms": {
+    "E1_duplicate_collapse": true
+   },
+   "NO-INSTRUMENT_gamma": -1.0509979636705775,
+   "NO-INSTRUMENT_acc": 0.6225,
+   "ISC(f=0.1,nv=4)": 0.295,
+   "ISC(f=0.1,nv=4)_gamma": 0.0,
+   "ISC(f=0.1,nv=4)_extra_traces": 0.4,
+   "ISC(f=0.5,nv=8)": 0.83,
+   "ISC(f=0.5,nv=8)_gamma": -1.1037595488623262,
+   "ISC(f=0.5,nv=8)_extra_traces": 4.0,
+   "ISC(f=1.0,nv=8)": 0.8725,
+   "ISC(f=1.0,nv=8)_gamma": -1.1119226906689972,
+   "ISC(f=1.0,nv=8)_extra_traces": 7.98,
+   "instrument_decided": 129,
+   "instrument_decided_accuracy": 1.0
+  },
+  {
+   "cell": "paraphrased_wrong_majority (dedup CANNOT help)",
+   "SC@K": 0.34,
+   "SC@K+8": 0.2475,
+   "dedup-SC@K": 0.34,
+   "dedup-SC@K+8": 0.2475,
+   "TACT-LF": 0.0,
+   "TACT-LF_gamma": -2.0,
+   "TACT-LF_alarms": {},
+   "NO-INSTRUMENT_gamma": -0.3260050311924313,
+   "NO-INSTRUMENT_acc": 0.0575,
+   "ISC(f=0.1,nv=4)": 0.34,
+   "ISC(f=0.1,nv=4)_gamma": 0.0,
+   "ISC(f=0.1,nv=4)_extra_traces": 0.4,
+   "ISC(f=0.5,nv=8)": 0.47,
+   "ISC(f=0.5,nv=8)_gamma": 0.0,
+   "ISC(f=0.5,nv=8)_extra_traces": 4.0,
+   "ISC(f=1.0,nv=8)": 0.975,
+   "ISC(f=1.0,nv=8)_gamma": 0.9795420500827781,
+   "ISC(f=1.0,nv=8)_extra_traces": 7.98,
+   "instrument_decided": 130,
+   "instrument_decided_accuracy": 1.0
+  }
+ ],
+ "verdict": {
+  "echo_cell": {
+   "isc_at_+8": 0.8725,
+   "dedup_sc_at_+8": 0.96,
+   "dedup_sc_at_zero_cost": 0.8575,
+   "F1_falsified": true,
+   "note": "dedup-SC wins at matched budget AND nearly matches ISC at zero cost"
+  },
+  "paraphrased_cell": {
+   "isc_at_+8": 0.975,
+   "dedup_sc_at_+8": 0.2475,
+   "best_non_instrument": 0.34,
+   "isc_wins": true,
+   "note": "the only cell where the instrument is load-bearing -- and it is an oracle here"
+  },
+  "instrument_is_oracle": true
+ },
+ "quality_curve": {
+  "sc_floor": 0.34,
+  "curve": [
+   {
+    "p_v": 1.0,
+    "delta": 1.0,
+    "decided": 199,
+    "decided_acc": 1.0,
+    "isc_acc": 0.9975,
+    "beats_sc": true
+   },
+   {
+    "p_v": 0.9,
+    "delta": 0.8,
+    "decided": 169,
+    "decided_acc": 1.0,
+    "isc_acc": 0.99,
+    "beats_sc": true
+   },
+   {
+    "p_v": 0.8,
+    "delta": 0.6000000000000001,
+    "decided": 98,
+    "decided_acc": 1.0,
+    "isc_acc": 0.9,
+    "beats_sc": true
+   },
+   {
+    "p_v": 0.7,
+    "delta": 0.3999999999999999,
+    "decided": 47,
+    "decided_acc": 1.0,
+    "isc_acc": 0.49,
+    "beats_sc": true
+   },
+   {
+    "p_v": 0.6,
+    "delta": 0.19999999999999996,
+    "decided": 16,
+    "decided_acc": 1.0,
+    "isc_acc": 0.395,
+    "beats_sc": true
+   },
+   {
+    "p_v": 0.55,
+    "delta": 0.10000000000000009,
+    "decided": 14,
+    "decided_acc": 0.8571428571428571,
+    "isc_acc": 0.3675,
+    "beats_sc": true
+   },
+   {
+    "p_v": 0.52,
+    "delta": 0.040000000000000036,
+    "decided": 12,
+    "decided_acc": 0.8333333333333334,
+    "isc_acc": 0.3575,
+    "beats_sc": false
+   },
+   {
+    "p_v": 0.5,
+    "delta": 0.0,
+    "decided": 13,
+    "decided_acc": 0.6923076923076923,
+    "isc_acc": 0.3475,
+    "beats_sc": false
+   }
+  ]
+ }
+}

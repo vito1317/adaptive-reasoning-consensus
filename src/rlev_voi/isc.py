@@ -8,6 +8,7 @@ map produces the vote weights. One rank statistic, used twice.
 
 from __future__ import annotations
 
+import zlib
 from dataclasses import dataclass, field
 from typing import Callable
 
@@ -72,9 +73,13 @@ def instrument_item(
 
     # rank-biserial effect r = 2U/(n0*n1) - 1 for candidate 0 over candidate 1
     r = 2.0 * float(u_stat) / (len(s0) * len(s1)) - 1.0
-    if p_greater <= alpha_v:
+    # Two one-sided tests are run, so the family-wise level is 2*alpha_v unless
+    # each is held to alpha_v/2. The uncorrected version measured a 0.17-0.22
+    # false-decision rate at a nominal 0.10.
+    half = alpha_v / 2.0
+    if p_greater <= half:
         return ItemInstrumentation(top2, top2[0], float(p_greater), abs(r), 2 * n_each)
-    if p_less <= alpha_v:
+    if p_less <= half:
         return ItemInstrumentation(top2, top2[1], float(p_less), abs(r), 2 * n_each)
     return ItemInstrumentation(top2, None, min(float(p_greater), float(p_less)), abs(r), 2 * n_each)
 
@@ -124,14 +129,18 @@ def estimate_isc(
     chosen = np.argsort(margins)[:n_instr]
 
     anchored: dict[int, int] = {}
-    results: list[ItemInstrumentation] = []
+    # Keep (index, result) paired: instrument_item returns None for
+    # single-answer items, so zipping `chosen` against a filtered result list
+    # silently misaligns every later item's margin.
+    paired: list[tuple[int, ItemInstrumentation]] = []
     for idx in chosen:
         res = instrument_item(pools[idx], k, instrument, n_v, rng, alpha_v)
         if res is None:
             continue
-        results.append(res)
+        paired.append((int(idx), res))
         if res.anchored is not None:
             anchored[int(idx)] = res.anchored
+    results = [r for _, r in paired]
 
     decided = [r for r in results if r.anchored is not None]
     # I1: instrument decisiveness
@@ -145,8 +154,8 @@ def estimate_isc(
     # I3: where do disagreements live? Uniform-in-margin disagreement suggests a
     # broken instrument; low-margin-concentrated disagreement is the poisoned-
     # vote pattern the instrument exists to catch. Compare mean margins.
-    dis_idx = [int(i) for i, r in zip(chosen, results) if r.anchored is not None and r.anchored != r.candidates[0]]
-    agr_idx = [int(i) for i, r in zip(chosen, results) if r.anchored is not None and r.anchored == r.candidates[0]]
+    dis_idx = [i for i, r in paired if r.anchored is not None and r.anchored != r.candidates[0]]
+    agr_idx = [i for i, r in paired if r.anchored is not None and r.anchored == r.candidates[0]]
     i3_suspicious = False
     if len(dis_idx) >= 3 and len(agr_idx) >= 3:
         i3_suspicious = float(np.mean(margins[dis_idx])) > float(np.mean(margins[agr_idx])) + 0.10
@@ -214,14 +223,20 @@ def make_sim_verifier(p_v: float = 0.85, epsilon_sys: float = 0.0) -> Instrument
     instrument.
     """
 
-    def verify(pool: TracePool, candidate: int, n: int, rng: np.random.Generator) -> np.ndarray:
-        key = (id(pool),)
+    def verify(pool: TracePool, candidate: int, n: int, rng: np.random.Generator, k: int | None = None) -> np.ndarray:
         # Item-level systematic failure is a property of the item, not the
-        # query: draw it once per pool from a pool-seeded generator.
-        item_rng = np.random.default_rng(abs(hash((pool.meta.get("qid", id(pool)), "sys"))) % (2**32))
+        # query: draw it once per pool from a deterministically seeded
+        # generator. Python's hash() is salted per process, so using it here
+        # made every 0 < epsilon_sys < 1 experiment irreproducible.
+        item_rng = np.random.default_rng(
+            zlib.crc32(str(pool.meta.get("qid", "")).encode()) ^ 0x5EED
+        )
         systematic = item_rng.random() < epsilon_sys
         if systematic:
-            believed = sc_answer(pool.answers, pool.n_answers)
+            # Read the plurality at the SAME budget the caller votes at, not
+            # over the whole cached pool -- they differ often enough to matter.
+            kk = k if k is not None else pool.k_max
+            believed = sc_answer(pool.answers[:kk], pool.n_answers)
             p_endorse = p_v if candidate == believed else 1.0 - p_v
         else:
             p_endorse = p_v if candidate == pool.correct else 1.0 - p_v

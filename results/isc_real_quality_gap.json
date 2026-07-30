@@ -1,0 +1,7 @@
+{
+ "real_delta": 0.115,
+ "interpolated_acc": 0.371625,
+ "sc_floor": 0.34,
+ "gain": 0.03162499999999996,
+ "delta_needed_for_0.90": 0.6000000000000001
+}

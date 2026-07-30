@@ -59,9 +59,15 @@ def test_theorem1_unanchored_channels_cannot_distinguish_twins():
 
 # ------------------------------------------------------------- Theorem 2 (sufficiency)
 def test_theorem2_anchored_instrument_decides_the_world():
-    """One anchored channel separates the twins, with error shrinking in n_V."""
+    """One anchored channel separates the twins, with error shrinking in n_V.
+
+    The thresholds reflect the Bonferroni-corrected level (each one-sided test
+    at alpha_v/2). The uncorrected version decided more often only because its
+    family-wise level was 2x nominal; correcting it costs decisiveness at small
+    n_V, which is the honest trade.
+    """
     verify = make_sim_verifier(p_v=0.85, epsilon_sys=0.0)
-    for n_v, min_rate in [(6, 0.55), (16, 0.80), (40, 0.95)]:
+    for n_v, min_rate in [(6, 0.40), (16, 0.75), (40, 0.92)]:
         correct = 0
         trials = 60
         for t in range(trials):
@@ -188,3 +194,56 @@ def test_amortization_channel_estimate_stabilizes_with_fixed_instrumented_count(
         est = estimate_isc(pools, K, verify, n_v=6,
                            instrument_fraction=30 / n_items, seed=4)
         assert est.diagnostics["d_anchored"] > 0.2, (n_items, est.diagnostics)
+
+
+def test_world_test_runs_at_its_declared_level():
+    """Under a pure-noise instrument the false-decision rate must respect alpha_v.
+
+    Regression test for a real defect: two uncorrected one-sided tests made the
+    family-wise level 2*alpha_v, and the measured false-decision rate was
+    0.17-0.22 at a nominal 0.10.
+    """
+
+    def noise(pool, candidate, n, rng):
+        return (rng.random(n) < 0.5).astype(float)
+
+    for n_v in (6, 8, 16):
+        decided = 0
+        trials = 300
+        for t in range(trials):
+            w1, _ = twin_pools(seed=5000 + t)
+            r = instrument_item(w1, K, noise, n_v, np.random.default_rng(t), alpha_v=0.10)
+            decided += int(r is not None and r.anchored is not None)
+        rate = decided / trials
+        assert rate <= 0.13, f"n_v={n_v}: false-decision rate {rate:.3f} exceeds the 0.10 level"
+
+
+def test_instrument_ablation_is_reported_not_hidden():
+    """The instrument must be compared against ZERO instruments, not against
+    gamma=0 with the anchored answers kept.
+
+    This pins the ablation that falsified ISC v1: dedup-weighted plurality
+    pseudo-labels alone already recover the exponent, so an ablation that keeps
+    the anchored answers and only zeroes gamma flatters the method.
+    """
+    from rlev_voi.discrimination import item_discrimination, pooled_discrimination
+    from rlev_voi.tact import _dedup_weights, tact_vote
+    from rlev_voi.tempering import GAMMA_MAX_LF, NU_LF, TemperConfig, temper
+
+    pools = _echo_pools(200, seed=5)
+    stats = []
+    for p in pools:
+        a, c = p.answers[:K], p.confidences[:K]
+        _, dw = _dedup_weights(p.dup[:K, :K])
+        ref = int(np.argmax(np.bincount(a, weights=dw, minlength=p.n_answers)))
+        s = item_discrimination(c, (a == ref).astype(int))
+        if s:
+            stats.append(s)
+    po = pooled_discrimination(stats)
+    g0 = temper(po.d_hat, po.se, TemperConfig(nu=NU_LF, gamma_max=GAMMA_MAX_LF, p_bar=None))
+    acc0 = float(np.mean([tact_vote(p.answers[:K], p.confidences[:K], p.n_answers, g0) == p.correct
+                          for p in pools]))
+    sc = float(np.mean([sc_answer(p.answers[:K], p.n_answers) == p.correct for p in pools]))
+    # The no-instrument arm must be strong -- that is the finding, not a bug.
+    assert g0 < -0.5, f"dedup-plurality pseudo-labels should recover the negative exponent, got {g0}"
+    assert acc0 > sc + 0.20, f"no-instrument arm {acc0:.3f} vs SC {sc:.3f}"
