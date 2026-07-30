@@ -366,7 +366,22 @@ both informative and the model uncertain.
 
 \textbf{Narrow margins where labels abound.} When labels are plentiful and the confidence scale is trusted, a dev-picked signed grid captures most of the value; \TACT's case rests on the label-free setting, distorted scales, small dev sets, and the exactness of its anchors.
 
-\textbf{Conditional label-free guarantee.} Proposition~\ref{prop:ccn} requires $\bar\rho<1/2$ after deduplication, and the confident-echo ambiguity is fundamental (Proposition~\ref{prop:twoworld}); the alarms detect the verbatim case only, and paraphrased echo would evade them---the semi-label-free mode is the honest fix at ${\sim}50$ labels.
+\textbf{Conditional label-free guarantee, and what happens past the boundary.}
+Proposition~\ref{prop:ccn} requires $\bar\rho<1/2$ after deduplication, and the
+confident-echo ambiguity is fundamental (Proposition~\ref{prop:twoworld}).
+Follow-on work measured the consequence of crossing that boundary, and it is
+worse than under-trust. In a \emph{paraphrased} wrong-majority cell---a dominant
+wrong cluster that is semantically tight but carries no verbatim signature, so
+deduplication has nothing to collapse---the plurality is wrong on most items,
+$\bar\rho>1/2$, and \TACT-LF does not merely shrink toward \SC: it
+\emph{mis-signs}, saturates at $\gamma=-2.0$, and scores $0.000$ against an
+\SC{} floor of $0.340$. None of the four alarms fires, because E1 keys on
+verbatim duplication which is absent by construction. This is the method's
+sharpest unguarded failure mode: the guarantee is conditional, the condition is
+not observable label-free, and the existing diagnostics do not detect its
+violation. Where a systematically wrong majority is plausible, the
+semi-label-free mode (sign from ${\sim}50$ labels) should be the default rather
+than an optional refinement.
 
 \textbf{Global exponent per group.} Within a group, \TACT{} ships one exponent; per-item variation inside a group is unexploitable by Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} unless further covariates exist.
 
