@@ -7,7 +7,8 @@
   "cand_b": "106",
   "a_is_correct": false,
   "b_is_correct": true,
-  "plurality_correct": false
+  "plurality_correct": false,
+  "gold": "106"
  },
  {
   "qid": "gsm-44",
@@ -17,7 +18,8 @@
   "cand_b": "600",
   "a_is_correct": true,
   "b_is_correct": false,
-  "plurality_correct": true
+  "plurality_correct": true,
+  "gold": "350"
  },
  {
   "qid": "gsm-47",
@@ -27,7 +29,8 @@
   "cand_b": "1",
   "a_is_correct": true,
   "b_is_correct": false,
-  "plurality_correct": true
+  "plurality_correct": true,
+  "gold": "2"
  },
  {
   "qid": "csqa-13",
@@ -37,7 +40,8 @@
   "cand_b": "e",
   "a_is_correct": false,
   "b_is_correct": true,
-  "plurality_correct": false
+  "plurality_correct": false,
+  "gold": "E"
  },
  {
   "qid": "csqa-14",
@@ -47,7 +51,8 @@
   "cand_b": "d",
   "a_is_correct": false,
   "b_is_correct": false,
-  "plurality_correct": false
+  "plurality_correct": false,
+  "gold": "B"
  },
  {
   "qid": "csqa-17",
@@ -57,7 +62,8 @@
   "cand_b": "e",
   "a_is_correct": false,
   "b_is_correct": false,
-  "plurality_correct": false
+  "plurality_correct": false,
+  "gold": "C"
  },
  {
   "qid": "csqa-18",
@@ -67,7 +73,8 @@
   "cand_b": "b",
   "a_is_correct": false,
   "b_is_correct": false,
-  "plurality_correct": false
+  "plurality_correct": false,
+  "gold": "D"
  },
  {
   "qid": "csqa-20",
@@ -77,7 +84,8 @@
   "cand_b": "d",
   "a_is_correct": false,
   "b_is_correct": true,
-  "plurality_correct": false
+  "plurality_correct": false,
+  "gold": "D"
  },
  {
   "qid": "csqa-22",
@@ -87,7 +95,8 @@
   "cand_b": "e",
   "a_is_correct": true,
   "b_is_correct": false,
-  "plurality_correct": true
+  "plurality_correct": true,
+  "gold": "B"
  },
  {
   "qid": "csqa-24",
@@ -97,7 +106,8 @@
   "cand_b": "d",
   "a_is_correct": true,
   "b_is_correct": false,
-  "plurality_correct": true
+  "plurality_correct": true,
+  "gold": "E"
  },
  {
   "qid": "csqa-30",
@@ -107,7 +117,8 @@
   "cand_b": "c",
   "a_is_correct": true,
   "b_is_correct": false,
-  "plurality_correct": true
+  "plurality_correct": true,
+  "gold": "A"
  },
  {
   "qid": "csqa-31",
@@ -117,7 +128,8 @@
   "cand_b": "a",
   "a_is_correct": false,
   "b_is_correct": true,
-  "plurality_correct": false
+  "plurality_correct": false,
+  "gold": "A"
  },
  {
   "qid": "csqa-38",
@@ -127,7 +139,8 @@
   "cand_b": "d",
   "a_is_correct": true,
   "b_is_correct": false,
-  "plurality_correct": true
+  "plurality_correct": true,
+  "gold": "B"
  },
  {
   "qid": "csqa-43",
@@ -137,7 +150,8 @@
   "cand_b": "a",
   "a_is_correct": false,
   "b_is_correct": true,
-  "plurality_correct": false
+  "plurality_correct": false,
+  "gold": "A"
  },
  {
   "qid": "csqa-47",
@@ -147,6 +161,7 @@
   "cand_b": "a",
   "a_is_correct": true,
   "b_is_correct": false,
-  "plurality_correct": true
+  "plurality_correct": true,
+  "gold": "D"
  }
 ]
