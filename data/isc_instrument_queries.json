@@ -1,0 +1,152 @@
+[
+ {
+  "qid": "gsm-29",
+  "group": "math",
+  "question": "Mandy owes Benedict $100. They agreed to have monthly interest of 2%. If Mandy was able to pay it after 3 months, how much should she give to Benedict?",
+  "cand_a": "106.12",
+  "cand_b": "106",
+  "a_is_correct": false,
+  "b_is_correct": true,
+  "plurality_correct": false
+ },
+ {
+  "qid": "gsm-44",
+  "group": "math",
+  "question": "Zaid spends 1/4 of his salary on rent, 1/3 on car fuel and donates half of the remaining amount to his favorite charity. He gives his daughter 200$ to use for her weekly expenses and 700$ to his wife to budget for groceries and other household goods. If Zaid earns 6000$ per month, how much money will he still have after all these expenses and donations?",
+  "cand_a": "350",
+  "cand_b": "600",
+  "a_is_correct": true,
+  "b_is_correct": false,
+  "plurality_correct": true
+ },
+ {
+  "qid": "gsm-47",
+  "group": "math",
+  "question": "A teacher uses a 5-inch piece of chalk to write math equations on a chalkboard for his students. The teacher likes to conserve chalk, so he tries to only use 20% of the chalk each day. Since the teacher cannot write with a very small piece of chalk, he recycles the chalk when it is smaller than 2 inches. On Monday the teacher used a new piece of chalk. His students need extra help that day, so he ended up writing more than usual. He used up 45% of the chalk by the end of the day. If the teacher goes back to using only 20% of the chalk each day, how many days does he have before he has to recycle this piece?",
+  "cand_a": "2",
+  "cand_b": "1",
+  "a_is_correct": true,
+  "b_is_correct": false,
+  "plurality_correct": true
+ },
+ {
+  "qid": "csqa-13",
+  "group": "commonsense",
+  "question": "Where is the large area location of the empire state building?\nChoices: (A) manhattan  (B) office  (C) the city  (D) fifth avenue  (E) new york city\nAnswer with the letter (A-E).",
+  "cand_a": "a",
+  "cand_b": "e",
+  "a_is_correct": false,
+  "b_is_correct": true,
+  "plurality_correct": false
+ },
+ {
+  "qid": "csqa-14",
+  "group": "commonsense",
+  "question": "Where would you put some ham if you want to cook it?\nChoices: (A) hamshackle  (B) pizza  (C) fridge  (D) refrigerator  (E) part of meal\nAnswer with the letter (A-E).",
+  "cand_a": "c",
+  "cand_b": "d",
+  "a_is_correct": false,
+  "b_is_correct": false,
+  "plurality_correct": false
+ },
+ {
+  "qid": "csqa-17",
+  "group": "commonsense",
+  "question": "By learning about the world, many poor college students gain what?\nChoices: (A) pleasure  (B) greater mobility  (C) desire to travel  (D) global warming  (E) increased security\nAnswer with the letter (A-E).",
+  "cand_a": "b",
+  "cand_b": "e",
+  "a_is_correct": false,
+  "b_is_correct": false,
+  "plurality_correct": false
+ },
+ {
+  "qid": "csqa-18",
+  "group": "commonsense",
+  "question": "Though the thin film seemed fragile, for it's intended purpose it was actually nearly what?\nChoices: (A) indestructible  (B) durable  (C) undestroyable  (D) indestructible  (E) unbreakable\nAnswer with the letter (A-E).",
+  "cand_a": "a",
+  "cand_b": "b",
+  "a_is_correct": false,
+  "b_is_correct": false,
+  "plurality_correct": false
+ },
+ {
+  "qid": "csqa-20",
+  "group": "commonsense",
+  "question": "He was very outgoing, for him making friends was no personal what?\nChoices: (A) scary  (B) having friends  (C) good feeling  (D) conflict  (E) friendship\nAnswer with the letter (A-E).",
+  "cand_a": "a",
+  "cand_b": "d",
+  "a_is_correct": false,
+  "b_is_correct": true,
+  "plurality_correct": false
+ },
+ {
+  "qid": "csqa-22",
+  "group": "commonsense",
+  "question": "If one needed the bathroom they needed a key, to get it they had to also buy something from the what?\nChoices: (A) school  (B) convenience store  (C) rest area  (D) mall  (E) theater\nAnswer with the letter (A-E).",
+  "cand_a": "b",
+  "cand_b": "e",
+  "a_is_correct": true,
+  "b_is_correct": false,
+  "plurality_correct": true
+ },
+ {
+  "qid": "csqa-24",
+  "group": "commonsense",
+  "question": "The guys had a regular poker game, rather than going to the movies this what their what?\nChoices: (A) competition  (B) fun game  (C) losing money  (D) fun  (E) social event\nAnswer with the letter (A-E).",
+  "cand_a": "e",
+  "cand_b": "d",
+  "a_is_correct": true,
+  "b_is_correct": false,
+  "plurality_correct": true
+ },
+ {
+  "qid": "csqa-30",
+  "group": "commonsense",
+  "question": "What do you do when you're going to market?\nChoices: (A) buy food  (B) see other people  (C) buying vegetables  (D) buy a fat pig  (E) traveling\nAnswer with the letter (A-E).",
+  "cand_a": "a",
+  "cand_b": "c",
+  "a_is_correct": true,
+  "b_is_correct": false,
+  "plurality_correct": true
+ },
+ {
+  "qid": "csqa-31",
+  "group": "commonsense",
+  "question": "What are you playing if you're fiddling on a violin?\nChoices: (A) bluegrass music  (B) make music  (C) drop  (D) string instrument  (E) troubles\nAnswer with the letter (A-E).",
+  "cand_a": "b",
+  "cand_b": "a",
+  "a_is_correct": false,
+  "b_is_correct": true,
+  "plurality_correct": false
+ },
+ {
+  "qid": "csqa-38",
+  "group": "commonsense",
+  "question": "If my husband never helps me doing housework, what might that lead to?\nChoices: (A) boredom  (B) arguments  (C) headache  (D) exhaustion  (E) park\nAnswer with the letter (A-E).",
+  "cand_a": "b",
+  "cand_b": "d",
+  "a_is_correct": true,
+  "b_is_correct": false,
+  "plurality_correct": true
+ },
+ {
+  "qid": "csqa-43",
+  "group": "commonsense",
+  "question": "Most items in retail stores are what even when they are on sale?\nChoices: (A) overpriced  (B) purchase  (C) expensive  (D) park  (E) buying\nAnswer with the letter (A-E).",
+  "cand_a": "c",
+  "cand_b": "a",
+  "a_is_correct": false,
+  "b_is_correct": true,
+  "plurality_correct": false
+ },
+ {
+  "qid": "csqa-47",
+  "group": "commonsense",
+  "question": "The flower grew tall to compete for sunlight, what did its neighbor do?\nChoices: (A) blossom  (B) park  (C) open  (D) cast shadow  (E) vase\nAnswer with the letter (A-E).",
+  "cand_a": "d",
+  "cand_b": "a",
+  "a_is_correct": true,
+  "b_is_correct": false,
+  "plurality_correct": true
+ }
+]
