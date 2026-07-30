@@ -1,0 +1,70 @@
+{
+ "SC_K12": 0.295,
+ "SC_K20": 0.215,
+ "cells": [
+  {
+   "frac": 0.1,
+   "n_v": 4,
+   "acc": 0.675,
+   "extra_traces_per_item": 0.4,
+   "gamma": -1.0566537010890578,
+   "n_decided": 23
+  },
+  {
+   "frac": 0.1,
+   "n_v": 8,
+   "acc": 0.675,
+   "extra_traces_per_item": 0.8,
+   "gamma": -1.0661170178805544,
+   "n_decided": 29
+  },
+  {
+   "frac": 0.3,
+   "n_v": 4,
+   "acc": 0.73,
+   "extra_traces_per_item": 1.2,
+   "gamma": -1.0809742813615286,
+   "n_decided": 63
+  },
+  {
+   "frac": 0.3,
+   "n_v": 8,
+   "acc": 0.7675,
+   "extra_traces_per_item": 2.4,
+   "gamma": -1.0976733367446088,
+   "n_decided": 86
+  },
+  {
+   "frac": 0.5,
+   "n_v": 4,
+   "acc": 0.7975,
+   "extra_traces_per_item": 2.0,
+   "gamma": -1.0946812531793029,
+   "n_decided": 105
+  },
+  {
+   "frac": 0.5,
+   "n_v": 8,
+   "acc": 0.845,
+   "extra_traces_per_item": 4.0,
+   "gamma": -1.1146518564447179,
+   "n_decided": 142
+  },
+  {
+   "frac": 1.0,
+   "n_v": 4,
+   "acc": 0.8125,
+   "extra_traces_per_item": 3.99,
+   "gamma": -1.096610951020568,
+   "n_decided": 201
+  },
+  {
+   "frac": 1.0,
+   "n_v": 8,
+   "acc": 0.8925,
+   "extra_traces_per_item": 7.98,
+   "gamma": -1.1232560153252156,
+   "n_decided": 297
+  }
+ ]
+}
