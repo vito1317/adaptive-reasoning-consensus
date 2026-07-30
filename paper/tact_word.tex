@@ -274,6 +274,28 @@ Per-item link oracle (ceiling) & .947 & .983\\
 \subsection{Small dev sets and falsifiers}
 With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; never significantly below \SC{} elsewhere), F3 (sweep means $0.954$ vs.\ $0.811$), and F4 (the distortion and echo cells are unreachable by either grid baseline). Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.005$--$0.015$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.035$), echo ($+0.035$), and label-free operation, which no grid can perform.
 
+\subsection{Preliminary real-trace validation}
+A first validation on real traces was run with Claude Haiku 4.5 as the frozen
+model: 100 items (50 GSM8K \cite{gsm8k2021}, 50 CommonsenseQA) with 3--5
+independent chain-of-thought traces per item and verbalized confidence,
+evaluated at $K{=}3$ with a 40/60 dev/test split. Three observations. First,
+verbalized confidence is extremely tie-heavy on real traces---two values
+($0.99$, $0.95$) cover the majority of all reports---which activates the
+tie-safe degeneration path of \eqref{eq:vdw} exactly as designed. Second, the
+channel carries no measurable within-item discrimination on these benchmarks:
+on GSM8K the traces are $96\%$ correct, so almost no item exhibits both a
+correct and an incorrect trace, and the pooled statistic over the remaining
+informative items is $\Dhat=-0.16$ with $\mathrm{SE}=0.33$ ($z=-0.48$), deep
+inside the dead zone. Third, \TACT{} consequently returns $\gamma=0$ and is
+bit-identical to \SC{} on every test item ($+0/-0$ discordant pairs)---the
+pre-registered null-direction prediction of Section~\ref{sec:limits} confirmed:
+when the channel carries no signal the method costs exactly nothing. The
+saturation also delimits what these benchmarks can test: within-item
+discrimination requires items where the model is genuinely uncertain, so
+harder item pools (and more replicates per item) are required to expose
+non-null coupling on strong models. Scale caveats apply throughout: $3$--$5$
+traces per item, $K{=}3$ voting, one model, and partial sampling.
+
 \section{Discussion and Limitations}\label{sec:limits}
 
 \textbf{What the evidence does and does not show.} All quantitative claims are on a synthetic oracle whose confidence model \eqref{eq:confmodel} is, at the homogeneous cells, the very coupling the estimator measures. Three design choices limit the circularity: the adversarial regimes (distortions, heterogeneity, echo) lie outside the estimator's working model; mechanism-recovery claims (does $\Dhat$ track $\kappa$?) are reported separately from accuracy claims; and the pre-measured baseline landscape (Fig.~\ref{fig:baselines}) fixed the winnable cells before the method existed. Validation on real LLM traces is the remaining step; the cached-trace runner is committed and the prediction is falsifiable: if real confidence channels never exhibit directional miscalibration or covariate structure, \TACT's dead zone should make it operationally indistinguishable from CISC-devT there.
@@ -298,7 +320,7 @@ X.~Wang, J.~Wei, D.~Schuurmans, Q.~Le, E.~Chi, S.~Narang, A.~Chowdhery, and D.~Z
 A.~Taubenfeld \emph{et~al.}, ``Confidence improves self-consistency in LLMs,'' in \emph{Findings of ACL}, 2025, arXiv:2502.06233.
 
 \bibitem{aggarwal2023adaptive}
-A.~M. Aggarwal, A.~Madaan, Y.~Yang, and Mausam, ``Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with LLMs,'' in \emph{Proc.\ EMNLP}, 2023.
+P.~Aggarwal, A.~Madaan, Y.~Yang, and Mausam, ``Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with {LLMs},'' in \emph{Proc.\ EMNLP}, 2023, pp. 12375--12396.
 
 \bibitem{li2024escape}
 Y.~Li \emph{et~al.}, ``Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning,'' in \emph{Proc.\ ICLR}, 2024.
@@ -313,16 +335,16 @@ K.~Tian \emph{et~al.}, ``Just ask for calibration: Strategies for eliciting cali
 M.~Xiong \emph{et~al.}, ``Can LLMs express their uncertainty? An empirical evaluation of confidence elicitation in LLMs,'' in \emph{Proc.\ ICLR}, 2024.
 
 \bibitem{huang2024rankcalibration}
-X.~Huang \emph{et~al.}, ``Uncertainty in language models: Assessment through rank-calibration,'' arXiv:2404.03163, 2024.
+X.~Huang, S.~Li, M.~Yu, M.~Sesia, H.~Hassani, I.~Lee, O.~Bastani, and E.~Dobriban, ``Uncertainty in language models: Assessment through rank-calibration,'' in \emph{Proc.\ EMNLP}, 2024, pp. 284--312.
 
 \bibitem{li2023diverse}
 Y.~Li \emph{et~al.}, ``Making language models better reasoners with step-aware verifier,'' in \emph{Proc.\ ACL}, 2023.
 
 \bibitem{borda2025}
-Z.~Kang \emph{et~al.}, ``Scalable best-of-N selection for large language models via self-certainty,'' arXiv:2502.18581, 2025.
+Z.~Kang, X.~Zhao, and D.~Song, ``Scalable best-of-N selection for large language models via self-certainty,'' in \emph{Proc.\ NeurIPS}, 2025, arXiv:2502.18581.
 
 \bibitem{reasc2026}
-J.~Kim \emph{et~al.}, ``Reliability-aware adaptive self-consistency,'' arXiv:2601.02970, 2026.
+J.~Kim, N.~Yang, K.~Min, and K.~Jung, ``Reliability-aware adaptive self-consistency for efficient sampling in LLM reasoning,'' in \emph{Findings of ACL}, 2026, pp. 21575--21590.
 
 \bibitem{deepconf2025}
 Y.~Fu \emph{et~al.}, ``Deep think with confidence,'' arXiv:2508.15260, 2025.
@@ -340,13 +362,13 @@ D.~R. Karger, S.~Oh, and D.~Shah, ``Iterative learning for reliable crowdsourcin
 F.~Parisi, F.~Strino, B.~Nadler, and Y.~Kluger, ``Ranking and combining multiple predictors without labeled data,'' \emph{Proc.\ Natl.\ Acad.\ Sci.}, vol.~111, no.~4, pp. 1253--1258, 2014.
 
 \bibitem{fuse2026}
-Anonymous, ``FUSE: Label-free reliability estimation for ensembles of LLM verifiers,'' arXiv:2604.18547, 2026.
+J.~Lee, V.~Ma, S.~Zhao, Y.~Nair, A.~Spector, R.~Cohen, and E.~J. Cand\`es, ``FUSE: Ensembling verifiers with zero labeled data,'' arXiv:2604.18547, 2026.
 
 \bibitem{beyondmajority2025}
-Anonymous, ``Beyond majority voting: Unsupervised reliability weighting of multiple LLMs,'' arXiv:2510.01499, 2025.
+R.~Ai, Y.~Pan, D.~Simchi-Levi, M.~Tambe, and H.~Xu, ``Beyond majority voting: LLM aggregation by leveraging higher-order information,'' arXiv:2510.01499, 2025, accepted to ICML 2026.
 
 \bibitem{vanelteren1960}
-P.~van Elteren, ``On the combination of independent two sample tests of Wilcoxon,'' \emph{Bull.\ Int.\ Statist.\ Inst.}, vol.~37, pp. 351--361, 1960.
+P.~van Elteren, ``On the combination of independent two-sample tests of Wilcoxon,'' \emph{Bull.\ Int.\ Statist.\ Inst.}, vol.~37, pp. 351--361, 1960.
 
 \bibitem{james1961estimation}
 W.~James and C.~Stein, ``Estimation with quadratic loss,'' in \emph{Proc.\ 4th Berkeley Symp.\ Math.\ Statist.\ Prob.}, 1961, pp. 361--379.
@@ -357,11 +379,14 @@ L.~Kish, \emph{Survey Sampling}. New York, NY, USA: Wiley, 1965.
 \bibitem{rao1981analysis}
 J.~N.~K. Rao and A.~J. Scott, ``The analysis of categorical data from complex sample surveys,'' \emph{J.\ Amer.\ Statist.\ Assoc.}, vol.~76, no.~374, pp. 221--230, 1981.
 
+\bibitem{gsm8k2021}
+K.~Cobbe \emph{et~al.}, ``Training verifiers to solve math word problems,'' arXiv:2110.14168, 2021.
+
 \bibitem{kuhn2023semantic}
 L.~Kuhn, Y.~Gal, and S.~Farquhar, ``Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation,'' in \emph{Proc.\ ICLR}, 2023.
 
 \bibitem{rasc2024}
-G.~Wan \emph{et~al.}, ``Reasoning-aware self-consistency: Leveraging reasoning paths for efficient LLM sampling,'' arXiv:2408.17017, 2024.
+G.~Wan, Y.~Wu, J.~Chen, and S.~Li, ``Reasoning aware self-consistency: Leveraging reasoning paths for efficient LLM sampling,'' in \emph{Proc.\ NAACL}, 2025, pp. 3613--3635.
 
 \end{thebibliography}
 

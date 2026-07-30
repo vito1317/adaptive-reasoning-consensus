@@ -209,6 +209,10 @@ $$\gamma^\ast=\frac{u}{s}=u\sqrt{1+\bar p(1-\bar p)\,u^2}$$
 
 dev 縮減至 50 題時結論不變（$|\kappa|=0.6$ 仍為 $1.000$，$-0.2$ 仍為 $0.978$）：考慮標準誤的收縮使方法平滑退化，而非驟然失效。四項證偽準則全數通過：F1（$1.000$ 對 $1.000$）、F2（$\kappa=0$ 位元層級相同，其餘位置未顯著低於 SC）、F3（掃描平均 $0.954$ 對 $0.811$）、F4（失真與回音情境為兩個網格基線皆無法達到）。須說明的是，相對 SignGrid-dev 的優勢在同質掃描上並不大，中段甚至落後 $0.005$ 至 $0.015$，此為收縮的預期代價；淨優勢集中於事前登記的三種情形：失真（$+0.035$）、回音（$+0.035$），以及網格基線無法執行的無標籤運作。
 
+### 8.5 真實軌跡的初步驗證
+
+以 Claude Haiku 4.5 為凍結模型進行了第一次真實軌跡驗證：100 題（GSM8K 數學題與 CommonsenseQA 常識題各 50 題），每題取 3 至 5 條獨立思維鏈與口頭信心，於 $K=3$、40/60 的 dev/test 分割下評測。結果有三項觀察。其一，真實軌跡的口頭信心高度集中，兩個數值（$0.99$ 與 $0.95$）便涵蓋多數回報，恰好觸發 4.1 節設計的同分安全路徑。其二，在這些基準上信心通道測不到題內辨別訊號：GSM8K 的軌跡正確率達 $96\%$，幾乎沒有題目同時含有正確與錯誤軌跡；其餘可用題目的混合統計量為 $\widehat{D}=-0.16$、$\mathrm{SE}=0.33$（$z=-0.48$），深居死區之內。其三，TACT 因此回傳 $\gamma=0$，在全部測試題上與 SC 位元層級相同（不一致配對 $+0/-0$）——第九節預先登記的零方向預測獲得證實：通道沒有訊號時，方法的代價恰好為零。此結果同時界定了這些基準所能檢驗的範圍：題內辨別需要模型真正不確定的題目，因此在強模型上要暴露非零耦合，需要更難的題庫與更多的每題重複取樣。上述結論受規模限制：每題 3 至 5 條軌跡、$K=3$ 投票、單一模型、取樣尚未完整。
+
 ## 九、討論與限制
 
 **證據的範圍。** 本文所有量化結果均來自合成 oracle，且其信心模型在同質情境中正是估計器所量測的耦合形式。為抑制循環論證，實驗設計採取三項措施：對抗情境（失真、異質性、回音）均落在估計器的工作模型之外；機制恢復（$\widehat{D}$ 是否追蹤 $\kappa$）與準確率屬於分開報告的兩類主張；基線能力範圍（圖 1）於方法設計前即已量測並固定。真實 LLM 軌跡上的驗證是尚待完成的步驟，快取軌跡的執行程式已隨程式碼提供，且預測本身可以被否證：若真實信心通道不存在方向性失準與協變量結構，TACT 的死區將使其表現與 CISC-devT 無法區分。
@@ -229,7 +233,7 @@ TACT 將「該信任模型的信心到什麼程度」轉化為可量測、帶符
 
 [2] A. Taubenfeld *et al.*, "Confidence improves self-consistency in LLMs," in *Findings of ACL*, 2025, arXiv:2502.06233.
 
-[3] A. M. Aggarwal, A. Madaan, Y. Yang, and Mausam, "Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with LLMs," in *Proc. EMNLP*, 2023.
+[3] P. Aggarwal, A. Madaan, Y. Yang, and Mausam, "Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with LLMs," in *Proc. EMNLP*, 2023, pp. 12375–12396.
 
 [4] Y. Li *et al.*, "Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning," in *Proc. ICLR*, 2024.
 
@@ -239,13 +243,13 @@ TACT 將「該信任模型的信心到什麼程度」轉化為可量測、帶符
 
 [7] M. Xiong *et al.*, "Can LLMs express their uncertainty? An empirical evaluation of confidence elicitation in LLMs," in *Proc. ICLR*, 2024.
 
-[8] X. Huang *et al.*, "Uncertainty in language models: Assessment through rank-calibration," arXiv:2404.03163, 2024.
+[8] X. Huang, S. Li, M. Yu, M. Sesia, H. Hassani, I. Lee, O. Bastani, and E. Dobriban, "Uncertainty in language models: Assessment through rank-calibration," in *Proc. EMNLP*, 2024, pp. 284–312.
 
 [9] Y. Li *et al.*, "Making language models better reasoners with step-aware verifier," in *Proc. ACL*, 2023.
 
-[10] Z. Kang *et al.*, "Scalable best-of-N selection for large language models via self-certainty," arXiv:2502.18581, 2025.
+[10] Z. Kang, X. Zhao, and D. Song, "Scalable best-of-N selection for large language models via self-certainty," in *Proc. NeurIPS*, 2025, arXiv:2502.18581.
 
-[11] J. Kim *et al.*, "Reliability-aware adaptive self-consistency," arXiv:2601.02970, 2026.
+[11] J. Kim, N. Yang, K. Min, and K. Jung, "Reliability-aware adaptive self-consistency for efficient sampling in LLM reasoning," in *Findings of ACL*, 2026, pp. 21575–21590.
 
 [12] Y. Fu *et al.*, "Deep think with confidence," arXiv:2508.15260, 2025.
 
@@ -257,11 +261,11 @@ TACT 將「該信任模型的信心到什麼程度」轉化為可量測、帶符
 
 [16] F. Parisi, F. Strino, B. Nadler, and Y. Kluger, "Ranking and combining multiple predictors without labeled data," *Proc. Natl. Acad. Sci.*, vol. 111, no. 4, pp. 1253–1258, 2014.
 
-[17] Anonymous, "FUSE: Label-free reliability estimation for ensembles of LLM verifiers," arXiv:2604.18547, 2026.
+[17] J. Lee, V. Ma, S. Zhao, Y. Nair, A. Spector, R. Cohen, and E. J. Candès, "FUSE: Ensembling verifiers with zero labeled data," arXiv:2604.18547, 2026.
 
-[18] Anonymous, "Beyond majority voting: Unsupervised reliability weighting of multiple LLMs," arXiv:2510.01499, 2025.
+[18] R. Ai, Y. Pan, D. Simchi-Levi, M. Tambe, and H. Xu, "Beyond majority voting: LLM aggregation by leveraging higher-order information," arXiv:2510.01499, 2025（已獲 ICML 2026 接受）.
 
-[19] P. van Elteren, "On the combination of independent two sample tests of Wilcoxon," *Bull. Int. Statist. Inst.*, vol. 37, pp. 351–361, 1960.
+[19] P. van Elteren, "On the combination of independent two-sample tests of Wilcoxon," *Bull. Int. Statist. Inst.*, vol. 37, pp. 351–361, 1960.
 
 [20] W. James and C. Stein, "Estimation with quadratic loss," in *Proc. 4th Berkeley Symp. Math. Statist. Prob.*, 1961, pp. 361–379.
 
@@ -271,4 +275,4 @@ TACT 將「該信任模型的信心到什麼程度」轉化為可量測、帶符
 
 [23] L. Kuhn, Y. Gal, and S. Farquhar, "Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation," in *Proc. ICLR*, 2023.
 
-[24] G. Wan *et al.*, "Reasoning-aware self-consistency: Leveraging reasoning paths for efficient LLM sampling," arXiv:2408.17017, 2024.
+[24] G. Wan, Y. Wu, J. Chen, and S. Li, "Reasoning aware self-consistency: Leveraging reasoning paths for efficient LLM sampling," in *Proc. NAACL*, 2025, pp. 3613–3635.
