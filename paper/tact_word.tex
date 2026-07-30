@@ -2,10 +2,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{booktabs}
-\usepackage{multirow}
 \usepackage{url}
-\usepackage[caption=false]{subfig}
-\usepackage{balance}
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
@@ -17,25 +14,24 @@
 
 % CJK author name: load a Unicode font directly (XeTeX/tectonic), keeping
 % IEEEtran's Latin fonts untouched.
-\font\zhfont="[/System/Library/Fonts/Supplemental/Arial Unicode.ttf]" at 10pt
+
 
 \begin{document}
 
 \title{TACT: Trust-Anchored Confidence Tempering for\\ Self-Consistency Voting in Large Language Models}
 
-\author{\IEEEauthorblockN{Wei-Chen Ko ({\zhfont 柯瑋宸}, vito1317)}
-\IEEEauthorblockA{Independent Researcher\\
-Draft manuscript --- synthetic-oracle evidence; real-trace validation pending}}
+\author{Wei-Chen Ko (柯瑋宸, vito1317) \\ Independent Researcher\\
+Draft manuscript --- synthetic-oracle evidence; real-trace validation pending}
 
 \maketitle
 
-\begin{abstract}
+\section*{Abstract}
 Confidence-weighted self-consistency (CISC and its successors) extracts large gains from a frozen large language model's self-reported confidence---until the confidence channel is miscalibrated in \emph{direction}. Every published weighting scheme is structurally monotone increasing in confidence, so an anti-correlated channel poisons the vote rather than informing it, while binary dev-set gates survive only by discarding genuinely discriminative signal. This paper presents \TACT{} (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one \emph{derived} from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' $D$ rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link. The map carries exact anchors---inside the shrinkage dead zone the vote is bit-identical to plain self-consistency, and a log-value feature map reproduces CISC-power exactly. A label-free variant estimates the signed reliability from agreement pseudo-labels, with a proven attenuation identity guaranteeing sign consistency whenever the plurality-error rate is below one half, conservative de-attenuation, and echo alarms at the identifiability boundary. On a synthetic-oracle harness with paired trace pools, the label-free variant recovers anti-correlated channels that pin every published protocol to the majority-vote floor ($\kappa=-0.6$: $1.000$ vs.\ $0.807$), rank invariance beats the oracle over the entire raw-value weight family under monotone confidence compression ($1.000$ vs.\ $0.965$), and a per-group extension cracks the heterogeneity floor with zero paired losses to self-consistency ($0.940$ vs.\ $0.808$; $+79/-0$, $p=3.3\times10^{-24}$). The paper further proves that per-item label-free adaptation is impossible under i.i.d.\ latent coupling, and pre-registers four falsification criteria---including the published dev-calibrated CISC protocol as a designated killer baseline---all of which the method survived.
-\end{abstract}
 
-\begin{IEEEkeywords}
+
+\textbf{Keywords---}
 large language models, self-consistency, confidence calibration, weighted voting, label-free estimation, rank statistics
-\end{IEEEkeywords}
+
 
 \section{Introduction}
 
@@ -128,7 +124,7 @@ capped at $\gamma_{\max}$ ($4$ dev, $2$ label-free). The uncorrected link $\gamm
 At $\gamma=0$, \eqref{eq:vote} equals plain \SC{} as a function on every trace pool, including tie-breaks. Under $D=0$, $P(\gamma=0)\to 2\Phi(\nu)-1$ ($80\%$ dev, $98\%$ label-free), and $\gamma$ is continuous through the dead-zone boundary, so a false positive applies an infinitesimal exponent.
 \end{proposition}
 \begin{proposition}[Exact CISC reduction]\label{prop:cisc}
-With the feature map $\varphi^{\log}_{q,i}=\log c_{q,i}-\overline{\log c_q}$, the weights equal $\smash{\kappa_q\,c_{q,i}^{\,\gamma}}$ with a per-item constant $\kappa_q>0$; hence the argmax, the ties, and the normalized vote shares coincide with CISC-power$(\gamma)$ on every pool.
+With the feature map $\varphi^{\log}_{q,i}=\log c_{q,i}-\overline{\log c_q}$, the weights equal $\kappa_q\,c_{q,i}^{\,\gamma}$ with a per-item constant $\kappa_q>0$; hence the argmax, the ties, and the normalized vote shares coincide with CISC-power$(\gamma)$ on every pool.
 \end{proposition}
 \begin{proposition}[Regularity]\label{prop:reg}
 The composite $g(\Dhat,\mathrm{SE})$ is continuous, odd, nondecreasing in $\Dhat$, nonincreasing in $\mathrm{SE}$ in magnitude, with $g(D,0^+)=\gamma^\ast(D)$.
@@ -292,8 +288,8 @@ With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0
 \section{Conclusion}
 \TACT{} turns ``how much should this model's confidence be trusted?'' into a measured, signed, uncertainty-aware quantity with exact fallbacks at both ends---plain self-consistency when the evidence is absent, CISC when it is at full strength---and shows that the sign, long unrepresentable in this family of methods, can be recovered without any labels under stated and tested conditions. The accompanying impossibility results draw the boundary that any future per-item method must respect, and the falsification protocol, having already killed one of the author's own systems, is offered as the more portable contribution.
 
-\balance
 
+\section*{References}
 \begin{thebibliography}{99}\itemsep 1pt
 
 \bibitem{wang2023selfconsistency}
