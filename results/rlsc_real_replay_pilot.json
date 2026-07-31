@@ -1,0 +1,802 @@
+[
+ {
+  "qid": "gsm-0",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-1",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-2",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-3",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-4",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-5",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-6",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-7",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-8",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-9",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-10",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-11",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-12",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-13",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-14",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-15",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-16",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-17",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-18",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-19",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-20",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-21",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-22",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-23",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-24",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-25",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-26",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-27",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-28",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-29",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 7.5975,
+  "mismatch": 0.0,
+  "plurality_right": false
+ },
+ {
+  "qid": "gsm-30",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-31",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-32",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-33",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-34",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-35",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-36",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-37",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-38",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-39",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-40",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-41",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-42",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": false
+ },
+ {
+  "qid": "gsm-43",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-44",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 7.57,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-45",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-46",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-47",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 7.5575,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-48",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "gsm-49",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-0",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-1",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-2",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-3",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-4",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-5",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-6",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-7",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-8",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-9",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-10",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-11",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-12",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-13",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 7.5525,
+  "mismatch": 0.0,
+  "plurality_right": false
+ },
+ {
+  "qid": "csqa-14",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 11.3625,
+  "mismatch": 0.0,
+  "plurality_right": false
+ },
+ {
+  "qid": "csqa-15",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-16",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-17",
+  "K": 3,
+  "p_cert": 1.0,
+  "mean_T": 7.845,
+  "mismatch": 0.0,
+  "plurality_right": false
+ },
+ {
+  "qid": "csqa-18",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 11.2775,
+  "mismatch": 0.0,
+  "plurality_right": false
+ },
+ {
+  "qid": "csqa-19",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-20",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 11.3425,
+  "mismatch": 0.0,
+  "plurality_right": false
+ },
+ {
+  "qid": "csqa-21",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-22",
+  "K": 3,
+  "p_cert": 1.0,
+  "mean_T": 7.8475,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-23",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-24",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 9.015,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-25",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-26",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-27",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-28",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-29",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-30",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 8.345,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-31",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 9.0175,
+  "mismatch": 0.0,
+  "plurality_right": false
+ },
+ {
+  "qid": "csqa-32",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-33",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-34",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-35",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-36",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-37",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-38",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 9.0925,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-39",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-40",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-41",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-42",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-43",
+  "K": 2,
+  "p_cert": 0.0,
+  "mean_T": 12.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-44",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-45",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-46",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": false
+ },
+ {
+  "qid": "csqa-47",
+  "K": 2,
+  "p_cert": 1.0,
+  "mean_T": 7.6125,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-48",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ },
+ {
+  "qid": "csqa-49",
+  "K": 1,
+  "p_cert": 1.0,
+  "mean_T": 7.0,
+  "mismatch": 0.0,
+  "plurality_right": true
+ }
+]
