@@ -120,10 +120,14 @@ def main():
             pools.append(p)
     print(f"pools built: {len(pools)}  (dropped {len(traces) - len(pools)} with <6 samples)")
 
+    # Split on the REGISTERED item list (sorted qids), not on whichever pools
+    # happen to have data -- the assignment must be invariant to collection
+    # dropouts and dict ordering.
+    all_qids = sorted(gold)
     rng = np.random.default_rng(args.seed)
-    order = rng.permutation(len(pools))
-    sign_pools = [pools[i] for i in order[: args.sign_set]]
-    eval_pools = [pools[i] for i in order[args.sign_set:]]
+    sign_qids = set(np.array(all_qids)[rng.permutation(len(all_qids))[: args.sign_set]])
+    sign_pools = [p for p in pools if p.meta["qid"] in sign_qids]
+    eval_pools = [p for p in pools if p.meta["qid"] not in sign_qids]
     k = min(args.k, min(p.k_max for p in pools))
     print(f"sign set {len(sign_pools)}, eval set {len(eval_pools)}, k={k}")
 
