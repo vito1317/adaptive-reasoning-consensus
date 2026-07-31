@@ -128,8 +128,13 @@ def main():
     sign_qids = set(np.array(all_qids)[rng.permutation(len(all_qids))[: args.sign_set]])
     sign_pools = [p for p in pools if p.meta["qid"] in sign_qids]
     eval_pools = [p for p in pools if p.meta["qid"] not in sign_qids]
-    k = min(args.k, min(p.k_max for p in pools))
-    print(f"sign set {len(sign_pools)}, eval set {len(eval_pools)}, k={k}")
+    # Spec registers K=16. Pools with fewer traces contribute what they have
+    # (numpy slicing caps at length; the stratified estimators handle varying
+    # per-item n). Truncating every pool to the global minimum would discard
+    # ~30% of samples.
+    k = args.k
+    print(f"sign set {len(sign_pools)}, eval set {len(eval_pools)}, k={k} "
+          f"(min pool {min(p.k_max for p in pools)})")
 
     # ---- substrate description (H5) --------------------------------------
     per_sample_acc = float(np.mean([np.mean(p.answers[:k] == p.correct) for p in eval_pools]))
