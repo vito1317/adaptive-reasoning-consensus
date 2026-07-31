@@ -1,0 +1,1255 @@
+{
+ "n_runs": 16,
+ "traces": {
+  "amc-41": [
+   {
+    "rep": 0,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "11",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "11",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "11",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "11",
+    "confidence": 0.92
+   }
+  ],
+  "amc-19": [
+   {
+    "rep": 0,
+    "answer": "36",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "36",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "36",
+    "confidence": 0.95
+   }
+  ],
+  "amc-50": [
+   {
+    "rep": 0,
+    "answer": "3",
+    "confidence": 0.92
+   },
+   {
+    "rep": 1,
+    "answer": "3",
+    "confidence": 0.92
+   },
+   {
+    "rep": 2,
+    "answer": "3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "3",
+    "confidence": 0.75
+   },
+   {
+    "rep": 5,
+    "answer": "3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "3",
+    "confidence": 0.95
+   }
+  ],
+  "amc-6": [
+   {
+    "rep": 0,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "30",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "30",
+    "confidence": 0.88
+   },
+   {
+    "rep": 5,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "30",
+    "confidence": 0.92
+   }
+  ],
+  "amc-9": [
+   {
+    "rep": 0,
+    "answer": "361",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "359",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "180",
+    "confidence": 0.3
+   },
+   {
+    "rep": 3,
+    "answer": "359",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "361",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "359",
+    "confidence": 0.8
+   },
+   {
+    "rep": 6,
+    "answer": "720",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "720",
+    "confidence": 0.35
+   }
+  ],
+  "amc-68": [
+   {
+    "rep": 0,
+    "answer": "50",
+    "confidence": 0.96
+   },
+   {
+    "rep": 1,
+    "answer": "50",
+    "confidence": 0.45
+   },
+   {
+    "rep": 2,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "20",
+    "confidence": 0.6
+   },
+   {
+    "rep": 4,
+    "answer": "50",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "50",
+    "confidence": 0.92
+   },
+   {
+    "rep": 7,
+    "answer": "50",
+    "confidence": 0.88
+   }
+  ],
+  "amc-12": [
+   {
+    "rep": 0,
+    "answer": "4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "13",
+    "confidence": 0.4
+   },
+   {
+    "rep": 2,
+    "answer": "0",
+    "confidence": 0.1
+   },
+   {
+    "rep": 3,
+    "answer": "4",
+    "confidence": 0.7
+   },
+   {
+    "rep": 4,
+    "answer": "8",
+    "confidence": 0.65
+   },
+   {
+    "rep": 5,
+    "answer": "4",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "16",
+    "confidence": 0.65
+   },
+   {
+    "rep": 7,
+    "answer": "4",
+    "confidence": 0.85
+   }
+  ],
+  "amc-46": [
+   {
+    "rep": 0,
+    "answer": "3159",
+    "confidence": 0.92
+   },
+   {
+    "rep": 1,
+    "answer": "3159",
+    "confidence": 0.92
+   },
+   {
+    "rep": 2,
+    "answer": "3159",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "3159",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "3159",
+    "confidence": 0.87
+   },
+   {
+    "rep": 5,
+    "answer": "3159",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "3159",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "3159",
+    "confidence": 0.88
+   }
+  ],
+  "amc-74": [
+   {
+    "rep": 0,
+    "answer": "7",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "11",
+    "confidence": 0.92
+   },
+   {
+    "rep": 2,
+    "answer": "0",
+    "confidence": 0.1
+   },
+   {
+    "rep": 3,
+    "answer": "7",
+    "confidence": 0.5
+   },
+   {
+    "rep": 4,
+    "answer": "7",
+    "confidence": 0.6
+   },
+   {
+    "rep": 5,
+    "answer": "7",
+    "confidence": 0.65
+   },
+   {
+    "rep": 6,
+    "answer": "6",
+    "confidence": 0.6
+   },
+   {
+    "rep": 7,
+    "answer": "4",
+    "confidence": 0.55
+   }
+  ],
+  "amc-7": [
+   {
+    "rep": 0,
+    "answer": "18",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "18",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "18",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "18",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "13",
+    "confidence": 0.82
+   },
+   {
+    "rep": 5,
+    "answer": "18",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "18",
+    "confidence": 0.88
+   },
+   {
+    "rep": 7,
+    "answer": "18",
+    "confidence": 0.85
+   }
+  ],
+  "amc-64": [
+   {
+    "rep": 0,
+    "answer": "7",
+    "confidence": 0.97
+   },
+   {
+    "rep": 1,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "7",
+    "confidence": 0.92
+   },
+   {
+    "rep": 5,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "7",
+    "confidence": 0.96
+   }
+  ],
+  "amc-27": [
+   {
+    "rep": 0,
+    "answer": "72",
+    "confidence": 0.5
+   },
+   {
+    "rep": 1,
+    "answer": "76",
+    "confidence": 0.65
+   },
+   {
+    "rep": 2,
+    "answer": "0",
+    "confidence": 0.1
+   },
+   {
+    "rep": 3,
+    "answer": "40",
+    "confidence": 0.45
+   },
+   {
+    "rep": 4,
+    "answer": "76",
+    "confidence": 0.5
+   },
+   {
+    "rep": 5,
+    "answer": "82",
+    "confidence": 0.35
+   },
+   {
+    "rep": 6,
+    "answer": "76",
+    "confidence": 0.5
+   },
+   {
+    "rep": 7,
+    "answer": "82",
+    "confidence": 0.72
+   }
+  ],
+  "amc-4": [
+   {
+    "rep": 0,
+    "answer": "13",
+    "confidence": 0.92
+   },
+   {
+    "rep": 1,
+    "answer": "13",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "13",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "13",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "13",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "13",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "13",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "13",
+    "confidence": 0.82
+   }
+  ],
+  "amc-11": [
+   {
+    "rep": 0,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "5",
+    "confidence": 0.92
+   },
+   {
+    "rep": 5,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 7,
+    "answer": "5",
+    "confidence": 0.96
+   }
+  ],
+  "amc-55": [
+   {
+    "rep": 0,
+    "answer": "96",
+    "confidence": 0.93
+   },
+   {
+    "rep": 1,
+    "answer": "0",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "-1536",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "96",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "96",
+    "confidence": 0.88
+   },
+   {
+    "rep": 5,
+    "answer": "96",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "96",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "96",
+    "confidence": 0.85
+   }
+  ],
+  "aime-53": [
+   {
+    "rep": 0,
+    "answer": "250",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "250",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "600",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "300",
+    "confidence": 0.45
+   },
+   {
+    "rep": 4,
+    "answer": "500",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "250",
+    "confidence": 0.92
+   },
+   {
+    "rep": 6,
+    "answer": "250",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "250",
+    "confidence": 0.95
+   }
+  ],
+  "aime-8": [
+   {
+    "rep": 0,
+    "answer": "150",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "242",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "242",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "250",
+    "confidence": 0.35
+   },
+   {
+    "rep": 4,
+    "answer": "242",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "260",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "242",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "150",
+    "confidence": 0.85
+   }
+  ],
+  "aime-30": [
+   {
+    "rep": 0,
+    "answer": "191",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "191",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "191",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "289",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "164",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "191",
+    "confidence": 0.88
+   },
+   {
+    "rep": 6,
+    "answer": "191",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "1386",
+    "confidence": 0.7
+   }
+  ],
+  "aime-11": [
+   {
+    "rep": 0,
+    "answer": "251",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "250",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "80",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "80",
+    "confidence": 0.35
+   },
+   {
+    "rep": 4,
+    "answer": "80",
+    "confidence": 0.4
+   },
+   {
+    "rep": 5,
+    "answer": "240",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "136",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "80",
+    "confidence": 0.6
+   }
+  ],
+  "aime-70": [
+   {
+    "rep": 1,
+    "answer": "104",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "104",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "111",
+    "confidence": 0.25
+   },
+   {
+    "rep": 4,
+    "answer": "104",
+    "confidence": 0.88
+   },
+   {
+    "rep": 5,
+    "answer": "143",
+    "confidence": 0.65
+   },
+   {
+    "rep": 6,
+    "answer": "104",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "598",
+    "confidence": 0.45
+   }
+  ],
+  "aime-54": [
+   {
+    "rep": 0,
+    "answer": "273",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "273",
+    "confidence": 0.92
+   },
+   {
+    "rep": 2,
+    "answer": "273",
+    "confidence": 0.88
+   },
+   {
+    "rep": 3,
+    "answer": "273",
+    "confidence": 0.7
+   },
+   {
+    "rep": 4,
+    "answer": "273",
+    "confidence": 0.92
+   },
+   {
+    "rep": 5,
+    "answer": "173",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "273",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "273",
+    "confidence": 0.92
+   }
+  ],
+  "aime-7": [
+   {
+    "rep": 0,
+    "answer": "227",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "227",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "227",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "227",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "227",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "227",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "227",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "227",
+    "confidence": 0.98
+   }
+  ],
+  "aime-72": [
+   {
+    "rep": 0,
+    "answer": "540",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "480",
+    "confidence": 0.7
+   },
+   {
+    "rep": 2,
+    "answer": "540",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "540",
+    "confidence": 0.65
+   },
+   {
+    "rep": 4,
+    "answer": "540",
+    "confidence": 0.93
+   },
+   {
+    "rep": 5,
+    "answer": "540",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "540",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "540",
+    "confidence": 0.88
+   }
+  ],
+  "aime-15": [
+   {
+    "rep": 0,
+    "answer": "154",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "89",
+    "confidence": 0.75
+   },
+   {
+    "rep": 2,
+    "answer": "154",
+    "confidence": 0.88
+   },
+   {
+    "rep": 3,
+    "answer": "154",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "154",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "154",
+    "confidence": 0.92
+   },
+   {
+    "rep": 6,
+    "answer": "154",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "154",
+    "confidence": 0.9
+   }
+  ],
+  "aime-28": [
+   {
+    "rep": 0,
+    "answer": "200",
+    "confidence": 0.35
+   },
+   {
+    "rep": 1,
+    "answer": "233",
+    "confidence": 0.65
+   },
+   {
+    "rep": 2,
+    "answer": "60",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "366",
+    "confidence": 0.3
+   },
+   {
+    "rep": 4,
+    "answer": "280",
+    "confidence": 0.35
+   },
+   {
+    "rep": 5,
+    "answer": "216",
+    "confidence": 0.72
+   },
+   {
+    "rep": 6,
+    "answer": "75",
+    "confidence": 0.6
+   },
+   {
+    "rep": 7,
+    "answer": "484",
+    "confidence": 0.5
+   }
+  ],
+  "aime-80": [
+   {
+    "rep": 0,
+    "answer": "84",
+    "confidence": 0.4
+   },
+   {
+    "rep": 1,
+    "answer": "407",
+    "confidence": 0.6
+   },
+   {
+    "rep": 2,
+    "answer": "43",
+    "confidence": 0.45
+   },
+   {
+    "rep": 3,
+    "answer": "154",
+    "confidence": 0.25
+   },
+   {
+    "rep": 4,
+    "answer": "43",
+    "confidence": 0.3
+   },
+   {
+    "rep": 5,
+    "answer": "112",
+    "confidence": 0.68
+   },
+   {
+    "rep": 6,
+    "answer": "181",
+    "confidence": 0.65
+   },
+   {
+    "rep": 7,
+    "answer": "112",
+    "confidence": 0.55
+   }
+  ],
+  "aime-74": [
+   {
+    "rep": 0,
+    "answer": "399",
+    "confidence": 0.3
+   },
+   {
+    "rep": 1,
+    "answer": "80",
+    "confidence": 0.65
+   },
+   {
+    "rep": 2,
+    "answer": "480",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "484",
+    "confidence": 0.35
+   },
+   {
+    "rep": 4,
+    "answer": "380",
+    "confidence": 0.25
+   },
+   {
+    "rep": 5,
+    "answer": "96",
+    "confidence": 0.6
+   },
+   {
+    "rep": 6,
+    "answer": "480",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "480",
+    "confidence": 0.75
+   }
+  ],
+  "aime-73": [
+   {
+    "rep": 0,
+    "answer": "407",
+    "confidence": 0.25
+   },
+   {
+    "rep": 1,
+    "answer": "4321",
+    "confidence": 0.55
+   },
+   {
+    "rep": 2,
+    "answer": "506",
+    "confidence": 0.35
+   },
+   {
+    "rep": 3,
+    "answer": "655",
+    "confidence": 0.25
+   },
+   {
+    "rep": 4,
+    "answer": "1088",
+    "confidence": 0.3
+   },
+   {
+    "rep": 5,
+    "answer": "407",
+    "confidence": 0.55
+   },
+   {
+    "rep": 6,
+    "answer": "793",
+    "confidence": 0.4
+   },
+   {
+    "rep": 7,
+    "answer": "399",
+    "confidence": 0.35
+   }
+  ],
+  "aime-50": [
+   {
+    "rep": 0,
+    "answer": "749",
+    "confidence": 0.25
+   },
+   {
+    "rep": 1,
+    "answer": "752",
+    "confidence": 0.6
+   },
+   {
+    "rep": 2,
+    "answer": "949",
+    "confidence": 0.4
+   },
+   {
+    "rep": 3,
+    "answer": "157",
+    "confidence": 0.25
+   },
+   {
+    "rep": 4,
+    "answer": "749",
+    "confidence": 0.25
+   },
+   {
+    "rep": 5,
+    "answer": "749",
+    "confidence": 0.58
+   },
+   {
+    "rep": 6,
+    "answer": "249",
+    "confidence": 0.35
+   },
+   {
+    "rep": 7,
+    "answer": "749",
+    "confidence": 0.4
+   }
+  ],
+  "aime-6": [
+   {
+    "rep": 0,
+    "answer": "289",
+    "confidence": 0.25
+   },
+   {
+    "rep": 1,
+    "answer": "1229",
+    "confidence": 0.5
+   },
+   {
+    "rep": 3,
+    "answer": "33",
+    "confidence": 0.2
+   },
+   {
+    "rep": 4,
+    "answer": "181",
+    "confidence": 0.28
+   },
+   {
+    "rep": 5,
+    "answer": "407",
+    "confidence": 0.62
+   },
+   {
+    "rep": 6,
+    "answer": "33",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "899",
+    "confidence": 0.35
+   }
+  ]
+ }
+}

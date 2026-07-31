@@ -1,0 +1,182 @@
+[
+ {
+  "qid": "amc-41",
+  "group": "amc",
+  "question": "Camila writes down five positive integers. The unique mode of these integers is $2$ greater than their median, and the median is $2$ greater than their arithmetic mean. What is the least possible value for the mode?",
+  "gold": "11"
+ },
+ {
+  "qid": "amc-19",
+  "group": "amc",
+  "question": "A data set consists of $6$ (not distinct) positive integers: $1$, $7$, $5$, $2$, $5$, and $X$. The average (arithmetic mean) of the $6$ numbers equals a value in the data set. What is the sum of all possible values of $X$?",
+  "gold": "36"
+ },
+ {
+  "qid": "amc-50",
+  "group": "amc",
+  "question": "Flora the frog starts at 0 on the number line and makes a sequence of jumps to the right. In any one jump, independent of previous jumps, Flora leaps a positive integer distance $m$ with probability $\\frac{1}{2^m}$.\nWhat is the probability that Flora will eventually land at 10? Write the answer as a simplified fraction $\\frac{m}{n}$, find $m+n$",
+  "gold": "3"
+ },
+ {
+  "qid": "amc-6",
+  "group": "amc",
+  "question": "The roots of the polynomial $10x^3 - 39x^2 + 29x - 6$ are the height, length, and width of a rectangular box (right rectangular prism). A new rectangular box is formed by lengthening each edge of the original box by $2$\nunits. What is the volume of the new box?",
+  "gold": "30"
+ },
+ {
+  "qid": "amc-9",
+  "group": "amc",
+  "question": "Let $T_k$ be the transformation of the coordinate plane that first rotates the plane $k$ degrees counterclockwise around the origin and then reflects the plane across the $y$-axis. What is the least positive\ninteger $n$ such that performing the sequence of transformations $T_1, T_2, T_3, \\cdots, T_n$ returns the point $(1,0)$ back to itself?",
+  "gold": "359"
+ },
+ {
+  "qid": "amc-68",
+  "group": "amc",
+  "question": "For complex number $u = a+bi$ and $v = c+di$ (where $i=\\sqrt{-1}$), define the binary operation\n$u \\otimes v = ac + bdi$\nSuppose $z$ is a complex number such that $z\\otimes z = z^{2}+40$. What is $|z|^2$?",
+  "gold": "50"
+ },
+ {
+  "qid": "amc-12",
+  "group": "amc",
+  "question": "Isosceles trapezoid $ABCD$ has parallel sides $\\overline{AD}$ and $\\overline{BC},$ with $BC < AD$ and $AB = CD.$ There is a point $P$ in the plane such that $PA=1, PB=2, PC=3,$ and $PD=4.$ Let $\\frac{r}{s}=frac{BC}{AD}$ is irreducible fraction, what is the value of $r+s$?",
+  "gold": "4"
+ },
+ {
+  "qid": "amc-46",
+  "group": "amc",
+  "question": "What is the value of\n\\[2^3 - 1^3 + 4^3 - 3^3 + 6^3 - 5^3 + \\dots + 18^3 - 17^3?\\]",
+  "gold": "3159"
+ },
+ {
+  "qid": "amc-74",
+  "group": "amc",
+  "question": "When $n$ standard six-sided dice are rolled, the product of the numbers rolled can be any of $936$ possible values. What is $n$?",
+  "gold": "11"
+ },
+ {
+  "qid": "amc-7",
+  "group": "amc",
+  "question": "A $\\emph{triangular number}$ is a positive integer that can be expressed in the form $t_n = 1+2+3+\\cdots+n$, for some positive integer $n$. The three smallest triangular numbers that are also perfect squares are\n$t_1 = 1 = 1^2$, $t_8 = 36 = 6^2$, and $t_{49} = 1225 = 35^2$. What is the sum of the digits of the fourth smallest triangular number that is also a perfect square?",
+  "gold": "18"
+ },
+ {
+  "qid": "amc-64",
+  "group": "amc",
+  "question": "Maureen is keeping track of the mean of her quiz scores this semester. If Maureen scores an $11$ on the next quiz, her mean will increase by $1$. If she scores an $11$ on each of the next three quizzes, her mean will increase by $2$. What is the mean of her quiz scores currently?",
+  "gold": "7"
+ },
+ {
+  "qid": "amc-27",
+  "group": "amc",
+  "question": "How many $4 \\times 4$ arrays whose entries are $0$s and $1$s are there such that the row sums (the sum of the entries in each row) are $1, 2, 3,$ and $4,$ in some order, and the column sums (the sum of the entries in each column) are also $1, 2, 3,$ and $4,$ in some order? Output the remainder when the answer is divided by 100.\n\nFor example, the array\n\\[\\left[   \\begin{array}{cccc}     1 & 1 & 1 & 0 \\\\     0 & 1 & 1 & 0 \\\\     1 & 1 & 1 & 1 \\\\     0 & 1 & 0 & 0 \\\\   \\end{array} \\right]\\]\nsatisfies the condition.",
+  "gold": "76"
+ },
+ {
+  "qid": "amc-4",
+  "group": "amc",
+  "question": "Let $\\mathcal{R}$ be the region in the complex plane consisting of all complex numbers $z$ that can be written as the sum of complex numbers $z_1$ and $z_2$, where $z_1$ lies on the segment with endpoints $3$ and $4i$, and $z_2$ has magnitude at most $1$. What integer is closest to the area of $\\mathcal{R}$?  ",
+  "gold": "13"
+ },
+ {
+  "qid": "amc-11",
+  "group": "amc",
+  "question": "The sum of three numbers is $96.$ The first number is $6$ times the third number, and the third number is $40$ less than the second number. What is the absolute value of the difference between the first and second numbers?",
+  "gold": "5"
+ },
+ {
+  "qid": "amc-55",
+  "group": "amc",
+  "question": "Let $f$ be the unique function defined on the positive integers such that \\[\\sum_{d\\mid n}d\\cdot f\\left(\\frac{n}{d}\\right)=1\\] for all positive integers $n$. What is $f(2023)$?",
+  "gold": "96"
+ },
+ {
+  "qid": "aime-53",
+  "group": "aime",
+  "question": "Let $\\triangle ABC$ be an isosceles triangle with $\\angle A = 90^\\circ.$ There exists a point $P$ inside $\\triangle ABC$ such that $\\angle PAB = \\angle PBC = \\angle PCA$ and $AP = 10.$ Find the area of $\\triangle ABC.$",
+  "gold": "250"
+ },
+ {
+  "qid": "aime-8",
+  "group": "aime",
+  "question": "In isosceles trapezoid $ABCD$, parallel bases $\\overline{AB}$ and $\\overline{CD}$ have lengths $500$ and $650$, respectively, and $AD=BC=333$. The angle bisectors of $\\angle{A}$ and $\\angle{D}$ meet at $P$, and the angle bisectors of $\\angle{B}$ and $\\angle{C}$ meet at $Q$. Find $PQ$.",
+  "gold": "242"
+ },
+ {
+  "qid": "aime-30",
+  "group": "aime",
+  "question": "Five men and nine women stand equally spaced around a circle in random order. The probability that every man stands diametrically opposite a woman is $\\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n.$",
+  "gold": "191"
+ },
+ {
+  "qid": "aime-11",
+  "group": "aime",
+  "question": "Find the number of ordered pairs of integers $(a, b)$ such that the sequence\\[3, 4, 5, a, b, 30, 40, 50\\]is strictly increasing and no set of four (not necessarily consecutive) terms forms an arithmetic progression.",
+  "gold": "228"
+ },
+ {
+  "qid": "aime-70",
+  "group": "aime",
+  "question": "Rectangles $ABCD$ and $EFGH$ are drawn such that $D,E,C,F$ are collinear. Also, $A,D,H,G$ all lie on a circle. If $BC=16$,$AB=107$,$FG=17$, and $EF=184$, what is the length of $CE$?",
+  "gold": "104"
+ },
+ {
+  "qid": "aime-54",
+  "group": "aime",
+  "question": "Let $x,y,$ and $z$ be real numbers satisfying the system of equations\n\\begin{align*} xy + 4z &= 60 \\\\ yz + 4x &= 60 \\\\ zx + 4y &= 60. \\end{align*}\nLet $S$ be the set of possible values of $x.$ Find the sum of the squares of the elements of $S.$",
+  "gold": "273"
+ },
+ {
+  "qid": "aime-7",
+  "group": "aime",
+  "question": "Find the three-digit positive integer $\\underline{a}\\,\\underline{b}\\,\\underline{c}$ whose representation in base nine is $\\underline{b}\\,\\underline{c}\\,\\underline{a}_{\\,\\text{nine}},$ where $a,$ $b,$ and $c$ are (not necessarily distinct) digits.",
+  "gold": "227"
+ },
+ {
+  "qid": "aime-72",
+  "group": "aime",
+  "question": "Find the largest possible real part of \\[(75+117i)z+\\frac{96+144i}{z}\\]where $z$ is a complex number with $|z|=4$.",
+  "gold": "540"
+ },
+ {
+  "qid": "aime-15",
+  "group": "aime",
+  "question": "Adults made up $\\frac5{12}$ of the crowd of people at a concert. After a bus carrying $50$ more people arrived, adults made up $\\frac{11}{25}$ of the people at the concert. Find the minimum number of adults who could have been at the concert after the bus arrived.",
+  "gold": "154"
+ },
+ {
+  "qid": "aime-28",
+  "group": "aime",
+  "question": "Find the number of positive integers $n \\le 600$ whose value can be uniquely determined when the values of $\\left\\lfloor \\frac n4\\right\\rfloor$, $\\left\\lfloor\\frac n5\\right\\rfloor$, and $\\left\\lfloor\\frac n6\\right\\rfloor$ are given, where $\\lfloor x \\rfloor$ denotes the greatest integer less than or equal to the real number $x$.",
+  "gold": "080"
+ },
+ {
+  "qid": "aime-80",
+  "group": "aime",
+  "question": "Let \\(b\\ge 2\\) be an integer. Call a positive integer \\(n\\) \\(b\\text-\\textit{eautiful}\\) if it has exactly two digits when expressed in base \\(b\\)  and these two digits sum to \\(\\sqrt n\\). For example, \\(81\\) is \\(13\\text-\\textit{eautiful}\\) because \\(81  = \\underline{6} \\ \\underline{3}_{13} \\) and \\(6 + 3 =  \\sqrt{81}\\). Find the least integer \\(b\\ge 2\\) for which there are more than ten \\(b\\text-\\textit{eautiful}\\) integers.",
+  "gold": "211"
+ },
+ {
+  "qid": "aime-74",
+  "group": "aime",
+  "question": "Let $A$, $B$, $C$, and $D$ be point on the hyperbola $\\frac{x^2}{20}- \\frac{y^2}{24} = 1$ such that $ABCD$ is a rhombus whose diagonals intersect at the origin. Find the greatest real number that is less than $BD^2$ for all such rhombi.",
+  "gold": "480"
+ },
+ {
+  "qid": "aime-73",
+  "group": "aime",
+  "question": "Eight circles of radius $34$ are sequentially tangent, and two of the circles are tangent to $AB$ and $BC$ of triangle $ABC$, respectively. $2024$ circles of radius $1$ can be arranged in the same manner. The inradius of triangle $ABC$ can be expressed as $\\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.",
+  "gold": "197"
+ },
+ {
+  "qid": "aime-50",
+  "group": "aime",
+  "question": "A cube-shaped container has vertices $A,$ $B,$ $C,$ and $D,$ where $\\overline{AB}$ and $\\overline{CD}$ are parallel edges of the cube, and $\\overline{AC}$ and $\\overline{BD}$ are diagonals of faces of the cube, as shown. Vertex $A$ of the cube is set on a horizontal plane $\\mathcal{P}$ so that the plane of the rectangle $ABDC$ is perpendicular to $\\mathcal{P},$ vertex $B$ is $2$ meters above $\\mathcal{P},$ vertex $C$ is $8$ meters above $\\mathcal{P},$ and vertex $D$ is $10$ meters above $\\mathcal{P}.$ The cube contains water whose surface is parallel to $\\mathcal{P}$ at a height of $7$ meters above $\\mathcal{P}.$ The volume of water is $\\frac{m}{n}$ cubic meters, where $m$ and $n$ are relatively prime positive integers. Find $m+n.$",
+  "gold": "751"
+ },
+ {
+  "qid": "aime-6",
+  "group": "aime",
+  "question": "Let $x,$ $y,$ and $z$ be positive real numbers satisfying the system of equations:\n\\begin{align*} \\sqrt{2x-xy} + \\sqrt{2y-xy} &= 1 \\\\ \\sqrt{2y-yz} + \\sqrt{2z-yz} &= \\sqrt2 \\\\ \\sqrt{2z-zx} + \\sqrt{2x-zx} &= \\sqrt3. \\end{align*} \nThen $\\left[ (1-x)(1-y)(1-z) \\right]^2$ can be written as $\\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n.$",
+  "gold": "033"
+ }
+]
