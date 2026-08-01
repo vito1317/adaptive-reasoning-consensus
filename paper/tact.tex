@@ -347,6 +347,17 @@ it is the ten-seed bootstrap that resolves the mid-range gap as systematic.
 A protocol that had reported only the single-seed tests would have called the
 mid-range a tie.
 
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/tact_sweep.png}
+\caption{Main result on the confidence-usage frontier. \TACT-dev and the fully label-free \TACT-LF track the signed oracle across the sweep; CISC-devT and the ECE gate sit at the \SC{} floor for all $\kappa<0$.}
+\label{fig:sweep}
+\end{figure}
+
+\section{Results}\label{sec:results}
+
+
 \begin{table}[t]
 \centering
 \caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \SC{} floor on the entire negative half-axis.}
@@ -368,16 +379,6 @@ $+0.6$ & .780 & .780 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
 \bottomrule
 \end{tabular}
 \end{table}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figs/tact_sweep.png}
-\caption{Main result on the confidence-usage frontier. \TACT-dev and the fully label-free \TACT-LF track the signed oracle across the sweep; CISC-devT and the ECE gate sit at the \SC{} floor for all $\kappa<0$.}
-\label{fig:sweep}
-\end{figure}
-
-\section{Results}\label{sec:results}
-
 \subsection{Signed recovery, with and without labels}
 Table~\ref{tab:sweep} and Fig.~\ref{fig:sweep} give the sweep. Three observations. First, the published protocols never leave the floor on $\kappa<0$: CISC-devT's grid is positive-only and the ECE gate never opens (dev ECE ranges $0.10$--$0.80$ across the sweep while the signal's discrimination is perfect at the extremes). Second, the label-free variant matches the $200$-label variant nearly point-for-point---at $\kappa{=}{-}0.6$ the raw agreement statistic is $\Dhat_g=-0.81$ with $z=-17.6$, and the CCN identity's sign guarantee holds as predicted, yielding $1.000$ with zero labels. Third, at $\kappa=0$ the dead zone returns $\gamma=0$ exactly, so the paired accuracy difference to \SC{} is identically zero---``non-inferior'' is replaced by ``identical.''
 
@@ -447,12 +448,12 @@ sampling variation.
 \toprule
 Method & Grouped & i.i.d.\\
 \midrule
-\SC{} (floor) & .808 & .827\\
-\TACT{} global (dev) & .808 & .827\\
-\TACT-group (dev) & .923 & .827\\
-\textbf{\TACT-group (label-free)} & \textbf{.940} & .827\\
-Naive per-item (neg.\ control) & .803 & .820\\
-Per-item link oracle (ceiling) & .947 & .983\\
+\SC{} (floor) & .785 & .752\\
+\TACT{} global (dev) & .785 & .752\\
+\TACT-group (dev) & \textbf{.927} & .752\\
+\textbf{\TACT-group (label-free)} & .923 & .752\\
+Naive per-item (neg.\ control) & .787 & .752\\
+Per-item link oracle (ceiling) & .947 & .973\\
 \bottomrule
 \end{tabular}
 \end{table}

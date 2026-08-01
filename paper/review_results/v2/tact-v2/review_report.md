@@ -1,15 +1,15 @@
 # Deep Review Report
 
 **Paper**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **Language**: EN | **Mode**: deep-review
-**Generated**: 2026-08-02 03:17
+**Generated**: 2026-08-02 04:02
 **Artifacts**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
 
 ## Overall Assessment
 
-Round-5 re-audit of tact.tex at commit aed4605. Five items closed, one new. The bundle is 3 findings: 2 major, 1 minor. This round's commit set out to regenerate the result tables against the post-tie-break-fix artifacts and succeeded for Tables I and II, both of which now match results/tact_eval.json cell for cell across 9 sweep rows and 5 adversarial rows. Table III was missed and is still pre-fix on all six rows of both columns, which is now visible on the page because the surrounding prose, the figure caption and the abstract were all updated: the table's headline cell reads .940 where the adjacent paragraph reads 0.923, and its i.i.d. oracle cell reads .983 where the Heterogeneity text reads 0.973. Only the table body needs replacing; every sentence that cites it, including the paired counts +83/-0 at p=2.1e-25, checks out against group_eval.json. The other major is unchanged and is not a text problem: 11 pages in a conference class with no named target track, which is a venue decision. The single minor is a float placement. Also closed this round: the keyword count, the unreproducible test runtime (removed), the booktabs footnote placement, and both overfull boxes.
+Round-6 re-audit, now against the TMLR build (tact_tmlr_preprint.tex @ c6a8321). Three items closed, two new. The bundle is 4 findings: 2 major, 1 moderate, 1 minor. Moving to TMLR closes the page-count obstacle that survived five rounds without a single word of edit: TMLR is a journal with no page limit, and its reviewer pool is the ML community from which every comparator in this paper is drawn. The anonymous build was independently checked and is genuinely blind, carrying no author name, no handle, no repository URL and no 'by the author' phrasing, while the preprint retains all three. Two defects are specific to the conversion. Every citation still uses the numeric-era \cite under tmlr's author-year natbib style, 29 occurrences with zero \citep or \citet, so all parenthetical citations render as running text on every page. And the CJK author name is silently dropped because the requested bsmi font is not installed, leaving a comma inside empty parentheses on the first line of the preprint. The third major is carried over unfixed and has now spread: Table III is still pre-tie-break-fix in all three source files, and its headline cell reads .940 where the adjacent prose, which checks out against group_eval.json, reads 0.923. All four remaining items are mechanical; nothing left requires rerunning an experiment.
 
 - **Major**: 2
-- **Moderate**: 0
+- **Moderate**: 1
 - **Minor**: 1
 
 ## Academic Pre-Review Committee
@@ -372,7 +372,18 @@ harder direction.
 
 ## Major Issues
 
-### M1: Table III is still pre-fix on all six rows, and now contradicts the prose that cites it
+### M1: Every citation in the TMLR build uses \cite under an author-year style, so all 29 render as bare in-text names
+- **Type**: presentation
+- **Source**: [Script] via `pre_submission_readiness`
+- **Confidence**: high
+- **Section**: abstract
+- **Related Sections**: abstract
+- **Root Cause Key**: `tmlr-cite-vs-citep`
+- **Quote Verified**: yes
+- **Quote**: `\bibliographystyle{tmlr}`
+- **Explanation**: [Script] The build declares tmlr's natbib author-year style but the body still uses the numeric-era command: 29 occurrences of \cite, zero of \citep or \citet. Under author-year, \cite emits the name and year with no enclosing parentheses, so every parenthetical citation reads as running text. From the rendered PDF: 'Self-consistency (sc) Wang et al. (2023) improves the reasoning accuracy...', 'CISC Taubenfeld et al. (2025) weights votes by...', 'fails an ECE gate for reasons irrelevant to voting utility Taubenfeld et al. (2025); Huang et al. (2024)', 'reliability-aware pseudo-counts Kim et al. (2026)'. This is the first thing a TMLR reviewer sees and it affects every page. The fix is mechanical: \cite -> \citep everywhere, then change back to \citet only where the citation is the grammatical subject ('Wang et al. (2023) show that...'). Roughly five of the 29 are genuine \citet positions.
+
+### M2: Table III is still pre-fix, and the stale values have now been propagated into both TMLR builds
 - **Type**: presentation
 - **Source**: [Script] via `numbers_vs_released_artifacts`
 - **Confidence**: high
@@ -381,22 +392,24 @@ harder direction.
 - **Root Cause Key**: `table3-still-pre-fix`
 - **Quote Verified**: yes
 - **Quote**: `\SC{} (floor) & .808 & .827\\`
-- **Explanation**: This commit regenerated Tables I and II and every prose figure, and both now match results/tact_eval.json row for row. Table III was missed, so it still carries the pre-tie-break-fix numbers while the sentences that reference it carry the corrected ones. Against results/group_eval.json, every row of both columns is stale: SC floor .808/.827 should be .785/.752; TACT global (dev) the same; TACT-group (dev) .923/.827 should be .927/.752; TACT-group (label-free) .940/.827 should be .923/.752; naive per-item .803/.820 should be .787/.752; per-item link oracle .947/.983 should be .947/.973. The contradiction is now visible on the page: the table's headline cell says .940 while the paragraph beside it says 'the label-free variant reaches $0.923$', the caption says 'from the $0.785$ floor' against a table row of .808, and the Heterogeneity prose says 'per-item oracle ($0.973$ in this harness)' against a table cell of .983. The prose, the caption, the abstract and the paired counts (+83/-0, p=2.1e-25) are all correct and all check out; only the table body needs replacing.
+- **Explanation**: Unfixed from round 5 and now in three files: tact.tex, tact_tmlr.tex and tact_tmlr_preprint.tex all carry '(floor) & .808 & .827'. Against results/group_eval.json every row of both columns is stale: SC floor .808/.827 should be .785/.752; TACT global (dev) the same; TACT-group (dev) .923/.827 -> .927/.752; TACT-group (label-free) .940/.827 -> .923/.752; naive per-item .803/.820 -> .787/.752; per-item link oracle .947/.983 -> .947/.973. The contradiction is on the page in every build: the TMLR prose one paragraph away reads 'the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle ... ($+83/-0$, $p=2.1\times10^{-25}$)', all of which check out against the artifact, while the table's headline cell still reads .940. Only the six table rows need replacing, in all three files.
 
-### M2: The paper is still eleven pages in a conference class with no named target track
+## Moderate Issues
+
+### M1: The CJK author name is dropped from the preprint, leaving an empty parenthetical with a stray comma
 - **Type**: presentation
 - **Source**: [Script] via `pre_submission_readiness`
 - **Confidence**: high
 - **Section**: abstract
 - **Related Sections**: abstract
-- **Root Cause Key**: `page-count-regressed-to-eleven`
+- **Root Cause Key**: `cjk-name-dropped`
 - **Quote Verified**: yes
-- **Quote**: `\documentclass[conference]{IEEEtran}`
-- **Explanation**: [Script] Unchanged at 11 pages. Both overfull boxes were fixed this round and the window table was tightened, which helps the layout without changing the count. Most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees, and no target track is named anywhere after five rounds. This remains a venue decision rather than an edit: if the target is a journal or a track with a 10-12 page allowance it closes with no text change, and if it is an 8-page track the seed-dispersion and reasoning-budget subsections are the natural candidates for a companion technical report cited from the paper.
+- **Quote**: `\author{\name Wei-Chen Ko (\begin{CJK}{UTF8}{bsmi}柯瑋宸\end{CJK}, vito1317) \email service@vito1317.com \\`
+- **Explanation**: [Script] The author line renders as 'Wei-Chen Ko (, vito1317)' in tact_tmlr_preprint.pdf: the CJK environment requests the bsmi font, kpsewhich finds no bsmi files in this TeX installation, and CJKutf8 drops the glyphs silently rather than erroring. No CJK codepoint appears anywhere in either TMLR PDF. The result is a comma inside empty parentheses on the first line of the paper. Either install a CJK font the build can resolve (the IEEE build sidestepped this by loading a system font directly with \font\zhfont), switch to xeCJK under XeLaTeX, or drop the CJK name from the preprint. The anonymous submission build is unaffected because it carries no name.
 
 ## Minor Issues
 
-### M1: Table I is still placed in the Experimental Setup section but interpreted only in Results
+### M1: Table I is still declared before the Results section
 - **Type**: presentation
 - **Source**: [LLM] via `section_results`
 - **Confidence**: high
@@ -405,12 +418,12 @@ harder direction.
 - **Root Cause Key**: `table1-float-before-results`
 - **Quote Verified**: yes
 - **Quote**: `\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \SC{} floor on the entire negative half-axis.}`
-- **Explanation**: The float is declared before the Results heading and its caption already states the paper's first result. The last remaining presentation item, and the cheapest.
+- **Explanation**: Unchanged, and cheaper to fix in the single-column TMLR layout than it was in two columns.
 
 ## Decision Signals
 
 - **Reviewer Recommendation**: Reject
-- **Issue Bundle**: 2 major / 0 moderate / 1 minor
+- **Issue Bundle**: 2 major / 1 moderate / 1 minor
 
 ## Revision Roadmap
 

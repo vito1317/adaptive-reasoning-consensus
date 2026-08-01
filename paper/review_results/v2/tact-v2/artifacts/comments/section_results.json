@@ -1,8 +1,8 @@
 [
   {
-    "title": "Table I is still placed in the Experimental Setup section but interpreted only in Results",
+    "title": "Table I is still declared before the Results section",
     "quote": "\\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \\SC{} floor on the entire negative half-axis.}",
-    "explanation": "The float is declared before the Results heading and its caption already states the paper's first result. The last remaining presentation item, and the cheapest.",
+    "explanation": "Unchanged, and cheaper to fix in the single-column TMLR layout than it was in two columns.",
     "comment_type": "presentation",
     "severity": "minor",
     "confidence": "high",

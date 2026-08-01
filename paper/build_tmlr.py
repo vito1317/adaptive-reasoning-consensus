@@ -91,8 +91,15 @@ def convert(src: str, preprint: bool) -> str:
 
     # --- CJK in the author name needs a package when it is shown -------
     if preprint:
+        # CJKutf8 needs a bsmi font that this TeX tree does not have, and it
+        # DROPS the characters silently rather than failing, which left the
+        # first line of the preprint reading "Wei-Chen Ko (, vito1317)". Load a
+        # Unicode system font directly instead, the way the IEEE build does.
         s = s.replace(r"\usepackage{graphicx}",
-                      "\\usepackage{graphicx}\n\\usepackage{CJKutf8}")
+                      "\\usepackage{graphicx}\n"
+                      '\\font\\zhfont="[/System/Library/Fonts/Supplemental/Arial Unicode.ttf]" at 11pt')
+        s = re.sub(r"\\begin\{CJK\}\{UTF8\}\{bsmi\}(.*?)\\end\{CJK\}",
+                   lambda m: "{\\zhfont " + m.group(1) + "}", s)
     else:
         s = re.sub(r"\\begin\{CJK\}\{UTF8\}\{bsmi\}(.*?)\\end\{CJK\}", "", s)
 
@@ -105,6 +112,18 @@ def convert(src: str, preprint: bool) -> str:
             "provided as anonymized supplementary material; the repository will be\n"
             "de-anonymized on acceptance.\n\n",
             s, flags=re.S)
+
+    # --- citation commands ------------------------------------------
+    # tmlr.bst is an author-year style, in which plain \cite emits an
+    # unbracketed "Wang et al. (2023)" mid-sentence. Every citation in this
+    # paper is a parenthetical attribution to a noun phrase that precedes it,
+    # never the grammatical subject, so \citep is right throughout and no
+    # \citet is needed. Two sites already carry a parenthesised abbreviation
+    # and would render as adjacent bracket pairs; those fold the citation into
+    # the existing parentheses with \citealp.
+    s = re.sub(r"\((\\SC|CISC)\)\s*\\cite\{([^}]*)\}",
+               lambda m: f"({m.group(1)}; \\citealp{{{m.group(2)}}})", s)
+    s = s.replace(r"\cite{", r"\citep{")
 
     # --- bibliography: TMLR's natbib runs in author-year mode, which a manual
     # numeric thebibliography cannot satisfy. Switch to bibtex with tmlr.bst;

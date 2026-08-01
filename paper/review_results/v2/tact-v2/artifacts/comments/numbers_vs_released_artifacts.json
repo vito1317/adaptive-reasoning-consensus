@@ -1,8 +1,8 @@
 [
   {
-    "title": "Table III is still pre-fix on all six rows, and now contradicts the prose that cites it",
+    "title": "Table III is still pre-fix, and the stale values have now been propagated into both TMLR builds",
     "quote": "\\SC{} (floor) & .808 & .827\\\\",
-    "explanation": "This commit regenerated Tables I and II and every prose figure, and both now match results/tact_eval.json row for row. Table III was missed, so it still carries the pre-tie-break-fix numbers while the sentences that reference it carry the corrected ones. Against results/group_eval.json, every row of both columns is stale: SC floor .808/.827 should be .785/.752; TACT global (dev) the same; TACT-group (dev) .923/.827 should be .927/.752; TACT-group (label-free) .940/.827 should be .923/.752; naive per-item .803/.820 should be .787/.752; per-item link oracle .947/.983 should be .947/.973. The contradiction is now visible on the page: the table's headline cell says .940 while the paragraph beside it says 'the label-free variant reaches $0.923$', the caption says 'from the $0.785$ floor' against a table row of .808, and the Heterogeneity prose says 'per-item oracle ($0.973$ in this harness)' against a table cell of .983. The prose, the caption, the abstract and the paired counts (+83/-0, p=2.1e-25) are all correct and all check out; only the table body needs replacing.",
+    "explanation": "Unfixed from round 5 and now in three files: tact.tex, tact_tmlr.tex and tact_tmlr_preprint.tex all carry '(floor) & .808 & .827'. Against results/group_eval.json every row of both columns is stale: SC floor .808/.827 should be .785/.752; TACT global (dev) the same; TACT-group (dev) .923/.827 -> .927/.752; TACT-group (label-free) .940/.827 -> .923/.752; naive per-item .803/.820 -> .787/.752; per-item link oracle .947/.983 -> .947/.973. The contradiction is on the page in every build: the TMLR prose one paragraph away reads 'the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle ... ($+83/-0$, $p=2.1\\times10^{-25}$)', all of which check out against the artifact, while the table's headline cell still reads .940. Only the six table rows need replacing, in all three files.",
     "comment_type": "presentation",
     "severity": "major",
     "confidence": "high",
@@ -13,6 +13,6 @@
     "review_lane": "numbers_vs_released_artifacts",
     "gate_blocker": true,
     "verdict": "CONFIRMED",
-    "reaudit_status": "NEW"
+    "reaudit_status": "NOT_ADDRESSED"
   }
 ]

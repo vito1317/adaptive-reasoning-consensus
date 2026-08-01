@@ -1,40 +1,41 @@
 {
-  "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex",
-  "round": 5,
-  "reviewed_commit": "aed4605",
-  "previous_commit": "d5154aa",
+  "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact_tmlr_preprint.tex",
+  "round": 6,
+  "reviewed_commit": "c6a8321",
+  "previous_commit": "aed4605",
+  "builds": {
+    "tact.tex": "IEEE conference, 11pp",
+    "tact_tmlr.tex": "TMLR anonymous submission, 17pp",
+    "tact_tmlr_preprint.tex": "TMLR named preprint, 17pp"
+  },
   "history": {
-    "62bc7c7": "38 findings / 10 major / Desk Reject",
+    "62bc7c7": "38 / 10 major / Desk Reject",
     "4d75431": "38 / 10 / Conditional Pass",
     "f8641e8": "22 / 2",
     "d5154aa": "5 / 1",
-    "aed4605": "3 / 2"
+    "aed4605": "3 / 2",
+    "c6a8321": "4 / 2"
   },
   "FULLY_ADDRESSED": [
-    "keyword-count -- 6 keywords cut to 5 ('weighted voting' dropped)",
-    "test-runtime-not-reproducible -- the '199 seconds' claim removed; the exact 102-test count kept",
-    "table2-footnote-after-bottomrule -- footnote moved outside the tabular",
-    "tables-I-and-II-pre-fix -- both regenerated; verified row for row against tact_eval.json (9 sweep rows x 7 columns, 5 adversarial rows x 5 columns, all exact)",
-    "overfull-boxes -- the boxed one-line formula split with aligned, the window table tightened with @{} and tabcolsep"
+    "page-count-regressed-to-eleven -- CLOSED BY VENUE CHOICE. TMLR is a journal with no page limit, and its reviewer pool is the ML community every comparator in this paper is drawn from. 17 pages is unremarkable there. This was the last mechanical obstacle.",
+    "blind-review-identifiability -- the anonymous build is genuinely anonymous: verified no author name, no vito1317, no repository URL, and no 'by the author' phrasing anywhere in tact_tmlr.pdf, while the preprint retains all three.",
+    "singular-self-reference -- 'to the author's knowledge' now 'to the best of our knowledge' (c6a8321)"
   ],
   "PARTIALLY_ADDRESSED": {},
   "NEW": {
-    "table3-still-pre-fix": "All six rows of both columns are pre-tie-break-fix while the prose citing them is post-fix; the table now contradicts its own caption, its paragraph, and the abstract."
+    "tmlr-cite-vs-citep": "29 \\cite, 0 \\citep, under tmlr's author-year natbib style: every parenthetical citation renders as running text.",
+    "cjk-name-dropped": "bsmi font unavailable; CJKutf8 drops the glyphs, leaving 'Wei-Chen Ko (, vito1317)' on line 1 of the preprint."
   },
   "NOT_ADDRESSED": [
-    "page-count-regressed-to-eleven",
+    "table3-still-pre-fix",
     "table1-float-before-results"
   ],
   "independently_verified_this_round": {
-    "Table I": "all 9 rows x 7 columns match results/tact_eval.json sweep_dev200 exactly",
-    "Table II": "all 5 rows x 5 columns match results/tact_eval.json adversarial exactly (echo .190/.190/.568/.615/.190)",
-    "Table III": "STALE -- see finding; group_eval.json gives .785/.752, .785/.752, .927/.752, .923/.752, .787/.752, .947/.973",
-    "Table V": "matches tact_hard_eval.json (0.888 / 0.843 / 0.933, +1/-5, +4/-0)",
-    "Heterogeneity prose": "all post-fix and correct: 0.923, within 0.023 of the oracle, +83/-0 p=2.1e-25, per-item oracle 0.973, 0.785 floor",
-    "keywords": "5",
-    "runtime claim": "removed",
-    "Table II footnote": "outside the tabular",
-    "PDF": "11 pages"
-  },
-  "reviewer_note": "Tables I-III were all stale at d5154aa. Round 4 verified the abstract, the prose figures and the artifacts but did not check the table bodies row by row, which is how three stale tables passed that round. Tables I and II were caught by the author; Table III is caught here by row-by-row comparison, which is now part of the check."
+    "tact_tmlr.pdf anonymity": "no name / no vito1317 / no github URL / no 'by the author' -- clean",
+    "page counts": "both TMLR builds 17pp; TMLR imposes no limit",
+    "IEEE macro residue": "zero occurrences of IEEEkeywords, IEEEauthorblock, balance or subfig in the TMLR build",
+    "bibliography coverage": "27 cited keys, all present in references.bib; BibTeX emits only cited entries so the one extra key is harmless",
+    "TMLR heterogeneity prose": "post-fix and correct (0.923, within 0.023, +83/-0 at p=2.1e-25) -- it is the table that is stale, not the text",
+    "CJK": "kpsewhich finds no bsmi files; no CJK codepoint in either TMLR PDF"
+  }
 }
