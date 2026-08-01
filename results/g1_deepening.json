@@ -1,0 +1,50 @@
+{
+ "per_problem": {
+  "separate-squares-i": {
+   "n": 40,
+   "n_pass": 0,
+   "rate": 0.0,
+   "p_upper": 0.08762453925039232
+  },
+  "maximize-the-distance-between-points-on-a-square": {
+   "n": 40,
+   "n_pass": 0,
+   "rate": 0.0,
+   "p_upper": 0.08762453925039232
+  },
+  "constructing-two-increasing-arrays": {
+   "n": 40,
+   "n_pass": 0,
+   "rate": 0.0,
+   "p_upper": 0.08762453925039232
+  },
+  "shortest-matching-substring": {
+   "n": 40,
+   "n_pass": 0,
+   "rate": 0.0,
+   "p_upper": 0.08762453925039232
+  },
+  "longest-subsequence-with-decreasing-adjacent-difference": {
+   "n": 40,
+   "n_pass": 0,
+   "rate": 0.0,
+   "p_upper": 0.08762453925039232
+  },
+  "maximum-sized-array": {
+   "n": 40,
+   "n_pass": 0,
+   "rate": 0.0,
+   "p_upper": 0.08762453925039232
+  },
+  "find-subtree-sizes-after-changes": {
+   "n": 40,
+   "n_pass": 0,
+   "rate": 0.0,
+   "p_upper": 0.08762453925039232
+  }
+ },
+ "rescued": 0,
+ "window_n8": 0.075,
+ "window_deepened": 0.075,
+ "gate_passed": false
+}
