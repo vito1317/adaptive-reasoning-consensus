@@ -424,9 +424,22 @@ interventions cannot cross, since diversity is already maximal). Under this
 accounting, abstention is not a conservative compromise but the \emph{only}
 correct default: on the confirmatory substrate the largest measured effect of
 acting anyway was negative (the best-single-confidence baseline loses $4.5$
-points where \TACT's dead zone holds it exactly at the \SC{} floor). The
-window widens only where an external anchor is cheap (executable tests,
-substitution checks), which is where this program continues.
+points where \TACT's dead zone holds it exactly at the \SC{} floor).
+
+The natural hypothesis is that the window widens wherever an external anchor
+is cheap, since a passing test is a real per-sample signal rather than a
+model-relative one. That hypothesis was tested and does not hold. On $40$
+LeetCode Medium/Hard problems \cite{leetcodedataset} with $8$ candidate
+solutions each, graded against the benchmark's own hidden suites, the window
+--- oracle minus the largest-behavioural-cluster baseline --- measures
+$3/40 = 7.5\%$ (CI$_{95}$ $2.6$--$19.9\%$), against $3.56\%$ recomputed from
+published HumanEval+/MBPP+ tables and $2$--$5\%$ for label-free QA. The
+composition is the same shape as well: $75\%$ saturated, $18\%$ capability
+wall, $8\%$ rescuable. Raising the candidate budget does not open it --- the
+seven capability-wall problems produced zero correct solutions in $224$
+further attempts (per-problem $95\%$ upper bound on the pass rate $0.088$),
+and extrapolating oracle@$N$ shows the window saturating by $N{=}32$.
+Executable ground truth buys a slightly wider window, not a different regime.
 
 \section{Conclusion}
 \TACT{} turns ``how much should this model's confidence be trusted?'' into a measured, signed, uncertainty-aware quantity with exact fallbacks at both ends---plain self-consistency when the evidence is absent, CISC when it is at full strength---and shows that the sign, long unrepresentable in this family of methods, can be recovered without any labels under stated and tested conditions. The accompanying impossibility results draw the boundary that any future per-item method must respect, and the falsification protocol, having already killed one of the author's own systems, is offered as the more portable contribution.
