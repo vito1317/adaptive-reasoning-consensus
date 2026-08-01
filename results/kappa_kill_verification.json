@@ -1,0 +1,24 @@
+{
+ "identity_max_error": 2.3092638912203256e-14,
+ "monotone_violations": 0,
+ "tally_pick": "correct",
+ "kappa_pick": "correct",
+ "mean_kappa_correct": 0.6644444444444445,
+ "mean_kappa_wrong": 0.583031746031746,
+ "scores": {
+  "correct": 26.945276614300177,
+  "W_odd": -25.88460096045635,
+  "W_allvowel": 15.070356949180772,
+  "W_anyindex": -5.183138841937451,
+  "W_consonant": -26.013238313525008,
+  "W_oneindexed": -24.020825189265672
+ },
+ "tallies": {
+  "correct": 18,
+  "W_odd": 6,
+  "W_allvowel": 14,
+  "W_anyindex": 10,
+  "W_consonant": 7,
+  "W_oneindexed": 6
+ }
+}
