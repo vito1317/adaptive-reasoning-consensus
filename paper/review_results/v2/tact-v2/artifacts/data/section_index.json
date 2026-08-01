@@ -2,8 +2,8 @@
   {
     "section_key": "abstract",
     "title": "Abstract",
-    "start_line": 31,
-    "end_line": 33,
+    "start_line": 34,
+    "end_line": 36,
     "line_base": 1,
     "word_count": 371,
     "char_count": 2789,
@@ -12,8 +12,8 @@
   {
     "section_key": "introduction",
     "title": "Introduction",
-    "start_line": 39,
-    "end_line": 54,
+    "start_line": 42,
+    "end_line": 56,
     "line_base": 1,
     "word_count": 706,
     "char_count": 5761,
@@ -21,19 +21,59 @@
   },
   {
     "section_key": "related",
-    "title": "Related",
-    "start_line": 55,
-    "end_line": 64,
+    "title": "Related Work",
+    "start_line": 58,
+    "end_line": 66,
     "line_base": 1,
     "word_count": 272,
     "char_count": 2525,
     "file_name": "related.md"
   },
   {
+    "section_key": "setup",
+    "title": "Problem Setup",
+    "start_line": 68,
+    "end_line": 85,
+    "line_base": 1,
+    "word_count": 210,
+    "char_count": 1900,
+    "file_name": "setup.md"
+  },
+  {
+    "section_key": "method",
+    "title": "TACT (method)",
+    "start_line": 87,
+    "end_line": 169,
+    "line_base": 1,
+    "word_count": 626,
+    "char_count": 6225,
+    "file_name": "method.md"
+  },
+  {
+    "section_key": "labelfree",
+    "title": "Label-Free Estimation",
+    "start_line": 171,
+    "end_line": 185,
+    "line_base": 1,
+    "word_count": 309,
+    "char_count": 2629,
+    "file_name": "labelfree.md"
+  },
+  {
+    "section_key": "hetero",
+    "title": "Heterogeneity: Impossibility and Escape",
+    "start_line": 187,
+    "end_line": 207,
+    "line_base": 1,
+    "word_count": 238,
+    "char_count": 2051,
+    "file_name": "hetero.md"
+  },
+  {
     "section_key": "experiment",
-    "title": "Experiment",
-    "start_line": 206,
-    "end_line": 244,
+    "title": "Experimental Setup",
+    "start_line": 209,
+    "end_line": 246,
     "line_base": 1,
     "word_count": 441,
     "char_count": 3142,
@@ -41,9 +81,9 @@
   },
   {
     "section_key": "result",
-    "title": "Result",
-    "start_line": 245,
-    "end_line": 507,
+    "title": "Results",
+    "start_line": 248,
+    "end_line": 509,
     "line_base": 1,
     "word_count": 2203,
     "char_count": 16756,
@@ -51,9 +91,9 @@
   },
   {
     "section_key": "discussion",
-    "title": "Discussion",
-    "start_line": 508,
-    "end_line": 548,
+    "title": "Discussion and Limitations",
+    "start_line": 511,
+    "end_line": 550,
     "line_base": 1,
     "word_count": 517,
     "char_count": 3733,
@@ -62,11 +102,21 @@
   {
     "section_key": "conclusion",
     "title": "Conclusion",
-    "start_line": 549,
+    "start_line": 552,
+    "end_line": 553,
+    "line_base": 1,
+    "word_count": 95,
+    "char_count": 647,
+    "file_name": "conclusion.md"
+  },
+  {
+    "section_key": "bibliography",
+    "title": "References",
+    "start_line": 557,
     "end_line": 643,
     "line_base": 1,
-    "word_count": 626,
-    "char_count": 5675,
-    "file_name": "conclusion.md"
+    "word_count": 555,
+    "char_count": 6605,
+    "file_name": "bibliography.md"
   }
 ]

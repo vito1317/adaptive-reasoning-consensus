@@ -1,0 +1,4925 @@
+{
+ "n_runs": 64,
+ "traces": {
+  "g8k-115": [
+   {
+    "rep": 0,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "90",
+    "confidence": 0.92
+   },
+   {
+    "rep": 3,
+    "answer": "90",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "90",
+    "confidence": 0.92
+   },
+   {
+    "rep": 13,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "90",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-282": [
+   {
+    "rep": 0,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "195",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "195",
+    "confidence": 0.94
+   },
+   {
+    "rep": 3,
+    "answer": "195",
+    "confidence": 0.93
+   },
+   {
+    "rep": 4,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "195",
+    "confidence": 0.92
+   },
+   {
+    "rep": 9,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "195",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "195",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-12": [
+   {
+    "rep": 0,
+    "answer": "12",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "12",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "12",
+    "confidence": 0.91
+   },
+   {
+    "rep": 4,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "13",
+    "confidence": 0.66
+   },
+   {
+    "rep": 10,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "12",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "12",
+    "confidence": 0.92
+   }
+  ],
+  "g8k-101": [
+   {
+    "rep": 0,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "6",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "6",
+    "confidence": 0.94
+   },
+   {
+    "rep": 4,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "6",
+    "confidence": 0.96
+   },
+   {
+    "rep": 10,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "6",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-107": [
+   {
+    "rep": 0,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "3",
+    "confidence": 0.93
+   },
+   {
+    "rep": 3,
+    "answer": "3",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "3",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-155": [
+   {
+    "rep": 0,
+    "answer": "280",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "280",
+    "confidence": 0.92
+   },
+   {
+    "rep": 2,
+    "answer": "280",
+    "confidence": 0.91
+   },
+   {
+    "rep": 3,
+    "answer": "280",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "280",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "280",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "280",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "280",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "280",
+    "confidence": 0.88
+   },
+   {
+    "rep": 9,
+    "answer": "280",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "280",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "280",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "280",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "280",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "280",
+    "confidence": 0.92
+   },
+   {
+    "rep": 15,
+    "answer": "280",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-248": [
+   {
+    "rep": 0,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "300",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "300",
+    "confidence": 0.96
+   },
+   {
+    "rep": 3,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "300",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "300",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "300",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "300",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "300",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-130": [
+   {
+    "rep": 0,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "30",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "30",
+    "confidence": 0.94
+   },
+   {
+    "rep": 4,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "30",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "30",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "30",
+    "confidence": 0.96
+   },
+   {
+    "rep": 15,
+    "answer": "30",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-151": [
+   {
+    "rep": 0,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "5",
+    "confidence": 0.96
+   },
+   {
+    "rep": 2,
+    "answer": "5",
+    "confidence": 0.94
+   },
+   {
+    "rep": 3,
+    "answer": "5",
+    "confidence": 0.91
+   },
+   {
+    "rep": 4,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "5",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "5",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-53": [
+   {
+    "rep": 0,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "40",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "40",
+    "confidence": 0.94
+   },
+   {
+    "rep": 3,
+    "answer": "40",
+    "confidence": 0.93
+   },
+   {
+    "rep": 4,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "40",
+    "confidence": 0.94
+   },
+   {
+    "rep": 9,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "40",
+    "confidence": 0.92
+   },
+   {
+    "rep": 13,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "40",
+    "confidence": 0.96
+   },
+   {
+    "rep": 15,
+    "answer": "40",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-158": [
+   {
+    "rep": 0,
+    "answer": "34",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "34",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "34",
+    "confidence": 0.96
+   },
+   {
+    "rep": 3,
+    "answer": "34",
+    "confidence": 0.94
+   },
+   {
+    "rep": 4,
+    "answer": "34",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "34",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "34",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "34",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "34",
+    "confidence": 0.97
+   },
+   {
+    "rep": 9,
+    "answer": "34",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "34",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "34",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "34",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "34",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "34",
+    "confidence": 0.96
+   },
+   {
+    "rep": 15,
+    "answer": "34",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-97": [
+   {
+    "rep": 0,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "12",
+    "confidence": 0.93
+   },
+   {
+    "rep": 3,
+    "answer": "12",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "12",
+    "confidence": 0.92
+   },
+   {
+    "rep": 9,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "12",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "12",
+    "confidence": 0.94
+   },
+   {
+    "rep": 15,
+    "answer": "12",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-176": [
+   {
+    "rep": 0,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "100",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "100",
+    "confidence": 0.93
+   },
+   {
+    "rep": 4,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "100",
+    "confidence": 0.96
+   },
+   {
+    "rep": 9,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "100",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "100",
+    "confidence": 0.97
+   },
+   {
+    "rep": 15,
+    "answer": "100",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-51": [
+   {
+    "rep": 0,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "5",
+    "confidence": 0.94
+   },
+   {
+    "rep": 3,
+    "answer": "5",
+    "confidence": 0.91
+   },
+   {
+    "rep": 4,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "5",
+    "confidence": 0.96
+   },
+   {
+    "rep": 15,
+    "answer": "5",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-110": [
+   {
+    "rep": 0,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "45",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "45",
+    "confidence": 0.93
+   },
+   {
+    "rep": 4,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "45",
+    "confidence": 0.96
+   },
+   {
+    "rep": 9,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "45",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "45",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "45",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-257": [
+   {
+    "rep": 0,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "5600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "5600",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-208": [
+   {
+    "rep": 0,
+    "answer": "76",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "76",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "76",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "76",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "76",
+    "confidence": 0.99
+   },
+   {
+    "rep": 5,
+    "answer": "76",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "76",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "76",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "76",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "76",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "76",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "76",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "76",
+    "confidence": 0.98
+   },
+   {
+    "rep": 13,
+    "answer": "76",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "76",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "76",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-22": [
+   {
+    "rep": 0,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 5,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 7,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 11,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "7",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-92": [
+   {
+    "rep": 0,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "4",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "4",
+    "confidence": 0.96
+   },
+   {
+    "rep": 9,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "4",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "4",
+    "confidence": 0.98
+   },
+   {
+    "rep": 13,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "4",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-247": [
+   {
+    "rep": 0,
+    "answer": "32",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "32",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "32",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "32",
+    "confidence": 0.99
+   },
+   {
+    "rep": 5,
+    "answer": "32",
+    "confidence": 0.97
+   },
+   {
+    "rep": 6,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 13,
+    "answer": "32",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "32",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "32",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-198": [
+   {
+    "rep": 0,
+    "answer": "320",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "320",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "320",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "320",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "320",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "320",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "320",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "320",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "320",
+    "confidence": 0.96
+   },
+   {
+    "rep": 9,
+    "answer": "320",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "320",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "320",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "320",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "320",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "320",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "320",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-49": [
+   {
+    "rep": 0,
+    "answer": "30",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "30",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "30",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "30",
+    "confidence": 0.99
+   },
+   {
+    "rep": 5,
+    "answer": "30",
+    "confidence": 0.97
+   },
+   {
+    "rep": 6,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "30",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "30",
+    "confidence": 0.97
+   },
+   {
+    "rep": 9,
+    "answer": "30",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "30",
+    "confidence": 0.99
+   },
+   {
+    "rep": 11,
+    "answer": "30",
+    "confidence": 0.96
+   },
+   {
+    "rep": 12,
+    "answer": "30",
+    "confidence": 0.98
+   },
+   {
+    "rep": 13,
+    "answer": "30",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "30",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "30",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-228": [
+   {
+    "rep": 0,
+    "answer": "1",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "1",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "1",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "1",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "1",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "1",
+    "confidence": 0.97
+   },
+   {
+    "rep": 6,
+    "answer": "1",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "1",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "1",
+    "confidence": 0.97
+   },
+   {
+    "rep": 9,
+    "answer": "1",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "1",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "1",
+    "confidence": 0.96
+   },
+   {
+    "rep": 12,
+    "answer": "1",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "1",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "1",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "1",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-124": [
+   {
+    "rep": 0,
+    "answer": "10",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "10",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "10",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "10",
+    "confidence": 0.96
+   },
+   {
+    "rep": 9,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "10",
+    "confidence": 0.93
+   },
+   {
+    "rep": 12,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "10",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "10",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "10",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-76": [
+   {
+    "rep": 0,
+    "answer": "5",
+    "confidence": 0.93
+   },
+   {
+    "rep": 1,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "5",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "5",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "5",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "5",
+    "confidence": 0.93
+   },
+   {
+    "rep": 9,
+    "answer": "5",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "5",
+    "confidence": 0.88
+   },
+   {
+    "rep": 12,
+    "answer": "5",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "5",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "5",
+    "confidence": 0.9
+   }
+  ],
+  "g8k-128": [
+   {
+    "rep": 0,
+    "answer": "880",
+    "confidence": 0.88
+   },
+   {
+    "rep": 1,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "880",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "880",
+    "confidence": 0.97
+   },
+   {
+    "rep": 9,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "880",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "880",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "880",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-24": [
+   {
+    "rep": 0,
+    "answer": "26",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "26",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "26",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "26",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "26",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "26",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "26",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "26",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "26",
+    "confidence": 0.97
+   },
+   {
+    "rep": 9,
+    "answer": "26",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "26",
+    "confidence": 0.97
+   },
+   {
+    "rep": 11,
+    "answer": "26",
+    "confidence": 0.96
+   },
+   {
+    "rep": 12,
+    "answer": "26",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "26",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "26",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "26",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-278": [
+   {
+    "rep": 0,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "40",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 5,
+    "answer": "40",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "40",
+    "confidence": 0.98
+   },
+   {
+    "rep": 7,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "40",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 10,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 11,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "40",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "40",
+    "confidence": 0.99
+   }
+  ],
+  "g8k-177": [
+   {
+    "rep": 0,
+    "answer": "350",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "350",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "350",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "350",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "350",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "350",
+    "confidence": 0.92
+   },
+   {
+    "rep": 6,
+    "answer": "350",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "350",
+    "confidence": 0.8
+   },
+   {
+    "rep": 8,
+    "answer": "350",
+    "confidence": 0.94
+   },
+   {
+    "rep": 9,
+    "answer": "350",
+    "confidence": 0.93
+   },
+   {
+    "rep": 10,
+    "answer": "350",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "350",
+    "confidence": 0.88
+   },
+   {
+    "rep": 12,
+    "answer": "350",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "350",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "350",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "350",
+    "confidence": 0.9
+   }
+  ],
+  "g8k-69": [
+   {
+    "rep": 0,
+    "answer": "60",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "60",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "60",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "60",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "60",
+    "confidence": 0.99
+   },
+   {
+    "rep": 5,
+    "answer": "60",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "60",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "60",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "60",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "60",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "60",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "60",
+    "confidence": 0.96
+   },
+   {
+    "rep": 12,
+    "answer": "60",
+    "confidence": 0.98
+   },
+   {
+    "rep": 13,
+    "answer": "60",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "60",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "60",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-73": [
+   {
+    "rep": 0,
+    "answer": "255",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "255",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "255",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "255",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "255",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "255",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "255",
+    "confidence": 0.92
+   },
+   {
+    "rep": 7,
+    "answer": "255",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "255",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "255",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "255",
+    "confidence": 0.92
+   },
+   {
+    "rep": 11,
+    "answer": "255",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "255",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "255",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "255",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "255",
+    "confidence": 0.85
+   }
+  ],
+  "g8k-123": [
+   {
+    "rep": 0,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "50",
+    "confidence": 0.98
+   },
+   {
+    "rep": 14,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "50",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-285": [
+   {
+    "rep": 0,
+    "answer": "21",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "21",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "21",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "21",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "21",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "21",
+    "confidence": 0.99
+   },
+   {
+    "rep": 6,
+    "answer": "21",
+    "confidence": 0.98
+   },
+   {
+    "rep": 7,
+    "answer": "21",
+    "confidence": 0.98
+   },
+   {
+    "rep": 8,
+    "answer": "21",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "21",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "21",
+    "confidence": 0.99
+   },
+   {
+    "rep": 11,
+    "answer": "21",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "21",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "21",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "21",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "21",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-235": [
+   {
+    "rep": 0,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "11",
+    "confidence": 0.65
+   },
+   {
+    "rep": 6,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "10",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "10",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "10",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "10",
+    "confidence": 0.98
+   },
+   {
+    "rep": 14,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "10",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-18": [
+   {
+    "rep": 0,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 14,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "7",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-218": [
+   {
+    "rep": 0,
+    "answer": "45",
+    "confidence": 0.92
+   },
+   {
+    "rep": 1,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "45",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "45",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "45",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "45",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "45",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-150": [
+   {
+    "rep": 0,
+    "answer": "4",
+    "confidence": 0.88
+   },
+   {
+    "rep": 1,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "4",
+    "confidence": 0.88
+   },
+   {
+    "rep": 7,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "4",
+    "confidence": 0.92
+   },
+   {
+    "rep": 9,
+    "answer": "4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 10,
+    "answer": "4",
+    "confidence": 0.88
+   },
+   {
+    "rep": 11,
+    "answer": "4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "4",
+    "confidence": 0.92
+   },
+   {
+    "rep": 14,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "4",
+    "confidence": 0.9
+   }
+  ],
+  "g8k-161": [
+   {
+    "rep": 0,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "32",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 14,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "32",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-35": [
+   {
+    "rep": 0,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "9",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "9",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "9",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "9",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "9",
+    "confidence": 0.96
+   },
+   {
+    "rep": 11,
+    "answer": "9",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "9",
+    "confidence": 0.98
+   },
+   {
+    "rep": 14,
+    "answer": "9",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "9",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-41": [
+   {
+    "rep": 0,
+    "answer": "200",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "200",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "200",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "200",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "200",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "200",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "200",
+    "confidence": 0.92
+   },
+   {
+    "rep": 7,
+    "answer": "200",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "200",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "200",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "200",
+    "confidence": 0.94
+   },
+   {
+    "rep": 11,
+    "answer": "200",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "200",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "200",
+    "confidence": 0.97
+   },
+   {
+    "rep": 14,
+    "answer": "200",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "200",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-178": [
+   {
+    "rep": 0,
+    "answer": "122",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "122",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "122",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "122",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "122",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "122",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "122",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "122",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "122",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "122",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "122",
+    "confidence": 0.96
+   },
+   {
+    "rep": 11,
+    "answer": "122",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "122",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "122",
+    "confidence": 0.97
+   },
+   {
+    "rep": 14,
+    "answer": "122",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "122",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-60": [
+   {
+    "rep": 0,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "17",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "17",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "17",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "17",
+    "confidence": 0.94
+   },
+   {
+    "rep": 11,
+    "answer": "17",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "17",
+    "confidence": 0.97
+   },
+   {
+    "rep": 14,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "17",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-175": [
+   {
+    "rep": 0,
+    "answer": "15",
+    "confidence": 0.92
+   },
+   {
+    "rep": 1,
+    "answer": "15",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "15",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "15",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "15",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "15",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "15",
+    "confidence": 0.92
+   },
+   {
+    "rep": 7,
+    "answer": "15",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "15",
+    "confidence": 0.92
+   },
+   {
+    "rep": 9,
+    "answer": "15",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "15",
+    "confidence": 0.94
+   },
+   {
+    "rep": 11,
+    "answer": "15",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "15",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "15",
+    "confidence": 0.96
+   },
+   {
+    "rep": 14,
+    "answer": "15",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "15",
+    "confidence": 0.9
+   }
+  ],
+  "g8k-56": [
+   {
+    "rep": 0,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "3",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "3",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "3",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "3",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "3",
+    "confidence": 0.97
+   },
+   {
+    "rep": 11,
+    "answer": "3",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "3",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "3",
+    "confidence": 0.98
+   },
+   {
+    "rep": 14,
+    "answer": "3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "3",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-114": [
+   {
+    "rep": 0,
+    "answer": "6",
+    "confidence": 0.88
+   },
+   {
+    "rep": 1,
+    "answer": "6",
+    "confidence": 0.92
+   },
+   {
+    "rep": 2,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "6",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "6",
+    "confidence": 0.7
+   },
+   {
+    "rep": 5,
+    "answer": "6",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "6",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "6",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "6",
+    "confidence": 0.92
+   },
+   {
+    "rep": 9,
+    "answer": "6",
+    "confidence": 0.75
+   },
+   {
+    "rep": 10,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "6",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "6",
+    "confidence": 0.96
+   },
+   {
+    "rep": 14,
+    "answer": "6",
+    "confidence": 0.7
+   },
+   {
+    "rep": 15,
+    "answer": "6",
+    "confidence": 0.85
+   }
+  ],
+  "g8k-284": [
+   {
+    "rep": 0,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "360",
+    "confidence": 0.99
+   },
+   {
+    "rep": 9,
+    "answer": "360",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "360",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "360",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "360",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-202": [
+   {
+    "rep": 0,
+    "answer": "100",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "100",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "100",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "100",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "100",
+    "confidence": 0.99
+   },
+   {
+    "rep": 9,
+    "answer": "100",
+    "confidence": 0.96
+   },
+   {
+    "rep": 10,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "100",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "100",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "100",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "100",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-146": [
+   {
+    "rep": 0,
+    "answer": "2125",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "2125",
+    "confidence": 0.7
+   },
+   {
+    "rep": 2,
+    "answer": "2125",
+    "confidence": 0.92
+   },
+   {
+    "rep": 3,
+    "answer": "2125",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "2125",
+    "confidence": 0.65
+   },
+   {
+    "rep": 5,
+    "answer": "2125",
+    "confidence": 0.6
+   },
+   {
+    "rep": 6,
+    "answer": "2125",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "2125",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "2125",
+    "confidence": 0.75
+   },
+   {
+    "rep": 9,
+    "answer": "2125",
+    "confidence": 0.82
+   },
+   {
+    "rep": 10,
+    "answer": "2125",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "2125",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "2625",
+    "confidence": 0.7
+   },
+   {
+    "rep": 13,
+    "answer": "2125",
+    "confidence": 0.7
+   },
+   {
+    "rep": 14,
+    "answer": "2125",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "2125",
+    "confidence": 0.75
+   }
+  ],
+  "g8k-221": [
+   {
+    "rep": 0,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "90",
+    "confidence": 0.96
+   },
+   {
+    "rep": 3,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "90",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "90",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "90",
+    "confidence": 0.96
+   },
+   {
+    "rep": 10,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "90",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "90",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-135": [
+   {
+    "rep": 0,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "40",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "40",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "40",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "40",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "55",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "40",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "40",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-298": [
+   {
+    "rep": 0,
+    "answer": "500",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "500",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "350",
+    "confidence": 0.93
+   },
+   {
+    "rep": 3,
+    "answer": "500",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "500",
+    "confidence": 0.75
+   },
+   {
+    "rep": 5,
+    "answer": "500",
+    "confidence": 0.8
+   },
+   {
+    "rep": 6,
+    "answer": "500",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "500",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "450",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "500",
+    "confidence": 0.78
+   },
+   {
+    "rep": 10,
+    "answer": "450",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "500",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "450",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "500",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "500",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "500",
+    "confidence": 0.7
+   }
+  ],
+  "g8k-108": [
+   {
+    "rep": 0,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "50",
+    "confidence": 0.94
+   },
+   {
+    "rep": 3,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "50",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "50",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "50",
+    "confidence": 0.91
+   },
+   {
+    "rep": 10,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "50",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "50",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-212": [
+   {
+    "rep": 0,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "5",
+    "confidence": 0.97
+   },
+   {
+    "rep": 3,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "5",
+    "confidence": 0.96
+   },
+   {
+    "rep": 10,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "5",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "5",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "5",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-30": [
+   {
+    "rep": 0,
+    "answer": "109",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "109",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "109",
+    "confidence": 0.96
+   },
+   {
+    "rep": 3,
+    "answer": "109",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "109",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "109",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "109",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "109",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "109",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "109",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "109",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "109",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "109",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "109",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "109",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "109",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-174": [
+   {
+    "rep": 0,
+    "answer": "95",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "95",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "95",
+    "confidence": 0.94
+   },
+   {
+    "rep": 3,
+    "answer": "95",
+    "confidence": 0.93
+   },
+   {
+    "rep": 4,
+    "answer": "95",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "95",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "95",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "95",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "95",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "95",
+    "confidence": 0.89
+   },
+   {
+    "rep": 10,
+    "answer": "95",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "95",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "95",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "95",
+    "confidence": 0.8
+   },
+   {
+    "rep": 14,
+    "answer": "95",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "95",
+    "confidence": 0.85
+   }
+  ],
+  "g8k-260": [
+   {
+    "rep": 0,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "11",
+    "confidence": 0.96
+   },
+   {
+    "rep": 3,
+    "answer": "11",
+    "confidence": 0.97
+   },
+   {
+    "rep": 4,
+    "answer": "11",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "11",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "11",
+    "confidence": 0.91
+   },
+   {
+    "rep": 10,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "11",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "11",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-70": [
+   {
+    "rep": 0,
+    "answer": "7425",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "7425",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "7425",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "7425",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "7425",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "7425",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "7425",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "7425",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "7425",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "7425",
+    "confidence": 0.89
+   },
+   {
+    "rep": 10,
+    "answer": "7425",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "7425",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "7425",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "7425",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "7425",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "7425",
+    "confidence": 0.95
+   }
+  ],
+  "g8k-34": [
+   {
+    "rep": 0,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "23",
+    "confidence": 0.96
+   },
+   {
+    "rep": 3,
+    "answer": "23",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "23",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "23",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "23",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "23",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "23",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-280": [
+   {
+    "rep": 0,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 5,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 9,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 10,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "7",
+    "confidence": 0.98
+   }
+  ],
+  "g8k-121": [
+   {
+    "rep": 0,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "27",
+    "confidence": 0.96
+   },
+   {
+    "rep": 4,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "27",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "27",
+    "confidence": 0.91
+   },
+   {
+    "rep": 10,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "27",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "27",
+    "confidence": 0.98
+   }
+  ]
+ }
+}
