@@ -1,0 +1,415 @@
+{
+ "N": 40,
+ "pass_at_1": 0.6973214285714285,
+ "baseline": 0.75,
+ "oracle": 0.825,
+ "window": 0.075,
+ "window_ci": [
+  0.025835556771858226,
+  0.19864530159097524
+ ],
+ "window_n": 3,
+ "gate_passed": false,
+ "rows": [
+  {
+   "task_id": "separate-squares-i",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 0,
+   "n_clusters": 3,
+   "baseline_correct": false,
+   "oracle_correct": false,
+   "in_window": false
+  },
+  {
+   "task_id": "minimum-operations-to-make-array-elements-zero",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "find-minimum-time-to-reach-last-room-ii",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 2,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "assign-elements-to-groups-with-constraints",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "longest-palindrome-after-substring-concatenation-ii",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "maximize-the-total-height-of-unique-towers",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "maximize-score-of-numbers-in-ranges",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 2,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "find-the-sequence-of-strings-appeared-on-the-screen",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 2,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "find-minimum-time-to-reach-last-room-i",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 2,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "construct-the-minimum-bitwise-array-ii",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "maximum-area-rectangle-with-point-constraints-i",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 2,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "find-the-power-of-k-size-subarrays-i",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "maximize-the-distance-between-points-on-a-square",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 0,
+   "n_clusters": 1,
+   "baseline_correct": false,
+   "oracle_correct": false,
+   "in_window": false
+  },
+  {
+   "task_id": "constructing-two-increasing-arrays",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 0,
+   "n_clusters": 2,
+   "baseline_correct": false,
+   "oracle_correct": false,
+   "in_window": false
+  },
+  {
+   "task_id": "find-the-occurrence-of-first-almost-equal-substring",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "shortest-matching-substring",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 0,
+   "n_clusters": 2,
+   "baseline_correct": false,
+   "oracle_correct": false,
+   "in_window": false
+  },
+  {
+   "task_id": "longest-subsequence-with-decreasing-adjacent-difference",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 0,
+   "n_clusters": 1,
+   "baseline_correct": false,
+   "oracle_correct": false,
+   "in_window": false
+  },
+  {
+   "task_id": "remove-methods-from-project",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "permutations-iv",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 4,
+   "n_clusters": 4,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "maximize-active-section-with-trade-ii",
+   "difficulty": "Hard",
+   "n": 7,
+   "n_pass": 1,
+   "n_clusters": 3,
+   "baseline_correct": false,
+   "oracle_correct": true,
+   "in_window": true
+  },
+  {
+   "task_id": "maximum-sized-array",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 0,
+   "n_clusters": 2,
+   "baseline_correct": false,
+   "oracle_correct": false,
+   "in_window": false
+  },
+  {
+   "task_id": "maximize-profit-from-task-assignment",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "maximize-the-number-of-target-nodes-after-connecting-trees-i",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 5,
+   "n_clusters": 4,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "find-subtree-sizes-after-changes",
+   "difficulty": "Medium",
+   "n": 7,
+   "n_pass": 0,
+   "n_clusters": 1,
+   "baseline_correct": false,
+   "oracle_correct": false,
+   "in_window": false
+  },
+  {
+   "task_id": "count-substrings-with-k-frequency-characters-ii",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "report-spam-message",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "longest-special-path-ii",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 3,
+   "n_clusters": 6,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "find-sorted-submatrices-with-maximum-element-at-most-k",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "minimize-connected-groups-by-inserting-interval",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 2,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "sort-matrix-by-diagonals",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 2,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "minimum-cost-to-divide-array-into-subarrays",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 2,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "find-the-power-of-k-size-subarrays-ii",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "maximum-number-of-matching-indices-after-right-shifts",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "minimum-operations-to-make-elements-within-k-subarrays-equal",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "check-if-grid-can-be-cut-into-sections",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "maximum-value-sum-by-placing-three-rooks-ii",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 2,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "longest-common-prefix-of-k-strings-after-removal",
+   "difficulty": "Hard",
+   "n": 8,
+   "n_pass": 4,
+   "n_clusters": 2,
+   "baseline_correct": false,
+   "oracle_correct": true,
+   "in_window": true
+  },
+  {
+   "task_id": "hash-divided-string",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 8,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "paint-house-iv",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 7,
+   "n_clusters": 1,
+   "baseline_correct": true,
+   "oracle_correct": true,
+   "in_window": false
+  },
+  {
+   "task_id": "find-the-minimum-amount-of-time-to-brew-potions",
+   "difficulty": "Medium",
+   "n": 8,
+   "n_pass": 1,
+   "n_clusters": 5,
+   "baseline_correct": false,
+   "oracle_correct": true,
+   "in_window": true
+  }
+ ]
+}
