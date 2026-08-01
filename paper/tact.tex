@@ -569,6 +569,7 @@ QA, label-free & MATH level-5$^\dagger$ & $11\%$ decisive, $4\%$ rescuable \\
 QA, label-free & AIME / AMC$^\dagger$ & $23\%$ decisive, $3\%$ rescuable \\
 Code, executable & HumanEval+ / MBPP+ & $3.56\%$ \\
 Code, executable & LeetCode Med/Hard$^\dagger$ & $7.5\%$ \\
+QA, budget-constrained & MATH level-5$^\dagger$ & $11.8\%$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -582,6 +583,39 @@ limits outright, and that condition presents as a candidate failure rather
 than as an error. Studies that grade by execution should report their
 reference-solution pass rate for the same reason a calibration curve is
 reported: without it, a broken harness and a capability wall look identical.
+
+
+\subsection{A third axis: reasoning budget}\label{sec:budget}
+Difficulty is not the only way to lower per-sample accuracy. Constraining the
+reasoning budget lowers it while leaving the correct answer inside the model's
+competence, which is the combination the decisive stratum needs and that
+difficulty does not supply: as items harden they pass from saturated to
+capability-limited without pausing in between. A paired run tests this on the
+same $119$ items, same model, same $K$, with the model instructed to answer
+without writing any working.
+
+The manipulation was weaker than pre-registered on its stated check
+(per-sample accuracy $0.853\to0.781$, against a $0.10$ drop required) and the
+correct answer did not leave the pool ($0.950\to0.933$), so what follows is
+exploratory. It is reported because the constraint did not lower accuracy
+uniformly, it moved items across the plurality boundary: \SC{} fell $0.924\to
+0.815$, the window widened from $2.5\%$ to $11.8\%$ (paired exact McNemar on
+window membership, $13$ in and $2$ out, $p=0.0037$), and the channel grew
+\emph{stronger}, $\Dhat$ from $+0.229$ ($z=2.69$) to $+0.398$ ($z=6.76$).
+Forced to answer without working, the model's confidence tracks whether it
+happened to be right.
+
+This is the widest window measured anywhere in this paper, and the first
+substrate on which the in-pool oracle clears the endpoint at all ($+9/-0$,
+$p=0.002$ on a decisive stratum of $17$). \TACT{} nonetheless returned
+$\gamma=0$: only $12$ items survived the margin gate against the threshold of
+$30$, so E4 fired. That abstention is testable rather than a matter of taste,
+and it cost nothing. Estimating $\gamma$ from gold labels, an upper bound no
+deployable method has access to, the best available is $+4/-1$ at $\gamma=1$
+($p=0.19$); the derived $\gamma=0.670$ gives $+3/-1$. The gap that matters is
+therefore not the one the window closes. Even with the window at $11.8\%$ and
+an oracle able to convert nine items, confidence weighting reaches fewer than
+half of them, and none of the reachable configurations is significant.
 
 \section{Discussion and Limitations}\label{sec:limits}
 
