@@ -307,3 +307,17 @@ TACT 將「該信任模型的信心到什麼程度」轉化為可量測、帶符
 [23] L. Kuhn, Y. Gal, and S. Farquhar, "Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation," in *Proc. ICLR*, 2023.
 
 [24] G. Wan, Y. Wu, J. Chen, and S. Li, "Reasoning aware self-consistency: Leveraging reasoning paths for efficient LLM sampling," in *Proc. NAACL*, 2025, pp. 3613–3635.
+
+### 薄窗（本輪新增）
+
+跨三個基質（GSM8K/CSQA、MATH level-5、AIME/AMC，共 268 題）的量測給這一
+類方法畫出了結構性邊界。任何無標籤聚合方法能作用的分層——多數決錯、
+且正解在池內、且訊號可分——在**每一個**難度上都只佔題目的 2–5%：題目
+變難時直接從「飽和」跳到「能力受限」（AIME 上多數決錯的 6 題，16 次採樣
+中正解一次都沒出現），中間的可作用帶不會變寬。把全部 16 個決定性題按
+錯誤形態分類：7 題是穩定的錯（緊密錯誤叢集——雙世界不可識別的機制），
+9 題是散射的錯（6–8 個不同答案——多樣性已飽和的能力牆）。在這個帳目下，
+棄權不是保守的折衷，而是**唯一**正確的預設：確認基質上「硬要動手」的
+最大實測效果是負的（best-conf 基線輸 4.5 分，而我的方法的死區把它精確
+釘在 SC 地板上）。窗口只在外部錨便宜的地方變寬（可執行測試、代回驗算）
+——這也是本計畫的下一步。
