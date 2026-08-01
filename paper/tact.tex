@@ -225,14 +225,15 @@ $u=\sqrt2\,z$ with $z=\Phi^{-1}\!\big(\tfrac{1+\tilde D}{2}\big)$ into
 \eqref{eq:link} removes the nested radical. \TACT{} is then
 \begin{equation}\label{eq:oneline}
 \boxed{\;
-\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
-\quad
-\gamma=\Big[z\sqrt{2+4\bar p(1-\bar p)z^{2}}\Big]_{-\gamma_{\max}}^{\gamma_{\max}},
+\begin{aligned}
+\hat a_q&=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),\\[2pt]
+\gamma&=\Big[z\sqrt{2+4\bar p(1-\bar p)z^{2}}\Big]_{-\gamma_{\max}}^{\gamma_{\max}},
+\end{aligned}
 \;}
 \end{equation}
 \begin{equation}\label{eq:oneline2}
 z=\Phi^{-1}\!\Big(\tfrac12\big[1+\Dhat\,(1-\nu^{2}/\zeta^{2})_{+}\big]\Big),
-\qquad \zeta=\Dhat/\mathrm{SE},
+\quad \zeta=\tfrac{\Dhat}{\mathrm{SE}},
 \end{equation}
 with $\Dhat$ from \eqref{eq:pooled} and $\varphi$ from \eqref{eq:vdw}. At the
 default $\bar p=\tfrac12$ the exponent is exactly
@@ -665,8 +666,8 @@ window saturating by $N{=}32$.
 \begin{table}[t]
 \caption{The addressable stratum across substrates, on one definition
 throughout: \emph{decisive} is the fraction of items whose plurality is wrong,
-\emph{window} the fraction that are decisive \emph{and} have the correct
-answer somewhere in the pool. The window is the ceiling for any label-free
+\emph{window} (Win.) the fraction that are decisive \emph{and} have the
+correct answer somewhere in the pool; both in per cent. The window is the ceiling for any label-free
 aggregation method. Rows marked $\dagger$ are measured here; HumanEval+/MBPP+
 is recomputed from published oracle-minus-selector tables, which report the
 window only. As items harden the decisive fraction grows but the window does
@@ -674,16 +675,17 @@ not: they pass from saturated to capability-limited.}
 \label{tab:window}
 \centering\footnotesize
 \setlength{\tabcolsep}{4pt}
-\begin{tabular}{l l c c}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}l l r r@{}}
 \toprule
-Domain & Substrate & Decisive & Window \\
+Domain & Substrate & Dec. & Win. \\
 \midrule
-QA & GSM8K / CommonsenseQA$^\dagger$ & $9.0\%$ & $4.0\%$ \\
-QA & MATH level-5$^\dagger$ & $7.6\%$ & $2.5\%$ \\
-QA & AIME / AMC$^\dagger$ & $23.3\%$ & $3.3\%$ \\
-Code & HumanEval+ / MBPP+ & --- & $3.6\%$ \\
-Code & LeetCode Med/Hard$^\dagger$ & $25.0\%$ & $7.5\%$ \\
-QA, budget-constrained & MATH level-5$^\dagger$ & $18.5\%$ & $11.8\%$ \\
+QA & GSM8K / CSQA$^\dagger$ & $9.0$ & $4.0$ \\
+QA & MATH L5$^\dagger$ & $7.6$ & $2.5$ \\
+QA & AIME / AMC$^\dagger$ & $23.3$ & $3.3$ \\
+Code & HumanEval+ / MBPP+ & --- & $3.6$ \\
+Code & LeetCode Med/Hard$^\dagger$ & $25.0$ & $7.5$ \\
+QA, budget-capped & MATH L5$^\dagger$ & $18.5$ & $11.8$ \\
 \bottomrule
 \end{tabular}
 \end{table}

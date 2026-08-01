@@ -1,16 +1,16 @@
 # 深度审稿报告
 
 **论文**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **语言**: EN | **模式**: deep-review
-**生成时间**: 2026-08-02 01:27
+**生成时间**: 2026-08-02 03:06
 **工件目录**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
 
 ## 总体评估
 
-Round-3 re-audit of tact.tex at commit f8641e8. Twelve root causes closed this round, one partially, one introduced. The bundle is now 22 findings: 2 major, 15 moderate, 5 minor, down from 38 (10 major) at 4d75431 and from a Desk Reject verdict two rounds ago. No claim-accuracy major remains and the mechanical submission blocker is gone: a Code and Data Availability section now names the repository, the commit that produced Table IV, and the script behind each table, and all three check out independently (the URL matches the git remote, the commit is on origin/main, and pytest at that commit collects exactly the 98 tests the paper states). The abstract was cut from 378 to 253 words while gaining the four disclosures it was missing, C5 promotes the window measurement to a bound on the whole method family, and the falsifier section now states its own 0.02 decision rule and calls a tolerance the weaker instrument. The two remaining majors are a page-count regression (9 -> 10 pages in a conference class with no named track, caused by the additions themselves) and the fact that every synthetic cell is still a single seed at 400 items with no interval, which the new falsifier paragraph now depends on more heavily than before. The residue is mostly notation and presentation: a kappa collision, an AUC-hat overload, a heterogeneous Table VI column, two propositions carrying measured frequencies, and one Introduction phrase that still contradicts the revised Related Work.
+Round-4 re-audit of tact.tex at commit d5154aa. Eighteen root causes closed, none partially, two new and both about the manuscript envelope rather than its content. The bundle is now 5 findings: 1 major, 4 minor, from 38 (10 major, Desk Reject) three rounds ago. No claim-accuracy, methodology, notation, or reproducibility finding remains open. Two of this round's fixes went past what was asked: re-running the single-seed cells uncovered a tie-breaking artifact in the generator that had been handing plain SC a free 67.7-vs-50.4 percent advantage on tied items, which the author fixed and then renumbered every synthetic result against; and Proposition 7 turned out to be false as stated rather than merely under-justified, so it was corrected, bounded to effectively-binary pools, and pinned in both directions by tests. A deferred cap ablation was also run and overturned the paper's own earlier attribution of a result. Everything checkable was checked against the regenerated artifacts and matched: all seven seed-dispersion intervals, the cap sweep's 0.0000 spread, every number in the new reasoning-budget subsection, the post-fix sweep and group tables, and the 102-test count. The one major left is that the paper is now 11 pages in a conference class with no named target track, caused by the additions themselves; it is a venue decision, not an edit. The remainder is four presentation items: six keywords, a booktabs footnote placement, a float position, and a stated test runtime that varies threefold between runs on one machine and should probably be dropped.
 
-- **主要**: 2
-- **中等**: 15
-- **次要**: 5
+- **主要**: 1
+- **中等**: 0
+- **次要**: 4
 
 ## 学术预审委员会
 
@@ -372,196 +372,16 @@ harder direction.
 
 ## 主要问题
 
-### M1: The revision pushed the paper from nine to ten pages in a conference class with no named track
+### M1: The page count has grown to eleven, in a conference class with no named target track
 - **类型**: presentation
 - **来源**: [Script] via `pre_submission_readiness`
 - **置信度**: high
 - **章节**: abstract
 - **关联章节**: abstract
-- **根因键**: `page-count-regressed-to-ten`
+- **根因键**: `page-count-regressed-to-eleven`
 - **原文已核对**: 是
 - **原文**: `\documentclass[conference]{IEEEtran}`
-- **说明**: [Script] The rendered PDF is now 10 pages (was 9). C5, the falsifier-rule paragraph, the normality sentence and the Code and Data Availability section together outweigh the 125 words cut from the abstract. Each addition answered a real finding and none should be reverted, so the fix is elsewhere: most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees, and no target track is named anywhere in the manuscript. Candidates for reclaiming space without losing substance: Table IV is 12 rows of test names that the new availability section now makes reproducible from the repository and could be cut to the six propositions it certifies; the Related Work ledger is 272 words carrying 20 references; and the 95-word Conclusion restates C1-C5. Naming the track first would also settle whether 10 pages is a problem at all.
-
-### M2: Every synthetic cell is still a single seed, and the new falsifier paragraph raises the stakes on it
-- **类型**: methodology
-- **来源**: [LLM] via `self_standard_consistency`
-- **置信度**: high
-- **章节**: experiment
-- **关联章节**: experiment
-- **根因键**: `single-seed-no-dispersion`
-- **原文已核对**: 是
-- **原文**: `The decision rule is a fixed $\tau=0.02$`
-- **说明**: The new paragraph states that tau is applied 'to the same $400$ paired items in every cell' and concedes that 'a paired test at these cell sizes would be the stronger protocol'. What it does not say is that every cell is one draw: results/tact_eval.json runs at config {items: 400, k: 15, k_max: 20, seed: 0}, with no repetitions and no interval on any accuracy. F4's survival rests on 0.035 exceeding tau on that single draw, and the mid-range paragraph now interprets four differences of 0.012 to 0.015. Rerunning each cell over 10-20 seeds and reporting a mean with an interval would settle both, and would let the paper drop the tolerance for the test it says it prefers.
-
-## 中等问题
-
-### M1: The remedy for the paper's sharpest failure mode is still absent from the manuscript
-- **类型**: missing_information
-- **来源**: [LLM] via `prior_art_and_novelty_grounding`
-- **置信度**: high
-- **章节**: discussion
-- **关联章节**: discussion
-- **根因键**: `semantic-dedup-remedy-uncited`
-- **原文已核对**: 是
-- **原文**: `a dominant
-wrong cluster that is semantically tight but carries no verbatim signature, so
-deduplication has nothing to collapse`
-- **说明**: The unguarded failure follows from deduplication being purely lexical ('single-linkage duplicate groups on the lexical-similarity channel at $0.95$'). Semantic-equivalence clustering is the standard published response and was removed from the bibliography in round 2 along with the other uncited entry. One sentence citing it, either as the alternative not adopted with a reason or as future work, would restore the reference and close the objection.
-
-### M2: Three of the five adversarial cells still lie inside the estimator's invariance group by construction
-- **类型**: methodology
-- **来源**: [LLM] via `evaluation_fairness_and_reproducibility`
-- **置信度**: high
-- **章节**: discussion
-- **关联章节**: discussion
-- **根因键**: `distortion-cells-inside-invariance-group`
-- **原文已核对**: 是
-- **原文**: `the adversarial regimes (distortions, heterogeneity, echo) lie outside the estimator's working model`
-- **说明**: The three monotone distortions are 'rank-preserving by construction' (Sec. IV) and C1 makes rank-only dependence the source of TACT's invariance, so 1.000 in those cells is entailed rather than discovered. The comparison against the raw-value family there is still worth making, and C1 now bounds what it shows. What it cannot also be is the circularity mitigation this sentence claims: of the five cells, only confident echo and the i.i.d. heterogeneity cell probe outside the working model. Say so, and the mitigation list becomes two items that hold rather than three where one does not.
-
-### M3: Proposition 7's justification establishes a sign flip, not the identical observable laws it claims
-- **类型**: methodology
-- **来源**: [LLM] via `section_methods`
-- **置信度**: high
-- **章节**: hetero
-- **关联章节**: hetero
-- **根因键**: `prop7-sketch-weaker-than-claim`
-- **原文已核对**: 是
-- **原文**: `induce identical observable laws (constructively, $D$ computed against either truth satisfies $D^{w_1}=-D^{w_2}$)`
-- **说明**: The claim is that two worlds induce identical laws over the observable (a, c); the parenthetical establishes only that one functional is sign-reversed under the two candidate truths, which does not rule out some other functional separating them. C5 now leans on this result on page 1 ('bound what any label-free aggregation method can do'), so the justification should match the strength of the statement.
-
-### M4: Propositions 5 and 6 are still measured frequencies from one harness inside a proposition environment
-- **类型**: methodology
-- **来源**: [LLM] via `section_methods`
-- **置信度**: high
-- **章节**: hetero
-- **关联章节**: hetero
-- **根因键**: `empirical-frequencies-as-propositions`
-- **原文已核对**: 是
-- **原文**: `Empirically such a rule agrees with \SC{} on $97.5\%$ of items and its residual flips are net-harmful ($1$ right vs.\ $9$ wrong per $400$ items).`
-- **说明**: Proposition 5's opening is a structural claim but its quantitative content is a frequency measured on 400 synthetic items at one seed; Proposition 6 is entirely such a frequency. The blanket 'Proofs are elementary and pinned by unit tests' extends to both. Restate them as remarks with sample sizes, or scope the proof sentence so it does not cover them.
-
-### M5: The theoretical increment is now stated on page 1, but the title and C1 still lead with the tempering map
-- **类型**: claim_accuracy
-- **来源**: [LLM] via `committee_theory`
-- **置信度**: high
-- **章节**: hetero
-- **关联章节**: hetero
-- **根因键**: `theory-increment-mislocated`
-- **原文已核对**: 是
-- **原文**: `The claim is the assembly and its anchors, not the parts.`
-- **说明**: C5 is the right addition and it puts the boundary results where they earn credit. What remains is ordering: the paper now says the clip binds in every saturated cell, that the analytic map is not better at choosing a magnitude where it is active, and that the link's normality assumption is unmet at small m. Read together, the durable increment is the impossibility triple, the attenuation identity, and the window measurement. The title, the abstract's first half, and C1 still lead with the tempering map. Promoting C5 ahead of C1, or naming the boundary in the title, would align the framing with what the paper now says about itself.
-
-### M6: The Introduction still calls a negative association 'not representable', which the revised Related Work now disclaims
-- **类型**: claim_accuracy
-- **来源**: [LLM] via `prior_art_and_novelty_grounding`
-- **置信度**: high
-- **章节**: introduction
-- **关联章节**: introduction
-- **根因键**: `cannot-represent-vs-not-searched`
-- **原文已核对**: 是
-- **原文**: `the possibility that the channel is \emph{anti-correlated} with correctness is not representable`
-- **说明**: The Related Work fix is exactly right and is the wording this sentence needs: 'None of these searches a negative exponent: the obstruction is a sign bit in the hyperparameter grid rather than the weight family itself, as this paper's own SignGrid-dev baseline shows by opening the same $c^{\gamma}$ family to negative $\gamma$.' The Introduction, a few lines earlier, still asserts the representability version, so the manuscript now states both. Replace 'is not representable' with 'is never searched for' and the root cause closes entirely.
-
-### M7: AUC-hat in the one-line formula is still the shrunken pooled statistic while AUC was defined per-item and raw
-- **类型**: presentation
-- **来源**: [LLM] via `notation_and_numeric_consistency`
-- **置信度**: high
-- **章节**: method
-- **关联章节**: method
-- **根因键**: `auc-hat-overload`
-- **原文已核对**: 是
-- **原文**: `\gamma=z\sqrt{2+z^{2}},\qquad z=\Phi^{-1}(\widehat{\mathrm{AUC}}),`
-- **说明**: Eq. (5) defines $\mathrm{AUC}_q = U_q/(n^1_q n^0_q)$, raw and per-item; Eq. (15) writes $z=\Phi^{-1}(\widehat{\mathrm{AUC}})$, where by Eq. (14) the argument must be the shrunk pooled value. The hat is the only distinguishing mark. The revised abstract still calls it 'the probit of the shrunk pooled AUC', a name the body never defines, so defining it at Eq. (15) also closes the abstract's reference.
-
-### M8: kappa still denotes both the confidence coupling and a per-item normalizing constant
-- **类型**: presentation
-- **来源**: [LLM] via `notation_and_numeric_consistency`
-- **置信度**: high
-- **章节**: method
-- **关联章节**: method
-- **根因键**: `kappa-symbol-collision`
-- **原文已核对**: 是
-- **原文**: `the weights equal $\smash{\kappa_q\,c_{q,i}^{\,\gamma}}$ with a per-item constant $\kappa_q>0$`
-- **说明**: kappa indexes the confidence-correctness coupling in Eq. (1), the sweep axis in Table I, and the heterogeneity design. Proposition 2 reuses it, subscripted by the same item index q, for an unrelated positive normalizer, with no announcement and no symbol table. Any free letter would do.
-
-### M9: Related Work is still a ledger, though its central argument is now correct
-- **类型**: presentation
-- **来源**: [LLM] via `committee_literature`
-- **置信度**: high
-- **章节**: related
-- **关联章节**: related
-- **根因键**: `related-work-is-a-ledger`
-- **原文已核对**: 是
-- **原文**: `Estimating worker reliability from agreement is classical \cite{dawid1979maximum,whitehill2009whose,karger2011iterative}`
-- **说明**: The sign-bit sentence fixed the section's substantive error. Its shape is unchanged: 20 of 26 references in 272 words, nine keys in the first paragraph, six in one sentence of the second, and li2023diverse, borda2025, aggarwal2023adaptive and li2024escape uncharacterized. fuse2026 and beyondmajority2025 are the closest published neighbours to C2 and get one clause. No paragraph states what the field believes and where that belief breaks.
-
-### M10: The sibling negative result is still uncitable, and still de-anonymizes inside Related Work
-- **类型**: missing_information
-- **来源**: [LLM] via `prior_art_and_novelty_grounding`
-- **置信度**: high
-- **章节**: related
-- **关联章节**: related
-- **根因键**: `rlev-voi-uncitable`
-- **原文已核对**: 是
-- **原文**: `\textbf{Honest sibling result.} A preceding system by the author (RLEV-VoI, redundancy-discounted voting with value-of-information stopping) was evaluated under the same falsification discipline and \emph{failed} it`
-- **说明**: The Conclusion still offers the falsification protocol as the most portable contribution on the strength of 'having already killed one of the author's own systems', so this paragraph carries weight. It has no cite, arXiv id, or artifact pointer. The new availability section makes this cheap to fix: the repository is now named, so a docs path or tag would make the claim checkable. It also identifies the author inside Related Work, which matters if the target track is double-blind.
-
-### M11: Table VI's single 'Window' column still reports four different quantities across five rows
-- **类型**: presentation
-- **来源**: [LLM] via `notation_and_numeric_consistency`
-- **置信度**: high
-- **章节**: result
-- **关联章节**: result
-- **根因键**: `window-column-heterogeneous`
-- **原文已核对**: 是
-- **原文**: `Domain & Substrate & Window`
-- **说明**: Sec. V-I defines the window as the fraction of items where the plurality is wrong and the correct answer is in the pool. Row 1 gives '$12\%$ informative, $9\%$ decisive', neither of which is that quantity; rows 2 and 3 give decisive and rescuable fractions; rows 4 and 5 give a bare percentage. C5 now leads with the 3-7.5% range on page 1, which raises the stakes on the table it comes from: one column per defined quantity, with the denominator in each cell.
-
-### M12: The exponent cap still differs between the two arms being compared
-- **类型**: methodology
-- **来源**: [LLM] via `evaluation_fairness_and_reproducibility`
-- **置信度**: high
-- **章节**: result
-- **关联章节**: result
-- **根因键**: `asymmetric-cap-across-arms`
-- **原文已核对**: 是
-- **原文**: `because its lower exponent cap ($2$ vs.\ $4$) regularizes better when $|D|\approx1$; cap robustness is left as an ablation`
-- **说明**: TACT-dev and TACT-LF carry different clips (4 vs 2) and different significance floors (1.28 vs 2.33), and in the grouped cell the label-free arm wins 0.940 vs 0.923 with the paper attributing the win to the cap. The revision now states plainly that the cap binds wherever the statistic saturates, which sharpens rather than softens this: a parameter the paper says decides the headline comparison differs across the arms being compared, and the ablation is still deferred. Running both arms at both caps is a small run against cached pools.
-
-### M13: The unfavourable paired test is still the one paired test not reported
-- **类型**: methodology
-- **来源**: [LLM] via `self_standard_consistency`
-- **置信度**: high
-- **章节**: result
-- **关联章节**: result
-- **根因键**: `unreported-unfavourable-paired-test`
-- **原文已核对**: 是
-- **原文**: `Against SignGrid-dev the honest margin is narrow on the homogeneous sweep`
-- **说明**: The falsifier section now states its decision rule and openly calls a tolerance the weaker instrument, which makes this the last gap on the same axis. results/tact_eval.json holds TACT-dev_vs_SignGrid at every sweep point, and at kappa = -0.2 it reads {a_only: 0, b_only: 6, p_value: 0.03125}: significant at 0.05, and the only paired comparison in the paper that favours a baseline. The manuscript reports p=3.3e-24 for the grouped cell and p=1 for the dead-zone cells. Adding '(0/6 discordant, exact p=0.03)' to the mid-range paragraph completes the disclosure.
-
-### M14: Contribution C3 and Proposition 6 still state the winner's-curse frequency under different conditioning
-- **类型**: claim_accuracy
-- **来源**: [LLM] via `section_methods`
-- **置信度**: medium
-- **章节**: introduction
-- **关联章节**: introduction
-- **根因键**: `c3-prop6-conditioning-mismatch`
-- **原文已核对**: 是
-- **原文**: `the observable sign opposes the truth $96\%$ of the time`
-- **说明**: C3 attaches 96% to 'exactly the plurality-wrong items where a flip could help'; Proposition 6 states the complementary 4% but conditions additionally on $|D_q|>0.3$. Arithmetically consistent, different item sets, so the Introduction claims the stronger unconditional version.
-
-### M15: The one rank-based comparator is still filed as a budget refinement and never run
-- **类型**: claim_accuracy
-- **来源**: [LLM] via `prior_art_and_novelty_grounding`
-- **置信度**: medium
-- **章节**: related
-- **关联章节**: related
-- **根因键**: `borda2025-miscategorized-not-run`
-- **原文已核对**: 是
-- **原文**: `Weighted variants \cite{li2023diverse,borda2025} and early-stopping families \cite{aggarwal2023adaptive,li2024escape} refine the budget`
-- **说明**: borda2025 is, by the paper's own bibliography, Kang, Zhao and Song, 'Scalable best-of-N selection for large language models via self-certainty', NeurIPS 2025: an aggregation rule over a self-certainty signal, not a budget mechanism. C1's headline property is rank-based invariance, so the comparator best placed to contest it gets one subordinate clause and no run. State why its rank aggregation does not already confer monotone invariance, or add it to Table II.
+- **说明**: [Script] The rendered PDF is 11 pages, up from 10 at f8641e8 and 9 at 4d75431. Table IV was compressed from 3 columns and 12 rows to 2 and 7, but the two subsections added this round (the harness artifact with seed dispersion, and the reasoning-budget axis) outweigh that. Both are the strongest new material in the manuscript and neither should be cut. Most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees, and after four rounds no target track is named anywhere. This is the only mechanical obstacle left and it is a decision rather than an edit: name the venue, then fit it. If the target is a journal or a track with a 10-12 page allowance this closes with no text change at all; if it is an 8-page track, the seed-dispersion and budget subsections are the natural candidates for a companion technical report cited from the paper.
 
 ## 次要问题
 
@@ -574,7 +394,7 @@ deduplication has nothing to collapse`
 - **根因键**: `keyword-count`
 - **原文已核对**: 是
 - **原文**: `large language models, self-consistency, confidence calibration, weighted voting, label-free estimation, rank statistics`
-- **说明**: [Script] Unchanged across all three rounds. Drop one or two.
+- **说明**: [Script] Unchanged across all four rounds. Drop one or two.
 
 ### M2: Table I is still placed in the Experimental Setup section but interpreted only in Results
 - **类型**: presentation
@@ -585,31 +405,9 @@ deduplication has nothing to collapse`
 - **根因键**: `table1-float-before-results`
 - **原文已核对**: 是
 - **原文**: `\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \SC{} floor on the entire negative half-axis.}`
-- **说明**: The float is declared before \section{Results} and its caption already states the paper's first result. With the page count now at 10, float placement also affects how much whitespace the layout wastes.
+- **说明**: The float is declared before the Results heading and its caption already states the paper's first result. With the page count at 11, float placement also affects wasted whitespace.
 
-### M3: Citation stacking in Related Work is unchanged
-- **类型**: presentation
-- **来源**: [Script] via `pre_submission_readiness`
-- **置信度**: high
-- **章节**: related
-- **关联章节**: related
-- **根因键**: `citation-stacking`
-- **原文已核对**: 是
-- **原文**: `Weighted variants \cite{li2023diverse,borda2025} and early-stopping families \cite{aggarwal2023adaptive,li2024escape} refine the budget`
-- **说明**: [Script] The new sign-bit sentence improved the section's argument without reducing its density: 20 of 26 references still sit in 272 words, with nine keys in the first paragraph and four works uncharacterized.
-
-### M4: 'Three times the SC floor' still describes a 2.93x ratio
-- **类型**: claim_accuracy
-- **来源**: [LLM] via `claims_vs_evidence`
-- **置信度**: high
-- **章节**: result
-- **关联章节**: result
-- **根因键**: `three-times-sc-floor-rounding`
-- **原文已核对**: 是
-- **原文**: `the best result in the field ($0.585$; three times the \SC{} floor)`
-- **说明**: 0.585 / 0.200 = 2.925. Trivial in most papers; in this one, which now states its own losses cell by cell and its own weaker instrument by name, a ratio rounded in the author's favour is the odd one out. 'Nearly three times' costs one word.
-
-### M5: Table II's footnote rows are still typeset inside the tabular after \bottomrule
+### M3: Table II's footnote rows are still typeset inside the tabular after \bottomrule
 - **类型**: presentation
 - **来源**: [Script] via `pre_submission_readiness`
 - **置信度**: high
@@ -618,12 +416,23 @@ deduplication has nothing to collapse`
 - **根因键**: `table2-footnote-after-bottomrule`
 - **原文已核对**: 是
 - **原文**: `\multicolumn{6}{l}{\footnotesize $^{\dagger}$alarm fires and the method refuses to leave \SC---the conditional}\\`
-- **说明**: [Script] Unchanged. Two \multicolumn rows still follow \bottomrule inside the tabular, so booktabs' trailing rule is not the last element. Use a tablenotes environment or move the note after \end{tabular}.
+- **说明**: [Script] Unchanged. Use a tablenotes environment or move the note after the tabular ends.
+
+### M4: The stated test-suite runtime does not reproduce, and its variance argues for dropping it
+- **类型**: presentation
+- **来源**: [Script] via `pre_submission_readiness`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `test-runtime-not-reproducible`
+- **原文已核对**: 是
+- **原文**: `follow-on work, and runs in 199 seconds. Table~\ref{tab:tests}`
+- **说明**: [Script] The count is exact: pytest collects and passes 102 tests, matching the paper. The runtime does not reproduce here, and the spread is the real point: six timed runs of this suite on one machine gave 49.7, 90.0, 90.5, 103.0, 106.0 and 154.9 seconds across the 98- and 102-test versions. A quantity that moves by 3x between runs on the same hardware carries no information for a reader on different hardware. Either drop the runtime or state the machine and the run it came from. Advisory, not a defect claim.
 
 ## 决策信号
 
 - **审稿推荐**: 大修
-- **问题包**: 主要 2 / 中等 15 / 次要 5
+- **问题包**: 主要 1 / 中等 0 / 次要 4
 
 ## 修订路线图
 
