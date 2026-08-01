@@ -4,6 +4,9 @@
 \usepackage{booktabs}
 \usepackage{url}
 
+\usepackage[hidelinks,breaklinks=true]{hyperref}
+\usepackage{cleveref}
+
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
 
@@ -25,7 +28,7 @@
 \maketitle
 
 \section*{Abstract}
-Confidence-weighted self-consistency (CISC and its successors) improves on majority voting when a frozen large language model's self-reported confidence is calibrated in \emph{direction}. Every published weighting scheme is structurally monotone increasing in confidence, so an anti-correlated channel poisons the vote instead of informing it, while binary dev-set gates survive inversion only by discarding genuinely discriminative signal. This paper presents \TACT{} (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one \emph{derived} from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' $D$ rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link. Written out, the method is a single expression whose exponent reduces to $\gamma=z\sqrt{2+z^2}$ with $z$ the probit of the shrunk pooled AUC, and it carries exact anchors: inside the shrinkage dead zone the vote is bit-identical to plain self-consistency, and a log-value feature map reproduces CISC-power. A label-free variant estimates the signed reliability from agreement pseudo-labels under a proven attenuation identity that guarantees sign consistency whenever the plurality-error rate is below one half, with conservative de-attenuation and echo alarms at the identifiability boundary. On a synthetic-oracle harness with paired trace pools, the label-free variant recovers anti-correlated channels that pin every published protocol to the majority-vote floor ($\kappa=-0.6$: $1.000$ vs.\ $0.807$), rank invariance beats the oracle over the entire raw-value weight family under monotone confidence compression ($1.000$ vs.\ $0.965$), and a per-group extension cracks the heterogeneity floor with zero paired losses to self-consistency ($0.940$ vs.\ $0.808$; $+79/-0$, $p=3.3\times10^{-24}$). Two real-trace campaigns on a frozen model confirm the premise and locate the binding constraint: within-item discrimination is positive on competition mathematics (pooled $\Dhat=+0.250$, $z=+2.54$), yet the stratum on which any such method can act, where the plurality is wrong and the correct answer is present in the pool, measures $2$--$7.5\%$ of items across five substrates in two domains, code generation with executable ground truth included. Abstention is therefore the correct default rather than a conservative one, and the dead zone implements it exactly. The paper further proves that per-item label-free adaptation is impossible under i.i.d.\ latent coupling, and pre-registers four falsification criteria, among them the published dev-calibrated CISC protocol as a designated killer baseline, all of which the method survived.
+Confidence-weighted self-consistency (CISC and its successors) improves on majority voting when a frozen large language model's self-reported confidence is calibrated in \emph{direction}. Every published weighting scheme is structurally monotone increasing in confidence, so an anti-correlated channel poisons the vote instead of informing it, while binary dev-set gates survive inversion only by discarding genuinely discriminative signal. This paper presents \TACT{} (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one \emph{derived} from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' $D$ rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link. Written out, the method is a single expression whose exponent reduces to $\gamma=z\sqrt{2+z^2}$ with $z$ the probit of the shrunk pooled AUC, and it carries exact anchors: inside the shrinkage dead zone the vote is bit-identical to plain self-consistency, and a log-value feature map reproduces CISC-power. A label-free variant estimates the signed reliability from agreement pseudo-labels under a proven attenuation identity that guarantees sign consistency whenever the plurality-error rate is below one half, with conservative de-attenuation and echo alarms at the identifiability boundary. On a synthetic-oracle harness with paired trace pools, the label-free variant recovers anti-correlated channels that pin every published protocol to the majority-vote floor ($\kappa=-0.6$: $1.000$ vs.\ $0.807$), rank invariance beats the best exponent in the tested raw-value grid $\{0.25,0.5,1,2,4\}$ under monotone confidence compression ($1.000$ vs.\ $0.965$, the grid optimum sitting at its upper endpoint), and a per-group extension cracks the heterogeneity floor with zero paired losses to self-consistency ($0.940$ vs.\ $0.808$; $+79/-0$, $p=3.3\times10^{-24}$). Two real-trace campaigns on a frozen model confirm the premise and locate the binding constraint: within-item discrimination is positive on competition mathematics (pooled $\Dhat=+0.250$, $z=+2.54$), yet the stratum on which any such method can act, where the plurality is wrong and the correct answer is present in the pool, measures $3$--$7.5\%$ of items across five substrates in two domains, code generation with executable ground truth included. Abstention is therefore the correct default rather than a conservative one, and the dead zone implements it exactly. The paper further proves that per-item label-free adaptation is impossible under i.i.d.\ latent coupling, and pre-registers four falsification criteria, among them the published dev-calibrated CISC protocol as a designated killer baseline, all of which the method survived.
 
 
 \textbf{Keywords---}
@@ -34,15 +37,15 @@ large language models, self-consistency, confidence calibration, weighted voting
 
 \section{Introduction}
 
-Self-consistency (\SC) \cite{wang2023selfconsistency} improves the reasoning accuracy of a frozen large language model (LLM) by sampling $K$ chain-of-thought traces and returning the plurality answer. Because each trace can also report a confidence score (verbalized \cite{tian2023just,xiong2024can}, derived from token log-probabilities, or elicited as $P(\text{True})$ \cite{kadavath2022language}), a natural refinement is to weight votes by confidence. Confidence-Informed Self-Consistency (CISC) \cite{taubenfeld2025cisc} showed that this recovers the accuracy of plain \SC{} at a fraction of the sampling budget, and introduced Within-Question Discrimination (WQD) to argue that \emph{discrimination}, not calibration, is the property that makes a confidence signal useful for voting.
+Self-consistency (\SC) [\hyperref[bib:wang2023selfconsistency]{1}] improves the reasoning accuracy of a frozen large language model (LLM) by sampling $K$ chain-of-thought traces and returning the plurality answer. Because each trace can also report a confidence score (verbalized [\hyperref[bib:tian2023just]{2},\hyperref[bib:xiong2024can]{3}], derived from token log-probabilities, or elicited as $P(\text{True})$ [\hyperref[bib:kadavath2022language]{4}]), a natural refinement is to weight votes by confidence. Confidence-Informed Self-Consistency (CISC) [\hyperref[bib:taubenfeld2025cisc]{5}] showed that this recovers the accuracy of plain \SC{} at a fraction of the sampling budget, and introduced Within-Question Discrimination (WQD) to argue that \emph{discrimination}, not calibration, is the property that makes a confidence signal useful for voting.
 
-This refinement carries a structural fragility that, to the author's knowledge, no published method addresses. Every existing weighting scheme is monotone \emph{increasing} in confidence, including CISC's softmax weights, reliability-aware pseudo-counts \cite{reasc2026}, and warmup-thresholded filtering \cite{deepconf2025}. The trust decision is which magnitude of up-weighting to apply; the possibility that the channel is \emph{anti-correlated} with correctness is not representable. Yet miscalibration of direction is not exotic: reinforcement fine-tuning is known to distort verbalized confidence, distribution shift can invert a signal that was informative in-domain, and in the experiments reported here a simple anti-correlated channel ($\kappa=-0.6$; Section~\ref{sec:setup}) drives confidence-weighted baselines from near-perfect accuracy to far below the majority-vote floor, while the same evidence, read with the correct sign, is a perfect signal. The defensive alternative, a binary dev-set gate that disables the channel when calibration error is high, survives the inversion but discards discriminative signal wholesale: a systematically under-confident yet perfectly ranked channel fails an ECE gate for reasons irrelevant to voting utility \cite{taubenfeld2025cisc,huang2024rankcalibration}.
+This refinement carries a structural fragility that, to the author's knowledge, no published method addresses. Every existing weighting scheme is monotone \emph{increasing} in confidence, including CISC's softmax weights, reliability-aware pseudo-counts [\hyperref[bib:reasc2026]{6}], and warmup-thresholded filtering [\hyperref[bib:deepconf2025]{7}]. The trust decision is which magnitude of up-weighting to apply; the possibility that the channel is \emph{anti-correlated} with correctness is not representable. Yet miscalibration of direction is not exotic: reinforcement fine-tuning is known to distort verbalized confidence, distribution shift can invert a signal that was informative in-domain, and in the experiments reported here a simple anti-correlated channel ($\kappa=-0.6$; Section~\ref{sec:setup}) drives confidence-weighted baselines from near-perfect accuracy to far below the majority-vote floor, while the same evidence, read with the correct sign, is a perfect signal. The defensive alternative, a binary dev-set gate that disables the channel when calibration error is high, survives the inversion but discards discriminative signal wholesale: a systematically under-confident yet perfectly ranked channel fails an ECE gate for reasons irrelevant to voting utility [\hyperref[bib:taubenfeld2025cisc]{5},\hyperref[bib:huang2024rankcalibration]{8}].
 
 This paper frames the problem as estimating one scalar: the \emph{signed} within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent. The contributions are:
 
-\textbf{C1: Signed, analytically-tempered confidence weighting.} \TACT{} votes with weights $w_i=\exp(\gamma\,\varphi_i)$, where $\varphi_i$ is the standardized van der Waerden score of trace $i$'s within-item confidence midrank, and $\gamma$ is \emph{derived}, not grid-searched: a pooled van~Elteren Somers' $D$ statistic (equal to $2\cdot\mathrm{WQD}-1$) with an exact tie-corrected null variance and an item-clustered jackknife standard error, shrunk by positive-part James--Stein with a significance floor, then mapped through a Bayes-discriminant link with a mixture-variance correction. The construction carries exact anchors: inside the shrinkage dead zone the vote is \emph{bit-identical} to plain \SC{} (a shared code path), and the log-value feature map reproduces CISC-power exactly (Section~\ref{sec:method}). Because $\varphi$ depends on confidence only through within-item ranks, the entire method is invariant to every strictly monotone distortion of the confidence scale; under monotone compression it beats the oracle over the whole raw-value weight family ($1.000$ vs.\ $0.965$).
+\textbf{C1: Signed, analytically-tempered confidence weighting.} \TACT{} votes with weights $w_i=\exp(\gamma\,\varphi_i)$, where $\varphi_i$ is the standardized van der Waerden score of trace $i$'s within-item confidence midrank, and $\gamma$ is \emph{derived}, not grid-searched: a pooled van~Elteren Somers' $D$ statistic (equal to $2\cdot\mathrm{WQD}-1$) with an exact tie-corrected null variance and an item-clustered jackknife standard error, shrunk by positive-part James--Stein with a significance floor, then mapped through a Bayes-discriminant link with a mixture-variance correction. The construction carries exact anchors: inside the shrinkage dead zone the vote is \emph{bit-identical} to plain \SC{} (a shared code path), and the log-value feature map reproduces CISC-power exactly (Section~\ref{sec:method}). Because $\varphi$ depends on confidence only through within-item ranks, the entire method is invariant to every strictly monotone distortion of the confidence scale; under monotone compression it beats the best exponent in the tested raw-value grid $\{0.25,0.5,1,2,4\}$ ($1.000$ vs.\ $0.965$); that grid optimum lies at the largest exponent tried, so the comparison bounds the grid, not the whole family.
 
-\textbf{C2: Label-free estimation of the signed reliability.} The crowdsourcing lineage estimates annotator reliability from cross-annotator covariance \cite{dawid1979maximum,parisi2014ranking}; a single exchangeable confidence channel from one model offers no such structure. The signed discrimination is estimated from \emph{agreement pseudo-labels} (deduplication-weighted plurality per item) with a proven class-conditional-noise attenuation identity, $\mathbb{E}[\Dhat_g]=(1-2\bar{\rho})\,D$: the label-free estimate can only \emph{under}-trust, never mis-sign, whenever the pair-weighted plurality-error rate $\bar{\rho}$ is below $1/2$. A split-half agreement inversion de-attenuates conservatively, and sign-aware alarms return the method to plain \SC{} when identifiability is threatened. On the coupling sweep the label-free variant matches the 200-label variant nearly point-for-point, including full recovery of negative channels (Section~\ref{sec:results}).
+\textbf{C2: Label-free estimation of the signed reliability.} The crowdsourcing lineage estimates annotator reliability from cross-annotator covariance [\hyperref[bib:dawid1979maximum]{9},\hyperref[bib:parisi2014ranking]{10}]; a single exchangeable confidence channel from one model offers no such structure. The signed discrimination is estimated from \emph{agreement pseudo-labels} (deduplication-weighted plurality per item) with a proven class-conditional-noise attenuation identity, $\mathbb{E}[\Dhat_g]=(1-2\bar{\rho})\,D$: the label-free estimate can only \emph{under}-trust, never mis-sign, whenever the pair-weighted plurality-error rate $\bar{\rho}$ is below $1/2$. A split-half agreement inversion de-attenuates conservatively, and sign-aware alarms return the method to plain \SC{} when identifiability is threatened. On the coupling sweep the label-free variant matches the 200-label variant nearly point-for-point, including full recovery of negative channels (Section~\ref{sec:results}).
 
 \textbf{C3: An impossibility result and its structured escape.} When the per-item coupling is i.i.d.\ with no observable covariate, per-item label-free adaptation is shown to be closed: any monotone use of an item's own agreement statistic collapses to plurality reinforcement; on exactly the plurality-wrong items where a flip could help, the observable sign opposes the truth $96\%$ of the time; and the two hypotheses $\{\kappa>0,\text{minority correct}\}$ and $\{\kappa<0,\text{plurality correct}\}$ induce identical observable laws. When heterogeneity is instead indexed by an observable covariate (domain-dependent calibration), running the same estimator per group recovers each group's signed coupling and approaches the per-item oracle with zero paired losses to \SC{} (Section~\ref{sec:hetero}).
 
@@ -50,11 +53,11 @@ This paper frames the problem as estimating one scalar: the \emph{signed} within
 
 \section{Related Work}\label{sec:related}
 
-\textbf{Confidence-weighted self-consistency.} \SC{} \cite{wang2023selfconsistency} treats sampled traces as i.i.d.\ votes. CISC \cite{taubenfeld2025cisc} weights votes by softmax-normalized confidence with a temperature tuned on a labeled split, and its WQD metric makes the discrimination-vs-calibration point that also motivates this work; the rank-calibration line \cite{huang2024rankcalibration} reaches the same conclusion independently. Weighted variants \cite{li2023diverse,borda2025} and early-stopping families \cite{aggarwal2023adaptive,li2024escape} refine the budget; reliability-aware pseudo-counts \cite{reasc2026} and warmup-thresholded filtering \cite{deepconf2025} adapt online but only re-scale positive trust. None of these can represent, much less estimate, a negative confidence--correctness association. The dev-calibrated variant must therefore be positioned honestly: CISC's tuned temperature is already a dev-calibrated \SC$\leftrightarrow$CISC interpolation, so the novelty of \TACT-dev lies in the sign, the rank invariance, and the analytic (grid-free) map, not in dev calibration itself.
+\textbf{Confidence-weighted self-consistency.} \SC{} [\hyperref[bib:wang2023selfconsistency]{1}] treats sampled traces as i.i.d.\ votes. CISC [\hyperref[bib:taubenfeld2025cisc]{5}] weights votes by softmax-normalized confidence with a temperature tuned on a labeled split, and its WQD metric makes the discrimination-vs-calibration point that also motivates this work; the rank-calibration line [\hyperref[bib:huang2024rankcalibration]{8}] reaches the same conclusion independently. Weighted variants [\hyperref[bib:li2023diverse]{11},\hyperref[bib:borda2025]{12}] and early-stopping families [\hyperref[bib:aggarwal2023adaptive]{13},\hyperref[bib:li2024escape]{14}] refine the budget; reliability-aware pseudo-counts [\hyperref[bib:reasc2026]{6}] and warmup-thresholded filtering [\hyperref[bib:deepconf2025]{7}] adapt online but only re-scale positive trust. None of these can represent, much less estimate, a negative confidence--correctness association. The dev-calibrated variant must therefore be positioned honestly: CISC's tuned temperature is already a dev-calibrated \SC$\leftrightarrow$CISC interpolation, so the novelty of \TACT-dev lies in the sign, the rank invariance, and the analytic (grid-free) map, not in dev calibration itself.
 
-\textbf{Reliability estimation without labels.} Estimating worker reliability from agreement is classical \cite{dawid1979maximum,whitehill2009whose,karger2011iterative}; spectral meta-learners \cite{parisi2014ranking} and recent LLM ensemble work \cite{fuse2026,beyondmajority2025} exploit covariance across \emph{multiple} predictors. The setting here differs: one exchangeable channel from one model, per-item vote structure, and the known failure of agreement proxies under correlated errors---met here with a quantified attenuation identity, conservative de-attenuation, and alarms in place of an unconditional claim.
+\textbf{Reliability estimation without labels.} Estimating worker reliability from agreement is classical [\hyperref[bib:dawid1979maximum]{9},\hyperref[bib:whitehill2009whose]{15},\hyperref[bib:karger2011iterative]{16}]; spectral meta-learners [\hyperref[bib:parisi2014ranking]{10}] and recent LLM ensemble work [\hyperref[bib:fuse2026]{17},\hyperref[bib:beyondmajority2025]{18}] exploit covariance across \emph{multiple} predictors. The setting here differs: one exchangeable channel from one model, per-item vote structure, and the known failure of agreement proxies under correlated errors---met here with a quantified attenuation identity, conservative de-attenuation, and alarms in place of an unconditional claim.
 
-\textbf{Shrinkage and rank statistics.} The estimator assembles classical parts: stratified rank statistics \cite{vanelteren1960}, the James--Stein positive-part estimator \cite{james1961estimation}, effective-sample-size corrections \cite{kish1965,rao1981analysis}, and normal-scores discriminant analysis. The claim is the assembly and its anchors, not the parts.
+\textbf{Shrinkage and rank statistics.} The estimator assembles classical parts: stratified rank statistics [\hyperref[bib:vanelteren1960]{19}], the James--Stein positive-part estimator [\hyperref[bib:james1961estimation]{20}], effective-sample-size corrections [\hyperref[bib:kish1965]{21},\hyperref[bib:rao1981analysis]{22}], and normal-scores discriminant analysis. The claim is the assembly and its anchors, not the parts.
 
 \textbf{Honest sibling result.} A preceding system by the author (RLEV-VoI, redundancy-discounted voting with value-of-information stopping) was evaluated under the same falsification discipline and \emph{failed} it, dominated everywhere by a simple deduplication baseline, and is reported as a negative result. Its post-mortem isolated the confidence dilemma studied here.
 
@@ -65,7 +68,8 @@ Items $q=1,\dots,Q$; item $q$ has $m_q$ sampled traces. Trace $(q,i)$ yields an 
 
 \subsection{The confidence dilemma}
 The synthetic oracle draws, per item, traces from a cluster mixture with a latent correct answer and generates confidence as
-\begin{equation}\label{eq:confmodel}
+\phantomsection\label{eq:confmodel}
+\begin{equation}
 c_{q,i}=\operatorname{clip}\!\big(\tfrac12+\kappa\,(y_{q,i}-\tfrac12)+\varepsilon_{q,i},\,0.01,\,0.99\big),
 \end{equation}
 with noise $\varepsilon\sim\mathcal{N}(0,0.1^2)$ and coupling $\kappa\in[-0.6,0.6]$. Fig.~\ref{fig:baselines} maps the baseline landscape \emph{before} the proposed method existed: unconditional weighting (CISC, $\gamma=1$) collapses on $\kappa<0$; an ECE gate never opens off the well-calibrated diagonal; a sign-corrected AUC gate over dev labels nearly saturates the homogeneous sweep. This pre-measurement fixes where a new method can legitimately claim wins---monotone distortion of the confidence scale, covariate heterogeneity, small dev sets, and label-free operation---and the evaluation holds itself to exactly those cells.
@@ -81,11 +85,13 @@ with noise $\varepsilon\sim\mathcal{N}(0,0.1^2)$ and coupling $\kappa\in[-0.6,0.
 
 \subsection{Vote family}
 Within item $q$, let $R_{q,i}$ be the midrank of $c_{q,i}$ (ties averaged) and
-\begin{equation}\label{eq:vdw}
+\phantomsection\label{eq:vdw}
+\begin{equation}
 \varphi_{q,i}=\frac{v_{q,i}-\bar v_q}{\sigma_q},\qquad v_{q,i}=\Phi^{-1}\!\Big(\frac{R_{q,i}}{m_q+1}\Big),
 \end{equation}
 where $\sigma_q$ is the \emph{realized} standard deviation of $v$ within the item (the no-tie value is $0.62$ at $m{=}4$ but $0.95$ at $m{=}40$; a closed form would silently rescale $\gamma$ across budgets), and $\varphi\equiv 0$ if $\sigma_q\le 10^{-8}$ (all-tied confidences vote as plain \SC). The vote is
-\begin{equation}\label{eq:vote}
+\phantomsection\label{eq:vote}
+\begin{equation}
 \hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 \end{equation}
 and when $\gamma=0$ the implementation \emph{calls the \SC{} routine itself}, making the zero-trust anchor bitwise exact rather than equal in distribution. Because \eqref{eq:vdw} depends on $c$ only through within-item ranks, every strictly monotone distortion of the confidence scale leaves \eqref{eq:vote} unchanged.
@@ -95,8 +101,9 @@ For item $q$ with $n^1_q$ positive and $n^0_q$ negative labels (dev: $y$; label-
 \begin{equation}
 D_q = 2\,\mathrm{AUC}_q-1,\qquad \mathrm{AUC}_q=\frac{U_q}{n^1_q n^0_q},
 \end{equation}
-which equals $2\cdot\mathrm{WQD}_q-1$ in CISC's notation. Pooling uses van Elteren pair-count weights $N_q=n^1_q n^0_q$ \cite{vanelteren1960}:
-\begin{equation}\label{eq:pooled}
+which equals $2\cdot\mathrm{WQD}_q-1$ in CISC's notation. Pooling uses van Elteren pair-count weights $N_q=n^1_q n^0_q$ [\hyperref[bib:vanelteren1960]{19}]:
+\phantomsection\label{eq:pooled}
+\begin{equation}
 \Dhat=\frac{\sum_q N_q D_q}{\sum_q N_q}.
 \end{equation}
 Under the within-item exchangeability null, $U_q$ has the exact tie-corrected variance $n^1_qn^0_q(m_q{+}1)/12\cdot[1-\sum_t(t^3-t)/(m_q^3-m_q)]$, yielding a null standard error $\mathrm{SE}_0$; between-item heterogeneity is captured by the closed-form delete-one-item jackknife $\mathrm{SE}_J$. The conservative choice is
@@ -107,13 +114,15 @@ Because $D$ is a pairwise functional, $\mathbb{E}[\Dhat]$ does not depend on $m_
 
 \subsection{Tempering map}
 \emph{Shrinkage.} Positive-part James--Stein with a significance floor $\nu$:
-\begin{equation}\label{eq:js}
+\phantomsection\label{eq:js}
+\begin{equation}
 \tilde D=\sign(\Dhat)\,\max\!\big(0,\ |\Dhat|-\nu^2\mathrm{SE}^2/|\Dhat|\big),
 \end{equation}
-with dead zone $\{|r|\le\nu\}$; $\nu_{\mathrm{dev}}=1.28$, $\nu_{\mathrm{LF}}=2.33$. With $\nu=1$, \eqref{eq:js} is exactly the empirical-Bayes posterior mean under a $\mathcal{N}(0,\tau^2)$ prior with plug-in $\hat\tau^2=\max(0,\Dhat^2-\mathrm{SE}^2)$ \cite{james1961estimation}. The map is odd, continuous, never exceeds $|\Dhat|$, and is monotone in $\Dhat$ and anti-monotone in $\mathrm{SE}$.
+with dead zone $\{|r|\le\nu\}$; $\nu_{\mathrm{dev}}=1.28$, $\nu_{\mathrm{LF}}=2.33$. With $\nu=1$, \eqref{eq:js} is exactly the empirical-Bayes posterior mean under a $\mathcal{N}(0,\tau^2)$ prior with plug-in $\hat\tau^2=\max(0,\Dhat^2-\mathrm{SE}^2)$ [\hyperref[bib:james1961estimation]{20}]. The map is odd, continuous, never exceeds $|\Dhat|$, and is monotone in $\Dhat$ and anti-monotone in $\mathrm{SE}$.
 
 \emph{Link.} Model $\varphi\,|\,y\sim\mathcal{N}(\mu_y,s^2)$ within item with the \emph{mixture} standardized to unit variance, which is what \eqref{eq:vdw} enforces, so $s^2=1/(1+\bar p(1-\bar p)u^2)$ where $u=\sqrt2\,\Phi^{-1}\!\big(\tfrac{1+\tilde D}{2}\big)$ and $\bar p$ is the base rate of correct traces. The Bayes-optimal per-trace log-weight coefficient is then
-\begin{equation}\label{eq:link}
+\phantomsection\label{eq:link}
+\begin{equation}
 \gamma^\ast=\frac{u}{s}=u\sqrt{1+\bar p(1-\bar p)\,u^2},
 \end{equation}
 capped at $\gamma_{\max}$ ($4$ dev, $2$ label-free). The uncorrected link $\gamma=u$ under-weights strong channels by up to ${\sim}50\%$ at $D=0.9$.
@@ -124,25 +133,30 @@ Two simplifications collapse the pipeline. Factoring $\Dhat$ out of
 $z$-statistic $\zeta=\Dhat/\mathrm{SE}$ alone, and substituting
 $u=\sqrt2\,z$ with $z=\Phi^{-1}\!\big(\tfrac{1+\tilde D}{2}\big)$ into
 \eqref{eq:link} removes the nested radical. \TACT{} is then
-\begin{equation}\label{eq:oneline}
+\phantomsection\label{eq:oneline}
+\begin{equation}
 \boxed{\;
 \hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 \quad
 \gamma=\Big[z\sqrt{2+4\bar p(1-\bar p)z^{2}}\Big]_{-\gamma_{\max}}^{\gamma_{\max}},
 \;}
 \end{equation}
-\begin{equation}\label{eq:oneline2}
+\phantomsection\label{eq:oneline2}
+\begin{equation}
 z=\Phi^{-1}\!\Big(\tfrac12\big[1+\Dhat\,(1-\nu^{2}/\zeta^{2})_{+}\big]\Big),
 \qquad \zeta=\Dhat/\mathrm{SE},
 \end{equation}
 with $\Dhat$ from \eqref{eq:pooled} and $\varphi$ from \eqref{eq:vdw}. At the
 default $\bar p=\tfrac12$ the exponent is exactly
-\begin{equation}\label{eq:half}
+\phantomsection\label{eq:half}
+\begin{equation}
 \gamma=z\sqrt{2+z^{2}},\qquad z=\Phi^{-1}(\widehat{\mathrm{AUC}}),
 \end{equation}
-one probit and one square root, with no tuned constant anywhere: $\nu$ is a
-significance level and $\gamma_{\max}$ a clip, and both are fixed before any
-data is seen. The dead zone is now visible as a single condition,
+one probit and one square root. Nothing in it is fitted to outcomes: $\nu$ is a
+significance level and $\gamma_{\max}$ a clip, both fixed before any data is
+seen. The clip is not cosmetic, though. Where $\Dhat$ saturates it binds, and
+the vote then sees $\gamma_{\max}$ rather than the derived magnitude
+(Section~\ref{sec:results}). The dead zone is now visible as a single condition,
 $|\zeta|\le\nu$, on which $\gamma$ is identically zero and \eqref{eq:oneline}
 is bitwise \SC{} by Proposition~\ref{prop:sc}. Equations
 \eqref{eq:oneline}--\eqref{eq:half} are verified equivalent to the shipped
@@ -159,7 +173,7 @@ With the feature map $\varphi^{\log}_{q,i}=\log c_{q,i}-\overline{\log c_q}$, th
 \begin{proposition}[Regularity]\label{prop:reg}
 The composite $g(\Dhat,\mathrm{SE})$ is continuous, odd, nondecreasing in $\Dhat$, nonincreasing in $\mathrm{SE}$ in magnitude, with $g(D,0^+)=\gamma^\ast(D)$.
 \end{proposition}
-Proofs are elementary and pinned by unit tests in the released code (76 tests; the permutation-verified null variance, the EB identity in \eqref{eq:js}, and the link derivation \eqref{eq:link} are each tested numerically).
+Proofs are elementary and pinned by unit tests in the released code (98 tests; the permutation-verified null variance, the EB identity in \eqref{eq:js}, and the link derivation \eqref{eq:link} are each tested numerically).
 
 \section{Label-Free Estimation}\label{sec:lf}
 
@@ -172,7 +186,7 @@ Let $\bar\rho$ be the pair-weighted probability that an item's plurality is wron
 $\mathbb{E}[\Dhat_g]=(1-2\bar\rho)\,D$.
 In particular $\sign\mathbb{E}[\Dhat_g]=\sign D$ whenever $\bar\rho<1/2$: the label-free estimate can only under-trust, never mis-sign.
 \end{proposition}
-The identity fails when the flip is \emph{caused} by confidence, that is, under a confident echo. There the observable law under $\{$majority right, $D<0\}$ and $\{$majority wrong via confident echo, $D>0\}$ is identical (the two-root ambiguity of \cite{parisi2014ranking} restated for a single channel), so any label-free guarantee is necessarily conditional; it is stated as such rather than papered over.
+The identity fails when the flip is \emph{caused} by confidence, that is, under a confident echo. There the observable law under $\{$majority right, $D<0\}$ and $\{$majority wrong via confident echo, $D>0\}$ is identical (the two-root ambiguity of [\hyperref[bib:parisi2014ranking]{10}] restated for a single channel), so any label-free guarantee is necessarily conditional; it is stated as such rather than papered over.
 
 \subsection{De-attenuation and alarms}
 Split-half agreement over $R{=}20$ random half-splits estimates $\alpha=p^2+(1-p)^2/k$ under a one-coin model with $k$ effective wrong alternatives (inverse-Simpson), inverted as $p=[1+\sqrt{1-(k{+}1)(1-k\alpha)}]/(k{+}1)$; $\Dhat_g$ is divided by the \emph{upper} $95\%$ bootstrap bound of $2p-1$ (floored at $0.2$), which can only under-inflate. Four alarms force $\gamma=0$: duplicate collapse (median Kish ratio $<0.5$), sign-aware margin-decoupling, root ambiguity in the split-half quadratic, and insufficient gated items. The margin-decoupling alarm must condition on the estimated trust direction: a sign-naive version (``plurality has the highest mean $\varphi$'') false-alarms on every benign anti-correlated channel---a defect the author hit, diagnosed, and fixed, and which the released tests pin. Finally the significance gate acts on the \emph{raw} $z$ (unbiased sign under Proposition~\ref{prop:ccn}) and temper on the de-attenuated value. A semi-label-free mode takes only the sign from ${\sim}50$ dev labels, routing it into the pipeline and disabling only the proxy-sign alarm; this purchases immunity to the ambiguity above at negligible labeling cost.
@@ -263,6 +277,23 @@ Confident echo & .200 & .200 & .550 & \textbf{.585} & .200$^{\dagger}$\\
 \end{tabular}
 \end{table}
 
+
+\textbf{Where the derived exponent actually operates.} The four cells that
+carry the headline $1.000$ ($\kappa=\pm0.4,\pm0.6$) are cells where $\Dhat$
+saturates at $\pm1$, so the link returns $\gamma^\ast\approx\pm38$ and the cap
+$\gamma_{\max}$ is what the vote sees; the derived magnitude is not doing the
+work there, the sign is. Conversely, at $\kappa=\pm0.1,\pm0.2$, where the
+derived value lands strictly inside the cap ($\pm1.06$ to $\pm2.80$),
+\TACT-dev trails the dev-picked signed grid on all four cells ($0.880$ vs.\
+$0.892$; $0.902$ vs.\ $0.917$; $0.978$ vs.\ $0.993$; $0.988$ vs.\ $0.993$).
+Read together: against the \emph{published} protocols the advantage is large
+and comes from representing the sign at all, whereas against a signed grid the
+analytic map is not better at choosing a magnitude on these cells. Its
+advantage over the grid is elsewhere, in the three cells named in C4, and the
+one place the interpolation itself pays is confident echo, where $\gamma=-1.198$
+falls between grid points and beats the grid optimum $\gamma=-1$
+($0.585$ vs.\ $0.550$).
+
 \subsection{Rank invariance where raw values fail}
 Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confidences huddle near $0.5$, so every $c^{\gamma}$-family weight is nearly uniform: even the \emph{oracle} over raw-value policies reaches only $0.965$. \TACT's rank scores are untouched by the distortion and both variants reach $1.000$. Under the confident echo, dev labels reveal the inversion (high confidence $\Rightarrow$ wrong) and \TACT-dev counters with $\gamma=-1.20$, the best result in the field ($0.585$; three times the \SC{} floor); label-free, the duplicate-collapse alarm fires and the method correctly refuses---by Proposition~\ref{prop:twoworld} no label-free method could do better than a coin flip on the sign here, and pretending otherwise would be the real failure.
 
@@ -308,8 +339,8 @@ With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0
 \subsection{Verification of the implementation}\label{sec:tests}
 Because every claim in Sections~\ref{sec:method}--\ref{sec:hetero} is a
 mathematical property rather than an empirical trend, the released code pins
-each one with an executable test; the suite is 76 tests for \TACT{} (84
-including the follow-on work) and runs in 14 seconds. Table~\ref{tab:tests}
+each one with an executable test; the suite is 98 tests covering \TACT{} and the
+follow-on work, and runs in 82 seconds. Table~\ref{tab:tests}
 maps propositions to the tests that would fail if they stopped holding.
 
 \begin{table}[t]
@@ -349,7 +380,7 @@ guarantee --- so that neither can be silently reinstated by a later change.
 
 \subsection{Real-trace validation}\label{sec:real}
 Validation on real traces used Claude Haiku 4.5 as the frozen model: 100 items
-(50 GSM8K \cite{gsm8k2021}, 50 CommonsenseQA), \emph{12} independent
+(50 GSM8K [\hyperref[bib:gsm8k2021]{23}], 50 CommonsenseQA), \emph{12} independent
 chain-of-thought traces per item with verbalized confidence (1{,}200 traces
 total), evaluated at $K{=}12$ with a 40/60 dev/test split. Four findings.
 
@@ -395,7 +426,7 @@ Section~\ref{sec:hard} does it.
 Finding (c) predicts that a channel measured as null on saturated benchmarks
 should become measurable on items the model finds genuinely uncertain. A
 pre-registered follow-up tests that prediction: $119$ MATH level-5 problems
-\cite{math500,lightman2024verify}, $16$ traces each from the same frozen
+[\hyperref[bib:math500]{24},\hyperref[bib:lightman2024verify]{25}], $16$ traces each from the same frozen
 model, a $30$-item sign set and an $89$-item evaluation set drawn from the
 registered list before any trace was collected, and five hypotheses (H1--H5)
 fixed in advance.
@@ -459,13 +490,13 @@ outside it can be changed.
 The window was measured on five substrates spanning two domains
 (Table~\ref{tab:window}). For code generation, where an executable test suite
 supplies per-sample ground truth and the window might reasonably be expected
-to widen, $40$ LeetCode Medium/Hard problems \cite{leetcodedataset} were
+to widen, $40$ LeetCode Medium/Hard problems [\hyperref[bib:leetcodedataset]{26}] were
 solved $8$ times each and graded against the benchmark's hidden suites, with
 the baseline taken as the largest behavioural cluster over probe inputs
 (never expected outputs). The window is $3/40=7.5\%$ (CI$_{95}$
 $2.6$--$19.9\%$): wider than label-free QA, but the same order, and the
-composition is the same shape at $75\%$ saturated, $18\%$ capability wall,
-$8\%$ rescuable. Nor does budget open it. The seven capability-wall problems
+composition is the same shape at $30$ saturated, $7$ capability wall and $3$
+rescuable, i.e.\ $75/17.5/7.5\%$. Nor does budget open it. The seven capability-wall problems
 produced zero correct solutions in $224$ further attempts (per-problem $95\%$
 upper bound on the pass rate $0.088$), and extrapolating oracle@$N$ shows the
 window saturating by $N{=}32$.
@@ -503,7 +534,7 @@ reported: without it, a broken harness and a capability wall look identical.
 
 \section{Discussion and Limitations}\label{sec:limits}
 
-\textbf{What the evidence does and does not show.} All quantitative claims are on a synthetic oracle whose confidence model \eqref{eq:confmodel} is, at the homogeneous cells, the very coupling the estimator measures. Three design choices limit the circularity: the adversarial regimes (distortions, heterogeneity, echo) lie outside the estimator's working model; mechanism-recovery claims (does $\Dhat$ track $\kappa$?) are reported separately from accuracy claims; and the pre-measured baseline landscape (Fig.~\ref{fig:baselines}) fixed the winnable cells before the method existed. Validation on real LLM traces is the remaining step; the cached-trace runner is committed and the prediction is falsifiable: if real confidence channels never exhibit directional miscalibration or covariate structure, \TACT's dead zone should make it operationally indistinguishable from CISC-devT there.
+\textbf{What the evidence does and does not show.} The \emph{accuracy} claims are all on a synthetic oracle whose confidence model \eqref{eq:confmodel} is, at the homogeneous cells, the very coupling the estimator measures. Three design choices limit the circularity: the adversarial regimes (distortions, heterogeneity, echo) lie outside the estimator's working model; mechanism-recovery claims (does $\Dhat$ track $\kappa$?) are reported separately from accuracy claims; and the pre-measured baseline landscape (Fig.~\ref{fig:baselines}) fixed the winnable cells before the method existed. The real-trace campaigns of Sections~\ref{sec:real} and~\ref{sec:hard} test the \emph{premise} and the \emph{abstention behaviour}, and both predictions held: the channel is null on saturated benchmarks and positive on competition mathematics, and the dead zone kept the vote bit-identical to \SC{} in each case. They do not test the accuracy claim, because on neither substrate was the addressable stratum large enough for any method to demonstrate a gain (Section~\ref{sec:window}).
 
 \textbf{Narrow margins where labels abound.} When labels are plentiful and the confidence scale is trusted, a dev-picked signed grid captures most of the value; \TACT's case rests on the label-free setting, distorted scales, small dev sets, and the exactness of its anchors.
 
@@ -527,7 +558,7 @@ than an optional refinement.
 \textbf{Global exponent per group.} Within a group, \TACT{} ships one exponent; per-item variation inside a group is unexploitable by Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} unless further covariates exist.
 
 \textbf{The thin window.} Section~\ref{sec:window} measures the stratum this
-whole family of methods can act on at $2$--$7.5\%$ of items on every substrate
+whole family of methods can act on at $3$--$7.5\%$ of items on every substrate
 tried, in two domains, with no widening as items harden: they pass from
 saturated straight to capability-limited. Two consequences follow for the
 method proposed here. First, abstention is not a conservative compromise but
@@ -543,96 +574,91 @@ pair whose plurality is wrong on $30$--$60\%$ of items with the correct answer
 still reachable, and no pair tried here satisfies both.
 
 \section{Conclusion}
-\TACT{} turns ``how much should this model's confidence be trusted?'' into a measured, signed, uncertainty-aware quantity with exact fallbacks at both ends, plain self-consistency when the evidence is absent and CISC when it is at full strength, and shows that the sign, long unrepresentable in this family of methods, can be recovered without any labels under stated and tested conditions. The accompanying impossibility results draw the boundary that any future per-item method must respect, and the falsification protocol, having already killed one of the author's own systems, is offered as the more portable contribution.
+\TACT{} turns ``how much should this model's confidence be trusted?'' into a measured, signed, uncertainty-aware quantity with an exact fallback at one end, plain self-consistency whenever the evidence is absent, and an exact correspondence to CISC-power at the other under the log-value feature map (the shipped default uses van der Waerden scores, so that correspondence is a property of the family, not of the shipped configuration), and shows that the sign, long unrepresentable in this family of methods, can be recovered without any labels under stated and tested conditions. The accompanying impossibility results draw the boundary that any future per-item method must respect, and the falsification protocol, having already killed one of the author's own systems, is offered as the more portable contribution.
 
 
 \section*{References}
-\begin{thebibliography}{99}\itemsep 1pt
+\begin{thebibliography}{99}
 
-\bibitem{wang2023selfconsistency}
-X.~Wang, J.~Wei, D.~Schuurmans, Q.~Le, E.~Chi, S.~Narang, A.~Chowdhery, and D.~Zhou, ``Self-consistency improves chain of thought reasoning in language models,'' in \emph{Proc.\ ICLR}, 2023.
+\bibitem{wang2023selfconsistency}\phantomsection\label{bib:wang2023selfconsistency}
+X.~Wang, J.~Wei, D.~Schuurmans, Q.~Le, E.~Chi, S.~Narang, A.~Chowdhery, and D.~Zhou, ``Self-consistency improves chain of thought reasoning in language models,'' in \emph{Proc.\ ICLR}, 2023.\ \url{https://arxiv.org/pdf/2203.11171}
 
-\bibitem{taubenfeld2025cisc}
-A.~Taubenfeld \emph{et~al.}, ``Confidence improves self-consistency in LLMs,'' in \emph{Findings of ACL}, 2025, arXiv:2502.06233.
+\bibitem{tian2023just}\phantomsection\label{bib:tian2023just}
+K.~Tian \emph{et~al.}, ``Just ask for calibration: Strategies for eliciting calibrated confidence scores from language models fine-tuned with human feedback,'' in \emph{Proc.\ EMNLP}, 2023.\ \url{https://aclanthology.org/2023.emnlp-main.330.pdf}
 
-\bibitem{aggarwal2023adaptive}
-P.~Aggarwal, A.~Madaan, Y.~Yang, and Mausam, ``Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with {LLMs},'' in \emph{Proc.\ EMNLP}, 2023, pp. 12375--12396.
+\bibitem{xiong2024can}\phantomsection\label{bib:xiong2024can}
+M.~Xiong \emph{et~al.}, ``Can LLMs express their uncertainty? An empirical evaluation of confidence elicitation in LLMs,'' in \emph{Proc.\ ICLR}, 2024.\ \url{https://openreview.net/pdf?id=gjeQKFxFpZ}
 
-\bibitem{li2024escape}
-Y.~Li \emph{et~al.}, ``Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning,'' in \emph{Proc.\ ICLR}, 2024.
+\bibitem{kadavath2022language}\phantomsection\label{bib:kadavath2022language}
+S.~Kadavath \emph{et~al.}, ``Language models (mostly) know what they know,'' arXiv:2207.05221, 2022.\ \url{https://arxiv.org/pdf/2207.05221}
 
-\bibitem{kadavath2022language}
-S.~Kadavath \emph{et~al.}, ``Language models (mostly) know what they know,'' arXiv:2207.05221, 2022.
+\bibitem{taubenfeld2025cisc}\phantomsection\label{bib:taubenfeld2025cisc}
+A.~Taubenfeld \emph{et~al.}, ``Confidence improves self-consistency in LLMs,'' in \emph{Findings of ACL}, 2025, arXiv:2502.06233.\ \url{https://aclanthology.org/2025.findings-acl.1030.pdf}
 
-\bibitem{tian2023just}
-K.~Tian \emph{et~al.}, ``Just ask for calibration: Strategies for eliciting calibrated confidence scores from language models fine-tuned with human feedback,'' in \emph{Proc.\ EMNLP}, 2023.
+\bibitem{reasc2026}\phantomsection\label{bib:reasc2026}
+J.~Kim, N.~Yang, K.~Min, and K.~Jung, ``Reliability-aware adaptive self-consistency for efficient sampling in LLM reasoning,'' in \emph{Findings of ACL}, 2026, pp. 21575--21590.\ \url{https://aclanthology.org/2026.findings-acl.1085.pdf}
 
-\bibitem{xiong2024can}
-M.~Xiong \emph{et~al.}, ``Can LLMs express their uncertainty? An empirical evaluation of confidence elicitation in LLMs,'' in \emph{Proc.\ ICLR}, 2024.
+\bibitem{deepconf2025}\phantomsection\label{bib:deepconf2025}
+Y.~Fu \emph{et~al.}, ``Deep think with confidence,'' arXiv:2508.15260, 2025.\ \url{https://arxiv.org/pdf/2508.15260}
 
-\bibitem{huang2024rankcalibration}
-X.~Huang, S.~Li, M.~Yu, M.~Sesia, H.~Hassani, I.~Lee, O.~Bastani, and E.~Dobriban, ``Uncertainty in language models: Assessment through rank-calibration,'' in \emph{Proc.\ EMNLP}, 2024, pp. 284--312.
+\bibitem{huang2024rankcalibration}\phantomsection\label{bib:huang2024rankcalibration}
+X.~Huang, S.~Li, M.~Yu, M.~Sesia, H.~Hassani, I.~Lee, O.~Bastani, and E.~Dobriban, ``Uncertainty in language models: Assessment through rank-calibration,'' in \emph{Proc.\ EMNLP}, 2024, pp. 284--312.\ \url{https://aclanthology.org/2024.emnlp-main.18.pdf}
 
-\bibitem{li2023diverse}
-Y.~Li \emph{et~al.}, ``Making language models better reasoners with step-aware verifier,'' in \emph{Proc.\ ACL}, 2023.
+\bibitem{dawid1979maximum}\phantomsection\label{bib:dawid1979maximum}
+A.~P. Dawid and A.~M. Skene, ``Maximum likelihood estimation of observer error-rates using the EM algorithm,'' \emph{J.\ Roy.\ Statist.\ Soc.\ C}, vol.~28, no.~1, pp. 20--28, 1979.\ \url{https://doi.org/10.2307/2346806}
 
-\bibitem{borda2025}
-Z.~Kang, X.~Zhao, and D.~Song, ``Scalable best-of-N selection for large language models via self-certainty,'' in \emph{Proc.\ NeurIPS}, 2025, arXiv:2502.18581.
+\bibitem{parisi2014ranking}\phantomsection\label{bib:parisi2014ranking}
+F.~Parisi, F.~Strino, B.~Nadler, and Y.~Kluger, ``Ranking and combining multiple predictors without labeled data,'' \emph{Proc.\ Natl.\ Acad.\ Sci.}, vol.~111, no.~4, pp. 1253--1258, 2014.\ \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC3910607/pdf/pnas.201219097.pdf}
 
-\bibitem{reasc2026}
-J.~Kim, N.~Yang, K.~Min, and K.~Jung, ``Reliability-aware adaptive self-consistency for efficient sampling in LLM reasoning,'' in \emph{Findings of ACL}, 2026, pp. 21575--21590.
+\bibitem{li2023diverse}\phantomsection\label{bib:li2023diverse}
+Y.~Li \emph{et~al.}, ``Making language models better reasoners with step-aware verifier,'' in \emph{Proc.\ ACL}, 2023.\ \url{https://aclanthology.org/2023.acl-long.291.pdf}
 
-\bibitem{deepconf2025}
-Y.~Fu \emph{et~al.}, ``Deep think with confidence,'' arXiv:2508.15260, 2025.
+\bibitem{borda2025}\phantomsection\label{bib:borda2025}
+Z.~Kang, X.~Zhao, and D.~Song, ``Scalable best-of-N selection for large language models via self-certainty,'' in \emph{Proc.\ NeurIPS}, 2025, arXiv:2502.18581.\ \url{https://proceedings.neurips.cc/paper_files/paper/2025/file/1c7eff166a8e345f664f0faa8f4e4d2e-Paper-Conference.pdf}
 
-\bibitem{dawid1979maximum}
-A.~P. Dawid and A.~M. Skene, ``Maximum likelihood estimation of observer error-rates using the EM algorithm,'' \emph{J.\ Roy.\ Statist.\ Soc.\ C}, vol.~28, no.~1, pp. 20--28, 1979.
+\bibitem{aggarwal2023adaptive}\phantomsection\label{bib:aggarwal2023adaptive}
+P.~Aggarwal, A.~Madaan, Y.~Yang, and Mausam, ``Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with {LLMs},'' in \emph{Proc.\ EMNLP}, 2023, pp. 12375--12396.\ \url{https://aclanthology.org/2023.emnlp-main.761.pdf}
 
-\bibitem{whitehill2009whose}
-J.~Whitehill \emph{et~al.}, ``Whose vote should count more: Optimal integration of labels from labelers of unknown expertise,'' in \emph{Proc.\ NeurIPS}, 2009.
+\bibitem{li2024escape}\phantomsection\label{bib:li2024escape}
+Y.~Li \emph{et~al.}, ``Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning,'' in \emph{Proc.\ ICLR}, 2024.\ \url{https://arxiv.org/pdf/2401.10480}
 
-\bibitem{karger2011iterative}
-D.~R. Karger, S.~Oh, and D.~Shah, ``Iterative learning for reliable crowdsourcing systems,'' in \emph{Proc.\ NeurIPS}, 2011.
+\bibitem{whitehill2009whose}\phantomsection\label{bib:whitehill2009whose}
+J.~Whitehill \emph{et~al.}, ``Whose vote should count more: Optimal integration of labels from labelers of unknown expertise,'' in \emph{Proc.\ NeurIPS}, 2009.\ \url{https://proceedings.neurips.cc/paper_files/paper/2009/file/f899139df5e1059396431415e770c6dd-Paper.pdf}
 
-\bibitem{parisi2014ranking}
-F.~Parisi, F.~Strino, B.~Nadler, and Y.~Kluger, ``Ranking and combining multiple predictors without labeled data,'' \emph{Proc.\ Natl.\ Acad.\ Sci.}, vol.~111, no.~4, pp. 1253--1258, 2014.
+\bibitem{karger2011iterative}\phantomsection\label{bib:karger2011iterative}
+D.~R. Karger, S.~Oh, and D.~Shah, ``Iterative learning for reliable crowdsourcing systems,'' in \emph{Proc.\ NeurIPS}, 2011.\ \url{https://proceedings.neurips.cc/paper_files/paper/2011/file/c667d53acd899a97a85de0c201ba99be-Paper.pdf}
 
-\bibitem{fuse2026}
-J.~Lee, V.~Ma, S.~Zhao, Y.~Nair, A.~Spector, R.~Cohen, and E.~J. Cand\`es, ``FUSE: Ensembling verifiers with zero labeled data,'' arXiv:2604.18547, 2026.
+\bibitem{fuse2026}\phantomsection\label{bib:fuse2026}
+J.~Lee, V.~Ma, S.~Zhao, Y.~Nair, A.~Spector, R.~Cohen, and E.~J. Cand\`es, ``FUSE: Ensembling verifiers with zero labeled data,'' arXiv:2604.18547, 2026.\ \url{https://arxiv.org/pdf/2604.18547}
 
-\bibitem{beyondmajority2025}
-R.~Ai, Y.~Pan, D.~Simchi-Levi, M.~Tambe, and H.~Xu, ``Beyond majority voting: LLM aggregation by leveraging higher-order information,'' arXiv:2510.01499, 2025, accepted to ICML 2026.
+\bibitem{beyondmajority2025}\phantomsection\label{bib:beyondmajority2025}
+R.~Ai, Y.~Pan, D.~Simchi-Levi, M.~Tambe, and H.~Xu, ``Beyond majority voting: LLM aggregation by leveraging higher-order information,'' arXiv:2510.01499, 2025, accepted to ICML 2026.\ \url{https://arxiv.org/pdf/2510.01499}
 
-\bibitem{vanelteren1960}
-P.~van Elteren, ``On the combination of independent two-sample tests of Wilcoxon,'' \emph{Bull.\ Int.\ Statist.\ Inst.}, vol.~37, pp. 351--361, 1960.
+\bibitem{vanelteren1960}\phantomsection\label{bib:vanelteren1960}
+P.~van Elteren, ``On the combination of independent two-sample tests of Wilcoxon,'' \emph{Bull.\ Int.\ Statist.\ Inst.}, vol.~37, pp. 351--361, 1960.\ \url{https://catalog.hathitrust.org/Record/008896012}
 
-\bibitem{james1961estimation}
-W.~James and C.~Stein, ``Estimation with quadratic loss,'' in \emph{Proc.\ 4th Berkeley Symp.\ Math.\ Statist.\ Prob.}, 1961, pp. 361--379.
+\bibitem{james1961estimation}\phantomsection\label{bib:james1961estimation}
+W.~James and C.~Stein, ``Estimation with quadratic loss,'' in \emph{Proc.\ 4th Berkeley Symp.\ Math.\ Statist.\ Prob.}, 1961, pp. 361--379.\ \url{https://digitalassets.lib.berkeley.edu/math/ucb/text/math_s4_v1_article-19.pdf}
 
-\bibitem{kish1965}
-L.~Kish, \emph{Survey Sampling}. New York, NY, USA: Wiley, 1965.
+\bibitem{kish1965}\phantomsection\label{bib:kish1965}
+L.~Kish, \emph{Survey Sampling}. New York, NY, USA: Wiley, 1965.\ \url{https://www.wiley.com/en-us/Survey+Sampling-p-9780471109495}
 
-\bibitem{rao1981analysis}
-J.~N.~K. Rao and A.~J. Scott, ``The analysis of categorical data from complex sample surveys,'' \emph{J.\ Amer.\ Statist.\ Assoc.}, vol.~76, no.~374, pp. 221--230, 1981.
+\bibitem{rao1981analysis}\phantomsection\label{bib:rao1981analysis}
+J.~N.~K. Rao and A.~J. Scott, ``The analysis of categorical data from complex sample surveys,'' \emph{J.\ Amer.\ Statist.\ Assoc.}, vol.~76, no.~374, pp. 221--230, 1981.\ \url{https://doi.org/10.1080/01621459.1981.10477633}
 
-\bibitem{gsm8k2021}
+\bibitem{gsm8k2021}\phantomsection\label{bib:gsm8k2021}
 K.~Cobbe \emph{et~al.}, ``Training verifiers to solve math word problems,'' arXiv:2110.14168, 2021.
 
-\bibitem{kuhn2023semantic}
-L.~Kuhn, Y.~Gal, and S.~Farquhar, ``Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation,'' in \emph{Proc.\ ICLR}, 2023.
+\bibitem{math500}\phantomsection\label{bib:math500}
+D.~Hendrycks \emph{et~al.}, ``Measuring mathematical problem solving with the MATH dataset,'' in \emph{Proc.\ NeurIPS Datasets and Benchmarks}, 2021.\ \url{https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/file/be83ab3ecd0db773eb2dc1b0a17836a1-Paper-round2.pdf}
 
-\bibitem{rasc2024}
-G.~Wan, Y.~Wu, J.~Chen, and S.~Li, ``Reasoning aware self-consistency: Leveraging reasoning paths for efficient LLM sampling,'' in \emph{Proc.\ NAACL}, 2025, pp. 3613--3635.
-
-\bibitem{math500}
-D.~Hendrycks \emph{et~al.}, ``Measuring mathematical problem solving with the MATH dataset,'' in \emph{Proc.\ NeurIPS Datasets and Benchmarks}, 2021.
-
-\bibitem{lightman2024verify}
+\bibitem{lightman2024verify}\phantomsection\label{bib:lightman2024verify}
 H.~Lightman \emph{et~al.}, ``Let's verify step by step,'' in \emph{Proc.\ ICLR}, 2024. (MATH-500 test subset.)
 
-\bibitem{leetcodedataset}
-Y.~Xia \emph{et~al.}, ``LeetCodeDataset: A temporal dataset for robust evaluation and efficient training of code LLMs,'' arXiv:2504.14655, 2025.
+\bibitem{leetcodedataset}\phantomsection\label{bib:leetcodedataset}
+Y.~Xia \emph{et~al.}, ``LeetCodeDataset: A temporal dataset for robust evaluation and efficient training of code LLMs,'' arXiv:2504.14655, 2025.\ \url{https://arxiv.org/pdf/2504.14655}
 
 \end{thebibliography}
+
 
 \end{document}

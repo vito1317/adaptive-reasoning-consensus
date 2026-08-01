@@ -1,54 +1,166 @@
 [
   {
-    "title": "Comparison protocol should make fairness assumptions explicit",
-    "quote": "Baselines.",
-    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
-    "comment_type": "methodology",
-    "severity": "moderate",
-    "confidence": "medium",
+    "title": "The \"oracle over the entire raw-value weight family\" is a 9-point grid whose maximum sits at its own boundary; the +0.035 distortion margin is a grid-truncation artifact",
+    "quote": "rank invariance beats the oracle over the entire raw-value weight family under monotone confidence compression ($1.000$ vs.\\ $0.965$)",
+    "explanation": "What raised concern: the compression-cell 'oracle' (0.965) is exactly CISC(gamma=4.0), the top value of the exponent grid, and the cell's accuracy curve is monotone increasing across that grid (0.795, 0.795, 0.815, 0.8825, 0.965 for gamma=0.25,0.5,1,2,4). An argmax that lands on the boundary of its own search range is not an oracle over a family. What I checked: I re-ran the paper's own harness (experiments/run_tact_eval.py, SimConfig(kappa_c=0.6, conf_transform='compress'), seed 0+100, 400 test items) and reproduced the stored numbers in results/tact_eval.json byte-for-byte at gamma=0.25..4, confirming I hit the same cell, then extended the grid: raw-value CISC-power reaches 0.9950 at gamma=8 and 1.0000 at gamma=16 and beyond, on the identical cached pools. The 'entire raw-value weight family' therefore ties TACT at 1.000; it is not beaten. The grid is set in the runner as CISC_GAMMAS=[0.25,0.5,1.0,2.0,4.0] and SIGN_GRID=[-4..4], and the runner's oracle loop maximizes over SIGN_GRID only. This is mechanistically expected rather than surprising: compression toward 0.5 shrinks confidence spread, and c^gamma recovers the ranking as gamma grows, converging on best-single-confidence, which scores 1.000 here. What this costs the paper: (i) the abstract claim quoted above is false as stated; (ii) pre-registered falsifier F4 ('CISC-devT or SignGrid-dev matches TACT-dev everywhere, including the distortion ... cells') survives in the distortion cell only because SignGrid-dev is capped at |gamma|<=4. Re-picking the same trivial dev grid over |gamma|<=16 collapses the +0.035 margin to +0.002 on average over 10 seeds (exactly 0.000 on 6 of 10). What remains unresolved: TACT's *scale-invariance* argument is untouched and remains valid (it needs no tuning to reach 1.000, whereas the raw-value family needs a distortion-specific exponent picked at 4x the exponent the same grid picks in the undistorted cell); that is the defensible claim. But it is a claim about tuning cost, not about beating the family. Fix: either widen the baseline grid until the argmax is interior and report the honest (near-zero) distortion margin, or restate the contribution as 'reaches the family's ceiling without a distortion-specific exponent'. F4's survival then rests on the echo cell and label-free operation only, which the paper should say.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "high",
     "source_kind": "llm",
-    "source_section": "experiment",
+    "source_section": "abstract",
     "related_sections": [
-      "experiment"
+      "result",
+      "experiment",
+      "discussion"
     ],
-    "root_cause_key": "comparison-protocol-should-make-fairness-assumptions-explicit",
+    "root_cause_key": "truncated-baseline-exponent-grid",
     "review_lane": "committee_methodology",
-    "gate_blocker": false,
+    "evidence_anchor": [
+      {
+        "type": "metric",
+        "text": "Table II (tab:adv) Monotone compress row: oracle .965 vs TACT 1.000"
+      },
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json adversarial.monotone_compress.oracle = {acc: 0.965, gamma: 4.0} (argmax at grid boundary)"
+      },
+      {
+        "type": "analysis_artifact",
+        "text": "reviewer re-run of experiments/run_tact_eval.py cell: CISC-power = 0.9950 at gamma=8, 1.0000 at gamma>=16 on the same pools"
+      },
+      {
+        "type": "analysis_artifact",
+        "text": "SignGrid-dev re-picked over |gamma|<=16: margin +0.002 mean over 10 seeds (0.000 on 6/10)"
+      }
+    ],
+    "claim_strength": "unsupported",
+    "missing_evidence": [
+      "an exponent sweep extended until the raw-value argmax is interior rather than at the grid boundary",
+      "SignGrid-dev / CISC-devT re-tuned over the same widened grid before declaring F4 survived in the distortion cell",
+      "a stated justification for capping the baseline grid at |gamma|=4 when TACT's own gamma_max is also 4"
+    ],
+    "allowed_wording": "under monotone compression TACT reaches the raw-value family's ceiling (1.000) without any distortion-specific tuning, whereas the best fixed raw-value exponent must be raised roughly fourfold (to gamma>=16) to match it, and the grid searched here (|gamma|<=4) tops out at 0.965",
+    "forbidden_wording": [
+      "beats the oracle over the entire raw-value weight family",
+      "rank invariance beats that entire family under compression",
+      "the distortion cell is unreachable by either grid baseline"
+    ],
+    "gate_blocker": true,
     "quote_verified": true
   },
   {
-    "title": "Result claims should identify comparison scope and uncertainty",
-    "quote": "Baselines.",
-    "explanation": "The results section reports comparative performance. Confirm whether the paper states the evaluation scope, variance, and fairness conditions tightly enough for a reviewer.",
-    "comment_type": "methodology",
-    "severity": "moderate",
-    "confidence": "medium",
+    "title": "No repository URL, code-availability or data-availability statement anywhere, in a paper whose verification argument is a named test suite",
+    "quote": "Proofs are elementary and pinned by unit tests in the released code (76 tests",
+    "explanation": "What raised concern: the paper's substitute for analytic proofs is executable verification, and it names the artifacts concretely and repeatedly: 'the released code (76 tests ...)', 'verified equivalent to the shipped implementation ... (tests/test_formula.py)', 'the released tests pin', 'the cached-trace runner is committed', and an entire subsection (Verification of the implementation) plus Table IV that maps twelve propositions to twelve named test functions. What I checked: I grepped the full source of tact.tex for a repository URL, DOI, archive, or availability statement. There is none. All 27 \\url{} occurrences are bibliography entries for prior work; there is no code-availability, data-availability, or artifact statement in the abstract, a footnote, the setup, the experimental section, the discussion, or the conclusion. Why this is a blocker rather than hygiene: for the propositions, the paper explicitly declines to give proofs ('Proofs are elementary and pinned by unit tests in the released code') and substitutes a test-suite citation. A reader who cannot obtain the suite is left with neither a proof nor a verification, so Propositions 1-3 and the equivalence of Eq. (9)-(11) to the shipped implementation are unverifiable from the manuscript alone. The same gap voids reproducibility of every quantitative table: the synthetic cells are generated by an unreleased simulator (a cluster-mixture oracle whose cluster weights, tightness, echo_prob and transform definitions are never given in the paper), so Tables I-III cannot be regenerated, and the real-trace campaigns depend on cached pools that are referenced but not located. What remains unresolved: whether the author intends release at all. Fix: add a one-line availability statement with a resolvable, anonymised-if-needed locator (repository or archived snapshot with commit hash), and state which of the simulator, cached traces, and grading sandbox are included. IEEE conference format has room for this as a first-page footnote.",
+    "comment_type": "missing_information",
+    "severity": "major",
+    "confidence": "high",
     "source_kind": "llm",
-    "source_section": "experiment",
+    "source_section": "method",
+    "related_sections": [
+      "result",
+      "experiment",
+      "discussion"
+    ],
+    "root_cause_key": "no-code-data-availability-statement",
+    "review_lane": "committee_methodology",
+    "evidence_anchor": [
+      {
+        "type": "section",
+        "text": "Sec. V-E 'Verification of the implementation' and Table IV (tab:tests), 12 named test functions"
+      },
+      {
+        "type": "analysis_artifact",
+        "text": "grep of paper/tact.tex: zero matches for github/zenodo/data availability/code availability/will be released; all 27 \\url{} are bibliography entries"
+      }
+    ],
+    "claim_strength": "unsupported",
+    "missing_evidence": [
+      "a resolvable locator (repository URL, DOI, or archived snapshot with commit hash) for the code the paper calls 'released'",
+      "a data-availability statement covering the cached real-trace pools for both campaigns",
+      "the synthetic oracle's full parameterisation (cluster weights, tightness, echo_prob, the three transform definitions) either in-paper or by reference"
+    ],
+    "allowed_wording": "pinned by unit tests in the accompanying implementation, available at <locator> (commit <hash>)",
+    "forbidden_wording": [
+      "the released code",
+      "the released tests pin",
+      "the cached-trace runner is committed"
+    ],
+    "gate_blocker": true,
+    "quote_verified": true
+  },
+  {
+    "title": "Every synthetic cell is a single seed with no dispersion reported, yet falsifier verdicts are rendered on a 0.02 tolerance and the headline margins are 0.035",
+    "quote": "the net advantage concentrates exactly where pre-registered: distortion ($+0.035$), echo ($+0.035$), and label-free operation, which no grid can perform.",
+    "explanation": "What raised concern: the two numbers that carry contribution C4 and falsifier F4 are bare point differences with no interval, no replication count, and no paired statistic, in a paper that elsewhere reports '+79/-0, p=3.3e-24' for the group cell. The reporting standard is applied unevenly to exactly the comparisons that are narrow. Second concern: Table I's SC column wanders .762, .782, .795, .797, .807, .835, .838, .845 across cells that differ only in kappa, which cannot affect the SC floor in expectation. At 400 items and p~0.8 the per-arm binomial SE is 0.020, so that 0.083 spread is sampling noise, and it is more than twice the 0.035 margins. A reader has no way to tell the margins from that noise. What I checked: the harness config in results/tact_eval.json is {items: 400, k: 15, seed: 0} and results/group_eval.json is {items: 600, seed: 0}: one realization per cell, with the runner deriving per-cell seeds as seed+i offsets from that single value. So no cell in the paper is replicated. The falsifier code decides F1 and F2 with hard-coded tolerances of 0.02 (f2_dev = any(acc_TACT < acc_SC - 0.02)), i.e. a threshold equal to one standard error, evaluated on one draw; a pre-registered falsification protocol adjudicated that way can flip on a reseed. Third: the paired McNemar counts for both margin cells already exist in the author's own artifact and are simply not in the paper: distortion TACT-dev vs SignGrid +14/-0, p=1.2e-4; echo +21/-7, p=0.0125. To be fair to the author, I replicated both margins myself over 10-12 fresh seeds and the echo margin is genuinely robust (+0.044 mean, sd 0.013, sign never inverted), so this is a reporting failure rather than a fragile result, and the paper is entitled to say so once it shows it. The distortion margin, by contrast, does not survive widening the baseline grid (separate finding). What remains unresolved: nothing empirical, only disclosure. Fix: run each cell over >=10 seeds and report mean +/- sd or a CI; surface the McNemar counts already computed for the distortion and echo cells alongside the group cell's; and state the falsifier decision rule (the 0.02 tolerance) in Sec. IV so readers can see F1/F2 are threshold decisions, not tests.",
+    "comment_type": "methodology",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
     "related_sections": [
       "experiment",
-      "methods"
+      "abstract",
+      "discussion"
     ],
-    "root_cause_key": "result-claims-should-identify-comparison-scope-and-uncertainty",
+    "root_cause_key": "single-seed-no-uncertainty-on-headline-margins",
     "review_lane": "committee_methodology",
     "gate_blocker": false,
     "quote_verified": true
   },
   {
-    "title": "Cross-section numeric consistency should be reconciled",
-    "quote": "On the coupling sweep the label-free variant matches the 200-label variant nearly point-for-point, including full recovery of negative channels (Section~sec:results).",
-    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "medium",
+    "title": "Circularity mitigation 1 does not hold: three of five adversarial cells are inside the estimator's invariance group by construction, not outside its working model",
+    "quote": "Three design choices limit the circularity: the adversarial regimes (distortions, heterogeneity, echo) lie outside the estimator's working model",
+    "explanation": "What raised concern: the paper's own framing of its central threat is exactly right ('All quantitative claims are on a synthetic oracle whose confidence model (1) is, at the homogeneous cells, the very coupling the estimator measures'), so the load-bearing question is whether the three listed mitigations reach the accuracy claims. The first mitigation does not, for most of the cells it names. What I checked, charitably, against the paper's own text: the three distortion regimes are specified as 'three strictly monotone confidence distortions ... rank-preserving by construction, so discrimination is intact while calibration is destroyed', and Sec. III-A establishes analytically that 'Because (2) depends on c only through within-item ranks, every strictly monotone distortion of the confidence scale leaves (3) unchanged', with Table IV pinning it by test (monotone_invariance, 3 distortions x 100 pools). A rank-preserving transform is therefore not outside TACT's working model; it is inside an exact invariance TACT holds by theorem. TACT scoring 1.000 in those three rows is a restatement of that identity on the undistorted kappa=+0.6 cell, and carries no evidence about the estimator beyond what Sec. III already proves. The i.i.d. heterogeneity row is in the same position from the other direction: Sec. VI-A proves per-item adaptation is closed and the paper states that in that cell 'every variant returns bitwise SC (zero discordant pairs)', so the row confirms a construction (the dead zone) rather than testing the estimator. That leaves the confident echo as the only one of the five adversarial cells whose outcome was not settled in advance by an invariance or an anchor, and in it the label-free variant, the paper's headline variant, declines to act. So mitigation 1 buys one informative cell, not five. Mitigations 2 and 3 do not close the gap either: separating mechanism-recovery from accuracy (2) partitions the claims but both halves still run on Eq. (1); pre-measuring the baseline landscape (3) fixes *where* a win may be claimed but the win is still scored against the same generator. Compounding this, the paragraph that carries the whole defence is stale: it still asserts 'Validation on real LLM traces is the remaining step; the cached-trace runner is committed and the prediction is falsifiable', two sections after Secs. V-F and V-G report two completed real-trace campaigns. A reviewer reading the limitations cannot tell which version of the evidence base the circularity argument is scoped to. What remains unresolved: the honest position appears to be that no accuracy claim has been validated off Eq. (1), because both real campaigns dead-zoned; the paper nearly says this in Sec. VII ('the real-trace claim in this paper is confined to the premise ... and does not extend to accuracy') but does not carry it back into the circularity paragraph. Fix: rewrite that paragraph to (a) drop the stale 'remaining step' sentence, (b) concede that the distortion and i.i.d. rows are analytic consequences of Sec. III rather than independent tests, and (c) name the confident echo as the single adversarial cell outside the estimator's working model.",
+    "comment_type": "methodology",
+    "severity": "major",
+    "confidence": "high",
     "source_kind": "llm",
-    "source_section": "introduction",
+    "source_section": "discussion",
     "related_sections": [
-      "introduction",
+      "method",
+      "experiment",
       "result",
-      "conclusion"
+      "hetero"
     ],
-    "root_cause_key": "cross-section-numeric-consistency-should-be-reconciled",
+    "root_cause_key": "circularity-mitigations-do-not-cover-accuracy-claims",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": true
+  },
+  {
+    "title": "The disclosed batch-size confound is never propagated: no collection protocol is reported for any window row, and the paper's own discarded probe contradicts the closure claim",
+    "quote": "a $30$-problem-per-call probe put\nlevel-5 plurality accuracy at $0.40$, while the $15$-problem-per-call\nconfirmatory run yielded $0.888$ on the same stratum.",
+    "explanation": "What raised concern: the author discloses that a collection-protocol parameter moves measured plurality accuracy on a fixed stratum from 0.40 to 0.888, then draws the paper's main normative conclusion from window fractions measured under that same unreported parameter. Plurality accuracy is one of the two terms in the window's definition ('the plurality is wrong and the correct answer is present in the pool'), so a 2.2x shift in it is not a side note: it is a confound on the primary measurement of Sec. V-H and Table VI. What I checked: Table VI reports five substrates, and tact.tex states a batch protocol for none of them; 'per-call' appears exactly once in the paper, inside the caveat itself. So four of five rows, plus the LeetCode row's 8-samples-each design, have no recoverable collection protocol, and the caveat's own recommendation ('Batch size belongs in the experimental record whenever traces are collected in batches') is not applied to the paper's own record. Sharper: the discarded probe is still in the repository and can be window-analysed. Running the author's own experiments/analyze_difficulty_probe.py over results/math_probe_raw.json gives, on MATH level-5, plurality accuracy 0.40 with gold-in-pool 0.60, and 3 of 15 level-5 items both plurality-wrong and gold-reachable: a 20% window, roughly 4x the 4% the confirmatory run reports for the same stratum in Table VI, and above the 2-7.5% band the abstract and Sec. VII assert 'on every substrate tried'. That directly contradicts the closure claim 'Demonstrating the gain needs a (model, benchmark) pair whose plurality is wrong on 30-60% of items with the correct answer still reachable, and no pair tried here satisfies both' -- the probe was such a configuration (plurality wrong on 60%, gold reachable on 3/15), and the paper's own pre-registration doc (docs/SPEC-TACT-HARD.md) was written on the basis of that 0.40 / 60%-decisive reading. What I considered charitably: the likely intended reading is that 30-problem-per-call degrades generation, so the 0.40 is instrument error rather than genuine difficulty, and a window measured on a crippled model would not generalise. That may well be right, but the paper neither states it nor shows it, and it cuts both ways: a degraded model with a 20% rescuable stratum is still a (model, protocol) pair in which the method's addressable window is wide, which is what the paper says it could not find. What remains unresolved: whether the batching effect is degraded generation or a grading/parsing artifact, and therefore whether the 2-7.5% band is a property of the substrates or of one collection protocol. Fix: report batch size (and any other collection parameters) per row in Table VI; report the probe's window (3/15) alongside the confirmatory 4% and explain which is the valid estimate and why; and soften 'no pair tried here satisfies both' to exclude, or explicitly adjudicate, the author's own probe.",
+    "comment_type": "methodology",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "discussion",
+      "abstract"
+    ],
+    "root_cause_key": "collection-protocol-confound-not-propagated-to-window",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": true
+  },
+  {
+    "title": "Sample sizes are fixed without any power analysis: the confirmatory campaign's primary endpoint was unpassable at any effect size, and the headline window range hides its own interval",
+    "quote": "exact one-sided $p=0.0625$",
+    "explanation": "What raised concern: the paper is careful to pre-register hypotheses (H1-H5, F1-F4) but never states a power calculation or a minimum detectable effect for any of them, and the consequence is visible in its own numbers. In the confirmatory campaign, 119 problems yield an 89-item evaluation set, a decisive stratum of 10, and the correct answer in the pool on 4 of those, so the in-pool oracle ceiling is +4/-0 at exact one-sided p=0.0625. H2 was therefore not merely failed: it was unpassable before a single trace was scored, because the maximum attainable one-sided p on that endpoint exceeds 0.05 for a *perfect* method. The paper says as much and deserves credit for it ('it fails for every conceivable aggregation method including a perfect one'), but that is a diagnosis of the design, not a defence of it: a power calculation on the probe's own window estimate would have shown 89 items to be insufficient before the campaign was run, and the manuscript never draws that lesson even though it is the more portable methodological point. The same gap shows in the first campaign (12 of 100 items informative, D-hat=-0.219 with SE=0.176, i.e. a CI spanning roughly -0.56 to +0.13, reported as 'no usable signal' rather than as an interval that does not exclude a usefully positive channel) and in the 30-item sign set that 'held too few informative items'. Second, uncertainty is dropped where it would widen a headline: the abstract and Sec. VII both compress Table VI to '2--7.5% of items across five substrates', while the only interval the paper reports for any window is CI95 2.6-19.9% on the 3/40 LeetCode row. A range whose stated upper bound is 7.5% and whose own CI reaches 19.9% is not a bound, and it is this band that carries the paper's strongest normative conclusion ('abstention is not a conservative compromise but the only correct default'). Third, the band's lower endpoint is untraceable: no 2% figure appears anywhere in the paper, and the smallest window in Table VI is 3% (AIME/AMC rescuable) or 3.56% (HumanEval+/MBPP+). Fix: state the minimum detectable effect for each pre-registered endpoint at the realized n; attach CIs to every row of Table VI, not one; and either reconcile the '2%' lower bound with the table or restate the band as '3.6-7.5% (95% CIs up to ~20%)'.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "abstract",
+      "discussion",
+      "experiment"
+    ],
+    "root_cause_key": "no-power-analysis-uncertainty-not-propagated",
     "review_lane": "committee_methodology",
     "gate_blocker": false,
     "quote_verified": true
