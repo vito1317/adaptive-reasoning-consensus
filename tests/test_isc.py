@@ -166,16 +166,31 @@ def test_F3_systematic_belief_echo_triggers_fallback():
     """When the verifier shares the model's belief (epsilon > 1/2 on echo items),
     the anchor is invalid; ISC must detect it (I1/I3) or at minimum not fall
     below the SC floor it would have returned anyway."""
+    from rlev_voi import DEFAULT
+    from rlev_voi.baselines import run_dedup_sc
+
     pools = _echo_pools(120, seed=8)
-    sc = float(np.mean([sc_answer(p.answers[:K], p.n_answers) == p.correct for p in pools]))
+    base = DEFAULT.with_(k_max=pools[0].k_max)
+    dedup_sc = float(np.mean([run_dedup_sc(p, K, base).correct for p in pools]))
     broken = make_sim_verifier(p_v=0.85, epsilon_sys=1.0)  # always follows the belief
     est = estimate_isc(pools, K, broken, n_v=8, instrument_fraction=0.5, seed=3)
     isc_acc = float(np.mean([isc_vote(p, i, K, est) == p.correct for i, p in enumerate(pools)]))
-    # With a fully invalid instrument the anchored answers just repeat the
-    # plurality, so ISC should sit at (not below) the floor -- and never claim
-    # the echo cell was solved.
-    assert isc_acc <= sc + 0.10
-    assert isc_acc >= sc - 0.05, f"broken instrument must not do worse than the floor: {isc_acc} vs {sc}"
+    # The reference is dedup-SC, not raw SC: ISC weights by deduplication
+    # internally, so raw plurality is not the floor it degrades to. The
+    # original assertion used raw SC and passed only because the simulator
+    # made the correct answer code 0 on every item, which handed SC's
+    # lowest-index tie-break a free win on tied items and inflated the raw
+    # floor to meet the bound. With per-item label permutation that artifact
+    # is gone (raw SC 0.192, dedup-SC 0.792).
+    #
+    # What the test is for: a fully invalid instrument must not manufacture a
+    # win, i.e. ISC must stay well below what deduplication alone already
+    # achieves on this cell.
+    assert isc_acc < dedup_sc - 0.10, (
+        f"a broken instrument must not manufacture a win: {isc_acc} vs dedup-SC {dedup_sc}")
+    sc = float(np.mean([sc_answer(p.answers[:K], p.n_answers) == p.correct for p in pools]))
+    assert isc_acc >= sc - 0.05, (
+        f"broken instrument must not do worse than the raw floor: {isc_acc} vs {sc}")
 
 
 # ------------------------------------------------------------- amortization

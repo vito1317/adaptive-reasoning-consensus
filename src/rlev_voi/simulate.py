@@ -119,6 +119,12 @@ class SimConfig:
     silently disable the semantic channel entirely.
     """
     correct_answer: int = 0
+    permute_labels: bool = True
+    """Relabel answer codes per item so the correct answer is not always 0.
+
+    Off reproduces the pre-fix harness, in which SC's lowest-index tie-break
+    coincided with the correct answer on every tied item.
+    """
 
 
 def _monotone_distort(c: np.ndarray, kind: str) -> np.ndarray:
@@ -230,13 +236,28 @@ def generate_item(cfg: SimConfig, k_max: int, rng: np.random.Generator) -> Trace
         rng.normal(cfg.gen_tokens_mean, cfg.gen_tokens_sd, size=k_max), 20.0, None
     )
 
+    # Relabel the answer codes by a per-item random permutation. Without this
+    # the correct answer is code 0 on every item, and since ``np.argmax``
+    # breaks ties toward the lowest index, plain SC wins every tied item for
+    # free: measured at 67.7% on near-tied items against 50.4% for a random
+    # tie-break. Any method that perturbs the weights off integers loses that
+    # artificial advantage and appears to be harmed by the perturbation. The
+    # permutation is drawn from the item's own generator, so datasets stay
+    # reproducible.
+    if cfg.permute_labels:
+        perm = rng.permutation(cfg.n_answers)
+        answers = perm[answers]
+        correct = int(perm[cfg.correct_answer])
+    else:
+        correct = cfg.correct_answer
+
     return TracePool(
         answers=answers,
         confidences=conf,
         sem=sem,
         dup=dup,
         gen_tokens=gen_tokens,
-        correct=cfg.correct_answer,
+        correct=correct,
         n_answers=cfg.n_answers,
         meta={"is_echo_of": is_echo_of, "group": group},
     )

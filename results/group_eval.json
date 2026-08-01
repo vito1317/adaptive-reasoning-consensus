@@ -9,16 +9,16 @@
   "cells": {
     "grouped": {
       "acc": {
-        "SC": 0.8083333333333333,
-        "TACT-global-dev": 0.8083333333333333,
-        "TACT-group-dev": 0.9233333333333333,
-        "TACT-group-LF": 0.94,
-        "naive-per-item": 0.8033333333333333,
+        "SC": 0.785,
+        "TACT-global-dev": 0.785,
+        "TACT-group-dev": 0.9266666666666666,
+        "TACT-group-LF": 0.9233333333333333,
+        "naive-per-item": 0.7866666666666666,
         "per-item-link-oracle": 0.9466666666666667
       },
       "gammas_dev_by_group": {
         "0": 4.0,
-        "1": 0.013512162722722943,
+        "1": -0.0056540747971275535,
         "2": -4.0
       },
       "gammas_lf_by_group": {
@@ -29,35 +29,35 @@
       "gamma_global": 0.0,
       "paired": {
         "group-dev_vs_SC": {
-          "a_only": 79,
-          "b_only": 10,
-          "p_value": 1.87368886800412e-14
+          "a_only": 87,
+          "b_only": 2,
+          "p_value": 1.2944084116747769e-23
         },
         "group-dev_vs_global": {
-          "a_only": 79,
-          "b_only": 10,
-          "p_value": 1.87368886800412e-14
+          "a_only": 87,
+          "b_only": 2,
+          "p_value": 1.2944084116747769e-23
         },
         "group-LF_vs_SC": {
-          "a_only": 79,
+          "a_only": 83,
           "b_only": 0,
-          "p_value": 3.308722450212111e-24
+          "p_value": 2.0679515313825692e-25
         },
         "naive_vs_SC": {
-          "a_only": 0,
-          "b_only": 3,
-          "p_value": 0.25
+          "a_only": 5,
+          "b_only": 4,
+          "p_value": 1.0
         }
       }
     },
     "iid": {
       "acc": {
-        "SC": 0.8266666666666667,
-        "TACT-global-dev": 0.8266666666666667,
-        "TACT-group-dev": 0.8266666666666667,
-        "TACT-group-LF": 0.8266666666666667,
-        "naive-per-item": 0.82,
-        "per-item-link-oracle": 0.9833333333333333
+        "SC": 0.7516666666666667,
+        "TACT-global-dev": 0.7516666666666667,
+        "TACT-group-dev": 0.7516666666666667,
+        "TACT-group-LF": 0.7516666666666667,
+        "naive-per-item": 0.7516666666666667,
+        "per-item-link-oracle": 0.9733333333333334
       },
       "gammas_dev_by_group": null,
       "gammas_lf_by_group": null,
@@ -79,9 +79,9 @@
           "p_value": 1.0
         },
         "naive_vs_SC": {
-          "a_only": 0,
-          "b_only": 4,
-          "p_value": 0.125
+          "a_only": 1,
+          "b_only": 1,
+          "p_value": 1.0
         }
       }
     }

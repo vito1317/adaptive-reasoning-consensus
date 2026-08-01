@@ -9,14 +9,14 @@
   "sweep_dev200": [
     {
       "acc": {
-        "SC": 0.8075,
-        "CISC(g=0.25)": 0.535,
-        "CISC(g=0.5)": 0.31,
-        "CISC(g=1.0)": 0.06,
-        "CISC(g=2.0)": 0.0,
+        "SC": 0.7625,
+        "CISC(g=0.25)": 0.5275,
+        "CISC(g=0.5)": 0.26,
+        "CISC(g=1.0)": 0.0525,
+        "CISC(g=2.0)": 0.0025,
         "CISC(g=4.0)": 0.0,
-        "ECE-gate": 0.8075,
-        "CISC-devT": 0.8075,
+        "ECE-gate": 0.7625,
+        "CISC-devT": 0.7625,
         "SignGrid-dev": 1.0,
         "TACT-dev": 1.0,
         "TACT-LF": 1.0,
@@ -35,8 +35,8 @@
       },
       "tact_dev_diag": {
         "d_hat": -1.0,
-        "se": 0.02274050389350762,
-        "z": -43.97439936612392,
+        "se": 0.02265314605780982,
+        "z": -44.143978829609125,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -46,15 +46,15 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": -0.8064791133844842,
-        "se_raw": 0.04581233527419102,
-        "z_raw": -17.603973003289024,
-        "alpha_split_half": 0.710077519379845,
-        "k_eff_wrong": 2.429008303453225,
-        "p_hat": 0.8360707112046698,
-        "attenuation_used": 0.7103525499501276,
-        "psi_margin_decoupling": -0.5717470934862239,
-        "n_gated": 129
+        "d_raw": -0.8085277554304103,
+        "se_raw": 0.043078987264413525,
+        "z_raw": -18.76849496177258,
+        "alpha_split_half": 0.6405109489051095,
+        "k_eff_wrong": 2.4525023707870464,
+        "p_hat": 0.7888838026069007,
+        "attenuation_used": 0.6237560707341213,
+        "psi_margin_decoupling": -0.27724358974358976,
+        "n_gated": 137
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
@@ -63,38 +63,38 @@
           "p_value": 1.0
         },
         "TACT-dev_vs_CISC-devT": {
-          "a_only": 77,
+          "a_only": 95,
           "b_only": 0,
-          "p_value": 1.3234889800848443e-23
+          "p_value": 5.048709793414476e-29
         },
         "TACT-dev_vs_SC": {
-          "a_only": 77,
+          "a_only": 95,
           "b_only": 0,
-          "p_value": 1.3234889800848443e-23
+          "p_value": 5.048709793414476e-29
         },
         "TACT-LF_vs_SC": {
-          "a_only": 77,
+          "a_only": 95,
           "b_only": 0,
-          "p_value": 1.3234889800848443e-23
+          "p_value": 5.048709793414476e-29
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 77,
+          "a_only": 95,
           "b_only": 0,
-          "p_value": 1.3234889800848443e-23
+          "p_value": 5.048709793414476e-29
         }
       },
       "kappa_c": -0.6
     },
     {
       "acc": {
-        "SC": 0.7975,
-        "CISC(g=0.25)": 0.6,
-        "CISC(g=0.5)": 0.455,
-        "CISC(g=1.0)": 0.2075,
+        "SC": 0.805,
+        "CISC(g=0.25)": 0.6475,
+        "CISC(g=0.5)": 0.5025,
+        "CISC(g=1.0)": 0.2,
         "CISC(g=2.0)": 0.0125,
         "CISC(g=4.0)": 0.0,
-        "ECE-gate": 0.7975,
-        "CISC-devT": 0.7975,
+        "ECE-gate": 0.805,
+        "CISC-devT": 0.805,
         "SignGrid-dev": 1.0,
         "TACT-dev": 1.0,
         "TACT-LF": 1.0,
@@ -112,9 +112,9 @@
         "SignGrid-dev": -4.0
       },
       "tact_dev_diag": {
-        "d_hat": -0.9944080215966062,
-        "se": 0.02267608675801221,
-        "z": -43.852717279150866,
+        "d_hat": -0.9953198127925117,
+        "se": 0.022803964585835362,
+        "z": -43.64678821728888,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -124,15 +124,15 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": -0.7616492516238351,
-        "se_raw": 0.04668179149164071,
-        "z_raw": -16.315767396378167,
-        "alpha_split_half": 0.7180769230769231,
-        "k_eff_wrong": 2.413761000900993,
-        "p_hat": 0.8412078145065225,
-        "attenuation_used": 0.7276843288527791,
-        "psi_margin_decoupling": -0.3143006809848088,
-        "n_gated": 130
+        "d_raw": -0.800942285041225,
+        "se_raw": 0.045358034197905996,
+        "z_raw": -17.658223051434653,
+        "alpha_split_half": 0.6346774193548387,
+        "k_eff_wrong": 2.409738947426953,
+        "p_hat": 0.7844750152585536,
+        "attenuation_used": 0.6171113326979014,
+        "psi_margin_decoupling": -0.5185334407735698,
+        "n_gated": 124
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
@@ -141,58 +141,58 @@
           "p_value": 1.0
         },
         "TACT-dev_vs_CISC-devT": {
-          "a_only": 81,
+          "a_only": 78,
           "b_only": 0,
-          "p_value": 8.271806125530277e-25
+          "p_value": 6.617444900424222e-24
         },
         "TACT-dev_vs_SC": {
-          "a_only": 81,
+          "a_only": 78,
           "b_only": 0,
-          "p_value": 8.271806125530277e-25
+          "p_value": 6.617444900424222e-24
         },
         "TACT-LF_vs_SC": {
-          "a_only": 81,
+          "a_only": 78,
           "b_only": 0,
-          "p_value": 8.271806125530277e-25
+          "p_value": 6.617444900424222e-24
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 81,
+          "a_only": 78,
           "b_only": 0,
-          "p_value": 8.271806125530277e-25
+          "p_value": 6.617444900424222e-24
         }
       },
       "kappa_c": -0.4
     },
     {
       "acc": {
-        "SC": 0.835,
-        "CISC(g=0.25)": 0.7225,
-        "CISC(g=0.5)": 0.6575,
-        "CISC(g=1.0)": 0.5525,
+        "SC": 0.75,
+        "CISC(g=0.25)": 0.69,
+        "CISC(g=0.5)": 0.62,
+        "CISC(g=1.0)": 0.5,
         "CISC(g=2.0)": 0.2675,
-        "CISC(g=4.0)": 0.07,
-        "ECE-gate": 0.835,
-        "CISC-devT": 0.835,
-        "SignGrid-dev": 0.9925,
-        "TACT-dev": 0.9775,
-        "TACT-LF": 0.9775,
-        "TACT-semi": 0.9775
+        "CISC(g=4.0)": 0.0425,
+        "ECE-gate": 0.75,
+        "CISC-devT": 0.75,
+        "SignGrid-dev": 0.985,
+        "TACT-dev": 0.975,
+        "TACT-LF": 0.975,
+        "TACT-semi": 0.975
       },
       "oracle": {
-        "acc": 0.9925,
+        "acc": 0.985,
         "gamma": -4.0
       },
       "gamma": {
-        "TACT-dev": -2.7776682079984476,
+        "TACT-dev": -2.9145007881343474,
         "TACT-LF": -2.0,
         "TACT-semi": -2.0,
         "CISC-devT": 0.0,
         "SignGrid-dev": -4.0
       },
       "tact_dev_diag": {
-        "d_hat": -0.8393096836049856,
-        "se": 0.02261294933856331,
-        "z": -37.11632972058435,
+        "d_hat": -0.8525090631558863,
+        "se": 0.022556789477018356,
+        "z": -37.79390076874425,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -202,75 +202,75 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": -0.6901960784313725,
-        "se_raw": 0.037858918111175484,
-        "z_raw": -18.23073962136375,
-        "alpha_split_half": 0.731679389312977,
-        "k_eff_wrong": 2.480939753089422,
-        "p_hat": 0.8500698118898101,
-        "attenuation_used": 0.7401747624405017,
-        "psi_margin_decoupling": -0.5791186039633245,
-        "n_gated": 131
+        "d_raw": -0.6503374156460885,
+        "se_raw": 0.03824936237464608,
+        "z_raw": -17.0025688082364,
+        "alpha_split_half": 0.591156462585034,
+        "k_eff_wrong": 2.458814651188196,
+        "p_hat": 0.7524902534236914,
+        "attenuation_used": 0.5587343552741779,
+        "psi_margin_decoupling": -0.24038461538461542,
+        "n_gated": 147
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
-          "a_only": 0,
-          "b_only": 6,
-          "p_value": 0.03125
+          "a_only": 3,
+          "b_only": 7,
+          "p_value": 0.34375
         },
         "TACT-dev_vs_CISC-devT": {
-          "a_only": 61,
-          "b_only": 4,
-          "p_value": 3.918664438079533e-14
+          "a_only": 97,
+          "b_only": 7,
+          "p_value": 2.253920747846914e-21
         },
         "TACT-dev_vs_SC": {
-          "a_only": 61,
-          "b_only": 4,
-          "p_value": 3.918664438079533e-14
+          "a_only": 97,
+          "b_only": 7,
+          "p_value": 2.253920747846914e-21
         },
         "TACT-LF_vs_SC": {
-          "a_only": 61,
-          "b_only": 4,
-          "p_value": 3.918664438079533e-14
+          "a_only": 97,
+          "b_only": 7,
+          "p_value": 2.253920747846914e-21
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 61,
-          "b_only": 4,
-          "p_value": 3.918664438079533e-14
+          "a_only": 97,
+          "b_only": 7,
+          "p_value": 2.253920747846914e-21
         }
       },
       "kappa_c": -0.2
     },
     {
       "acc": {
-        "SC": 0.7625,
-        "CISC(g=0.25)": 0.67,
-        "CISC(g=0.5)": 0.655,
-        "CISC(g=1.0)": 0.5625,
-        "CISC(g=2.0)": 0.4275,
-        "CISC(g=4.0)": 0.2525,
-        "ECE-gate": 0.7625,
-        "CISC-devT": 0.7625,
-        "SignGrid-dev": 0.8925,
-        "TACT-dev": 0.88,
-        "TACT-LF": 0.885,
-        "TACT-semi": 0.885
+        "SC": 0.75,
+        "CISC(g=0.25)": 0.715,
+        "CISC(g=0.5)": 0.7075,
+        "CISC(g=1.0)": 0.655,
+        "CISC(g=2.0)": 0.505,
+        "CISC(g=4.0)": 0.2925,
+        "ECE-gate": 0.75,
+        "CISC-devT": 0.75,
+        "SignGrid-dev": 0.915,
+        "TACT-dev": 0.9,
+        "TACT-LF": 0.89,
+        "TACT-semi": 0.89
       },
       "oracle": {
-        "acc": 0.8925,
+        "acc": 0.915,
         "gamma": -4.0
       },
       "gamma": {
-        "TACT-dev": -1.13778930415484,
-        "TACT-LF": -1.0856533340282213,
-        "TACT-semi": -1.0856533340282213,
+        "TACT-dev": -1.0994783228767115,
+        "TACT-LF": -1.263264433528627,
+        "TACT-semi": -1.263264433528627,
         "CISC-devT": 0.0,
         "SignGrid-dev": -4.0
       },
       "tact_dev_diag": {
-        "d_hat": -0.5291375291375291,
-        "se": 0.022759624733297297,
-        "z": -23.248956665063183,
+        "d_hat": -0.516504854368932,
+        "se": 0.02275520495954297,
+        "z": -22.698316947144114,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -280,75 +280,75 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": -0.43508032657361073,
-        "se_raw": 0.030146268149470388,
-        "z_raw": -14.432311303555304,
-        "alpha_split_half": 0.7521582733812949,
-        "k_eff_wrong": 2.4534051609062075,
-        "p_hat": 0.8628383546801416,
-        "attenuation_used": 0.7603899406760403,
-        "psi_margin_decoupling": -0.2896483547521536,
-        "n_gated": 139
+        "d_raw": -0.3769045709703288,
+        "se_raw": 0.03229167785398593,
+        "z_raw": -11.671879444437277,
+        "alpha_split_half": 0.605072463768116,
+        "k_eff_wrong": 2.3806257485634204,
+        "p_hat": 0.7624791302299205,
+        "attenuation_used": 0.5760716965085104,
+        "psi_margin_decoupling": -0.20927585716318103,
+        "n_gated": 138
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
-          "a_only": 7,
+          "a_only": 6,
           "b_only": 12,
-          "p_value": 0.359283447265625
+          "p_value": 0.237884521484375
         },
         "TACT-dev_vs_CISC-devT": {
-          "a_only": 63,
-          "b_only": 16,
-          "p_value": 9.439221273488043e-08
+          "a_only": 69,
+          "b_only": 9,
+          "p_value": 1.3812783597891096e-12
         },
         "TACT-dev_vs_SC": {
-          "a_only": 63,
-          "b_only": 16,
-          "p_value": 9.439221273488043e-08
+          "a_only": 69,
+          "b_only": 9,
+          "p_value": 1.3812783597891096e-12
         },
         "TACT-LF_vs_SC": {
-          "a_only": 64,
-          "b_only": 15,
-          "p_value": 2.3034395557043568e-08
+          "a_only": 67,
+          "b_only": 11,
+          "p_value": 6.11831045524052e-11
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 64,
-          "b_only": 15,
-          "p_value": 2.3034395557043568e-08
+          "a_only": 67,
+          "b_only": 11,
+          "p_value": 6.11831045524052e-11
         }
       },
       "kappa_c": -0.1
     },
     {
       "acc": {
-        "SC": 0.835,
-        "CISC(g=0.25)": 0.75,
-        "CISC(g=0.5)": 0.75,
-        "CISC(g=1.0)": 0.7475,
-        "CISC(g=2.0)": 0.735,
-        "CISC(g=4.0)": 0.6825,
-        "ECE-gate": 0.835,
-        "CISC-devT": 0.835,
-        "SignGrid-dev": 0.835,
-        "TACT-dev": 0.835,
-        "TACT-LF": 0.835,
-        "TACT-semi": 0.835
+        "SC": 0.745,
+        "CISC(g=0.25)": 0.7625,
+        "CISC(g=0.5)": 0.76,
+        "CISC(g=1.0)": 0.75,
+        "CISC(g=2.0)": 0.7275,
+        "CISC(g=4.0)": 0.66,
+        "ECE-gate": 0.745,
+        "CISC-devT": 0.76,
+        "SignGrid-dev": 0.76,
+        "TACT-dev": 0.745,
+        "TACT-LF": 0.745,
+        "TACT-semi": 0.745
       },
       "oracle": {
-        "acc": 0.835,
-        "gamma": 0.0
+        "acc": 0.7725,
+        "gamma": -0.5
       },
       "gamma": {
         "TACT-dev": 0.0,
         "TACT-LF": 0.0,
         "TACT-semi": 0.0,
-        "CISC-devT": 0.0,
-        "SignGrid-dev": 0.0
+        "CISC-devT": 0.5,
+        "SignGrid-dev": 0.5
       },
       "tact_dev_diag": {
-        "d_hat": -0.0007736943907156638,
-        "se": 0.022852734385508385,
-        "z": -0.03385565935629511,
+        "d_hat": -0.02739726027397259,
+        "se": 0.023222144963323244,
+        "z": -1.1797902526766355,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -358,26 +358,26 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": -0.010829296095753766,
-        "se_raw": 0.027567201584687395,
-        "z_raw": -0.3928326225817951,
-        "alpha_split_half": 0.75,
-        "k_eff_wrong": 2.4579951079757913,
-        "p_hat": 0.8615085244905676,
-        "attenuation_used": 0.7621544220989676,
-        "psi_margin_decoupling": -0.06666666666666665,
-        "n_gated": 128
+        "d_raw": -0.03533854869166442,
+        "se_raw": 0.02781876201731243,
+        "z_raw": -1.2703134909336442,
+        "alpha_split_half": 0.6105839416058394,
+        "k_eff_wrong": 2.4104765883583736,
+        "p_hat": 0.7668305325164919,
+        "attenuation_used": 0.5934031954151722,
+        "psi_margin_decoupling": -0.004285714285714282,
+        "n_gated": 137
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
-          "a_only": 0,
-          "b_only": 0,
-          "p_value": 1.0
+          "a_only": 8,
+          "b_only": 14,
+          "p_value": 0.28627872467041016
         },
         "TACT-dev_vs_CISC-devT": {
-          "a_only": 0,
-          "b_only": 0,
-          "p_value": 1.0
+          "a_only": 8,
+          "b_only": 14,
+          "p_value": 0.28627872467041016
         },
         "TACT-dev_vs_SC": {
           "a_only": 0,
@@ -399,34 +399,34 @@
     },
     {
       "acc": {
-        "SC": 0.795,
-        "CISC(g=0.25)": 0.79,
-        "CISC(g=0.5)": 0.8,
-        "CISC(g=1.0)": 0.845,
-        "CISC(g=2.0)": 0.89,
-        "CISC(g=4.0)": 0.9175,
-        "ECE-gate": 0.795,
-        "CISC-devT": 0.9175,
-        "SignGrid-dev": 0.9175,
-        "TACT-dev": 0.9025,
-        "TACT-LF": 0.9025,
-        "TACT-semi": 0.9025
+        "SC": 0.7775,
+        "CISC(g=0.25)": 0.82,
+        "CISC(g=0.5)": 0.8225,
+        "CISC(g=1.0)": 0.85,
+        "CISC(g=2.0)": 0.9,
+        "CISC(g=4.0)": 0.9325,
+        "ECE-gate": 0.7775,
+        "CISC-devT": 0.9325,
+        "SignGrid-dev": 0.9325,
+        "TACT-dev": 0.9075,
+        "TACT-LF": 0.9075,
+        "TACT-semi": 0.9075
       },
       "oracle": {
-        "acc": 0.9175,
+        "acc": 0.9325,
         "gamma": 4.0
       },
       "gamma": {
-        "TACT-dev": 1.058411622141445,
-        "TACT-LF": 1.0625675956506722,
-        "TACT-semi": 1.0625675956506722,
+        "TACT-dev": 1.1751050155542748,
+        "TACT-LF": 1.1161658395634586,
+        "TACT-semi": 1.1161658395634586,
         "CISC-devT": 4.0,
         "SignGrid-dev": 4.0
       },
       "tact_dev_diag": {
-        "d_hat": 0.5029013539651838,
-        "se": 0.022711148374248088,
-        "z": 22.143369664891885,
+        "d_hat": 0.5408320493066255,
+        "se": 0.02266298045496683,
+        "z": 23.864118419080068,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -436,75 +436,75 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.44485608435451696,
-        "se_raw": 0.03386167770165617,
-        "z_raw": 13.13744960524384,
-        "alpha_split_half": 0.7686046511627908,
-        "k_eff_wrong": 2.3613540963320947,
-        "p_hat": 0.872783440515624,
-        "attenuation_used": 0.7869700836844264,
-        "psi_margin_decoupling": -0.47678571428571426,
-        "n_gated": 129
+        "d_raw": 0.387140902872777,
+        "se_raw": 0.03803391407335211,
+        "z_raw": 10.178834135401843,
+        "alpha_split_half": 0.6406716417910447,
+        "k_eff_wrong": 2.4373916879403112,
+        "p_hat": 0.7889179956345023,
+        "attenuation_used": 0.643690659516458,
+        "psi_margin_decoupling": -0.2860606060606061,
+        "n_gated": 134
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
           "a_only": 8,
-          "b_only": 14,
-          "p_value": 0.28627872467041016
+          "b_only": 18,
+          "p_value": 0.07551869750022888
         },
         "TACT-dev_vs_CISC-devT": {
           "a_only": 8,
-          "b_only": 14,
-          "p_value": 0.28627872467041016
+          "b_only": 18,
+          "p_value": 0.07551869750022888
         },
         "TACT-dev_vs_SC": {
-          "a_only": 55,
-          "b_only": 12,
-          "p_value": 1.0273195443541004e-07
+          "a_only": 67,
+          "b_only": 15,
+          "p_value": 5.2573169769006436e-09
         },
         "TACT-LF_vs_SC": {
-          "a_only": 55,
-          "b_only": 12,
-          "p_value": 1.0273195443541004e-07
+          "a_only": 67,
+          "b_only": 15,
+          "p_value": 5.2573169769006436e-09
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 55,
-          "b_only": 12,
-          "p_value": 1.0273195443541004e-07
+          "a_only": 67,
+          "b_only": 15,
+          "p_value": 5.2573169769006436e-09
         }
       },
       "kappa_c": 0.1
     },
     {
       "acc": {
-        "SC": 0.845,
-        "CISC(g=0.25)": 0.845,
-        "CISC(g=0.5)": 0.8775,
-        "CISC(g=1.0)": 0.925,
-        "CISC(g=2.0)": 0.9725,
-        "CISC(g=4.0)": 0.9925,
-        "ECE-gate": 0.845,
-        "CISC-devT": 0.9925,
-        "SignGrid-dev": 0.9925,
-        "TACT-dev": 0.9875,
-        "TACT-LF": 0.9875,
-        "TACT-semi": 0.9875
+        "SC": 0.76,
+        "CISC(g=0.25)": 0.815,
+        "CISC(g=0.5)": 0.8475,
+        "CISC(g=1.0)": 0.9075,
+        "CISC(g=2.0)": 0.955,
+        "CISC(g=4.0)": 0.985,
+        "ECE-gate": 0.76,
+        "CISC-devT": 0.985,
+        "SignGrid-dev": 0.985,
+        "TACT-dev": 0.9775,
+        "TACT-LF": 0.9775,
+        "TACT-semi": 0.9775
       },
       "oracle": {
-        "acc": 0.9925,
+        "acc": 0.985,
         "gamma": 4.0
       },
       "gamma": {
-        "TACT-dev": 2.7950121203723124,
+        "TACT-dev": 2.776729314566436,
         "TACT-LF": 2.0,
         "TACT-semi": 2.0,
         "CISC-devT": 4.0,
         "SignGrid-dev": 4.0
       },
       "tact_dev_diag": {
-        "d_hat": 0.8413035094485153,
-        "se": 0.02267608675801221,
-        "z": 37.100912446952734,
+        "d_hat": 0.8404669260700389,
+        "se": 0.022777329617136386,
+        "z": 36.89927397976094,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -514,54 +514,54 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.6743732590529248,
-        "se_raw": 0.036909592166547996,
-        "z_raw": 18.270948538524483,
-        "alpha_split_half": 0.75,
-        "k_eff_wrong": 2.383806798227344,
-        "p_hat": 0.8613573706062475,
-        "attenuation_used": 0.7624105382644142,
-        "psi_margin_decoupling": -0.5925849212924607,
-        "n_gated": 131
+        "d_raw": 0.6624850657108722,
+        "se_raw": 0.04090692325959212,
+        "z_raw": 16.194937504998702,
+        "alpha_split_half": 0.574390243902439,
+        "k_eff_wrong": 2.4442010120908453,
+        "p_hat": 0.7393152768265169,
+        "attenuation_used": 0.5457702487705933,
+        "psi_margin_decoupling": -0.2954990215264187,
+        "n_gated": 123
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
-          "a_only": 2,
-          "b_only": 4,
-          "p_value": 0.6875
+          "a_only": 3,
+          "b_only": 6,
+          "p_value": 0.5078125
         },
         "TACT-dev_vs_CISC-devT": {
-          "a_only": 2,
-          "b_only": 4,
-          "p_value": 0.6875
+          "a_only": 3,
+          "b_only": 6,
+          "p_value": 0.5078125
         },
         "TACT-dev_vs_SC": {
-          "a_only": 60,
+          "a_only": 90,
           "b_only": 3,
-          "p_value": 9.048317650695026e-15
+          "p_value": 2.7088953370761237e-23
         },
         "TACT-LF_vs_SC": {
-          "a_only": 60,
+          "a_only": 90,
           "b_only": 3,
-          "p_value": 9.048317650695026e-15
+          "p_value": 2.7088953370761237e-23
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 60,
+          "a_only": 90,
           "b_only": 3,
-          "p_value": 9.048317650695026e-15
+          "p_value": 2.7088953370761237e-23
         }
       },
       "kappa_c": 0.2
     },
     {
       "acc": {
-        "SC": 0.8375,
-        "CISC(g=0.25)": 0.905,
-        "CISC(g=0.5)": 0.9525,
-        "CISC(g=1.0)": 0.99,
-        "CISC(g=2.0)": 1.0,
+        "SC": 0.785,
+        "CISC(g=0.25)": 0.885,
+        "CISC(g=0.5)": 0.945,
+        "CISC(g=1.0)": 0.985,
+        "CISC(g=2.0)": 0.995,
         "CISC(g=4.0)": 1.0,
-        "ECE-gate": 0.8375,
+        "ECE-gate": 0.785,
         "CISC-devT": 1.0,
         "SignGrid-dev": 1.0,
         "TACT-dev": 1.0,
@@ -570,19 +570,19 @@
       },
       "oracle": {
         "acc": 1.0,
-        "gamma": 2.0
+        "gamma": 4.0
       },
       "gamma": {
         "TACT-dev": 4.0,
         "TACT-LF": 2.0,
         "TACT-semi": 2.0,
-        "CISC-devT": 2.0,
-        "SignGrid-dev": 2.0
+        "CISC-devT": 4.0,
+        "SignGrid-dev": 4.0
       },
       "tact_dev_diag": {
-        "d_hat": 0.9978524014057009,
-        "se": 0.022817317157245453,
-        "z": 43.73224049650557,
+        "d_hat": 0.9937291789143641,
+        "se": 0.02285975554993954,
+        "z": 43.47068264765378,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -592,15 +592,15 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.7416617905207724,
-        "se_raw": 0.052058080684025024,
-        "z_raw": 14.246813958094405,
-        "alpha_split_half": 0.7353174603174604,
-        "k_eff_wrong": 2.343217039882944,
-        "p_hat": 0.8520415962711845,
-        "attenuation_used": 0.7451462203141822,
-        "psi_margin_decoupling": -0.5138888888888888,
-        "n_gated": 126
+        "d_raw": 0.8073521282476507,
+        "se_raw": 0.0446709146289924,
+        "z_raw": 18.07332880808448,
+        "alpha_split_half": 0.6386363636363637,
+        "k_eff_wrong": 2.3727664206638748,
+        "p_hat": 0.7871051508289977,
+        "attenuation_used": 0.6240295672003335,
+        "psi_margin_decoupling": -0.5588235294117647,
+        "n_gated": 132
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
@@ -614,32 +614,32 @@
           "p_value": 1.0
         },
         "TACT-dev_vs_SC": {
-          "a_only": 65,
+          "a_only": 86,
           "b_only": 0,
-          "p_value": 5.421010862427522e-20
+          "p_value": 2.5849394142282115e-26
         },
         "TACT-LF_vs_SC": {
-          "a_only": 65,
+          "a_only": 86,
           "b_only": 0,
-          "p_value": 5.421010862427522e-20
+          "p_value": 2.5849394142282115e-26
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 65,
+          "a_only": 86,
           "b_only": 0,
-          "p_value": 5.421010862427522e-20
+          "p_value": 2.5849394142282115e-26
         }
       },
       "kappa_c": 0.4
     },
     {
       "acc": {
-        "SC": 0.7825,
-        "CISC(g=0.25)": 0.8875,
-        "CISC(g=0.5)": 0.9625,
-        "CISC(g=1.0)": 0.9975,
+        "SC": 0.78,
+        "CISC(g=0.25)": 0.9225,
+        "CISC(g=0.5)": 0.965,
+        "CISC(g=1.0)": 0.99,
         "CISC(g=2.0)": 1.0,
         "CISC(g=4.0)": 1.0,
-        "ECE-gate": 0.7825,
+        "ECE-gate": 0.78,
         "CISC-devT": 1.0,
         "SignGrid-dev": 1.0,
         "TACT-dev": 1.0,
@@ -658,9 +658,9 @@
         "SignGrid-dev": 2.0
       },
       "tact_dev_diag": {
-        "d_hat": 1.0,
-        "se": 0.022626356534936082,
-        "z": 44.1962451380962,
+        "d_hat": 0.999806314158435,
+        "se": 0.02272570191180412,
+        "z": 43.99451854286263,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -670,15 +670,15 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.8215446138465383,
-        "se_raw": 0.04031687179874787,
-        "z_raw": 20.377191413745877,
-        "alpha_split_half": 0.7622448979591837,
-        "k_eff_wrong": 2.4245735006279947,
-        "p_hat": 0.8690036517106687,
-        "attenuation_used": 0.7698301486509681,
-        "psi_margin_decoupling": -0.5453190220632081,
-        "n_gated": 147
+        "d_raw": 0.765637371338084,
+        "se_raw": 0.04675357201801424,
+        "z_raw": 16.37601873591781,
+        "alpha_split_half": 0.6467391304347826,
+        "k_eff_wrong": 2.4282474082268615,
+        "p_hat": 0.7931723963995901,
+        "attenuation_used": 0.6396577356666044,
+        "psi_margin_decoupling": -0.29047619047619055,
+        "n_gated": 138
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
@@ -692,19 +692,19 @@
           "p_value": 1.0
         },
         "TACT-dev_vs_SC": {
-          "a_only": 87,
+          "a_only": 88,
           "b_only": 0,
-          "p_value": 1.2924697071141057e-26
+          "p_value": 6.462348535570529e-27
         },
         "TACT-LF_vs_SC": {
-          "a_only": 87,
+          "a_only": 88,
           "b_only": 0,
-          "p_value": 1.2924697071141057e-26
+          "p_value": 6.462348535570529e-27
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 87,
+          "a_only": 88,
           "b_only": 0,
-          "p_value": 1.2924697071141057e-26
+          "p_value": 6.462348535570529e-27
         }
       },
       "kappa_c": 0.6
@@ -713,14 +713,14 @@
   "sweep_dev50": [
     {
       "acc": {
-        "SC": 0.7975,
-        "CISC(g=0.25)": 0.51,
-        "CISC(g=0.5)": 0.3025,
-        "CISC(g=1.0)": 0.03,
-        "CISC(g=2.0)": 0.0,
+        "SC": 0.7775,
+        "CISC(g=0.25)": 0.515,
+        "CISC(g=0.5)": 0.28,
+        "CISC(g=1.0)": 0.0525,
+        "CISC(g=2.0)": 0.0025,
         "CISC(g=4.0)": 0.0,
-        "ECE-gate": 0.7975,
-        "CISC-devT": 0.7975,
+        "ECE-gate": 0.7775,
+        "CISC-devT": 0.7775,
         "SignGrid-dev": 1.0,
         "TACT-dev": 1.0,
         "TACT-LF": 1.0,
@@ -739,8 +739,8 @@
       },
       "tact_dev_diag": {
         "d_hat": -1.0,
-        "se": 0.04560627741711359,
-        "z": -21.92680605904383,
+        "se": 0.04548322901587476,
+        "z": -21.986125911398585,
         "n_items": 50
       },
       "tact_lf_diag": {
@@ -750,15 +750,15 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": -0.9071286566316388,
-        "se_raw": 0.032436441858076495,
-        "z_raw": -27.96634293615558,
-        "alpha_split_half": 0.7476923076923077,
-        "k_eff_wrong": 2.4171990213619505,
-        "p_hat": 0.8599898694307209,
-        "attenuation_used": 0.7544615078150005,
-        "psi_margin_decoupling": -0.5,
-        "n_gated": 130
+        "d_raw": -0.7298850574712644,
+        "se_raw": 0.05154391067571946,
+        "z_raw": -14.160451698421243,
+        "alpha_split_half": 0.593359375,
+        "k_eff_wrong": 2.4433593566103977,
+        "p_hat": 0.7540580348231475,
+        "attenuation_used": 0.5734307713194478,
+        "psi_margin_decoupling": -0.3371749408983452,
+        "n_gated": 128
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
@@ -767,38 +767,116 @@
           "p_value": 1.0
         },
         "TACT-dev_vs_CISC-devT": {
-          "a_only": 81,
+          "a_only": 89,
           "b_only": 0,
-          "p_value": 8.271806125530277e-25
+          "p_value": 3.2311742677852644e-27
         },
         "TACT-dev_vs_SC": {
-          "a_only": 81,
+          "a_only": 89,
           "b_only": 0,
-          "p_value": 8.271806125530277e-25
+          "p_value": 3.2311742677852644e-27
         },
         "TACT-LF_vs_SC": {
-          "a_only": 81,
+          "a_only": 89,
           "b_only": 0,
-          "p_value": 8.271806125530277e-25
+          "p_value": 3.2311742677852644e-27
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 81,
+          "a_only": 89,
           "b_only": 0,
-          "p_value": 8.271806125530277e-25
+          "p_value": 3.2311742677852644e-27
         }
       },
       "kappa_c": -0.6
     },
     {
       "acc": {
-        "SC": 0.8175,
-        "CISC(g=0.25)": 0.7175,
-        "CISC(g=0.5)": 0.6425,
-        "CISC(g=1.0)": 0.5,
-        "CISC(g=2.0)": 0.2525,
-        "CISC(g=4.0)": 0.0425,
-        "ECE-gate": 0.8175,
-        "CISC-devT": 0.8175,
+        "SC": 0.745,
+        "CISC(g=0.25)": 0.685,
+        "CISC(g=0.5)": 0.6025,
+        "CISC(g=1.0)": 0.4575,
+        "CISC(g=2.0)": 0.24,
+        "CISC(g=4.0)": 0.0575,
+        "ECE-gate": 0.745,
+        "CISC-devT": 0.745,
+        "SignGrid-dev": 0.9925,
+        "TACT-dev": 0.98,
+        "TACT-LF": 0.98,
+        "TACT-semi": 0.98
+      },
+      "oracle": {
+        "acc": 0.9925,
+        "gamma": -4.0
+      },
+      "gamma": {
+        "TACT-dev": -2.767760270804946,
+        "TACT-LF": -2.0,
+        "TACT-semi": -2.0,
+        "CISC-devT": 0.0,
+        "SignGrid-dev": -4.0
+      },
+      "tact_dev_diag": {
+        "d_hat": -0.8410493827160493,
+        "se": 0.045360921162651446,
+        "z": -18.541276525233776,
+        "n_items": 50
+      },
+      "tact_lf_diag": {
+        "alarms": {
+          "E1_duplicate_collapse": false,
+          "E4_too_few_items": false,
+          "E2_margin_decoupling": false,
+          "E3_root_ambiguity": false
+        },
+        "d_raw": -0.6051660516605166,
+        "se_raw": 0.043857465208331725,
+        "z_raw": -13.798473048678416,
+        "alpha_split_half": 0.6521428571428571,
+        "k_eff_wrong": 2.4060668842811013,
+        "p_hat": 0.796864382312523,
+        "attenuation_used": 0.642764192494669,
+        "psi_margin_decoupling": -0.26917491749174927,
+        "n_gated": 140
+      },
+      "paired": {
+        "TACT-dev_vs_SignGrid": {
+          "a_only": 1,
+          "b_only": 6,
+          "p_value": 0.125
+        },
+        "TACT-dev_vs_CISC-devT": {
+          "a_only": 98,
+          "b_only": 4,
+          "p_value": 1.74595783696353e-24
+        },
+        "TACT-dev_vs_SC": {
+          "a_only": 98,
+          "b_only": 4,
+          "p_value": 1.74595783696353e-24
+        },
+        "TACT-LF_vs_SC": {
+          "a_only": 98,
+          "b_only": 4,
+          "p_value": 1.74595783696353e-24
+        },
+        "TACT-LF_vs_ECE-gate": {
+          "a_only": 98,
+          "b_only": 4,
+          "p_value": 1.74595783696353e-24
+        }
+      },
+      "kappa_c": -0.2
+    },
+    {
+      "acc": {
+        "SC": 0.7575,
+        "CISC(g=0.25)": 0.83,
+        "CISC(g=0.5)": 0.8575,
+        "CISC(g=1.0)": 0.9125,
+        "CISC(g=2.0)": 0.9675,
+        "CISC(g=4.0)": 0.99,
+        "ECE-gate": 0.7575,
+        "CISC-devT": 0.99,
         "SignGrid-dev": 0.99,
         "TACT-dev": 0.9775,
         "TACT-LF": 0.9775,
@@ -806,97 +884,19 @@
       },
       "oracle": {
         "acc": 0.99,
-        "gamma": -4.0
-      },
-      "gamma": {
-        "TACT-dev": -2.64505467593829,
-        "TACT-LF": -2.0,
-        "TACT-semi": -2.0,
-        "CISC-devT": 0.0,
-        "SignGrid-dev": -4.0
-      },
-      "tact_dev_diag": {
-        "d_hat": -0.8298039215686275,
-        "se": 0.045732956038002356,
-        "z": -18.144550308077434,
-        "n_items": 50
-      },
-      "tact_lf_diag": {
-        "alarms": {
-          "E1_duplicate_collapse": false,
-          "E4_too_few_items": false,
-          "E2_margin_decoupling": false,
-          "E3_root_ambiguity": false
-        },
-        "d_raw": -0.7290480065093572,
-        "se_raw": 0.03559423148970259,
-        "z_raw": -20.482195456875388,
-        "alpha_split_half": 0.73125,
-        "k_eff_wrong": 2.386567762473257,
-        "p_hat": 0.8495693135193234,
-        "attenuation_used": 0.7413385121855427,
-        "psi_margin_decoupling": -0.3893557422969188,
-        "n_gated": 136
-      },
-      "paired": {
-        "TACT-dev_vs_SignGrid": {
-          "a_only": 4,
-          "b_only": 9,
-          "p_value": 0.266845703125
-        },
-        "TACT-dev_vs_CISC-devT": {
-          "a_only": 71,
-          "b_only": 7,
-          "p_value": 1.933200757632093e-14
-        },
-        "TACT-dev_vs_SC": {
-          "a_only": 71,
-          "b_only": 7,
-          "p_value": 1.933200757632093e-14
-        },
-        "TACT-LF_vs_SC": {
-          "a_only": 71,
-          "b_only": 7,
-          "p_value": 1.933200757632093e-14
-        },
-        "TACT-LF_vs_ECE-gate": {
-          "a_only": 71,
-          "b_only": 7,
-          "p_value": 1.933200757632093e-14
-        }
-      },
-      "kappa_c": -0.2
-    },
-    {
-      "acc": {
-        "SC": 0.795,
-        "CISC(g=0.25)": 0.795,
-        "CISC(g=0.5)": 0.84,
-        "CISC(g=1.0)": 0.885,
-        "CISC(g=2.0)": 0.9475,
-        "CISC(g=4.0)": 0.9775,
-        "ECE-gate": 0.795,
-        "CISC-devT": 0.9775,
-        "SignGrid-dev": 0.9775,
-        "TACT-dev": 0.96,
-        "TACT-LF": 0.965,
-        "TACT-semi": 0.965
-      },
-      "oracle": {
-        "acc": 0.9775,
         "gamma": 4.0
       },
       "gamma": {
-        "TACT-dev": 3.0089227984824136,
-        "TACT-LF": 1.7605678011239807,
-        "TACT-semi": 1.7605678011239807,
+        "TACT-dev": 3.0372424231613797,
+        "TACT-LF": 2.0,
+        "TACT-semi": 2.0,
         "CISC-devT": 4.0,
         "SignGrid-dev": 4.0
       },
       "tact_dev_diag": {
-        "d_hat": 0.863349131121643,
-        "se": 0.04589522605476761,
-        "z": 18.811305779197877,
+        "d_hat": 0.8659638554216867,
+        "se": 0.04481107149482209,
+        "z": 19.324774582142023,
         "n_items": 50
       },
       "tact_lf_diag": {
@@ -906,54 +906,54 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.619821283509342,
-        "se_raw": 0.0437817429071602,
-        "z_raw": 14.157071928901544,
-        "alpha_split_half": 0.7488970588235294,
-        "k_eff_wrong": 2.447072603580808,
-        "p_hat": 0.8608013216246282,
-        "attenuation_used": 0.7664753820070571,
-        "psi_margin_decoupling": -0.5260556418584945,
-        "n_gated": 136
+        "d_raw": 0.6428571428571429,
+        "se_raw": 0.0418932284176261,
+        "z_raw": 15.345132546210454,
+        "alpha_split_half": 0.6562043795620438,
+        "k_eff_wrong": 2.420628479286402,
+        "p_hat": 0.7997767386687474,
+        "attenuation_used": 0.6521660879330295,
+        "psi_margin_decoupling": -0.27533783783783783,
+        "n_gated": 137
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
           "a_only": 2,
-          "b_only": 9,
-          "p_value": 0.0654296875
+          "b_only": 7,
+          "p_value": 0.1796875
         },
         "TACT-dev_vs_CISC-devT": {
           "a_only": 2,
-          "b_only": 9,
-          "p_value": 0.0654296875
+          "b_only": 7,
+          "p_value": 0.1796875
         },
         "TACT-dev_vs_SC": {
-          "a_only": 74,
-          "b_only": 8,
-          "p_value": 1.647020623262653e-14
+          "a_only": 92,
+          "b_only": 4,
+          "p_value": 8.758241741061071e-23
         },
         "TACT-LF_vs_SC": {
-          "a_only": 74,
-          "b_only": 6,
-          "p_value": 5.396645380673323e-16
+          "a_only": 92,
+          "b_only": 4,
+          "p_value": 8.758241741061071e-23
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 74,
-          "b_only": 6,
-          "p_value": 5.396645380673323e-16
+          "a_only": 92,
+          "b_only": 4,
+          "p_value": 8.758241741061071e-23
         }
       },
       "kappa_c": 0.2
     },
     {
       "acc": {
-        "SC": 0.8025,
-        "CISC(g=0.25)": 0.9075,
-        "CISC(g=0.5)": 0.965,
-        "CISC(g=1.0)": 0.995,
+        "SC": 0.755,
+        "CISC(g=0.25)": 0.89,
+        "CISC(g=0.5)": 0.955,
+        "CISC(g=1.0)": 0.99,
         "CISC(g=2.0)": 1.0,
         "CISC(g=4.0)": 1.0,
-        "ECE-gate": 0.8025,
+        "ECE-gate": 0.755,
         "CISC-devT": 1.0,
         "SignGrid-dev": 1.0,
         "TACT-dev": 1.0,
@@ -973,8 +973,8 @@
       },
       "tact_dev_diag": {
         "d_hat": 1.0,
-        "se": 0.045804863245991714,
-        "z": 21.831742944620796,
+        "se": 0.045430205949457333,
+        "z": 22.011786631839936,
         "n_items": 50
       },
       "tact_lf_diag": {
@@ -984,15 +984,15 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.8821934317565532,
-        "se_raw": 0.03636550039936517,
-        "z_raw": 24.25907582924264,
-        "alpha_split_half": 0.7622950819672131,
-        "k_eff_wrong": 2.366288225757727,
-        "p_hat": 0.8689273560082518,
-        "attenuation_used": 0.776520487169676,
-        "psi_margin_decoupling": -0.5548494059132357,
-        "n_gated": 122
+        "d_raw": 0.8503480278422274,
+        "se_raw": 0.03979695361140548,
+        "z_raw": 21.3671638323222,
+        "alpha_split_half": 0.659765625,
+        "k_eff_wrong": 2.3920253008865955,
+        "p_hat": 0.8021196746152178,
+        "attenuation_used": 0.6597871565326203,
+        "psi_margin_decoupling": -0.3317460317460317,
+        "n_gated": 128
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
@@ -1006,19 +1006,19 @@
           "p_value": 1.0
         },
         "TACT-dev_vs_SC": {
-          "a_only": 79,
+          "a_only": 98,
           "b_only": 0,
-          "p_value": 3.308722450212111e-24
+          "p_value": 6.310887241768095e-30
         },
         "TACT-LF_vs_SC": {
-          "a_only": 79,
+          "a_only": 98,
           "b_only": 0,
-          "p_value": 3.308722450212111e-24
+          "p_value": 6.310887241768095e-30
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 79,
+          "a_only": 98,
           "b_only": 0,
-          "p_value": 3.308722450212111e-24
+          "p_value": 6.310887241768095e-30
         }
       },
       "kappa_c": 0.6
@@ -1027,21 +1027,21 @@
   "adversarial": {
     "monotone_compress": {
       "acc": {
-        "SC": 0.795,
-        "CISC(g=0.25)": 0.795,
-        "CISC(g=0.5)": 0.795,
-        "CISC(g=1.0)": 0.815,
-        "CISC(g=2.0)": 0.8825,
-        "CISC(g=4.0)": 0.965,
-        "ECE-gate": 0.795,
-        "CISC-devT": 0.965,
-        "SignGrid-dev": 0.965,
+        "SC": 0.775,
+        "CISC(g=0.25)": 0.8225,
+        "CISC(g=0.5)": 0.8225,
+        "CISC(g=1.0)": 0.835,
+        "CISC(g=2.0)": 0.9025,
+        "CISC(g=4.0)": 0.9625,
+        "ECE-gate": 0.775,
+        "CISC-devT": 0.9625,
+        "SignGrid-dev": 0.9625,
         "TACT-dev": 1.0,
         "TACT-LF": 1.0,
         "TACT-semi": 1.0
       },
       "oracle": {
-        "acc": 0.965,
+        "acc": 0.9625,
         "gamma": 4.0
       },
       "gamma": {
@@ -1053,8 +1053,8 @@
       },
       "tact_dev_diag": {
         "d_hat": 1.0,
-        "se": 0.022607658706146685,
-        "z": 44.232797964528494,
+        "se": 0.022810343864166003,
+        "z": 43.83975997709328,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -1064,53 +1064,53 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.729602510460251,
-        "se_raw": 0.05091547831620245,
-        "z_raw": 14.329679983151117,
-        "alpha_split_half": 0.7253571428571428,
-        "k_eff_wrong": 2.4300206214130173,
-        "p_hat": 0.845924323253397,
-        "attenuation_used": 0.7313097526000887,
-        "psi_margin_decoupling": -0.30373037303730366,
-        "n_gated": 140
+        "d_raw": 0.8105888299216578,
+        "se_raw": 0.04214109248863764,
+        "z_raw": 19.235116653423592,
+        "alpha_split_half": 0.6306896551724138,
+        "k_eff_wrong": 2.3799773949863297,
+        "p_hat": 0.7814183957086074,
+        "attenuation_used": 0.6140901831892887,
+        "psi_margin_decoupling": -0.26684782608695656,
+        "n_gated": 145
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
-          "a_only": 14,
+          "a_only": 15,
           "b_only": 0,
-          "p_value": 0.0001220703125
+          "p_value": 6.103515625e-05
         },
         "TACT-dev_vs_CISC-devT": {
-          "a_only": 14,
+          "a_only": 15,
           "b_only": 0,
-          "p_value": 0.0001220703125
+          "p_value": 6.103515625e-05
         },
         "TACT-dev_vs_SC": {
-          "a_only": 82,
+          "a_only": 90,
           "b_only": 0,
-          "p_value": 4.1359030627651384e-25
+          "p_value": 1.6155871338926322e-27
         },
         "TACT-LF_vs_SC": {
-          "a_only": 82,
+          "a_only": 90,
           "b_only": 0,
-          "p_value": 4.1359030627651384e-25
+          "p_value": 1.6155871338926322e-27
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 82,
+          "a_only": 90,
           "b_only": 0,
-          "p_value": 4.1359030627651384e-25
+          "p_value": 1.6155871338926322e-27
         }
       }
     },
     "monotone_overconf": {
       "acc": {
-        "SC": 0.795,
-        "CISC(g=0.25)": 0.9525,
-        "CISC(g=0.5)": 0.985,
+        "SC": 0.775,
+        "CISC(g=0.25)": 0.9425,
+        "CISC(g=0.5)": 0.99,
         "CISC(g=1.0)": 1.0,
         "CISC(g=2.0)": 1.0,
         "CISC(g=4.0)": 1.0,
-        "ECE-gate": 0.795,
+        "ECE-gate": 0.775,
         "CISC-devT": 1.0,
         "SignGrid-dev": 1.0,
         "TACT-dev": 1.0,
@@ -1125,13 +1125,13 @@
         "TACT-dev": 4.0,
         "TACT-LF": 2.0,
         "TACT-semi": 2.0,
-        "CISC-devT": 1.0,
-        "SignGrid-dev": 1.0
+        "CISC-devT": 2.0,
+        "SignGrid-dev": 2.0
       },
       "tact_dev_diag": {
         "d_hat": 1.0,
-        "se": 0.022607658706146685,
-        "z": 44.232797964528494,
+        "se": 0.022810343864166003,
+        "z": 43.83975997709328,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -1141,15 +1141,15 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.729602510460251,
-        "se_raw": 0.05091547831620245,
-        "z_raw": 14.329679983151117,
-        "alpha_split_half": 0.7253571428571428,
-        "k_eff_wrong": 2.4300206214130173,
-        "p_hat": 0.845924323253397,
-        "attenuation_used": 0.7313097526000887,
-        "psi_margin_decoupling": -0.30373037303730366,
-        "n_gated": 140
+        "d_raw": 0.8105888299216578,
+        "se_raw": 0.04214109248863764,
+        "z_raw": 19.235116653423592,
+        "alpha_split_half": 0.6306896551724138,
+        "k_eff_wrong": 2.3799773949863297,
+        "p_hat": 0.7814183957086074,
+        "attenuation_used": 0.6140901831892887,
+        "psi_margin_decoupling": -0.26684782608695656,
+        "n_gated": 145
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
@@ -1163,31 +1163,31 @@
           "p_value": 1.0
         },
         "TACT-dev_vs_SC": {
-          "a_only": 82,
+          "a_only": 90,
           "b_only": 0,
-          "p_value": 4.1359030627651384e-25
+          "p_value": 1.6155871338926322e-27
         },
         "TACT-LF_vs_SC": {
-          "a_only": 82,
+          "a_only": 90,
           "b_only": 0,
-          "p_value": 4.1359030627651384e-25
+          "p_value": 1.6155871338926322e-27
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 82,
+          "a_only": 90,
           "b_only": 0,
-          "p_value": 4.1359030627651384e-25
+          "p_value": 1.6155871338926322e-27
         }
       }
     },
     "monotone_power": {
       "acc": {
-        "SC": 0.795,
+        "SC": 0.775,
         "CISC(g=0.25)": 0.9925,
         "CISC(g=0.5)": 1.0,
         "CISC(g=1.0)": 1.0,
         "CISC(g=2.0)": 1.0,
         "CISC(g=4.0)": 1.0,
-        "ECE-gate": 0.795,
+        "ECE-gate": 0.775,
         "CISC-devT": 1.0,
         "SignGrid-dev": 1.0,
         "TACT-dev": 1.0,
@@ -1207,8 +1207,8 @@
       },
       "tact_dev_diag": {
         "d_hat": 1.0,
-        "se": 0.022607658706146685,
-        "z": 44.232797964528494,
+        "se": 0.022810343864166003,
+        "z": 43.83975997709328,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -1218,15 +1218,15 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.729602510460251,
-        "se_raw": 0.05091547831620245,
-        "z_raw": 14.329679983151117,
-        "alpha_split_half": 0.7253571428571428,
-        "k_eff_wrong": 2.4300206214130173,
-        "p_hat": 0.845924323253397,
-        "attenuation_used": 0.7313097526000887,
-        "psi_margin_decoupling": -0.30373037303730366,
-        "n_gated": 140
+        "d_raw": 0.8105888299216578,
+        "se_raw": 0.04214109248863764,
+        "z_raw": 19.235116653423592,
+        "alpha_split_half": 0.6306896551724138,
+        "k_eff_wrong": 2.3799773949863297,
+        "p_hat": 0.7814183957086074,
+        "attenuation_used": 0.6140901831892887,
+        "psi_margin_decoupling": -0.26684782608695656,
+        "n_gated": 145
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
@@ -1240,39 +1240,39 @@
           "p_value": 1.0
         },
         "TACT-dev_vs_SC": {
-          "a_only": 82,
+          "a_only": 90,
           "b_only": 0,
-          "p_value": 4.1359030627651384e-25
+          "p_value": 1.6155871338926322e-27
         },
         "TACT-LF_vs_SC": {
-          "a_only": 82,
+          "a_only": 90,
           "b_only": 0,
-          "p_value": 4.1359030627651384e-25
+          "p_value": 1.6155871338926322e-27
         },
         "TACT-LF_vs_ECE-gate": {
-          "a_only": 82,
+          "a_only": 90,
           "b_only": 0,
-          "p_value": 4.1359030627651384e-25
+          "p_value": 1.6155871338926322e-27
         }
       }
     },
     "heterogeneous_kappa": {
       "acc": {
-        "SC": 0.81,
-        "CISC(g=0.25)": 0.7325,
-        "CISC(g=0.5)": 0.6775,
-        "CISC(g=1.0)": 0.635,
-        "CISC(g=2.0)": 0.5975,
-        "CISC(g=4.0)": 0.545,
-        "ECE-gate": 0.81,
-        "CISC-devT": 0.81,
-        "SignGrid-dev": 0.81,
-        "TACT-dev": 0.81,
-        "TACT-LF": 0.81,
-        "TACT-semi": 0.81
+        "SC": 0.765,
+        "CISC(g=0.25)": 0.72,
+        "CISC(g=0.5)": 0.6825,
+        "CISC(g=1.0)": 0.6075,
+        "CISC(g=2.0)": 0.56,
+        "CISC(g=4.0)": 0.52,
+        "ECE-gate": 0.765,
+        "CISC-devT": 0.765,
+        "SignGrid-dev": 0.765,
+        "TACT-dev": 0.765,
+        "TACT-LF": 0.765,
+        "TACT-semi": 0.765
       },
       "oracle": {
-        "acc": 0.81,
+        "acc": 0.765,
         "gamma": 0.0
       },
       "gamma": {
@@ -1283,9 +1283,9 @@
         "SignGrid-dev": 0.0
       },
       "tact_dev_diag": {
-        "d_hat": -0.0476746448725433,
-        "se": 0.06497609111918995,
-        "z": -0.73372596060127,
+        "d_hat": -0.04856641310708017,
+        "se": 0.06345981079857668,
+        "z": -0.7653097684333066,
         "n_items": 200
       },
       "tact_lf_diag": {
@@ -1295,15 +1295,15 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": 0.06985098456625864,
-        "se_raw": 0.07537841892488167,
-        "z_raw": 0.9266708636575225,
-        "alpha_split_half": 0.7485611510791367,
-        "k_eff_wrong": 2.3797862770838925,
-        "p_hat": 0.8604523544851873,
-        "attenuation_used": 0.7593477732797501,
-        "psi_margin_decoupling": -0.12857142857142856,
-        "n_gated": 139
+        "d_raw": -0.05151688609044076,
+        "se_raw": 0.07462630378142625,
+        "z_raw": -0.6903314713445958,
+        "alpha_split_half": 0.6437984496124031,
+        "k_eff_wrong": 2.3797586973021763,
+        "p_hat": 0.7908309005523948,
+        "attenuation_used": 0.635947102390023,
+        "psi_margin_decoupling": -0.2531006937145259,
+        "n_gated": 129
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
@@ -1335,35 +1335,35 @@
     },
     "confident_echo": {
       "acc": {
-        "SC": 0.2,
-        "CISC(g=0.25)": 0.1925,
-        "CISC(g=0.5)": 0.2,
-        "CISC(g=1.0)": 0.145,
-        "CISC(g=2.0)": 0.1025,
+        "SC": 0.19,
+        "CISC(g=0.25)": 0.1825,
+        "CISC(g=0.5)": 0.1825,
+        "CISC(g=1.0)": 0.1525,
+        "CISC(g=2.0)": 0.1125,
         "CISC(g=4.0)": 0.0575,
-        "ECE-gate": 0.2,
-        "CISC-devT": 0.2,
-        "SignGrid-dev": 0.55,
-        "TACT-dev": 0.585,
-        "TACT-LF": 0.2,
-        "TACT-semi": 0.2
+        "ECE-gate": 0.19,
+        "CISC-devT": 0.19,
+        "SignGrid-dev": 0.5675,
+        "TACT-dev": 0.615,
+        "TACT-LF": 0.19,
+        "TACT-semi": 0.19
       },
       "oracle": {
-        "acc": 0.55,
+        "acc": 0.5675,
         "gamma": -1.0
       },
       "gamma": {
-        "TACT-dev": -1.1980115667009015,
+        "TACT-dev": -1.2884592333865152,
         "TACT-LF": 0.0,
         "TACT-semi": 0.0,
         "CISC-devT": 0.0,
         "SignGrid-dev": -1.0
       },
       "tact_dev_diag": {
-        "d_hat": -0.5493941261039228,
-        "se": 0.023224100240614495,
-        "z": -23.656207147398455,
-        "n_items": 199
+        "d_hat": -0.5765511684125705,
+        "se": 0.023016766332935742,
+        "z": -25.049181977728864,
+        "n_items": 200
       },
       "tact_lf_diag": {
         "alarms": {
@@ -1372,31 +1372,31 @@
           "E2_margin_decoupling": false,
           "E3_root_ambiguity": false
         },
-        "d_raw": -0.5636506323089132,
-        "se_raw": 0.0327255204654909,
-        "z_raw": -17.223580382878357,
-        "alpha_split_half": 0.9441666666666667,
-        "k_eff_wrong": 1.0966666666666667,
-        "p_hat": 0.9712957103907817,
-        "attenuation_used": 0.9540098931846903,
-        "psi_margin_decoupling": -0.2997866287339972,
-        "n_gated": 120
+        "d_raw": -0.5625706047229924,
+        "se_raw": 0.031931111874749035,
+        "z_raw": -17.618259173989816,
+        "alpha_split_half": 0.9221311475409836,
+        "k_eff_wrong": 1.1098360655737705,
+        "p_hat": 0.9595070294463395,
+        "attenuation_used": 0.9358079984260299,
+        "psi_margin_decoupling": -0.2107843137254901,
+        "n_gated": 122
       },
       "paired": {
         "TACT-dev_vs_SignGrid": {
-          "a_only": 21,
-          "b_only": 7,
-          "p_value": 0.012540951371192932
+          "a_only": 31,
+          "b_only": 12,
+          "p_value": 0.005401572654591291
         },
         "TACT-dev_vs_CISC-devT": {
-          "a_only": 164,
-          "b_only": 10,
-          "p_value": 4.787244158587412e-37
+          "a_only": 179,
+          "b_only": 9,
+          "p_value": 3.570606180072039e-42
         },
         "TACT-dev_vs_SC": {
-          "a_only": 164,
-          "b_only": 10,
-          "p_value": 4.787244158587412e-37
+          "a_only": 179,
+          "b_only": 9,
+          "p_value": 3.570606180072039e-42
         },
         "TACT-LF_vs_SC": {
           "a_only": 0,

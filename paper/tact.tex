@@ -47,8 +47,8 @@ sign from agreement pseudo-labels under an attenuation identity that
 guarantees sign consistency while the plurality-error rate stays below one
 half; past that boundary it mis-signs, which the paper measures and reports.
 On a synthetic-oracle harness it recovers anti-correlated channels that pin
-every published protocol to the majority floor ($1.000$ vs.\ $0.807$) and
-cracks the heterogeneity floor with zero paired losses ($0.940$ vs.\ $0.808$).
+every published protocol to the majority floor ($1.000$ vs.\ $0.762$) and
+cracks the heterogeneity floor with zero paired losses ($0.923$ vs.\ $0.785$).
 Against a dev-picked \emph{signed} grid, which the sweep shows is a far
 stronger baseline than the published protocols, the advantage narrows to
 distortion, echo, and label-free operation. Two real-trace campaigns then
@@ -71,7 +71,7 @@ This refinement carries a structural fragility that, to the author's knowledge, 
 
 This paper frames the problem as estimating one scalar: the \emph{signed} within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent. The contributions are:
 
-\textbf{C1: Signed, analytically-tempered confidence weighting.} \TACT{} votes with weights $w_i=\exp(\gamma\,\varphi_i)$, where $\varphi_i$ is the standardized van der Waerden score of trace $i$'s within-item confidence midrank, and $\gamma$ is \emph{derived}, not grid-searched: a pooled van~Elteren Somers' $D$ statistic (equal to $2\cdot\mathrm{WQD}-1$) with an exact tie-corrected null variance and an item-clustered jackknife standard error, shrunk by positive-part James--Stein with a significance floor, then mapped through a Bayes-discriminant link with a mixture-variance correction. The construction carries exact anchors: inside the shrinkage dead zone the vote is \emph{bit-identical} to plain \SC{} (a shared code path), and the log-value feature map reproduces CISC-power exactly (Section~\ref{sec:method}). Because $\varphi$ depends on confidence only through within-item ranks, the entire method is invariant to every strictly monotone distortion of the confidence scale; under monotone compression it beats the best exponent in the tested raw-value grid $\{0.25,0.5,1,2,4\}$ ($1.000$ vs.\ $0.965$); that grid optimum lies at the largest exponent tried, so the comparison bounds the grid, not the whole family.
+\textbf{C1: Signed, analytically-tempered confidence weighting.} \TACT{} votes with weights $w_i=\exp(\gamma\,\varphi_i)$, where $\varphi_i$ is the standardized van der Waerden score of trace $i$'s within-item confidence midrank, and $\gamma$ is \emph{derived}, not grid-searched: a pooled van~Elteren Somers' $D$ statistic (equal to $2\cdot\mathrm{WQD}-1$) with an exact tie-corrected null variance and an item-clustered jackknife standard error, shrunk by positive-part James--Stein with a significance floor, then mapped through a Bayes-discriminant link with a mixture-variance correction. The construction carries exact anchors: inside the shrinkage dead zone the vote is \emph{bit-identical} to plain \SC{} (a shared code path), and the log-value feature map reproduces CISC-power exactly (Section~\ref{sec:method}). Because $\varphi$ depends on confidence only through within-item ranks, the entire method is invariant to every strictly monotone distortion of the confidence scale; under monotone compression it beats the best exponent in the tested raw-value grid $\{0.25,0.5,1,2,4\}$ ($1.000$ vs.\ $0.963$); that grid optimum lies at the largest exponent tried, so the comparison bounds the grid, not the whole family.
 
 \textbf{C2: Label-free estimation of the signed reliability.} The crowdsourcing lineage estimates annotator reliability from cross-annotator covariance \cite{dawid1979maximum,parisi2014ranking}; a single exchangeable confidence channel from one model offers no such structure. The signed discrimination is estimated from \emph{agreement pseudo-labels} (deduplication-weighted plurality per item) with a proven class-conditional-noise attenuation identity, $\mathbb{E}[\Dhat_g]=(1-2\bar{\rho})\,D$: the label-free estimate can only \emph{under}-trust, never mis-sign, whenever the pair-weighted plurality-error rate $\bar{\rho}$ is below $1/2$. A split-half agreement inversion de-attenuates conservatively, and sign-aware alarms return the method to plain \SC{} when identifiability is threatened. On the coupling sweep the label-free variant matches the 200-label variant nearly point-for-point, including full recovery of negative channels (Section~\ref{sec:results}).
 
@@ -343,10 +343,10 @@ analytic map is not better at choosing a magnitude on these cells. Its
 advantage over the grid is elsewhere, in the three cells named in C4, and the
 one place the interpolation itself pays is confident echo, where $\gamma=-1.198$
 falls between grid points and beats the grid optimum $\gamma=-1$
-($0.585$ vs.\ $0.550$).
+($0.615$ vs.\ $0.568$).
 
 \subsection{Rank invariance where raw values fail}
-Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confidences huddle near $0.5$, so every $c^{\gamma}$-family weight is nearly uniform: even the \emph{oracle} over raw-value policies reaches only $0.965$. \TACT's rank scores are untouched by the distortion and both variants reach $1.000$. Under the confident echo, dev labels reveal the inversion (high confidence $\Rightarrow$ wrong) and \TACT-dev counters with $\gamma=-1.20$, the best result in the field ($0.585$; three times the \SC{} floor); label-free, the duplicate-collapse alarm fires and the method correctly refuses---by Proposition~\ref{prop:twoworld} no label-free method could do better than a coin flip on the sign here, and pretending otherwise would be the real failure.
+Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confidences huddle near $0.5$, so every $c^{\gamma}$-family weight is nearly uniform: even the \emph{oracle} over raw-value policies reaches only $0.963$. \TACT's rank scores are untouched by the distortion and both variants reach $1.000$. Under the confident echo, dev labels reveal the inversion (high confidence $\Rightarrow$ wrong) and \TACT-dev counters with $\gamma=-1.20$, the best result in the field ($0.615$; three times the \SC{} floor); label-free, the duplicate-collapse alarm fires and the method correctly refuses---by Proposition~\ref{prop:twoworld} no label-free method could do better than a coin flip on the sign here, and pretending otherwise would be the real failure.
 
 \begin{figure}[t]
 \centering
@@ -356,7 +356,7 @@ Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confide
 \end{figure}
 
 \subsection{Heterogeneity}
-Table~\ref{tab:group} and Fig.~\ref{fig:group} give the group study. In the covariate-structured cell, per-group \TACT{} recovers each group's signed coupling (dev $\{+4.0,0.0,-4.0\}$, label-free $\{+2.0,0.0,-2.0\}$, the $\kappa{=}0$ group correctly dead-zoned---and cracks the floor that provably binds every global policy: the label-free variant reaches $0.940$, within $0.007$ of the per-item link oracle, with \emph{zero} paired losses to \SC{} over $600$ items ($+79/-0$, $p=3.3\times10^{-24}$). In the i.i.d.\ cell every legitimate method sits at the floor with zero discordant pairs, and the naive self-referential control lands slightly below it---the empirical face of Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld}. One observation is reported as-is rather than tuned for: the label-free variant outperforms the dev variant in the grouped cell ($0.940$ vs.\ $0.923$) because its lower exponent cap ($2$ vs.\ $4$) regularizes better when $|D|\approx1$; cap robustness is left as an ablation.
+Table~\ref{tab:group} and Fig.~\ref{fig:group} give the group study. In the covariate-structured cell, per-group \TACT{} recovers each group's signed coupling (dev $\{+4.0,0.0,-4.0\}$, label-free $\{+2.0,0.0,-2.0\}$, the $\kappa{=}0$ group correctly dead-zoned---and cracks the floor that provably binds every global policy: the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle, with \emph{zero} paired losses to \SC{} over $600$ items ($+83/-0$, $p=2.1\times10^{-25}$). In the i.i.d.\ cell every legitimate method sits at the floor with zero discordant pairs, and the naive self-referential control lands slightly below it---the empirical face of Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld}. One observation is reported as-is rather than tuned for: the label-free variant outperforms the dev variant in the grouped cell ($0.923$ vs.\ $0.927$) because its lower exponent cap ($2$ vs.\ $4$) regularizes better when $|D|\approx1$; cap robustness is left as an ablation.
 
 \begin{table}[t]
 \centering
@@ -380,12 +380,12 @@ Per-item link oracle (ceiling) & .947 & .983\\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figs/group_eval.png}
-\caption{Structured vs.\ i.i.d.\ heterogeneity. Left: with an observable covariate, per-group \TACT{} (label-free) approaches the per-item oracle from the $0.808$ floor with zero losses to \SC. Right: the provably closed i.i.d.\ cell---every legitimate method at the floor; the negative control slightly below it.}
+\caption{Structured vs.\ i.i.d.\ heterogeneity. Left: with an observable covariate, per-group \TACT{} (label-free) approaches the per-item oracle from the $0.785$ floor with zero losses to \SC. Right: the provably closed i.i.d.\ cell---every legitimate method at the floor; the negative control slightly below it.}
 \label{fig:group}
 \end{figure}
 
 \subsection{Small dev sets and falsifiers}
-With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; nowhere more than the pre-registered $0.02$ accuracy tolerance below \SC), F3 (sweep means $0.954$ vs.\ $0.811$), and F4 (both grid baselines trail by $0.035$ on the distortion and echo cells, and neither can operate without labels). Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.005$--$0.015$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.035$), echo ($+0.035$), and label-free operation, which no grid can perform.
+With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; nowhere more than the pre-registered $0.02$ accuracy tolerance below \SC), F3 (sweep means $0.947$ vs.\ $0.760$), and F4 (both grid baselines trail by $0.032$ and $0.048$ on the distortion and echo cells, and neither can operate without labels). Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.005$--$0.015$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.037$), echo ($+0.047$), and label-free operation, which no grid can perform.
 
 \subsection{Verification of the implementation}\label{sec:tests}
 Because every claim in Sections~\ref{sec:method}--\ref{sec:hetero} is a
@@ -428,6 +428,40 @@ routine directly. And the last two rows are counter-tests that assert
 \emph{failure} of rejected alternatives --- the Kish effective-sample-size
 formulation and the claim that the shipped default honours the SAFE stopping
 guarantee --- so that neither can be silently reinstated by a later change.
+
+
+\subsection{A harness artifact, and dispersion across seeds}\label{sec:seeds}
+Two corrections to the synthetic results, both found by re-running what had
+been single-seed measurements.
+
+\emph{Tie-breaking was rewarding \SC{} for free.} The generator assigned the
+correct answer the code $0$ on every item, and \texttt{argmax} breaks ties
+toward the lowest index, so on any item whose vote was tied plain \SC{} chose
+correctly by construction: $67.7\%$ on near-tied items against $50.4\%$ for a
+random tie-break, with $31.8\%$ of items tied at $K{=}15$. Every method that
+perturbs the weights off integers forfeits that subsidy, so the artifact
+inflated the baseline and penalised the proposed method. It also produced a
+spurious falsifier: at $\kappa=0$, \TACT-dev averaged $0.797$ against \SC{} at
+$0.818$ across ten seeds, tripping F2, while the exponents responsible were
+$|\gamma|\le0.05$. The items were near-ties whose tie-break had moved, not
+items the exponent had reweighted. Answer codes are now permuted per item.
+With the artifact removed, $\kappa=0$ gives $0.758$ for both methods and
+heterogeneous-$\kappa$ gives $0.768$ for both: the dead zone behaves as
+Proposition~\ref{prop:sc} states. All synthetic numbers in this paper are
+post-fix.
+
+\emph{Dispersion.} Ten seeds per cell, $400$ paired items each, bootstrap over
+seeds. The extremes are stable to the third decimal ($1.000\pm0.001$ at
+$|\kappa|\ge0.4$). The mid-range deficit against SignGrid-dev is small but
+real rather than noise: $-0.013$ $[-0.017,-0.009]$ at $\kappa=-0.2$, $-0.016$
+$[-0.024,-0.009]$ at $-0.1$, $-0.012$ $[-0.018,-0.005]$ at $+0.1$, $-0.013$
+$[-0.019,-0.008]$ at $+0.2$, all $p<0.001$. So is the advantage where the
+paper claims it: $+0.032$ $[+0.027,+0.037]$ on monotone compression and
+$+0.048$ $[+0.037,+0.059]$ on confident echo. The one cell that changes sign
+under the fix is heterogeneous-$\kappa$, now $+0.011$ $[0.000,+0.031]$ rather
+than a loss. Reporting a single seed would have hidden both the artifact and
+the fact that the mid-range gap is systematic.
+
 
 \subsection{Real-trace validation}\label{sec:real}
 Validation on real traces used Claude Haiku 4.5 as the frozen model: 100 items
