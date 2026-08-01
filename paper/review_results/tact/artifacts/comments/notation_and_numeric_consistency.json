@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Cross-section numeric consistency should be reconciled",
+    "quote": "Written out, the method is a single expression whose exponent reduces to γ = z √ 2 + z2 with z the probit of the shrunk pooled AUC, and it carries exact anchors: inside the shrinkage dead zone the vote is bit-identical to plain self-consistency, and a log-value feature map reproduces CISC- power.",
+    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "discussion",
+      "result"
+    ],
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false
+  }
+]

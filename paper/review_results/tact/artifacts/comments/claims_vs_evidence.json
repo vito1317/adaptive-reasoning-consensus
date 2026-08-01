@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Abstract and conclusion claims need explicit evidence traceability",
+    "quote": "The dev-calibrated variant must therefore be positioned honestly: CISC’s tuned temperature is already a dev- calibrated sc↔CISC interpolation, so the novelty of tact- dev lies in the sign, the rank invariance, and the analytic (grid-free) map, not in dev calibration itself.",
+    "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results",
+      "conclusion"
+    ],
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": false
+  }
+]

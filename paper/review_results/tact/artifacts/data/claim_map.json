@@ -1,0 +1,75 @@
+{
+  "headline_claims": [
+    "This paper presents tact (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within- item discrimination of the channel: a pooled van Elteren Somers’ D rank statistic with an item-clustered standard error, passed through positive-part James–Stein shrinkage and a Bayes-discriminant link.",
+    "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent."
+  ],
+  "closure_targets": [],
+  "section_claims": {
+    "abstract": [
+      "This paper presents tact (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within- item discrimination of the channel: a pooled van Elteren Somers’ D rank statistic with an item-clustered standard error, passed through positive-part James–Stein shrinkage and a Bayes-discriminant link.",
+      "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent."
+    ]
+  },
+  "claim_candidates": [
+    {
+      "id": "abstract:1",
+      "section_key": "abstract",
+      "claim": "This paper presents tact (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within- item discrimination of the channel: a pooled van Elteren Somers’ D rank statistic with an item-clustered standard error, passed through positive-part James–Stein shrinkage and a Bayes-discriminant link.",
+      "evidence_anchor": [],
+      "claim_strength": "unsupported",
+      "missing_evidence": [
+        "add an evidence anchor or soften the claim boundary"
+      ],
+      "allowed_wording": "This paper presents tact (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within- item discrimination of the channel: a pooled van Elteren Somers’ D rank statistic with an item-clustered standard error, passed through positive-part James–Stein shrinkage and a Bayes-discriminant link.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    },
+    {
+      "id": "abstract:2",
+      "section_key": "abstract",
+      "claim": "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+      "evidence_anchor": [],
+      "claim_strength": "unsupported",
+      "missing_evidence": [
+        "add an evidence anchor or soften the claim boundary"
+      ],
+      "allowed_wording": "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    }
+  ],
+  "section_claim_candidates": {
+    "abstract": [
+      {
+        "id": "abstract:1",
+        "section_key": "abstract",
+        "claim": "This paper presents tact (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within- item discrimination of the channel: a pooled van Elteren Somers’ D rank statistic with an item-clustered standard error, passed through positive-part James–Stein shrinkage and a Bayes-discriminant link.",
+        "evidence_anchor": [],
+        "claim_strength": "unsupported",
+        "missing_evidence": [
+          "add an evidence anchor or soften the claim boundary"
+        ],
+        "allowed_wording": "This paper presents tact (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within- item discrimination of the channel: a pooled van Elteren Somers’ D rank statistic with an item-clustered standard error, passed through positive-part James–Stein shrinkage and a Bayes-discriminant link.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      },
+      {
+        "id": "abstract:2",
+        "section_key": "abstract",
+        "claim": "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+        "evidence_anchor": [],
+        "claim_strength": "unsupported",
+        "missing_evidence": [
+          "add an evidence anchor or soften the claim boundary"
+        ],
+        "allowed_wording": "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      }
+    ]
+  }
+}

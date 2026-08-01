@@ -1,0 +1,39 @@
+[
+  {
+    "title": "Cross-section numeric consistency should be reconciled",
+    "quote": "Written out, the method is a single expression whose exponent reduces to γ = z √ 2 + z2 with z the probit of the shrunk pooled AUC, and it carries exact anchors: inside the shrinkage dead zone the vote is bit-identical to plain self-consistency, and a log-value feature map reproduces CISC- power.",
+    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "discussion",
+      "result"
+    ],
+    "root_cause_key": "cross-section-numeric-consistency-should-be-reconciled",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": false
+  },
+  {
+    "title": "Comparison protocol should make fairness assumptions explicit",
+    "quote": "Under this accounting, abstention is not a conservative compromise but the only correct default: on the confirmatory substrate the largest measured effect of acting anyway was negative (the best-single-confidence baseline loses 4.5 points where tact’s dead zone holds it exactly at the sc floor).",
+    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method",
+      "experiment"
+    ],
+    "root_cause_key": "comparison-protocol-should-make-fairness-assumptions-explicit",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": false
+  }
+]

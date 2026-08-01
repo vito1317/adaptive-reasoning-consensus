@@ -389,34 +389,121 @@ pools, not more traces per item.
 account for $49\%$ of all reports, activating the tie-safe degeneration path of
 \eqref{eq:vdw} on many items.
 
-\emph{(e) A second campaign on harder items confirms the prediction of (c).}
-A pre-registered follow-up collected $119$ MATH level-5 items \cite{math500,lightman2024verify}
-$\times$ $16$ traces from the same frozen model (sign set $30$, evaluation set
-$89$). The channel prediction came true: pooled $\Dhat=+0.250$,
-$\mathrm{SE}=0.098$ ($z=+2.54$), the first real-trace confirmation that the
-verbalized-confidence channel carries positive within-item discrimination.
-Saturation, however, still forecloses the aggregation endpoint: per-trace
-accuracy is $0.819$, \SC{} scores $0.888$, the decisive stratum is $10$ of $89$
-items, and the correct answer is present in the pool on only $4$ of those --
-so the in-pool \emph{oracle} tops out at $+4/-0$, exact one-sided
-$p=0.0625>0.05$: the registered endpoint was unpassable for \emph{any}
-aggregation method on the realized substrate. \TACT{} again abstained
-correctly ($\gamma=0$; alarms E4 and E2 both fired on the label-free path,
-and the $30$-item sign set contained too few informative items for the
-semi-label-free sign), remaining bit-identical to \SC{} while the
-best-single-confidence baseline lost $4.5$ points by acting ($0.843$).
-One methodological caveat from this campaign transfers beyond \TACT{}:
-measured difficulty depended strongly on the collection protocol. A
-$30$-problem-per-call probe put level-5 plurality accuracy at $0.40$, while
-the $15$-problem-per-call confirmatory run yielded $0.888$ on the same
-stratum, so batch size must be reported as an experimental parameter
-whenever traces are collected in batches.
+Scope of this first campaign: one model, two benchmarks, $K{=}12$. It confirms
+the null-direction prediction and the calibration--discrimination argument, and
+it is not evidence that \TACT{} improves accuracy, since the channel carried no
+signal to exploit. Finding (c) predicts what to do about that, and
+Section~\ref{sec:hard} does it.
 
-Scope: one model, two benchmarks, $K{=}12$. The result is a clean confirmation
-of the null-direction prediction and of the calibration--discrimination
-argument; it is \emph{not} evidence that \TACT{} improves accuracy on real
-traces, which remains untested for want of a benchmark where the channel is
-both informative and the model uncertain.
+\subsection{Confirmatory campaign on harder items}\label{sec:hard}
+Finding (c) predicts that a channel measured as null on saturated benchmarks
+should become measurable on items the model finds genuinely uncertain. A
+pre-registered follow-up tests that prediction: $119$ MATH level-5 problems
+\cite{math500,lightman2024verify}, $16$ traces each from the same frozen
+model, a $30$-item sign set and an $89$-item evaluation set drawn from the
+registered list before any trace was collected, and five hypotheses (H1--H5)
+fixed in advance.
+
+\emph{The channel is real.} On the evaluation set the pooled statistic is
+$\Dhat=+0.250$ with $\mathrm{SE}=0.098$, so $z=+2.54$ and H1 passes. This is
+the first real-trace evidence that verbalized confidence carries positive
+within-item discrimination; the same measurement on GSM8K/CommonsenseQA gave
+$-0.219$ ($z=-1.24$).
+
+\emph{The endpoint was unpassable for any method.} The realized substrate
+saturated again: per-trace accuracy $0.819$, \SC{} $0.888$, a decisive
+stratum of $10$ of $89$ items, and the correct answer present in the pool on
+only $4$ of those. The in-pool \emph{oracle} therefore tops out at $+4/-0$,
+exact one-sided $p=0.0625$. H2 fails, but it fails for every conceivable
+aggregation method including a perfect one, so the failure is a property of
+the substrate rather than of the estimator.
+
+\emph{Abstention behaved as designed.} \TACT{} returned $\gamma=0$, with
+alarms E4 and E2 firing on the label-free path and the sign set holding too
+few informative items to supply a semi-label-free sign. The vote is therefore
+bit-identical to \SC{} at $0.888$ (H3, H4 pass). The cost of acting anyway is
+visible in the same table: best-single-confidence, the trivial baseline that
+always trusts the channel, loses $4.5$ points at $0.843$.
+
+\begin{table}[t]
+\caption{Confirmatory campaign, MATH level-5 evaluation set ($89$ items,
+$K{=}16$). Every method replays the same cached pools. The duplication
+channel is inert because no reasoning text was collected, so dedup-\SC{}
+coincides with \SC{} by construction.}
+\label{tab:hard}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l c c}
+\toprule
+Method & Accuracy & net vs.\ \SC \\
+\midrule
+\SC{} / dedup-\SC{} / CISC-linear & $0.888$ & --- \\
+\TACT-LF & $0.888$ & $+0/-0$ \\
+\TACT-semi-LF & $0.888$ & $+0/-0$ \\
+best-single-confidence & $0.843$ & $+1/-5$ \\
+\midrule
+in-pool oracle (ceiling) & $0.933$ & $+4/-0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+One caveat from this campaign transfers beyond \TACT. Measured difficulty
+depended on the collection protocol: a $30$-problem-per-call probe put
+level-5 plurality accuracy at $0.40$, while the $15$-problem-per-call
+confirmatory run yielded $0.888$ on the same stratum. Batch size belongs in
+the experimental record whenever traces are collected in batches.
+
+\subsection{How wide is the addressable stratum?}\label{sec:window}
+Both campaigns failed their endpoint for the same reason, which suggests
+measuring that reason directly. Define the \emph{window} as the fraction of
+items where the plurality is wrong \emph{and} the correct answer is present
+in the pool: the ceiling for any label-free aggregation method, since nothing
+outside it can be changed.
+
+The window was measured on five substrates spanning two domains
+(Table~\ref{tab:window}). For code generation, where an executable test suite
+supplies per-sample ground truth and the window might reasonably be expected
+to widen, $40$ LeetCode Medium/Hard problems \cite{leetcodedataset} were
+solved $8$ times each and graded against the benchmark's hidden suites, with
+the baseline taken as the largest behavioural cluster over probe inputs
+(never expected outputs). The window is $3/40=7.5\%$ (CI$_{95}$
+$2.6$--$19.9\%$): wider than label-free QA, but the same order, and the
+composition is the same shape at $75\%$ saturated, $18\%$ capability wall,
+$8\%$ rescuable. Nor does budget open it. The seven capability-wall problems
+produced zero correct solutions in $224$ further attempts (per-problem $95\%$
+upper bound on the pass rate $0.088$), and extrapolating oracle@$N$ shows the
+window saturating by $N{=}32$.
+
+\begin{table}[t]
+\caption{The addressable stratum across substrates. Rows marked $\dagger$ are
+measured here; HumanEval+/MBPP+ is recomputed from published oracle-minus-
+selector tables. As items harden they pass from saturated to
+capability-limited without the window widening.}
+\label{tab:window}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l l c}
+\toprule
+Domain & Substrate & Window \\
+\midrule
+QA, label-free & GSM8K / CommonsenseQA$^\dagger$ & $12\%$ informative, $9\%$ decisive \\
+QA, label-free & MATH level-5$^\dagger$ & $11\%$ decisive, $4\%$ rescuable \\
+QA, label-free & AIME / AMC$^\dagger$ & $23\%$ decisive, $3\%$ rescuable \\
+Code, executable & HumanEval+ / MBPP+ & $3.56\%$ \\
+Code, executable & LeetCode Med/Hard$^\dagger$ & $7.5\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+One precaution belongs with these numbers, because omitting it would have
+inverted them. The grading harness was validated against the benchmark's own
+reference solutions before any candidate was scored: $178$ of $180$ pass
+under the sandbox's resource limits. An earlier version of the same harness
+failed $100\%$ of executions because the host rejects one of the requested
+limits outright, and that condition presents as a candidate failure rather
+than as an error. Studies that grade by execution should report their
+reference-solution pass rate for the same reason a calibration curve is
+reported: without it, a broken harness and a capability wall look identical.
 
 \section{Discussion and Limitations}\label{sec:limits}
 
@@ -443,47 +530,21 @@ than an optional refinement.
 
 \textbf{Global exponent per group.} Within a group, \TACT{} ships one exponent; per-item variation inside a group is unexploitable by Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} unless further covariates exist.
 
-\textbf{The thin window.} Measurements across three substrates (GSM8K/CSQA,
-MATH level-5, AIME/AMC; $268$ items with pools) place a structural bound on
-this entire family of methods. The stratum any label-free aggregation method
-can act on, where the plurality is wrong \emph{and} the correct answer is
-present in the pool \emph{and} the signal is separable, occupied $2$--$5\%$ of items at
-\emph{every} difficulty level: as items harden, they pass directly from
-saturated (plurality right) to capability-limited (the correct answer never
-sampled: $0$ of $6$ plurality-wrong AIME items had it in $16$ draws), and the
-addressable band between the two regimes does not widen. Classifying all $16$
-decisive items by error shape, $7$ were stable-wrong (a tight wrong cluster,
-the two-world regime where no label-free signal can help) and $9$ were
-scattered ($6$--$8$ distinct answers, a capability wall that diversity
-interventions cannot cross, since diversity is already maximal). Under this
-accounting, abstention is not a conservative compromise but the \emph{only}
-correct default: on the confirmatory substrate the largest measured effect of
-acting anyway was negative (the best-single-confidence baseline loses $4.5$
-points where \TACT's dead zone holds it exactly at the \SC{} floor).
-
-The natural hypothesis is that the window widens wherever an external anchor
-is cheap, since a passing test is a real per-sample signal rather than a
-model-relative one. That hypothesis was tested and does not hold. On $40$
-LeetCode Medium/Hard problems \cite{leetcodedataset} with $8$ candidate
-solutions each, graded against the benchmark's own hidden suites, the window
-(oracle minus the largest-behavioural-cluster baseline) measures
-$3/40 = 7.5\%$ (CI$_{95}$ $2.6$--$19.9\%$), against $3.56\%$ recomputed from
-published HumanEval+/MBPP+ tables and $2$--$5\%$ for label-free QA. The
-composition is the same shape as well: $75\%$ saturated, $18\%$ capability
-wall, $8\%$ rescuable. Raising the candidate budget does not open it: the
-seven capability-wall problems produced zero correct solutions in $224$
-further attempts (per-problem $95\%$ upper bound on the pass rate $0.088$),
-and extrapolating oracle@$N$ shows the window saturating by $N{=}32$.
-Executable ground truth buys a slightly wider window, not a different regime.
-One precaution deserves reporting with that number, since it nearly inverted
-it: the grading harness was first validated against the benchmark's own
-reference solutions, of which $178$ of $180$ pass under the sandbox's
-resource limits. An earlier version of the same harness failed $100\%$ of
-executions because the host rejects one of the requested limits outright, a
-condition that surfaces as a candidate failure rather than as an error. Any
-study that grades by execution should report its reference-solution pass rate
-for the same reason a calibration curve is reported: without it, a broken
-harness and a capability wall are indistinguishable.
+\textbf{The thin window.} Section~\ref{sec:window} measures the stratum this
+whole family of methods can act on at $2$--$7.5\%$ of items on every substrate
+tried, in two domains, with no widening as items harden: they pass from
+saturated straight to capability-limited. Two consequences follow for the
+method proposed here. First, abstention is not a conservative compromise but
+the only correct default, and the measured cost of acting anyway was negative
+on both real substrates (best-single-confidence loses $4.5$ points in
+Table~\ref{tab:hard} where the dead zone holds \TACT{} at the \SC{} floor).
+Second, an aggregation gain of the size reported on the synthetic harness is
+not measurable on a benchmark of a few hundred items at these window widths,
+which is why the real-trace claim in this paper is confined to the premise
+(the channel exists and is signed) and to the abstention behaviour, and does
+not extend to accuracy. Demonstrating the gain needs a (model, benchmark)
+pair whose plurality is wrong on $30$--$60\%$ of items with the correct answer
+still reachable, and no pair tried here satisfies both.
 
 \section{Conclusion}
 \TACT{} turns ``how much should this model's confidence be trusted?'' into a measured, signed, uncertainty-aware quantity with exact fallbacks at both ends, plain self-consistency when the evidence is absent and CISC when it is at full strength, and shows that the sign, long unrepresentable in this family of methods, can be recovered without any labels under stated and tested conditions. The accompanying impossibility results draw the boundary that any future per-item method must respect, and the falsification protocol, having already killed one of the author's own systems, is offered as the more portable contribution.

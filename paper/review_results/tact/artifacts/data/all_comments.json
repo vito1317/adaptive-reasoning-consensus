@@ -1,0 +1,382 @@
+[
+  {
+    "title": "Abstract and conclusion claims need explicit evidence traceability",
+    "quote": "The dev-calibrated variant must therefore be positioned honestly: CISC’s tuned temperature is already a dev- calibrated sc↔CISC interpolation, so the novelty of tact- dev lies in the sign, the rank invariance, and the analytic (grid-free) map, not in dev calibration itself.",
+    "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results",
+      "conclusion"
+    ],
+    "root_cause_key": "abstract-and-conclusion-claims-need-explicit-evidence-traceability",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Comparison protocol should make fairness assumptions explicit",
+    "quote": "Under this accounting, abstention is not a conservative compromise but the only correct default: on the confirmatory substrate the largest measured effect of acting anyway was negative (the best-single-confidence baseline loses 4.5 points where tact’s dead zone holds it exactly at the sc floor).",
+    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method",
+      "experiment"
+    ],
+    "root_cause_key": "comparison-protocol-should-make-fairness-assumptions-explicit",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Cross-section numeric consistency should be reconciled",
+    "quote": "Written out, the method is a single expression whose exponent reduces to γ = z √ 2 + z2 with z the probit of the shrunk pooled AUC, and it carries exact anchors: inside the shrinkage dead zone the vote is bit-identical to plain self-consistency, and a log-value feature map reproduces CISC- power.",
+    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "discussion",
+      "result"
+    ],
+    "root_cause_key": "cross-section-numeric-consistency-should-be-reconciled",
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "result",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "result",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "result",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Novelty claim should be grounded against the closest prior work",
+    "quote": "Related Work Confidence-weighted self-consistency.",
+    "explanation": "The paper positions itself against prior work, but the current wording should make the closest comparator and the real novelty delta explicit instead of relying on broad superiority language.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results"
+    ],
+    "root_cause_key": "novelty-claim-should-be-grounded-against-the-closest-prior-work",
+    "review_lane": "prior_art_and_novelty_grounding",
+    "gate_blocker": false,
+    "quote_verified": null
+  }
+]
