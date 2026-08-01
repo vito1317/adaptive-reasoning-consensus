@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Result claims should identify comparison scope and uncertainty",
+    "quote": "Baselines.",
+    "explanation": "The results section reports comparative performance. Confirm whether the paper states the evaluation scope, variance, and fairness conditions tightly enough for a reviewer.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "experiment",
+    "related_sections": [
+      "experiment",
+      "methods"
+    ],
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": false
+  }
+]

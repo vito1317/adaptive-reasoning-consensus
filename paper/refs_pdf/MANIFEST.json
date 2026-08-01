@@ -1,0 +1,33 @@
+{
+ "downloaded": [
+  "aggarwal2023adaptive",
+  "beyondmajority2025",
+  "borda2025",
+  "deepconf2025",
+  "fuse2026",
+  "huang2024rankcalibration",
+  "james1961estimation",
+  "kadavath2022language",
+  "karger2011iterative",
+  "kuhn2023semantic",
+  "leetcodedataset",
+  "li2023diverse",
+  "li2024escape",
+  "math500",
+  "parisi2014ranking",
+  "rasc2024",
+  "reasc2026",
+  "taubenfeld2025cisc",
+  "tian2023just",
+  "wang2023selfconsistency",
+  "whitehill2009whose",
+  "xiong2024can"
+ ],
+ "no_open_access": [
+  "dawid1979maximum",
+  "kish1965",
+  "rao1981analysis",
+  "vanelteren1960"
+ ],
+ "failed": []
+}

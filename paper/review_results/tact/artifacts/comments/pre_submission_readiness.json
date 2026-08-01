@@ -95,7 +95,7 @@
   },
   {
     "title": "Table I is placed in the Experimental Setup section but is only discussed in Results",
-    "quote": "Coupling sweep (accuracy at K = 15",
+    "quote": "TABLE I\nCoupling sweep (accuracy at K=15",
     "explanation": "Table I (the coupling sweep) floats into Sec. VI, which describes the harness, baselines and falsifiers; its first discussion is the opening line of Sec. VII-A. Readers hit a full results table before the results section begins. Moving the float, or adding a one-line forward pointer in Sec. VI, fixes it.",
     "comment_type": "presentation",
     "severity": "minor",

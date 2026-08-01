@@ -1,0 +1,120 @@
+{
+  "headline_claims": [
+    "This paper presents (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link.",
+    "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent."
+  ],
+  "closure_targets": [
+    "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy."
+  ],
+  "section_claims": {
+    "abstract": [
+      "This paper presents (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link."
+    ],
+    "introduction": [
+      "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent."
+    ],
+    "discussion": [
+      "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy."
+    ]
+  },
+  "claim_candidates": [
+    {
+      "id": "abstract:1",
+      "section_key": "abstract",
+      "claim": "This paper presents (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link.",
+      "evidence_anchor": [],
+      "claim_strength": "unsupported",
+      "missing_evidence": [
+        "add an evidence anchor or soften the claim boundary"
+      ],
+      "allowed_wording": "This paper presents (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    },
+    {
+      "id": "introduction:1",
+      "section_key": "introduction",
+      "claim": "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+      "evidence_anchor": [],
+      "claim_strength": "unsupported",
+      "missing_evidence": [
+        "add an evidence anchor or soften the claim boundary"
+      ],
+      "allowed_wording": "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    },
+    {
+      "id": "discussion:1",
+      "section_key": "discussion",
+      "claim": "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.",
+      "evidence_anchor": [
+        {
+          "type": "metric",
+          "text": "accuracy"
+        }
+      ],
+      "claim_strength": "observed",
+      "missing_evidence": [],
+      "allowed_wording": "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    }
+  ],
+  "section_claim_candidates": {
+    "abstract": [
+      {
+        "id": "abstract:1",
+        "section_key": "abstract",
+        "claim": "This paper presents (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link.",
+        "evidence_anchor": [],
+        "claim_strength": "unsupported",
+        "missing_evidence": [
+          "add an evidence anchor or soften the claim boundary"
+        ],
+        "allowed_wording": "This paper presents (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one derived from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      }
+    ],
+    "introduction": [
+      {
+        "id": "introduction:1",
+        "section_key": "introduction",
+        "claim": "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+        "evidence_anchor": [],
+        "claim_strength": "unsupported",
+        "missing_evidence": [
+          "add an evidence anchor or soften the claim boundary"
+        ],
+        "allowed_wording": "This paper frames the problem as estimating one scalar: the signed within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      }
+    ],
+    "discussion": [
+      {
+        "id": "discussion:1",
+        "section_key": "discussion",
+        "claim": "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.",
+        "evidence_anchor": [
+          {
+            "type": "metric",
+            "text": "accuracy"
+          }
+        ],
+        "claim_strength": "observed",
+        "missing_evidence": [],
+        "allowed_wording": "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      }
+    ]
+  }
+}

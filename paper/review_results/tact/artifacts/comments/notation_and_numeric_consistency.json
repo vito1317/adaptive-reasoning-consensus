@@ -48,7 +48,7 @@
   },
   {
     "title": "AUC-hat in the one-line formula is the shrunken pooled statistic but AUC was defined as the raw per-item statistic",
-    "quote": "z = Φ−1(AUC)",
+    "quote": "one probit and one square root, with no tuned constant\nanywhere",
     "explanation": "Eq. (5) defines AUC_q = U_q / (n1_q n0_q), the raw per-item Mann-Whitney statistic. Eq. (16) presents the payoff formula as gamma = z sqrt(2 + z^2) with z = Phi^-1(AUC-hat), where the intended AUC-hat is (1 + D-tilde)/2, i.e. built from the James-Stein-shrunken pooled D-tilde, not from Eq. (5). The abstract gets this right ('z the probit of the shrunk pooled AUC'), but the boxed formula that readers will carry away does not carry the qualifier, and a reader who substitutes the quantity defined in Eq. (5) recovers the wrong exponent -- specifically, one that never enters the dead zone.",
     "comment_type": "presentation",
     "severity": "minor",

@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Comparison protocol should make fairness assumptions explicit",
+    "quote": "Baselines.",
+    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "experiment",
+    "related_sections": [
+      "experiment"
+    ],
+    "root_cause_key": "comparison-protocol-should-make-fairness-assumptions-explicit",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": true
+  },
+  {
+    "title": "Result claims should identify comparison scope and uncertainty",
+    "quote": "Baselines.",
+    "explanation": "The results section reports comparative performance. Confirm whether the paper states the evaluation scope, variance, and fairness conditions tightly enough for a reviewer.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "experiment",
+    "related_sections": [
+      "experiment",
+      "methods"
+    ],
+    "root_cause_key": "result-claims-should-identify-comparison-scope-and-uncertainty",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": true
+  },
+  {
+    "title": "Cross-section numeric consistency should be reconciled",
+    "quote": "On the coupling sweep the label-free variant matches the 200-label variant nearly point-for-point, including full recovery of negative channels (Section~sec:results).",
+    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "introduction",
+    "related_sections": [
+      "introduction",
+      "result",
+      "conclusion"
+    ],
+    "root_cause_key": "cross-section-numeric-consistency-should-be-reconciled",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": true
+  }
+]

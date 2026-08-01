@@ -1,0 +1,129 @@
+[
+  {
+    "title": "Abstract and conclusion claims need explicit evidence traceability",
+    "quote": "",
+    "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "low",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results",
+      "conclusion"
+    ],
+    "root_cause_key": "abstract-and-conclusion-claims-need-explicit-evidence-traceability",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Comparison protocol should make fairness assumptions explicit",
+    "quote": "Baselines.",
+    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "experiment",
+    "related_sections": [
+      "experiment"
+    ],
+    "root_cause_key": "comparison-protocol-should-make-fairness-assumptions-explicit",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Cross-section numeric consistency should be reconciled",
+    "quote": "On the coupling sweep the label-free variant matches the 200-label variant nearly point-for-point, including full recovery of negative channels (Section~sec:results).",
+    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "introduction",
+    "related_sections": [
+      "introduction",
+      "result",
+      "conclusion"
+    ],
+    "root_cause_key": "cross-section-numeric-consistency-should-be-reconciled",
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Abstract five-element check is incomplete; missing background, conclusion, quantitative results",
+    "quote": "",
+    "explanation": "[A1] Abstract five-element check is incomplete; missing background, conclusion, quantitative results. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "missing_information",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract"
+    ],
+    "root_cause_key": "presubmission-a1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Novelty claim should be grounded against the closest prior work",
+    "quote": "",
+    "explanation": "The paper positions itself against prior work, but the current wording should make the closest comparator and the real novelty delta explicit instead of relying on broad superiority language.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "low",
+    "source_kind": "llm",
+    "source_section": "related_work",
+    "related_sections": [
+      "related_work",
+      "results"
+    ],
+    "root_cause_key": "novelty-claim-should-be-grounded-against-the-closest-prior-work",
+    "review_lane": "prior_art_and_novelty_grounding",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Result claims should identify comparison scope and uncertainty",
+    "quote": "Baselines.",
+    "explanation": "The results section reports comparative performance. Confirm whether the paper states the evaluation scope, variance, and fairness conditions tightly enough for a reviewer.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "experiment",
+    "related_sections": [
+      "experiment",
+      "methods"
+    ],
+    "root_cause_key": "result-claims-should-identify-comparison-scope-and-uncertainty",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": false,
+    "quote_verified": null
+  },
+  {
+    "title": "Conclusion should close the loop on the paper's strongest claims",
+    "quote": "",
+    "explanation": "A closure claim appears in the discussion/conclusion. Verify that it matches the limitations, experimental scope, and prior-art positioning established earlier in the paper.",
+    "comment_type": "missing_information",
+    "severity": "minor",
+    "confidence": "low",
+    "source_kind": "llm",
+    "source_section": "conclusion",
+    "related_sections": [
+      "conclusion",
+      "introduction",
+      "results"
+    ],
+    "root_cause_key": "conclusion-should-close-the-loop-on-the-paper-s-strongest-claims",
+    "review_lane": "self_standard_consistency",
+    "gate_blocker": false,
+    "quote_verified": null
+  }
+]

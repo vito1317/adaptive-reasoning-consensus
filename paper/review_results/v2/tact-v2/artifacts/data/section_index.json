@@ -1,0 +1,72 @@
+[
+  {
+    "section_key": "abstract",
+    "title": "Abstract",
+    "start_line": 31,
+    "end_line": 33,
+    "line_base": 1,
+    "word_count": 371,
+    "char_count": 2789,
+    "file_name": "abstract.md"
+  },
+  {
+    "section_key": "introduction",
+    "title": "Introduction",
+    "start_line": 39,
+    "end_line": 54,
+    "line_base": 1,
+    "word_count": 706,
+    "char_count": 5761,
+    "file_name": "introduction.md"
+  },
+  {
+    "section_key": "related",
+    "title": "Related",
+    "start_line": 55,
+    "end_line": 64,
+    "line_base": 1,
+    "word_count": 272,
+    "char_count": 2525,
+    "file_name": "related.md"
+  },
+  {
+    "section_key": "experiment",
+    "title": "Experiment",
+    "start_line": 206,
+    "end_line": 244,
+    "line_base": 1,
+    "word_count": 441,
+    "char_count": 3142,
+    "file_name": "experiment.md"
+  },
+  {
+    "section_key": "result",
+    "title": "Result",
+    "start_line": 245,
+    "end_line": 507,
+    "line_base": 1,
+    "word_count": 2203,
+    "char_count": 16756,
+    "file_name": "result.md"
+  },
+  {
+    "section_key": "discussion",
+    "title": "Discussion",
+    "start_line": 508,
+    "end_line": 548,
+    "line_base": 1,
+    "word_count": 517,
+    "char_count": 3733,
+    "file_name": "discussion.md"
+  },
+  {
+    "section_key": "conclusion",
+    "title": "Conclusion",
+    "start_line": 549,
+    "end_line": 643,
+    "line_base": 1,
+    "word_count": 626,
+    "char_count": 5675,
+    "file_name": "conclusion.md"
+  }
+]

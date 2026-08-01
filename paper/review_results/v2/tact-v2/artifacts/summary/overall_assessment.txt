@@ -1,0 +1,1 @@
+Deep review found 1 major, 5 moderate, 1 minor issues. The highest-priority concerns are: Abstract and conclusion claims need explicit evidence traceability; Abstract five-element check is incomplete; missing background, conclusion, quantitative results.

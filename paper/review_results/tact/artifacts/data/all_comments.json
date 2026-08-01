@@ -1,5 +1,104 @@
 [
   {
+    "title": "Headline exponents are set by the hand-fixed clip gamma_max, not by the derived formula",
+    "quote": "is derived, not\ngrid-searched",
+    "explanation": "The paper's central novelty claim is that the vote exponent is derived rather than tuned, and Sec. III-D reinforces it with 'no tuned constant anywhere: nu is a significance level and gamma_max a clip'. The released result files show the clip is load-bearing in every cell that carries the paper. In results/tact_eval.json the TACT-dev exponent is exactly +/-4.00 = gamma_max at kappa in {-0.6, -0.4, +0.4, +0.6} and in both monotone-distortion cells; TACT-LF is exactly +/-2.00 = gamma_max for every |kappa| >= 0.2. In results/group_eval.json the grouped cell reports gammas_dev_by_group = {+4.0, 0.0135, -4.0} and gammas_lf_by_group = {+2.0, 0.0, -2.0}: both non-null groups sit exactly on their caps. So on every cell reported as 1.000, and on the headline 0.940 heterogeneity number, gamma = z*sqrt(2+z^2) is inactive and the operative quantity is a constant chosen by hand that differs between variants (4 dev vs 2 LF). The paper itself supplies the mechanism: Sec. VII-C attributes the LF variant's win over the dev variant to 'its lower exponent cap (2 vs 4) regularizes better when |D| ~ 1' and then defers the ablation. The paper's best number is therefore credited to an unablated constant while the abstract advertises the opposite.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method",
+      "results",
+      "abstract",
+      "introduction"
+    ],
+    "root_cause_key": "gamma-max-clip-load-bearing",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": true,
+    "quote_verified": null,
+    "source_file": "claims_vs_evidence.json"
+  },
+  {
+    "title": "'Beats the oracle over the entire raw-value weight family' is a max over five grid points whose maximum is the boundary",
+    "quote": "beats the oracle over the entire raw-value\nweight family",
+    "explanation": "This claim appears five times (abstract, contribution C1, Table II caption, Sec. VII-B, Fig. 4 caption) and is the paper's strongest quantitative superiority statement. results/tact_eval.json shows the 'oracle' in the monotone_compress cell is a max over CISC-power at gamma in {0.25, 0.5, 1.0, 2.0, 4.0}, giving accuracies 0.795, 0.795, 0.815, 0.8825, 0.965, with oracle = {acc: 0.965, gamma: 4.0}. The maximum lands on the largest grid point and accuracy is still strictly increasing there, so the grid has not turned over. A monotone compression toward 0.5 is by construction undone by a sufficiently large exponent, so the supremum of the actual raw-value family is very plausibly at or near 1.000 for gamma = 8 or 16 -- exactly what TACT achieves. Both the word 'entire' and the word 'oracle' are unsupported: what was measured is the best of a truncated grid, and the truncation point (4.0) is the same gamma_max constant flagged above. The qualitative mechanism -- rank scores are exactly invariant to monotone distortion while c^gamma is not -- is sound and worth keeping; only the quantitative claim of dominance over the family fails.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "result",
+      "abstract",
+      "introduction",
+      "experiment"
+    ],
+    "root_cause_key": "raw-value-oracle-grid-truncated",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": true,
+    "quote_verified": null,
+    "source_file": "claims_vs_evidence.json"
+  },
+  {
+    "title": "Abstract says both real-trace campaigns confirm the premise; the first measured discrimination in the wrong direction",
+    "quote": "Two real-trace campaigns on a frozen\nmodel confirm the premise",
+    "explanation": "Sec. VII-F(a) reports campaign 1 as D-hat = -0.219, SE = 0.176, z = -1.24, and states plainly that 'what little there is points the wrong way (math -0.515, commonsense -0.173; both groups negative)'. Only campaign 2 produced the positive D-hat = +0.250, z = +2.54 that the abstract quotes. The abstract reports the positive number and omits the negative one while summarising both campaigns as confirmatory. If 'the premise' means 'signed discrimination is the operative quantity', campaign 1 is indeed supportive; but a reader of the abstract alone will take away that verbalized confidence was measured to be positively discriminative on real traces twice, which is not what happened.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "result"
+    ],
+    "root_cause_key": "abstract-selective-real-trace-reporting",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "claims_vs_evidence.json"
+  },
+  {
+    "title": "Conclusion promises an exact CISC fallback that the shipped method does not have",
+    "quote": "exact fallbacks at both ends",
+    "explanation": "The Conclusion states the method has 'exact fallbacks at both ends, plain self-consistency when the evidence is absent and CISC when it is at full strength'. The SC end is exact (Prop. 1, a shared code path). The CISC end is not a property of the shipped method: Prop. 2 obtains the CISC reduction only after replacing the van der Waerden feature map phi of Eq. (2) with a different log-value map phi^log. Shipped TACT at large gamma is a rank-score vote, which is not CISC-power and is in fact deliberately different from it -- that difference is the source of the monotone-invariance result the paper is proudest of. The abstract and contribution C1 both state this correctly ('a log-value feature map reproduces CISC-power'); only the Conclusion overstates, and it is the sentence most likely to be quoted.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "conclusion",
+    "related_sections": [
+      "conclusion",
+      "method"
+    ],
+    "root_cause_key": "cisc-anchor-requires-different-feature-map",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "claims_vs_evidence.json"
+  },
+  {
+    "title": "Abstract's flagship comparison omits that a trivial baseline ties TACT bit-for-bit in that cell",
+    "quote": "1.000 vs. 0.807",
+    "explanation": "The abstract advertises the anti-correlated recovery as 'kappa = -0.6: 1.000 vs. 0.807', comparing against the SC/CISC floor. In results/tact_eval.json that same cell has SignGrid-dev = 1.000, TACT-dev gamma = -4.0, SignGrid gamma = -4.0, and the paired test TACT-dev_vs_SignGrid = {a_only: 0, b_only: 0, p_value: 1.0} -- TACT and the trivial signed-exponent grid are the identical policy on every item there. The body is candid about this (Sec. VII-D concedes the margin is narrow and that TACT even trails by 0.005-0.015 mid-range), so this is a framing problem confined to the abstract, but the abstract is where a 19-point headline gain over 'every published protocol' is planted.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "result"
+    ],
+    "root_cause_key": "abstract-omits-signgrid-tie",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "claims_vs_evidence.json"
+  },
+  {
     "title": "Abstract and conclusion claims need explicit evidence traceability",
     "quote": "The dev-calibrated variant must therefore be positioned honestly: CISC’s tuned temperature is already a dev- calibrated sc↔CISC interpolation, so the novelty of tact- dev lies in the sign, the rank invariance, and the analytic (grid-free) map, not in dev calibration itself.",
     "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
@@ -14,27 +113,10 @@
       "conclusion"
     ],
     "root_cause_key": "abstract-and-conclusion-claims-need-explicit-evidence-traceability",
-    "review_lane": "claims_vs_evidence",
+    "review_lane": "committee_editor, committee_logic, committee_theory",
     "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Comparison protocol should make fairness assumptions explicit",
-    "quote": "Under this accounting, abstention is not a conservative compromise but the only correct default: on the confirmatory substrate the largest measured effect of acting anyway was negative (the best-single-confidence baseline loses 4.5 points where tact’s dead zone holds it exactly at the sc floor).",
-    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
-    "comment_type": "methodology",
-    "severity": "moderate",
-    "confidence": "medium",
-    "source_kind": "llm",
-    "source_section": "method",
-    "related_sections": [
-      "method",
-      "experiment"
-    ],
-    "root_cause_key": "comparison-protocol-should-make-fairness-assumptions-explicit",
-    "review_lane": "evaluation_fairness_and_reproducibility",
-    "gate_blocker": false,
-    "quote_verified": null
+    "quote_verified": false,
+    "source_file": "committee_editor.json"
   },
   {
     "title": "Cross-section numeric consistency should be reconciled",
@@ -51,9 +133,10 @@
       "result"
     ],
     "root_cause_key": "cross-section-numeric-consistency-should-be-reconciled",
-    "review_lane": "notation_and_numeric_consistency",
+    "review_lane": "committee_editor, committee_methodology",
     "gate_blocker": false,
-    "quote_verified": null
+    "quote_verified": false,
+    "source_file": "committee_editor.json"
   },
   {
     "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
@@ -68,298 +151,10 @@
       "abstract"
     ],
     "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
+    "review_lane": "committee_editor",
     "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "abstract",
-    "related_sections": [
-      "abstract"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "abstract",
-    "related_sections": [
-      "abstract"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "root_cause_key": "presubmission-g1",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null
+    "quote_verified": false,
+    "source_file": "committee_editor.json"
   },
   {
     "title": "Novelty claim should be grounded against the closest prior work",
@@ -375,8 +170,537 @@
       "results"
     ],
     "root_cause_key": "novelty-claim-should-be-grounded-against-the-closest-prior-work",
+    "review_lane": "committee_editor, committee_literature, committee_theory",
+    "gate_blocker": false,
+    "quote_verified": false,
+    "source_file": "committee_editor.json"
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "result",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "committee_editor",
+    "gate_blocker": false,
+    "quote_verified": false,
+    "source_file": "committee_editor.json"
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "committee_editor",
+    "gate_blocker": false,
+    "quote_verified": false,
+    "source_file": "committee_editor.json"
+  },
+  {
+    "title": "Novelty claim should be grounded against the closest prior work",
+    "quote": "Related Work Confidence-weighted self-consistency.",
+    "explanation": "The paper positions itself against prior work, but the current wording should make the closest comparator and the real novelty delta explicit instead of relying on broad superiority language.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results"
+    ],
+    "root_cause_key": "novelty-claim-should-be-grounded-against-the-closest-prior-work",
+    "review_lane": "committee_literature",
+    "gate_blocker": false,
+    "quote_verified": false,
+    "source_file": "committee_literature.json"
+  },
+  {
+    "title": "Abstract and conclusion claims need explicit evidence traceability",
+    "quote": "The dev-calibrated variant must therefore be positioned honestly: CISC’s tuned temperature is already a dev- calibrated sc↔CISC interpolation, so the novelty of tact- dev lies in the sign, the rank invariance, and the analytic (grid-free) map, not in dev calibration itself.",
+    "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results",
+      "conclusion"
+    ],
+    "root_cause_key": "abstract-and-conclusion-claims-need-explicit-evidence-traceability",
+    "review_lane": "committee_logic",
+    "gate_blocker": false,
+    "quote_verified": false,
+    "source_file": "committee_logic.json"
+  },
+  {
+    "title": "Cross-section numeric consistency should be reconciled",
+    "quote": "Written out, the method is a single expression whose exponent reduces to γ = z √ 2 + z2 with z the probit of the shrunk pooled AUC, and it carries exact anchors: inside the shrinkage dead zone the vote is bit-identical to plain self-consistency, and a log-value feature map reproduces CISC- power.",
+    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "discussion",
+      "result"
+    ],
+    "root_cause_key": "cross-section-numeric-consistency-should-be-reconciled",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": false,
+    "source_file": "committee_methodology.json"
+  },
+  {
+    "title": "Comparison protocol should make fairness assumptions explicit",
+    "quote": "Under this accounting, abstention is not a conservative compromise but the only correct default: on the confirmatory substrate the largest measured effect of acting anyway was negative (the best-single-confidence baseline loses 4.5 points where tact’s dead zone holds it exactly at the sc floor).",
+    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method",
+      "experiment"
+    ],
+    "root_cause_key": "comparison-protocol-should-make-fairness-assumptions-explicit",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": false,
+    "source_file": "committee_methodology.json"
+  },
+  {
+    "title": "Abstract and conclusion claims need explicit evidence traceability",
+    "quote": "The dev-calibrated variant must therefore be positioned honestly: CISC’s tuned temperature is already a dev- calibrated sc↔CISC interpolation, so the novelty of tact- dev lies in the sign, the rank invariance, and the analytic (grid-free) map, not in dev calibration itself.",
+    "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results",
+      "conclusion"
+    ],
+    "root_cause_key": "abstract-and-conclusion-claims-need-explicit-evidence-traceability",
+    "review_lane": "committee_theory",
+    "gate_blocker": false,
+    "quote_verified": false,
+    "source_file": "committee_theory.json"
+  },
+  {
+    "title": "Novelty claim should be grounded against the closest prior work",
+    "quote": "Related Work Confidence-weighted self-consistency.",
+    "explanation": "The paper positions itself against prior work, but the current wording should make the closest comparator and the real novelty delta explicit instead of relying on broad superiority language.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results"
+    ],
+    "root_cause_key": "novelty-claim-should-be-grounded-against-the-closest-prior-work",
+    "review_lane": "committee_theory",
+    "gate_blocker": false,
+    "quote_verified": false,
+    "source_file": "committee_theory.json"
+  },
+  {
+    "title": "Falsification protocol is offered as the portable contribution but its scope excludes the method's known catastrophic failure, and a registered real-trace endpoint failed",
+    "quote": "all of which the method survived",
+    "explanation": "Contribution C4 and the Conclusion present the pre-registered falsification protocol as the paper's 'more portable contribution'. Two facts limit what the protocol demonstrated. (1) F2 is worded 'either variant significantly below SC anywhere on the sweep', and is declared survived. results/isc_eval.json contains a paraphrased_wrong_majority cell where TACT-LF = 0.000 against an SC floor of 0.340 over 400 items with TACT-LF_alarms = {} -- no alarm fires, and the gamma saturates at -2.0. The paper discloses this honestly in Sec. VIII and calls it 'the method's sharpest unguarded failure mode', but the failure was found by follow-on work, not by the protocol; the protocol's scope ('on the sweep') excluded it. (2) results/tact_hard_eval.json records h2 = {passed: false} for the second real-trace campaign. Sec. VII-F(e) explains correctly why the endpoint was unreachable on the realized substrate, but nowhere does the paper state that a registered hypothesis failed, while the abstract says all pre-registered criteria were survived. Both should be stated in the same voice the rest of the paper uses.",
+    "comment_type": "methodology",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "experiment",
+    "related_sections": [
+      "experiment",
+      "result",
+      "discussion",
+      "abstract"
+    ],
+    "root_cause_key": "falsifier-scope-and-undisclosed-failed-endpoint",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": true,
+    "quote_verified": null,
+    "source_file": "evaluation_fairness_and_reproducibility.json"
+  },
+  {
+    "title": "No code or data availability statement, and no repository URL, in a paper whose verification argument is its test suite",
+    "quote": "released\ncode pins",
+    "explanation": "Sec. III-F, Sec. VII-E, and the whole of Table VI rest on 'the released code': 'Proofs are elementary and pinned by unit tests in the released code', 'Equations (13)-(16) are verified equivalent to the shipped implementation ... (tests/test_formula.py)', and a twelve-row table mapping propositions to test function names. The manuscript contains no repository URL, DOI, archive link, or availability statement anywhere, so none of it is checkable by a reviewer or reader. For a paper that explicitly substitutes executable tests for written proofs, this is the single highest-leverage omission: the substitution only works if the tests can be run. The same applies to the trace data -- the frozen model ('Claude Haiku 4.5') is named without a version pin, access date, or sampling configuration.",
+    "comment_type": "missing_information",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method",
+      "result",
+      "experiment"
+    ],
+    "root_cause_key": "no-code-data-availability-statement",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": true,
+    "quote_verified": null,
+    "source_file": "evaluation_fairness_and_reproducibility.json"
+  },
+  {
+    "title": "Reported test-suite size and runtime do not match the released suite",
+    "quote": "the suite is 76\ntests",
+    "explanation": "Sec. VII-E states 'the suite is 76 tests for TACT (84 including the follow-on work) and runs in 14 seconds'; Sec. III-F repeats '76 tests'. Running the released suite gives 98 passed in 54.69s. No natural subset yields 76 or 84 (non-ISC files total 88; all files total 98). Runtime is machine-dependent and the 4x gap is forgivable, but the counts are a directly checkable claim in a paper whose verification argument is the suite itself, and a reviewer who runs pytest will see the mismatch immediately. Table VI's test names are abbreviated but do all resolve to real functions (e.g. 'poisoning_attenuation_linear' -> test_poisoning_attenuation_is_linear_in_flip_rate), so the table is sound; only the counts are stale.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "result",
+    "related_sections": [
+      "result",
+      "method"
+    ],
+    "root_cause_key": "stale-test-count-and-runtime",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "evaluation_fairness_and_reproducibility.json"
+  },
+  {
+    "title": "Falsifiers F1 and F4 are evaluated in saturated cells where they cannot fire",
+    "quote": "F1 (1.000 vs. 1.000)",
+    "explanation": "F1 asks whether TACT-dev is significantly below the best fixed-gamma CISC at kappa = +0.6. In results/tact_eval.json that cell has CISC-devT, SignGrid-dev, TACT-dev, TACT-LF and the oracle all at exactly 1.000: the comparison is against a ceiling, so F1 could not have fired regardless of the method's quality. Sec. VII-D reports this as a survival: 'F1 (1.000 vs. 1.000)'. The monotone_overconf cell is the same shape -- every method reaches 1.000 while the oracle picks gamma = 1.0 and TACT picks gamma = 4.0, i.e. materially different policies that the metric cannot separate. A pre-registered falsifier that is unfalsifiable on the realized data carries no evidential weight and should be reported as inconclusive rather than passed.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "result",
+      "experiment"
+    ],
+    "root_cause_key": "falsifiers-at-ceiling",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "evaluation_fairness_and_reproducibility.json"
+  },
+  {
+    "title": "Between-cell sampling noise in the sweep is undisclosed and is comparable to the margins the paper interprets",
+    "quote": ".807\n.807\n.807",
+    "explanation": "Self-consistency ignores confidence entirely, so its accuracy cannot depend on kappa. Table I's SC row nonetheless reads .807, .797, .835, .762, .835, .795, .845, .838, .782 -- an 8.3-point spread that is pure between-cell sampling variation from independently drawn 400-item pools (SE ~ 0.02 per cell). The paper never notes this, and it matters for interpretation: Sec. VII-D reads a 0.005-0.015 shortfall against SignGrid as 'the deliberate cost of shrinkage'. Those within-cell comparisons are paired and therefore legitimate, but the reader has no way to see which differences in the table are paired and which are not, and the unexplained SC row invites the wrong reading. Reporting per-cell CIs, or stating that cells use independent draws and only within-column comparisons are paired, resolves it.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "result",
+      "experiment"
+    ],
+    "root_cause_key": "undisclosed-between-cell-variance",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "evaluation_fairness_and_reproducibility.json"
+  },
+  {
+    "title": "The batch-size confound is reported but never propagated to the window measurements it threatens",
+    "quote": "plurality accuracy at 0.40",
+    "explanation": "Sec. VII-F(e) reports that a 30-problem-per-call probe measured level-5 plurality accuracy at 0.40 while the 15-problem-per-call confirmatory run gave 0.888 on the same stratum, and correctly concludes that batch size must be reported as an experimental parameter. The paper stops there. That instrument sensitivity -- a 2.2x swing in measured accuracy from a collection-protocol knob -- is far larger than the 2-7.5% window the paper's second headline contribution claims to bound, and the window measurements were themselves collected in batches whose sizes are never stated. Either report the batch size for each substrate in the window study and argue the effect is absorbed, or widen the stated uncertainty on the window to acknowledge it.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "result",
+      "discussion"
+    ],
+    "root_cause_key": "batch-size-confound-not-propagated",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "evaluation_fairness_and_reproducibility.json"
+  },
+  {
+    "title": "kappa is overloaded: the confidence coupling and Prop. 2's per-item normalizer share the symbol and the subscript",
+    "quote": "with a\nper-item constant",
+    "explanation": "kappa is introduced in Eq. (1) as the confidence-correctness coupling with range [-0.6, 0.6] and is used throughout the sweep, the tables, and the figures; Sec. V-A further uses kappa_q for the per-item coupling drawn as N(0, 0.6^2). Prop. 2 then writes the CISC-reduction weights as kappa_q c^gamma 'with a per-item constant kappa_q > 0'. The same symbol with the same subscript denotes the per-item coupling in one place and a positive multiplicative normalizer in another, both inside the method's core. Renaming the Prop. 2 constant (c_q, or Z_q) costs nothing and removes the collision.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method",
+      "experiment"
+    ],
+    "root_cause_key": "kappa-symbol-collision",
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "notation_and_numeric_consistency.json"
+  },
+  {
+    "title": "The 16 decisive items in the thin-window analysis cannot be reconstructed from the per-substrate counts",
+    "quote": "Classifying all 16 decisive items by\nerror shape",
+    "explanation": "Sec. VIII partitions '16 decisive items' into 7 stable-wrong and 9 scattered. The per-substrate numbers given elsewhere are: 12 of 100 items with both a correct and an incorrect trace (GSM8K/CSQA, Sec. VII-F(c)); a decisive stratum of 10 of 89 with the gold answer in pool on 4 of those (MATH-L5, Sec. VII-F(e)); and '0 of 6 plurality-wrong AIME items'. No stated definition of 'decisive' makes these sum to 16, and the AIME/AMC substrate size is never given -- the reader must back it out of '268 items with pools' minus 100 minus 119 to get 49. Since this classification is the evidentiary core of the structural-boundary claim, the accounting needs to be explicit: one definition of decisive, one table, per-substrate rows.",
+    "comment_type": "missing_information",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "discussion",
+    "related_sections": [
+      "discussion",
+      "result"
+    ],
+    "root_cause_key": "decisive-item-accounting-untraceable",
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "notation_and_numeric_consistency.json"
+  },
+  {
+    "title": "AUC-hat in the one-line formula is the shrunken pooled statistic but AUC was defined as the raw per-item statistic",
+    "quote": "one probit and one square root, with no tuned constant\nanywhere",
+    "explanation": "Eq. (5) defines AUC_q = U_q / (n1_q n0_q), the raw per-item Mann-Whitney statistic. Eq. (16) presents the payoff formula as gamma = z sqrt(2 + z^2) with z = Phi^-1(AUC-hat), where the intended AUC-hat is (1 + D-tilde)/2, i.e. built from the James-Stein-shrunken pooled D-tilde, not from Eq. (5). The abstract gets this right ('z the probit of the shrunk pooled AUC'), but the boxed formula that readers will carry away does not carry the qualifier, and a reader who substitutes the quantity defined in Eq. (5) recovers the wrong exponent -- specifically, one that never enters the dead zone.",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method"
+    ],
+    "root_cause_key": "auc-hat-shrunk-vs-raw",
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "notation_and_numeric_consistency.json"
+  },
+  {
+    "title": "Error-shape percentages sum to 101%",
+    "quote": "75%\nsaturated, 18% capability wall, 8% rescuable",
+    "explanation": "The LeetCode composition is 30/40, 7/40 and 3/40, i.e. 75%, 17.5% and 7.5%. Rounding both halves upward gives 75 + 18 + 8 = 101%. Use one decimal or report the counts.",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "discussion",
+    "related_sections": [
+      "discussion"
+    ],
+    "root_cause_key": "composition-rounds-to-101",
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "notation_and_numeric_consistency.json"
+  },
+  {
+    "title": "'Three times the SC floor' overstates a 2.93x ratio",
+    "quote": "three times the sc floor",
+    "explanation": "Table II gives 0.585 against an SC floor of 0.200, a ratio of 2.93. In a paper this careful with numbers the rounding stands out; 'nearly three times' is accurate.",
+    "comment_type": "claim_accuracy",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "three-times-rounding",
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "notation_and_numeric_consistency.json"
+  },
+  {
+    "title": "Thin-window headline range presents a point estimate whose own CI is 2.6x wider",
+    "quote": "2–7.5% of items across five substrates",
+    "explanation": "The abstract states the window 'measures 2-7.5% of items across five substrates in two domains'. The 7.5% endpoint is 3/40, and results/g1_window.json gives window = 0.075 with window_ci = [0.0258, 0.1986] on window_n = 3. Sec. VIII does report '(CI95 2.6-19.9%)' at the point of use, so the paper is not hiding it -- but the abstract and the Conclusion carry the bare range, and a band whose upper endpoint has a 95% CI reaching 19.9% should not be quoted as '2-7.5%' without the interval. This matters more than usual because the structural-boundary claim is the paper's second headline contribution and is the basis for the normative claim that 'abstention is the only correct default'.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "discussion",
+      "conclusion"
+    ],
+    "root_cause_key": "window-ci-omitted-in-abstract",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "pre_submission_readiness.json"
+  },
+  {
+    "title": "Abstract is roughly 480 words in a single paragraph, far outside IEEE conference norms",
+    "quote": "Abstract—Confidence-weighted self-consistency",
+    "explanation": "The abstract runs about 480 words as one unbroken paragraph and states eight numeric results, four of them before the contribution is named. IEEE conference abstracts are typically 150-250 words. Beyond the length rule, the density works against the paper: the genuinely striking findings (the sign is recoverable without labels; the actionable stratum is 2-7.5% wide) are buried among estimator internals -- van Elteren, James-Stein, Bayes-discriminant link, mixture-variance correction -- that mean nothing to a reader who has not yet been told the problem. This is the single highest-return edit in the paper.",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract"
+    ],
+    "root_cause_key": "abstract-overlong",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "pre_submission_readiness.json"
+  },
+  {
+    "title": "Two bibliography entries are never cited",
+    "quote": "[24] L. Kuhn",
+    "explanation": "Entries [24] (Kuhn et al., Semantic uncertainty) and [25] (Wan et al., Reasoning aware self-consistency) appear in the bibliography but are cited nowhere in the body -- verified by extracting all \\bibitem keys and all \\cite keys from the source and differencing them. Both are topically relevant, so the likely fix is to cite them in Sec. II rather than delete them; RASC in particular belongs in the confidence-weighted self-consistency paragraph.",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "references",
+    "related_sections": [
+      "references"
+    ],
+    "root_cause_key": "uncited-bibitems",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "pre_submission_readiness.json"
+  },
+  {
+    "title": "References are not numbered in order of first citation, as IEEE requires",
+    "quote": "[6] K. Tian",
+    "explanation": "IEEE style numbers references in order of first appearance in the text. 17 of the 26 cited entries violate this: tian2023just is cited 2nd but numbered [6], xiong2024can 3rd but [7], taubenfeld2025cisc 5th but [2], reasc2026 6th but [11], aggarwal2023adaptive 13th but [3]. The manuscript uses a manual thebibliography, so the fix is to reorder the \\bibitem entries to match first-citation order (or switch to IEEEtran.bst with BibTeX, which handles it automatically).",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "references",
+    "related_sections": [
+      "references"
+    ],
+    "root_cause_key": "ieee-citation-order",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "pre_submission_readiness.json"
+  },
+  {
+    "title": "Table II footnote is typeset inside the tabular after \\bottomrule",
+    "quote": "alarm fires and the method refuses",
+    "explanation": "[\"The dagger footnote is emitted as two \\\\multicolumn rows placed after \\\\bottomrule, which breaks booktabs' rule structure and produces inconsistent spacing below the final rule. Move it to a \\\\tablenotes / minipage below the tabular, or into the caption.\"]",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "result",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "booktabs-footnote-inside-tabular",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "pre_submission_readiness.json"
+  },
+  {
+    "title": "Table I is placed in the Experimental Setup section but is only discussed in Results",
+    "quote": "TABLE I\nCoupling sweep (accuracy at K=15",
+    "explanation": "Table I (the coupling sweep) floats into Sec. VI, which describes the harness, baselines and falsifiers; its first discussion is the opening line of Sec. VII-A. Readers hit a full results table before the results section begins. Moving the float, or adding a one-line forward pointer in Sec. VI, fixes it.",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "experiment",
+    "related_sections": [
+      "experiment"
+    ],
+    "root_cause_key": "table-placed-before-discussion",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "pre_submission_readiness.json"
+  },
+  {
+    "title": "Propositions 4 and 5 are measured frequencies presented as propositions, and Prop. 6's sketch does not establish its claim",
+    "quote": "the\nagreement statistic’s sign matches the true sign only",
+    "explanation": "Prop. 4 (Self-reinforcement) states a universal claim over 'any per-item rule gamma_q = h(D-hat^g_q) with h monotone increasing and odd' and then supports it with measured frequencies ('agrees with SC on 97.5% of items'; '1 right vs. 9 wrong per 400 items'). Prop. 5 (Winner's curse) is nothing but a measured frequency -- 'the agreement statistic's sign matches the true sign only 4% of the time' -- with no general statement at all. Prop. 6 (Two-world unidentifiability) makes the strongest claim in the paper ('No label-free method can separate them') and supports it with one parenthetical, that D computed against either truth satisfies D^w1 = -D^w2. That shows the statistic flips sign; identical observable laws additionally require the joint law of (answers, confidences) to coincide under both worlds, including cluster sizes and the confidence model, which is not shown. Sec. III-F's blanket 'Proofs are elementary and pinned by unit tests' does not discharge these: a test can confirm a measured frequency but cannot establish a universally quantified claim. Either demote Props. 4-5 to numbered empirical observations, or supply the general arguments; and give Prop. 6 a real proof, since the impossibility result is contribution C3.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method",
+      "introduction"
+    ],
+    "root_cause_key": "propositions-are-measurements",
     "review_lane": "prior_art_and_novelty_grounding",
     "gate_blocker": false,
-    "quote_verified": null
+    "quote_verified": null,
+    "source_file": "prior_art_and_novelty_grounding.json"
+  },
+  {
+    "title": "Four datasets and one model that carry reported numbers are uncited",
+    "quote": "50 GSM8K",
+    "explanation": "GSM8K, MATH, MATH-500 and LeetCodeDataset are cited. Four sources that carry reported numbers are not: CommonsenseQA (Sec. VII-F, 50 items and a 0.847 trace accuracy); AIME/AMC (Sec. VIII, the '0 of 6' evidence for the window's upper edge); HumanEval+ and MBPP+ (Sec. VIII, '3.56% recomputed from published HumanEval+/MBPP+ tables' -- a number recomputed from someone else's published table with no pointer to it, which a reader cannot check and which the original authors are not credited for); and the frozen model 'Claude Haiku 4.5', named without version, date, or decoding configuration.",
+    "comment_type": "missing_information",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "result",
+    "related_sections": [
+      "result",
+      "discussion"
+    ],
+    "root_cause_key": "uncited-datasets-and-model",
+    "review_lane": "prior_art_and_novelty_grounding",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "prior_art_and_novelty_grounding.json"
+  },
+  {
+    "title": "The motivating sibling result is described but cannot be cited or checked",
+    "quote": "A preceding system by the author",
+    "explanation": "Sec. II reports that a prior system by the author (RLEV-VoI) was evaluated under the same discipline, failed, and that 'its post-mortem isolated the confidence dilemma studied here'. This is the stated origin of the whole paper and part of the credibility case for the falsification protocol, but it has no citation, no preprint, and no artifact, so a reader cannot verify any of it. Either cite it (preprint, tech report, or repository) or state the claim as unpublished background without leaning on it evidentially.",
+    "comment_type": "missing_information",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "related",
+    "related_sections": [
+      "related"
+    ],
+    "root_cause_key": "uncitable-self-reference",
+    "review_lane": "prior_art_and_novelty_grounding",
+    "gate_blocker": false,
+    "quote_verified": null,
+    "source_file": "prior_art_and_novelty_grounding.json"
   }
 ]

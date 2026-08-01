@@ -10,15 +10,15 @@
 
 ## 一、引言
 
-自我一致性（Self-Consistency, SC）[1] 透過取樣多條思維鏈並回傳多數答案，提升凍結大型語言模型的推理準確率。由於每條推理軌跡亦可附帶信心分數（口頭表述 [6][7]、由 token 對數機率導出、或以 $P(\text{True})$ 形式引出 [5]），以信心加權投票是自然的改良方向。CISC [2] 證明此作法能以較低的取樣預算達到純 SC 的準確率，並提出題內辨別度（Within-Question Discrimination, WQD）指標，指出對投票真正有用的性質是辨別力，而非校準度。
+自我一致性（Self-Consistency, SC）[[1]](#ref1) 透過取樣多條思維鏈並回傳多數答案，提升凍結大型語言模型的推理準確率。由於每條推理軌跡亦可附帶信心分數（口頭表述 [[6]](#ref6)[[7]](#ref7)、由 token 對數機率導出、或以 $P(\text{True})$ 形式引出 [[5]](#ref5)），以信心加權投票是自然的改良方向。CISC [[2]](#ref2) 證明此作法能以較低的取樣預算達到純 SC 的準確率，並提出題內辨別度（Within-Question Discrimination, WQD）指標，指出對投票真正有用的性質是辨別力，而非校準度。
 
-然而這類改良存在一項結構性弱點，就我所知尚無已發表方法處理。現有加權方案，包括 CISC 的 softmax 權重、可靠度感知偽計數 [11] 與暖啟動門檻過濾 [12]，皆為信心的單調遞增函數；換言之，方法只能決定「上調權重的幅度」，卻無法表達「信心可能與正確性反相關」。方向性失準並非罕見情形：強化微調已知會扭曲口頭信心，分布位移也可能使原本有效的訊號反轉。本文實驗顯示，一條簡單的負相關通道（$\kappa=-0.6$，見第三節）足以將信心加權基線從近乎完美壓到遠低於多數決基準線；但同一份證據若以正確的符號解讀，其實是近乎完美的訊號。另一種防禦性作法是在校準誤差過高時以二元閘門關閉信心通道，此法雖可在符號反轉下存活，卻會把仍具辨別力的訊號一併丟棄：一條系統性偏低但排序完全正確的信心通道，會因與投票效用無關的理由而未能通過 ECE 閘門 [2][8]。
+然而這類改良存在一項結構性弱點，就我所知尚無已發表方法處理。現有加權方案，包括 CISC 的 softmax 權重、可靠度感知偽計數 [[11]](#ref11) 與暖啟動門檻過濾 [[12]](#ref12)，皆為信心的單調遞增函數；換言之，方法只能決定「上調權重的幅度」，卻無法表達「信心可能與正確性反相關」。方向性失準並非罕見情形：強化微調已知會扭曲口頭信心，分布位移也可能使原本有效的訊號反轉。本文實驗顯示，一條簡單的負相關通道（$\kappa=-0.6$，見第三節）足以將信心加權基線從近乎完美壓到遠低於多數決基準線；但同一份證據若以正確的符號解讀，其實是近乎完美的訊號。另一種防禦性作法是在校準誤差過高時以二元閘門關閉信心通道，此法雖可在符號反轉下存活，卻會把仍具辨別力的訊號一併丟棄：一條系統性偏低但排序完全正確的信心通道，會因與投票效用無關的理由而未能通過 ECE 閘門 [[2]](#ref2)[[8]](#ref8)。
 
 本文將問題歸結為估計單一純量，即信心通道的帶符號題內辨別度，再連同其不確定性映射為投票指數。主要貢獻如下。
 
 **C1：帶符號且解析推導的信心加權。** TACT 以權重 $w_i=\exp(\gamma\,\varphi_i)$ 投票，其中 $\varphi_i$ 為軌跡 $i$ 題內信心中位秩的標準化 van der Waerden 分數；指數 $\gamma$ 並非網格搜尋所得，而是由統計量推導：先計算混合 van Elteren Somers' $D$（等於 $2\cdot\mathrm{WQD}-1$），配上精確的 tie 校正零假設變異數與題內叢集 jackknife 標準誤，經帶顯著性下限的正部 James–Stein 收縮，最後通過含混合變異數校正的 Bayes 判別連結。整個構造具有精確端點：收縮死區內的投票與純 SC 位元層級相同（兩者共用同一段程式碼），採用對數值特徵映射時則精確重現 CISC-power（第四節）。由於 $\varphi$ 僅透過題內排名依賴信心，任何嚴格單調的信心尺度失真都不影響投票；在單調壓縮情形下，本方法超越了整個原始值權重家族所能達到的最佳結果（$1.000$ 對 $0.965$）。
 
-**C2：帶符號通道可靠度的無標籤估計。** 群眾外包文獻由多位標註者之間的共變異估計可靠度 [13][16]；單一模型的單一信心通道並無此結構可用。本文改從一致性偽標籤（每題的去重加權多數決）估計帶符號辨別度，並證明類別條件雜訊下的衰減恆等式 $\mathbb{E}[\widehat{D}_g]=(1-2\bar{\rho})\,D$：只要成對加權的多數決錯誤率 $\bar{\rho}$ 低於 $1/2$，無標籤估計至多低估信任強度，不會判錯符號。方法另以 split-half 一致性反演保守地去衰減，並在識別性受威脅時由符號感知警報退回純 SC。實驗中，無標籤變體與使用 200 筆標籤的變體在整條耦合掃描上幾乎逐點相同，包括負通道的完整恢復（第八節）。
+**C2：帶符號通道可靠度的無標籤估計。** 群眾外包文獻由多位標註者之間的共變異估計可靠度 [[13]](#ref13)[[16]](#ref16)；單一模型的單一信心通道並無此結構可用。本文改從一致性偽標籤（每題的去重加權多數決）估計帶符號辨別度，並證明類別條件雜訊下的衰減恆等式 $\mathbb{E}[\widehat{D}_g]=(1-2\bar{\rho})\,D$：只要成對加權的多數決錯誤率 $\bar{\rho}$ 低於 $1/2$，無標籤估計至多低估信任強度，不會判錯符號。方法另以 split-half 一致性反演保守地去衰減，並在識別性受威脅時由符號感知警報退回純 SC。實驗中，無標籤變體與使用 200 筆標籤的變體在整條耦合掃描上幾乎逐點相同，包括負通道的完整恢復（第八節）。
 
 **C3：不可能性結果與其結構化出路。** 當逐題耦合為 i.i.d. 且無可觀測協變量時，本文證明逐題無標籤自適應不可行：對題目自身一致性統計量的任何單調使用，都會塌縮為對多數決的增強；在多數決錯誤（亦即翻轉才可能獲勝）的題目上，可觀測符號有 $96\%$ 的比例與真實符號相反；且 $\{\kappa>0,\text{少數方正確}\}$ 與 $\{\kappa<0,\text{多數方正確}\}$ 兩種情形產生完全相同的可觀測分布。反之，若異質性由可觀測協變量索引（例如不同領域各有其校準特性），同一估計器按群組執行即可恢復各群組的帶符號耦合，並在對 SC 零配對損失的前提下逼近逐題最佳結果（第六節）。
 
@@ -26,11 +26,11 @@
 
 ## 二、相關工作
 
-**信心加權自我一致性。** SC [1] 將取樣軌跡視為獨立同分布的票。CISC [2] 以在標籤分割上調參的溫度執行 softmax 信心加權，其 WQD 指標提出的「辨別力重於校準度」論點與本文動機相同；排名校準文獻 [8] 亦獨立得到相同結論。加權變體 [9][10] 與提早停止方法 [3][4] 著眼於預算效率；可靠度感知偽計數 [11] 與暖啟動門檻過濾 [12] 可線上調整，但僅能縮放正向信任。上述方法皆無法表達（更遑論估計）負的信心與正確性關聯。基於此，本文的 dev 校準變體須誠實定位：CISC 的調參溫度已構成 dev 校準的 SC 與 CISC 內插，故 TACT-dev 的新意在於符號處理、排名不變性與免網格的解析映射，而非 dev 校準本身。
+**信心加權自我一致性。** SC [[1]](#ref1) 將取樣軌跡視為獨立同分布的票。CISC [[2]](#ref2) 以在標籤分割上調參的溫度執行 softmax 信心加權，其 WQD 指標提出的「辨別力重於校準度」論點與本文動機相同；排名校準文獻 [[8]](#ref8) 亦獨立得到相同結論。加權變體 [[9]](#ref9)[[10]](#ref10) 與提早停止方法 [[3]](#ref3)[[4]](#ref4) 著眼於預算效率；可靠度感知偽計數 [[11]](#ref11) 與暖啟動門檻過濾 [[12]](#ref12) 可線上調整，但僅能縮放正向信任。上述方法皆無法表達（更遑論估計）負的信心與正確性關聯。基於此，本文的 dev 校準變體須誠實定位：CISC 的調參溫度已構成 dev 校準的 SC 與 CISC 內插，故 TACT-dev 的新意在於符號處理、排名不變性與免網格的解析映射，而非 dev 校準本身。
 
-**無標籤可靠度估計。** 由一致性推估工作者可靠度是統計學的經典問題 [13][14][15]；頻譜元學習 [16] 與近期的 LLM 集成研究 [17][18] 均仰賴多個預測器之間的共變異。本文的設定不同：僅有單一模型的單一通道、逐題投票結構，且一致性代理在相關錯誤下的失效是已知現象。本文的因應方式是給出量化的衰減恆等式、保守的去衰減與警報機制，而非宣稱無條件保證。
+**無標籤可靠度估計。** 由一致性推估工作者可靠度是統計學的經典問題 [[13]](#ref13)[[14]](#ref14)[[15]](#ref15)；頻譜元學習 [[16]](#ref16) 與近期的 LLM 集成研究 [[17]](#ref17)[[18]](#ref18) 均仰賴多個預測器之間的共變異。本文的設定不同：僅有單一模型的單一通道、逐題投票結構，且一致性代理在相關錯誤下的失效是已知現象。本文的因應方式是給出量化的衰減恆等式、保守的去衰減與警報機制，而非宣稱無條件保證。
 
-**收縮與排名統計量。** 估計器由經典工具組成：分層排名統計量 [19]、James–Stein 正部估計器 [20]、有效樣本數修正 [21][22]，以及 normal-scores 判別分析。本文的貢獻在於組裝方式與其端點性質，而非個別工具。
+**收縮與排名統計量。** 估計器由經典工具組成：分層排名統計量 [[19]](#ref19)、James–Stein 正部估計器 [[20]](#ref20)、有效樣本數修正 [[21]](#ref21)[[22]](#ref22)，以及 normal-scores 判別分析。本文的貢獻在於組裝方式與其端點性質，而非個別工具。
 
 **先前的負面結果。** 我先前提出的系統 RLEV-VoI（冗餘折扣投票搭配資訊價值停止準則）曾以相同的證偽紀律評估，結果未能通過：一個簡單的去重基線在所有情境全面勝出，因此我將該系統以負面結果發表。正是在分析那次失敗的過程中，我注意到了本文所研究的信心兩難。
 
@@ -70,7 +70,7 @@ $$\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big)$$
 
 $$D_q = 2\,\mathrm{AUC}_q-1,\qquad \mathrm{AUC}_q=\frac{U_q}{n^1_q n^0_q}$$
 
-此即 CISC 記號中的 $2\cdot\mathrm{WQD}_q-1$。跨題混合採 van Elteren 成對計數權重 $N_q=n^1_q n^0_q$ [19]：
+此即 CISC 記號中的 $2\cdot\mathrm{WQD}_q-1$。跨題混合採 van Elteren 成對計數權重 $N_q=n^1_q n^0_q$ [[19]](#ref19)：
 
 $$\widehat{D}=\frac{\sum_q N_q D_q}{\sum_q N_q}$$
 
@@ -86,7 +86,7 @@ $$\mathrm{SE}=\max\big(\mathrm{SE}_0,\ \mathrm{SE}_J,\ \tfrac{1}{2\sqrt{N}}\big)
 
 $$\tilde D=\operatorname{sign}(\widehat{D})\,\max\!\big(0,\ |\widehat{D}|-\nu^2\mathrm{SE}^2/|\widehat{D}|\big)$$
 
-死區為 $\{|r|\le\nu\}$，取 $\nu_{\mathrm{dev}}=1.28$、$\nu_{\mathrm{LF}}=2.33$。當 $\nu=1$ 時，上式恰為 $\mathcal{N}(0,\tau^2)$ 先驗搭配插入式估計 $\hat\tau^2=\max(0,\widehat{D}^2-\mathrm{SE}^2)$ 所得的經驗 Bayes 後驗均值 [20]。此映射為奇函數且連續，幅度不超過 $|\widehat{D}|$，對 $\widehat{D}$ 單調、對 $\mathrm{SE}$ 反單調。
+死區為 $\{|r|\le\nu\}$，取 $\nu_{\mathrm{dev}}=1.28$、$\nu_{\mathrm{LF}}=2.33$。當 $\nu=1$ 時，上式恰為 $\mathcal{N}(0,\tau^2)$ 先驗搭配插入式估計 $\hat\tau^2=\max(0,\widehat{D}^2-\mathrm{SE}^2)$ 所得的經驗 Bayes 後驗均值 [[20]](#ref20)。此映射為奇函數且連續，幅度不超過 $|\widehat{D}|$，對 $\widehat{D}$ 單調、對 $\mathrm{SE}$ 反單調。
 
 **連結。** 設題內 $\varphi\,|\,y\sim\mathcal{N}(\mu_y,s^2)$，且混合分布已標準化為單位變異數（此即 4.1 節標準化的效果），故 $s^2=1/(1+\bar p(1-\bar p)u^2)$，其中 $u=\sqrt2\,\Phi^{-1}\!\big(\tfrac{1+\tilde D}{2}\big)$，$\bar p$ 為正確軌跡的基礎率。在此模型下，Bayes 最適的逐軌跡對數權重係數為
 
@@ -136,7 +136,7 @@ $|\zeta|\le\nu$，在其上 $\gamma$ 恆為 0，投票位元等同 SC。
 
 **命題 4（衰減恆等式）。** 令 $\bar\rho$ 為題目多數決錯誤的成對加權機率。若多數決錯誤事件在給定 $y$ 下與 $\varphi$ 獨立（類別條件雜訊假設），則 $\mathbb{E}[\widehat{D}_g]=(1-2\bar\rho)\,D$。因此只要 $\bar\rho<1/2$，即有 $\operatorname{sign}\mathbb{E}[\widehat{D}_g]=\operatorname{sign} D$：無標籤估計至多低估信任，不會判錯符號。
 
-此恆等式在翻轉由信心本身造成時失效，典型情形即自信回音。此時「多數正確且 $D<0$」與「多數因自信回音而錯誤且 $D>0$」兩種情形的可觀測分布完全相同（可視為 [16] 中雙根歧義在單通道情形的對應），因此任何無標籤保證必然附帶條件；本文如實陳述此限制。
+此恆等式在翻轉由信心本身造成時失效，典型情形即自信回音。此時「多數正確且 $D<0$」與「多數因自信回音而錯誤且 $D>0$」兩種情形的可觀測分布完全相同（可視為 [[16]](#ref16) 中雙根歧義在單通道情形的對應），因此任何無標籤保證必然附帶條件；本文如實陳述此限制。
 
 ### 5.3 去衰減與警報
 
@@ -324,50 +324,50 @@ TACT 將「該信任模型的信心到什麼程度」轉化為可量測、帶符
 
 ## 參考文獻
 
-[1] X. Wang, J. Wei, D. Schuurmans, Q. Le, E. Chi, S. Narang, A. Chowdhery, and D. Zhou, "Self-consistency improves chain of thought reasoning in language models," in *Proc. ICLR*, 2023.
+<a id="ref1"></a>**[1]** X. Wang, J. Wei, D. Schuurmans, Q. Le, E. Chi, S. Narang, A. Chowdhery, and D. Zhou, "Self-consistency improves chain of thought reasoning in language models," in *Proc. ICLR*, 2023. · [PDF](https://arxiv.org/pdf/2203.11171)
 
-[2] A. Taubenfeld *et al.*, "Confidence improves self-consistency in LLMs," in *Findings of ACL*, 2025, arXiv:2502.06233.
+<a id="ref2"></a>**[2]** A. Taubenfeld *et al.*, "Confidence improves self-consistency in LLMs," in *Findings of ACL*, 2025, arXiv:2502.06233. · [PDF](https://aclanthology.org/2025.findings-acl.1030.pdf)
 
-[3] P. Aggarwal, A. Madaan, Y. Yang, and Mausam, "Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with LLMs," in *Proc. EMNLP*, 2023, pp. 12375–12396.
+<a id="ref3"></a>**[3]** P. Aggarwal, A. Madaan, Y. Yang, and Mausam, "Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with LLMs," in *Proc. EMNLP*, 2023, pp. 12375–12396. · [PDF](https://aclanthology.org/2023.emnlp-main.761.pdf)
 
-[4] Y. Li *et al.*, "Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning," in *Proc. ICLR*, 2024.
+<a id="ref4"></a>**[4]** Y. Li *et al.*, "Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning," in *Proc. ICLR*, 2024. · [PDF](https://arxiv.org/pdf/2401.10480)
 
-[5] S. Kadavath *et al.*, "Language models (mostly) know what they know," arXiv:2207.05221, 2022.
+<a id="ref5"></a>**[5]** S. Kadavath *et al.*, "Language models (mostly) know what they know," arXiv:2207.05221, 2022. · [PDF](https://arxiv.org/pdf/2207.05221)
 
-[6] K. Tian *et al.*, "Just ask for calibration: Strategies for eliciting calibrated confidence scores from language models fine-tuned with human feedback," in *Proc. EMNLP*, 2023.
+<a id="ref6"></a>**[6]** K. Tian *et al.*, "Just ask for calibration: Strategies for eliciting calibrated confidence scores from language models fine-tuned with human feedback," in *Proc. EMNLP*, 2023. · [PDF](https://aclanthology.org/2023.emnlp-main.330.pdf)
 
-[7] M. Xiong *et al.*, "Can LLMs express their uncertainty? An empirical evaluation of confidence elicitation in LLMs," in *Proc. ICLR*, 2024.
+<a id="ref7"></a>**[7]** M. Xiong *et al.*, "Can LLMs express their uncertainty? An empirical evaluation of confidence elicitation in LLMs," in *Proc. ICLR*, 2024. · [PDF](https://openreview.net/pdf?id=gjeQKFxFpZ)
 
-[8] X. Huang, S. Li, M. Yu, M. Sesia, H. Hassani, I. Lee, O. Bastani, and E. Dobriban, "Uncertainty in language models: Assessment through rank-calibration," in *Proc. EMNLP*, 2024, pp. 284–312.
+<a id="ref8"></a>**[8]** X. Huang, S. Li, M. Yu, M. Sesia, H. Hassani, I. Lee, O. Bastani, and E. Dobriban, "Uncertainty in language models: Assessment through rank-calibration," in *Proc. EMNLP*, 2024, pp. 284–312. · [PDF](https://aclanthology.org/2024.emnlp-main.18.pdf)
 
-[9] Y. Li *et al.*, "Making language models better reasoners with step-aware verifier," in *Proc. ACL*, 2023.
+<a id="ref9"></a>**[9]** Y. Li *et al.*, "Making language models better reasoners with step-aware verifier," in *Proc. ACL*, 2023. · [PDF](https://aclanthology.org/2023.acl-long.291.pdf)
 
-[10] Z. Kang, X. Zhao, and D. Song, "Scalable best-of-N selection for large language models via self-certainty," in *Proc. NeurIPS*, 2025, arXiv:2502.18581.
+<a id="ref10"></a>**[10]** Z. Kang, X. Zhao, and D. Song, "Scalable best-of-N selection for large language models via self-certainty," in *Proc. NeurIPS*, 2025, arXiv:2502.18581. · [PDF](https://proceedings.neurips.cc/paper_files/paper/2025/file/1c7eff166a8e345f664f0faa8f4e4d2e-Paper-Conference.pdf)
 
-[11] J. Kim, N. Yang, K. Min, and K. Jung, "Reliability-aware adaptive self-consistency for efficient sampling in LLM reasoning," in *Findings of ACL*, 2026, pp. 21575–21590.
+<a id="ref11"></a>**[11]** J. Kim, N. Yang, K. Min, and K. Jung, "Reliability-aware adaptive self-consistency for efficient sampling in LLM reasoning," in *Findings of ACL*, 2026, pp. 21575–21590. · [PDF](https://aclanthology.org/2026.findings-acl.1085.pdf)
 
-[12] Y. Fu *et al.*, "Deep think with confidence," arXiv:2508.15260, 2025.
+<a id="ref12"></a>**[12]** Y. Fu *et al.*, "Deep think with confidence," arXiv:2508.15260, 2025. · [PDF](https://arxiv.org/pdf/2508.15260)
 
-[13] A. P. Dawid and A. M. Skene, "Maximum likelihood estimation of observer error-rates using the EM algorithm," *J. Roy. Statist. Soc. C*, vol. 28, no. 1, pp. 20–28, 1979.
+<a id="ref13"></a>**[13]** A. P. Dawid and A. M. Skene, "Maximum likelihood estimation of observer error-rates using the EM algorithm," *J. Roy. Statist. Soc. C*, vol. 28, no. 1, pp. 20–28, 1979. · [PDF](https://doi.org/10.2307/2346806)
 
-[14] J. Whitehill *et al.*, "Whose vote should count more: Optimal integration of labels from labelers of unknown expertise," in *Proc. NeurIPS*, 2009.
+<a id="ref14"></a>**[14]** J. Whitehill *et al.*, "Whose vote should count more: Optimal integration of labels from labelers of unknown expertise," in *Proc. NeurIPS*, 2009. · [PDF](https://proceedings.neurips.cc/paper_files/paper/2009/file/f899139df5e1059396431415e770c6dd-Paper.pdf)
 
-[15] D. R. Karger, S. Oh, and D. Shah, "Iterative learning for reliable crowdsourcing systems," in *Proc. NeurIPS*, 2011.
+<a id="ref15"></a>**[15]** D. R. Karger, S. Oh, and D. Shah, "Iterative learning for reliable crowdsourcing systems," in *Proc. NeurIPS*, 2011. · [PDF](https://proceedings.neurips.cc/paper_files/paper/2011/file/c667d53acd899a97a85de0c201ba99be-Paper.pdf)
 
-[16] F. Parisi, F. Strino, B. Nadler, and Y. Kluger, "Ranking and combining multiple predictors without labeled data," *Proc. Natl. Acad. Sci.*, vol. 111, no. 4, pp. 1253–1258, 2014.
+<a id="ref16"></a>**[16]** F. Parisi, F. Strino, B. Nadler, and Y. Kluger, "Ranking and combining multiple predictors without labeled data," *Proc. Natl. Acad. Sci.*, vol. 111, no. 4, pp. 1253–1258, 2014. · [PDF](https://pmc.ncbi.nlm.nih.gov/articles/PMC3910607/pdf/pnas.201219097.pdf)
 
-[17] J. Lee, V. Ma, S. Zhao, Y. Nair, A. Spector, R. Cohen, and E. J. Candès, "FUSE: Ensembling verifiers with zero labeled data," arXiv:2604.18547, 2026.
+<a id="ref17"></a>**[17]** J. Lee, V. Ma, S. Zhao, Y. Nair, A. Spector, R. Cohen, and E. J. Candès, "FUSE: Ensembling verifiers with zero labeled data," arXiv:2604.18547, 2026. · [PDF](https://arxiv.org/pdf/2604.18547)
 
-[18] R. Ai, Y. Pan, D. Simchi-Levi, M. Tambe, and H. Xu, "Beyond majority voting: LLM aggregation by leveraging higher-order information," arXiv:2510.01499, 2025（已獲 ICML 2026 接受）.
+<a id="ref18"></a>**[18]** R. Ai, Y. Pan, D. Simchi-Levi, M. Tambe, and H. Xu, "Beyond majority voting: LLM aggregation by leveraging higher-order information," arXiv:2510.01499, 2025（已獲 ICML 2026 接受）. · [PDF](https://arxiv.org/pdf/2510.01499)
 
-[19] P. van Elteren, "On the combination of independent two-sample tests of Wilcoxon," *Bull. Int. Statist. Inst.*, vol. 37, pp. 351–361, 1960.
+<a id="ref19"></a>**[19]** P. van Elteren, "On the combination of independent two-sample tests of Wilcoxon," *Bull. Int. Statist. Inst.*, vol. 37, pp. 351–361, 1960. · [PDF](https://catalog.hathitrust.org/Record/008896012)
 
-[20] W. James and C. Stein, "Estimation with quadratic loss," in *Proc. 4th Berkeley Symp. Math. Statist. Prob.*, 1961, pp. 361–379.
+<a id="ref20"></a>**[20]** W. James and C. Stein, "Estimation with quadratic loss," in *Proc. 4th Berkeley Symp. Math. Statist. Prob.*, 1961, pp. 361–379. · [PDF](https://digitalassets.lib.berkeley.edu/math/ucb/text/math_s4_v1_article-19.pdf)
 
-[21] L. Kish, *Survey Sampling*. New York, NY, USA: Wiley, 1965.
+<a id="ref21"></a>**[21]** L. Kish, *Survey Sampling*. New York, NY, USA: Wiley, 1965. · [PDF](https://www.wiley.com/en-us/Survey+Sampling-p-9780471109495)
 
-[22] J. N. K. Rao and A. J. Scott, "The analysis of categorical data from complex sample surveys," *J. Amer. Statist. Assoc.*, vol. 76, no. 374, pp. 221–230, 1981.
+<a id="ref22"></a>**[22]** J. N. K. Rao and A. J. Scott, "The analysis of categorical data from complex sample surveys," *J. Amer. Statist. Assoc.*, vol. 76, no. 374, pp. 221–230, 1981. · [PDF](https://doi.org/10.1080/01621459.1981.10477633)
 
-[23] L. Kuhn, Y. Gal, and S. Farquhar, "Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation," in *Proc. ICLR*, 2023.
+<a id="ref23"></a>**[23]** L. Kuhn, Y. Gal, and S. Farquhar, "Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation," in *Proc. ICLR*, 2023.
 
-[24] G. Wan, Y. Wu, J. Chen, and S. Li, "Reasoning aware self-consistency: Leveraging reasoning paths for efficient LLM sampling," in *Proc. NAACL*, 2025, pp. 3613–3635.
+<a id="ref24"></a>**[24]** G. Wan, Y. Wu, J. Chen, and S. Li, "Reasoning aware self-consistency: Leveraging reasoning paths for efficient LLM sampling," in *Proc. NAACL*, 2025, pp. 3613–3635. · [PDF](https://arxiv.org/pdf/2302.09664)

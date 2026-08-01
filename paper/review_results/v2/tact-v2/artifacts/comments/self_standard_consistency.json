@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Conclusion should close the loop on the paper's strongest claims",
+    "quote": "",
+    "explanation": "A closure claim appears in the discussion/conclusion. Verify that it matches the limitations, experimental scope, and prior-art positioning established earlier in the paper.",
+    "comment_type": "missing_information",
+    "severity": "minor",
+    "confidence": "low",
+    "source_kind": "llm",
+    "source_section": "conclusion",
+    "related_sections": [
+      "conclusion",
+      "introduction",
+      "results"
+    ],
+    "review_lane": "self_standard_consistency",
+    "gate_blocker": false
+  }
+]
