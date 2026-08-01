@@ -54,6 +54,24 @@ def cite_counts() -> dict[str, int]:
     return {k: keys.count(k) for k in set(keys)}
 
 
+def clean_note(r: dict) -> str:
+    """The correction to show, or empty for an entry that needed none.
+
+    Verified entries carry commentary that is no longer actionable: the
+    verifiers all flagged the stray ``% [VERIFIED]`` annotations that used to
+    follow each entry, and those have since been deleted from the .bib. Showing
+    that text would describe a defect the file no longer has.
+    """
+    if r.get("status") == "VERIFIED":
+        return ""
+    txt = (r.get("problems") or "").strip()
+    if txt.lower().startswith("none"):
+        return ""
+    # drop trailing warnings about the (now removed) stray annotations
+    txt = re.split(r"\s*(?:WARNING|NOTE|Caveat)\b[:,]?\s*the\s+(?:'?%|stray)", txt)[0]
+    return " ".join(txt.split())
+
+
 def fmt_authors(a: str, limit: int = 4) -> str:
     parts = [p.strip() for p in re.split(r"\s+and\s+", a) if p.strip()]
     if len(parts) > limit:
@@ -82,7 +100,7 @@ def main():
     n_bad = sum(1 for r in refs.values() if r.get("status") != "VERIFIED")
     L.append(
         f"- 可直接下載 PDF：**{n_pdf}/{len(refs)}**\n"
-        f"- 原始 BibTeX 有誤需更正：**{n_bad}** 筆（詳見各條目的「更正」）\n"
+        f"- 原始 BibTeX 有誤、**已修正**：**{n_bad}** 筆（各條目下列出證據）\n"
         f"- 論文中的引用次數標示於每筆之後\n"
     )
 
@@ -108,8 +126,9 @@ def main():
                 links.append(f"[DOI](https://doi.org/{r['doi']})")
             if links:
                 L.append(" · ".join(links) + "  ")
-            if r.get("status") != "VERIFIED" or r.get("problems") not in ("none", "", None):
-                L.append(f"\n> **更正**：{r['problems']}  ")
+            note = clean_note(r)
+            if note:
+                L.append(f"\n> **已修正**：{note}  ")
             L.append("")
 
     OUT_MD.write_text("\n".join(L))
