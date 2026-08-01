@@ -63,7 +63,10 @@ def main() -> None:
     for pkg in (r"\usepackage[caption=false]{subfig}", r"\usepackage{balance}", r"\usepackage{multirow}"):
         s = s.replace(pkg + "\n", "")
     s = s.replace("\\balance\n", "")
-    s = s.replace(r"\smash{\kappa_q\,c_{q,i}^{\,\gamma}}", r"\kappa_q\,c_{q,i}^{\,\gamma}")
+    # pandoc's TeX math reader does not know \smash; strip it generally
+    # rather than by matching one hard-coded body, which silently stopped
+    # matching when the symbol inside it was renamed.
+    s = re.sub(r"\\smash\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}", r"\1", s)
     s = s.replace(r"\begin{abstract}", r"\section*{Abstract}").replace(r"\end{abstract}", "")
     s = s.replace("\\begin{thebibliography}{99}", "\\section*{References}\n\\begin{thebibliography}{99}")
     s = hoist_equation_labels(s)

@@ -102,7 +102,7 @@ Section~\ref{sec:limits} measures rather than assumes away.
 per-item coupling and no observable covariate, per-item label-free adaptation
 is closed: any monotone use of an item's own agreement statistic collapses to
 plurality reinforcement, the observable sign opposes the truth on $96\%$ of
-the plurality-wrong items where a flip could help, and
+the plurality-wrong items with $|D_q|>0.3$, the ones where a flip could win, and
 $\{\kappa>0,\text{minority right}\}$ and $\{\kappa<0,\text{plurality right}\}$
 induce the same observable law. Indexed instead by an observable covariate,
 the same estimator run per group recovers each group's signed coupling with
@@ -130,7 +130,12 @@ than a conservative one.
 
 \section{Related Work}\label{sec:related}
 
-\textbf{Confidence-weighted self-consistency.} \SC{} \cite{wang2023selfconsistency} treats sampled traces as i.i.d.\ votes. CISC \cite{taubenfeld2025cisc} weights votes by softmax-normalized confidence with a temperature tuned on a labeled split, and its WQD metric makes the discrimination-vs-calibration point that also motivates this work; the rank-calibration line \cite{huang2024rankcalibration} reaches the same conclusion independently. Weighted variants \cite{li2023diverse,borda2025} and early-stopping families \cite{aggarwal2023adaptive,li2024escape} refine the budget; reliability-aware pseudo-counts \cite{reasc2026} and warmup-thresholded filtering \cite{deepconf2025} adapt online but only re-scale positive trust. None of these searches a negative exponent: the obstruction is a sign bit in
+\textbf{Confidence-weighted self-consistency.} \SC{} \cite{wang2023selfconsistency} treats sampled traces as i.i.d.\ votes. CISC \cite{taubenfeld2025cisc} weights votes by softmax-normalized confidence with a temperature tuned on a labeled split, and its WQD metric makes the discrimination-vs-calibration point that also motivates this work; the rank-calibration line \cite{huang2024rankcalibration} reaches the same conclusion independently. Weighted variants \cite{li2023diverse} and early-stopping families
+\cite{aggarwal2023adaptive,li2024escape} refine the budget. Self-certainty
+\cite{borda2025} is the closest relative in spirit, being the one published
+selector that scores candidates by a rank-like quantity rather than by raw
+confidence, but it ranks \emph{across} candidates with a fixed positive
+orientation and is not evaluated here; reliability-aware pseudo-counts \cite{reasc2026} and warmup-thresholded filtering \cite{deepconf2025} adapt online but only re-scale positive trust. None of these searches a negative exponent: the obstruction is a sign bit in
 the hyperparameter grid rather than the weight family itself, as this paper's
 own SignGrid-dev baseline shows by opening the same $c^{\gamma}$ family to
 negative $\gamma$ and reaching the signed oracle across the negative half-axis.
@@ -141,7 +146,16 @@ labels. The dev-calibrated variant must therefore be positioned honestly: CISC's
 
 \textbf{Shrinkage and rank statistics.} The estimator assembles classical parts: stratified rank statistics \cite{vanelteren1960}, the James--Stein positive-part estimator \cite{james1961estimation}, effective-sample-size corrections \cite{kish1965,rao1981analysis}, and normal-scores discriminant analysis. The claim is the assembly and its anchors, not the parts.
 
-\textbf{Honest sibling result.} A preceding system by the author (RLEV-VoI, redundancy-discounted voting with value-of-information stopping) was evaluated under the same falsification discipline and \emph{failed} it, dominated everywhere by a simple deduplication baseline, and is reported as a negative result. Its post-mortem isolated the confidence dilemma studied here.
+\textbf{Honest sibling result.} A preceding system in the same line of work
+(RLEV-VoI, redundancy-discounted voting with value-of-information stopping)
+was evaluated under the same falsification discipline and \emph{failed} it,
+dominated everywhere by a simple deduplication baseline, and is reported as a
+negative result. Its post-mortem isolated the confidence dilemma studied
+here.%
+% For a double-blind submission, replace the repository URL and commit in the
+% availability section with an anonymized artifact link; this paragraph and
+% that section are the only two places that identify the author.
+
 
 \section{Problem Setup}\label{sec:setup}
 
@@ -223,9 +237,11 @@ z=\Phi^{-1}\!\Big(\tfrac12\big[1+\Dhat\,(1-\nu^{2}/\zeta^{2})_{+}\big]\Big),
 with $\Dhat$ from \eqref{eq:pooled} and $\varphi$ from \eqref{eq:vdw}. At the
 default $\bar p=\tfrac12$ the exponent is exactly
 \begin{equation}\label{eq:half}
-\gamma=z\sqrt{2+z^{2}},\qquad z=\Phi^{-1}(\widehat{\mathrm{AUC}}),
+\gamma=z\sqrt{2+z^{2}},\qquad z=\Phi^{-1}\!\big(\tfrac{1+\tilde D}{2}\big),
 \end{equation}
-one probit and one square root. Nothing in it is fitted to outcomes: $\nu$ is a
+one probit and one square root, where $\tilde D$ is the shrunk \emph{pooled}
+statistic of \eqref{eq:js} and not the per-item $\mathrm{AUC}_q$ of
+\eqref{eq:pooled}. Nothing in it is fitted to outcomes: $\nu$ is a
 significance level and $\gamma_{\max}$ a clip, both fixed before any data is
 seen. The clip is not cosmetic, though. Where $\Dhat$ saturates it binds, and
 the vote then sees $\gamma_{\max}$ rather than the derived magnitude
@@ -241,7 +257,7 @@ implementation over randomised inputs including every boundary
 At $\gamma=0$, \eqref{eq:vote} equals plain \SC{} as a function on every trace pool, including tie-breaks. Under $D=0$, $P(\gamma=0)\to 2\Phi(\nu)-1$ ($80\%$ dev, $98\%$ label-free), and $\gamma$ is continuous through the dead-zone boundary, so a false positive applies an infinitesimal exponent.
 \end{proposition}
 \begin{proposition}[Exact CISC reduction]\label{prop:cisc}
-With the feature map $\varphi^{\log}_{q,i}=\log c_{q,i}-\overline{\log c_q}$, the weights equal $\smash{\kappa_q\,c_{q,i}^{\,\gamma}}$ with a per-item constant $\kappa_q>0$; hence the argmax, the ties, and the normalized vote shares coincide with CISC-power$(\gamma)$ on every pool.
+With the feature map $\varphi^{\log}_{q,i}=\log c_{q,i}-\overline{\log c_q}$, the weights equal $\smash{\lambda_q\,c_{q,i}^{\,\gamma}}$ with a per-item constant $\lambda_q>0$ (distinct from the coupling $\kappa$ of \eqref{eq:confmodel}); hence the argmax, the ties, and the normalized vote shares coincide with CISC-power$(\gamma)$ on every pool.
 \end{proposition}
 \begin{proposition}[Regularity]\label{prop:reg}
 The composite $g(\Dhat,\mathrm{SE})$ is continuous, odd, nondecreasing in $\Dhat$, nonincreasing in $\mathrm{SE}$ in magnitude, with $g(D,0^+)=\gamma^\ast(D)$.
@@ -270,12 +286,15 @@ Split-half agreement over $R{=}20$ random half-splits estimates $\alpha=p^2+(1-p
 Suppose $\kappa_q\stackrel{\text{iid}}{\sim}\mathcal{N}(0,0.6^2)$ with no observable covariate.
 
 \begin{proposition}[Self-reinforcement]\label{prop:selfreinf}
-Any per-item rule $\gamma_q=h(\Dhat^g_q)$ with $h$ monotone increasing and odd reinforces the plurality on both branches: $\Dhat^g_q>0$ up-weights confident traces, which agree with the plurality; $\Dhat^g_q<0$ up-weights unconfident traces, which are again the plurality side. Empirically such a rule agrees with \SC{} on $97.5\%$ of items and its residual flips are net-harmful ($1$ right vs.\ $9$ wrong per $400$ items).
+Any per-item rule $\gamma_q=h(\Dhat^g_q)$ with $h$ monotone increasing and odd reinforces the plurality on both branches: $\Dhat^g_q>0$ up-weights confident traces, which agree with the plurality; $\Dhat^g_q<0$ up-weights unconfident traces, which are again the plurality side.
 \end{proposition}
+\begin{remark}
+Measured in this harness, such a rule agrees with \SC{} on $97.5\%$ of items and its residual flips are net-harmful ($1$ right vs.\ $9$ wrong per $400$ items).
+\end{remark}
 
-\begin{proposition}[Winner's curse]\label{prop:curse}
-On plurality-wrong items with $|D_q|>0.3$, the items where a flip could win, the agreement statistic's sign matches the true sign only $4\%$ of the time.
-\end{proposition}
+\begin{remark}[Winner's curse]\label{prop:curse}
+This is a measurement in the present harness rather than a theorem: on plurality-wrong items with $|D_q|>0.3$, the items where a flip could win, the agreement statistic's sign matches the true sign only $4\%$ of the time.
+\end{remark}
 
 \begin{proposition}[Two-world unidentifiability]\label{prop:twoworld}
 Let $w_1=\{\kappa>0,\ \text{minority correct}\}$ and
@@ -410,7 +429,12 @@ Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confide
 \end{figure}
 
 \subsection{Heterogeneity}
-Table~\ref{tab:group} and Fig.~\ref{fig:group} give the group study. In the covariate-structured cell, per-group \TACT{} recovers each group's signed coupling (dev $\{+4.0,0.0,-4.0\}$, label-free $\{+2.0,0.0,-2.0\}$, the $\kappa{=}0$ group correctly dead-zoned---and cracks the floor that provably binds every global policy: the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle, with \emph{zero} paired losses to \SC{} over $600$ items ($+83/-0$, $p=2.1\times10^{-25}$). In the i.i.d.\ cell every legitimate method sits at the floor with zero discordant pairs, and the naive self-referential control lands slightly below it---the empirical face of Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld}. One observation is reported as-is rather than tuned for: the label-free variant outperforms the dev variant in the grouped cell ($0.923$ vs.\ $0.927$) because its lower exponent cap ($2$ vs.\ $4$) regularizes better when $|D|\approx1$; cap robustness is left as an ablation.
+Table~\ref{tab:group} and Fig.~\ref{fig:group} give the group study. In the covariate-structured cell, per-group \TACT{} recovers each group's signed coupling (dev $\{+4.0,0.0,-4.0\}$, label-free $\{+2.0,0.0,-2.0\}$, the $\kappa{=}0$ group correctly dead-zoned---and cracks the floor that provably binds every global policy: the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle, with \emph{zero} paired losses to \SC{} over $600$ items ($+83/-0$, $p=2.1\times10^{-25}$). In the i.i.d.\ cell every legitimate method sits at the floor with zero discordant pairs, and the naive self-referential control lands slightly below it---the empirical face of Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld}. The two arms land within seed noise of each other here ($0.923$ and $0.927$ on
+one seed; $0.929\pm0.015$ each over five). An earlier draft attributed the
+gap to the arms' different exponent caps; the ablation says otherwise. Sweeping
+the cap over $\{1,2,3,4,6,8\}$ moves neither arm at all (spread $0.0000$ for
+both), so the cap is not load-bearing in this cell and the difference is
+sampling variation.
 
 \begin{table}[t]
 \centering
@@ -639,23 +663,27 @@ upper bound on the pass rate $0.088$), and extrapolating oracle@$N$ shows the
 window saturating by $N{=}32$.
 
 \begin{table}[t]
-\caption{The addressable stratum across substrates. Rows marked $\dagger$ are
-measured here; HumanEval+/MBPP+ is recomputed from published oracle-minus-
-selector tables. As items harden they pass from saturated to
-capability-limited without the window widening.}
+\caption{The addressable stratum across substrates, on one definition
+throughout: \emph{decisive} is the fraction of items whose plurality is wrong,
+\emph{window} the fraction that are decisive \emph{and} have the correct
+answer somewhere in the pool. The window is the ceiling for any label-free
+aggregation method. Rows marked $\dagger$ are measured here; HumanEval+/MBPP+
+is recomputed from published oracle-minus-selector tables, which report the
+window only. As items harden the decisive fraction grows but the window does
+not: they pass from saturated to capability-limited.}
 \label{tab:window}
 \centering\footnotesize
 \setlength{\tabcolsep}{4pt}
-\begin{tabular}{l l c}
+\begin{tabular}{l l c c}
 \toprule
-Domain & Substrate & Window \\
+Domain & Substrate & Decisive & Window \\
 \midrule
-QA, label-free & GSM8K / CommonsenseQA$^\dagger$ & $12\%$ informative, $9\%$ decisive \\
-QA, label-free & MATH level-5$^\dagger$ & $11\%$ decisive, $4\%$ rescuable \\
-QA, label-free & AIME / AMC$^\dagger$ & $23\%$ decisive, $3\%$ rescuable \\
-Code, executable & HumanEval+ / MBPP+ & $3.56\%$ \\
-Code, executable & LeetCode Med/Hard$^\dagger$ & $7.5\%$ \\
-QA, budget-constrained & MATH level-5$^\dagger$ & $11.8\%$ \\
+QA & GSM8K / CommonsenseQA$^\dagger$ & $9.0\%$ & $4.0\%$ \\
+QA & MATH level-5$^\dagger$ & $7.6\%$ & $2.5\%$ \\
+QA & AIME / AMC$^\dagger$ & $23.3\%$ & $3.3\%$ \\
+Code & HumanEval+ / MBPP+ & --- & $3.6\%$ \\
+Code & LeetCode Med/Hard$^\dagger$ & $25.0\%$ & $7.5\%$ \\
+QA, budget-constrained & MATH level-5$^\dagger$ & $18.5\%$ & $11.8\%$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -705,7 +733,12 @@ half of them, and none of the reachable configurations is significant.
 
 \section{Discussion and Limitations}\label{sec:limits}
 
-\textbf{What the evidence does and does not show.} The \emph{accuracy} claims are all on a synthetic oracle whose confidence model \eqref{eq:confmodel} is, at the homogeneous cells, the very coupling the estimator measures. Three design choices limit the circularity: the adversarial regimes (distortions, heterogeneity, echo) lie outside the estimator's working model; mechanism-recovery claims (does $\Dhat$ track $\kappa$?) are reported separately from accuracy claims; and the pre-measured baseline landscape (Fig.~\ref{fig:baselines}) fixed the winnable cells before the method existed. The real-trace campaigns of Sections~\ref{sec:real} and~\ref{sec:hard} test the \emph{premise} and the \emph{abstention behaviour}, and both predictions held: the channel is null on saturated benchmarks and positive on competition mathematics, and the dead zone kept the vote bit-identical to \SC{} in each case. They do not test the accuracy claim, because on neither substrate was the addressable stratum large enough for any method to demonstrate a gain (Section~\ref{sec:window}).
+\textbf{What the evidence does and does not show.} The \emph{accuracy} claims are all on a synthetic oracle whose confidence model \eqref{eq:confmodel} is, at the homogeneous cells, the very coupling the estimator measures. Three design choices limit the circularity, and the first is weaker than it
+looks: heterogeneity and echo lie outside the estimator's working model, but
+the three distortion cells are rank-preserving by construction and therefore
+sit \emph{inside} \TACT's own invariance group, so passing them tests that the
+implementation respects an invariance it was built to have rather than
+probing an untested regime; mechanism-recovery claims (does $\Dhat$ track $\kappa$?) are reported separately from accuracy claims; and the pre-measured baseline landscape (Fig.~\ref{fig:baselines}) fixed the winnable cells before the method existed. The real-trace campaigns of Sections~\ref{sec:real} and~\ref{sec:hard} test the \emph{premise} and the \emph{abstention behaviour}, and both predictions held: the channel is null on saturated benchmarks and positive on competition mathematics, and the dead zone kept the vote bit-identical to \SC{} in each case. They do not test the accuracy claim, because on neither substrate was the addressable stratum large enough for any method to demonstrate a gain (Section~\ref{sec:window}).
 
 \textbf{Narrow margins where labels abound.} When labels are plentiful and the confidence scale is trusted, a dev-picked signed grid captures most of the value; \TACT's case rests on the label-free setting, distorted scales, small dev sets, and the exactness of its anchors.
 
@@ -724,7 +757,12 @@ sharpest unguarded failure mode: the guarantee is conditional, the condition is
 not observable label-free, and the existing diagnostics do not detect its
 violation. Where a systematically wrong majority is plausible, the
 semi-label-free mode (sign from ${\sim}50$ labels) should be the default rather
-than an optional refinement.
+than an optional refinement. The other standard remedy is not tried here and
+should be: the failure is driven by a semantically tight wrong cluster that
+lexical deduplication cannot see, which is precisely what semantic-equivalence
+clustering \cite{kuhn2023semantic} is built to collapse. Substituting a
+semantic pseudo-label for the lexical one is the obvious next guard, and this
+paper does not test it.
 
 \textbf{Global exponent per group.} Within a group, \TACT{} ships one exponent; per-item variation inside a group is unexploitable by Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} unless further covariates exist.
 
@@ -800,14 +838,14 @@ F.~Parisi, F.~Strino, B.~Nadler, and Y.~Kluger, ``Ranking and combining multiple
 \bibitem{li2023diverse}
 Y.~Li \emph{et~al.}, ``Making language models better reasoners with step-aware verifier,'' in \emph{Proc.\ ACL}, 2023.\ \url{https://aclanthology.org/2023.acl-long.291.pdf}
 
-\bibitem{borda2025}
-Z.~Kang, X.~Zhao, and D.~Song, ``Scalable best-of-N selection for large language models via self-certainty,'' in \emph{Proc.\ NeurIPS}, 2025, arXiv:2502.18581.\ \url{https://proceedings.neurips.cc/paper_files/paper/2025/file/1c7eff166a8e345f664f0faa8f4e4d2e-Paper-Conference.pdf}
-
 \bibitem{aggarwal2023adaptive}
 P.~Aggarwal, A.~Madaan, Y.~Yang, and Mausam, ``Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with {LLMs},'' in \emph{Proc.\ EMNLP}, 2023, pp. 12375--12396.\ \url{https://aclanthology.org/2023.emnlp-main.761.pdf}
 
 \bibitem{li2024escape}
 Y.~Li \emph{et~al.}, ``Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning,'' in \emph{Proc.\ ICLR}, 2024.\ \url{https://arxiv.org/pdf/2401.10480}
+
+\bibitem{borda2025}
+Z.~Kang, X.~Zhao, and D.~Song, ``Scalable best-of-N selection for large language models via self-certainty,'' in \emph{Proc.\ NeurIPS}, 2025, arXiv:2502.18581.\ \url{https://proceedings.neurips.cc/paper_files/paper/2025/file/1c7eff166a8e345f664f0faa8f4e4d2e-Paper-Conference.pdf}
 
 \bibitem{whitehill2009whose}
 J.~Whitehill \emph{et~al.}, ``Whose vote should count more: Optimal integration of labels from labelers of unknown expertise,'' in \emph{Proc.\ NeurIPS}, 2009.\ \url{https://proceedings.neurips.cc/paper_files/paper/2009/file/f899139df5e1059396431415e770c6dd-Paper.pdf}
@@ -844,6 +882,9 @@ H.~Lightman \emph{et~al.}, ``Let's verify step by step,'' in \emph{Proc.\ ICLR},
 
 \bibitem{leetcodedataset}
 Y.~Xia \emph{et~al.}, ``LeetCodeDataset: A temporal dataset for robust evaluation and efficient training of code LLMs,'' arXiv:2504.14655, 2025.\ \url{https://arxiv.org/pdf/2504.14655}
+
+\bibitem{kuhn2023semantic}
+L.~Kuhn, Y.~Gal, and S.~Farquhar, ``Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation,'' in \emph{Proc.\ ICLR}, 2023.\ \url{https://arxiv.org/pdf/2302.09664}
 
 \end{thebibliography}
 
