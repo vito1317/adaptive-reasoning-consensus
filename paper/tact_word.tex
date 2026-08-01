@@ -56,7 +56,7 @@ default and the dead zone implements it.
 
 
 \textbf{Keywords---}
-large language models, self-consistency, confidence calibration, weighted voting, label-free estimation, rank statistics
+large language models, self-consistency, confidence calibration, label-free estimation, rank statistics
 
 
 \section{Introduction}
@@ -319,7 +319,7 @@ $K{=}15$. \TACT{} does not exploit the residual signal, and no published
 method does either; doing so is left open.
 \end{proposition}
 
-Consequently the per-item oracle ($0.983$ in this harness) is unreachable, and the honest behaviour is to fall back to the global estimate, which \TACT's dead zone does: in the i.i.d.\ cell every variant returns bitwise \SC{} (zero discordant pairs).
+Consequently the per-item oracle ($0.973$ in this harness) is unreachable, and the honest behaviour is to fall back to the global estimate, which \TACT's dead zone does: in the i.i.d.\ cell every variant returns bitwise \SC{} (zero discordant pairs).
 
 \subsection{TACT-group}
 Real heterogeneity is typically indexed by an observable covariate (domain, question type). With $\kappa$ indexed by a group label, running the estimator per group keeps every group inside the operating regime of Sections~\ref{sec:method}--\ref{sec:lf}; groups with fewer than $30$ dev (or $60$ unlabeled) items fall back to the global estimate, which Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} show is the only defensible default.
@@ -361,15 +361,15 @@ mid-range a tie.
 \toprule
 $\kappa$ & \SC & ECE & devT & SignGrid & \textbf{\TACT-dev} & \textbf{\TACT-LF} & oracle\\
 \midrule
-$-0.6$ & .807 & .807 & .807 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
-$-0.4$ & .797 & .797 & .797 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
-$-0.2$ & .835 & .835 & .835 & .993 & .978 & .978 & .993\\
-$-0.1$ & .762 & .762 & .762 & .892 & .880 & .885 & .892\\
-$0.0$  & .835 & .835 & .835 & .835 & .835 & .835 & .835\\
-$+0.1$ & .795 & .795 & .917 & .917 & .902 & .902 & .917\\
-$+0.2$ & .845 & .845 & .993 & .993 & .988 & .988 & .993\\
-$+0.4$ & .838 & .838 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
-$+0.6$ & .782 & .782 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
+$-0.6$ & .762 & .762 & .762 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
+$-0.4$ & .805 & .805 & .805 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
+$-0.2$ & .750 & .750 & .750 & .985 & .975 & .975 & .985\\
+$-0.1$ & .750 & .750 & .750 & .915 & .900 & .890 & .915\\
+$0.0$  & .745 & .745 & .760 & .760 & .745 & .745 & .772\\
+$+0.1$ & .777 & .777 & .932 & .932 & .907 & .907 & .932\\
+$+0.2$ & .760 & .760 & .985 & .985 & .978 & .978 & .985\\
+$+0.4$ & .785 & .785 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
+$+0.6$ & .780 & .780 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -395,15 +395,16 @@ Table~\ref{tab:sweep} and Fig.~\ref{fig:sweep} give the sweep. Three observation
 \toprule
 Regime & \SC & devT & SignGrid & \textbf{\TACT-dev} & \textbf{\TACT-LF}\\
 \midrule
-Monotone compress & .795 & .965 & .965 & \textbf{1.000} & \textbf{1.000}\\
-Monotone overconf & .795 & 1.000 & 1.000 & 1.000 & 1.000\\
-Monotone power & .795 & 1.000 & 1.000 & 1.000 & 1.000\\
-Hetero (i.i.d.) & .810 & .810 & .810 & .810 & .810\\
-Confident echo & .200 & .200 & .550 & \textbf{.585} & .200$^{\dagger}$\\
+Monotone compress & .775 & .963 & .963 & \textbf{1.000} & \textbf{1.000}\\
+Monotone overconf & .775 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000}\\
+Monotone power & .775 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000}\\
+Hetero (i.i.d.) & .765 & .765 & .765 & .765 & .765\\
+Confident echo & .190 & .190 & .568 & \textbf{.615} & .190$^{\dagger}$\\
 \bottomrule
-\multicolumn{6}{l}{\footnotesize $^{\dagger}$alarm fires and the method refuses to leave \SC---the conditional}\\
-\multicolumn{6}{l}{\footnotesize guarantee of Prop.~\ref{prop:ccn} working as stated.}
 \end{tabular}
+\vspace{2pt}
+{\footnotesize $^{\dagger}$alarm fires and the method refuses to leave \SC:
+the conditional guarantee of Prop.~\ref{prop:ccn} working as stated.}
 \end{table}
 
 
@@ -413,9 +414,9 @@ saturates, so the link returns an untempered $\gamma^\ast$ between $-8.4$ and
 $+12.1$ across the seven saturated cells and the cap $\gamma_{\max}=4$ is what
 the vote actually sees; the derived magnitude is not doing the
 work there, the sign is. Conversely, at $\kappa=\pm0.1,\pm0.2$, where the
-derived value lands strictly inside the cap ($\pm1.06$ to $\pm2.80$),
-\TACT-dev trails the dev-picked signed grid on all four cells ($0.880$ vs.\
-$0.892$; $0.902$ vs.\ $0.917$; $0.978$ vs.\ $0.993$; $0.988$ vs.\ $0.993$).
+derived value lands strictly inside the cap ($|\gamma|$ from $1.10$ to $2.91$),
+\TACT-dev trails the dev-picked signed grid on all four cells ($0.900$ vs.\
+$0.915$; $0.907$ vs.\ $0.932$; $0.975$ vs.\ $0.985$; $0.978$ vs.\ $0.985$).
 Read together: against the \emph{published} protocols the advantage is large
 and comes from representing the sign at all, whereas against a signed grid the
 analytic map is not better at choosing a magnitude on these cells. Its
@@ -469,16 +470,16 @@ Per-item link oracle (ceiling) & .947 & .983\\
 \end{figure}
 
 \subsection{Small dev sets and falsifiers}
-With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; nowhere more than the pre-registered $0.02$ accuracy tolerance below \SC), F3 (sweep means $0.947$ vs.\ $0.760$), and F4 (both grid baselines trail by $0.032$ and $0.048$ on the distortion and echo cells, and neither can operate without labels). On the single seed the paired tests against SignGrid-dev are not significant
+With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; nowhere more than the pre-registered $0.02$ accuracy tolerance below \SC), F3 (sweep means $0.944$ vs.\ $0.768$), and F4 (both grid baselines trail by $0.037$ and $0.047$ on the distortion and echo cells, and neither can operate without labels). On the single seed the paired tests against SignGrid-dev are not significant
 anywhere ($\kappa{=}-0.2$: $3/7$ discordant, exact $p=0.34$; $\kappa{=}+0.1$:
 $8/18$, $p=0.08$), and the ten-seed intervals of Section~\ref{sec:seeds} are
-what establish the mid-range deficit. Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.005$--$0.015$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.037$), echo ($+0.047$), and label-free operation, which no grid can perform.
+what establish the mid-range deficit. Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.007$--$0.025$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.037$), echo ($+0.047$), and label-free operation, which no grid can perform.
 
 \subsection{Verification of the implementation}\label{sec:tests}
 Because every claim in Sections~\ref{sec:method}--\ref{sec:hetero} is a
 mathematical property rather than an empirical trend, the released code pins
 each one with an executable test; the suite is 102 tests covering \TACT{} and the
-follow-on work, and runs in 199 seconds. Table~\ref{tab:tests}
+follow-on work. Table~\ref{tab:tests}
 maps propositions to the tests that would fail if they stopped holding.
 
 \begin{table}[t]
@@ -527,8 +528,10 @@ spurious falsifier: at $\kappa=0$, \TACT-dev averaged $0.797$ against \SC{} at
 $0.818$ across ten seeds, tripping F2, while the exponents responsible were
 $|\gamma|\le0.05$. The items were near-ties whose tie-break had moved, not
 items the exponent had reweighted. Answer codes are now permuted per item.
-With the artifact removed, $\kappa=0$ gives $0.758$ for both methods and
-heterogeneous-$\kappa$ gives $0.768$ for both: the dead zone behaves as
+With the artifact removed the two coincide exactly where the dead zone
+should hold: $\kappa=0$ gives $0.745$ for both methods and
+heterogeneous-$\kappa$ gives $0.765$ for both (ten-seed means $0.758$ and
+$0.768$, zero discordant pairs in every seed): the dead zone behaves as
 Proposition~\ref{prop:sc} states. All synthetic numbers in this paper are
 post-fix.
 
