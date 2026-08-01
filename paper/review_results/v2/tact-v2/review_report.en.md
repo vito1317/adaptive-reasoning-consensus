@@ -1,16 +1,16 @@
 # Deep Review Report
 
 **Paper**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **Language**: EN | **Mode**: deep-review
-**Generated**: 2026-08-02 03:06
+**Generated**: 2026-08-02 03:17
 **Artifacts**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
 
 ## Overall Assessment
 
-Round-4 re-audit of tact.tex at commit d5154aa. Eighteen root causes closed, none partially, two new and both about the manuscript envelope rather than its content. The bundle is now 5 findings: 1 major, 4 minor, from 38 (10 major, Desk Reject) three rounds ago. No claim-accuracy, methodology, notation, or reproducibility finding remains open. Two of this round's fixes went past what was asked: re-running the single-seed cells uncovered a tie-breaking artifact in the generator that had been handing plain SC a free 67.7-vs-50.4 percent advantage on tied items, which the author fixed and then renumbered every synthetic result against; and Proposition 7 turned out to be false as stated rather than merely under-justified, so it was corrected, bounded to effectively-binary pools, and pinned in both directions by tests. A deferred cap ablation was also run and overturned the paper's own earlier attribution of a result. Everything checkable was checked against the regenerated artifacts and matched: all seven seed-dispersion intervals, the cap sweep's 0.0000 spread, every number in the new reasoning-budget subsection, the post-fix sweep and group tables, and the 102-test count. The one major left is that the paper is now 11 pages in a conference class with no named target track, caused by the additions themselves; it is a venue decision, not an edit. The remainder is four presentation items: six keywords, a booktabs footnote placement, a float position, and a stated test runtime that varies threefold between runs on one machine and should probably be dropped.
+Round-5 re-audit of tact.tex at commit aed4605. Five items closed, one new. The bundle is 3 findings: 2 major, 1 minor. This round's commit set out to regenerate the result tables against the post-tie-break-fix artifacts and succeeded for Tables I and II, both of which now match results/tact_eval.json cell for cell across 9 sweep rows and 5 adversarial rows. Table III was missed and is still pre-fix on all six rows of both columns, which is now visible on the page because the surrounding prose, the figure caption and the abstract were all updated: the table's headline cell reads .940 where the adjacent paragraph reads 0.923, and its i.i.d. oracle cell reads .983 where the Heterogeneity text reads 0.973. Only the table body needs replacing; every sentence that cites it, including the paired counts +83/-0 at p=2.1e-25, checks out against group_eval.json. The other major is unchanged and is not a text problem: 11 pages in a conference class with no named target track, which is a venue decision. The single minor is a float placement. Also closed this round: the keyword count, the unreproducible test runtime (removed), the booktabs footnote placement, and both overfull boxes.
 
-- **Major**: 1
+- **Major**: 2
 - **Moderate**: 0
-- **Minor**: 4
+- **Minor**: 1
 
 ## Academic Pre-Review Committee
 
@@ -372,7 +372,18 @@ harder direction.
 
 ## Major Issues
 
-### M1: The page count has grown to eleven, in a conference class with no named target track
+### M1: Table III is still pre-fix on all six rows, and now contradicts the prose that cites it
+- **Type**: presentation
+- **Source**: [Script] via `numbers_vs_released_artifacts`
+- **Confidence**: high
+- **Section**: result
+- **Related Sections**: result
+- **Root Cause Key**: `table3-still-pre-fix`
+- **Quote Verified**: yes
+- **Quote**: `\SC{} (floor) & .808 & .827\\`
+- **Explanation**: This commit regenerated Tables I and II and every prose figure, and both now match results/tact_eval.json row for row. Table III was missed, so it still carries the pre-tie-break-fix numbers while the sentences that reference it carry the corrected ones. Against results/group_eval.json, every row of both columns is stale: SC floor .808/.827 should be .785/.752; TACT global (dev) the same; TACT-group (dev) .923/.827 should be .927/.752; TACT-group (label-free) .940/.827 should be .923/.752; naive per-item .803/.820 should be .787/.752; per-item link oracle .947/.983 should be .947/.973. The contradiction is now visible on the page: the table's headline cell says .940 while the paragraph beside it says 'the label-free variant reaches $0.923$', the caption says 'from the $0.785$ floor' against a table row of .808, and the Heterogeneity prose says 'per-item oracle ($0.973$ in this harness)' against a table cell of .983. The prose, the caption, the abstract and the paired counts (+83/-0, p=2.1e-25) are all correct and all check out; only the table body needs replacing.
+
+### M2: The paper is still eleven pages in a conference class with no named target track
 - **Type**: presentation
 - **Source**: [Script] via `pre_submission_readiness`
 - **Confidence**: high
@@ -381,22 +392,11 @@ harder direction.
 - **Root Cause Key**: `page-count-regressed-to-eleven`
 - **Quote Verified**: yes
 - **Quote**: `\documentclass[conference]{IEEEtran}`
-- **Explanation**: [Script] The rendered PDF is 11 pages, up from 10 at f8641e8 and 9 at 4d75431. Table IV was compressed from 3 columns and 12 rows to 2 and 7, but the two subsections added this round (the harness artifact with seed dispersion, and the reasoning-budget axis) outweigh that. Both are the strongest new material in the manuscript and neither should be cut. Most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees, and after four rounds no target track is named anywhere. This is the only mechanical obstacle left and it is a decision rather than an edit: name the venue, then fit it. If the target is a journal or a track with a 10-12 page allowance this closes with no text change at all; if it is an 8-page track, the seed-dispersion and budget subsections are the natural candidates for a companion technical report cited from the paper.
+- **Explanation**: [Script] Unchanged at 11 pages. Both overfull boxes were fixed this round and the window table was tightened, which helps the layout without changing the count. Most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees, and no target track is named anywhere after five rounds. This remains a venue decision rather than an edit: if the target is a journal or a track with a 10-12 page allowance it closes with no text change, and if it is an 8-page track the seed-dispersion and reasoning-budget subsections are the natural candidates for a companion technical report cited from the paper.
 
 ## Minor Issues
 
-### M1: Still six keywords where IEEE asks for three to five
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `keyword-count`
-- **Quote Verified**: yes
-- **Quote**: `large language models, self-consistency, confidence calibration, weighted voting, label-free estimation, rank statistics`
-- **Explanation**: [Script] Unchanged across all four rounds. Drop one or two.
-
-### M2: Table I is still placed in the Experimental Setup section but interpreted only in Results
+### M1: Table I is still placed in the Experimental Setup section but interpreted only in Results
 - **Type**: presentation
 - **Source**: [LLM] via `section_results`
 - **Confidence**: high
@@ -405,34 +405,12 @@ harder direction.
 - **Root Cause Key**: `table1-float-before-results`
 - **Quote Verified**: yes
 - **Quote**: `\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \SC{} floor on the entire negative half-axis.}`
-- **Explanation**: The float is declared before the Results heading and its caption already states the paper's first result. With the page count at 11, float placement also affects wasted whitespace.
-
-### M3: Table II's footnote rows are still typeset inside the tabular after \bottomrule
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `table2-footnote-after-bottomrule`
-- **Quote Verified**: yes
-- **Quote**: `\multicolumn{6}{l}{\footnotesize $^{\dagger}$alarm fires and the method refuses to leave \SC---the conditional}\\`
-- **Explanation**: [Script] Unchanged. Use a tablenotes environment or move the note after the tabular ends.
-
-### M4: The stated test-suite runtime does not reproduce, and its variance argues for dropping it
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `test-runtime-not-reproducible`
-- **Quote Verified**: yes
-- **Quote**: `follow-on work, and runs in 199 seconds. Table~\ref{tab:tests}`
-- **Explanation**: [Script] The count is exact: pytest collects and passes 102 tests, matching the paper. The runtime does not reproduce here, and the spread is the real point: six timed runs of this suite on one machine gave 49.7, 90.0, 90.5, 103.0, 106.0 and 154.9 seconds across the 98- and 102-test versions. A quantity that moves by 3x between runs on the same hardware carries no information for a reader on different hardware. Either drop the runtime or state the machine and the run it came from. Advisory, not a defect claim.
+- **Explanation**: The float is declared before the Results heading and its caption already states the paper's first result. The last remaining presentation item, and the cheapest.
 
 ## Decision Signals
 
-- **Reviewer Recommendation**: Major Revision
-- **Issue Bundle**: 1 major / 0 moderate / 4 minor
+- **Reviewer Recommendation**: Reject
+- **Issue Bundle**: 2 major / 0 moderate / 1 minor
 
 ## Revision Roadmap
 

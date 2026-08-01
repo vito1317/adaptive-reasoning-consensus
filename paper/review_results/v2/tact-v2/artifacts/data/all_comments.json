@@ -1,8 +1,26 @@
 [
   {
-    "title": "The page count has grown to eleven, in a conference class with no named target track",
+    "title": "Table III is still pre-fix on all six rows, and now contradicts the prose that cites it",
+    "quote": "\\SC{} (floor) & .808 & .827\\\\",
+    "explanation": "This commit regenerated Tables I and II and every prose figure, and both now match results/tact_eval.json row for row. Table III was missed, so it still carries the pre-tie-break-fix numbers while the sentences that reference it carry the corrected ones. Against results/group_eval.json, every row of both columns is stale: SC floor .808/.827 should be .785/.752; TACT global (dev) the same; TACT-group (dev) .923/.827 should be .927/.752; TACT-group (label-free) .940/.827 should be .923/.752; naive per-item .803/.820 should be .787/.752; per-item link oracle .947/.983 should be .947/.973. The contradiction is now visible on the page: the table's headline cell says .940 while the paragraph beside it says 'the label-free variant reaches $0.923$', the caption says 'from the $0.785$ floor' against a table row of .808, and the Heterogeneity prose says 'per-item oracle ($0.973$ in this harness)' against a table cell of .983. The prose, the caption, the abstract and the paired counts (+83/-0, p=2.1e-25) are all correct and all check out; only the table body needs replacing.",
+    "comment_type": "presentation",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "result",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "table3-still-pre-fix",
+    "review_lane": "numbers_vs_released_artifacts",
+    "gate_blocker": true,
+    "quote_verified": null,
+    "source_file": "numbers_vs_released_artifacts.json"
+  },
+  {
+    "title": "The paper is still eleven pages in a conference class with no named target track",
     "quote": "\\documentclass[conference]{IEEEtran}",
-    "explanation": "[Script] The rendered PDF is 11 pages, up from 10 at f8641e8 and 9 at 4d75431. Table IV was compressed from 3 columns and 12 rows to 2 and 7, but the two subsections added this round (the harness artifact with seed dispersion, and the reasoning-budget axis) outweigh that. Both are the strongest new material in the manuscript and neither should be cut. Most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees, and after four rounds no target track is named anywhere. This is the only mechanical obstacle left and it is a decision rather than an edit: name the venue, then fit it. If the target is a journal or a track with a 10-12 page allowance this closes with no text change at all; if it is an 8-page track, the seed-dispersion and budget subsections are the natural candidates for a companion technical report cited from the paper.",
+    "explanation": "[Script] Unchanged at 11 pages. Both overfull boxes were fixed this round and the window table was tightened, which helps the layout without changing the count. Most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees, and no target track is named anywhere after five rounds. This remains a venue decision rather than an edit: if the target is a journal or a track with a 10-12 page allowance it closes with no text change, and if it is an 8-page track the seed-dispersion and reasoning-budget subsections are the natural candidates for a companion technical report cited from the paper.",
     "comment_type": "presentation",
     "severity": "major",
     "confidence": "high",
@@ -18,63 +36,9 @@
     "source_file": "pre_submission_readiness.json"
   },
   {
-    "title": "The stated test-suite runtime does not reproduce, and its variance argues for dropping it",
-    "quote": "follow-on work, and runs in 199 seconds. Table~\\ref{tab:tests}",
-    "explanation": "[Script] The count is exact: pytest collects and passes 102 tests, matching the paper. The runtime does not reproduce here, and the spread is the real point: six timed runs of this suite on one machine gave 49.7, 90.0, 90.5, 103.0, 106.0 and 154.9 seconds across the 98- and 102-test versions. A quantity that moves by 3x between runs on the same hardware carries no information for a reader on different hardware. Either drop the runtime or state the machine and the run it came from. Advisory, not a defect claim.",
-    "comment_type": "presentation",
-    "severity": "minor",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
-    "root_cause_key": "test-runtime-not-reproducible",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null,
-    "source_file": "pre_submission_readiness.json"
-  },
-  {
-    "title": "Still six keywords where IEEE asks for three to five",
-    "quote": "large language models, self-consistency, confidence calibration, weighted voting, label-free estimation, rank statistics",
-    "explanation": "[Script] Unchanged across all four rounds. Drop one or two.",
-    "comment_type": "presentation",
-    "severity": "minor",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "abstract",
-    "related_sections": [
-      "abstract"
-    ],
-    "root_cause_key": "keyword-count",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null,
-    "source_file": "pre_submission_readiness.json"
-  },
-  {
-    "title": "Table II's footnote rows are still typeset inside the tabular after \\bottomrule",
-    "quote": "\\multicolumn{6}{l}{\\footnotesize $^{\\dagger}$alarm fires and the method refuses to leave \\SC---the conditional}\\\\",
-    "explanation": "[Script] Unchanged. Use a tablenotes environment or move the note after the tabular ends.",
-    "comment_type": "presentation",
-    "severity": "minor",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
-    "root_cause_key": "table2-footnote-after-bottomrule",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": null,
-    "source_file": "pre_submission_readiness.json"
-  },
-  {
     "title": "Table I is still placed in the Experimental Setup section but interpreted only in Results",
     "quote": "\\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \\SC{} floor on the entire negative half-axis.}",
-    "explanation": "The float is declared before the Results heading and its caption already states the paper's first result. With the page count at 11, float placement also affects wasted whitespace.",
+    "explanation": "The float is declared before the Results heading and its caption already states the paper's first result. The last remaining presentation item, and the cheapest.",
     "comment_type": "presentation",
     "severity": "minor",
     "confidence": "high",

@@ -1,50 +1,40 @@
 {
   "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex",
-  "round": 4,
-  "reviewed_commit": "d5154aa",
-  "previous_commit": "f8641e8",
+  "round": 5,
+  "reviewed_commit": "aed4605",
+  "previous_commit": "d5154aa",
   "history": {
     "62bc7c7": "38 findings / 10 major / Desk Reject",
     "4d75431": "38 / 10 / Conditional Pass",
     "f8641e8": "22 / 2",
-    "d5154aa": "5 / 1"
+    "d5154aa": "5 / 1",
+    "aed4605": "3 / 2"
   },
   "FULLY_ADDRESSED": [
-    "prop7-sketch-weaker-than-claim -- Prop. 7 was FALSE as stated; corrected, bounded to effectively-binary pools (88% of confident-echo items), pinned both ways with tests",
-    "empirical-frequencies-as-propositions -- Props 5-6 demoted to remarks, labelled measurements in this harness",
-    "single-seed-no-dispersion -- new Sec. V-F: 10 seeds/cell with bootstrap intervals; the rerun also uncovered a tie-breaking harness artifact that had been subsidising SC",
-    "falsifier-tolerance-undisclosed -- tau=0.02 replaced by exact paired McNemar at alpha=0.05 plus an across-seed bootstrap second gate",
-    "unreported-unfavourable-paired-test -- mid-range paired tests now reported both ways, post-fix",
-    "asymmetric-cap-across-arms -- ablation over caps {1,2,3,4,6,8}: spread 0.0000, overturning the paper's own earlier attribution",
-    "kappa-symbol-collision -- Prop. 2 now uses lambda_q, explicitly distinguished",
-    "auc-hat-overload -- Eq. 15 now writes Phi^-1((1+D-tilde)/2) and names the shrunk pooled statistic",
-    "window-column-heterogeneous -- Table VI rebuilt on one definition with separate Decisive and Window columns",
-    "distortion-cells-inside-invariance-group -- Discussion now states the three distortion cells sit inside TACT's own invariance group",
-    "semantic-dedup-remedy-uncited -- kuhn2023semantic restored and engaged as the untried remedy",
-    "borda2025-miscategorized-not-run -- recharacterized as the closest relative in spirit, with why it is not evaluated",
-    "rlev-voi-uncitable -- de-anonymized wording plus a note naming the two author-identifying places for double-blind",
-    "theory-increment-mislocated -- Conclusion now leads with the measurement over the estimator",
-    "c3-prop6-conditioning-mismatch -- C3 now carries the |D_q|>0.3 condition",
-    "cannot-represent-vs-not-searched -- Introduction now reads 'is never searched for', matching the revised Related Work",
-    "three-times-sc-floor-rounding -- replaced with the exact ratio, 3.2x",
-    "gamma-star-38-miscomputed / f4-unreachable -- both round-3 regressions stayed closed under the renumbered post-fix results"
+    "keyword-count -- 6 keywords cut to 5 ('weighted voting' dropped)",
+    "test-runtime-not-reproducible -- the '199 seconds' claim removed; the exact 102-test count kept",
+    "table2-footnote-after-bottomrule -- footnote moved outside the tabular",
+    "tables-I-and-II-pre-fix -- both regenerated; verified row for row against tact_eval.json (9 sweep rows x 7 columns, 5 adversarial rows x 5 columns, all exact)",
+    "overfull-boxes -- the boxed one-line formula split with aligned, the window table tightened with @{} and tabcolsep"
   ],
   "PARTIALLY_ADDRESSED": {},
   "NEW": {
-    "page-count-regressed-to-eleven": "9 -> 10 -> 11 pages; the added subsections are the strongest new material, so this is a venue decision rather than an edit.",
-    "test-runtime-not-reproducible": "102-test count exact; runtime varies 49.7-154.9s across six timed runs here against a stated 199s."
+    "table3-still-pre-fix": "All six rows of both columns are pre-tie-break-fix while the prose citing them is post-fix; the table now contradicts its own caption, its paragraph, and the abstract."
   },
   "NOT_ADDRESSED": [
-    "keyword-count",
-    "table2-footnote-after-bottomrule",
+    "page-count-regressed-to-eleven",
     "table1-float-before-results"
   ],
   "independently_verified_this_round": {
-    "pytest": "102 collected and passed, matching the paper exactly",
-    "seed_dispersion.json": "all seven reported intervals match exactly (kappa=-0.2: -0.01275 [-0.0165,-0.00875]; compression: +0.03175 [+0.0267,+0.0368]; echo: +0.04775 [+0.037,+0.0592]; hetero: +0.011 [0.0,+0.0313])",
-    "cap_ablation.json": "5 seeds x 6 caps, dev_mean == lf_mean == 0.9286667 at every cap, spread 0.0000 as stated",
-    "budget_paired.json": "per-sample 0.85276->0.78092, SC 0.92437->0.81513, window 0.02521->0.11765, D-hat 0.22878 (z=2.687)->0.39781 (z=6.760): all match",
-    "tact_eval.json": "post-fix numbers match: kappa=-0.6 SC 0.7625; echo TACT 0.615 vs grid optimum 0.5675 (3.2x the 0.19 floor); compression oracle 0.9625 at gamma=4.0",
-    "group_eval.json": "grouped SC 0.785, TACT-group-LF 0.92333, matching the abstract"
-  }
+    "Table I": "all 9 rows x 7 columns match results/tact_eval.json sweep_dev200 exactly",
+    "Table II": "all 5 rows x 5 columns match results/tact_eval.json adversarial exactly (echo .190/.190/.568/.615/.190)",
+    "Table III": "STALE -- see finding; group_eval.json gives .785/.752, .785/.752, .927/.752, .923/.752, .787/.752, .947/.973",
+    "Table V": "matches tact_hard_eval.json (0.888 / 0.843 / 0.933, +1/-5, +4/-0)",
+    "Heterogeneity prose": "all post-fix and correct: 0.923, within 0.023 of the oracle, +83/-0 p=2.1e-25, per-item oracle 0.973, 0.785 floor",
+    "keywords": "5",
+    "runtime claim": "removed",
+    "Table II footnote": "outside the tabular",
+    "PDF": "11 pages"
+  },
+  "reviewer_note": "Tables I-III were all stale at d5154aa. Round 4 verified the abstract, the prose figures and the artifacts but did not check the table bodies row by row, which is how three stale tables passed that round. Tables I and II were caught by the author; Table III is caught here by row-by-row comparison, which is now part of the check."
 }

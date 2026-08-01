@@ -345,7 +345,7 @@ Y.~Xia et~al., ``LeetCodeDataset: A temporal dataset for robust evaluation and e
 thebibliography
 document
 
-<!-- === RAW LATEX SOURCE (tact.tex @d5154aa) === -->
+<!-- === RAW LATEX SOURCE (tact.tex @aed4605) === -->
 
 \documentclass[conference]{IEEEtran}
 \usepackage{amsmath,amssymb,amsthm}
@@ -409,7 +409,7 @@ default and the dead zone implements it.
 \end{abstract}
 
 \begin{IEEEkeywords}
-large language models, self-consistency, confidence calibration, weighted voting, label-free estimation, rank statistics
+large language models, self-consistency, confidence calibration, label-free estimation, rank statistics
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -663,7 +663,7 @@ $K{=}15$. \TACT{} does not exploit the residual signal, and no published
 method does either; doing so is left open.
 \end{proposition}
 
-Consequently the per-item oracle ($0.983$ in this harness) is unreachable, and the honest behaviour is to fall back to the global estimate, which \TACT's dead zone does: in the i.i.d.\ cell every variant returns bitwise \SC{} (zero discordant pairs).
+Consequently the per-item oracle ($0.973$ in this harness) is unreachable, and the honest behaviour is to fall back to the global estimate, which \TACT's dead zone does: in the i.i.d.\ cell every variant returns bitwise \SC{} (zero discordant pairs).
 
 \subsection{TACT-group}
 Real heterogeneity is typically indexed by an observable covariate (domain, question type). With $\kappa$ indexed by a group label, running the estimator per group keeps every group inside the operating regime of Sections~\ref{sec:method}--\ref{sec:lf}; groups with fewer than $30$ dev (or $60$ unlabeled) items fall back to the global estimate, which Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} show is the only defensible default.
@@ -705,15 +705,15 @@ mid-range a tie.
 \toprule
 $\kappa$ & \SC & ECE & devT & SignGrid & \textbf{\TACT-dev} & \textbf{\TACT-LF} & oracle\\
 \midrule
-$-0.6$ & .807 & .807 & .807 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
-$-0.4$ & .797 & .797 & .797 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
-$-0.2$ & .835 & .835 & .835 & .993 & .978 & .978 & .993\\
-$-0.1$ & .762 & .762 & .762 & .892 & .880 & .885 & .892\\
-$0.0$  & .835 & .835 & .835 & .835 & .835 & .835 & .835\\
-$+0.1$ & .795 & .795 & .917 & .917 & .902 & .902 & .917\\
-$+0.2$ & .845 & .845 & .993 & .993 & .988 & .988 & .993\\
-$+0.4$ & .838 & .838 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
-$+0.6$ & .782 & .782 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
+$-0.6$ & .762 & .762 & .762 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
+$-0.4$ & .805 & .805 & .805 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
+$-0.2$ & .750 & .750 & .750 & .985 & .975 & .975 & .985\\
+$-0.1$ & .750 & .750 & .750 & .915 & .900 & .890 & .915\\
+$0.0$  & .745 & .745 & .760 & .760 & .745 & .745 & .772\\
+$+0.1$ & .777 & .777 & .932 & .932 & .907 & .907 & .932\\
+$+0.2$ & .760 & .760 & .985 & .985 & .978 & .978 & .985\\
+$+0.4$ & .785 & .785 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
+$+0.6$ & .780 & .780 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -739,15 +739,16 @@ Table~\ref{tab:sweep} and Fig.~\ref{fig:sweep} give the sweep. Three observation
 \toprule
 Regime & \SC & devT & SignGrid & \textbf{\TACT-dev} & \textbf{\TACT-LF}\\
 \midrule
-Monotone compress & .795 & .965 & .965 & \textbf{1.000} & \textbf{1.000}\\
-Monotone overconf & .795 & 1.000 & 1.000 & 1.000 & 1.000\\
-Monotone power & .795 & 1.000 & 1.000 & 1.000 & 1.000\\
-Hetero (i.i.d.) & .810 & .810 & .810 & .810 & .810\\
-Confident echo & .200 & .200 & .550 & \textbf{.585} & .200$^{\dagger}$\\
+Monotone compress & .775 & .963 & .963 & \textbf{1.000} & \textbf{1.000}\\
+Monotone overconf & .775 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000}\\
+Monotone power & .775 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000}\\
+Hetero (i.i.d.) & .765 & .765 & .765 & .765 & .765\\
+Confident echo & .190 & .190 & .568 & \textbf{.615} & .190$^{\dagger}$\\
 \bottomrule
-\multicolumn{6}{l}{\footnotesize $^{\dagger}$alarm fires and the method refuses to leave \SC---the conditional}\\
-\multicolumn{6}{l}{\footnotesize guarantee of Prop.~\ref{prop:ccn} working as stated.}
 \end{tabular}
+\vspace{2pt}
+{\footnotesize $^{\dagger}$alarm fires and the method refuses to leave \SC:
+the conditional guarantee of Prop.~\ref{prop:ccn} working as stated.}
 \end{table}
 
 
@@ -757,9 +758,9 @@ saturates, so the link returns an untempered $\gamma^\ast$ between $-8.4$ and
 $+12.1$ across the seven saturated cells and the cap $\gamma_{\max}=4$ is what
 the vote actually sees; the derived magnitude is not doing the
 work there, the sign is. Conversely, at $\kappa=\pm0.1,\pm0.2$, where the
-derived value lands strictly inside the cap ($\pm1.06$ to $\pm2.80$),
-\TACT-dev trails the dev-picked signed grid on all four cells ($0.880$ vs.\
-$0.892$; $0.902$ vs.\ $0.917$; $0.978$ vs.\ $0.993$; $0.988$ vs.\ $0.993$).
+derived value lands strictly inside the cap ($|\gamma|$ from $1.10$ to $2.91$),
+\TACT-dev trails the dev-picked signed grid on all four cells ($0.900$ vs.\
+$0.915$; $0.907$ vs.\ $0.932$; $0.975$ vs.\ $0.985$; $0.978$ vs.\ $0.985$).
 Read together: against the \emph{published} protocols the advantage is large
 and comes from representing the sign at all, whereas against a signed grid the
 analytic map is not better at choosing a magnitude on these cells. Its
@@ -813,16 +814,16 @@ Per-item link oracle (ceiling) & .947 & .983\\
 \end{figure}
 
 \subsection{Small dev sets and falsifiers}
-With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; nowhere more than the pre-registered $0.02$ accuracy tolerance below \SC), F3 (sweep means $0.947$ vs.\ $0.760$), and F4 (both grid baselines trail by $0.032$ and $0.048$ on the distortion and echo cells, and neither can operate without labels). On the single seed the paired tests against SignGrid-dev are not significant
+With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; nowhere more than the pre-registered $0.02$ accuracy tolerance below \SC), F3 (sweep means $0.944$ vs.\ $0.768$), and F4 (both grid baselines trail by $0.037$ and $0.047$ on the distortion and echo cells, and neither can operate without labels). On the single seed the paired tests against SignGrid-dev are not significant
 anywhere ($\kappa{=}-0.2$: $3/7$ discordant, exact $p=0.34$; $\kappa{=}+0.1$:
 $8/18$, $p=0.08$), and the ten-seed intervals of Section~\ref{sec:seeds} are
-what establish the mid-range deficit. Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.005$--$0.015$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.037$), echo ($+0.047$), and label-free operation, which no grid can perform.
+what establish the mid-range deficit. Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.007$--$0.025$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.037$), echo ($+0.047$), and label-free operation, which no grid can perform.
 
 \subsection{Verification of the implementation}\label{sec:tests}
 Because every claim in Sections~\ref{sec:method}--\ref{sec:hetero} is a
 mathematical property rather than an empirical trend, the released code pins
 each one with an executable test; the suite is 102 tests covering \TACT{} and the
-follow-on work, and runs in 199 seconds. Table~\ref{tab:tests}
+follow-on work. Table~\ref{tab:tests}
 maps propositions to the tests that would fail if they stopped holding.
 
 \begin{table}[t]
@@ -871,8 +872,10 @@ spurious falsifier: at $\kappa=0$, \TACT-dev averaged $0.797$ against \SC{} at
 $0.818$ across ten seeds, tripping F2, while the exponents responsible were
 $|\gamma|\le0.05$. The items were near-ties whose tie-break had moved, not
 items the exponent had reweighted. Answer codes are now permuted per item.
-With the artifact removed, $\kappa=0$ gives $0.758$ for both methods and
-heterogeneous-$\kappa$ gives $0.768$ for both: the dead zone behaves as
+With the artifact removed the two coincide exactly where the dead zone
+should hold: $\kappa=0$ gives $0.745$ for both methods and
+heterogeneous-$\kappa$ gives $0.765$ for both (ten-seed means $0.758$ and
+$0.768$, zero discordant pairs in every seed): the dead zone behaves as
 Proposition~\ref{prop:sc} states. All synthetic numbers in this paper are
 post-fix.
 
@@ -1282,9 +1285,8 @@ on competition mathematics ( bD = +0.250, z = +2.54), yet
 the stratum any such method can act on measures 3–7.5% of
 items across five substrates in two domains, so abstention is
 the correct default and the dead zone implements it.
-Index Terms—large language models, self-consistency, confi-
-dence calibration, weighted voting, label-free estimation, rank
-statistics
+Index Terms—large language models, self-consistency, con-
+fidence calibration, label-free estimation, rank statistics
 I. Introduction
 Self-consistency (sc) [1] improves the reasoning accuracy
 of a frozen large language model (LLM) by sampling K
@@ -1349,9 +1351,9 @@ labels under a proven class-conditional-noise identity,
 E[ bDg] = (1 −2¯ρ)D: while the pair-weighted plurality-
 error rate ¯ρ is below 1/2 the estimate can only under-
 trust, never mis-sign. A split-half inversion de-attenuates
+conservatively and sign-aware alarms return the method
 
 <!-- PDF PAGE 2/11 -->
-conservatively and sign-aware alarms return the method
 to sc at the identifiability boundary. Past ¯ρ = 1/2 it does
 mis-sign, which Section IX measures rather than assumes
 away.
@@ -1467,6 +1469,8 @@ labels nearly saturates the homogeneous sweep. This pre-
 measurement fixes where a new method can legitimately
 claim wins—monotone distortion of the confidence scale,
 covariate heterogeneity, small dev sets, and label-free
+operation—and the evaluation holds itself to exactly those
+cells.
 
 <!-- PDF PAGE 3/11 -->
 Fig. 1.
@@ -1476,8 +1480,6 @@ A trivial sign-corrected AUC gate (green) nearly saturates the
 homogeneous sweep; the headroom for any new method (shaded)
 concentrates in the mid-range and, off this plot, in distortion,
 heterogeneity, and label-free cells.
-operation—and the evaluation holds itself to exactly those
-cells.
 IV. TACT
 A. Vote family
 Within item q, let Rq,i be the midrank of cq,i (ties
@@ -1634,8 +1636,6 @@ b
 D
 SE,
 (10)
-
-<!-- PDF PAGE 4/11 -->
 with bD from (5) and φ from (2). At the default ¯p = 1
 2 the
 exponent is exactly
@@ -1648,6 +1648,8 @@ D
 
 ,
 (11)
+
+<!-- PDF PAGE 4/11 -->
 one probit and one square root, where ˜D is the shrunk
 pooled statistic of (7) and not the per-item AUCq of (5).
 Nothing in it is fitted to outcomes: ν is a significance level
@@ -1763,13 +1765,13 @@ plurality correct}. Computed against either truth,
 Dw1 = −Dw2, so the statistic tact uses cannot order the
 two worlds. When the item has exactly two answer clusters
 the laws of (a, c) coincide outright and no label-free
-
-<!-- PDF PAGE 5/11 -->
 method can separate them. With three or more populated
 clusters they do not coincide: under w1 only the correct
 minority carries elevated confidence, whereas under w2
 every non-plurality cluster does, so the conditional law of
 c on a third cluster separates them (verified numerically;
+
+<!-- PDF PAGE 5/11 -->
 the two laws agree on the top two clusters and differ with
 KS p < 10−15 on the third). The impossibility is therefore
 conditional on the pool being effectively binary, which
@@ -1777,7 +1779,7 @@ is the regime the confident-echo cell occupies: 88% of its
 items have no third cluster at K=15. tact does not exploit
 the residual signal, and no published method does either;
 doing so is left open.
-Consequently the per-item oracle (0.983 in this harness)
+Consequently the per-item oracle (0.973 in this harness)
 is unreachable, and the honest behaviour is to fall back to
 the global estimate, which tact’s dead zone does: in the
 i.i.d. cell every variant returns bitwise sc (zero discordant
@@ -1823,6 +1825,11 @@ because the protocol is offered as a contribution. Each
 falsifier is an exact paired McNemar test on the 400
 items of a cell, at α = 0.05 one-sided, with the seed-
 level bootstrap of Section VIII-F as the second gate: a
+falsifier fires when the single-cell test is significant and the
+across-seed interval excludes zero. Single-cell tests at this
+size are underpowered against a strong baseline, which is
+the reason for the second gate; the earlier fixed τ = 0.02
+tolerance is retained only as a reporting convenience in
 TABLE I
 Coupling sweep (accuracy at K=15; 400 paired items per cell; dev
 n=200). Published protocols sit at the sc floor on the entire
@@ -1836,72 +1843,72 @@ tact-dev
 tact-LF
 oracle
 −0.6
-.807
-.807
-.807
+.762
+.762
+.762
 1.000
 1.000
 1.000
 1.000
 −0.4
-.797
-.797
-.797
+.805
+.805
+.805
 1.000
 1.000
 1.000
 1.000
 −0.2
-.835
-.835
-.835
-.993
-.978
-.978
-.993
+.750
+.750
+.750
+.985
+.975
+.975
+.985
 −0.1
-.762
-.762
-.762
-.892
-.880
-.885
-.892
+.750
+.750
+.750
+.915
+.900
+.890
+.915
 0.0
-.835
-.835
-.835
-.835
-.835
-.835
-.835
+.745
+.745
+.760
+.760
+.745
+.745
+.772
 +0.1
-.795
-.795
-.917
-.917
-.902
-.902
-.917
+.777
+.777
+.932
+.932
+.907
+.907
+.932
 +0.2
-.845
-.845
-.993
-.993
-.988
-.988
-.993
+.760
+.760
+.985
+.985
+.978
+.978
+.985
 +0.4
-.838
-.838
+.785
+.785
 1.000
 1.000
 1.000
 1.000
 1.000
 +0.6
-.782
-.782
+.780
+.780
 1.000
 1.000
 1.000
@@ -1911,11 +1918,6 @@ Fig. 2.
 Main result on the confidence-usage frontier. tact-dev and
 the fully label-free tact-LF track the signed oracle across the sweep;
 CISC-devT and the ECE gate sit at the sc floor for all κ < 0.
-falsifier fires when the single-cell test is significant and the
-across-seed interval excludes zero. Single-cell tests at this
-size are underpowered against a strong baseline, which is
-the reason for the second gate; the earlier fixed τ = 0.02
-tolerance is retained only as a reporting convenience in
 the tables. F1: tact-dev below the best fixed-γ CISC
 at κ=+0.6 by more than τ. F2: either variant below
 sc by more than τ anywhere on the sweep. F3: the
@@ -1934,6 +1936,11 @@ A. Signed recovery, with and without labels
 Table I and Fig. 2 give the sweep. Three observations.
 First, the published protocols never leave the floor on
 κ < 0: CISC-devT’s grid is positive-only and the ECE
+gate never opens (dev ECE ranges 0.10–0.80 across the
+sweep while the signal’s discrimination is perfect at the
+extremes). Second, the label-free variant matches the 200-
+label variant nearly point-for-point—at κ=−0.6 the raw
+agreement statistic is bDg = −0.81 with z = −17.6, and the
 
 <!-- PDF PAGE 6/11 -->
 TABLE II
@@ -1943,45 +1950,36 @@ entire family under compression.
 Regime
 sc
 devT
-SignGrid tact-dev
-tact-LF
-Monotone compress
-.795
-.965
-.965
+SignGrid tact-dev tact-LF
+Monotone compress .775
+.963
+.963
 1.000
 1.000
 Monotone overconf
-.795
-1.000
+.775 1.000
 1.000
 1.000
 1.000
 Monotone power
-.795
-1.000
+.775 1.000
 1.000
 1.000
 1.000
 Hetero (i.i.d.)
-.810
-.810
-.810
-.810
-.810
+.765
+.765
+.765
+.765
+.765
 Confident echo
-.200
-.200
-.550
-.585
-.200†
-†alarm fires and the method refuses to leave sc—the conditional
+.190
+.190
+.568
+.615
+.190†
+†alarm fires and the method refuses to leave sc: the conditional
 guarantee of Prop. 4 working as stated.
-gate never opens (dev ECE ranges 0.10–0.80 across the
-sweep while the signal’s discrimination is perfect at the
-extremes). Second, the label-free variant matches the 200-
-label variant nearly point-for-point—at κ=−0.6 the raw
-agreement statistic is bDg = −0.81 with z = −17.6, and the
 CCN identity’s sign guarantee holds as predicted, yielding
 1.000 with zero labels. Third, at κ = 0 the dead zone
 returns γ = 0 exactly, so the paired accuracy difference
@@ -1994,10 +1992,10 @@ cells where bD saturates, so the link returns an untempered
 cells and the cap γmax = 4 is what the vote actually sees;
 the derived magnitude is not doing the work there, the
 sign is. Conversely, at κ = ±0.1, ±0.2, where the derived
-value lands strictly inside the cap (±1.06 to ±2.80), tact-
-dev trails the dev-picked signed grid on all four cells
-(0.880 vs. 0.892; 0.902 vs. 0.917; 0.978 vs. 0.993; 0.988
-vs. 0.993). Read together: against the published protocols
+value lands strictly inside the cap (|γ| from 1.10 to 2.91),
+tact-dev trails the dev-picked signed grid on all four cells
+(0.900 vs. 0.915; 0.907 vs. 0.932; 0.975 vs. 0.985; 0.978
+vs. 0.985). Read together: against the published protocols
 the advantage is large and comes from representing the
 sign at all, whereas against a signed grid the analytic map
 is not better at choosing a magnitude on these cells. Its
@@ -2019,6 +2017,11 @@ duplicate-collapse alarm fires and the method correctly
 refuses—by Proposition 6 no label-free method could do
 better than a coin flip on the sign here, since 88% of
 the cell’s items are effectively binary and the escape the
+proposition identifies is unavailable on them; pretending
+otherwise would be the real failure.
+C. Heterogeneity
+Table III and Fig. 4 give the group study. In the
+covariate-structured cell, per-group tact recovers each
 Fig. 3.
 Adversarial regimes. Dotted line: the oracle over raw-value
 weights. Left group of bars: rank invariance beats that family under
@@ -2047,11 +2050,6 @@ Naive per-item (neg. control)
 Per-item link oracle (ceiling)
 .947
 .983
-proposition identifies is unavailable on them; pretending
-otherwise would be the real failure.
-C. Heterogeneity
-Table III and Fig. 4 give the group study. In the
-covariate-structured cell, per-group tact recovers each
 group’s signed coupling (dev {+4.0, 0.0, −4.0}, label-free
 {+2.0, 0.0, −2.0}, the κ=0 group correctly dead-zoned—
 and cracks the floor that provably binds every global
@@ -2074,7 +2072,13 @@ at |κ|=0.6; 0.978 at −0.2): the SE-aware shrinkage de-
 grades smoothly rather than catastrophically. All four
 falsifiers survived: F1 (1.000 vs. 1.000), F2 (bit-identical at
 κ=0; nowhere more than the pre-registered 0.02 accuracy
-tolerance below sc), F3 (sweep means 0.947 vs. 0.760),
+tolerance below sc), F3 (sweep means 0.944 vs. 0.768),
+and F4 (both grid baselines trail by 0.037 and 0.047 on
+the distortion and echo cells, and neither can operate
+without labels). On the single seed the paired tests against
+SignGrid-dev are not significant anywhere (κ= −0.2: 3/7
+discordant, exact p = 0.34; κ= + 0.1: 8/18, p = 0.08), and
+the ten-seed intervals of Section VIII-F are what establish
 
 <!-- PDF PAGE 7/11 -->
 Fig. 4. Structured vs. i.i.d. heterogeneity. Left: with an observable
@@ -2121,25 +2125,19 @@ Rejected alternatives
 Kish ESS and the SAFE-under-VoI
 guarantee each have a test asserting
 their failure
-and F4 (both grid baselines trail by 0.032 and 0.048 on
-the distortion and echo cells, and neither can operate
-without labels). On the single seed the paired tests against
-SignGrid-dev are not significant anywhere (κ= −0.2: 3/7
-discordant, exact p = 0.34; κ= + 0.1: 8/18, p = 0.08), and
-the ten-seed intervals of Section VIII-F are what establish
 the mid-range deficit. Against SignGrid-dev the honest
 margin is narrow on the homogeneous sweep—tact even
-trails by 0.005–0.015 in the mid-range, the deliberate cost
+trails by 0.007–0.025 in the mid-range, the deliberate cost
 of shrinkage—and the net advantage concentrates exactly
 where pre-registered: distortion (+0.037), echo (+0.047),
 and label-free operation, which no grid can perform.
 E. Verification of the implementation
 Because every claim in Sections IV–VI is a mathemat-
 ical property rather than an empirical trend, the released
-code pins each one with an executable test; the suite is
-102 tests covering tact and the follow-on work, and runs
-in 199 seconds. Table IV maps propositions to the tests
-that would fail if they stopped holding.
+code pins each one with an executable test; the suite is 102
+tests covering tact and the follow-on work. Table IV maps
+propositions to the tests that would fail if they stopped
+holding.
 Two
 entries
 deserve
@@ -2172,10 +2170,12 @@ against sc at 0.818 across ten seeds, tripping F2, while
 the exponents responsible were |γ| ≤0.05. The items
 were near-ties whose tie-break had moved, not items the
 exponent had reweighted. Answer codes are now permuted
-per item. With the artifact removed, κ = 0 gives 0.758
-for both methods and heterogeneous-κ gives 0.768 for
-both: the dead zone behaves as Proposition 1 states. All
-synthetic numbers in this paper are post-fix.
+per item. With the artifact removed the two coincide
+exactly where the dead zone should hold: κ = 0 gives 0.745
+for both methods and heterogeneous-κ gives 0.765 for both
+(ten-seed means 0.758 and 0.768, zero discordant pairs in
+every seed): the dead zone behaves as Proposition 1 states.
+All synthetic numbers in this paper are post-fix.
 Dispersion. Ten seeds per cell, 400 paired items each,
 bootstrap over seeds. The extremes are stable to the
 third decimal (1.000 ± 0.001 at |κ| ≥0.4). The mid-
@@ -2201,12 +2201,12 @@ findings.
 on real data, and tact reads it correctly. The channel is
 extremely well calibrated in the usual sense: ECE = 0.016,
 far inside the 0.10 gate, so a binary ECE gate opens and
-
-<!-- PDF PAGE 8/11 -->
 hands the channel to CISC. Yet the measured within-
 item discrimination is bD = −0.219 with SE = 0.176 (z =
 −1.24): no usable signal, and what little there is points
 the wrong way (math −0.515, commonsense −0.173; both
+
+<!-- PDF PAGE 8/11 -->
 groups negative). This is the exact mirror image of the
 synthetic case in which ECE wrongly closed the gate on
 a discriminative channel (Section III): on real traces ECE
@@ -2258,6 +2258,10 @@ The endpoint was unpassable for any method. The
 realized substrate saturated again: per-trace accuracy
 0.819, sc 0.888, a decisive stratum of 10 of 89 items, and
 the correct answer present in the pool on only 4 of those.
+The in-pool oracle therefore tops out at +4/−0, exact one-
+sided p = 0.0625. H2 fails, but it fails for every conceivable
+aggregation method including a perfect one, so the failure
+is a property of the substrate rather than of the estimator.
 TABLE V
 Confirmatory campaign, MATH level-5 evaluation set (89 items,
 K=16). Every method replays the same cached pools. The
@@ -2281,10 +2285,6 @@ best-single-confidence
 in-pool oracle (ceiling)
 0.933
 +4/ −0
-The in-pool oracle therefore tops out at +4/−0, exact one-
-sided p = 0.0625. H2 fails, but it fails for every conceivable
-aggregation method including a perfect one, so the failure
-is a property of the substrate rather than of the estimator.
 Abstention behaved as designed. tact returned γ = 0,
 with alarms E4 and E2 firing on the label-free path and
 the sign set holding too few informative items to supply a
@@ -2323,6 +2323,11 @@ capability-wall problems produced zero correct solutions
 in 224 further attempts (per-problem 95% upper bound on
 the pass rate 0.088), and extrapolating oracle@N shows
 the window saturating by N=32.
+One precaution belongs with these numbers, because
+omitting it would have inverted them. The grading harness
+was validated against the benchmark’s own reference
+solutions before any candidate was scored: 178 of 180 pass
+under the sandbox’s resource limits. An earlier version of
 
 <!-- PDF PAGE 9/11 -->
 TABLE VI
@@ -2361,11 +2366,6 @@ LeetCode Med/Hard†
 QA, budget-capped MATH L5†
 18.5
 11.8
-One precaution belongs with these numbers, because
-omitting it would have inverted them. The grading harness
-was validated against the benchmark’s own reference
-solutions before any candidate was scored: 178 of 180 pass
-under the sandbox’s resource limits. An earlier version of
 the same harness failed 100% of executions because the
 host rejects one of the requested limits outright, and that
 condition presents as a candidate failure rather than as
@@ -2456,13 +2456,13 @@ by construction. This is the method’s sharpest unguarded
 failure mode: the guarantee is conditional, the condition
 is not observable label-free, and the existing diagnostics
 do not detect its violation. Where a systematically wrong
-
-<!-- PDF PAGE 10/11 -->
 majority is plausible, the semi-label-free mode (sign from
 ∼50 labels) should be the default rather than an optional
 refinement. The other standard remedy is not tried here
 and should be: the failure is driven by a semantically tight
 wrong cluster that lexical deduplication cannot see, which
+
+<!-- PDF PAGE 10/11 -->
 is precisely what semantic-equivalence clustering [27] is
 built to collapse. Substituting a semantic pseudo-label for
 the lexical one is the obvious next guard, and this paper
@@ -2638,8 +2638,6 @@ https://arxiv.org/pdf/2510.01499
 [19] P. van Elteren, “On the combination of independent two-sample
 tests of Wilcoxon,” Bull. Int. Statist. Inst., vol. 37, pp. 351–361,
 1960. https://catalog.hathitrust.org/Record/008896012
-
-<!-- PDF PAGE 11/11 -->
 [20] W. James and C. Stein, “Estimation with quadratic loss,”
 in Proc. 4th Berkeley Symp. Math. Statist. Prob., 1961,
 pp. 361–379. https://digitalassets.lib.berkeley.edu/math/ucb/
@@ -2656,6 +2654,8 @@ Wiley,
 1965.
 https://www.wiley.com/en-us/Survey+
 Sampling-p-9780471109495
+
+<!-- PDF PAGE 11/11 -->
 [22] J. N. K. Rao and A. J. Scott, “The analysis of categorical data
 from complex sample surveys,” J. Amer. Statist. Assoc., vol. 76,
 no. 374, pp. 221–230, 1981. https://doi.org/10.1080/01621459.

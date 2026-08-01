@@ -1,14 +1,11 @@
-\documentclass[conference]{IEEEtran}
+\documentclass{article}
+\usepackage{tmlr}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{url}
-\usepackage[caption=false]{subfig}
-\usepackage{balance}
-
 \usepackage[hidelinks,breaklinks=true]{hyperref}
-\usepackage{cleveref}
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
@@ -18,19 +15,17 @@
 \newcommand{\SC}{\textsc{sc}}
 \newcommand{\TACT}{\textsc{tact}}
 
-% CJK author name: load a Unicode font directly (XeTeX/tectonic), keeping
-% IEEEtran's Latin fonts untouched.
-\font\zhfont="[/System/Library/Fonts/Supplemental/Arial Unicode.ttf]" at 10pt
+\title{TACT: Trust-Anchored Confidence Tempering for\\ Self-Consistency Voting
+in Large Language Models}
+
+\author{\name Anonymous \email anon@example.com \\ \addr Anonymous}
+
+\def\month{08}
+\def\year{2026}
+\def\openreview{\url{https://openreview.net/forum?id=XXXXXXXXXX}}
 
 \begin{document}
-
-\title{TACT: Trust-Anchored Confidence Tempering for\\ Self-Consistency Voting in Large Language Models}
-
-\author{\IEEEauthorblockN{Wei-Chen Ko ({\zhfont 柯瑋宸}, vito1317)}
-\IEEEauthorblockA{Independent Researcher}}
-
 \maketitle
-
 \begin{abstract}
 Confidence-weighted self-consistency improves on majority voting when a frozen
 model's self-reported confidence is calibrated in \emph{direction}. Every
@@ -59,9 +54,9 @@ of items across five substrates in two domains, so abstention is the correct
 default and the dead zone implements it.
 \end{abstract}
 
-\begin{IEEEkeywords}
+\noindent\textbf{Keywords:} 
 large language models, self-consistency, confidence calibration, label-free estimation, rank statistics
-\end{IEEEkeywords}
+
 
 \section{Introduction}
 
@@ -171,7 +166,7 @@ with noise $\varepsilon\sim\mathcal{N}(0,0.1^2)$ and coupling $\kappa\in[-0.6,0.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figs/kappa_sweep.png}
+\includegraphics[width=0.62\linewidth]{figs/kappa_sweep.png}
 \caption{The pre-measured problem statement: accuracy of baseline confidence policies at fixed $K{=}15$ as the true coupling $\kappa$ varies. A trivial sign-corrected AUC gate (green) nearly saturates the homogeneous sweep; the headroom for any new method (shaded) concentrates in the mid-range and, off this plot, in distortion, heterogeneity, and label-free cells.}
 \label{fig:baselines}
 \end{figure}
@@ -371,7 +366,7 @@ $+0.6$ & .780 & .780 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figs/tact_sweep.png}
+\includegraphics[width=0.62\linewidth]{figs/tact_sweep.png}
 \caption{Main result on the confidence-usage frontier. \TACT-dev and the fully label-free \TACT-LF track the signed oracle across the sweep; CISC-devT and the ECE gate sit at the \SC{} floor for all $\kappa<0$.}
 \label{fig:sweep}
 \end{figure}
@@ -425,7 +420,7 @@ Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confide
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figs/tact_adversarial.png}
+\includegraphics[width=0.62\linewidth]{figs/tact_adversarial.png}
 \caption{Adversarial regimes. Dotted line: the oracle over raw-value weights. Left group of bars: rank invariance beats that family under compression; right: the labeled variant counters the confident echo while the label-free variant alarms and refuses.}
 \label{fig:adv}
 \end{figure}
@@ -459,7 +454,7 @@ Per-item link oracle (ceiling) & .947 & .983\\
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figs/group_eval.png}
+\includegraphics[width=0.62\linewidth]{figs/group_eval.png}
 \caption{Structured vs.\ i.i.d.\ heterogeneity. Left: with an observable covariate, per-group \TACT{} (label-free) approaches the per-item oracle from the $0.785$ floor with zero losses to \SC. Right: the provably closed i.i.d.\ cell---every legitimate method at the floor; the negative control slightly below it.}
 \label{fig:group}
 \end{figure}
@@ -797,100 +792,12 @@ clear a pre-registered endpoint. In that regime the useful property of an
 estimator is knowing when not to act, which the dead zone does exactly.
 
 \section*{Code and Data Availability}
-All code, cached traces, and the JSON artifacts behind every table are at
-\url{https://github.com/vito1317/adaptive-reasoning-consensus}. Table~\ref{tab:tests}
-is produced by \texttt{pytest} at commit \texttt{35ad160}; the synthetic results by
-\texttt{experiments/run\_tact\_eval.py}, the real-trace campaigns by
-\texttt{run\_tact\_hard\_eval.py}, and the window measurements by
-\texttt{run\_g1\_window.py} and \texttt{run\_g1\_deepening.py}. Each script
-writes the artifact its table cites.
+All code, cached traces, and the JSON artifacts behind every table are
+provided as anonymized supplementary material; the repository will be
+de-anonymized on acceptance.
 
-\balance
-
-\begin{thebibliography}{99}
-
-\bibitem{wang2023selfconsistency}
-X.~Wang, J.~Wei, D.~Schuurmans, Q.~Le, E.~Chi, S.~Narang, A.~Chowdhery, and D.~Zhou, ``Self-consistency improves chain of thought reasoning in language models,'' in \emph{Proc.\ ICLR}, 2023.\ \url{https://arxiv.org/pdf/2203.11171}
-
-\bibitem{tian2023just}
-K.~Tian \emph{et~al.}, ``Just ask for calibration: Strategies for eliciting calibrated confidence scores from language models fine-tuned with human feedback,'' in \emph{Proc.\ EMNLP}, 2023.\ \url{https://aclanthology.org/2023.emnlp-main.330.pdf}
-
-\bibitem{xiong2024can}
-M.~Xiong \emph{et~al.}, ``Can LLMs express their uncertainty? An empirical evaluation of confidence elicitation in LLMs,'' in \emph{Proc.\ ICLR}, 2024.\ \url{https://openreview.net/pdf?id=gjeQKFxFpZ}
-
-\bibitem{kadavath2022language}
-S.~Kadavath \emph{et~al.}, ``Language models (mostly) know what they know,'' arXiv:2207.05221, 2022.\ \url{https://arxiv.org/pdf/2207.05221}
-
-\bibitem{taubenfeld2025cisc}
-A.~Taubenfeld \emph{et~al.}, ``Confidence improves self-consistency in LLMs,'' in \emph{Findings of ACL}, 2025, arXiv:2502.06233.\ \url{https://aclanthology.org/2025.findings-acl.1030.pdf}
-
-\bibitem{reasc2026}
-J.~Kim, N.~Yang, K.~Min, and K.~Jung, ``Reliability-aware adaptive self-consistency for efficient sampling in LLM reasoning,'' in \emph{Findings of ACL}, 2026, pp. 21575--21590.\ \url{https://aclanthology.org/2026.findings-acl.1085.pdf}
-
-\bibitem{deepconf2025}
-Y.~Fu \emph{et~al.}, ``Deep think with confidence,'' arXiv:2508.15260, 2025.\ \url{https://arxiv.org/pdf/2508.15260}
-
-\bibitem{huang2024rankcalibration}
-X.~Huang, S.~Li, M.~Yu, M.~Sesia, H.~Hassani, I.~Lee, O.~Bastani, and E.~Dobriban, ``Uncertainty in language models: Assessment through rank-calibration,'' in \emph{Proc.\ EMNLP}, 2024, pp. 284--312.\ \url{https://aclanthology.org/2024.emnlp-main.18.pdf}
-
-\bibitem{dawid1979maximum}
-A.~P. Dawid and A.~M. Skene, ``Maximum likelihood estimation of observer error-rates using the EM algorithm,'' \emph{J.\ Roy.\ Statist.\ Soc.\ C}, vol.~28, no.~1, pp. 20--28, 1979.\ \url{https://doi.org/10.2307/2346806}
-
-\bibitem{parisi2014ranking}
-F.~Parisi, F.~Strino, B.~Nadler, and Y.~Kluger, ``Ranking and combining multiple predictors without labeled data,'' \emph{Proc.\ Natl.\ Acad.\ Sci.}, vol.~111, no.~4, pp. 1253--1258, 2014.\ \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC3910607/pdf/pnas.201219097.pdf}
-
-\bibitem{li2023diverse}
-Y.~Li \emph{et~al.}, ``Making language models better reasoners with step-aware verifier,'' in \emph{Proc.\ ACL}, 2023.\ \url{https://aclanthology.org/2023.acl-long.291.pdf}
-
-\bibitem{aggarwal2023adaptive}
-P.~Aggarwal, A.~Madaan, Y.~Yang, and Mausam, ``Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with {LLMs},'' in \emph{Proc.\ EMNLP}, 2023, pp. 12375--12396.\ \url{https://aclanthology.org/2023.emnlp-main.761.pdf}
-
-\bibitem{li2024escape}
-Y.~Li \emph{et~al.}, ``Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning,'' in \emph{Proc.\ ICLR}, 2024.\ \url{https://arxiv.org/pdf/2401.10480}
-
-\bibitem{borda2025}
-Z.~Kang, X.~Zhao, and D.~Song, ``Scalable best-of-N selection for large language models via self-certainty,'' in \emph{Proc.\ NeurIPS}, 2025, arXiv:2502.18581.\ \url{https://proceedings.neurips.cc/paper_files/paper/2025/file/1c7eff166a8e345f664f0faa8f4e4d2e-Paper-Conference.pdf}
-
-\bibitem{whitehill2009whose}
-J.~Whitehill \emph{et~al.}, ``Whose vote should count more: Optimal integration of labels from labelers of unknown expertise,'' in \emph{Proc.\ NeurIPS}, 2009.\ \url{https://proceedings.neurips.cc/paper_files/paper/2009/file/f899139df5e1059396431415e770c6dd-Paper.pdf}
-
-\bibitem{karger2011iterative}
-D.~R. Karger, S.~Oh, and D.~Shah, ``Iterative learning for reliable crowdsourcing systems,'' in \emph{Proc.\ NeurIPS}, 2011.\ \url{https://proceedings.neurips.cc/paper_files/paper/2011/file/c667d53acd899a97a85de0c201ba99be-Paper.pdf}
-
-\bibitem{fuse2026}
-J.~Lee, V.~Ma, S.~Zhao, Y.~Nair, A.~Spector, R.~Cohen, and E.~J. Cand\`es, ``FUSE: Ensembling verifiers with zero labeled data,'' arXiv:2604.18547, 2026.\ \url{https://arxiv.org/pdf/2604.18547}
-
-\bibitem{beyondmajority2025}
-R.~Ai, Y.~Pan, D.~Simchi-Levi, M.~Tambe, and H.~Xu, ``Beyond majority voting: LLM aggregation by leveraging higher-order information,'' arXiv:2510.01499, 2025, accepted to ICML 2026.\ \url{https://arxiv.org/pdf/2510.01499}
-
-\bibitem{vanelteren1960}
-P.~van Elteren, ``On the combination of independent two-sample tests of Wilcoxon,'' \emph{Bull.\ Int.\ Statist.\ Inst.}, vol.~37, pp. 351--361, 1960.\ \url{https://catalog.hathitrust.org/Record/008896012}
-
-\bibitem{james1961estimation}
-W.~James and C.~Stein, ``Estimation with quadratic loss,'' in \emph{Proc.\ 4th Berkeley Symp.\ Math.\ Statist.\ Prob.}, 1961, pp. 361--379.\ \url{https://digitalassets.lib.berkeley.edu/math/ucb/text/math_s4_v1_article-19.pdf}
-
-\bibitem{kish1965}
-L.~Kish, \emph{Survey Sampling}. New York, NY, USA: Wiley, 1965.\ \url{https://www.wiley.com/en-us/Survey+Sampling-p-9780471109495}
-
-\bibitem{rao1981analysis}
-J.~N.~K. Rao and A.~J. Scott, ``The analysis of categorical data from complex sample surveys,'' \emph{J.\ Amer.\ Statist.\ Assoc.}, vol.~76, no.~374, pp. 221--230, 1981.\ \url{https://doi.org/10.1080/01621459.1981.10477633}
-
-\bibitem{gsm8k2021}
-K.~Cobbe \emph{et~al.}, ``Training verifiers to solve math word problems,'' arXiv:2110.14168, 2021.
-
-\bibitem{math500}
-D.~Hendrycks \emph{et~al.}, ``Measuring mathematical problem solving with the MATH dataset,'' in \emph{Proc.\ NeurIPS Datasets and Benchmarks}, 2021.\ \url{https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/file/be83ab3ecd0db773eb2dc1b0a17836a1-Paper-round2.pdf}
-
-\bibitem{lightman2024verify}
-H.~Lightman \emph{et~al.}, ``Let's verify step by step,'' in \emph{Proc.\ ICLR}, 2024. (MATH-500 test subset.)
-
-\bibitem{leetcodedataset}
-Y.~Xia \emph{et~al.}, ``LeetCodeDataset: A temporal dataset for robust evaluation and efficient training of code LLMs,'' arXiv:2504.14655, 2025.\ \url{https://arxiv.org/pdf/2504.14655}
-
-\bibitem{kuhn2023semantic}
-L.~Kuhn, Y.~Gal, and S.~Farquhar, ``Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation,'' in \emph{Proc.\ ICLR}, 2023.\ \url{https://arxiv.org/pdf/2302.09664}
-
-\end{thebibliography}
+\bibliographystyle{tmlr}
+\bibliography{references}
 
 
 \end{document}
