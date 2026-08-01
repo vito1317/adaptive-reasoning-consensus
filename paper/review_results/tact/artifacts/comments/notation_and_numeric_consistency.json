@@ -1,19 +1,88 @@
 [
   {
-    "title": "Cross-section numeric consistency should be reconciled",
-    "quote": "Written out, the method is a single expression whose exponent reduces to γ = z √ 2 + z2 with z the probit of the shrunk pooled AUC, and it carries exact anchors: inside the shrinkage dead zone the vote is bit-identical to plain self-consistency, and a log-value feature map reproduces CISC- power.",
-    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "title": "kappa is overloaded: the confidence coupling and Prop. 2's per-item normalizer share the symbol and the subscript",
+    "quote": "with a\nper-item constant",
+    "explanation": "kappa is introduced in Eq. (1) as the confidence-correctness coupling with range [-0.6, 0.6] and is used throughout the sweep, the tables, and the figures; Sec. V-A further uses kappa_q for the per-item coupling drawn as N(0, 0.6^2). Prop. 2 then writes the CISC-reduction weights as kappa_q c^gamma 'with a per-item constant kappa_q > 0'. The same symbol with the same subscript denotes the per-item coupling in one place and a positive multiplicative normalizer in another, both inside the method's core. Renaming the Prop. 2 constant (c_q, or Z_q) costs nothing and removes the collision.",
     "comment_type": "presentation",
     "severity": "moderate",
-    "confidence": "medium",
-    "source_kind": "llm",
-    "source_section": "abstract",
+    "source_section": "method",
     "related_sections": [
-      "abstract",
-      "discussion",
+      "experiment"
+    ],
+    "root_cause_key": "kappa-symbol-collision",
+    "review_lane": "notation_and_numeric_consistency",
+    "evidence_anchor": [
+      {
+        "type": "section",
+        "text": "Eq. (1) kappa in [-0.6,0.6]; Sec. V-A kappa_q ~ N(0,0.6^2); Prop. 2 kappa_q > 0 as a normalizer"
+      }
+    ],
+    "source_kind": "llm",
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "The 16 decisive items in the thin-window analysis cannot be reconstructed from the per-substrate counts",
+    "quote": "Classifying all 16 decisive items by\nerror shape",
+    "explanation": "Sec. VIII partitions '16 decisive items' into 7 stable-wrong and 9 scattered. The per-substrate numbers given elsewhere are: 12 of 100 items with both a correct and an incorrect trace (GSM8K/CSQA, Sec. VII-F(c)); a decisive stratum of 10 of 89 with the gold answer in pool on 4 of those (MATH-L5, Sec. VII-F(e)); and '0 of 6 plurality-wrong AIME items'. No stated definition of 'decisive' makes these sum to 16, and the AIME/AMC substrate size is never given -- the reader must back it out of '268 items with pools' minus 100 minus 119 to get 49. Since this classification is the evidentiary core of the structural-boundary claim, the accounting needs to be explicit: one definition of decisive, one table, per-substrate rows.",
+    "comment_type": "missing_information",
+    "severity": "moderate",
+    "source_section": "discussion",
+    "related_sections": [
       "result"
     ],
+    "root_cause_key": "decisive-item-accounting-untraceable",
     "review_lane": "notation_and_numeric_consistency",
+    "evidence_anchor": [
+      {
+        "type": "metric",
+        "text": "Sec. VII-F(c) 12/100; Sec. VII-F(e) 10/89 with 4 in-pool; Sec. VIII 0/6 AIME; Sec. VIII 268 items total"
+      }
+    ],
+    "missing_evidence": [
+      "A per-substrate table of items, plurality-wrong count, in-pool count, and decisive count"
+    ],
+    "source_kind": "llm",
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "AUC-hat in the one-line formula is the shrunken pooled statistic but AUC was defined as the raw per-item statistic",
+    "quote": "z = Φ−1(AUC)",
+    "explanation": "Eq. (5) defines AUC_q = U_q / (n1_q n0_q), the raw per-item Mann-Whitney statistic. Eq. (16) presents the payoff formula as gamma = z sqrt(2 + z^2) with z = Phi^-1(AUC-hat), where the intended AUC-hat is (1 + D-tilde)/2, i.e. built from the James-Stein-shrunken pooled D-tilde, not from Eq. (5). The abstract gets this right ('z the probit of the shrunk pooled AUC'), but the boxed formula that readers will carry away does not carry the qualifier, and a reader who substitutes the quantity defined in Eq. (5) recovers the wrong exponent -- specifically, one that never enters the dead zone.",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "source_section": "method",
+    "root_cause_key": "auc-hat-shrunk-vs-raw",
+    "review_lane": "notation_and_numeric_consistency",
+    "source_kind": "llm",
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "Error-shape percentages sum to 101%",
+    "quote": "75%\nsaturated, 18% capability wall, 8% rescuable",
+    "explanation": "The LeetCode composition is 30/40, 7/40 and 3/40, i.e. 75%, 17.5% and 7.5%. Rounding both halves upward gives 75 + 18 + 8 = 101%. Use one decimal or report the counts.",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "source_section": "discussion",
+    "root_cause_key": "composition-rounds-to-101",
+    "review_lane": "notation_and_numeric_consistency",
+    "source_kind": "script",
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "'Three times the SC floor' overstates a 2.93x ratio",
+    "quote": "three times the sc floor",
+    "explanation": "Table II gives 0.585 against an SC floor of 0.200, a ratio of 2.93. In a paper this careful with numbers the rounding stands out; 'nearly three times' is accurate.",
+    "comment_type": "claim_accuracy",
+    "severity": "minor",
+    "source_section": "result",
+    "root_cause_key": "three-times-rounding",
+    "review_lane": "notation_and_numeric_consistency",
+    "source_kind": "llm",
+    "confidence": "high",
     "gate_blocker": false
   }
 ]

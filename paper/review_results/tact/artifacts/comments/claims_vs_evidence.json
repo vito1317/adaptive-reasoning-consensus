@@ -1,19 +1,173 @@
 [
   {
-    "title": "Abstract and conclusion claims need explicit evidence traceability",
-    "quote": "The dev-calibrated variant must therefore be positioned honestly: CISC’s tuned temperature is already a dev- calibrated sc↔CISC interpolation, so the novelty of tact- dev lies in the sign, the rank invariance, and the analytic (grid-free) map, not in dev calibration itself.",
-    "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
+    "title": "Headline exponents are set by the hand-fixed clip gamma_max, not by the derived formula",
+    "quote": "is derived, not\ngrid-searched",
+    "explanation": "The paper's central novelty claim is that the vote exponent is derived rather than tuned, and Sec. III-D reinforces it with 'no tuned constant anywhere: nu is a significance level and gamma_max a clip'. The released result files show the clip is load-bearing in every cell that carries the paper. In results/tact_eval.json the TACT-dev exponent is exactly +/-4.00 = gamma_max at kappa in {-0.6, -0.4, +0.4, +0.6} and in both monotone-distortion cells; TACT-LF is exactly +/-2.00 = gamma_max for every |kappa| >= 0.2. In results/group_eval.json the grouped cell reports gammas_dev_by_group = {+4.0, 0.0135, -4.0} and gammas_lf_by_group = {+2.0, 0.0, -2.0}: both non-null groups sit exactly on their caps. So on every cell reported as 1.000, and on the headline 0.940 heterogeneity number, gamma = z*sqrt(2+z^2) is inactive and the operative quantity is a constant chosen by hand that differs between variants (4 dev vs 2 LF). The paper itself supplies the mechanism: Sec. VII-C attributes the LF variant's win over the dev variant to 'its lower exponent cap (2 vs 4) regularizes better when |D| ~ 1' and then defers the ablation. The paper's best number is therefore credited to an unablated constant while the abstract advertises the opposite.",
     "comment_type": "claim_accuracy",
     "severity": "major",
-    "confidence": "medium",
+    "source_section": "method",
+    "related_sections": [
+      "results",
+      "abstract",
+      "introduction"
+    ],
+    "root_cause_key": "gamma-max-clip-load-bearing",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": true,
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json: gamma.TACT-dev = -4.0/+4.0 at |kappa|>=0.4; gamma.TACT-LF = -2.0/+2.0 at |kappa|>=0.2"
+      },
+      {
+        "type": "analysis_artifact",
+        "text": "results/group_eval.json: gammas_dev_by_group {0:4.0, 1:0.0135, 2:-4.0}; gammas_lf_by_group {0:2.0, 1:0.0, 2:-2.0}"
+      },
+      {
+        "type": "section",
+        "text": "Sec. VII-C: 'its lower exponent cap (2 vs. 4) regularizes better ... cap robustness is left as an ablation'"
+      }
+    ],
+    "claim_strength": "unsupported",
+    "missing_evidence": [
+      "A gamma_max ablation (e.g. 2, 4, 8, infinity) on the sweep, the distortion cells, and the grouped cell",
+      "Per-cell reporting of how often the clip binds, so readers can see where the analytic map is actually active"
+    ],
+    "allowed_wording": "gamma is computed analytically from the data and then clipped; in the high-|D| cells reported here the clip binds, so those results reflect the clip rather than the analytic map",
+    "forbidden_wording": [
+      "no tuned constant anywhere",
+      "derived, not grid-searched (unqualified)"
+    ],
     "source_kind": "llm",
-    "source_section": "abstract",
+    "confidence": "high"
+  },
+  {
+    "title": "'Beats the oracle over the entire raw-value weight family' is a max over five grid points whose maximum is the boundary",
+    "quote": "beats the oracle over the entire raw-value\nweight family",
+    "explanation": "This claim appears five times (abstract, contribution C1, Table II caption, Sec. VII-B, Fig. 4 caption) and is the paper's strongest quantitative superiority statement. results/tact_eval.json shows the 'oracle' in the monotone_compress cell is a max over CISC-power at gamma in {0.25, 0.5, 1.0, 2.0, 4.0}, giving accuracies 0.795, 0.795, 0.815, 0.8825, 0.965, with oracle = {acc: 0.965, gamma: 4.0}. The maximum lands on the largest grid point and accuracy is still strictly increasing there, so the grid has not turned over. A monotone compression toward 0.5 is by construction undone by a sufficiently large exponent, so the supremum of the actual raw-value family is very plausibly at or near 1.000 for gamma = 8 or 16 -- exactly what TACT achieves. Both the word 'entire' and the word 'oracle' are unsupported: what was measured is the best of a truncated grid, and the truncation point (4.0) is the same gamma_max constant flagged above. The qualitative mechanism -- rank scores are exactly invariant to monotone distortion while c^gamma is not -- is sound and worth keeping; only the quantitative claim of dominance over the family fails.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "source_section": "result",
     "related_sections": [
       "abstract",
-      "results",
-      "conclusion"
+      "introduction",
+      "experiment"
     ],
+    "root_cause_key": "raw-value-oracle-grid-truncated",
     "review_lane": "claims_vs_evidence",
+    "gate_blocker": true,
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json adversarial.monotone_compress.acc: CISC(g=0.25)=0.795, (0.5)=0.795, (1.0)=0.815, (2.0)=0.8825, (4.0)=0.965"
+      },
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json adversarial.monotone_compress.oracle = {acc: 0.965, gamma: 4.0} -- boundary of the grid"
+      },
+      {
+        "type": "figure_or_table",
+        "text": "Table II caption: 'Oracle is the test-set best over raw-value weight policies'"
+      }
+    ],
+    "claim_strength": "unsupported",
+    "missing_evidence": [
+      "Extension of the raw-value grid past gamma=4 (8, 16, 32) until accuracy turns over, or an analytic argument that the family's supremum is 0.965"
+    ],
+    "allowed_wording": "TACT exceeds the best raw-value policy on the searched exponent grid (gamma <= 4); because that grid's maximum is at its boundary, the family supremum is not established",
+    "forbidden_wording": [
+      "beats the oracle over the entire raw-value weight family",
+      "even the oracle over raw-value policies reaches only 0.965"
+    ],
+    "source_kind": "llm",
+    "confidence": "high"
+  },
+  {
+    "title": "Abstract says both real-trace campaigns confirm the premise; the first measured discrimination in the wrong direction",
+    "quote": "Two real-trace campaigns on a frozen\nmodel confirm the premise",
+    "explanation": "Sec. VII-F(a) reports campaign 1 as D-hat = -0.219, SE = 0.176, z = -1.24, and states plainly that 'what little there is points the wrong way (math -0.515, commonsense -0.173; both groups negative)'. Only campaign 2 produced the positive D-hat = +0.250, z = +2.54 that the abstract quotes. The abstract reports the positive number and omits the negative one while summarising both campaigns as confirmatory. If 'the premise' means 'signed discrimination is the operative quantity', campaign 1 is indeed supportive; but a reader of the abstract alone will take away that verbalized confidence was measured to be positively discriminative on real traces twice, which is not what happened.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "source_section": "abstract",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "abstract-selective-real-trace-reporting",
+    "review_lane": "claims_vs_evidence",
+    "evidence_anchor": [
+      {
+        "type": "metric",
+        "text": "Sec. VII-F(a): D-hat = -0.219, SE = 0.176, z = -1.24, both subgroups negative"
+      },
+      {
+        "type": "metric",
+        "text": "Sec. VII-F(e): pooled D-hat = +0.250, SE = 0.098, z = +2.54"
+      }
+    ],
+    "claim_strength": "observed",
+    "missing_evidence": [
+      "One clause in the abstract stating that the first campaign measured a negative, non-significant channel"
+    ],
+    "allowed_wording": "two real-trace campaigns measured the channel directly: the first found no usable signal (z = -1.24), the second the first positive confirmation (z = +2.54)",
+    "forbidden_wording": [
+      "Two real-trace campaigns ... confirm the premise"
+    ],
+    "source_kind": "llm",
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "Conclusion promises an exact CISC fallback that the shipped method does not have",
+    "quote": "exact fallbacks at both ends",
+    "explanation": "The Conclusion states the method has 'exact fallbacks at both ends, plain self-consistency when the evidence is absent and CISC when it is at full strength'. The SC end is exact (Prop. 1, a shared code path). The CISC end is not a property of the shipped method: Prop. 2 obtains the CISC reduction only after replacing the van der Waerden feature map phi of Eq. (2) with a different log-value map phi^log. Shipped TACT at large gamma is a rank-score vote, which is not CISC-power and is in fact deliberately different from it -- that difference is the source of the monotone-invariance result the paper is proudest of. The abstract and contribution C1 both state this correctly ('a log-value feature map reproduces CISC-power'); only the Conclusion overstates, and it is the sentence most likely to be quoted.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "source_section": "conclusion",
+    "related_sections": [
+      "method"
+    ],
+    "root_cause_key": "cisc-anchor-requires-different-feature-map",
+    "review_lane": "claims_vs_evidence",
+    "evidence_anchor": [
+      {
+        "type": "section",
+        "text": "Prop. 2 requires the feature map phi^log = log c - mean(log c), not Eq. (2)'s van der Waerden phi"
+      }
+    ],
+    "claim_strength": "observed",
+    "allowed_wording": "an exact SC fallback, and an exact CISC correspondence available under an alternative log-value feature map",
+    "forbidden_wording": [
+      "exact fallbacks at both ends ... and CISC when it is at full strength"
+    ],
+    "source_kind": "llm",
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "Abstract's flagship comparison omits that a trivial baseline ties TACT bit-for-bit in that cell",
+    "quote": "1.000 vs. 0.807",
+    "explanation": "The abstract advertises the anti-correlated recovery as 'kappa = -0.6: 1.000 vs. 0.807', comparing against the SC/CISC floor. In results/tact_eval.json that same cell has SignGrid-dev = 1.000, TACT-dev gamma = -4.0, SignGrid gamma = -4.0, and the paired test TACT-dev_vs_SignGrid = {a_only: 0, b_only: 0, p_value: 1.0} -- TACT and the trivial signed-exponent grid are the identical policy on every item there. The body is candid about this (Sec. VII-D concedes the margin is narrow and that TACT even trails by 0.005-0.015 mid-range), so this is a framing problem confined to the abstract, but the abstract is where a 19-point headline gain over 'every published protocol' is planted.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "source_section": "abstract",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "abstract-omits-signgrid-tie",
+    "review_lane": "claims_vs_evidence",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json kappa=-0.6: SignGrid-dev acc = 1.0; paired.TACT-dev_vs_SignGrid = +0/-0, p=1.0"
+      }
+    ],
+    "claim_strength": "observed",
+    "allowed_wording": "recovers anti-correlated channels that pin every published protocol to the majority-vote floor (1.000 vs 0.807), matching a trivial signed-exponent grid there and separating from it under distortion, echo, and label-free operation",
+    "forbidden_wording": [
+      "1.000 vs. 0.807 presented without the SignGrid tie"
+    ],
+    "source_kind": "llm",
+    "confidence": "high",
     "gate_blocker": false
   }
 ]

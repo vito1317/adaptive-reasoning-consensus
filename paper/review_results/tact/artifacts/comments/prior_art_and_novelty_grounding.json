@@ -1,18 +1,79 @@
 [
   {
-    "title": "Novelty claim should be grounded against the closest prior work",
-    "quote": "Related Work Confidence-weighted self-consistency.",
-    "explanation": "The paper positions itself against prior work, but the current wording should make the closest comparator and the real novelty delta explicit instead of relying on broad superiority language.",
-    "comment_type": "claim_accuracy",
+    "title": "Propositions 4 and 5 are measured frequencies presented as propositions, and Prop. 6's sketch does not establish its claim",
+    "quote": "the\nagreement statistic’s sign matches the true sign only",
+    "explanation": "Prop. 4 (Self-reinforcement) states a universal claim over 'any per-item rule gamma_q = h(D-hat^g_q) with h monotone increasing and odd' and then supports it with measured frequencies ('agrees with SC on 97.5% of items'; '1 right vs. 9 wrong per 400 items'). Prop. 5 (Winner's curse) is nothing but a measured frequency -- 'the agreement statistic's sign matches the true sign only 4% of the time' -- with no general statement at all. Prop. 6 (Two-world unidentifiability) makes the strongest claim in the paper ('No label-free method can separate them') and supports it with one parenthetical, that D computed against either truth satisfies D^w1 = -D^w2. That shows the statistic flips sign; identical observable laws additionally require the joint law of (answers, confidences) to coincide under both worlds, including cluster sizes and the confidence model, which is not shown. Sec. III-F's blanket 'Proofs are elementary and pinned by unit tests' does not discharge these: a test can confirm a measured frequency but cannot establish a universally quantified claim. Either demote Props. 4-5 to numbered empirical observations, or supply the general arguments; and give Prop. 6 a real proof, since the impossibility result is contribution C3.",
+    "comment_type": "methodology",
     "severity": "moderate",
-    "confidence": "medium",
-    "source_kind": "llm",
-    "source_section": "abstract",
+    "source_section": "method",
     "related_sections": [
-      "abstract",
-      "results"
+      "introduction"
     ],
+    "root_cause_key": "propositions-are-measurements",
     "review_lane": "prior_art_and_novelty_grounding",
+    "evidence_anchor": [
+      {
+        "type": "section",
+        "text": "Prop. 4 supports a universal claim with 97.5% / 1-vs-9 empirics"
+      },
+      {
+        "type": "section",
+        "text": "Prop. 6 justification is the single parenthetical D^w1 = -D^w2"
+      }
+    ],
+    "claim_strength": "observed",
+    "missing_evidence": [
+      "A proof, or an explicit generative-model statement, that the two worlds induce identical observable laws"
+    ],
+    "allowed_wording": "Observation (measured on this harness): ...",
+    "forbidden_wording": [
+      "Proposition (for empirical frequencies)",
+      "No label-free method can separate them (without a distributional proof)"
+    ],
+    "source_kind": "llm",
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "Four datasets and one model that carry reported numbers are uncited",
+    "quote": "50 GSM8K",
+    "explanation": "GSM8K, MATH, MATH-500 and LeetCodeDataset are cited. Four sources that carry reported numbers are not: CommonsenseQA (Sec. VII-F, 50 items and a 0.847 trace accuracy); AIME/AMC (Sec. VIII, the '0 of 6' evidence for the window's upper edge); HumanEval+ and MBPP+ (Sec. VIII, '3.56% recomputed from published HumanEval+/MBPP+ tables' -- a number recomputed from someone else's published table with no pointer to it, which a reader cannot check and which the original authors are not credited for); and the frozen model 'Claude Haiku 4.5', named without version, date, or decoding configuration.",
+    "comment_type": "missing_information",
+    "severity": "moderate",
+    "source_section": "result",
+    "related_sections": [
+      "discussion"
+    ],
+    "root_cause_key": "uncited-datasets-and-model",
+    "review_lane": "prior_art_and_novelty_grounding",
+    "source_kind": "script",
+    "evidence_anchor": [
+      {
+        "type": "citation",
+        "text": "Sec. VIII: '3.56% recomputed from published HumanEval+/MBPP+ tables' with no citation"
+      },
+      {
+        "type": "citation",
+        "text": "Sec. VII-F: CommonsenseQA and Claude Haiku 4.5 uncited"
+      }
+    ],
+    "missing_evidence": [
+      "Citations for CommonsenseQA, AIME/AMC, HumanEval+, MBPP+ and the source table for the 3.56% recomputation"
+    ],
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "The motivating sibling result is described but cannot be cited or checked",
+    "quote": "A preceding system by the author",
+    "explanation": "Sec. II reports that a prior system by the author (RLEV-VoI) was evaluated under the same discipline, failed, and that 'its post-mortem isolated the confidence dilemma studied here'. This is the stated origin of the whole paper and part of the credibility case for the falsification protocol, but it has no citation, no preprint, and no artifact, so a reader cannot verify any of it. Either cite it (preprint, tech report, or repository) or state the claim as unpublished background without leaning on it evidentially.",
+    "comment_type": "missing_information",
+    "severity": "minor",
+    "source_section": "related",
+    "root_cause_key": "uncitable-self-reference",
+    "review_lane": "prior_art_and_novelty_grounding",
+    "source_kind": "llm",
+    "confidence": "high",
     "gate_blocker": false
   }
 ]

@@ -1,290 +1,109 @@
 [
   {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
+    "title": "Thin-window headline range presents a point estimate whose own CI is 2.6x wider",
+    "quote": "2–7.5% of items across five substrates",
+    "explanation": "The abstract states the window 'measures 2-7.5% of items across five substrates in two domains'. The 7.5% endpoint is 3/40, and results/g1_window.json gives window = 0.075 with window_ci = [0.0258, 0.1986] on window_n = 3. Sec. VIII does report '(CI95 2.6-19.9%)' at the point of use, so the paper is not hiding it -- but the abstract and the Conclusion carry the bare range, and a band whose upper endpoint has a 95% CI reaching 19.9% should not be quoted as '2-7.5%' without the interval. This matters more than usual because the structural-boundary claim is the paper's second headline contribution and is the basis for the normative claim that 'abstention is the only correct default'.",
+    "comment_type": "claim_accuracy",
     "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
     "source_section": "abstract",
     "related_sections": [
-      "abstract"
+      "discussion",
+      "conclusion"
     ],
+    "root_cause_key": "window-ci-omitted-in-abstract",
     "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
+    "source_kind": "script",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/g1_window.json: window 0.075, window_ci [0.0258, 0.1986], window_n 3, N 40"
+      }
+    ],
+    "claim_strength": "observed",
+    "allowed_wording": "2-7.5% of items across five substrates (the 7.5% endpoint is 3/40, CI95 2.6-19.9%)",
+    "forbidden_wording": [
+      "measures 2-7.5% of items (bare, in abstract and conclusion)"
+    ],
+    "confidence": "high",
+    "gate_blocker": false
   },
   {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "title": "Abstract is roughly 480 words in a single paragraph, far outside IEEE conference norms",
+    "quote": "Abstract—Confidence-weighted self-consistency",
+    "explanation": "The abstract runs about 480 words as one unbroken paragraph and states eight numeric results, four of them before the contribution is named. IEEE conference abstracts are typically 150-250 words. Beyond the length rule, the density works against the paper: the genuinely striking findings (the sign is recoverable without labels; the actionable stratum is 2-7.5% wide) are buried among estimator internals -- van Elteren, James-Stein, Bayes-discriminant link, mixture-variance correction -- that mean nothing to a reader who has not yet been told the problem. This is the single highest-return edit in the paper.",
     "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
+    "severity": "minor",
     "source_section": "abstract",
-    "related_sections": [
-      "abstract"
-    ],
+    "root_cause_key": "abstract-overlong",
     "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
+    "source_kind": "script",
+    "confidence": "high",
+    "gate_blocker": false
   },
   {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "title": "Two bibliography entries are never cited",
+    "quote": "[24] L. Kuhn",
+    "explanation": "Entries [24] (Kuhn et al., Semantic uncertainty) and [25] (Wan et al., Reasoning aware self-consistency) appear in the bibliography but are cited nowhere in the body -- verified by extracting all \\bibitem keys and all \\cite keys from the source and differencing them. Both are topically relevant, so the likely fix is to cite them in Sec. II rather than delete them; RASC in particular belongs in the confidence-weighted self-consistency paragraph.",
     "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "abstract",
-    "related_sections": [
-      "abstract"
-    ],
+    "severity": "minor",
+    "source_section": "references",
+    "root_cause_key": "uncited-bibitems",
     "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
+    "source_kind": "script",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "bibitem keys minus cite keys = {kuhn2023semantic, rasc2024}"
+      }
+    ],
+    "confidence": "high",
+    "gate_blocker": false
   },
   {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "title": "References are not numbered in order of first citation, as IEEE requires",
+    "quote": "[6] K. Tian",
+    "explanation": "IEEE style numbers references in order of first appearance in the text. 17 of the 26 cited entries violate this: tian2023just is cited 2nd but numbered [6], xiong2024can 3rd but [7], taubenfeld2025cisc 5th but [2], reasc2026 6th but [11], aggarwal2023adaptive 13th but [3]. The manuscript uses a manual thebibliography, so the fix is to reorder the \\bibitem entries to match first-citation order (or switch to IEEEtran.bst with BibTeX, which handles it automatically).",
     "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
+    "severity": "minor",
+    "source_section": "references",
+    "root_cause_key": "ieee-citation-order",
     "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
+    "source_kind": "script",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "first-citation rank vs bibitem number mismatch on 17/26 entries"
+      }
+    ],
+    "confidence": "high",
+    "gate_blocker": false
   },
   {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
+    "title": "Table II footnote is typeset inside the tabular after \\bottomrule",
+    "quote": "alarm fires and the method refuses",
+    "explanation": [
+      "The dagger footnote is emitted as two \\multicolumn rows placed after \\bottomrule, which breaks booktabs' rule structure and produces inconsistent spacing below the final rule. Move it to a \\tablenotes / minipage below the tabular, or into the caption."
     ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
     "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
+    "severity": "minor",
     "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
+    "root_cause_key": "booktabs-footnote-inside-tabular",
     "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
+    "source_kind": "script",
+    "confidence": "high",
+    "gate_blocker": false
   },
   {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "title": "Table I is placed in the Experimental Setup section but is only discussed in Results",
+    "quote": "Coupling sweep (accuracy at K = 15",
+    "explanation": "Table I (the coupling sweep) floats into Sec. VI, which describes the harness, baselines and falsifiers; its first discussion is the opening line of Sec. VII-A. Readers hit a full results table before the results section begins. Moving the float, or adding a one-line forward pointer in Sec. VI, fixes it.",
     "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
+    "severity": "minor",
+    "source_section": "experiment",
+    "root_cause_key": "table-placed-before-discussion",
     "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
+    "source_kind": "llm",
     "confidence": "high",
-    "source_kind": "script",
-    "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
-  },
-  {
-    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
-    "quote": "",
-    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "unknown",
-    "related_sections": [
-      "unknown"
-    ],
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "root_cause_key": "presubmission-g1"
+    "gate_blocker": false
   }
 ]

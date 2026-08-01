@@ -1,18 +1,190 @@
 [
   {
-    "title": "Comparison protocol should make fairness assumptions explicit",
-    "quote": "Under this accounting, abstention is not a conservative compromise but the only correct default: on the confirmatory substrate the largest measured effect of acting anyway was negative (the best-single-confidence baseline loses 4.5 points where tact’s dead zone holds it exactly at the sc floor).",
-    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
+    "title": "Falsification protocol is offered as the portable contribution but its scope excludes the method's known catastrophic failure, and a registered real-trace endpoint failed",
+    "quote": "all of which the method survived",
+    "explanation": "Contribution C4 and the Conclusion present the pre-registered falsification protocol as the paper's 'more portable contribution'. Two facts limit what the protocol demonstrated. (1) F2 is worded 'either variant significantly below SC anywhere on the sweep', and is declared survived. results/isc_eval.json contains a paraphrased_wrong_majority cell where TACT-LF = 0.000 against an SC floor of 0.340 over 400 items with TACT-LF_alarms = {} -- no alarm fires, and the gamma saturates at -2.0. The paper discloses this honestly in Sec. VIII and calls it 'the method's sharpest unguarded failure mode', but the failure was found by follow-on work, not by the protocol; the protocol's scope ('on the sweep') excluded it. (2) results/tact_hard_eval.json records h2 = {passed: false} for the second real-trace campaign. Sec. VII-F(e) explains correctly why the endpoint was unreachable on the realized substrate, but nowhere does the paper state that a registered hypothesis failed, while the abstract says all pre-registered criteria were survived. Both should be stated in the same voice the rest of the paper uses.",
     "comment_type": "methodology",
-    "severity": "moderate",
-    "confidence": "medium",
+    "severity": "major",
+    "source_section": "experiment",
+    "related_sections": [
+      "result",
+      "discussion",
+      "abstract"
+    ],
+    "root_cause_key": "falsifier-scope-and-undisclosed-failed-endpoint",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": true,
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/isc_eval.json paraphrased_wrong_majority: TACT-LF = 0.0, TACT-LF_gamma = -2.0, TACT-LF_alarms = {}, SC@K = 0.34"
+      },
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_hard_eval.json: h2 = {passed: false, plus: 0, minus: 0, p: 1.0}"
+      },
+      {
+        "type": "section",
+        "text": "Sec. VI falsifier F2 is scoped 'anywhere on the sweep'"
+      }
+    ],
+    "claim_strength": "unsupported",
+    "missing_evidence": [
+      "An explicit statement of the falsifiers' scope boundary and of which registered endpoints failed",
+      "Either a widened F2 that covers wrong-majority regimes, or an explicit note that the protocol was not designed to reach them"
+    ],
+    "allowed_wording": "all four sweep-scoped falsifiers survived; a registered real-trace endpoint (H2) failed on an unpassable substrate, and a wrong-majority regime outside the protocol's scope later exposed an unguarded failure",
+    "forbidden_wording": [
+      "all of which the method survived (unqualified)"
+    ],
     "source_kind": "llm",
+    "confidence": "high"
+  },
+  {
+    "title": "No code or data availability statement, and no repository URL, in a paper whose verification argument is its test suite",
+    "quote": "released\ncode pins",
+    "explanation": "Sec. III-F, Sec. VII-E, and the whole of Table VI rest on 'the released code': 'Proofs are elementary and pinned by unit tests in the released code', 'Equations (13)-(16) are verified equivalent to the shipped implementation ... (tests/test_formula.py)', and a twelve-row table mapping propositions to test function names. The manuscript contains no repository URL, DOI, archive link, or availability statement anywhere, so none of it is checkable by a reviewer or reader. For a paper that explicitly substitutes executable tests for written proofs, this is the single highest-leverage omission: the substitution only works if the tests can be run. The same applies to the trace data -- the frozen model ('Claude Haiku 4.5') is named without a version pin, access date, or sampling configuration.",
+    "comment_type": "missing_information",
+    "severity": "major",
     "source_section": "method",
     "related_sections": [
-      "method",
+      "result",
       "experiment"
     ],
+    "root_cause_key": "no-code-data-availability-statement",
     "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": true,
+    "evidence_anchor": [
+      {
+        "type": "section",
+        "text": "Sec. III-F: 'Proofs are elementary and pinned by unit tests in the released code (76 tests ...)'"
+      },
+      {
+        "type": "figure_or_table",
+        "text": "Table VI maps 12 propositions to named test functions with no path to the repository"
+      }
+    ],
+    "claim_strength": "unsupported",
+    "missing_evidence": [
+      "Repository URL or archived DOI",
+      "Model version pin, access date, decoding parameters",
+      "Availability statement for the cached trace pools"
+    ],
+    "source_kind": "llm",
+    "confidence": "high"
+  },
+  {
+    "title": "Reported test-suite size and runtime do not match the released suite",
+    "quote": "the suite is 76\ntests",
+    "explanation": "Sec. VII-E states 'the suite is 76 tests for TACT (84 including the follow-on work) and runs in 14 seconds'; Sec. III-F repeats '76 tests'. Running the released suite gives 98 passed in 54.69s. No natural subset yields 76 or 84 (non-ISC files total 88; all files total 98). Runtime is machine-dependent and the 4x gap is forgivable, but the counts are a directly checkable claim in a paper whose verification argument is the suite itself, and a reviewer who runs pytest will see the mismatch immediately. Table VI's test names are abbreviated but do all resolve to real functions (e.g. 'poisoning_attenuation_linear' -> test_poisoning_attenuation_is_linear_in_flip_rate), so the table is sound; only the counts are stale.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "source_section": "result",
+    "related_sections": [
+      "method"
+    ],
+    "root_cause_key": "stale-test-count-and-runtime",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "source_kind": "script",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "pytest -q on the released repo: '98 passed in 54.69s'"
+      },
+      {
+        "type": "analysis_artifact",
+        "text": "per-file collection: components 20, formula 12, isc 10, properties 17, tact 18, tact_group 7, units 14"
+      }
+    ],
+    "claim_strength": "unsupported",
+    "missing_evidence": [
+      "A regenerated count and runtime taken from the submitted commit"
+    ],
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "Falsifiers F1 and F4 are evaluated in saturated cells where they cannot fire",
+    "quote": "F1 (1.000 vs. 1.000)",
+    "explanation": "F1 asks whether TACT-dev is significantly below the best fixed-gamma CISC at kappa = +0.6. In results/tact_eval.json that cell has CISC-devT, SignGrid-dev, TACT-dev, TACT-LF and the oracle all at exactly 1.000: the comparison is against a ceiling, so F1 could not have fired regardless of the method's quality. Sec. VII-D reports this as a survival: 'F1 (1.000 vs. 1.000)'. The monotone_overconf cell is the same shape -- every method reaches 1.000 while the oracle picks gamma = 1.0 and TACT picks gamma = 4.0, i.e. materially different policies that the metric cannot separate. A pre-registered falsifier that is unfalsifiable on the realized data carries no evidential weight and should be reported as inconclusive rather than passed.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "source_section": "result",
+    "related_sections": [
+      "experiment"
+    ],
+    "root_cause_key": "falsifiers-at-ceiling",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json kappa=+0.6: devT, SignGrid, TACT-dev, TACT-LF, oracle all 1.000"
+      },
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json monotone_overconf: all methods 1.000; oracle gamma 1.0 vs TACT-dev gamma 4.0"
+      }
+    ],
+    "claim_strength": "observed",
+    "allowed_wording": "F1 was inconclusive: every method saturates at 1.000 in the designated cell",
+    "forbidden_wording": [
+      "F1 survived"
+    ],
+    "source_kind": "llm",
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "Between-cell sampling noise in the sweep is undisclosed and is comparable to the margins the paper interprets",
+    "quote": ".807\n.807\n.807",
+    "explanation": "Self-consistency ignores confidence entirely, so its accuracy cannot depend on kappa. Table I's SC row nonetheless reads .807, .797, .835, .762, .835, .795, .845, .838, .782 -- an 8.3-point spread that is pure between-cell sampling variation from independently drawn 400-item pools (SE ~ 0.02 per cell). The paper never notes this, and it matters for interpretation: Sec. VII-D reads a 0.005-0.015 shortfall against SignGrid as 'the deliberate cost of shrinkage'. Those within-cell comparisons are paired and therefore legitimate, but the reader has no way to see which differences in the table are paired and which are not, and the unexplained SC row invites the wrong reading. Reporting per-cell CIs, or stating that cells use independent draws and only within-column comparisons are paired, resolves it.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "source_section": "result",
+    "related_sections": [
+      "experiment"
+    ],
+    "root_cause_key": "undisclosed-between-cell-variance",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "evidence_anchor": [
+      {
+        "type": "figure_or_table",
+        "text": "Table I SC row spans .762 to .845 although SC is by construction independent of kappa"
+      }
+    ],
+    "claim_strength": "observed",
+    "missing_evidence": [
+      "Per-cell confidence intervals or a note that cells are independently drawn"
+    ],
+    "source_kind": "llm",
+    "confidence": "high",
+    "gate_blocker": false
+  },
+  {
+    "title": "The batch-size confound is reported but never propagated to the window measurements it threatens",
+    "quote": "plurality accuracy at 0.40",
+    "explanation": "Sec. VII-F(e) reports that a 30-problem-per-call probe measured level-5 plurality accuracy at 0.40 while the 15-problem-per-call confirmatory run gave 0.888 on the same stratum, and correctly concludes that batch size must be reported as an experimental parameter. The paper stops there. That instrument sensitivity -- a 2.2x swing in measured accuracy from a collection-protocol knob -- is far larger than the 2-7.5% window the paper's second headline contribution claims to bound, and the window measurements were themselves collected in batches whose sizes are never stated. Either report the batch size for each substrate in the window study and argue the effect is absorbed, or widen the stated uncertainty on the window to acknowledge it.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "source_section": "result",
+    "related_sections": [
+      "discussion"
+    ],
+    "root_cause_key": "batch-size-confound-not-propagated",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "evidence_anchor": [
+      {
+        "type": "metric",
+        "text": "Sec. VII-F(e): 0.40 vs 0.888 plurality accuracy on the same stratum by batch size"
+      }
+    ],
+    "claim_strength": "observed",
+    "missing_evidence": [
+      "Batch size per substrate in the thin-window measurements",
+      "A sensitivity check of the window to collection batch size"
+    ],
+    "source_kind": "llm",
+    "confidence": "high",
     "gate_blocker": false
   }
 ]
