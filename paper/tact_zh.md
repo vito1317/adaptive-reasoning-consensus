@@ -321,3 +321,25 @@ TACT 將「該信任模型的信心到什麼程度」轉化為可量測、帶符
 最大實測效果是負的（best-conf 基線輸 4.5 分，而我的方法的死區把它精確
 釘在 SC 地板上）。窗口只在外部錨便宜的地方變寬（可執行測試、代回驗算）
 ——這也是本計畫的下一步。
+
+### TACT 的單一公式（本輪新增）
+
+兩處代數化簡讓整條 pipeline 收成一個式子。把 $\hat D$ 從收縮式中提出來，
+James–Stein 就變成合併 z 統計量 $\zeta=\hat D/\mathrm{SE}$ 的純乘法增益；
+把 $u=\sqrt2\,z$ 代進連結函數，巢狀根號消失。TACT 即：
+
+$$\hat a_q=\arg\max_A \sum_{i:a_{q,i}=A}\exp(\gamma\varphi_{q,i}),
+\qquad \gamma=\Big[z\sqrt{2+4\bar p(1-\bar p)z^2}\Big]_{-\gamma_{\max}}^{\gamma_{\max}}$$
+
+$$z=\Phi^{-1}\Big(\tfrac12\big[1+\hat D(1-\nu^2/\zeta^2)_+\big]\Big),
+\qquad \zeta=\hat D/\mathrm{SE}$$
+
+在預設 $\bar p=1/2$ 下，指數恰為
+
+$$\gamma=z\sqrt{2+z^2},\qquad z=\Phi^{-1}(\widehat{\mathrm{AUC}})$$
+
+——一個 probit、一個平方根，全式沒有任何調校常數（$\nu$ 是顯著水準、
+$\gamma_{\max}$ 是截斷，兩者都在看資料前就固定）。死區現在是單一條件
+$|\zeta|\le\nu$，在其上 $\gamma$ 恆為 0，投票位元等同 SC。
+此式已對現行實作在含所有邊界的隨機輸入上驗證等價
+（`tests/test_formula.py`）。
