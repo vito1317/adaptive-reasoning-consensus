@@ -27,3 +27,7 @@ results/raw/
 # stale smoke-test artifacts
 results/*_quick.json
 results/*_run.log
+
+# Word lock files
+~$*
+.DS_Store
