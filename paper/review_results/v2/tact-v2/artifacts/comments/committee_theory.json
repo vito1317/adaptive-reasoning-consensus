@@ -1,39 +1,47 @@
 [
   {
-    "title": "Abstract and conclusion claims need explicit evidence traceability",
-    "quote": "",
-    "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
-    "comment_type": "claim_accuracy",
+    "title": "The Bayes-discriminant link assumes within-item normality of a statistic that is discrete and bounded by construction",
+    "quote": "Model $\\varphi\\,|\\,y\\sim\\mathcal{N}(\\mu_y,s^2)$ within item with the \\emph{mixture} standardized to unit variance",
+    "explanation": "The link of Eq. (11), and therefore the whole analytic map that C1 offers in place of a grid search, is derived from a within-item Gaussian model for phi. But phi is by Eq. (2) the standardized van der Waerden score of a midrank: for m_q = 4 it takes at most four distinct values, {-0.84, -0.25, +0.25, +0.84} before standardization. The paper is aware that the realized within-item spread depends on m (it says so: 'the no-tie value is $0.62$ at $m{=}4$ but $0.95$ at $m{=}40$') and it fixes the scale problem by standardizing with the realized sigma_q. It never addresses the distributional assumption itself, which degrades in exactly the small-budget regime the paper advertises as a selling point ('an exponent estimated at $m{=}40$ transfers to deployment at $m{=}8$'). Since gamma* is the sole theoretical justification for the magnitude of the exponent, the theory owes either a discreteness correction or a statement of the m at which the Gaussian link is adequate. The empirical answer is not a substitute, and it points the same way: the artifacts show gamma pinned at the clip wherever the paper wins.",
+    "comment_type": "methodology",
     "severity": "major",
-    "confidence": "low",
+    "confidence": "high",
     "source_kind": "llm",
-    "source_section": "abstract",
-    "related_sections": [
-      "abstract",
-      "results",
-      "conclusion"
-    ],
-    "root_cause_key": "abstract-and-conclusion-claims-need-explicit-evidence-traceability",
+    "source_section": "method",
+    "related_sections": [],
+    "root_cause_key": "link-assumes-normality-of-discrete-phi",
     "review_lane": "committee_theory",
     "gate_blocker": false,
-    "quote_verified": false
+    "verdict": "CONFIRMED"
   },
   {
-    "title": "Novelty claim should be grounded against the closest prior work",
-    "quote": "",
-    "explanation": "The paper positions itself against prior work, but the current wording should make the closest comparator and the real novelty delta explicit instead of relying on broad superiority language.",
+    "title": "The theoretical increment is real but is not the one the title and abstract advertise",
+    "quote": "The claim is the assembly and its anchors, not the parts.",
+    "explanation": "This sentence is the most honest in the paper and the theory reviewer's job is to take it seriously. Assembled from published parts (van Elteren pooling, positive-part James-Stein, a normal-scores discriminant), the estimator's durable increment is not the assembly: it is the impossibility triple of Sec. VI, which bounds what any label-free per-item method can do, and the attenuation identity E[D-hat_g] = (1-2*rho_bar)*D that makes the sign recoverable without labels. Those are the results that survive if TACT itself is superseded. The paper spends its title, abstract and C1 on the tempering map, whose magnitude the artifacts show is set by a hand-fixed clip in every winning cell, and gives the impossibility results one contribution bullet. Re-centering the theory claim on the boundary results would make a stronger paper out of the same evidence.",
     "comment_type": "claim_accuracy",
     "severity": "moderate",
-    "confidence": "low",
+    "confidence": "high",
     "source_kind": "llm",
-    "source_section": "related_work",
-    "related_sections": [
-      "related_work",
-      "results"
-    ],
-    "root_cause_key": "novelty-claim-should-be-grounded-against-the-closest-prior-work",
+    "source_section": "hetero",
+    "related_sections": [],
+    "root_cause_key": "theory-increment-mislocated",
     "review_lane": "committee_theory",
     "gate_blocker": false,
-    "quote_verified": false
+    "verdict": "CONFIRMED"
+  },
+  {
+    "title": "Two of the seven propositions are measured frequencies, and the blanket proof sentence covers them",
+    "quote": "Proofs are elementary and pinned by unit tests in the released code (76 tests;",
+    "explanation": "Propositions 5 and 6 carry their quantitative content as frequencies measured on one 400-item synthetic harness at one seed. Placing them in a proposition environment, then covering all propositions with a single sentence asserting that proofs are elementary and pinned by tests, grants empirical measurements the standing of the theorems around them. Either restate them as remarks with sample sizes and intervals, or separate the proof sentence so it does not extend to them.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "hetero",
+    "related_sections": [],
+    "root_cause_key": "empirical-frequencies-as-propositions",
+    "review_lane": "committee_theory",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED"
   }
 ]

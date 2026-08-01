@@ -1,19 +1,65 @@
 [
   {
-    "title": "Conclusion should close the loop on the paper's strongest claims",
-    "quote": "",
-    "explanation": "A closure claim appears in the discussion/conclusion. Verify that it matches the limitations, experimental scope, and prior-art positioning established earlier in the paper.",
-    "comment_type": "missing_information",
-    "severity": "minor",
-    "confidence": "low",
+    "title": "'Significantly below' in the pre-registered falsifiers is implemented as a hard-coded 0.02 accuracy margin with no statistical test",
+    "quote": "F1: \\TACT-dev significantly below the best fixed-$\\gamma$ CISC at $\\kappa{=}{+}0.6$. F2: either variant significantly below \\SC{} anywhere on the sweep.",
+    "explanation": "experiments/run_tact_eval.py renders every falsifier verdict on a fixed accuracy tolerance, not a test: f1 = acc[TACT-dev] < best_cisc - 0.02; f2 = any(acc[TACT] < acc[SC] - 0.02); f4 = all(acc[SignGrid] >= acc[TACT] - 0.02). The constant 0.02 appears nowhere in the paper, and Sec. V-D repeats the statistical framing ('never significantly below \\SC{} elsewhere'). This matters beyond wording: F4's survival turns entirely on the distortion cell's 0.035 gap exceeding that undisclosed 0.02, on a single seed with no dispersion estimate. A paper that pre-registers falsification and reports exact McNemar tests elsewhere has to state the decision rule its falsifiers actually use.",
+    "comment_type": "methodology",
+    "severity": "major",
+    "confidence": "high",
     "source_kind": "llm",
-    "source_section": "conclusion",
+    "source_section": "experiment",
     "related_sections": [
-      "conclusion",
-      "introduction",
-      "results"
+      "result"
     ],
+    "root_cause_key": "falsifier-tolerance-undisclosed",
     "review_lane": "self_standard_consistency",
-    "gate_blocker": false
+    "gate_blocker": true,
+    "verdict": "CONFIRMED",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "experiments/run_tact_eval.py:212-218 falsifier verdicts"
+      }
+    ]
+  },
+  {
+    "title": "The one paired test that favours the trivial baseline is the one paired test not reported",
+    "quote": "Against SignGrid-dev the honest margin is narrow on the homogeneous sweep",
+    "explanation": "The paper reports McNemar results scrupulously where they favour it: '+79/-0$, $p=3.3\\times10^{-24}$' for the grouped cell and '+0/-0$, $p=1$' for the dead-zone cells. results/tact_eval.json also contains TACT-dev_vs_SignGrid at every sweep point, and at kappa = -0.2 it reads {a_only: 0, b_only: 6, p_value: 0.03125}: SignGrid-dev beats TACT-dev on six items and loses on none, significant at the 0.05 level. The text gives only the magnitude ('trails by $0.005$--$0.015$') and never this test. Reporting the unfavourable paired result costs one clause and removes the strongest available reviewer objection; omitting it, in this paper of all papers, is the finding.",
+    "comment_type": "methodology",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "experiment"
+    ],
+    "root_cause_key": "unreported-unfavourable-paired-test",
+    "review_lane": "self_standard_consistency",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json sweep_dev200[2].paired.TACT-dev_vs_SignGrid = {a_only 0, b_only 6, p 0.03125}"
+      }
+    ]
+  },
+  {
+    "title": "F4 as worded cannot be tripped by the trivial baseline beating the method",
+    "quote": "F4: CISC-devT or SignGrid-dev matches \\TACT-dev everywhere, including the distortion, heterogeneity, and small-dev cells.",
+    "explanation": "The falsifier is one-sided: it fires only if a grid baseline *matches* TACT everywhere. SignGrid-dev strictly beating TACT-dev, which it does in four of nine sweep cells and never loses in the other five, cannot falsify anything. A pre-registration whose criteria are asymmetric in the author's favour on the axis where the closest competitor is strongest is weaker evidence than its framing implies. Widening F4 to 'matches or beats' costs nothing and would have been survived anyway on the distortion and echo cells.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "experiment",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "f4-asymmetric-falsifier",
+    "review_lane": "self_standard_consistency",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED"
   }
 ]

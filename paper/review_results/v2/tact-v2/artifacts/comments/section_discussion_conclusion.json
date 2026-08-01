@@ -1,0 +1,50 @@
+[
+  {
+    "title": "The Discussion contradicts the Results it follows, twice in one paragraph",
+    "quote": "Validation on real LLM traces is the remaining step; the cached-trace runner is committed and the prediction is falsifiable",
+    "explanation": "Sections V-G and V-H report two complete real-trace campaigns on a frozen model, each with its own table, and Sec. V-I measures the addressable window on five substrates. The first Discussion paragraph nonetheless opens 'All quantitative claims are on a synthetic oracle' and closes by naming real-trace validation as future work. Both sentences are stale survivors of a pre-real-trace draft, and the fourth paragraph of the same section contradicts them directly ('the measured cost of acting anyway was negative on both real substrates'), as does the abstract. An editor reads a contradiction of this kind as evidence the manuscript was not read end to end before submission, and it discounts every other number in it. This is the single cheapest high-value fix in the paper.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "discussion",
+    "related_sections": [
+      "result",
+      "abstract"
+    ],
+    "root_cause_key": "stale-pre-real-trace-discussion",
+    "review_lane": "section_discussion_conclusion",
+    "gate_blocker": true,
+    "verdict": "CONFIRMED",
+    "evidence_anchor": [
+      {
+        "type": "section",
+        "text": "Sec. VII para 1 vs Sec. V-G, V-H, V-I and Sec. VII para 4"
+      }
+    ]
+  },
+  {
+    "title": "The Limitations section never states the limitation the paper's own numbers make unavoidable: single-seed evidence",
+    "quote": "Three design choices limit the circularity",
+    "explanation": "The circularity discussion is candid and the three mitigations are real, but the section lists no limitation covering statistical dispersion. Every synthetic cell in results/tact_eval.json is one run at seed 0 with 400 items (600 for the group study), and no cell reports a seed-to-seed interval. The paper then interprets 0.035 differences between arms and renders pre-registered falsifier verdicts on them. Whatever the reader concludes about circularity, the absence of dispersion is the limitation that bounds how much any of these margins can carry.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "discussion",
+    "related_sections": [
+      "experiment",
+      "result"
+    ],
+    "root_cause_key": "single-seed-no-dispersion",
+    "review_lane": "section_discussion_conclusion",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json config = {items: 400, k: 15, k_max: 20, seed: 0}"
+      }
+    ]
+  }
+]

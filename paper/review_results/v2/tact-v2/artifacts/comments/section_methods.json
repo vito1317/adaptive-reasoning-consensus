@@ -1,0 +1,60 @@
+[
+  {
+    "title": "Proposition 7's sketch establishes a sign flip, not the identical observable laws it claims",
+    "quote": "induce identical observable laws (constructively, $D$ computed against either truth satisfies $D^{w_1}=-D^{w_2}$)",
+    "explanation": "The claim is that two worlds induce identical laws over the observable (a, c). The parenthetical establishes only that the D statistic computed against the two candidate truths is sign-reversed. That is a statement about one functional of the data, not about equality of the observable distributions, and it does not by itself rule out some other functional separating the worlds. The proposition is plausible and may well be true under the stated i.i.d. coupling, but as written the justification is weaker than the statement, and the paper leans on this proposition twice more (Sec. V-B and the Discussion) to license 'No label-free method can separate them'.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "hetero",
+    "related_sections": [
+      "labelfree",
+      "discussion"
+    ],
+    "root_cause_key": "prop7-sketch-weaker-than-claim",
+    "review_lane": "section_methods",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "missing_evidence": [
+      "a proof that the joint law of (a,c) coincides under both worlds, not only that D is sign-reversed"
+    ]
+  },
+  {
+    "title": "Propositions 5 and 6 are measured frequencies from one harness, presented as propositions",
+    "quote": "Empirically such a rule agrees with \\SC{} on $97.5\\%$ of items and its residual flips are net-harmful ($1$ right vs.\\ $9$ wrong per $400$ items).",
+    "explanation": "Proposition 5's first sentence is a genuine structural claim, but its quantitative content is an empirical frequency measured on 400 synthetic items at one seed. Proposition 6 is entirely a measured frequency ('the agreement statistic's sign matches the true sign only $4\\%$ of the time'). Numbers of that kind belong in Results with a sample size and an interval; stating them inside a proposition environment invites the reader to grant them the status of the theorems around them, and the blanket 'Proofs are elementary and pinned by unit tests' then covers them too.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "hetero",
+    "related_sections": [
+      "result"
+    ],
+    "root_cause_key": "empirical-frequencies-as-propositions",
+    "review_lane": "section_methods",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "missing_evidence": [
+      "sample size, seed count, and interval for the 97.5%, 4%, and 1-vs-9 figures inside the proposition statements"
+    ]
+  },
+  {
+    "title": "Contribution C3 and Proposition 6 state the winner's-curse frequency under different conditioning",
+    "quote": "the observable sign opposes the truth $96\\%$ of the time",
+    "explanation": "C3 attaches the 96% figure to 'exactly the plurality-wrong items where a flip could help'. Proposition 6 states the complementary 4% but conditions additionally on $|D_q|>0.3$. The two are arithmetically consistent yet describe different item sets, so the Introduction claims a stronger, unconditional result than the proposition it summarizes. Either add the magnitude condition to C3 or report both frequencies.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "introduction",
+    "related_sections": [
+      "hetero"
+    ],
+    "root_cause_key": "c3-prop6-conditioning-mismatch",
+    "review_lane": "section_methods",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED"
+  }
+]

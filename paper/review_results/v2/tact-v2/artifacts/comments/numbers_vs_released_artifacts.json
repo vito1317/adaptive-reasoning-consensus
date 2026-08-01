@@ -1,0 +1,101 @@
+[
+  {
+    "title": "The reported test-suite size and runtime do not match the released suite",
+    "quote": "including the follow-on work) and runs in 14 seconds. Table~\\ref{tab:tests}",
+    "explanation": "The checked-in suite collects 98 tests across seven files (93 `def test_` functions; test_formula.py contributes 12 collected from 7 functions via parametrization) and runs in 49.66 s on this machine, all passing. No partition of the seven files yields 76 or 84: excluding test_isc.py, the follow-on ISC work, leaves 88. The numbers are most likely stale rather than wrong, but this sentence and Table IV are the paper's substitute for written proofs, so a reviewer who reruns the suite finds the one place the paper invites verification is the place its numbers do not reproduce. Quote the count and runtime from a tagged commit, or drop the runtime.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "method"
+    ],
+    "root_cause_key": "test-suite-count-runtime-mismatch",
+    "review_lane": "numbers_vs_released_artifacts",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "pytest --collect-only -q: 98 tests collected; pytest -q: 98 passed in 49.66s"
+      }
+    ]
+  },
+  {
+    "title": "In every cell the abstract reports as a win, gamma equals the hand-fixed clip rather than the derived value",
+    "quote": "$\\gamma$ is \\emph{derived}, not grid-searched",
+    "explanation": "results/tact_eval.json records the realized exponent per cell. TACT-dev = -4.0 at kappa = -0.6 and -0.4, +4.0 at +0.4 and +0.6, and +4.0 in all three monotone-distortion cells; TACT-LF is -2.0 / +2.0 in the same cells. Those are exactly gamma_max for the two arms, so the Bayes-discriminant link is saturated and the clip, not the derivation, sets the exponent in all seven cells the paper reports as 1.000. Where the link is genuinely active the derived value is visibly different and worse: at kappa = -0.2, gamma_TACT-dev = -2.778 while the oracle and SignGrid-dev both use -4.0 and score 0.993 against TACT's 0.978. The honest reading is that the derivation supplies the sign reliably and the magnitude only inside the clip; the paper claims more than that.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "experiment",
+    "related_sections": [
+      "method",
+      "result",
+      "abstract"
+    ],
+    "root_cause_key": "gamma-max-clip-not-derived",
+    "review_lane": "numbers_vs_released_artifacts",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json sweep_dev200[*].gamma and adversarial[*].gamma"
+      }
+    ]
+  },
+  {
+    "title": "'The distortion and echo cells are unreachable by either grid baseline' overstates a 0.035 margin",
+    "quote": "F4 (the distortion and echo cells are unreachable by either grid baseline)",
+    "explanation": "Both grid baselines reach both cells and score well: under monotone compression SignGrid-dev and CISC-devT both reach 0.965 against TACT's 1.000, and in the confident echo SignGrid-dev reaches 0.550 against TACT-dev's 0.585. 'Unreachable' describes a cell no grid baseline can operate in; what the artifacts show is a cell where they operate and lose by 0.035. The label-free axis is the one place the wording is accurate, because no grid can run without labels at all, and the sentence would be both true and stronger if it separated the two situations.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "experiment"
+    ],
+    "root_cause_key": "unreachable-overstates-margin",
+    "review_lane": "numbers_vs_released_artifacts",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "claim_strength": "observed",
+    "allowed_wording": "F4 (both grid baselines fall 0.035 short in the distortion and echo cells, and neither can operate label-free)",
+    "forbidden_wording": [
+      "the distortion and echo cells are unreachable by either grid baseline"
+    ],
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json adversarial.monotone_compress / confident_echo acc"
+      }
+    ]
+  },
+  {
+    "title": "Tables I, II, III and V reproduce faithfully from the released artifacts",
+    "quote": "$-0.6$ & .807 & .807 & .807 & 1.000 & \\textbf{1.000} & \\textbf{1.000} & 1.000\\\\",
+    "explanation": "Recorded as a positive verification, not a defect, because it bounds the scope of the other findings in this lane. Table I matches results/tact_eval.json sweep_dev200 to the printed precision in all nine rows (kappa = -0.6: SC 0.8075, CISC-devT 0.8075, SignGrid 1.0, TACT-dev 1.0, TACT-LF 1.0, oracle 1.0). Table II matches the adversarial block, including the confident-echo row and the E1_duplicate_collapse alarm the footnote describes. Table III matches group_eval.json and Table V matches tact_hard_eval.json exactly (per_sample_acc 0.8194, SC 0.8876, best-conf 0.8427, decisive_n 10, eval_set 89, D-hat 0.2502, SE 0.0984, z 2.5428). All six falsifier flags are false as claimed. The numeric problems found in this paper are in the abstract, the derived-vs-clipped framing, and the test-suite metadata, not in the primary result tables.",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "result",
+    "related_sections": [
+      "experiment"
+    ],
+    "root_cause_key": "tables-verified-faithful",
+    "review_lane": "numbers_vs_released_artifacts",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "results/tact_eval.json, group_eval.json, tact_hard_eval.json"
+      }
+    ]
+  }
+]

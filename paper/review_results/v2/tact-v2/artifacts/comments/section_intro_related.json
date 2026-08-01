@@ -1,0 +1,20 @@
+[
+  {
+    "title": "The contribution list omits the real-trace campaigns and the window measurement, which are the majority of the Results",
+    "quote": "This paper frames the problem as estimating one scalar: the \\emph{signed} within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent. The contributions are:",
+    "explanation": "C1-C4 describe the estimator, the label-free identity, the impossibility result and the falsification protocol. None mentions real LLM traces, yet Sections V-G, V-H and V-I are the larger part of the Results section, and Sec. V-I's window measurement bounds every confidence-weighted voting method, not only TACT: it is the paper's most portable empirical result. A reader who stops after the Introduction does not learn that the real-trace evidence exists, nor that it is null on accuracy, which the paper states only in Sec. VII. Promoting the window measurement to a numbered contribution, framed as a bound on the whole method family, and stating on page 1 that the real-trace claim is confined to the premise and to abstention, moves the paper's honesty to where it earns credit instead of where reviewers discover it.",
+    "comment_type": "missing_information",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "introduction",
+    "related_sections": [
+      "result",
+      "discussion"
+    ],
+    "root_cause_key": "contributions-omit-real-trace",
+    "review_lane": "section_intro_related",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED"
+  }
+]

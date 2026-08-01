@@ -1,57 +1,47 @@
 [
   {
-    "title": "Abstract and conclusion claims need explicit evidence traceability",
-    "quote": "",
-    "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
+    "title": "The paper proves its own motivation nearly empty and never closes the argument it opens",
+    "quote": "whole family of methods can act on at $2$--$7.5\\%$ of items on every substrate",
+    "explanation": "The logical spine runs: confidence-weighted voting is fragile to sign inversion (Sec. I), here is an estimator that fixes it (Secs. III-VI), and here is how much room any such estimator has (Sec. V-I) -- between 2 and 7.5% of items on every substrate tried, with no widening as items harden. The third step is the paper's most transferable result and it bounds the first two: on the paper's own measurement, the ceiling for the entire method family, TACT included, is a few per cent of items, and the real-trace campaigns duly returned gamma = 0 and bit-identical-to-SC votes. The paper states each step honestly and never joins them. It does not say why a method whose addressable stratum it has just measured at ~5% is nonetheless worth adopting, nor reframe the contribution as the measurement plus a method that abstains correctly inside it. A reviewer who follows the argument to its end arrives at a conclusion the paper never states and cannot tell whether the author reached it too. This is the structural revision the manuscript needs, and it is a reframing rather than new experiments: lead with the boundary, and present TACT as the estimator that respects it.",
     "comment_type": "claim_accuracy",
     "severity": "major",
-    "confidence": "low",
+    "confidence": "high",
     "source_kind": "llm",
-    "source_section": "abstract",
-    "related_sections": [
-      "abstract",
-      "results",
-      "conclusion"
-    ],
-    "root_cause_key": "abstract-and-conclusion-claims-need-explicit-evidence-traceability",
+    "source_section": "discussion",
+    "related_sections": [],
+    "root_cause_key": "motivation-undercut-by-own-window-measurement",
     "review_lane": "committee_logic",
-    "gate_blocker": false,
-    "quote_verified": false
+    "gate_blocker": true,
+    "verdict": "CONFIRMED"
   },
   {
-    "title": "Abstract five-element check is incomplete; missing background, conclusion, quantitative results",
-    "quote": "",
-    "explanation": "[A1] Abstract five-element check is incomplete; missing background, conclusion, quantitative results. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
-    "comment_type": "missing_information",
+    "title": "A universal default is inferred from five substrates of 30 to 119 items each",
+    "quote": "Abstention is therefore the correct default rather than a conservative one, and the dead zone implements it exactly.",
+    "explanation": "The premises are five window measurements with denominators of 100, 89, 30, an unstated published table, and 40. Each is a small sample with a wide interval, and the paper reports one of those intervals itself (CI95 2.6-19.9% on 3/40). The conclusion is a universal operating recommendation stated without qualification in the abstract. The direction of the evidence supports it and the measurement is worth making, but 'the correct default' outruns five small samples in two domains. Scope it to the substrates measured, or state the interval alongside the recommendation.",
+    "comment_type": "claim_accuracy",
     "severity": "moderate",
     "confidence": "high",
-    "source_kind": "script",
+    "source_kind": "llm",
     "source_section": "abstract",
-    "related_sections": [
-      "abstract"
-    ],
-    "root_cause_key": "presubmission-a1",
+    "related_sections": [],
+    "root_cause_key": "universal-default-from-five-small-samples",
     "review_lane": "committee_logic",
     "gate_blocker": false,
-    "quote_verified": false
+    "verdict": "CONFIRMED"
   },
   {
-    "title": "Conclusion should close the loop on the paper's strongest claims",
-    "quote": "",
-    "explanation": "A closure claim appears in the discussion/conclusion. Verify that it matches the limitations, experimental scope, and prior-art positioning established earlier in the paper.",
-    "comment_type": "missing_information",
-    "severity": "minor",
-    "confidence": "low",
+    "title": "One Discussion paragraph asserts the opposite of the two Results sections preceding it",
+    "quote": "Validation on real LLM traces is the remaining step; the cached-trace runner is committed and the prediction is falsifiable",
+    "explanation": "Sec. VII opens with 'All quantitative claims are on a synthetic oracle' and names real-trace validation as future work, while Secs. V-G and V-H report two completed real-trace campaigns with their own tables and Sec. VII's own fourth paragraph refers to 'both real substrates'. The paragraph is a stale survivor of an earlier draft. For a logic reviewer the damage is not the stale sentence but what it implies about the argument's assembly: the section that is supposed to bound the paper's claims was not re-derived after the evidence base changed.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "high",
     "source_kind": "llm",
-    "source_section": "conclusion",
-    "related_sections": [
-      "conclusion",
-      "introduction",
-      "results"
-    ],
-    "root_cause_key": "conclusion-should-close-the-loop-on-the-paper-s-strongest-claims",
+    "source_section": "discussion",
+    "related_sections": [],
+    "root_cause_key": "stale-pre-real-trace-discussion",
     "review_lane": "committee_logic",
-    "gate_blocker": false,
-    "quote_verified": false
+    "gate_blocker": true,
+    "verdict": "CONFIRMED"
   }
 ]
