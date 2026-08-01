@@ -1,0 +1,77 @@
+{
+ "config": {
+  "k": 16,
+  "sign_set": 30,
+  "eval_set": 89,
+  "seed": 20260731
+ },
+ "substrate": {
+  "per_sample_acc": 0.7604400749063671,
+  "gold_in_pool": 0.9101123595505618,
+  "decisive_n": 17
+ },
+ "h1": {
+  "passed": true,
+  "d_hat": 0.3860716700473293,
+  "se": 0.07167501064628526,
+  "z": 5.386419430791371
+ },
+ "gammas": {
+  "lf": 0.0,
+  "semi": 0.0,
+  "lf_alarms": [
+   "E4_too_few_items",
+   "E2_margin_decoupling"
+  ],
+  "semi_sign": 1.0
+ },
+ "methods": {
+  "SC": {
+   "acc": 0.8089887640449438,
+   "plus": 0,
+   "minus": 0
+  },
+  "dedup-SC": {
+   "acc": 0.8089887640449438,
+   "plus": 0,
+   "minus": 0
+  },
+  "best-conf": {
+   "acc": 0.8202247191011236,
+   "plus": 6,
+   "minus": 5
+  },
+  "CISC-lin": {
+   "acc": 0.8089887640449438,
+   "plus": 1,
+   "minus": 1
+  },
+  "TACT-LF": {
+   "acc": 0.8089887640449438,
+   "plus": 0,
+   "minus": 0
+  },
+  "TACT-semi-LF": {
+   "acc": 0.8089887640449438,
+   "plus": 0,
+   "minus": 0
+  },
+  "oracle-in-pool": {
+   "acc": 0.9101123595505618,
+   "plus": 9,
+   "minus": 0
+  }
+ },
+ "h2": {
+  "passed": false,
+  "plus": 0,
+  "minus": 0,
+  "p": 1.0
+ },
+ "h3": {
+  "passed": false
+ },
+ "h4": {
+  "passed": true
+ }
+}

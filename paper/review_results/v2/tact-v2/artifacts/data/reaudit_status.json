@@ -1,60 +1,63 @@
 {
   "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex",
-  "reviewed_commit": "4d75431",
-  "previous_commit": "62bc7c7",
+  "round": 3,
+  "reviewed_commit": "f8641e8",
+  "previous_commit": "4d75431",
+  "round2": {
+    "reviewed_commit": "4d75431",
+    "FULLY_ADDRESSED": [
+      "cisc-anchor-requires-other-feature-map",
+      "error-shape-sums-101",
+      "gamma-max-clip-not-derived",
+      "ieee-reference-order",
+      "no-tuned-constant-anywhere",
+      "oracle-grid-boundary-truncation",
+      "stale-pre-real-trace-discussion",
+      "test-suite-count-runtime-mismatch",
+      "uncited-bib-entries",
+      "window-range-not-reconstructible"
+    ]
+  },
   "FULLY_ADDRESSED": {
-    "no-tuned-constant-anywhere": "Replaced with 'Nothing in it is fitted to outcomes' plus an explicit disclosure that the clip binds where D-hat saturates, cross-referenced to Results.",
-    "gamma-max-clip-not-derived": "New Results paragraph 'Where the derived exponent actually operates' names the four saturated cells, states the cap is what the vote sees, and reports all four mid-range cells where TACT trails the signed grid with exact accuracies. Residual: C1 in the Introduction still reads 'derived, not grid-searched' without a clause.",
-    "oracle-grid-boundary-truncation": "Abstract and C1 now name the grid {0.25,0.5,1,2,4}, give 1.000 vs 0.965, and state 'that grid optimum lies at the largest exponent tried, so the comparison bounds the grid, not the whole family'.",
-    "cisc-anchor-requires-other-feature-map": "Conclusion now reads 'an exact fallback at one end ... and an exact correspondence to CISC-power at the other under the log-value feature map (the shipped default uses van der Waerden scores, so that correspondence is a property of the family, not of the shipped configuration)'.",
-    "stale-pre-real-trace-discussion": "'All quantitative claims' scoped to 'The accuracy claims'; the 'Validation on real LLM traces is the remaining step' sentence deleted; a new sentence states what the two campaigns do and do not test.",
-    "error-shape-sums-101": "Now '30 saturated, 7 capability wall and 3 rescuable, i.e. 75/17.5/7.5%' - counts plus percentages, summing to 100.",
-    "window-range-not-reconstructible": "Abstract and Discussion range changed from 2--7.5% to 3--7.5%, which is reconstructible from Table VI's minimum row (AIME/AMC, 3% rescuable).",
-    "test-suite-count-runtime-mismatch": "76/84 replaced by 98 in both places, matching the collected suite exactly. Runtime restated as 82 s, which sits inside the 49.7-106.0 s range measured over repeated runs here - my earlier single 49.7 s measurement was not a stable estimate and the original runtime objection is withdrawn.",
-    "uncited-bib-entries": "kuhn2023semantic and rasc2024 removed; 26 cited keys, 26 bibitems, none uncited.",
-    "ieee-reference-order": "thebibliography reordered to first-citation order; verified no mismatch at any position. URLs added to all 26 entries."
+    "no-availability-statement": "New unnumbered section 'Code and Data Availability' with the repository URL, the commit that produced Table IV (35ad160), and a per-table script mapping. Independently checked: the URL matches the actual git remote, 35ad160 is on origin/main so a reader can reach it, and pytest at that commit collects exactly 98 tests, matching the number the paper now states.",
+    "abstract-omits-unguarded-failure": "'all of which the method survived' deleted. The abstract now states the boundary itself: 'guarantees sign consistency while the plurality-error rate stays below one half; past that boundary it mis-signs, which the paper measures and reports.'",
+    "both-campaigns-confirm-premise": "Replaced with the accurate split: 'the channel is null on saturated benchmarks ($z=-1.24$) and positive on competition mathematics ($D-hat=+0.250$, $z=+2.54$)'.",
+    "pbar-half-special-case-as-general": "Abstract now reads 'which at the default base rate $\\bar p=\\tfrac12$ collapses to $\\gamma=z\\sqrt{2+z^2}$'.",
+    "signgrid-omitted-from-headline": "Abstract now names it: 'Against a dev-picked signed grid, which the sweep shows is a far stronger baseline than the published protocols, the advantage narrows to distortion, echo, and label-free operation.'",
+    "falsifier-tolerance-undisclosed": "The 0.02 rule is now stated in the Experimental Setup, applied consistently across F1-F4, and the paper adds its own critique: 'A tolerance rather than a test is the weaker instrument, and it matters most for F4, which survives on a 0.035 margin.' The Sec. V-D restatement was updated to match.",
+    "gamma-star-38-miscomputed": "Corrected to 'an untempered gamma* between $-8.4$ and $+12.1$ across the seven saturated cells', which is exactly the range gamma_of() returns on the stored diagnostics.",
+    "f4-unreachable-now-self-contradictory": "F4 now reads 'both grid baselines trail by $0.035$ on the distortion and echo cells, and neither can operate without labels', which the artifacts support and which no longer contradicts the paragraph above it.",
+    "contributions-omit-real-trace": "C5 added, and framed as a bound on the whole family rather than a result about TACT: 'Two real-trace campaigns and a five-substrate window measurement bound what *any* label-free aggregation method can do, not only TACT.'",
+    "link-assumes-normality-of-discrete-phi": "Addressed by stating the defect rather than hedging it: 'which \\eqref{eq:vdw} supplies only asymptotically: at $m_q{=}4$ the score takes four values before standardization. The scale consequence is handled by using the realized $\\sigma_q$, but the distributional one is not, and it bites hardest in the small-budget setting this paper advertises.'",
+    "abstract-length-and-math": "Abstract cut from 378 to 253 words, inside the IEEE norm, with the densest inline mathematics removed.",
+    "motivation-undercut-by-own-window-measurement": "C5 now carries the argument on page 1: the window bounds any method, the in-pool oracle cannot clear the endpoint on either real substrate, 'which makes abstention the correct default rather than a conservative one, and TACT abstained on both'."
   },
   "PARTIALLY_ADDRESSED": {
-    "unreported-unfavourable-paired-test": "The new Results paragraph now reports all four cells where TACT-dev trails SignGrid-dev with exact accuracies, which is the substance. The exact McNemar at kappa=-0.2 (0/6, p=0.03125) is still not given, in a paper that reports p=3.3e-24 and p=1 elsewhere.",
-    "signgrid-omitted-from-headline": "The new Results paragraph gives the honest side-by-side picture. The abstract still names only CISC-devT as the designated killer baseline and still frames the headline as 1.000 vs 0.807 without noting SignGrid-dev ties it bit-for-bit there.",
-    "motivation-undercut-by-own-window-measurement": "The Discussion now states that neither real substrate had a stratum 'large enough for any method to demonstrate a gain', which joins two of the three steps. The paper still does not say why a method whose addressable stratum it measures at 3-7.5% is worth adopting, and still leads with the estimator rather than the boundary.",
-    "semantic-dedup-remedy-uncited": "No longer uncited because the reference was deleted. The substantive gap is unchanged and the evidence anchor is now weaker: the standard published remedy for the paper's sharpest unguarded failure mode (semantic-equivalence clustering, since deduplication is purely lexical) is no longer even in the reference list."
+    "cannot-represent-vs-not-searched": "Related Work fixed exactly right ('the obstruction is a sign bit in the hyperparameter grid rather than the weight family itself ... What no published protocol does is estimate that sign'). The Introduction still says 'the possibility that the channel is anti-correlated with correctness is not representable', which now contradicts the Related Work paragraph a few lines later. One phrase: 'not representable' -> 'never searched for'."
   },
   "NEW": {
-    "gamma-star-38-miscomputed": "The new disclosure paragraph states the link returns gamma* ~= +/-38 in the saturated cells. Recomputed with the paper's own gamma_of(): the unclipped values are +/-12.1 at kappa=+/-0.6 and in all three distortion cells, and -8.4/+9.8 at kappa=+/-0.4. The paragraph's conclusion is unaffected because every value still exceeds gamma_max=4, but the number invites recomputation and does not survive it.",
-    "f4-unreachable-now-self-contradictory": "The new paragraph reports SignGrid-dev at 0.965 under compression and 0.550 in confident echo, i.e. the grid baselines reach both cells and lose by 0.035. Sec. V-D still says F4 held because 'the distortion and echo cells are unreachable by either grid baseline'. The revision has made two paragraphs of the same section contradict each other."
+    "page-count-regressed-to-ten": "The revision added C5, the falsifier-rule paragraph, the normality sentence and the availability section, and cut 125 words from the abstract. Net effect on the rendered PDF is 9 pages -> 10, in a document still declaring \\documentclass[conference]{IEEEtran} with no named track. Every added paragraph earned its place, so this is a budget problem rather than a content problem, but it moved the wrong way on the one axis that is a mechanical rejection."
   },
   "NOT_ADDRESSED": [
-    "abstract-length-and-math",
-    "abstract-omits-unguarded-failure",
     "asymmetric-cap-across-arms",
     "auc-hat-overload",
     "borda2025-miscategorized-not-run",
-    "both-campaigns-confirm-premise",
     "c3-prop6-conditioning-mismatch",
-    "cannot-represent-vs-not-searched",
     "citation-stacking",
-    "contributions-omit-real-trace",
     "distortion-cells-inside-invariance-group",
     "empirical-frequencies-as-propositions",
-    "f4-asymmetric-falsifier",
-    "falsifier-tolerance-undisclosed",
-    "gamma-max-clip-not-derived",
     "kappa-symbol-collision",
     "keyword-count",
-    "link-assumes-normality-of-discrete-phi",
-    "no-availability-statement",
-    "page-budget-and-venue",
-    "pbar-half-special-case-as-general",
     "prop7-sketch-weaker-than-claim",
     "related-work-is-a-ledger",
     "rlev-voi-uncitable",
+    "semantic-dedup-remedy-uncited",
     "single-seed-no-dispersion",
     "table1-float-before-results",
     "table2-footnote-after-bottomrule",
     "theory-increment-mislocated",
     "three-times-sc-floor-rounding",
-    "universal-default-from-five-small-samples",
+    "unreported-unfavourable-paired-test",
     "window-column-heterogeneous"
   ]
 }

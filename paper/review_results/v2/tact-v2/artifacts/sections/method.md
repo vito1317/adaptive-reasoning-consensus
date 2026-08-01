@@ -1,4 +1,4 @@
-# TACT (method)  (tact.tex lines 87-172, verbatim LaTeX)
+# TACT (method)  (tact.tex lines 131-216, verbatim LaTeX)
 
 \section{TACT}\label{sec:method}
 
@@ -39,7 +39,7 @@ with dead zone $\{|r|\le\nu\}$; $\nu_{\mathrm{dev}}=1.28$, $\nu_{\mathrm{LF}}=2.
 \begin{equation}\label{eq:link}
 \gamma^\ast=\frac{u}{s}=u\sqrt{1+\bar p(1-\bar p)\,u^2},
 \end{equation}
-capped at $\gamma_{\max}$ ($4$ dev, $2$ label-free). The uncorrected link $\gamma=u$ under-weights strong channels by up to ${\sim}50\%$ at $D=0.9$.
+capped at $\gamma_{\max}$ ($4$ dev, $2$ label-free). The uncorrected link $\gamma=u$ under-weights strong channels by up to ${\sim}50\%$ at $D=0.9$. The link assumes $\varphi$ is within-item normal, which \eqref{eq:vdw} supplies only asymptotically: at $m_q{=}4$ the score takes four values before standardization. The scale consequence is handled by using the realized $\sigma_q$, but the distributional one is not, and it bites hardest in the small-budget setting this paper advertises ($m{=}40$ estimates transferring to $m{=}8$). Where $\Dhat$ saturates the cap binds and the link's shape is irrelevant; small $m$ is where it has to hold and where it is least justified.
 
 \subsection{\TACT{} in one expression}\label{sec:oneline}
 Two simplifications collapse the pipeline. Factoring $\Dhat$ out of

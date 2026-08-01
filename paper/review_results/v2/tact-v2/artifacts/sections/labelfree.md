@@ -1,4 +1,4 @@
-# Label-Free Estimation  (tact.tex lines 173-188, verbatim LaTeX)
+# Label-Free Estimation  (tact.tex lines 217-232, verbatim LaTeX)
 
 \section{Label-Free Estimation}\label{sec:lf}
 

@@ -1,0 +1,1941 @@
+{
+ "free": {
+  "n": 119,
+  "per_sample": 0.8527645673654076,
+  "sc": 0.9243697478991597,
+  "oracle": 0.9495798319327731,
+  "decisive": 0.07563025210084033,
+  "window": 0.025210084033613446,
+  "window_n": 3,
+  "d_hat": 0.22877697841726619,
+  "se": 0.08514943084415164,
+  "z": 2.686770494520333,
+  "d_items": 45,
+  "rows": {
+   "math-0": {
+    "qid": "math-0",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-3": {
+    "qid": "math-3",
+    "n": 16,
+    "K": 8,
+    "per_sample": 0.25,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-4": {
+    "qid": "math-4",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-5": {
+    "qid": "math-5",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-7": {
+    "qid": "math-7",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-8": {
+    "qid": "math-8",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-9": {
+    "qid": "math-9",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-10": {
+    "qid": "math-10",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.0625,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-11": {
+    "qid": "math-11",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.8125,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-17": {
+    "qid": "math-17",
+    "n": 16,
+    "K": 4,
+    "per_sample": 0.5,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-18": {
+    "qid": "math-18",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-19": {
+    "qid": "math-19",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-21": {
+    "qid": "math-21",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-22": {
+    "qid": "math-22",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-24": {
+    "qid": "math-24",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-25": {
+    "qid": "math-25",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-26": {
+    "qid": "math-26",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-35": {
+    "qid": "math-35",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-36": {
+    "qid": "math-36",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-39": {
+    "qid": "math-39",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-43": {
+    "qid": "math-43",
+    "n": 16,
+    "K": 5,
+    "per_sample": 0.25,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-44": {
+    "qid": "math-44",
+    "n": 11,
+    "K": 7,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-47": {
+    "qid": "math-47",
+    "n": 12,
+    "K": 7,
+    "per_sample": 0.25,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-52": {
+    "qid": "math-52",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-57": {
+    "qid": "math-57",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-61": {
+    "qid": "math-61",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-62": {
+    "qid": "math-62",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-66": {
+    "qid": "math-66",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-67": {
+    "qid": "math-67",
+    "n": 15,
+    "K": 2,
+    "per_sample": 0.8666666666666667,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-68": {
+    "qid": "math-68",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-69": {
+    "qid": "math-69",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-70": {
+    "qid": "math-70",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-71": {
+    "qid": "math-71",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.75,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-73": {
+    "qid": "math-73",
+    "n": 16,
+    "K": 10,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-77": {
+    "qid": "math-77",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-81": {
+    "qid": "math-81",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-82": {
+    "qid": "math-82",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-83": {
+    "qid": "math-83",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-86": {
+    "qid": "math-86",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-88": {
+    "qid": "math-88",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-89": {
+    "qid": "math-89",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-90": {
+    "qid": "math-90",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-91": {
+    "qid": "math-91",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-93": {
+    "qid": "math-93",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-96": {
+    "qid": "math-96",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-97": {
+    "qid": "math-97",
+    "n": 15,
+    "K": 7,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-100": {
+    "qid": "math-100",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-105": {
+    "qid": "math-105",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-112": {
+    "qid": "math-112",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-118": {
+    "qid": "math-118",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-119": {
+    "qid": "math-119",
+    "n": 16,
+    "K": 4,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-120": {
+    "qid": "math-120",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-125": {
+    "qid": "math-125",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-126": {
+    "qid": "math-126",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-127": {
+    "qid": "math-127",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-130": {
+    "qid": "math-130",
+    "n": 14,
+    "K": 10,
+    "per_sample": 0.2857142857142857,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-134": {
+    "qid": "math-134",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-135": {
+    "qid": "math-135",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-137": {
+    "qid": "math-137",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-141": {
+    "qid": "math-141",
+    "n": 16,
+    "K": 5,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-143": {
+    "qid": "math-143",
+    "n": 16,
+    "K": 10,
+    "per_sample": 0.375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-144": {
+    "qid": "math-144",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-145": {
+    "qid": "math-145",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-154": {
+    "qid": "math-154",
+    "n": 16,
+    "K": 1,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-156": {
+    "qid": "math-156",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-158": {
+    "qid": "math-158",
+    "n": 16,
+    "K": 5,
+    "per_sample": 0.4375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-159": {
+    "qid": "math-159",
+    "n": 15,
+    "K": 5,
+    "per_sample": 0.6666666666666666,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-161": {
+    "qid": "math-161",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-163": {
+    "qid": "math-163",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-164": {
+    "qid": "math-164",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-165": {
+    "qid": "math-165",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-166": {
+    "qid": "math-166",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-168": {
+    "qid": "math-168",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-169": {
+    "qid": "math-169",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-171": {
+    "qid": "math-171",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-172": {
+    "qid": "math-172",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-182": {
+    "qid": "math-182",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.4375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-188": {
+    "qid": "math-188",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-191": {
+    "qid": "math-191",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-192": {
+    "qid": "math-192",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-193": {
+    "qid": "math-193",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-197": {
+    "qid": "math-197",
+    "n": 16,
+    "K": 4,
+    "per_sample": 0.5625,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-198": {
+    "qid": "math-198",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-200": {
+    "qid": "math-200",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-201": {
+    "qid": "math-201",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-202": {
+    "qid": "math-202",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-204": {
+    "qid": "math-204",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-205": {
+    "qid": "math-205",
+    "n": 15,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-207": {
+    "qid": "math-207",
+    "n": 13,
+    "K": 5,
+    "per_sample": 0.23076923076923078,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-208": {
+    "qid": "math-208",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-212": {
+    "qid": "math-212",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.8125,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-216": {
+    "qid": "math-216",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-217": {
+    "qid": "math-217",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-218": {
+    "qid": "math-218",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-220": {
+    "qid": "math-220",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-223": {
+    "qid": "math-223",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-224": {
+    "qid": "math-224",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.75,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-227": {
+    "qid": "math-227",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-228": {
+    "qid": "math-228",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-229": {
+    "qid": "math-229",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-237": {
+    "qid": "math-237",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-238": {
+    "qid": "math-238",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-239": {
+    "qid": "math-239",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-240": {
+    "qid": "math-240",
+    "n": 16,
+    "K": 2,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-244": {
+    "qid": "math-244",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.8125,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-246": {
+    "qid": "math-246",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-247": {
+    "qid": "math-247",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-248": {
+    "qid": "math-248",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-249": {
+    "qid": "math-249",
+    "n": 16,
+    "K": 4,
+    "per_sample": 0.6875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-250": {
+    "qid": "math-250",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-251": {
+    "qid": "math-251",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-252": {
+    "qid": "math-252",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-253": {
+    "qid": "math-253",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-254": {
+    "qid": "math-254",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-255": {
+    "qid": "math-255",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.75,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-256": {
+    "qid": "math-256",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-257": {
+    "qid": "math-257",
+    "n": 15,
+    "K": 3,
+    "per_sample": 0.8666666666666667,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-259": {
+    "qid": "math-259",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-260": {
+    "qid": "math-260",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   }
+  }
+ },
+ "constrained": {
+  "n": 119,
+  "per_sample": 0.7809173669467788,
+  "sc": 0.8151260504201681,
+  "oracle": 0.9327731092436975,
+  "decisive": 0.18487394957983194,
+  "window": 0.11764705882352941,
+  "window_n": 14,
+  "d_hat": 0.39781203381402286,
+  "se": 0.058848447685868714,
+  "z": 6.759940991774869,
+  "d_items": 52,
+  "rows": {
+   "math-0": {
+    "qid": "math-0",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-3": {
+    "qid": "math-3",
+    "n": 16,
+    "K": 8,
+    "per_sample": 0.375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-4": {
+    "qid": "math-4",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-5": {
+    "qid": "math-5",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-7": {
+    "qid": "math-7",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-8": {
+    "qid": "math-8",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-9": {
+    "qid": "math-9",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-10": {
+    "qid": "math-10",
+    "n": 16,
+    "K": 1,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-11": {
+    "qid": "math-11",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-17": {
+    "qid": "math-17",
+    "n": 16,
+    "K": 9,
+    "per_sample": 0.1875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-18": {
+    "qid": "math-18",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-19": {
+    "qid": "math-19",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-21": {
+    "qid": "math-21",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-22": {
+    "qid": "math-22",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-24": {
+    "qid": "math-24",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-25": {
+    "qid": "math-25",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-26": {
+    "qid": "math-26",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-35": {
+    "qid": "math-35",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-36": {
+    "qid": "math-36",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-39": {
+    "qid": "math-39",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-43": {
+    "qid": "math-43",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.0625,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-44": {
+    "qid": "math-44",
+    "n": 14,
+    "K": 13,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-47": {
+    "qid": "math-47",
+    "n": 16,
+    "K": 9,
+    "per_sample": 0.1875,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-52": {
+    "qid": "math-52",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-57": {
+    "qid": "math-57",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-61": {
+    "qid": "math-61",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-62": {
+    "qid": "math-62",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-66": {
+    "qid": "math-66",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-67": {
+    "qid": "math-67",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-68": {
+    "qid": "math-68",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-69": {
+    "qid": "math-69",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.8125,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-70": {
+    "qid": "math-70",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-71": {
+    "qid": "math-71",
+    "n": 16,
+    "K": 4,
+    "per_sample": 0.6875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-73": {
+    "qid": "math-73",
+    "n": 16,
+    "K": 11,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-77": {
+    "qid": "math-77",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-81": {
+    "qid": "math-81",
+    "n": 16,
+    "K": 6,
+    "per_sample": 0.5625,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-82": {
+    "qid": "math-82",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-83": {
+    "qid": "math-83",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-86": {
+    "qid": "math-86",
+    "n": 16,
+    "K": 6,
+    "per_sample": 0.625,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-88": {
+    "qid": "math-88",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-89": {
+    "qid": "math-89",
+    "n": 16,
+    "K": 4,
+    "per_sample": 0.8125,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-90": {
+    "qid": "math-90",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.8125,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-91": {
+    "qid": "math-91",
+    "n": 15,
+    "K": 3,
+    "per_sample": 0.8666666666666667,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-93": {
+    "qid": "math-93",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-96": {
+    "qid": "math-96",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-97": {
+    "qid": "math-97",
+    "n": 16,
+    "K": 7,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-100": {
+    "qid": "math-100",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-105": {
+    "qid": "math-105",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-112": {
+    "qid": "math-112",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-118": {
+    "qid": "math-118",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-119": {
+    "qid": "math-119",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-120": {
+    "qid": "math-120",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-125": {
+    "qid": "math-125",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-126": {
+    "qid": "math-126",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-127": {
+    "qid": "math-127",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-130": {
+    "qid": "math-130",
+    "n": 16,
+    "K": 12,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-134": {
+    "qid": "math-134",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.4375,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-135": {
+    "qid": "math-135",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-137": {
+    "qid": "math-137",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.4375,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-141": {
+    "qid": "math-141",
+    "n": 16,
+    "K": 10,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-143": {
+    "qid": "math-143",
+    "n": 16,
+    "K": 9,
+    "per_sample": 0.1875,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-144": {
+    "qid": "math-144",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-145": {
+    "qid": "math-145",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-154": {
+    "qid": "math-154",
+    "n": 16,
+    "K": 1,
+    "per_sample": 0.0,
+    "plur_ok": false,
+    "gold_in": false
+   },
+   "math-156": {
+    "qid": "math-156",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.8125,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-158": {
+    "qid": "math-158",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.6875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-159": {
+    "qid": "math-159",
+    "n": 16,
+    "K": 10,
+    "per_sample": 0.3125,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-161": {
+    "qid": "math-161",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.5,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-163": {
+    "qid": "math-163",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-164": {
+    "qid": "math-164",
+    "n": 16,
+    "K": 2,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-165": {
+    "qid": "math-165",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-166": {
+    "qid": "math-166",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-168": {
+    "qid": "math-168",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-169": {
+    "qid": "math-169",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-171": {
+    "qid": "math-171",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-172": {
+    "qid": "math-172",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-182": {
+    "qid": "math-182",
+    "n": 16,
+    "K": 4,
+    "per_sample": 0.5,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-188": {
+    "qid": "math-188",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-191": {
+    "qid": "math-191",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-192": {
+    "qid": "math-192",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-193": {
+    "qid": "math-193",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-197": {
+    "qid": "math-197",
+    "n": 16,
+    "K": 5,
+    "per_sample": 0.5,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-198": {
+    "qid": "math-198",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.25,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-200": {
+    "qid": "math-200",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.9375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-201": {
+    "qid": "math-201",
+    "n": 16,
+    "K": 2,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-202": {
+    "qid": "math-202",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-204": {
+    "qid": "math-204",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.25,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-205": {
+    "qid": "math-205",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-207": {
+    "qid": "math-207",
+    "n": 16,
+    "K": 7,
+    "per_sample": 0.375,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-208": {
+    "qid": "math-208",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.625,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-212": {
+    "qid": "math-212",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.375,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-216": {
+    "qid": "math-216",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-217": {
+    "qid": "math-217",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-218": {
+    "qid": "math-218",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.375,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-220": {
+    "qid": "math-220",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-223": {
+    "qid": "math-223",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-224": {
+    "qid": "math-224",
+    "n": 16,
+    "K": 8,
+    "per_sample": 0.25,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-227": {
+    "qid": "math-227",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-228": {
+    "qid": "math-228",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-229": {
+    "qid": "math-229",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.375,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-237": {
+    "qid": "math-237",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-238": {
+    "qid": "math-238",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-239": {
+    "qid": "math-239",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-240": {
+    "qid": "math-240",
+    "n": 16,
+    "K": 2,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-244": {
+    "qid": "math-244",
+    "n": 16,
+    "K": 4,
+    "per_sample": 0.1875,
+    "plur_ok": false,
+    "gold_in": true
+   },
+   "math-246": {
+    "qid": "math-246",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-247": {
+    "qid": "math-247",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-248": {
+    "qid": "math-248",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-249": {
+    "qid": "math-249",
+    "n": 16,
+    "K": 2,
+    "per_sample": 0.75,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-250": {
+    "qid": "math-250",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-251": {
+    "qid": "math-251",
+    "n": 16,
+    "K": 4,
+    "per_sample": 0.6875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-252": {
+    "qid": "math-252",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-253": {
+    "qid": "math-253",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-254": {
+    "qid": "math-254",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-255": {
+    "qid": "math-255",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-256": {
+    "qid": "math-256",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-257": {
+    "qid": "math-257",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-259": {
+    "qid": "math-259",
+    "n": 16,
+    "K": 3,
+    "per_sample": 0.875,
+    "plur_ok": true,
+    "gold_in": true
+   },
+   "math-260": {
+    "qid": "math-260",
+    "n": 16,
+    "K": 1,
+    "per_sample": 1.0,
+    "plur_ok": true,
+    "gold_in": true
+   }
+  }
+ },
+ "manipulation_passed": false,
+ "entered": 13,
+ "left": 2,
+ "p": 0.003692626953125,
+ "verdict": "inconclusive: manipulation check failed"
+}

@@ -1,40 +1,30 @@
 [
   {
-    "title": "Abstract is now 378 words in a single math-dense paragraph, against an IEEE norm of roughly 200",
-    "quote": "Confidence-weighted self-consistency (CISC and its successors) improves on majority voting when a frozen large language model's self-reported confidence is calibrated in \\emph{direction}.",
-    "explanation": "[Script] The revision's added precision on the oracle grid was worth its words, but the abstract grew from 371 to 378 and is still one paragraph filling the whole first column, still asking the reader to parse inline mathematics before the Introduction. The 95-word Conclusion is the mirror defect. Several of the remaining claim-level fixes above also need abstract space, so this is now the binding constraint on making them.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "abstract",
-    "related_sections": [],
-    "root_cause_key": "abstract-length-and-math",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "verdict": "CONFIRMED",
-    "reaudit_status": "NOT_ADDRESSED"
-  },
-  {
-    "title": "Nine pages in IEEEtran conference class, still with no named target track",
+    "title": "The revision pushed the paper from nine to ten pages in a conference class with no named track",
     "quote": "\\documentclass[conference]{IEEEtran}",
-    "explanation": "[Script] The revision left the page count at 9 (body through p. 8, references to p. 9) with 6 tables and 4 figures. Most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees. Until a track with a sufficient limit is named this is a mechanical rejection unrelated to merit. The community question also stands: every substantive comparator cited is ACL/EMNLP/ICLR/NeurIPS work.",
+    "explanation": "[Script] The rendered PDF is now 10 pages (was 9). C5, the falsifier-rule paragraph, the normality sentence and the Code and Data Availability section together outweigh the 125 words cut from the abstract. Each addition answered a real finding and none should be reverted, so the fix is elsewhere: most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees, and no target track is named anywhere in the manuscript. Candidates for reclaiming space without losing substance: Table IV is 12 rows of test names that the new availability section now makes reproducible from the repository and could be cut to the six propositions it certifies; the Related Work ledger is 272 words carrying 20 references; and the 95-word Conclusion restates C1-C5. Naming the track first would also settle whether 10 pages is a problem at all.",
     "comment_type": "presentation",
-    "severity": "moderate",
+    "severity": "major",
     "confidence": "high",
     "source_kind": "script",
     "source_section": "abstract",
     "related_sections": [],
-    "root_cause_key": "page-budget-and-venue",
+    "root_cause_key": "page-count-regressed-to-ten",
     "review_lane": "pre_submission_readiness",
     "gate_blocker": false,
     "verdict": "CONFIRMED",
-    "reaudit_status": "NOT_ADDRESSED"
+    "reaudit_status": "NEW",
+    "evidence_anchor": [
+      {
+        "type": "analysis_artifact",
+        "text": "pymupdf page_count on paper/tact.pdf: 10 (was 9 at 4d75431)"
+      }
+    ]
   },
   {
     "title": "Still six keywords where IEEE asks for three to five",
     "quote": "large language models, self-consistency, confidence calibration, weighted voting, label-free estimation, rank statistics",
-    "explanation": "[Script] Unchanged. Drop one or two; 'label-free estimation' and 'rank statistics' are the two that most distinguish this paper from its neighbours.",
+    "explanation": "[Script] Unchanged across all three rounds. Drop one or two.",
     "comment_type": "presentation",
     "severity": "minor",
     "confidence": "high",
@@ -50,7 +40,7 @@
   {
     "title": "Table II's footnote rows are still typeset inside the tabular after \\bottomrule",
     "quote": "\\multicolumn{6}{l}{\\footnotesize $^{\\dagger}$alarm fires and the method refuses to leave \\SC---the conditional}\\\\",
-    "explanation": "[Script] Two \\multicolumn rows still follow \\bottomrule inside the tabular, so booktabs' trailing rule is not the last element and the note inherits row spacing. Use a tablenotes environment or place the note after \\end{tabular}.",
+    "explanation": "[Script] Unchanged. Two \\multicolumn rows still follow \\bottomrule inside the tabular, so booktabs' trailing rule is not the last element. Use a tablenotes environment or move the note after \\end{tabular}.",
     "comment_type": "presentation",
     "severity": "minor",
     "confidence": "high",
@@ -64,9 +54,9 @@
     "reaudit_status": "NOT_ADDRESSED"
   },
   {
-    "title": "Citation stacking is unchanged: nine and six keys in single sentences",
+    "title": "Citation stacking in Related Work is unchanged",
     "quote": "Weighted variants \\cite{li2023diverse,borda2025} and early-stopping families \\cite{aggarwal2023adaptive,li2024escape} refine the budget",
-    "explanation": "[Script] Related Work still carries 20 of 26 references in 272 words with nine keys in one paragraph. The bibliography reordering and URL additions in this commit fixed the reference list's mechanics; the in-text density is a separate edit.",
+    "explanation": "[Script] The new sign-bit sentence improved the section's argument without reducing its density: 20 of 26 references still sit in 272 words, with nine keys in the first paragraph and four works uncharacterized.",
     "comment_type": "presentation",
     "severity": "minor",
     "confidence": "high",

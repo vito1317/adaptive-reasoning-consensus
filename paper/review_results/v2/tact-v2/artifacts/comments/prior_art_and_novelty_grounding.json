@@ -1,29 +1,24 @@
 [
   {
-    "title": "'Cannot represent' still overstates a search-range choice, and the paper's own trivial baseline still refutes it",
-    "quote": "None of these can represent, much less estimate, a negative confidence--correctness association.",
-    "explanation": "Unchanged, in the abstract ('Every published weighting scheme is structurally monotone increasing'), the Introduction ('is not representable') and Related Work. SignGrid-dev is the same $c^{\\gamma}$ family with the sign released and it reaches the signed oracle across the whole negative half-axis (1.000 at kappa=-0.6 and -0.4, 0.993 at -0.2, 0.892 at -0.1), so the barrier is one sign bit in a hyperparameter range, not representational capacity. The revision has already applied exactly this correction to the oracle claim in C1; the same move here would resize the contribution honestly: from a capability no published scheme has, to one no published scheme searches for, plus an estimator that finds it without labels.",
+    "title": "The Introduction still calls a negative association 'not representable', which the revised Related Work now disclaims",
+    "quote": "the possibility that the channel is \\emph{anti-correlated} with correctness is not representable",
+    "explanation": "The Related Work fix is exactly right and is the wording this sentence needs: 'None of these searches a negative exponent: the obstruction is a sign bit in the hyperparameter grid rather than the weight family itself, as this paper's own SignGrid-dev baseline shows by opening the same $c^{\\gamma}$ family to negative $\\gamma$.' The Introduction, a few lines earlier, still asserts the representability version, so the manuscript now states both. Replace 'is not representable' with 'is never searched for' and the root cause closes entirely.",
     "comment_type": "claim_accuracy",
-    "severity": "major",
+    "severity": "moderate",
     "confidence": "high",
     "source_kind": "llm",
-    "source_section": "related",
+    "source_section": "introduction",
     "related_sections": [],
     "root_cause_key": "cannot-represent-vs-not-searched",
     "review_lane": "prior_art_and_novelty_grounding",
     "gate_blocker": false,
     "verdict": "CONFIRMED",
-    "reaudit_status": "NOT_ADDRESSED",
-    "claim_strength": "observed",
-    "allowed_wording": "of the protocols surveyed here, all restrict the exponent or temperature to non-negative values, so a negative association is never searched for and, being unmeasured, cannot be acted on",
-    "forbidden_wording": [
-      "None of these can represent, much less estimate, a negative confidence--correctness association."
-    ]
+    "reaudit_status": "PARTIALLY_ADDRESSED"
   },
   {
-    "title": "The remedy for the paper's sharpest failure mode has been removed from the bibliography rather than engaged with",
+    "title": "The remedy for the paper's sharpest failure mode is still absent from the manuscript",
     "quote": "a dominant\nwrong cluster that is semantically tight but carries no verbatim signature, so\ndeduplication has nothing to collapse",
-    "explanation": "The uncited-reference finding was closed by deleting kuhn2023semantic and rasc2024, which fixes the IEEE hygiene issue and leaves the substantive one worse. The unguarded failure follows from deduplication being purely lexical ('single-linkage duplicate groups on the lexical-similarity channel at $0.95$'), and semantic-equivalence clustering is the standard published response. It is now absent from the manuscript entirely. Calling the mode 'unguarded' reads as a statement about the problem when it is a statement about one design choice; one sentence citing the alternative, either as not adopted with a reason or as future work, would restore the reference and answer the objection at once.",
+    "explanation": "The unguarded failure follows from deduplication being purely lexical ('single-linkage duplicate groups on the lexical-similarity channel at $0.95$'). Semantic-equivalence clustering is the standard published response and was removed from the bibliography in round 2 along with the other uncited entry. One sentence citing it, either as the alternative not adopted with a reason or as future work, would restore the reference and close the objection.",
     "comment_type": "missing_information",
     "severity": "moderate",
     "confidence": "high",
@@ -39,7 +34,7 @@
   {
     "title": "The one rank-based comparator is still filed as a budget refinement and never run",
     "quote": "Weighted variants \\cite{li2023diverse,borda2025} and early-stopping families \\cite{aggarwal2023adaptive,li2024escape} refine the budget",
-    "explanation": "borda2025 is, by the paper's own bibliography, Kang, Zhao and Song, 'Scalable best-of-N selection for large language models via self-certainty', NeurIPS 2025: an aggregation rule over a self-certainty signal, not a budget mechanism. C1's headline property is rank-based invariance and the adversarial envelope is explicitly raw-value, so no published rank-based aggregator appears in the baseline set. The comparator best placed to contest C1 gets one subordinate clause. State why its rank aggregation does not already confer monotone invariance, or add it to Table II.",
+    "explanation": "borda2025 is, by the paper's own bibliography, Kang, Zhao and Song, 'Scalable best-of-N selection for large language models via self-certainty', NeurIPS 2025: an aggregation rule over a self-certainty signal, not a budget mechanism. C1's headline property is rank-based invariance, so the comparator best placed to contest it gets one subordinate clause and no run. State why its rank aggregation does not already confer monotone invariance, or add it to Table II.",
     "comment_type": "claim_accuracy",
     "severity": "moderate",
     "confidence": "medium",
@@ -55,7 +50,7 @@
   {
     "title": "The sibling negative result is still uncitable, and still de-anonymizes inside Related Work",
     "quote": "\\textbf{Honest sibling result.} A preceding system by the author (RLEV-VoI, redundancy-discounted voting with value-of-information stopping) was evaluated under the same falsification discipline and \\emph{failed} it",
-    "explanation": "The Conclusion offers the falsification protocol as the paper's most portable contribution on the strength of 'having already killed one of the author's own systems', so this paragraph carries argumentative weight. It has no cite, arXiv id, report, or artifact pointer, so a reader cannot check the killed system or the deduplication baseline that dominated it. It also identifies the author in Related Work, which matters if the target track is double-blind. Move it to Limitations or an appendix with a citable pointer.",
+    "explanation": "The Conclusion still offers the falsification protocol as the most portable contribution on the strength of 'having already killed one of the author's own systems', so this paragraph carries weight. It has no cite, arXiv id, or artifact pointer. The new availability section makes this cheap to fix: the repository is now named, so a docs path or tag would make the claim checkable. It also identifies the author inside Related Work, which matters if the target track is double-blind.",
     "comment_type": "missing_information",
     "severity": "moderate",
     "confidence": "high",

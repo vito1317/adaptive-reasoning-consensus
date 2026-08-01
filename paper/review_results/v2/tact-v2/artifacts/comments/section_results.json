@@ -2,7 +2,7 @@
   {
     "title": "Table I is still placed in the Experimental Setup section but interpreted only in Results",
     "quote": "\\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \\SC{} floor on the entire negative half-axis.}",
-    "explanation": "The float is declared before \\section{Results} and its caption already states the paper's first result, while the text that reads it begins in Sec. V-A. Moving the float after the Results heading costs nothing.",
+    "explanation": "The float is declared before \\section{Results} and its caption already states the paper's first result. With the page count now at 10, float placement also affects how much whitespace the layout wastes.",
     "comment_type": "presentation",
     "severity": "minor",
     "confidence": "high",

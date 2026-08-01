@@ -1,4 +1,4 @@
-# Problem Setup  (tact.tex lines 68-86, verbatim LaTeX)
+# Problem Setup  (tact.tex lines 112-130, verbatim LaTeX)
 
 \section{Problem Setup}\label{sec:setup}
 

@@ -1,4 +1,4 @@
-# Introduction  (tact.tex lines 42-57, verbatim LaTeX)
+# Introduction  (tact.tex lines 66-96, verbatim LaTeX)
 
 \section{Introduction}
 
@@ -15,4 +15,19 @@ This paper frames the problem as estimating one scalar: the \emph{signed} within
 \textbf{C3: An impossibility result and its structured escape.} When the per-item coupling is i.i.d.\ with no observable covariate, per-item label-free adaptation is shown to be closed: any monotone use of an item's own agreement statistic collapses to plurality reinforcement; on exactly the plurality-wrong items where a flip could help, the observable sign opposes the truth $96\%$ of the time; and the two hypotheses $\{\kappa>0,\text{minority correct}\}$ and $\{\kappa<0,\text{plurality correct}\}$ induce identical observable laws. When heterogeneity is instead indexed by an observable covariate (domain-dependent calibration), running the same estimator per group recovers each group's signed coupling and approaches the per-item oracle with zero paired losses to \SC{} (Section~\ref{sec:hetero}).
 
 \textbf{C4: A pre-registered falsification protocol.} Four falsifiers were fixed before implementation, including the two designed to kill the method: the \emph{published} dev-calibrated CISC protocol (whose tuned temperature already interpolates \SC$\leftrightarrow$CISC) and a trivial dev-picked signed exponent grid. All four survived, and the honest margins are reported: against the signed grid the net advantage concentrates in three cells: monotone distortion, confident echo, and label-free operation, which no grid can perform.
+
+
+\textbf{C5: A measurement of the addressable stratum, and what it implies.}
+Two real-trace campaigns and a five-substrate window measurement bound what
+\emph{any} label-free aggregation method can do, not only \TACT. The
+verbalized-confidence channel is null on saturated benchmarks
+($\Dhat=-0.219$, $z=-1.24$) and positive on competition mathematics
+($\Dhat=+0.250$, $z=+2.54$), so the premise of this line of work holds where
+the model is genuinely uncertain. The stratum on which such a method can act
+is nonetheless $3$--$7.5\%$ of items on every substrate tried, in two domains,
+and does not widen as items harden: they pass from saturated straight to
+capability-limited. On both real substrates the in-pool oracle itself cannot
+clear the pre-registered endpoint, which makes abstention the correct default
+rather than a conservative one, and \TACT{} abstained on both
+(Sections~\ref{sec:real}--\ref{sec:window}).
 

@@ -1,4 +1,4 @@
-# References  (tact.tex lines 576-658, verbatim LaTeX)
+# References  (tact.tex lines 641-723, verbatim LaTeX)
 
 \begin{thebibliography}{99}
 

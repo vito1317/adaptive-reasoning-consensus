@@ -2,7 +2,7 @@
   {
     "title": "kappa still denotes both the confidence coupling and a per-item normalizing constant",
     "quote": "the weights equal $\\smash{\\kappa_q\\,c_{q,i}^{\\,\\gamma}}$ with a per-item constant $\\kappa_q>0$",
-    "explanation": "kappa indexes the confidence-correctness coupling in Eq. (1), the sweep axis in Table I, the heterogeneity design, and the abstract's headline cell ($\\kappa=-0.6$). Proposition 2 reuses it, subscripted by the same item index q, for an unrelated positive normalizer, with no announcement and no symbol table. Any free letter would do.",
+    "explanation": "kappa indexes the confidence-correctness coupling in Eq. (1), the sweep axis in Table I, and the heterogeneity design. Proposition 2 reuses it, subscripted by the same item index q, for an unrelated positive normalizer, with no announcement and no symbol table. Any free letter would do.",
     "comment_type": "presentation",
     "severity": "moderate",
     "confidence": "high",
@@ -18,7 +18,7 @@
   {
     "title": "AUC-hat in the one-line formula is still the shrunken pooled statistic while AUC was defined per-item and raw",
     "quote": "\\gamma=z\\sqrt{2+z^{2}},\\qquad z=\\Phi^{-1}(\\widehat{\\mathrm{AUC}}),",
-    "explanation": "Eq. (5) defines $\\mathrm{AUC}_q = U_q/(n^1_q n^0_q)$, raw and per-item. Eq. (15) writes $z=\\Phi^{-1}(\\widehat{\\mathrm{AUC}})$, where by Eq. (14) the argument must be the shrunk pooled value. The hat is the only distinguishing mark, and the abstract compounds it with 'the probit of the shrunk pooled AUC', a name the body never defines. Define it where Eq. (15) introduces it.",
+    "explanation": "Eq. (5) defines $\\mathrm{AUC}_q = U_q/(n^1_q n^0_q)$, raw and per-item; Eq. (15) writes $z=\\Phi^{-1}(\\widehat{\\mathrm{AUC}})$, where by Eq. (14) the argument must be the shrunk pooled value. The hat is the only distinguishing mark. The revised abstract still calls it 'the probit of the shrunk pooled AUC', a name the body never defines, so defining it at Eq. (15) also closes the abstract's reference.",
     "comment_type": "presentation",
     "severity": "moderate",
     "confidence": "high",
@@ -34,7 +34,7 @@
   {
     "title": "Table VI's single 'Window' column still reports four different quantities across five rows",
     "quote": "Domain & Substrate & Window",
-    "explanation": "Sec. V-I defines the window as the fraction of items where the plurality is wrong and the correct answer is in the pool. Row 1 gives '$12\\%$ informative, $9\\%$ decisive', neither of which is that quantity; rows 2 and 3 give decisive and rescuable fractions; rows 4 and 5 give a bare percentage. The abstract's range now correctly bottoms out at the table's minimum, which makes the column's heterogeneity the remaining obstacle to checking it. One column per defined quantity, with the denominator in each cell.",
+    "explanation": "Sec. V-I defines the window as the fraction of items where the plurality is wrong and the correct answer is in the pool. Row 1 gives '$12\\%$ informative, $9\\%$ decisive', neither of which is that quantity; rows 2 and 3 give decisive and rescuable fractions; rows 4 and 5 give a bare percentage. C5 now leads with the 3-7.5% range on page 1, which raises the stakes on the table it comes from: one column per defined quantity, with the denominator in each cell.",
     "comment_type": "presentation",
     "severity": "moderate",
     "confidence": "high",
@@ -45,12 +45,6 @@
     "review_lane": "notation_and_numeric_consistency",
     "gate_blocker": false,
     "verdict": "CONFIRMED",
-    "reaudit_status": "NOT_ADDRESSED",
-    "evidence_anchor": [
-      {
-        "type": "figure_or_table",
-        "text": "Table VI header vs rows"
-      }
-    ]
+    "reaudit_status": "NOT_ADDRESSED"
   }
 ]

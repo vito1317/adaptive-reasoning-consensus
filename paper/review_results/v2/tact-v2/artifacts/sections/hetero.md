@@ -1,4 +1,4 @@
-# Heterogeneity: Impossibility and Escape  (tact.tex lines 189-210, verbatim LaTeX)
+# Heterogeneity  (tact.tex lines 233-254, verbatim LaTeX)
 
 \section{Heterogeneity: Impossibility and Escape}\label{sec:hetero}
 

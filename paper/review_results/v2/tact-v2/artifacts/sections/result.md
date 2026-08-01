@@ -1,4 +1,4 @@
-# Results  (tact.tex lines 250-529, verbatim LaTeX)
+# Results  (tact.tex lines 305-585, verbatim LaTeX)
 
 \section{Results}\label{sec:results}
 
@@ -28,8 +28,9 @@ Confident echo & .200 & .200 & .550 & \textbf{.585} & .200$^{\dagger}$\\
 
 \textbf{Where the derived exponent actually operates.} The four cells that
 carry the headline $1.000$ ($\kappa=\pm0.4,\pm0.6$) are cells where $\Dhat$
-saturates at $\pm1$, so the link returns $\gamma^\ast\approx\pm38$ and the cap
-$\gamma_{\max}$ is what the vote sees; the derived magnitude is not doing the
+saturates, so the link returns an untempered $\gamma^\ast$ between $-8.4$ and
+$+12.1$ across the seven saturated cells and the cap $\gamma_{\max}=4$ is what
+the vote actually sees; the derived magnitude is not doing the
 work there, the sign is. Conversely, at $\kappa=\pm0.1,\pm0.2$, where the
 derived value lands strictly inside the cap ($\pm1.06$ to $\pm2.80$),
 \TACT-dev trails the dev-picked signed grid on all four cells ($0.880$ vs.\
@@ -82,7 +83,7 @@ Per-item link oracle (ceiling) & .947 & .983\\
 \end{figure}
 
 \subsection{Small dev sets and falsifiers}
-With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; never significantly below \SC{} elsewhere), F3 (sweep means $0.954$ vs.\ $0.811$), and F4 (the distortion and echo cells are unreachable by either grid baseline). Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.005$--$0.015$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.035$), echo ($+0.035$), and label-free operation, which no grid can perform.
+With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; nowhere more than the pre-registered $0.02$ accuracy tolerance below \SC), F3 (sweep means $0.954$ vs.\ $0.811$), and F4 (both grid baselines trail by $0.035$ on the distortion and echo cells, and neither can operate without labels). Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.005$--$0.015$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.035$), echo ($+0.035$), and label-free operation, which no grid can perform.
 
 \subsection{Verification of the implementation}\label{sec:tests}
 Because every claim in Sections~\ref{sec:method}--\ref{sec:hetero} is a

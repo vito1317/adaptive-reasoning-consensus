@@ -1,8 +1,8 @@
 [
   {
-    "title": "The theoretical increment is still not the one the title and abstract advertise",
+    "title": "The theoretical increment is now stated on page 1, but the title and C1 still lead with the tempering map",
     "quote": "The claim is the assembly and its anchors, not the parts.",
-    "explanation": "The revision strengthens this reading rather than weakening it. Now that the paper states the clip binds in every saturated cell and that the analytic map is not better at choosing a magnitude in the cells where it is active, what remains as the durable increment is the impossibility triple of Sec. VI and the attenuation identity E[D-hat_g] = (1-2*rho_bar)*D: boundary results about what any label-free method can do, plus the sign recovery. Those survive if TACT is superseded. Title, abstract and C1 still spend themselves on the tempering map.",
+    "explanation": "C5 is the right addition and it puts the boundary results where they earn credit. What remains is ordering: the paper now says the clip binds in every saturated cell, that the analytic map is not better at choosing a magnitude where it is active, and that the link's normality assumption is unmet at small m. Read together, the durable increment is the impossibility triple, the attenuation identity, and the window measurement. The title, the abstract's first half, and C1 still lead with the tempering map. Promoting C5 ahead of C1, or naming the boundary in the title, would align the framing with what the paper now says about itself.",
     "comment_type": "claim_accuracy",
     "severity": "moderate",
     "confidence": "high",

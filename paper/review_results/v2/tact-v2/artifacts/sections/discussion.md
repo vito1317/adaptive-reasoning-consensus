@@ -1,4 +1,4 @@
-# Discussion and Limitations  (tact.tex lines 530-570, verbatim LaTeX)
+# Discussion and Limitations  (tact.tex lines 586-626, verbatim LaTeX)
 
 \section{Discussion and Limitations}\label{sec:limits}
 

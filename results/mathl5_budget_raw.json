@@ -1,0 +1,9748 @@
+{
+ "n_runs": 128,
+ "traces": {
+  "math-0": [
+   {
+    "rep": 0,
+    "answer": "p - q",
+    "confidence": 0.92
+   },
+   {
+    "rep": 1,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "p - q",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "p - q",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "p - q",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "p - q",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "p - q",
+    "confidence": 0.95
+   }
+  ],
+  "math-3": [
+   {
+    "rep": 0,
+    "answer": "\\frac{37}{168}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "55/1008",
+    "confidence": 0.7
+   },
+   {
+    "rep": 2,
+    "answer": "55/1008",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "3/56",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "37/168",
+    "confidence": 0.5
+   },
+   {
+    "rep": 5,
+    "answer": "\\frac{8}{63}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "3/56",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "8/63",
+    "confidence": 0.4
+   },
+   {
+    "rep": 8,
+    "answer": "103/504",
+    "confidence": 0.65
+   },
+   {
+    "rep": 9,
+    "answer": "3/56",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "58/441",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "\\frac{3}{56}",
+    "confidence": 0.5
+   },
+   {
+    "rep": 12,
+    "answer": "3/56",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "128/315",
+    "confidence": 0.35
+   },
+   {
+    "rep": 14,
+    "answer": "1/9",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "3/56",
+    "confidence": 0.75
+   }
+  ],
+  "math-4": [
+   {
+    "rep": 0,
+    "answer": "284",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "284",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "284",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "284",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "284",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "284",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "284",
+    "confidence": 0.92
+   },
+   {
+    "rep": 7,
+    "answer": "284",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "284",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "284",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "284",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "284",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "284",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "284",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "284",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "284",
+    "confidence": 0.9
+   }
+  ],
+  "math-5": [
+   {
+    "rep": 0,
+    "answer": "6 - 5i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "6 - 5i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "6 - 5i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "3 - \\frac{3\\sqrt{2}}{2} + (-2 + \\frac{3\\sqrt{2}}{2})i",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "6 - 5i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "6 - 5i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "6 - 5i",
+    "confidence": 0.88
+   },
+   {
+    "rep": 7,
+    "answer": "6 - 5i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "6 - 5i",
+    "confidence": 0.92
+   },
+   {
+    "rep": 9,
+    "answer": "6 - 5i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "6 - 5i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "6 - 5i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "6 - 5i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "6 - 5i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "6 - 5i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "6 - 5i",
+    "confidence": 0.85
+   }
+  ],
+  "math-7": [
+   {
+    "rep": 0,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "5",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "5",
+    "confidence": 0.9
+   }
+  ],
+  "math-8": [
+   {
+    "rep": 0,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "5",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "5",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "5",
+    "confidence": 0.95
+   }
+  ],
+  "math-9": [
+   {
+    "rep": 0,
+    "answer": "10",
+    "confidence": 0.92
+   },
+   {
+    "rep": 1,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "10",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "10",
+    "confidence": 0.88
+   },
+   {
+    "rep": 9,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "10",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "10",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "31",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "10",
+    "confidence": 0.85
+   }
+  ],
+  "math-10": [
+   {
+    "rep": 0,
+    "answer": "-2, 1",
+    "confidence": 0.88
+   },
+   {
+    "rep": 1,
+    "answer": "-2,1",
+    "confidence": 0.92
+   },
+   {
+    "rep": 2,
+    "answer": "-2, 1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "-2, 1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "-2, 1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "-2, 1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "-2, 1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "-2, 1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "-2, 1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "-2,1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "-2, 1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "-2, 1",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "-2, 1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "-2, 1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "-2, 1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "-2, 1",
+    "confidence": 0.8
+   }
+  ],
+  "math-11": [
+   {
+    "rep": 0,
+    "answer": "144",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "144",
+    "confidence": 0.75
+   },
+   {
+    "rep": 2,
+    "answer": "144",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "144",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "144",
+    "confidence": 0.75
+   },
+   {
+    "rep": 5,
+    "answer": "144",
+    "confidence": 0.8
+   },
+   {
+    "rep": 6,
+    "answer": "144",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "144",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "144",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "144",
+    "confidence": 0.8
+   },
+   {
+    "rep": 10,
+    "answer": "144",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "144",
+    "confidence": 0.65
+   },
+   {
+    "rep": 12,
+    "answer": "144",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "144",
+    "confidence": 0.65
+   },
+   {
+    "rep": 14,
+    "answer": "144",
+    "confidence": 0.75
+   },
+   {
+    "rep": 15,
+    "answer": "144",
+    "confidence": 0.7
+   }
+  ],
+  "math-17": [
+   {
+    "rep": 0,
+    "answer": "10\\sqrt{13}",
+    "confidence": 0.2
+   },
+   {
+    "rep": 1,
+    "answer": "100",
+    "confidence": 0.4
+   },
+   {
+    "rep": 2,
+    "answer": "70\\sqrt{2}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "90",
+    "confidence": 0.4
+   },
+   {
+    "rep": 4,
+    "answer": "110",
+    "confidence": 0.4
+   },
+   {
+    "rep": 5,
+    "answer": "110",
+    "confidence": 0.55
+   },
+   {
+    "rep": 6,
+    "answer": "20*sqrt(5) + 10*sqrt(34)",
+    "confidence": 0.65
+   },
+   {
+    "rep": 7,
+    "answer": "100",
+    "confidence": 0.3
+   },
+   {
+    "rep": 8,
+    "answer": "70√2",
+    "confidence": 0.55
+   },
+   {
+    "rep": 9,
+    "answer": "70\\sqrt{2}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 10,
+    "answer": "70√2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "70\\sqrt{2}",
+    "confidence": 0.5
+   },
+   {
+    "rep": 12,
+    "answer": "110",
+    "confidence": 0.5
+   },
+   {
+    "rep": 13,
+    "answer": "70",
+    "confidence": 0.4
+   },
+   {
+    "rep": 14,
+    "answer": "70√2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 15,
+    "answer": "60",
+    "confidence": 0.4
+   }
+  ],
+  "math-18": [
+   {
+    "rep": 0,
+    "answer": "1.25",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "1.25",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "1.25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "1.25",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "1.25",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "1.25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "1.25",
+    "confidence": 0.98
+   },
+   {
+    "rep": 7,
+    "answer": "1.25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "1.25",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "1.25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "1.25",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "1.25",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "1.25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "1.25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "1.25",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "1.25",
+    "confidence": 0.95
+   }
+  ],
+  "math-19": [
+   {
+    "rep": 0,
+    "answer": "5",
+    "confidence": 0.96
+   },
+   {
+    "rep": 1,
+    "answer": "5",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "5",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "5",
+    "confidence": 0.95
+   }
+  ],
+  "math-21": [
+   {
+    "rep": 0,
+    "answer": "203",
+    "confidence": 0.88
+   },
+   {
+    "rep": 1,
+    "answer": "203",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "203",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "203",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "203",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "203",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "203",
+    "confidence": 0.88
+   },
+   {
+    "rep": 7,
+    "answer": "203",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "203",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "203",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "203",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "203",
+    "confidence": 0.7
+   },
+   {
+    "rep": 12,
+    "answer": "203",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "256",
+    "confidence": 0.8
+   },
+   {
+    "rep": 14,
+    "answer": "203",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "256",
+    "confidence": 0.85
+   }
+  ],
+  "math-22": [
+   {
+    "rep": 0,
+    "answer": "12",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "12",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "12",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "12",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "12",
+    "confidence": 0.96
+   },
+   {
+    "rep": 9,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "12",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "12",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "12",
+    "confidence": 0.95
+   }
+  ],
+  "math-24": [
+   {
+    "rep": 0,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "(6,31,-1)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.8
+   },
+   {
+    "rep": 8,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 9,
+    "answer": "(6,31,-1)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "(12, 30, -8)",
+    "confidence": 0.4
+   },
+   {
+    "rep": 14,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "(6, 31, -1)",
+    "confidence": 0.75
+   }
+  ],
+  "math-25": [
+   {
+    "rep": 0,
+    "answer": "4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "4",
+    "confidence": 0.92
+   },
+   {
+    "rep": 8,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "4",
+    "confidence": 0.9
+   }
+  ],
+  "math-26": [
+   {
+    "rep": 0,
+    "answer": "10",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "10",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "8",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "10",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "10",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "10",
+    "confidence": 0.88
+   },
+   {
+    "rep": 8,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "10",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "10",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "10",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "10",
+    "confidence": 0.92
+   },
+   {
+    "rep": 14,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "10",
+    "confidence": 0.85
+   }
+  ],
+  "math-35": [
+   {
+    "rep": 0,
+    "answer": "250",
+    "confidence": 0.25
+   },
+   {
+    "rep": 1,
+    "answer": "501",
+    "confidence": 0.7
+   },
+   {
+    "rep": 2,
+    "answer": "501",
+    "confidence": 0.55
+   },
+   {
+    "rep": 3,
+    "answer": "501",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "483",
+    "confidence": 0.35
+   },
+   {
+    "rep": 5,
+    "answer": "501",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "501",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "501",
+    "confidence": 0.45
+   },
+   {
+    "rep": 8,
+    "answer": "501",
+    "confidence": 0.75
+   },
+   {
+    "rep": 9,
+    "answer": "501",
+    "confidence": 0.7
+   },
+   {
+    "rep": 10,
+    "answer": "501",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "501",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "501",
+    "confidence": 0.65
+   },
+   {
+    "rep": 13,
+    "answer": "501",
+    "confidence": 0.7
+   },
+   {
+    "rep": 14,
+    "answer": "501",
+    "confidence": 0.7
+   },
+   {
+    "rep": 15,
+    "answer": "501",
+    "confidence": 0.7
+   }
+  ],
+  "math-36": [
+   {
+    "rep": 0,
+    "answer": "3/2",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "3/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "3/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "3/2",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "\\frac{3}{2}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "3/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "3/2",
+    "confidence": 0.98
+   },
+   {
+    "rep": 7,
+    "answer": "3/2",
+    "confidence": 0.92
+   },
+   {
+    "rep": 8,
+    "answer": "3/2",
+    "confidence": 0.92
+   },
+   {
+    "rep": 9,
+    "answer": "3/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "3/2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "3/2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "\\frac{3}{2}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "3/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "3/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "3/2",
+    "confidence": 0.9
+   }
+  ],
+  "math-39": [
+   {
+    "rep": 0,
+    "answer": "2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "2",
+    "confidence": 0.82
+   },
+   {
+    "rep": 8,
+    "answer": "2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "\\sqrt{3}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 13,
+    "answer": "2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "2",
+    "confidence": 0.75
+   }
+  ],
+  "math-43": [
+   {
+    "rep": 0,
+    "answer": "130",
+    "confidence": 0.6
+   },
+   {
+    "rep": 1,
+    "answer": "130",
+    "confidence": 0.6
+   },
+   {
+    "rep": 2,
+    "answer": "130",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "80",
+    "confidence": 0.88
+   },
+   {
+    "rep": 4,
+    "answer": "130",
+    "confidence": 0.75
+   },
+   {
+    "rep": 5,
+    "answer": "130",
+    "confidence": 0.8
+   },
+   {
+    "rep": 6,
+    "answer": "130",
+    "confidence": 0.8
+   },
+   {
+    "rep": 7,
+    "answer": "130",
+    "confidence": 0.35
+   },
+   {
+    "rep": 8,
+    "answer": "130",
+    "confidence": 0.6
+   },
+   {
+    "rep": 9,
+    "answer": "130",
+    "confidence": 0.75
+   },
+   {
+    "rep": 10,
+    "answer": "130",
+    "confidence": 0.75
+   },
+   {
+    "rep": 11,
+    "answer": "130",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "130",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "130",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "130",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "110",
+    "confidence": 0.7
+   }
+  ],
+  "math-44": [
+   {
+    "rep": 0,
+    "answer": "0,3",
+    "confidence": 0.15
+   },
+   {
+    "rep": 1,
+    "answer": "1, 3",
+    "confidence": 0.35
+   },
+   {
+    "rep": 2,
+    "answer": "1,5",
+    "confidence": 0.3
+   },
+   {
+    "rep": 3,
+    "answer": "incomplete",
+    "confidence": 0.3
+   },
+   {
+    "rep": 4,
+    "answer": "-7, 3",
+    "confidence": 0.3
+   },
+   {
+    "rep": 5,
+    "answer": "-1,5",
+    "confidence": 0.15
+   },
+   {
+    "rep": 6,
+    "answer": "-10, 4, 13",
+    "confidence": 0.3
+   },
+   {
+    "rep": 8,
+    "answer": "5, 9",
+    "confidence": 0.4
+   },
+   {
+    "rep": 9,
+    "answer": "-5, 5",
+    "confidence": 0.4
+   },
+   {
+    "rep": 11,
+    "answer": "1",
+    "confidence": 0.15
+   },
+   {
+    "rep": 12,
+    "answer": "1-\\sqrt{19}, 1+\\sqrt{19}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "1",
+    "confidence": 0.25
+   },
+   {
+    "rep": 14,
+    "answer": "",
+    "confidence": 0
+   },
+   {
+    "rep": 15,
+    "answer": "unknown",
+    "confidence": 0.2
+   }
+  ],
+  "math-47": [
+   {
+    "rep": 0,
+    "answer": "(1,3)",
+    "confidence": 0.3
+   },
+   {
+    "rep": 1,
+    "answer": "1 < \\lambda < 3",
+    "confidence": 0.75
+   },
+   {
+    "rep": 2,
+    "answer": "(3, 1+\\sqrt{6}]",
+    "confidence": 0.6
+   },
+   {
+    "rep": 3,
+    "answer": "(1 + √6, 4]",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "(3, 4]",
+    "confidence": 0.6
+   },
+   {
+    "rep": 5,
+    "answer": "(1+sqrt(6),4]",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "(1 + sqrt(6), 4]",
+    "confidence": 0.4
+   },
+   {
+    "rep": 7,
+    "answer": "[3,4]",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "[3, 4]",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "(3, 4]",
+    "confidence": 0.65
+   },
+   {
+    "rep": 10,
+    "answer": "(1+√6,4]",
+    "confidence": 0.65
+   },
+   {
+    "rep": 11,
+    "answer": "(3, 4]",
+    "confidence": 0.4
+   },
+   {
+    "rep": 12,
+    "answer": "3 < \\lambda \\leq 4",
+    "confidence": 0.6
+   },
+   {
+    "rep": 13,
+    "answer": "(1+sqrt(6), 4]",
+    "confidence": 0.6
+   },
+   {
+    "rep": 14,
+    "answer": "(1+√6, 4]",
+    "confidence": 0.3
+   },
+   {
+    "rep": 15,
+    "answer": "(3, 1+sqrt(8)]",
+    "confidence": 0.3
+   }
+  ],
+  "math-52": [
+   {
+    "rep": 0,
+    "answer": "81",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "81",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "81",
+    "confidence": 0.93
+   },
+   {
+    "rep": 4,
+    "answer": "81",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "81",
+    "confidence": 0.96
+   },
+   {
+    "rep": 8,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "81",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "81",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "81",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "81",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "81",
+    "confidence": 0.85
+   }
+  ],
+  "math-57": [
+   {
+    "rep": 0,
+    "answer": "3840/289",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "3840/289",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "3840/289",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "3840/289",
+    "confidence": 0.88
+   },
+   {
+    "rep": 4,
+    "answer": "\\frac{3840}{289}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "3840/289",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "3840/289",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "3840/289",
+    "confidence": 0.87
+   },
+   {
+    "rep": 8,
+    "answer": "3840/289",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "3840/289",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "3840/289",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "3840/289",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "\\frac{3840}{289}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "3840/289",
+    "confidence": 0.92
+   },
+   {
+    "rep": 14,
+    "answer": "3840/289",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "3840/289",
+    "confidence": 0.8
+   }
+  ],
+  "math-61": [
+   {
+    "rep": 0,
+    "answer": "9",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "9",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "9",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "9",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "9",
+    "confidence": 0.97
+   },
+   {
+    "rep": 8,
+    "answer": "9",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "9",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "9",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "9",
+    "confidence": 0.95
+   }
+  ],
+  "math-62": [
+   {
+    "rep": 0,
+    "answer": "64",
+    "confidence": 0.2
+   },
+   {
+    "rep": 1,
+    "answer": "64",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "64",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "64",
+    "confidence": 0.82
+   },
+   {
+    "rep": 4,
+    "answer": "64",
+    "confidence": 0.5
+   },
+   {
+    "rep": 5,
+    "answer": "64",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "64",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "64",
+    "confidence": 0.91
+   },
+   {
+    "rep": 8,
+    "answer": "64",
+    "confidence": 0.5
+   },
+   {
+    "rep": 9,
+    "answer": "64",
+    "confidence": 0.6
+   },
+   {
+    "rep": 10,
+    "answer": "64",
+    "confidence": 0.7
+   },
+   {
+    "rep": 11,
+    "answer": "64",
+    "confidence": 0.6
+   },
+   {
+    "rep": 12,
+    "answer": "64",
+    "confidence": 0.3
+   },
+   {
+    "rep": 13,
+    "answer": "64",
+    "confidence": 0.88
+   },
+   {
+    "rep": 14,
+    "answer": "64",
+    "confidence": 0.2
+   },
+   {
+    "rep": 15,
+    "answer": "64",
+    "confidence": 0.4
+   }
+  ],
+  "math-66": [
+   {
+    "rep": 0,
+    "answer": "28800",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "28800",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "28800",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "28800",
+    "confidence": 0.94
+   },
+   {
+    "rep": 4,
+    "answer": "28800",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "28800",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "28800",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "28800",
+    "confidence": 0.87
+   },
+   {
+    "rep": 8,
+    "answer": "28800",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "28800",
+    "confidence": 0.88
+   },
+   {
+    "rep": 10,
+    "answer": "28800",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "28800",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "28800",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "28800",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "28800",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "28800",
+    "confidence": 0.85
+   }
+  ],
+  "math-67": [
+   {
+    "rep": 0,
+    "answer": "L_85",
+    "confidence": 0.1
+   },
+   {
+    "rep": 1,
+    "answer": "-2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "123",
+    "confidence": 0.2
+   },
+   {
+    "rep": 3,
+    "answer": "-2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "-2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 5,
+    "answer": "-2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "-2",
+    "confidence": 0.88
+   },
+   {
+    "rep": 7,
+    "answer": "-2",
+    "confidence": 0.82
+   },
+   {
+    "rep": 8,
+    "answer": "-2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "-2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "-2",
+    "confidence": 0.75
+   },
+   {
+    "rep": 11,
+    "answer": "-2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "-2",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "-2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "-2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "-2",
+    "confidence": 0.7
+   }
+  ],
+  "math-68": [
+   {
+    "rep": 0,
+    "answer": "16",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "16",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "12\\sqrt{2}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "16",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "16",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "16",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "16",
+    "confidence": 0.92
+   },
+   {
+    "rep": 7,
+    "answer": "16",
+    "confidence": 0.91
+   },
+   {
+    "rep": 8,
+    "answer": "2^(10/3) + 2^(8/3)",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "16",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "16",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "16",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "16",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "16",
+    "confidence": 0.92
+   },
+   {
+    "rep": 14,
+    "answer": "16",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "16",
+    "confidence": 0.85
+   }
+  ],
+  "math-69": [
+   {
+    "rep": 0,
+    "answer": "3",
+    "confidence": 0.4
+   },
+   {
+    "rep": 1,
+    "answer": "1",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "1",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "2",
+    "confidence": 0.45
+   },
+   {
+    "rep": 5,
+    "answer": "1",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "1",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "1",
+    "confidence": 0.8
+   },
+   {
+    "rep": 8,
+    "answer": "1",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "2",
+    "confidence": 0.15
+   },
+   {
+    "rep": 14,
+    "answer": "1",
+    "confidence": 0.75
+   },
+   {
+    "rep": 15,
+    "answer": "1",
+    "confidence": 0.95
+   }
+  ],
+  "math-70": [
+   {
+    "rep": 0,
+    "answer": "144",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "144",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "144",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "144",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "144",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "144",
+    "confidence": 0.92
+   },
+   {
+    "rep": 6,
+    "answer": "144",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "144",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "144",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "144",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "144",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "144",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "144",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "144",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "144",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "144",
+    "confidence": 0.95
+   }
+  ],
+  "math-71": [
+   {
+    "rep": 0,
+    "answer": "16",
+    "confidence": 0.3
+   },
+   {
+    "rep": 1,
+    "answer": "8",
+    "confidence": 0.92
+   },
+   {
+    "rep": 2,
+    "answer": "8",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "8",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "8",
+    "confidence": 0.65
+   },
+   {
+    "rep": 5,
+    "answer": "8",
+    "confidence": 0.8
+   },
+   {
+    "rep": 6,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "8",
+    "confidence": 0.7
+   },
+   {
+    "rep": 8,
+    "answer": "8",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "8",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "8",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "8",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "16",
+    "confidence": 0.7
+   },
+   {
+    "rep": 13,
+    "answer": "12",
+    "confidence": 0.2
+   },
+   {
+    "rep": 14,
+    "answer": "24",
+    "confidence": 0.7
+   },
+   {
+    "rep": 15,
+    "answer": "16",
+    "confidence": 0.85
+   }
+  ],
+  "math-73": [
+   {
+    "rep": 0,
+    "answer": "\\sqrt{410}",
+    "confidence": 0.5
+   },
+   {
+    "rep": 1,
+    "answer": "2\\sqrt{106}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "2√29",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "2\\sqrt{106}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 4,
+    "answer": "2\\sqrt{29}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 5,
+    "answer": "2√106",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "2\\sqrt{29}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 7,
+    "answer": "4\\sqrt{29}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "2\\sqrt{41}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "2\\sqrt{97}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 10,
+    "answer": "2\\sqrt{89}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 11,
+    "answer": "2\\sqrt{106}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 12,
+    "answer": "2\\sqrt{10}",
+    "confidence": 0.6
+   },
+   {
+    "rep": 13,
+    "answer": "2\\sqrt{37}",
+    "confidence": 0.25
+   },
+   {
+    "rep": 14,
+    "answer": "4sqrt(29)",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "4\\sqrt{29}",
+    "confidence": 0.8
+   }
+  ],
+  "math-77": [
+   {
+    "rep": 0,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "17/50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "17/50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "17/50",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "\\frac{17}{50}",
+    "confidence": 0.95
+   }
+  ],
+  "math-81": [
+   {
+    "rep": 0,
+    "answer": "12",
+    "confidence": 0.3
+   },
+   {
+    "rep": 1,
+    "answer": "18",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "19",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "19",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "19",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "25",
+    "confidence": 0.55
+   },
+   {
+    "rep": 6,
+    "answer": "19",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "18",
+    "confidence": 0.8
+   },
+   {
+    "rep": 8,
+    "answer": "19",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "19",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "19",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "19",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "16",
+    "confidence": 0.7
+   },
+   {
+    "rep": 13,
+    "answer": "8",
+    "confidence": 0.1
+   },
+   {
+    "rep": 14,
+    "answer": "19",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "8",
+    "confidence": 0.6
+   }
+  ],
+  "math-82": [
+   {
+    "rep": 0,
+    "answer": "-80",
+    "confidence": 0.2
+   },
+   {
+    "rep": 1,
+    "answer": "1736",
+    "confidence": 0.88
+   },
+   {
+    "rep": 2,
+    "answer": "1736",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "1736",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "1736",
+    "confidence": 0.7
+   },
+   {
+    "rep": 5,
+    "answer": "1736",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "1736",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "1736",
+    "confidence": 0.7
+   },
+   {
+    "rep": 8,
+    "answer": "1736",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "1736",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "1736",
+    "confidence": 0.75
+   },
+   {
+    "rep": 11,
+    "answer": "1736",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "1736",
+    "confidence": 0.7
+   },
+   {
+    "rep": 13,
+    "answer": "-80",
+    "confidence": 0.2
+   },
+   {
+    "rep": 14,
+    "answer": "1736",
+    "confidence": 0.75
+   },
+   {
+    "rep": 15,
+    "answer": "1736",
+    "confidence": 0.75
+   }
+  ],
+  "math-83": [
+   {
+    "rep": 0,
+    "answer": "4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "4",
+    "confidence": 0.92
+   },
+   {
+    "rep": 2,
+    "answer": "4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 7,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "4",
+    "confidence": 0.9
+   }
+  ],
+  "math-86": [
+   {
+    "rep": 0,
+    "answer": "2",
+    "confidence": 0.4
+   },
+   {
+    "rep": 1,
+    "answer": "(2, \\infty)",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "(2, ∞)",
+    "confidence": 0.65
+   },
+   {
+    "rep": 3,
+    "answer": "(2, \\infty)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "(2, \\infty)",
+    "confidence": 0.55
+   },
+   {
+    "rep": 5,
+    "answer": "[2, ∞)",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "(2,\\infty)",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "(2, \\infty)",
+    "confidence": 0.3
+   },
+   {
+    "rep": 8,
+    "answer": "(2,\\infty)",
+    "confidence": 0.6
+   },
+   {
+    "rep": 9,
+    "answer": "(2, \\infty)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 10,
+    "answer": "(2, \\infty)",
+    "confidence": 0.6
+   },
+   {
+    "rep": 11,
+    "answer": "(2, \\infty)",
+    "confidence": 0.65
+   },
+   {
+    "rep": 12,
+    "answer": "[2, \\infty)",
+    "confidence": 0.5
+   },
+   {
+    "rep": 13,
+    "answer": "(2,\\infty)",
+    "confidence": 0.2
+   },
+   {
+    "rep": 14,
+    "answer": "[2,infinity)",
+    "confidence": 0.5
+   },
+   {
+    "rep": 15,
+    "answer": "[2, \\infty)",
+    "confidence": 0.7
+   }
+  ],
+  "math-88": [
+   {
+    "rep": 0,
+    "answer": "2",
+    "confidence": 0.6
+   },
+   {
+    "rep": 1,
+    "answer": "6",
+    "confidence": 0.96
+   },
+   {
+    "rep": 2,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "6",
+    "confidence": 0.88
+   },
+   {
+    "rep": 6,
+    "answer": "6",
+    "confidence": 0.8
+   },
+   {
+    "rep": 7,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "\\frac{-4+2\\sqrt{19}}{5}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "6",
+    "confidence": 0.85
+   }
+  ],
+  "math-89": [
+   {
+    "rep": 0,
+    "answer": "20",
+    "confidence": 0.3
+   },
+   {
+    "rep": 1,
+    "answer": "160",
+    "confidence": 0.88
+   },
+   {
+    "rep": 2,
+    "answer": "160",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "280 - 10\\sqrt{69}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 4,
+    "answer": "160",
+    "confidence": 0.7
+   },
+   {
+    "rep": 5,
+    "answer": "160",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "160",
+    "confidence": 0.65
+   },
+   {
+    "rep": 7,
+    "answer": "160",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "160",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "160",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "160",
+    "confidence": 0.7
+   },
+   {
+    "rep": 11,
+    "answer": "160",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "160",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "80",
+    "confidence": 0.1
+   },
+   {
+    "rep": 14,
+    "answer": "160",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "160",
+    "confidence": 0.8
+   }
+  ],
+  "math-90": [
+   {
+    "rep": 0,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "\\frac{5}{18}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "13/18",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "\\frac{25}{36}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "25/36",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "13/18",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "\\frac{13}{18}",
+    "confidence": 0.9
+   }
+  ],
+  "math-91": [
+   {
+    "rep": 0,
+    "answer": "\\frac{1}{6}",
+    "confidence": 0.4
+   },
+   {
+    "rep": 1,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.87
+   },
+   {
+    "rep": 2,
+    "answer": "1/4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "1/4",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 13,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.2
+   },
+   {
+    "rep": 14,
+    "answer": "1/7",
+    "confidence": 0.75
+   }
+  ],
+  "math-93": [
+   {
+    "rep": 0,
+    "answer": "6",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "6",
+    "confidence": 0.96
+   },
+   {
+    "rep": 2,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "6",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "6",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "6",
+    "confidence": 0.8
+   },
+   {
+    "rep": 14,
+    "answer": "6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "6",
+    "confidence": 0.85
+   }
+  ],
+  "math-96": [
+   {
+    "rep": 0,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "2/3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "2/3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "2/3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "\\frac{2}{3}",
+    "confidence": 0.95
+   }
+  ],
+  "math-97": [
+   {
+    "rep": 0,
+    "answer": "9/8",
+    "confidence": 0.35
+   },
+   {
+    "rep": 1,
+    "answer": "9√3/8",
+    "confidence": 0.3
+   },
+   {
+    "rep": 2,
+    "answer": "9/8",
+    "confidence": 0.55
+   },
+   {
+    "rep": 3,
+    "answer": "27/8",
+    "confidence": 0.25
+   },
+   {
+    "rep": 4,
+    "answer": "9",
+    "confidence": 0.4
+   },
+   {
+    "rep": 5,
+    "answer": "\\frac{9\\sqrt{2}}{4}",
+    "confidence": 0.35
+   },
+   {
+    "rep": 6,
+    "answer": "9/4",
+    "confidence": 0.25
+   },
+   {
+    "rep": 7,
+    "answer": "9",
+    "confidence": 0.4
+   },
+   {
+    "rep": 8,
+    "answer": "27/8",
+    "confidence": 0.25
+   },
+   {
+    "rep": 9,
+    "answer": "9/8",
+    "confidence": 0.35
+   },
+   {
+    "rep": 10,
+    "answer": "9",
+    "confidence": 0.4
+   },
+   {
+    "rep": 11,
+    "answer": "9",
+    "confidence": 0.4
+   },
+   {
+    "rep": 12,
+    "answer": "9/4",
+    "confidence": 0.25
+   },
+   {
+    "rep": 13,
+    "answer": "9√3/8",
+    "confidence": 0.3
+   },
+   {
+    "rep": 14,
+    "answer": "9",
+    "confidence": 0.65
+   },
+   {
+    "rep": 15,
+    "answer": "\\frac{9\\sqrt{3}}{8}",
+    "confidence": 0.35
+   }
+  ],
+  "math-100": [
+   {
+    "rep": 0,
+    "answer": "110",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "110",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "110",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "110",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "110",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "110",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "105",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "110",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "110",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "110",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "110",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "110",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "110",
+    "confidence": 0.92
+   },
+   {
+    "rep": 13,
+    "answer": "110",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "110",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "110",
+    "confidence": 0.95
+   }
+  ],
+  "math-105": [
+   {
+    "rep": 0,
+    "answer": "16/27",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "16/27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "16/27",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "16/27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "16/27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "\\frac{16}{27}",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "16/27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "\\frac{16}{27}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "16/27",
+    "confidence": 0.99
+   },
+   {
+    "rep": 9,
+    "answer": "16/27",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "16/27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "16/27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "16/27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "16/27",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "16/27",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "\\frac{16}{27}",
+    "confidence": 0.99
+   }
+  ],
+  "math-112": [
+   {
+    "rep": 0,
+    "answer": "1997/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "1997/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "1997/2",
+    "confidence": 0.88
+   },
+   {
+    "rep": 3,
+    "answer": "998",
+    "confidence": 0.7
+   },
+   {
+    "rep": 4,
+    "answer": "1997/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "\\frac{1997}{2}",
+    "confidence": 0.92
+   },
+   {
+    "rep": 6,
+    "answer": "1997/2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 7,
+    "answer": "998",
+    "confidence": 0.7
+   },
+   {
+    "rep": 8,
+    "answer": "1997/2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "1997/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "1997/2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 11,
+    "answer": "1997/2",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "1997/2",
+    "confidence": 0.88
+   },
+   {
+    "rep": 13,
+    "answer": "1997/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "1997/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "\\frac{1997}{2}",
+    "confidence": 0.85
+   }
+  ],
+  "math-118": [
+   {
+    "rep": 0,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "17",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "17",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "17",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "17",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "17",
+    "confidence": 0.65
+   },
+   {
+    "rep": 11,
+    "answer": "17",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "17",
+    "confidence": 0.92
+   },
+   {
+    "rep": 13,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "17",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "17",
+    "confidence": 0.99
+   }
+  ],
+  "math-119": [
+   {
+    "rep": 0,
+    "answer": "32348",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "32348",
+    "confidence": 0.75
+   },
+   {
+    "rep": 2,
+    "answer": "32348",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "32347",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "32348",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "32349",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "32348",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "32348",
+    "confidence": 0.8
+   },
+   {
+    "rep": 8,
+    "answer": "32348",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "32347",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "32348",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "32348",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "32348",
+    "confidence": 0.78
+   },
+   {
+    "rep": 13,
+    "answer": "32348",
+    "confidence": 0.8
+   },
+   {
+    "rep": 14,
+    "answer": "32347",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "32348",
+    "confidence": 0.85
+   }
+  ],
+  "math-120": [
+   {
+    "rep": 0,
+    "answer": "8",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "8",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "8",
+    "confidence": 0.98
+   },
+   {
+    "rep": 3,
+    "answer": "8",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "8",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "8",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "8",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "8",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "8",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "8",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "8",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "8",
+    "confidence": 0.96
+   },
+   {
+    "rep": 13,
+    "answer": "8",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "8",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "8",
+    "confidence": 0.99
+   }
+  ],
+  "math-125": [
+   {
+    "rep": 0,
+    "answer": "540",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "540",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "540",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "534",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "540",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "540",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "540",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "540",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "540",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "540",
+    "confidence": 0.75
+   },
+   {
+    "rep": 10,
+    "answer": "540",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "540",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "540",
+    "confidence": 0.82
+   },
+   {
+    "rep": 13,
+    "answer": "540",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "540",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "540",
+    "confidence": 0.95
+   }
+  ],
+  "math-126": [
+   {
+    "rep": 0,
+    "answer": "81",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "81",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "81",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "81",
+    "confidence": 0.92
+   },
+   {
+    "rep": 8,
+    "answer": "81",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "81",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "81",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "81",
+    "confidence": 0.96
+   },
+   {
+    "rep": 13,
+    "answer": "81",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "81",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "81",
+    "confidence": 0.99
+   }
+  ],
+  "math-127": [
+   {
+    "rep": 0,
+    "answer": "28",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "28",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "28",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "28",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "28",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "28",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "28",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "28",
+    "confidence": 0.93
+   },
+   {
+    "rep": 8,
+    "answer": "28",
+    "confidence": 0.99
+   },
+   {
+    "rep": 9,
+    "answer": "28",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "28",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "28",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "28",
+    "confidence": 0.96
+   },
+   {
+    "rep": 13,
+    "answer": "28",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "28",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "28",
+    "confidence": 0.99
+   }
+  ],
+  "math-130": [
+   {
+    "rep": 0,
+    "answer": "9/5",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "9/5",
+    "confidence": 0.4
+   },
+   {
+    "rep": 2,
+    "answer": "13/2",
+    "confidence": 0.3
+   },
+   {
+    "rep": 3,
+    "answer": "9/5",
+    "confidence": 0.6
+   },
+   {
+    "rep": 4,
+    "answer": "12/5",
+    "confidence": 0.35
+   },
+   {
+    "rep": 5,
+    "answer": "4\\frac{1}{8}",
+    "confidence": 0.25
+   },
+   {
+    "rep": 6,
+    "answer": "25/11",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "\\frac{15}{4}",
+    "confidence": 0.25
+   },
+   {
+    "rep": 8,
+    "answer": "9/5",
+    "confidence": 0.75
+   },
+   {
+    "rep": 9,
+    "answer": "21/4",
+    "confidence": 0.4
+   },
+   {
+    "rep": 10,
+    "answer": "25/3",
+    "confidence": 0.3
+   },
+   {
+    "rep": 11,
+    "answer": "25/11",
+    "confidence": 0.5
+   },
+   {
+    "rep": 12,
+    "answer": "55/6",
+    "confidence": 0.25
+   },
+   {
+    "rep": 13,
+    "answer": "25/6",
+    "confidence": 0.25
+   },
+   {
+    "rep": 14,
+    "answer": "3\\ 3/4",
+    "confidence": 0.45
+   },
+   {
+    "rep": 15,
+    "answer": "5\\frac{2}{3}",
+    "confidence": 0.25
+   }
+  ],
+  "math-134": [
+   {
+    "rep": 0,
+    "answer": "18 + 2π",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "18 + 2π",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "18 + 2*pi",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "18 + 2π",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "18 + 2π",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "18 + 2\\pi",
+    "confidence": 0.88
+   },
+   {
+    "rep": 6,
+    "answer": "18 + 2π",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "18 + 2\\pi",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "18+2\\pi",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "18 + 2π",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "18 + 2π",
+    "confidence": 0.7
+   },
+   {
+    "rep": 11,
+    "answer": "18+2\\pi",
+    "confidence": 0.6
+   },
+   {
+    "rep": 12,
+    "answer": "18 + 2π",
+    "confidence": 0.72
+   },
+   {
+    "rep": 13,
+    "answer": "18 + 2π",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "18 + 2\\pi",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "18 + 2\\pi",
+    "confidence": 0.8
+   }
+  ],
+  "math-135": [
+   {
+    "rep": 0,
+    "answer": "11",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "11",
+    "confidence": 0.88
+   },
+   {
+    "rep": 4,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "11",
+    "confidence": 0.92
+   },
+   {
+    "rep": 6,
+    "answer": "11",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "11",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "11",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "11",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "11",
+    "confidence": 0.91
+   },
+   {
+    "rep": 13,
+    "answer": "11",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "11",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "11",
+    "confidence": 0.95
+   }
+  ],
+  "math-137": [
+   {
+    "rep": 0,
+    "answer": "7π",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "7π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "7*pi",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "7π",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "7π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "7\\pi",
+    "confidence": 0.96
+   },
+   {
+    "rep": 6,
+    "answer": "7π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "7\\pi",
+    "confidence": 0.92
+   },
+   {
+    "rep": 8,
+    "answer": "7\\pi",
+    "confidence": 0.99
+   },
+   {
+    "rep": 9,
+    "answer": "7π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "7π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "7\\pi",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "7π",
+    "confidence": 0.96
+   },
+   {
+    "rep": 13,
+    "answer": "7π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "7\\pi",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "7\\pi",
+    "confidence": 0.99
+   }
+  ],
+  "math-141": [
+   {
+    "rep": 0,
+    "answer": "3 + 2√2, 3 - 2√2, -3 + 2√2, -3 - 2√2",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "3 + 2√2, 3 - 2√2, -3 + 2√2, -3 - 2√2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 2,
+    "answer": "-3-2*sqrt(2),-3+2*sqrt(2),3-2*sqrt(2),3+2*sqrt(2)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "3 + 2√2, 3 - 2√2, -3 + 2√2, -3 - 2√2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 4,
+    "answer": "3 + 2√2, 3 - 2√2, -3 + 2√2, -3 - 2√2",
+    "confidence": 0.75
+   },
+   {
+    "rep": 5,
+    "answer": "-3 - 2\\sqrt{2}, -3 + 2\\sqrt{2}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "3+2√2, 3-2√2, -3+2√2, -3-2√2",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "-3 - 2\\sqrt{2}, -3 + 2\\sqrt{2}, 3 - 2\\sqrt{2}, 3 + 2\\sqrt{2}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "3+2\\sqrt{2}, 3-2\\sqrt{2}, -3+2\\sqrt{2}, -3-2\\sqrt{2}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "3 + 2√2, 3 - 2√2, -3 + 2√2, -3 - 2√2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 10,
+    "answer": "3 + 2√2, 3 - 2√2",
+    "confidence": 0.75
+   },
+   {
+    "rep": 11,
+    "answer": "3-2\\sqrt{2}, 3+2\\sqrt{2}, -3+2\\sqrt{2}, -3-2\\sqrt{2}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "3-2√2,3+2√2,-3+2√2,-3-2√2",
+    "confidence": 0.86
+   },
+   {
+    "rep": 13,
+    "answer": "-3 - 2√2, -3 + 2√2, 3 - 2√2, 3 + 2√2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 14,
+    "answer": "3 + 2\\sqrt{2}, 3 - 2\\sqrt{2}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "3+2\\sqrt{2}, 3-2\\sqrt{2}, -3+2\\sqrt{2}, -3-2\\sqrt{2}",
+    "confidence": 0.8
+   }
+  ],
+  "math-143": [
+   {
+    "rep": 0,
+    "answer": "7/3",
+    "confidence": 0.25
+   },
+   {
+    "rep": 1,
+    "answer": "17/21",
+    "confidence": 0.4
+   },
+   {
+    "rep": 2,
+    "answer": "1/2",
+    "confidence": 0.3
+   },
+   {
+    "rep": 3,
+    "answer": "1/2",
+    "confidence": 0.2
+   },
+   {
+    "rep": 4,
+    "answer": "4/3",
+    "confidence": 0.2
+   },
+   {
+    "rep": 5,
+    "answer": "4/5",
+    "confidence": 0.25
+   },
+   {
+    "rep": 6,
+    "answer": "1/2",
+    "confidence": 0.3
+   },
+   {
+    "rep": 7,
+    "answer": "1/4",
+    "confidence": 0.25
+   },
+   {
+    "rep": 8,
+    "answer": "1/2",
+    "confidence": 0.15
+   },
+   {
+    "rep": 9,
+    "answer": "17/21",
+    "confidence": 0.65
+   },
+   {
+    "rep": 10,
+    "answer": "2",
+    "confidence": 0.45
+   },
+   {
+    "rep": 11,
+    "answer": "2",
+    "confidence": 0.15
+   },
+   {
+    "rep": 12,
+    "answer": "1/6",
+    "confidence": 0.25
+   },
+   {
+    "rep": 13,
+    "answer": "1",
+    "confidence": 0.4
+   },
+   {
+    "rep": 14,
+    "answer": "1/2",
+    "confidence": 0.35
+   },
+   {
+    "rep": 15,
+    "answer": "17/21",
+    "confidence": 0.55
+   }
+  ],
+  "math-144": [
+   {
+    "rep": 0,
+    "answer": "36",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "36",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "36",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "36",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "36",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "36",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "36",
+    "confidence": 0.92
+   },
+   {
+    "rep": 11,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "36",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "36",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "36",
+    "confidence": 0.85
+   }
+  ],
+  "math-145": [
+   {
+    "rep": 0,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "7",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "7",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "7",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "7",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "7",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "7",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "7",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "7",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "7",
+    "confidence": 0.9
+   }
+  ],
+  "math-154": [
+   {
+    "rep": 0,
+    "answer": "5.4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "5.4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "5.4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "5.4",
+    "confidence": 0.88
+   },
+   {
+    "rep": 4,
+    "answer": "5.4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "5.4",
+    "confidence": 0.92
+   },
+   {
+    "rep": 6,
+    "answer": "5.4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "5.4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "5.4",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "5.4",
+    "confidence": 0.88
+   },
+   {
+    "rep": 10,
+    "answer": "5.4",
+    "confidence": 0.88
+   },
+   {
+    "rep": 11,
+    "answer": "5.4",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "5.4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "5.4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 14,
+    "answer": "5.4",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "5.4",
+    "confidence": 0.8
+   }
+  ],
+  "math-156": [
+   {
+    "rep": 0,
+    "answer": "28",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "28",
+    "confidence": 0.7
+   },
+   {
+    "rep": 2,
+    "answer": "14",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "28",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "28",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "21",
+    "confidence": 0.35
+   },
+   {
+    "rep": 6,
+    "answer": "28",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "28",
+    "confidence": 0.7
+   },
+   {
+    "rep": 8,
+    "answer": "28",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "28",
+    "confidence": 0.72
+   },
+   {
+    "rep": 10,
+    "answer": "28",
+    "confidence": 0.7
+   },
+   {
+    "rep": 11,
+    "answer": "14",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "28",
+    "confidence": 0.8
+   },
+   {
+    "rep": 13,
+    "answer": "28",
+    "confidence": 0.6
+   },
+   {
+    "rep": 14,
+    "answer": "28",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "28",
+    "confidence": 0.7
+   }
+  ],
+  "math-158": [
+   {
+    "rep": 0,
+    "answer": "6",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "6",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "6",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "4",
+    "confidence": 0.4
+   },
+   {
+    "rep": 6,
+    "answer": "4",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "6",
+    "confidence": 0.65
+   },
+   {
+    "rep": 8,
+    "answer": "6",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "6",
+    "confidence": 0.78
+   },
+   {
+    "rep": 10,
+    "answer": "6",
+    "confidence": 0.75
+   },
+   {
+    "rep": 11,
+    "answer": "6",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "4",
+    "confidence": 0.35
+   },
+   {
+    "rep": 13,
+    "answer": "6",
+    "confidence": 0.65
+   },
+   {
+    "rep": 14,
+    "answer": "6",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "6",
+    "confidence": 0.75
+   }
+  ],
+  "math-159": [
+   {
+    "rep": 0,
+    "answer": "2 + 5*sqrt(3)/2",
+    "confidence": 0.6
+   },
+   {
+    "rep": 1,
+    "answer": "1+2*sqrt(3)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 2,
+    "answer": "2√3 + 1",
+    "confidence": 0.65
+   },
+   {
+    "rep": 3,
+    "answer": "2\\sqrt{3} + 1",
+    "confidence": 0.7
+   },
+   {
+    "rep": 4,
+    "answer": "2 + 2√3",
+    "confidence": 0.7
+   },
+   {
+    "rep": 5,
+    "answer": "2 + 5√3/2",
+    "confidence": 0.45
+   },
+   {
+    "rep": 6,
+    "answer": "2√3 + 1",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "2√3 + 1",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "1 + 2√3",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "2 + 2√3",
+    "confidence": 0.68
+   },
+   {
+    "rep": 10,
+    "answer": "2\\sqrt{3}+1",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "2\\sqrt{3} + 1",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "2\\sqrt{3}+2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 13,
+    "answer": "1 + \\frac{3\\sqrt{3}}{2}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 14,
+    "answer": "1 + 2*sqrt(3)",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "5√3/2+1",
+    "confidence": 0.6
+   }
+  ],
+  "math-161": [
+   {
+    "rep": 0,
+    "answer": "12*pi",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "12*pi",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "12π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "12\\pi",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "12π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "12π",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "12π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "12π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "12π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "12π",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "12\\pi",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "12\\pi",
+    "confidence": 0.97
+   },
+   {
+    "rep": 12,
+    "answer": "12\\pi",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "12\\pi",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "12*pi",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "12π",
+    "confidence": 0.95
+   }
+  ],
+  "math-163": [
+   {
+    "rep": 0,
+    "answer": "0",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "0",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "0",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "0",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "0",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "0",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "0",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "0",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "0",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "0",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "0",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "0",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "0",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "0",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "0",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "0",
+    "confidence": 0.95
+   }
+  ],
+  "math-164": [
+   {
+    "rep": 0,
+    "answer": "-24/25",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "-24/25",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "-24/25",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "-24/25",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "-24/25",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "-24/25",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "-24/25",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "-24/25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "-24/25",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "-24/25",
+    "confidence": 0.88
+   },
+   {
+    "rep": 10,
+    "answer": "-\\frac{24}{25}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "-\\frac{24}{25}",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "-24/25",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "-\\frac{24}{25}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "-24/25",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "-24/25",
+    "confidence": 0.9
+   }
+  ],
+  "math-165": [
+   {
+    "rep": 0,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "10",
+    "confidence": 0.98
+   },
+   {
+    "rep": 2,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "10",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "600",
+    "confidence": 0.96
+   },
+   {
+    "rep": 6,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "10",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "10",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "10",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "10",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "10",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "10",
+    "confidence": 0.95
+   }
+  ],
+  "math-166": [
+   {
+    "rep": 0,
+    "answer": "1/3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "1/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "1/3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "1/3",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "1/3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "1/3",
+    "confidence": 0.72
+   },
+   {
+    "rep": 6,
+    "answer": "1/3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "1/3",
+    "confidence": 0.65
+   },
+   {
+    "rep": 8,
+    "answer": "1/3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "1/3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 10,
+    "answer": "\\frac{1}{3}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "\\frac{1}{3}",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "1/3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 13,
+    "answer": "\\frac{1}{3}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 14,
+    "answer": "1/3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "1/3",
+    "confidence": 0.7
+   }
+  ],
+  "math-168": [
+   {
+    "rep": 0,
+    "answer": "15",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "15",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "15",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "15",
+    "confidence": 0.65
+   },
+   {
+    "rep": 4,
+    "answer": "15",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "15",
+    "confidence": 0.58
+   },
+   {
+    "rep": 6,
+    "answer": "95/2",
+    "confidence": 0.65
+   },
+   {
+    "rep": 7,
+    "answer": "15",
+    "confidence": 0.35
+   },
+   {
+    "rep": 8,
+    "answer": "15",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "15",
+    "confidence": 0.75
+   },
+   {
+    "rep": 10,
+    "answer": "15",
+    "confidence": 0.75
+   },
+   {
+    "rep": 11,
+    "answer": "15",
+    "confidence": 0.88
+   },
+   {
+    "rep": 12,
+    "answer": "15",
+    "confidence": 0.6
+   },
+   {
+    "rep": 13,
+    "answer": "15",
+    "confidence": 0.7
+   },
+   {
+    "rep": 14,
+    "answer": "15",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "15",
+    "confidence": 0.65
+   }
+  ],
+  "math-169": [
+   {
+    "rep": 0,
+    "answer": "3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "3",
+    "confidence": 0.7
+   },
+   {
+    "rep": 2,
+    "answer": "3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "3",
+    "confidence": 0.82
+   },
+   {
+    "rep": 6,
+    "answer": "3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 7,
+    "answer": "3",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "3",
+    "confidence": 0.6
+   },
+   {
+    "rep": 9,
+    "answer": "3",
+    "confidence": 0.7
+   },
+   {
+    "rep": 10,
+    "answer": "3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "3",
+    "confidence": 0.93
+   },
+   {
+    "rep": 12,
+    "answer": "3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 14,
+    "answer": "3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "3",
+    "confidence": 0.8
+   }
+  ],
+  "math-171": [
+   {
+    "rep": 0,
+    "answer": "1940",
+    "confidence": 0.92
+   },
+   {
+    "rep": 1,
+    "answer": "1940",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "1940",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "1940",
+    "confidence": 0.88
+   },
+   {
+    "rep": 4,
+    "answer": "1940",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "1940",
+    "confidence": 0.96
+   },
+   {
+    "rep": 6,
+    "answer": "1940",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "1940",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "1940",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "1940",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "1940",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "1940",
+    "confidence": 0.97
+   },
+   {
+    "rep": 12,
+    "answer": "1940",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "1940",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "1940",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "1940",
+    "confidence": 0.9
+   }
+  ],
+  "math-172": [
+   {
+    "rep": 0,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "13/6",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "13/6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "13/6",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "13/6",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "13/6",
+    "confidence": 0.92
+   }
+  ],
+  "math-182": [
+   {
+    "rep": 0,
+    "answer": "100",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "100",
+    "confidence": 0.4
+   },
+   {
+    "rep": 2,
+    "answer": "100",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "120",
+    "confidence": 0.65
+   },
+   {
+    "rep": 4,
+    "answer": "120",
+    "confidence": 0.6
+   },
+   {
+    "rep": 5,
+    "answer": "100",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "120",
+    "confidence": 0.8
+   },
+   {
+    "rep": 7,
+    "answer": "100",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "120",
+    "confidence": 0.5
+   },
+   {
+    "rep": 9,
+    "answer": "100",
+    "confidence": 0.3
+   },
+   {
+    "rep": 10,
+    "answer": "100",
+    "confidence": 0.75
+   },
+   {
+    "rep": 11,
+    "answer": "800",
+    "confidence": 0.45
+   },
+   {
+    "rep": 12,
+    "answer": "120",
+    "confidence": 0.6
+   },
+   {
+    "rep": 13,
+    "answer": "204",
+    "confidence": 0.4
+   },
+   {
+    "rep": 14,
+    "answer": "120",
+    "confidence": 0.7
+   },
+   {
+    "rep": 15,
+    "answer": "100",
+    "confidence": 0.65
+   }
+  ],
+  "math-188": [
+   {
+    "rep": 0,
+    "answer": "8",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "8",
+    "confidence": 0.75
+   },
+   {
+    "rep": 2,
+    "answer": "8",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "8",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "8",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "8",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "8",
+    "confidence": 0.85
+   }
+  ],
+  "math-191": [
+   {
+    "rep": 0,
+    "answer": "17",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "17",
+    "confidence": 0.75
+   },
+   {
+    "rep": 2,
+    "answer": "17",
+    "confidence": 0.6
+   },
+   {
+    "rep": 3,
+    "answer": "17",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "17",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "17",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "17",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "17",
+    "confidence": 0.8
+   },
+   {
+    "rep": 8,
+    "answer": "17",
+    "confidence": 0.5
+   },
+   {
+    "rep": 9,
+    "answer": "17",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "17",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "17",
+    "confidence": 0.6
+   },
+   {
+    "rep": 12,
+    "answer": "17",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "17",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "17",
+    "confidence": 0.6
+   },
+   {
+    "rep": 15,
+    "answer": "17",
+    "confidence": 0.8
+   }
+  ],
+  "math-192": [
+   {
+    "rep": 0,
+    "answer": "1 + 2i",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "1+2i",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "1 + 2i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "1 + 2i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "1 + 2i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "1 + 2i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "1+2i",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "1 + 2i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "1 + 2i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "1+2i",
+    "confidence": 0.99
+   },
+   {
+    "rep": 10,
+    "answer": "1+2i",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "1+2i",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "1+2i",
+    "confidence": 0.99
+   },
+   {
+    "rep": 13,
+    "answer": "1 + 2i",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "1+2i",
+    "confidence": 0.98
+   },
+   {
+    "rep": 15,
+    "answer": "1 + 2i",
+    "confidence": 0.95
+   }
+  ],
+  "math-193": [
+   {
+    "rep": 0,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "25",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "25",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "25",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "25",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "25",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "25",
+    "confidence": 0.88
+   }
+  ],
+  "math-197": [
+   {
+    "rep": 0,
+    "answer": "17/18",
+    "confidence": 0.92
+   },
+   {
+    "rep": 1,
+    "answer": "5/9",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "5/6",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "1/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "17/18",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "17/18",
+    "confidence": 0.8
+   },
+   {
+    "rep": 6,
+    "answer": "1/2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 7,
+    "answer": "1/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "1/2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "17/18",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "5/9",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "1/2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "1/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "13/18",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "1/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "1/2",
+    "confidence": 0.85
+   }
+  ],
+  "math-198": [
+   {
+    "rep": 0,
+    "answer": "20000/π",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "20000/π",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "20000/pi",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "40000/π",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "20000/π",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "20000/π",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "20000/π",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "20000/π",
+    "confidence": 0.8
+   },
+   {
+    "rep": 8,
+    "answer": "20000/π",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "20000/pi",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "20000/π",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "20000/π",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "20000/π",
+    "confidence": 0.88
+   },
+   {
+    "rep": 13,
+    "answer": "20000/π",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "20000/\\pi",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "20000/pi",
+    "confidence": 0.8
+   }
+  ],
+  "math-200": [
+   {
+    "rep": 0,
+    "answer": "22",
+    "confidence": 0.88
+   },
+   {
+    "rep": 1,
+    "answer": "22",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "22",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "22",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "22",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "22",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "22",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "22",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "22",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "23",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "22",
+    "confidence": 0.75
+   },
+   {
+    "rep": 11,
+    "answer": "22",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "22",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "22",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "22",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "22",
+    "confidence": 0.75
+   }
+  ],
+  "math-201": [
+   {
+    "rep": 0,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "5.5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "11/2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "11/2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "11/2",
+    "confidence": 0.95
+   }
+  ],
+  "math-202": [
+   {
+    "rep": 0,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "12",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "12",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "12",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "12",
+    "confidence": 0.8
+   },
+   {
+    "rep": 6,
+    "answer": "12",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "12",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "12",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "12",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "12",
+    "confidence": 0.8
+   },
+   {
+    "rep": 13,
+    "answer": "12",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "12",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "12",
+    "confidence": 0.85
+   }
+  ],
+  "math-204": [
+   {
+    "rep": 0,
+    "answer": "√66",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "√66",
+    "confidence": 0.5
+   },
+   {
+    "rep": 2,
+    "answer": "sqrt(66)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "√66",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "√66",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "√66",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "√66",
+    "confidence": 0.5
+   },
+   {
+    "rep": 7,
+    "answer": "√66",
+    "confidence": 0.7
+   },
+   {
+    "rep": 8,
+    "answer": "√66",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "sqrt(66)",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "√66",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "√66",
+    "confidence": 0.7
+   },
+   {
+    "rep": 12,
+    "answer": "√66",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "13",
+    "confidence": 0.4
+   },
+   {
+    "rep": 14,
+    "answer": "\\sqrt{66}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "sqrt(66)",
+    "confidence": 0.72
+   }
+  ],
+  "math-205": [
+   {
+    "rep": 0,
+    "answer": "-3/8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "-3/8",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "-3/8",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "-3/8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "-3/8",
+    "confidence": 0.7
+   },
+   {
+    "rep": 5,
+    "answer": "-3/8",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "-3/8",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "-3/8",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "-3/8",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "-3/8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "-3/8",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "-3/8",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "-3/8",
+    "confidence": 0.7
+   },
+   {
+    "rep": 13,
+    "answer": "-3/8",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "-3/8",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "-3/8",
+    "confidence": 0.8
+   }
+  ],
+  "math-207": [
+   {
+    "rep": 0,
+    "answer": "14/3",
+    "confidence": 0.4
+   },
+   {
+    "rep": 1,
+    "answer": "7",
+    "confidence": 0.4
+   },
+   {
+    "rep": 2,
+    "answer": "14/3",
+    "confidence": 0.3
+   },
+   {
+    "rep": 3,
+    "answer": "6",
+    "confidence": 0.3
+   },
+   {
+    "rep": 4,
+    "answer": "28/11",
+    "confidence": 0.3
+   },
+   {
+    "rep": 5,
+    "answer": "14/3",
+    "confidence": 0.4
+   },
+   {
+    "rep": 6,
+    "answer": "14/3",
+    "confidence": 0.4
+   },
+   {
+    "rep": 7,
+    "answer": "14/3",
+    "confidence": 0.4
+   },
+   {
+    "rep": 8,
+    "answer": "7",
+    "confidence": 0.2
+   },
+   {
+    "rep": 9,
+    "answer": "28/5",
+    "confidence": 0.15
+   },
+   {
+    "rep": 10,
+    "answer": "28/5",
+    "confidence": 0.35
+   },
+   {
+    "rep": 11,
+    "answer": "7",
+    "confidence": 0.35
+   },
+   {
+    "rep": 12,
+    "answer": "14-7√2",
+    "confidence": 0.4
+   },
+   {
+    "rep": 13,
+    "answer": "14/5",
+    "confidence": 0.2
+   },
+   {
+    "rep": 14,
+    "answer": "14/5",
+    "confidence": 0.65
+   },
+   {
+    "rep": 15,
+    "answer": "14/3",
+    "confidence": 0.4
+   }
+  ],
+  "math-208": [
+   {
+    "rep": 0,
+    "answer": "13/4",
+    "confidence": 0.88
+   },
+   {
+    "rep": 1,
+    "answer": "3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "13/4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "13/4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "3",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "13/4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "13/4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "13/4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "13/4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "13/4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 13,
+    "answer": "13/4",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "13/4",
+    "confidence": 0.75
+   },
+   {
+    "rep": 15,
+    "answer": "3",
+    "confidence": 0.85
+   }
+  ],
+  "math-212": [
+   {
+    "rep": 0,
+    "answer": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "(1/5, -18/5)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 2,
+    "answer": "(1/5, -18/5)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "(1/5, -18/5)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "(-21/5, 48/5)",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "(1/5, -18/5)",
+    "confidence": 0.7
+   },
+   {
+    "rep": 8,
+    "answer": "(1/5, -18/5)",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "(1/5, -18/5)",
+    "confidence": 0.92
+   },
+   {
+    "rep": 10,
+    "answer": "(1/5, -18/5)",
+    "confidence": 0.65
+   },
+   {
+    "rep": 11,
+    "answer": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+    "confidence": 0.82
+   },
+   {
+    "rep": 12,
+    "answer": "(1/5, -18/5)",
+    "confidence": 0.7
+   },
+   {
+    "rep": 13,
+    "answer": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "\\begin{pmatrix} 1/5 \\\\ -18/5 \\end{pmatrix}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 15,
+    "answer": "(1/5, -18/5)",
+    "confidence": 0.85
+   }
+  ],
+  "math-216": [
+   {
+    "rep": 0,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "9",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "9",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "9",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "9",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "9",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "9",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "9",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "9",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "9",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "9",
+    "confidence": 0.92
+   },
+   {
+    "rep": 15,
+    "answer": "9",
+    "confidence": 0.95
+   }
+  ],
+  "math-217": [
+   {
+    "rep": 0,
+    "answer": "-2",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "-2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "-2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "-2",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "-2",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "-2",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "-2",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "-2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "-2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "-2",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "-2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "-2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "-2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "-2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "-2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "-2",
+    "confidence": 0.98
+   }
+  ],
+  "math-218": [
+   {
+    "rep": 0,
+    "answer": "2\\sqrt{5}",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "2√5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "2√5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "2√5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "2\\sqrt{5}",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "2√5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "2\\sqrt{5}",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "2√5",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "2√5",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "2√5",
+    "confidence": 0.96
+   },
+   {
+    "rep": 10,
+    "answer": "2√5",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "2\\sqrt{5}",
+    "confidence": 0.94
+   },
+   {
+    "rep": 12,
+    "answer": "2√5",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "2\\sqrt{5}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "2\\sqrt{5}",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "2√5",
+    "confidence": 0.95
+   }
+  ],
+  "math-220": [
+   {
+    "rep": 0,
+    "answer": "27",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "27",
+    "confidence": 0.6
+   },
+   {
+    "rep": 2,
+    "answer": "27",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "27",
+    "confidence": 0.7
+   },
+   {
+    "rep": 4,
+    "answer": "27",
+    "confidence": 0.7
+   },
+   {
+    "rep": 5,
+    "answer": "27",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "27",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "27",
+    "confidence": 0.7
+   },
+   {
+    "rep": 8,
+    "answer": "27",
+    "confidence": 0.5
+   },
+   {
+    "rep": 9,
+    "answer": "27",
+    "confidence": 0.87
+   },
+   {
+    "rep": 10,
+    "answer": "27",
+    "confidence": 0.7
+   },
+   {
+    "rep": 11,
+    "answer": "27",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "27",
+    "confidence": 0.6
+   },
+   {
+    "rep": 13,
+    "answer": "27",
+    "confidence": 0.7
+   },
+   {
+    "rep": 14,
+    "answer": "27",
+    "confidence": 0.7
+   },
+   {
+    "rep": 15,
+    "answer": "27",
+    "confidence": 0.75
+   }
+  ],
+  "math-223": [
+   {
+    "rep": 0,
+    "answer": "600",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "600",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "600",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "600",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "600",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "600",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "600",
+    "confidence": 0.97
+   },
+   {
+    "rep": 10,
+    "answer": "600",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "600",
+    "confidence": 0.93
+   },
+   {
+    "rep": 12,
+    "answer": "600",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "600",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "600",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "600",
+    "confidence": 0.95
+   }
+  ],
+  "math-224": [
+   {
+    "rep": 0,
+    "answer": "3R^2 - \\frac{a^2+b^2+c^2}{4}",
+    "confidence": 0.45
+   },
+   {
+    "rep": 1,
+    "answer": "3R²",
+    "confidence": 0.35
+   },
+   {
+    "rep": 2,
+    "answer": "3R²",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "3R²",
+    "confidence": 0.6
+   },
+   {
+    "rep": 4,
+    "answer": "\\frac{1}{2}(a^2+b^2+c^2) + 3R^2",
+    "confidence": 0.2
+   },
+   {
+    "rep": 5,
+    "answer": "3R^2",
+    "confidence": 0.6
+   },
+   {
+    "rep": 6,
+    "answer": "3R^2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "(a² + b² + c²)/3",
+    "confidence": 0.5
+   },
+   {
+    "rep": 8,
+    "answer": "a^2/3 + b^2/3 + c^2/3 - R^2",
+    "confidence": 0.3
+   },
+   {
+    "rep": 9,
+    "answer": "3R²",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "3R²",
+    "confidence": 0.75
+   },
+   {
+    "rep": 11,
+    "answer": "3R^2",
+    "confidence": 0.7
+   },
+   {
+    "rep": 12,
+    "answer": "a^2 + b^2 + c^2 + 9R^2",
+    "confidence": 0.15
+   },
+   {
+    "rep": 13,
+    "answer": "3R^2 - \\frac{a^2+b^2+c^2}{4}",
+    "confidence": 0.35
+   },
+   {
+    "rep": 14,
+    "answer": "a^2 + b^2 + c^2 - 3R^2",
+    "confidence": 0.25
+   },
+   {
+    "rep": 15,
+    "answer": "3R^2",
+    "confidence": 0.85
+   }
+  ],
+  "math-227": [
+   {
+    "rep": 0,
+    "answer": "331",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "331",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "331",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "331",
+    "confidence": 0.75
+   },
+   {
+    "rep": 4,
+    "answer": "331",
+    "confidence": 0.75
+   },
+   {
+    "rep": 5,
+    "answer": "331",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "331",
+    "confidence": 0.55
+   },
+   {
+    "rep": 7,
+    "answer": "331",
+    "confidence": 0.8
+   },
+   {
+    "rep": 8,
+    "answer": "331",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "331",
+    "confidence": 0.88
+   },
+   {
+    "rep": 10,
+    "answer": "331",
+    "confidence": 0.7
+   },
+   {
+    "rep": 11,
+    "answer": "331",
+    "confidence": 0.88
+   },
+   {
+    "rep": 12,
+    "answer": "331",
+    "confidence": 0.7
+   },
+   {
+    "rep": 13,
+    "answer": "331",
+    "confidence": 0.6
+   },
+   {
+    "rep": 14,
+    "answer": "331",
+    "confidence": 0.75
+   },
+   {
+    "rep": 15,
+    "answer": "331",
+    "confidence": 0.4
+   }
+  ],
+  "math-228": [
+   {
+    "rep": 0,
+    "answer": "32",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "32",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "32",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "32",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "32",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "32",
+    "confidence": 0.98
+   },
+   {
+    "rep": 10,
+    "answer": "32",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "32",
+    "confidence": 0.94
+   },
+   {
+    "rep": 12,
+    "answer": "32",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "32",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "32",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "32",
+    "confidence": 0.95
+   }
+  ],
+  "math-229": [
+   {
+    "rep": 0,
+    "answer": "(-\\infty, 2) \\cup (3, \\infty)",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "(-\\infty, 2) \\cup (3, \\infty)",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "(-\\infty, 2) \\cup (3, \\infty)",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.97
+   },
+   {
+    "rep": 10,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.92
+   },
+   {
+    "rep": 11,
+    "answer": "(-\\infty, 2) \\cup (3, \\infty)",
+    "confidence": 0.96
+   },
+   {
+    "rep": 12,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "(-\\infty, 2) \\cup (3, \\infty)",
+    "confidence": 0.92
+   },
+   {
+    "rep": 14,
+    "answer": "(-\\infty, 2) \\cup (3, \\infty)",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "(-∞, 2) ∪ (3, ∞)",
+    "confidence": 0.95
+   }
+  ],
+  "math-237": [
+   {
+    "rep": 0,
+    "answer": "44",
+    "confidence": 0.98
+   },
+   {
+    "rep": 1,
+    "answer": "44",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "44",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "44",
+    "confidence": 0.88
+   },
+   {
+    "rep": 4,
+    "answer": "44",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "44",
+    "confidence": 0.98
+   },
+   {
+    "rep": 6,
+    "answer": "44",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "44",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "44",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "44",
+    "confidence": 0.96
+   },
+   {
+    "rep": 10,
+    "answer": "44",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "44",
+    "confidence": 0.94
+   },
+   {
+    "rep": 12,
+    "answer": "44",
+    "confidence": 0.8
+   },
+   {
+    "rep": 13,
+    "answer": "44",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "44",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "44",
+    "confidence": 0.98
+   }
+  ],
+  "math-238": [
+   {
+    "rep": 0,
+    "answer": "64",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "64",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "64",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "64",
+    "confidence": 0.8
+   },
+   {
+    "rep": 4,
+    "answer": "64",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "64",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "64",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "64",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "64",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "64",
+    "confidence": 0.96
+   },
+   {
+    "rep": 10,
+    "answer": "64",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "64",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "64",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "64",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "64",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "64",
+    "confidence": 0.92
+   }
+  ],
+  "math-239": [
+   {
+    "rep": 0,
+    "answer": "y = 2x + 3",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "y = 2x + 3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "y = 2x + 3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "y = 2x + 3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "y = 2x + 3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "y = 2x + 3",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "y = 2x + 3",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "y = 2x + 3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "y = 2x + 3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "y = 2x + 3",
+    "confidence": 0.94
+   },
+   {
+    "rep": 10,
+    "answer": "y = 2x + 3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "y = 2x + 3",
+    "confidence": 0.91
+   },
+   {
+    "rep": 12,
+    "answer": "y = 2x + 3",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "y = 2x + 3",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "y = 2x + 3",
+    "confidence": 0.92
+   },
+   {
+    "rep": 15,
+    "answer": "y = 2x + 3",
+    "confidence": 0.95
+   }
+  ],
+  "math-240": [
+   {
+    "rep": 0,
+    "answer": "18.90",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "18.90",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "18.9",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "18.90",
+    "confidence": 0.78
+   },
+   {
+    "rep": 4,
+    "answer": "18.90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "18.90",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "18.90",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "18.90",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "18.90",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "18.90",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "18.90",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "18.90",
+    "confidence": 0.89
+   },
+   {
+    "rep": 12,
+    "answer": "18.90",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "18.90",
+    "confidence": 0.8
+   },
+   {
+    "rep": 14,
+    "answer": "18.90",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "18.9",
+    "confidence": 0.9
+   }
+  ],
+  "math-244": [
+   {
+    "rep": 0,
+    "answer": "9\\pi",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "8π",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "8π",
+    "confidence": 0.75
+   },
+   {
+    "rep": 3,
+    "answer": "8π",
+    "confidence": 0.72
+   },
+   {
+    "rep": 4,
+    "answer": "9\\pi",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "8π",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "9\\pi",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "9π",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "8π",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "8π",
+    "confidence": 0.89
+   },
+   {
+    "rep": 10,
+    "answer": "8π",
+    "confidence": 0.6
+   },
+   {
+    "rep": 11,
+    "answer": "8\\pi",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "8π",
+    "confidence": 0.8
+   },
+   {
+    "rep": 13,
+    "answer": "8\\pi",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "8\\pi",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "8π",
+    "confidence": 0.9
+   }
+  ],
+  "math-246": [
+   {
+    "rep": 0,
+    "answer": "27648",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "27648",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "27648",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "27648",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "27648",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "27648",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "27648",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "27648",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "27648",
+    "confidence": 0.9
+   },
+   {
+    "rep": 9,
+    "answer": "27648",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "27648",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "27648",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "27648",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "27648",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "27648",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "27648",
+    "confidence": 0.95
+   }
+  ],
+  "math-247": [
+   {
+    "rep": 0,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 2,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 5,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 7,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 8,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 11,
+    "answer": "7",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "7",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "7",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "7",
+    "confidence": 0.95
+   }
+  ],
+  "math-248": [
+   {
+    "rep": 0,
+    "answer": "29",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "29",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "29",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "29",
+    "confidence": 0.92
+   },
+   {
+    "rep": 4,
+    "answer": "29",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "29",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "29",
+    "confidence": 0.92
+   },
+   {
+    "rep": 7,
+    "answer": "29",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "29",
+    "confidence": 0.88
+   },
+   {
+    "rep": 9,
+    "answer": "29",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "29",
+    "confidence": 0.7
+   },
+   {
+    "rep": 11,
+    "answer": "29",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "29",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "29",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "29",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "29",
+    "confidence": 0.85
+   }
+  ],
+  "math-249": [
+   {
+    "rep": 0,
+    "answer": "\\frac{2}{1005}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 1,
+    "answer": "\\frac{2}{1005}",
+    "confidence": 0.35
+   },
+   {
+    "rep": 2,
+    "answer": "0",
+    "confidence": 0.3
+   },
+   {
+    "rep": 3,
+    "answer": "2/1005",
+    "confidence": 0.65
+   },
+   {
+    "rep": 4,
+    "answer": "0",
+    "confidence": 0.35
+   },
+   {
+    "rep": 5,
+    "answer": "2/1005",
+    "confidence": 0.7
+   },
+   {
+    "rep": 6,
+    "answer": "2/1005",
+    "confidence": 0.75
+   },
+   {
+    "rep": 7,
+    "answer": "0",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "2/1005",
+    "confidence": 0.75
+   },
+   {
+    "rep": 9,
+    "answer": "\\frac{2}{1005}",
+    "confidence": 0.35
+   },
+   {
+    "rep": 10,
+    "answer": "0",
+    "confidence": 0.2
+   },
+   {
+    "rep": 11,
+    "answer": "\\frac{2}{1005}",
+    "confidence": 0.6
+   },
+   {
+    "rep": 12,
+    "answer": "\\frac{2}{1005}",
+    "confidence": 0.65
+   },
+   {
+    "rep": 13,
+    "answer": "2/1005",
+    "confidence": 0.75
+   },
+   {
+    "rep": 14,
+    "answer": "\\frac{2}{1005}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 15,
+    "answer": "\\frac{2}{1005}",
+    "confidence": 0.7
+   }
+  ],
+  "math-250": [
+   {
+    "rep": 0,
+    "answer": "2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 3,
+    "answer": "2",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 9,
+    "answer": "2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 12,
+    "answer": "2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "2",
+    "confidence": 0.98
+   },
+   {
+    "rep": 14,
+    "answer": "2",
+    "confidence": 0.95
+   },
+   {
+    "rep": 15,
+    "answer": "2",
+    "confidence": 0.9
+   }
+  ],
+  "math-251": [
+   {
+    "rep": 0,
+    "answer": "8n^2 + 4n + 1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "8n^2 + 4n + 1",
+    "confidence": 0.75
+   },
+   {
+    "rep": 2,
+    "answer": "(2n+1)^2",
+    "confidence": 0.25
+   },
+   {
+    "rep": 3,
+    "answer": "8n^2+4n+1",
+    "confidence": 0.7
+   },
+   {
+    "rep": 4,
+    "answer": "(2n+1)^2",
+    "confidence": 0.4
+   },
+   {
+    "rep": 5,
+    "answer": "8n^2 + 4n + 1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "8n^2 + 4n + 1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "(2n+1)^2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 8,
+    "answer": "8n^2 + 4n + 1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "8n^2 + 4n + 1",
+    "confidence": 0.6
+   },
+   {
+    "rep": 10,
+    "answer": "8n^2 + 4n + 1",
+    "confidence": 0.5
+   },
+   {
+    "rep": 11,
+    "answer": "8n^2+4n+1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "14 \\cdot 3^{n-1} - 1",
+    "confidence": 0.5
+   },
+   {
+    "rep": 13,
+    "answer": "8n^2+4n+1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 14,
+    "answer": "4n^2 + 2n + 1",
+    "confidence": 0.7
+   },
+   {
+    "rep": 15,
+    "answer": "8n^2 + 4n + 1",
+    "confidence": 0.75
+   }
+  ],
+  "math-252": [
+   {
+    "rep": 0,
+    "answer": "9",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "202",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "202",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "202",
+    "confidence": 0.95
+   },
+   {
+    "rep": 4,
+    "answer": "202",
+    "confidence": 0.92
+   },
+   {
+    "rep": 5,
+    "answer": "202",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "202",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "1009",
+    "confidence": 0.92
+   },
+   {
+    "rep": 8,
+    "answer": "202",
+    "confidence": 0.92
+   },
+   {
+    "rep": 9,
+    "answer": "202",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "202",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "202",
+    "confidence": 0.92
+   },
+   {
+    "rep": 12,
+    "answer": "202",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "202",
+    "confidence": 0.92
+   },
+   {
+    "rep": 14,
+    "answer": "202",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "202",
+    "confidence": 0.85
+   }
+  ],
+  "math-253": [
+   {
+    "rep": 0,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 1,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 2,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 3,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 4,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 5,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 6,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 7,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 8,
+    "answer": "36",
+    "confidence": 0.98
+   },
+   {
+    "rep": 9,
+    "answer": "36",
+    "confidence": 0.95
+   },
+   {
+    "rep": 10,
+    "answer": "36",
+    "confidence": 0.98
+   },
+   {
+    "rep": 11,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 12,
+    "answer": "36",
+    "confidence": 0.98
+   },
+   {
+    "rep": 13,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 14,
+    "answer": "36",
+    "confidence": 0.99
+   },
+   {
+    "rep": 15,
+    "answer": "36",
+    "confidence": 0.99
+   }
+  ],
+  "math-254": [
+   {
+    "rep": 0,
+    "answer": "14",
+    "confidence": 0.75
+   },
+   {
+    "rep": 1,
+    "answer": "14",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "14",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "14",
+    "confidence": 0.85
+   },
+   {
+    "rep": 4,
+    "answer": "14",
+    "confidence": 0.8
+   },
+   {
+    "rep": 5,
+    "answer": "14",
+    "confidence": 0.8
+   },
+   {
+    "rep": 6,
+    "answer": "14",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "14",
+    "confidence": 0.88
+   },
+   {
+    "rep": 8,
+    "answer": "14",
+    "confidence": 0.7
+   },
+   {
+    "rep": 9,
+    "answer": "14",
+    "confidence": 0.75
+   },
+   {
+    "rep": 10,
+    "answer": "14",
+    "confidence": 0.6
+   },
+   {
+    "rep": 11,
+    "answer": "14",
+    "confidence": 0.8
+   },
+   {
+    "rep": 12,
+    "answer": "14",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "14",
+    "confidence": 0.88
+   },
+   {
+    "rep": 14,
+    "answer": "14",
+    "confidence": 0.75
+   },
+   {
+    "rep": 15,
+    "answer": "14",
+    "confidence": 0.7
+   }
+  ],
+  "math-255": [
+   {
+    "rep": 0,
+    "answer": "64",
+    "confidence": 0.9
+   },
+   {
+    "rep": 1,
+    "answer": "64",
+    "confidence": 0.9
+   },
+   {
+    "rep": 2,
+    "answer": "64",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "64",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "64",
+    "confidence": 0.95
+   },
+   {
+    "rep": 5,
+    "answer": "64",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "64",
+    "confidence": 0.9
+   },
+   {
+    "rep": 7,
+    "answer": "64",
+    "confidence": 0.9
+   },
+   {
+    "rep": 8,
+    "answer": "64",
+    "confidence": 0.92
+   },
+   {
+    "rep": 9,
+    "answer": "64",
+    "confidence": 0.85
+   },
+   {
+    "rep": 10,
+    "answer": "64",
+    "confidence": 0.9
+   },
+   {
+    "rep": 11,
+    "answer": "64",
+    "confidence": 0.7
+   },
+   {
+    "rep": 12,
+    "answer": "64",
+    "confidence": 0.9
+   },
+   {
+    "rep": 13,
+    "answer": "64",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "64",
+    "confidence": 0.8
+   },
+   {
+    "rep": 15,
+    "answer": "64",
+    "confidence": 0.9
+   }
+  ],
+  "math-256": [
+   {
+    "rep": 0,
+    "answer": "20",
+    "confidence": 0.95
+   },
+   {
+    "rep": 1,
+    "answer": "20",
+    "confidence": 0.85
+   },
+   {
+    "rep": 2,
+    "answer": "20",
+    "confidence": 0.95
+   },
+   {
+    "rep": 3,
+    "answer": "20",
+    "confidence": 0.98
+   },
+   {
+    "rep": 4,
+    "answer": "20",
+    "confidence": 0.9
+   },
+   {
+    "rep": 5,
+    "answer": "20",
+    "confidence": 0.95
+   },
+   {
+    "rep": 6,
+    "answer": "20",
+    "confidence": 0.95
+   },
+   {
+    "rep": 7,
+    "answer": "20",
+    "confidence": 0.95
+   },
+   {
+    "rep": 8,
+    "answer": "20",
+    "confidence": 0.93
+   },
+   {
+    "rep": 9,
+    "answer": "20",
+    "confidence": 0.9
+   },
+   {
+    "rep": 10,
+    "answer": "20",
+    "confidence": 0.85
+   },
+   {
+    "rep": 11,
+    "answer": "20",
+    "confidence": 0.98
+   },
+   {
+    "rep": 12,
+    "answer": "20",
+    "confidence": 0.95
+   },
+   {
+    "rep": 13,
+    "answer": "20",
+    "confidence": 0.95
+   },
+   {
+    "rep": 14,
+    "answer": "20",
+    "confidence": 0.9
+   },
+   {
+    "rep": 15,
+    "answer": "20",
+    "confidence": 0.92
+   }
+  ],
+  "math-257": [
+   {
+    "rep": 0,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.65
+   },
+   {
+    "rep": 1,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.5
+   },
+   {
+    "rep": 2,
+    "answer": "1/4",
+    "confidence": 0.7
+   },
+   {
+    "rep": 3,
+    "answer": "1/2",
+    "confidence": 0.4
+   },
+   {
+    "rep": 4,
+    "answer": "1/4",
+    "confidence": 0.5
+   },
+   {
+    "rep": 5,
+    "answer": "1/4",
+    "confidence": 0.75
+   },
+   {
+    "rep": 6,
+    "answer": "1/4",
+    "confidence": 0.7
+   },
+   {
+    "rep": 7,
+    "answer": "1/4",
+    "confidence": 0.75
+   },
+   {
+    "rep": 8,
+    "answer": "1/4",
+    "confidence": 0.8
+   },
+   {
+    "rep": 9,
+    "answer": "1",
+    "confidence": 0.3
+   },
+   {
+    "rep": 10,
+    "answer": "1/4",
+    "confidence": 0.55
+   },
+   {
+    "rep": 11,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 12,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 13,
+    "answer": "1/4",
+    "confidence": 0.82
+   },
+   {
+    "rep": 14,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 15,
+    "answer": "\\frac{1}{4}",
+    "confidence": 0.65
+   }
+  ],
+  "math-259": [
+   {
+    "rep": 0,
+    "answer": "\\frac{7}{2}",
+    "confidence": 0.8
+   },
+   {
+    "rep": 1,
+    "answer": "\\frac{7}{2}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 2,
+    "answer": "7/2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 3,
+    "answer": "7/2",
+    "confidence": 0.88
+   },
+   {
+    "rep": 4,
+    "answer": "9/4",
+    "confidence": 0.75
+   },
+   {
+    "rep": 5,
+    "answer": "7/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 6,
+    "answer": "7/2",
+    "confidence": 0.8
+   },
+   {
+    "rep": 7,
+    "answer": "7/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 8,
+    "answer": "7/2",
+    "confidence": 0.85
+   },
+   {
+    "rep": 9,
+    "answer": "\\frac{7}{2}",
+    "confidence": 0.7
+   },
+   {
+    "rep": 10,
+    "answer": "7/2",
+    "confidence": 0.6
+   },
+   {
+    "rep": 11,
+    "answer": "\\frac{7}{2}",
+    "confidence": 0.85
+   },
+   {
+    "rep": 12,
+    "answer": "\\frac{7}{2}",
+    "confidence": 0.75
+   },
+   {
+    "rep": 13,
+    "answer": "7/2",
+    "confidence": 0.9
+   },
+   {
+    "rep": 14,
+    "answer": "\\frac{7}{2}",
+    "confidence": 0.65
+   },
+   {
+    "rep": 15,
+    "answer": "4",
+    "confidence": 0.6
+   }
+  ],
+  "math-260": [
+   {
+    "rep": 0,
+    "answer": "-1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 1,
+    "answer": "-1",
+    "confidence": 0.8
+   },
+   {
+    "rep": 2,
+    "answer": "-1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 3,
+    "answer": "-1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 4,
+    "answer": "-1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 5,
+    "answer": "-1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 6,
+    "answer": "-1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 7,
+    "answer": "-1",
+    "confidence": 0.88
+   },
+   {
+    "rep": 8,
+    "answer": "-1",
+    "confidence": 0.88
+   },
+   {
+    "rep": 9,
+    "answer": "-1",
+    "confidence": 0.7
+   },
+   {
+    "rep": 10,
+    "answer": "-1",
+    "confidence": 0.8
+   },
+   {
+    "rep": 11,
+    "answer": "-1",
+    "confidence": 0.9
+   },
+   {
+    "rep": 12,
+    "answer": "-1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 13,
+    "answer": "-1",
+    "confidence": 0.92
+   },
+   {
+    "rep": 14,
+    "answer": "-1",
+    "confidence": 0.85
+   },
+   {
+    "rep": 15,
+    "answer": "-1",
+    "confidence": 0.85
+   }
+  ]
+ }
+}

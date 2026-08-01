@@ -1,4 +1,4 @@
-# Experimental Setup  (tact.tex lines 211-249, verbatim LaTeX)
+# Experimental Setup  (tact.tex lines 255-304, verbatim LaTeX)
 
 \section{Experimental Setup}\label{sec:exp}
 
@@ -8,7 +8,18 @@
 
 \textbf{Baselines.} \SC; CISC-power with $\gamma\in\{0.25,\dots,4\}$; \emph{CISC-devT}, the published dev-calibrated protocol (positive grid picked on dev); a binary ECE gate; \emph{SignGrid-dev}, the strongest trivial baseline (signed exponent grid picked on dev); and the test-set oracle over signed fixed exponents as the upper envelope. The group study adds the naive self-referential per-item method as a negative control and the per-item link oracle as the ceiling.
 
-\textbf{Pre-registered falsifiers.} F1: \TACT-dev significantly below the best fixed-$\gamma$ CISC at $\kappa{=}{+}0.6$. F2: either variant significantly below \SC{} anywhere on the sweep. F3: the label-free variant fails to beat the ECE gate on sweep average. F4: CISC-devT or SignGrid-dev matches \TACT-dev everywhere, including the distortion, heterogeneity, and small-dev cells.
+\textbf{Pre-registered falsifiers.} The decision rule is a fixed $\tau=0.02$
+accuracy tolerance, applied to the same $400$ paired items in every cell, and
+it is stated here because the protocol is offered as a contribution: a
+falsifier fires when the stated gap exceeds $\tau$. F1: \TACT-dev below the
+best fixed-$\gamma$ CISC at $\kappa{=}{+}0.6$ by more than $\tau$. F2: either
+variant below \SC{} by more than $\tau$ anywhere on the sweep. F3: the
+label-free variant fails to beat the ECE gate on sweep average. F4: CISC-devT
+or SignGrid-dev within $\tau$ of \TACT-dev everywhere, including the
+distortion, heterogeneity, and small-dev cells. A tolerance rather than a test
+is the weaker instrument, and it matters most for F4, which survives on a
+$0.035$ margin: $\tau$ was fixed in advance, but a paired test at these cell
+sizes would be the stronger protocol and is what the real-trace sections use.
 
 \begin{table}[t]
 \centering

@@ -1,7 +1,31 @@
-# Abstract  (tact.tex lines 34-41, verbatim LaTeX)
+# Abstract  (tact.tex lines 34-65, verbatim LaTeX)
 
 \begin{abstract}
-Confidence-weighted self-consistency (CISC and its successors) improves on majority voting when a frozen large language model's self-reported confidence is calibrated in \emph{direction}. Every published weighting scheme is structurally monotone increasing in confidence, so an anti-correlated channel poisons the vote instead of informing it, while binary dev-set gates survive inversion only by discarding genuinely discriminative signal. This paper presents \TACT{} (Trust-Anchored Confidence Tempering), which replaces the fixed confidence exponent with one \emph{derived} from the measured, signed, within-item discrimination of the channel: a pooled van~Elteren Somers' $D$ rank statistic with an item-clustered standard error, passed through positive-part James--Stein shrinkage and a Bayes-discriminant link. Written out, the method is a single expression whose exponent reduces to $\gamma=z\sqrt{2+z^2}$ with $z$ the probit of the shrunk pooled AUC, and it carries exact anchors: inside the shrinkage dead zone the vote is bit-identical to plain self-consistency, and a log-value feature map reproduces CISC-power. A label-free variant estimates the signed reliability from agreement pseudo-labels under a proven attenuation identity that guarantees sign consistency whenever the plurality-error rate is below one half, with conservative de-attenuation and echo alarms at the identifiability boundary. On a synthetic-oracle harness with paired trace pools, the label-free variant recovers anti-correlated channels that pin every published protocol to the majority-vote floor ($\kappa=-0.6$: $1.000$ vs.\ $0.807$), rank invariance beats the best exponent in the tested raw-value grid $\{0.25,0.5,1,2,4\}$ under monotone confidence compression ($1.000$ vs.\ $0.965$, the grid optimum sitting at its upper endpoint), and a per-group extension cracks the heterogeneity floor with zero paired losses to self-consistency ($0.940$ vs.\ $0.808$; $+79/-0$, $p=3.3\times10^{-24}$). Two real-trace campaigns on a frozen model confirm the premise and locate the binding constraint: within-item discrimination is positive on competition mathematics (pooled $\Dhat=+0.250$, $z=+2.54$), yet the stratum on which any such method can act, where the plurality is wrong and the correct answer is present in the pool, measures $3$--$7.5\%$ of items across five substrates in two domains, code generation with executable ground truth included. Abstention is therefore the correct default rather than a conservative one, and the dead zone implements it exactly. The paper further proves that per-item label-free adaptation is impossible under i.i.d.\ latent coupling, and pre-registers four falsification criteria, among them the published dev-calibrated CISC protocol as a designated killer baseline, all of which the method survived.
+Confidence-weighted self-consistency improves on majority voting when a frozen
+model's self-reported confidence is calibrated in \emph{direction}. Every
+published scheme is monotone increasing in confidence, so an anti-correlated
+channel poisons the vote, and binary calibration gates survive inversion only
+by discarding discriminative signal. \TACT{} derives the vote exponent from the
+measured, \emph{signed}, within-item discrimination of the channel: a pooled
+van~Elteren Somers' $D$ with an item-clustered standard error, positive-part
+James--Stein shrinkage, and a Bayes-discriminant link, which at the default
+base rate $\bar p=\tfrac12$ collapses to $\gamma=z\sqrt{2+z^2}$ with $z$ the
+probit of the shrunk pooled AUC. Inside the shrinkage dead zone the vote is
+bit-identical to plain self-consistency. A label-free variant estimates the
+sign from agreement pseudo-labels under an attenuation identity that
+guarantees sign consistency while the plurality-error rate stays below one
+half; past that boundary it mis-signs, which the paper measures and reports.
+On a synthetic-oracle harness it recovers anti-correlated channels that pin
+every published protocol to the majority floor ($1.000$ vs.\ $0.807$) and
+cracks the heterogeneity floor with zero paired losses ($0.940$ vs.\ $0.808$).
+Against a dev-picked \emph{signed} grid, which the sweep shows is a far
+stronger baseline than the published protocols, the advantage narrows to
+distortion, echo, and label-free operation. Two real-trace campaigns then
+bound the setting: the channel is null on saturated benchmarks
+($z=-1.24$) and positive on competition mathematics ($\Dhat=+0.250$,
+$z=+2.54$), yet the stratum any such method can act on measures $3$--$7.5\%$
+of items across five substrates in two domains, so abstention is the correct
+default and the dead zone implements it.
 \end{abstract}
 
 \begin{IEEEkeywords}
