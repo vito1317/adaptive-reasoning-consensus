@@ -251,7 +251,7 @@ With the feature map $\varphi^{\log}_{q,i}=\log c_{q,i}-\overline{\log c_q}$, th
 \begin{proposition}[Regularity]\label{prop:reg}
 The composite $g(\Dhat,\mathrm{SE})$ is continuous, odd, nondecreasing in $\Dhat$, nonincreasing in $\mathrm{SE}$ in magnitude, with $g(D,0^+)=\gamma^\ast(D)$.
 \end{proposition}
-Proofs are elementary and pinned by unit tests in the released code (98 tests; the permutation-verified null variance, the EB identity in \eqref{eq:js}, and the link derivation \eqref{eq:link} are each tested numerically).
+Proofs are elementary and pinned by unit tests in the released code (102 tests; the permutation-verified null variance, the EB identity in \eqref{eq:js}, and the link derivation \eqref{eq:link} are each tested numerically).
 
 \section{Label-Free Estimation}\label{sec:lf}
 
@@ -283,7 +283,20 @@ On plurality-wrong items with $|D_q|>0.3$, the items where a flip could win, the
 \end{proposition}
 
 \begin{proposition}[Two-world unidentifiability]\label{prop:twoworld}
-For any observed $(a,c)$, the worlds $\{\kappa>0,\ \text{minority correct}\}$ and $\{\kappa<0,\ \text{plurality correct}\}$ induce identical observable laws (constructively, $D$ computed against either truth satisfies $D^{w_1}=-D^{w_2}$). No label-free method can separate them.
+Let $w_1=\{\kappa>0,\ \text{minority correct}\}$ and
+$w_2=\{\kappa<0,\ \text{plurality correct}\}$. Computed against either truth,
+$D^{w_1}=-D^{w_2}$, so the statistic \TACT{} uses cannot order the two worlds.
+When the item has exactly two answer clusters the laws of $(a,c)$ coincide
+outright and no label-free method can separate them. With three or more
+\emph{populated} clusters they do not coincide: under $w_1$ only the correct
+minority carries elevated confidence, whereas under $w_2$ every non-plurality
+cluster does, so the conditional law of $c$ on a third cluster separates them
+(verified numerically; the two laws agree on the top two clusters and differ
+with $\mathrm{KS}\ p<10^{-15}$ on the third). The impossibility is therefore
+conditional on the pool being effectively binary, which is the regime the
+confident-echo cell occupies: $88\%$ of its items have no third cluster at
+$K{=}15$. \TACT{} does not exploit the residual signal, and no published
+method does either; doing so is left open.
 \end{proposition}
 
 Consequently the per-item oracle ($0.983$ in this harness) is unreachable, and the honest behaviour is to fall back to the global estimate, which \TACT's dead zone does: in the i.i.d.\ cell every variant returns bitwise \SC{} (zero discordant pairs).
@@ -392,7 +405,7 @@ falls between grid points and beats the grid optimum $\gamma=-1$
 ($0.615$ vs.\ $0.568$).
 
 \subsection{Rank invariance where raw values fail}
-Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confidences huddle near $0.5$, so every $c^{\gamma}$-family weight is nearly uniform: even the \emph{oracle} over raw-value policies reaches only $0.963$. \TACT's rank scores are untouched by the distortion and both variants reach $1.000$. Under the confident echo, dev labels reveal the inversion (high confidence $\Rightarrow$ wrong) and \TACT-dev counters with $\gamma=-1.20$, the best result in the field ($0.615$; $3.2\times$ the \SC{} floor); label-free, the duplicate-collapse alarm fires and the method correctly refuses---by Proposition~\ref{prop:twoworld} no label-free method could do better than a coin flip on the sign here, and pretending otherwise would be the real failure.
+Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confidences huddle near $0.5$, so every $c^{\gamma}$-family weight is nearly uniform: even the \emph{oracle} over raw-value policies reaches only $0.963$. \TACT's rank scores are untouched by the distortion and both variants reach $1.000$. Under the confident echo, dev labels reveal the inversion (high confidence $\Rightarrow$ wrong) and \TACT-dev counters with $\gamma=-1.20$, the best result in the field ($0.615$; $3.2\times$ the \SC{} floor); label-free, the duplicate-collapse alarm fires and the method correctly refuses---by Proposition~\ref{prop:twoworld} no label-free method could do better than a coin flip on the sign here, since $88\%$ of the cell's items are effectively binary and the escape the proposition identifies is unavailable on them; pretending otherwise would be the real failure.
 
 \begin{figure}[t]
 \centering
@@ -439,8 +452,8 @@ what establish the mid-range deficit. Against SignGrid-dev the honest margin is 
 \subsection{Verification of the implementation}\label{sec:tests}
 Because every claim in Sections~\ref{sec:method}--\ref{sec:hetero} is a
 mathematical property rather than an empirical trend, the released code pins
-each one with an executable test; the suite is 98 tests covering \TACT{} and the
-follow-on work, and runs in 82 seconds. Table~\ref{tab:tests}
+each one with an executable test; the suite is 102 tests covering \TACT{} and the
+follow-on work, and runs in 199 seconds. Table~\ref{tab:tests}
 maps propositions to the tests that would fail if they stopped holding.
 
 \begin{table}[t]
@@ -457,7 +470,7 @@ Claim & Evidence \\
 Prop.~\ref{prop:sc} (exact \SC) & identical incl.\ ties, 200 pools; dead-zone rate $>$70\% under $D{=}0$ \\
 Prop.~\ref{prop:cisc} (exact CISC) & identical vote shares, 100 pools \\
 Prop.~\ref{prop:ccn} (attenuation) & $\rho\in\{.1,.25,.4\}$, abs.\ $.06$ \\
-Props.~\ref{prop:selfreinf}--\ref{prop:twoworld} & 97.5\% \SC{} agreement; 4\% sign match \\
+Props.~\ref{prop:selfreinf}--\ref{prop:twoworld} & 97.5\% \SC{} agreement; 4\% sign match; the two-world boundary is pinned both ways (binary pools indistinguishable, a populated third cluster separates them at $\mathrm{KS}\ p<10^{-10}$) \\
 Rank invariance & 3 distortions $\times$ 100 pools \\
 Estimator internals & permutation null variance (3{,}000 draws, 10\% tol.), JS--EB identity to $10^{-12}$, link \eqref{eq:link} to rel.\ $10^{-9}$, permutation-invariance regression \\
 Rejected alternatives & Kish ESS and the SAFE-under-VoI guarantee each have a test asserting their \emph{failure} \\
