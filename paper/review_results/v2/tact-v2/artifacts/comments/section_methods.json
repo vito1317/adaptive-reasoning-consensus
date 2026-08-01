@@ -1,60 +1,66 @@
 [
   {
-    "title": "Proposition 7's sketch establishes a sign flip, not the identical observable laws it claims",
+    "title": "The Bayes-discriminant link assumes within-item normality of a statistic that is discrete and bounded by construction",
+    "quote": "Model $\\varphi\\,|\\,y\\sim\\mathcal{N}(\\mu_y,s^2)$ within item with the \\emph{mixture} standardized to unit variance",
+    "explanation": "The link of Eq. (11) is the sole theoretical justification for the magnitude of the exponent, and it is derived from a Gaussian model for phi. By Eq. (2) phi is the standardized van der Waerden score of a midrank, so at $m_q{=}4$ it takes four values before standardization. The paper handles the scale consequence (it standardizes by the realized sigma_q, noting '$0.62$ at $m{=}4$ but $0.95$ at $m{=}40$') and never the distributional one, in exactly the small-budget regime it advertises as transferable ('an exponent estimated at $m{=}40$ transfers to deployment at $m{=}8$'). The revision's new disclosure that the clip binds wherever the statistic saturates narrows where the link is load-bearing, which makes the small-m case the one place it still has to hold. State the m at which the Gaussian link is adequate, or add a discreteness correction.",
+    "comment_type": "methodology",
+    "severity": "major",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [],
+    "root_cause_key": "link-assumes-normality-of-discrete-phi",
+    "review_lane": "section_methods",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NOT_ADDRESSED"
+  },
+  {
+    "title": "Proposition 7's justification establishes a sign flip, not the identical observable laws it claims",
     "quote": "induce identical observable laws (constructively, $D$ computed against either truth satisfies $D^{w_1}=-D^{w_2}$)",
-    "explanation": "The claim is that two worlds induce identical laws over the observable (a, c). The parenthetical establishes only that the D statistic computed against the two candidate truths is sign-reversed. That is a statement about one functional of the data, not about equality of the observable distributions, and it does not by itself rule out some other functional separating the worlds. The proposition is plausible and may well be true under the stated i.i.d. coupling, but as written the justification is weaker than the statement, and the paper leans on this proposition twice more (Sec. V-B and the Discussion) to license 'No label-free method can separate them'.",
+    "explanation": "The claim is that two worlds induce identical laws over the observable (a, c); the parenthetical establishes only that one functional of the data is sign-reversed under the two candidate truths. That does not rule out some other functional separating them. The proposition may well be true under the stated i.i.d. coupling, but the paper leans on it twice more, in Sec. V-B and the Discussion, to license 'No label-free method can separate them', so the justification should match the strength of the statement.",
     "comment_type": "methodology",
     "severity": "moderate",
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "hetero",
-    "related_sections": [
-      "labelfree",
-      "discussion"
-    ],
+    "related_sections": [],
     "root_cause_key": "prop7-sketch-weaker-than-claim",
     "review_lane": "section_methods",
     "gate_blocker": false,
     "verdict": "CONFIRMED",
-    "missing_evidence": [
-      "a proof that the joint law of (a,c) coincides under both worlds, not only that D is sign-reversed"
-    ]
+    "reaudit_status": "NOT_ADDRESSED"
   },
   {
-    "title": "Propositions 5 and 6 are measured frequencies from one harness, presented as propositions",
+    "title": "Propositions 5 and 6 are still measured frequencies from one harness inside a proposition environment",
     "quote": "Empirically such a rule agrees with \\SC{} on $97.5\\%$ of items and its residual flips are net-harmful ($1$ right vs.\\ $9$ wrong per $400$ items).",
-    "explanation": "Proposition 5's first sentence is a genuine structural claim, but its quantitative content is an empirical frequency measured on 400 synthetic items at one seed. Proposition 6 is entirely a measured frequency ('the agreement statistic's sign matches the true sign only $4\\%$ of the time'). Numbers of that kind belong in Results with a sample size and an interval; stating them inside a proposition environment invites the reader to grant them the status of the theorems around them, and the blanket 'Proofs are elementary and pinned by unit tests' then covers them too.",
+    "explanation": "Proposition 5's opening is a structural claim but its quantitative content is a frequency measured on 400 synthetic items at one seed; Proposition 6 is entirely such a frequency. The blanket 'Proofs are elementary and pinned by unit tests' then extends to both. Restate them as remarks with sample sizes and intervals, or scope the proof sentence so it does not cover them.",
     "comment_type": "methodology",
     "severity": "moderate",
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "hetero",
-    "related_sections": [
-      "result"
-    ],
+    "related_sections": [],
     "root_cause_key": "empirical-frequencies-as-propositions",
     "review_lane": "section_methods",
     "gate_blocker": false,
     "verdict": "CONFIRMED",
-    "missing_evidence": [
-      "sample size, seed count, and interval for the 97.5%, 4%, and 1-vs-9 figures inside the proposition statements"
-    ]
+    "reaudit_status": "NOT_ADDRESSED"
   },
   {
-    "title": "Contribution C3 and Proposition 6 state the winner's-curse frequency under different conditioning",
+    "title": "Contribution C3 and Proposition 6 still state the winner's-curse frequency under different conditioning",
     "quote": "the observable sign opposes the truth $96\\%$ of the time",
-    "explanation": "C3 attaches the 96% figure to 'exactly the plurality-wrong items where a flip could help'. Proposition 6 states the complementary 4% but conditions additionally on $|D_q|>0.3$. The two are arithmetically consistent yet describe different item sets, so the Introduction claims a stronger, unconditional result than the proposition it summarizes. Either add the magnitude condition to C3 or report both frequencies.",
+    "explanation": "C3 attaches 96% to 'exactly the plurality-wrong items where a flip could help'; Proposition 6 states the complementary 4% but conditions additionally on $|D_q|>0.3$. Arithmetically consistent, different item sets, so the Introduction claims the stronger unconditional version. Add the magnitude condition to C3 or report both.",
     "comment_type": "claim_accuracy",
     "severity": "moderate",
     "confidence": "medium",
     "source_kind": "llm",
     "source_section": "introduction",
-    "related_sections": [
-      "hetero"
-    ],
+    "related_sections": [],
     "root_cause_key": "c3-prop6-conditioning-mismatch",
     "review_lane": "section_methods",
     "gate_blocker": false,
-    "verdict": "CONFIRMED"
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NOT_ADDRESSED"
   }
 ]

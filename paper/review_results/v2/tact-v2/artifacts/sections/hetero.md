@@ -1,4 +1,4 @@
-# Heterogeneity: Impossibility and Escape  (tact.tex lines 187-207, verbatim LaTeX)
+# Heterogeneity: Impossibility and Escape  (tact.tex lines 189-210, verbatim LaTeX)
 
 \section{Heterogeneity: Impossibility and Escape}\label{sec:hetero}
 
@@ -21,3 +21,4 @@ Consequently the per-item oracle ($0.983$ in this harness) is unreachable, and t
 
 \subsection{TACT-group}
 Real heterogeneity is typically indexed by an observable covariate (domain, question type). With $\kappa$ indexed by a group label, running the estimator per group keeps every group inside the operating regime of Sections~\ref{sec:method}--\ref{sec:lf}; groups with fewer than $30$ dev (or $60$ unlabeled) items fall back to the global estimate, which Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} show is the only defensible default.
+

@@ -1,108 +1,55 @@
 [
   {
-    "title": "The abstract's headline window range 2--7.5% cannot be reconstructed from Table VI",
-    "quote": "measures $2$--$7.5\\%$ of items across five substrates in two domains",
-    "explanation": "Table VI's five rows report 12% informative / 9% decisive, 11% decisive / 4% rescuable, 23% decisive / 3% rescuable, 3.56%, and 7.5%. The upper endpoint 7.5% is the LeetCode row, but no row supplies 2%: the smallest value printed is 3% (AIME/AMC rescuable) and the smallest window-definition value is 3.56%. The nearest source in the repository is results/error_shape_taxonomy.json, where rescuable_in_pool = 3 out of items = 119 gives 2.5% for MATH level-5 on all 119 registered problems, a different denominator from Table VI's 89-item evaluation set (4/89 = 4.5%). The lower endpoint of the paper's most portable empirical claim therefore comes from a denominator the table does not use, and is repeated in the Discussion.",
-    "comment_type": "presentation",
-    "severity": "major",
-    "confidence": "high",
-    "source_kind": "llm",
-    "source_section": "abstract",
-    "related_sections": [
-      "result",
-      "discussion"
-    ],
-    "root_cause_key": "window-range-not-reconstructible",
-    "review_lane": "notation_and_numeric_consistency",
-    "gate_blocker": false,
-    "verdict": "CONFIRMED",
-    "evidence_anchor": [
-      {
-        "type": "figure_or_table",
-        "text": "Table VI (tab:window)"
-      },
-      {
-        "type": "analysis_artifact",
-        "text": "results/error_shape_taxonomy.json math_l5: items 119, rescuable_in_pool 3"
-      }
-    ]
-  },
-  {
-    "title": "Table VI's single 'Window' column reports four different quantities across its five rows",
-    "quote": "Domain & Substrate & Window",
-    "explanation": "The column is headed 'Window', which Sec. V-I defines as the fraction of items where the plurality is wrong and the correct answer is present in the pool. Row 1 reports '$12\\%$ informative, $9\\%$ decisive', neither of which is that quantity; rows 2 and 3 report a decisive fraction and a rescuable fraction; rows 4 and 5 report a single bare percentage. A reader comparing across rows is comparing different measurements, and the abstract then quotes a range spanning them. One column per defined quantity, with the denominator in each cell, would fix this and would also make the 2--7.5% range checkable.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "llm",
-    "source_section": "result",
-    "related_sections": [
-      "abstract"
-    ],
-    "root_cause_key": "window-column-heterogeneous",
-    "review_lane": "notation_and_numeric_consistency",
-    "gate_blocker": false,
-    "verdict": "CONFIRMED",
-    "evidence_anchor": [
-      {
-        "type": "figure_or_table",
-        "text": "Table VI header vs rows"
-      }
-    ]
-  },
-  {
-    "title": "kappa denotes both the confidence coupling and a per-item normalizing constant",
+    "title": "kappa still denotes both the confidence coupling and a per-item normalizing constant",
     "quote": "the weights equal $\\smash{\\kappa_q\\,c_{q,i}^{\\,\\gamma}}$ with a per-item constant $\\kappa_q>0$",
-    "explanation": "kappa is the paper's most-used symbol: it indexes the confidence-correctness coupling in Eq. (1), the sweep axis in Table I, the heterogeneity design, and the abstract's headline cell ($\\kappa=-0.6$). Proposition 2 reuses it, subscripted by the same item index q that Eq. (1) uses, for an unrelated positive normalizer. Nothing announces the redefinition and there is no symbol table. Any free letter would do.",
+    "explanation": "kappa indexes the confidence-correctness coupling in Eq. (1), the sweep axis in Table I, the heterogeneity design, and the abstract's headline cell ($\\kappa=-0.6$). Proposition 2 reuses it, subscripted by the same item index q, for an unrelated positive normalizer, with no announcement and no symbol table. Any free letter would do.",
     "comment_type": "presentation",
     "severity": "moderate",
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "method",
-    "related_sections": [
-      "setup",
-      "result"
-    ],
+    "related_sections": [],
     "root_cause_key": "kappa-symbol-collision",
     "review_lane": "notation_and_numeric_consistency",
     "gate_blocker": false,
-    "verdict": "CONFIRMED"
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NOT_ADDRESSED"
   },
   {
-    "title": "AUC-hat in the one-line formula is the shrunken pooled statistic, but AUC was defined as the raw per-item statistic",
+    "title": "AUC-hat in the one-line formula is still the shrunken pooled statistic while AUC was defined per-item and raw",
     "quote": "\\gamma=z\\sqrt{2+z^{2}},\\qquad z=\\Phi^{-1}(\\widehat{\\mathrm{AUC}}),",
-    "explanation": "Eq. (5) defines $\\mathrm{AUC}_q = U_q/(n^1_q n^0_q)$, a raw per-item quantity. Eq. (15) writes $z=\\Phi^{-1}(\\widehat{\\mathrm{AUC}})$, where by Eq. (14) the argument must be the shrunk pooled value. The hat is the only mark distinguishing them, and the abstract compounds it with 'z the probit of the shrunk pooled AUC', a quantity never given that name in the body. Define the shrunk pooled AUC explicitly where Eq. (15) introduces it.",
+    "explanation": "Eq. (5) defines $\\mathrm{AUC}_q = U_q/(n^1_q n^0_q)$, raw and per-item. Eq. (15) writes $z=\\Phi^{-1}(\\widehat{\\mathrm{AUC}})$, where by Eq. (14) the argument must be the shrunk pooled value. The hat is the only distinguishing mark, and the abstract compounds it with 'the probit of the shrunk pooled AUC', a name the body never defines. Define it where Eq. (15) introduces it.",
     "comment_type": "presentation",
     "severity": "moderate",
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "method",
-    "related_sections": [
-      "abstract"
-    ],
+    "related_sections": [],
     "root_cause_key": "auc-hat-overload",
     "review_lane": "notation_and_numeric_consistency",
     "gate_blocker": false,
-    "verdict": "CONFIRMED"
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NOT_ADDRESSED"
   },
   {
-    "title": "The LeetCode error-shape composition sums to 101% and contradicts the ratio in its own sentence",
-    "quote": "composition is the same shape at $75\\%$ saturated, $18\\%$ capability wall,",
-    "explanation": "75 + 18 + 8 = 101. results/g1_window.json gives N = 40 with baseline = 0.75 (30 items saturated) and window_n = 3, leaving 7 capability-wall items, i.e. 75% / 17.5% / 7.5% exactly. The 7-item figure is independently confirmed two sentences later ('The seven capability-wall problems produced zero correct solutions in $224$ further attempts' = 7 x 32). The printed 8% also contradicts the same sentence's own '$3/40=7.5\\%$'.",
+    "title": "Table VI's single 'Window' column still reports four different quantities across five rows",
+    "quote": "Domain & Substrate & Window",
+    "explanation": "Sec. V-I defines the window as the fraction of items where the plurality is wrong and the correct answer is in the pool. Row 1 gives '$12\\%$ informative, $9\\%$ decisive', neither of which is that quantity; rows 2 and 3 give decisive and rescuable fractions; rows 4 and 5 give a bare percentage. The abstract's range now correctly bottoms out at the table's minimum, which makes the column's heterogeneity the remaining obstacle to checking it. One column per defined quantity, with the denominator in each cell.",
     "comment_type": "presentation",
-    "severity": "minor",
+    "severity": "moderate",
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "result",
     "related_sections": [],
-    "root_cause_key": "error-shape-sums-101",
+    "root_cause_key": "window-column-heterogeneous",
     "review_lane": "notation_and_numeric_consistency",
     "gate_blocker": false,
     "verdict": "CONFIRMED",
+    "reaudit_status": "NOT_ADDRESSED",
     "evidence_anchor": [
       {
-        "type": "analysis_artifact",
-        "text": "results/g1_window.json: N 40, baseline 0.75, window_n 3, window 0.075"
+        "type": "figure_or_table",
+        "text": "Table VI header vs rows"
       }
     ]
   }

@@ -1,4 +1,4 @@
-# Results  (tact.tex lines 248-509, verbatim LaTeX)
+# Results  (tact.tex lines 250-529, verbatim LaTeX)
 
 \section{Results}\label{sec:results}
 
@@ -24,6 +24,23 @@ Confident echo & .200 & .200 & .550 & \textbf{.585} & .200$^{\dagger}$\\
 \multicolumn{6}{l}{\footnotesize guarantee of Prop.~\ref{prop:ccn} working as stated.}
 \end{tabular}
 \end{table}
+
+
+\textbf{Where the derived exponent actually operates.} The four cells that
+carry the headline $1.000$ ($\kappa=\pm0.4,\pm0.6$) are cells where $\Dhat$
+saturates at $\pm1$, so the link returns $\gamma^\ast\approx\pm38$ and the cap
+$\gamma_{\max}$ is what the vote sees; the derived magnitude is not doing the
+work there, the sign is. Conversely, at $\kappa=\pm0.1,\pm0.2$, where the
+derived value lands strictly inside the cap ($\pm1.06$ to $\pm2.80$),
+\TACT-dev trails the dev-picked signed grid on all four cells ($0.880$ vs.\
+$0.892$; $0.902$ vs.\ $0.917$; $0.978$ vs.\ $0.993$; $0.988$ vs.\ $0.993$).
+Read together: against the \emph{published} protocols the advantage is large
+and comes from representing the sign at all, whereas against a signed grid the
+analytic map is not better at choosing a magnitude on these cells. Its
+advantage over the grid is elsewhere, in the three cells named in C4, and the
+one place the interpolation itself pays is confident echo, where $\gamma=-1.198$
+falls between grid points and beats the grid optimum $\gamma=-1$
+($0.585$ vs.\ $0.550$).
 
 \subsection{Rank invariance where raw values fail}
 Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confidences huddle near $0.5$, so every $c^{\gamma}$-family weight is nearly uniform: even the \emph{oracle} over raw-value policies reaches only $0.965$. \TACT's rank scores are untouched by the distortion and both variants reach $1.000$. Under the confident echo, dev labels reveal the inversion (high confidence $\Rightarrow$ wrong) and \TACT-dev counters with $\gamma=-1.20$, the best result in the field ($0.585$; three times the \SC{} floor); label-free, the duplicate-collapse alarm fires and the method correctly refuses---by Proposition~\ref{prop:twoworld} no label-free method could do better than a coin flip on the sign here, and pretending otherwise would be the real failure.
@@ -70,8 +87,8 @@ With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0
 \subsection{Verification of the implementation}\label{sec:tests}
 Because every claim in Sections~\ref{sec:method}--\ref{sec:hetero} is a
 mathematical property rather than an empirical trend, the released code pins
-each one with an executable test; the suite is 76 tests for \TACT{} (84
-including the follow-on work) and runs in 14 seconds. Table~\ref{tab:tests}
+each one with an executable test; the suite is 98 tests covering \TACT{} and the
+follow-on work, and runs in 82 seconds. Table~\ref{tab:tests}
 maps propositions to the tests that would fail if they stopped holding.
 
 \begin{table}[t]
@@ -226,8 +243,8 @@ solved $8$ times each and graded against the benchmark's hidden suites, with
 the baseline taken as the largest behavioural cluster over probe inputs
 (never expected outputs). The window is $3/40=7.5\%$ (CI$_{95}$
 $2.6$--$19.9\%$): wider than label-free QA, but the same order, and the
-composition is the same shape at $75\%$ saturated, $18\%$ capability wall,
-$8\%$ rescuable. Nor does budget open it. The seven capability-wall problems
+composition is the same shape at $30$ saturated, $7$ capability wall and $3$
+rescuable, i.e.\ $75/17.5/7.5\%$. Nor does budget open it. The seven capability-wall problems
 produced zero correct solutions in $224$ further attempts (per-problem $95\%$
 upper bound on the pass rate $0.088$), and extrapolating oracle@$N$ shows the
 window saturating by $N{=}32$.
@@ -262,3 +279,4 @@ limits outright, and that condition presents as a candidate failure rather
 than as an error. Studies that grade by execution should report their
 reference-solution pass rate for the same reason a calibration curve is
 reported: without it, a broken harness and a capability wall look identical.
+

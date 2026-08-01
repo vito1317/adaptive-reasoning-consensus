@@ -1,0 +1,60 @@
+{
+  "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex",
+  "reviewed_commit": "4d75431",
+  "previous_commit": "62bc7c7",
+  "FULLY_ADDRESSED": {
+    "no-tuned-constant-anywhere": "Replaced with 'Nothing in it is fitted to outcomes' plus an explicit disclosure that the clip binds where D-hat saturates, cross-referenced to Results.",
+    "gamma-max-clip-not-derived": "New Results paragraph 'Where the derived exponent actually operates' names the four saturated cells, states the cap is what the vote sees, and reports all four mid-range cells where TACT trails the signed grid with exact accuracies. Residual: C1 in the Introduction still reads 'derived, not grid-searched' without a clause.",
+    "oracle-grid-boundary-truncation": "Abstract and C1 now name the grid {0.25,0.5,1,2,4}, give 1.000 vs 0.965, and state 'that grid optimum lies at the largest exponent tried, so the comparison bounds the grid, not the whole family'.",
+    "cisc-anchor-requires-other-feature-map": "Conclusion now reads 'an exact fallback at one end ... and an exact correspondence to CISC-power at the other under the log-value feature map (the shipped default uses van der Waerden scores, so that correspondence is a property of the family, not of the shipped configuration)'.",
+    "stale-pre-real-trace-discussion": "'All quantitative claims' scoped to 'The accuracy claims'; the 'Validation on real LLM traces is the remaining step' sentence deleted; a new sentence states what the two campaigns do and do not test.",
+    "error-shape-sums-101": "Now '30 saturated, 7 capability wall and 3 rescuable, i.e. 75/17.5/7.5%' - counts plus percentages, summing to 100.",
+    "window-range-not-reconstructible": "Abstract and Discussion range changed from 2--7.5% to 3--7.5%, which is reconstructible from Table VI's minimum row (AIME/AMC, 3% rescuable).",
+    "test-suite-count-runtime-mismatch": "76/84 replaced by 98 in both places, matching the collected suite exactly. Runtime restated as 82 s, which sits inside the 49.7-106.0 s range measured over repeated runs here - my earlier single 49.7 s measurement was not a stable estimate and the original runtime objection is withdrawn.",
+    "uncited-bib-entries": "kuhn2023semantic and rasc2024 removed; 26 cited keys, 26 bibitems, none uncited.",
+    "ieee-reference-order": "thebibliography reordered to first-citation order; verified no mismatch at any position. URLs added to all 26 entries."
+  },
+  "PARTIALLY_ADDRESSED": {
+    "unreported-unfavourable-paired-test": "The new Results paragraph now reports all four cells where TACT-dev trails SignGrid-dev with exact accuracies, which is the substance. The exact McNemar at kappa=-0.2 (0/6, p=0.03125) is still not given, in a paper that reports p=3.3e-24 and p=1 elsewhere.",
+    "signgrid-omitted-from-headline": "The new Results paragraph gives the honest side-by-side picture. The abstract still names only CISC-devT as the designated killer baseline and still frames the headline as 1.000 vs 0.807 without noting SignGrid-dev ties it bit-for-bit there.",
+    "motivation-undercut-by-own-window-measurement": "The Discussion now states that neither real substrate had a stratum 'large enough for any method to demonstrate a gain', which joins two of the three steps. The paper still does not say why a method whose addressable stratum it measures at 3-7.5% is worth adopting, and still leads with the estimator rather than the boundary.",
+    "semantic-dedup-remedy-uncited": "No longer uncited because the reference was deleted. The substantive gap is unchanged and the evidence anchor is now weaker: the standard published remedy for the paper's sharpest unguarded failure mode (semantic-equivalence clustering, since deduplication is purely lexical) is no longer even in the reference list."
+  },
+  "NEW": {
+    "gamma-star-38-miscomputed": "The new disclosure paragraph states the link returns gamma* ~= +/-38 in the saturated cells. Recomputed with the paper's own gamma_of(): the unclipped values are +/-12.1 at kappa=+/-0.6 and in all three distortion cells, and -8.4/+9.8 at kappa=+/-0.4. The paragraph's conclusion is unaffected because every value still exceeds gamma_max=4, but the number invites recomputation and does not survive it.",
+    "f4-unreachable-now-self-contradictory": "The new paragraph reports SignGrid-dev at 0.965 under compression and 0.550 in confident echo, i.e. the grid baselines reach both cells and lose by 0.035. Sec. V-D still says F4 held because 'the distortion and echo cells are unreachable by either grid baseline'. The revision has made two paragraphs of the same section contradict each other."
+  },
+  "NOT_ADDRESSED": [
+    "abstract-length-and-math",
+    "abstract-omits-unguarded-failure",
+    "asymmetric-cap-across-arms",
+    "auc-hat-overload",
+    "borda2025-miscategorized-not-run",
+    "both-campaigns-confirm-premise",
+    "c3-prop6-conditioning-mismatch",
+    "cannot-represent-vs-not-searched",
+    "citation-stacking",
+    "contributions-omit-real-trace",
+    "distortion-cells-inside-invariance-group",
+    "empirical-frequencies-as-propositions",
+    "f4-asymmetric-falsifier",
+    "falsifier-tolerance-undisclosed",
+    "gamma-max-clip-not-derived",
+    "kappa-symbol-collision",
+    "keyword-count",
+    "link-assumes-normality-of-discrete-phi",
+    "no-availability-statement",
+    "page-budget-and-venue",
+    "pbar-half-special-case-as-general",
+    "prop7-sketch-weaker-than-claim",
+    "related-work-is-a-ledger",
+    "rlev-voi-uncitable",
+    "single-seed-no-dispersion",
+    "table1-float-before-results",
+    "table2-footnote-after-bottomrule",
+    "theory-increment-mislocated",
+    "three-times-sc-floor-rounding",
+    "universal-default-from-five-small-samples",
+    "window-column-heterogeneous"
+  ]
+}

@@ -1,4 +1,4 @@
-# Experimental Setup  (tact.tex lines 209-246, verbatim LaTeX)
+# Experimental Setup  (tact.tex lines 211-249, verbatim LaTeX)
 
 \section{Experimental Setup}\label{sec:exp}
 
@@ -38,3 +38,4 @@ $+0.6$ & .782 & .782 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
 \caption{Main result on the confidence-usage frontier. \TACT-dev and the fully label-free \TACT-LF track the signed oracle across the sweep; CISC-devT and the ECE gate sit at the \SC{} floor for all $\kappa<0$.}
 \label{fig:sweep}
 \end{figure}
+

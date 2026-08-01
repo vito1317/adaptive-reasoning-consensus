@@ -1,4 +1,4 @@
-# PDF rendered text (tact.pdf, pymupdf)
+# PDF rendered text (tact.pdf)
 
 <!-- PDF PAGE 1/9 -->
 TACT: Trust-Anchored Confidence Tempering for
@@ -32,25 +32,27 @@ rate is below one half, with conservative de-attenuation and
 echo alarms at the identifiability boundary. On a synthetic-
 oracle harness with paired trace pools, the label-free variant
 recovers anti-correlated channels that pin every published
-protocol to the majority-vote floor (κ = −0.6: 1.000 vs. 0.807),
-rank invariance beats the oracle over the entire raw-value
-weight family under monotone confidence compression (1.000
-vs. 0.965), and a per-group extension cracks the heterogeneity
-floor with zero paired losses to self-consistency (0.940 vs. 0.808;
-+79/−0, p = 3.3×10−24). Two real-trace campaigns on a frozen
-model confirm the premise and locate the binding constraint:
-within-item discrimination is positive on competition math-
-ematics (pooled bD = +0.250, z = +2.54), yet the stratum
-on which any such method can act, where the plurality is
-wrong and the correct answer is present in the pool, measures
-2–7.5% of items across five substrates in two domains, code
-generation with executable ground truth included. Abstention
-is therefore the correct default rather than a conservative one,
-and the dead zone implements it exactly. The paper further
-proves that per-item label-free adaptation is impossible under
-i.i.d. latent coupling, and pre-registers four falsification criteria,
-among them the published dev-calibrated CISC protocol as a
-designated killer baseline, all of which the method survived.
+protocol to the majority-vote floor (κ = −0.6: 1.000 vs.
+0.807), rank invariance beats the best exponent in the tested
+raw-value grid {0.25, 0.5, 1, 2, 4} under monotone confidence
+compression (1.000 vs. 0.965, the grid optimum sitting at
+its upper endpoint), and a per-group extension cracks the
+heterogeneity floor with zero paired losses to self-consistency
+(0.940 vs. 0.808; +79/ −0, p = 3.3 × 10−24). Two real-trace
+campaigns on a frozen model confirm the premise and locate
+the binding constraint: within-item discrimination is positive
+on competition mathematics (pooled bD = +0.250, z = +2.54),
+yet the stratum on which any such method can act, where
+the plurality is wrong and the correct answer is present in
+the pool, measures 3–7.5% of items across five substrates in
+two domains, code generation with executable ground truth
+included. Abstention is therefore the correct default rather than
+a conservative one, and the dead zone implements it exactly.
+The paper further proves that per-item label-free adaptation
+is impossible under i.i.d. latent coupling, and pre-registers four
+falsification criteria, among them the published dev-calibrated
+CISC protocol as a designated killer baseline, all of which the
+method survived.
 Index Terms—large language models, self-consistency, confi-
 dence calibration, weighted voting, label-free estimation, rank
 statistics
@@ -59,21 +61,21 @@ Self-consistency (sc) [1] improves the reasoning accuracy
 of a frozen large language model (LLM) by sampling K
 chain-of-thought traces and returning the plurality answer.
 Because each trace can also report a confidence score
-(verbalized [6], [7], derived from token log-probabilities, or
-elicited as P(True) [5]), a natural refinement is to weight
+(verbalized [2], [3], derived from token log-probabilities, or
+elicited as P(True) [4]), a natural refinement is to weight
 votes by confidence. Confidence-Informed Self-Consistency
-(CISC) [2] showed that this recovers the accuracy of plain
+(CISC) [5] showed that this recovers the accuracy of plain
 sc at a fraction of the sampling budget, and introduced
 Within-Question Discrimination (WQD) to argue that
 discrimination, not calibration, is the property that makes
 a confidence signal useful for voting.
-This refinement carries a structural fragility that, to the
-author’s knowledge, no published method addresses. Every
-existing weighting scheme is monotone increasing in confi-
-dence, including CISC’s softmax weights, reliability-aware
-pseudo-counts [11], and warmup-thresholded filtering [12].
-The trust decision is which magnitude of up-weighting to
-apply; the possibility that the channel is anti-correlated
+This refinement carries a structural fragility that, to
+the author’s knowledge, no published method addresses.
+Every existing weighting scheme is monotone increasing in
+confidence, including CISC’s softmax weights, reliability-
+aware pseudo-counts [6], and warmup-thresholded filtering
+[7]. The trust decision is which magnitude of up-weighting
+to apply; the possibility that the channel is anti-correlated
 with correctness is not representable. Yet miscalibration
 of direction is not exotic: reinforcement fine-tuning is
 known to distort verbalized confidence, distribution shift
@@ -87,7 +89,7 @@ native, a binary dev-set gate that disables the channel
 when calibration error is high, survives the inversion but
 discards discriminative signal wholesale: a systematically
 under-confident yet perfectly ranked channel fails an ECE
-gate for reasons irrelevant to voting utility [2], [8].
+gate for reasons irrelevant to voting utility [5], [8].
 This paper frames the problem as estimating one scalar:
 the signed within-item discrimination of the confidence
 channel, and mapping that scalar, with its uncertainty, to
@@ -104,17 +106,20 @@ floor, then mapped through a Bayes-discriminant link with
 a mixture-variance correction. The construction carries
 exact anchors: inside the shrinkage dead zone the vote
 is bit-identical to plain sc (a shared code path), and
-the log-value feature map reproduces CISC-power exactly
 
 <!-- PDF PAGE 2/9 -->
+the log-value feature map reproduces CISC-power exactly
 (Section IV). Because φ depends on confidence only
 through within-item ranks, the entire method is invariant
 to every strictly monotone distortion of the confidence
-scale; under monotone compression it beats the oracle over
-the whole raw-value weight family (1.000 vs. 0.965).
+scale; under monotone compression it beats the best
+exponent in the tested raw-value grid {0.25, 0.5, 1, 2, 4}
+(1.000 vs. 0.965); that grid optimum lies at the largest
+exponent tried, so the comparison bounds the grid, not
+the whole family.
 C2: Label-free estimation of the signed reliability. The
 crowdsourcing lineage estimates annotator reliability from
-cross-annotator covariance [13], [16]; a single exchange-
+cross-annotator covariance [9], [10]; a single exchange-
 able confidence channel from one model offers no such
 structure. The signed discrimination is estimated from
 agreement pseudo-labels (deduplication-weighted plurality
@@ -153,22 +158,15 @@ concentrates in three cells: monotone distortion, confident
 echo, and label-free operation, which no grid can perform.
 II. Related Work
 Confidence-weighted self-consistency. sc [1] treats sam-
-pled traces as i.i.d. votes. CISC [2] weights votes by
+pled traces as i.i.d. votes. CISC [5] weights votes by
 softmax-normalized confidence with a temperature tuned
 on a labeled split, and its WQD metric makes the
 discrimination-vs-calibration point that also motivates
-this
-work;
-the
-rank-calibration
-line
-[8]
-reaches
-the
-same conclusion independently. Weighted variants [9],
-[10] and early-stopping families [3], [4] refine the bud-
-get; reliability-aware pseudo-counts [11] and warmup-
-thresholded filtering [12] adapt online but only re-scale
+this work; the rank-calibration line [8] reaches the same
+conclusion independently. Weighted variants [11], [12]
+and early-stopping families [13], [14] refine the bud-
+get; reliability-aware pseudo-counts [6] and warmup-
+thresholded filtering [7] adapt online but only re-scale
 positive trust. None of these can represent, much less
 estimate, a negative confidence–correctness association.
 The dev-calibrated variant must therefore be positioned
@@ -177,9 +175,9 @@ calibrated sc↔CISC interpolation, so the novelty of tact-
 dev lies in the sign, the rank invariance, and the analytic
 (grid-free) map, not in dev calibration itself.
 Reliability estimation without labels. Estimating worker
-reliability from agreement is classical [13], [14], [15];
-spectral meta-learners [16] and recent LLM ensemble work
-[17], [18] exploit covariance across multiple predictors. The
+reliability from agreement is classical [9], [15], [16]; spectral
+meta-learners [10] and recent LLM ensemble work [17],
+[18] exploit covariance across multiple predictors. The
 setting here differs: one exchangeable channel from one
 model, per-item vote structure, and the known failure
 of agreement proxies under correlated errors—met here
@@ -226,10 +224,6 @@ collapses on κ < 0; an ECE gate never opens off the well-
 calibrated diagonal; a sign-corrected AUC gate over dev
 labels nearly saturates the homogeneous sweep. This pre-
 measurement fixes where a new method can legitimately
-claim wins—monotone distortion of the confidence scale,
-covariate heterogeneity, small dev sets, and label-free
-operation—and the evaluation holds itself to exactly those
-cells.
 
 <!-- PDF PAGE 3/9 -->
 Fig. 1.
@@ -239,6 +233,10 @@ A trivial sign-corrected AUC gate (green) nearly saturates the
 homogeneous sweep; the headroom for any new method (shaded)
 concentrates in the mid-range and, off this plot, in distortion,
 heterogeneity, and label-free cells.
+claim wins—monotone distortion of the confidence scale,
+covariate heterogeneity, small dev sets, and label-free
+operation—and the evaluation holds itself to exactly those
+cells.
 IV. TACT
 A. Vote family
 Within item q, let Rq,i be the midrank of cq,i (ties
@@ -393,16 +391,18 @@ p
 z = Φ−1( [
 AUC),
 (11)
-one probit and one square root, with no tuned constant
-anywhere: ν is a significance level and γmax a clip, and
-both are fixed before any data is seen. The dead zone
-is now visible as a single condition, |ζ| ≤ν, on which γ
-is identically zero and (9) is bitwise sc by Proposition 1.
-Equations (9)–(11) are verified equivalent to the shipped
-implementation over randomised inputs including every
-boundary (tests/test_formula.py).
+one probit and one square root. Nothing in it is fitted to
+outcomes: ν is a significance level and γmax a clip, both
+fixed before any data is seen. The clip is not cosmetic,
+though. Where bD saturates it binds, and the vote then sees
+γmax rather than the derived magnitude (Section VIII).
+The dead zone is now visible as a single condition, |ζ| ≤ν,
+on which γ is identically zero and (9) is bitwise sc by
 
 <!-- PDF PAGE 4/9 -->
+Proposition 1. Equations (9)–(11) are verified equivalent
+to the shipped implementation over randomised inputs
+including every boundary (tests/test_formula.py).
 E. Anchor properties
 Proposition 1 (Exact sc reduction). At γ = 0, (3) equals
 plain sc as a function on every trace pool, including tie-
@@ -421,7 +421,7 @@ Proposition 3 (Regularity). The composite g( bD, SE) is
 continuous, odd, nondecreasing in bD, nonincreasing in SE
 in magnitude, with g(D, 0+) = γ∗(D).
 Proofs are elementary and pinned by unit tests in
-the released code (76 tests; the permutation-verified null
+the released code (98 tests; the permutation-verified null
 variance, the EB identity in (7), and the link derivation
 (8) are each tested numerically).
 V. Label-Free Estimation
@@ -444,7 +444,7 @@ The identity fails when the flip is caused by confidence,
 that is, under a confident echo. There the observable law
 under {majority right, D < 0} and {majority wrong via
 confident echo, D > 0} is identical (the two-root ambiguity
-of [16] restated for a single channel), so any label-free
+of [10] restated for a single channel), so any label-free
 guarantee is necessarily conditional; it is stated as such
 rather than papered over.
 C. De-attenuation and alarms
@@ -508,11 +508,6 @@ group inside the operating regime of Sections IV–V; groups
 with fewer than 30 dev (or 60 unlabeled) items fall back
 to the global estimate, which Propositions 5–7 show is the
 only defensible default.
-VII. Experimental Setup
-Harness. A cluster-mixture oracle generates, per item,
-up to Kmax=20 cached traces with answers, confidences
-(1), and two similarity channels; all methods replay iden-
-tical pools (paired comparisons, exact McNemar tests).
 
 <!-- PDF PAGE 5/9 -->
 TABLE I
@@ -599,6 +594,11 @@ oracle
 1.000
 1.000
 1.000
+VII. Experimental Setup
+Harness. A cluster-mixture oracle generates, per item,
+up to Kmax=20 cached traces with answers, confidences
+(1), and two similarity channels; all methods replay iden-
+tical pools (paired comparisons, exact McNemar tests).
 Voting budget K=15; 400 items per cell on the sweep,
 600 for the group study; dev splits of 200 (primary) and
 50 (small-dev).
@@ -638,12 +638,6 @@ gate never opens (dev ECE ranges 0.10–0.80 across the
 sweep while the signal’s discrimination is perfect at the
 extremes). Second, the label-free variant matches the 200-
 label variant nearly point-for-point—at κ=−0.6 the raw
-agreement statistic is bDg = −0.81 with z = −17.6, and the
-CCN identity’s sign guarantee holds as predicted, yielding
-1.000 with zero labels. Third, at κ = 0 the dead zone
-returns γ = 0 exactly, so the paired accuracy difference
-to sc is identically zero—“non-inferior” is replaced by
-“identical.”
 Fig. 2.
 Main result on the confidence-usage frontier. tact-dev and
 the fully label-free tact-LF track the signed oracle across the sweep;
@@ -690,6 +684,37 @@ Confident echo
 .200†
 †alarm fires and the method refuses to leave sc—the conditional
 guarantee of Prop. 4 working as stated.
+agreement statistic is bDg = −0.81 with z = −17.6, and the
+CCN identity’s sign guarantee holds as predicted, yielding
+1.000 with zero labels. Third, at κ = 0 the dead zone
+returns γ = 0 exactly, so the paired accuracy difference
+to sc is identically zero—“non-inferior” is replaced by
+“identical.”
+Where the derived exponent actually operates. The
+four cells that carry the headline 1.000 (κ = ±0.4, ±0.6)
+are cells where bD saturates at ±1, so the link returns
+γ∗≈±38 and the cap γmax is what the vote sees; the
+derived magnitude is not doing the work there, the sign
+is. Conversely, at κ = ±0.1, ±0.2, where the derived
+value lands strictly inside the cap (±1.06 to ±2.80), tact-
+dev trails the dev-picked signed grid on all four cells
+(0.880 vs. 0.892; 0.902 vs. 0.917; 0.978 vs. 0.993; 0.988
+vs. 0.993). Read together: against the published protocols
+the advantage is large and comes from representing the
+sign at all, whereas against a signed grid the analytic map
+is not better at choosing a magnitude on these cells. Its
+advantage over the grid is elsewhere, in the three cells
+named in C4, and the one place the interpolation itself
+pays is confident echo, where γ = −1.198 falls between
+grid points and beats the grid optimum γ = −1 (0.585 vs.
+0.550).
+
+<!-- PDF PAGE 6/9 -->
+Fig. 3.
+Adversarial regimes. Dotted line: the oracle over raw-value
+weights. Left group of bars: rank invariance beats that family under
+compression; right: the labeled variant counters the confident echo
+while the label-free variant alarms and refuses.
 B. Rank invariance where raw values fail
 Under monotone compression (Table II, Fig. 3) all
 confidences huddle near 0.5, so every cγ-family weight
@@ -715,13 +740,18 @@ the per-item link oracle, with zero paired losses to sc over
 legitimate method sits at the floor with zero discordant
 pairs, and the naive self-referential control lands slightly
 below it—the empirical face of Propositions 5–7. One
-
-<!-- PDF PAGE 6/9 -->
-Fig. 3.
-Adversarial regimes. Dotted line: the oracle over raw-value
-weights. Left group of bars: rank invariance beats that family under
-compression; right: the labeled variant counters the confident echo
-while the label-free variant alarms and refuses.
+observation is reported as-is rather than tuned for: the
+label-free variant outperforms the dev variant in the
+grouped cell (0.940 vs. 0.923) because its lower exponent
+cap (2 vs. 4) regularizes better when |D| ≈1; cap
+robustness is left as an ablation.
+D. Small dev sets and falsifiers
+With dev n=50 the conclusions are unchanged (1.000 at
+|κ|=0.6; 0.978 at −0.2): the SE-aware shrinkage degrades
+smoothly rather than catastrophically. All four falsifiers
+survived: F1 (1.000 vs. 1.000), F2 (bit-identical at κ=0;
+never significantly below sc elsewhere), F3 (sweep means
+0.954 vs. 0.811), and F4 (the distortion and echo cells are
 TABLE III
 Heterogeneity study (600 paired items; K=15).
 Method
@@ -745,18 +775,11 @@ Naive per-item (neg. control)
 Per-item link oracle (ceiling)
 .947
 .983
-observation is reported as-is rather than tuned for: the
-label-free variant outperforms the dev variant in the
-grouped cell (0.940 vs. 0.923) because its lower exponent
-cap (2 vs. 4) regularizes better when |D| ≈1; cap
-robustness is left as an ablation.
-D. Small dev sets and falsifiers
-With dev n=50 the conclusions are unchanged (1.000 at
-|κ|=0.6; 0.978 at −0.2): the SE-aware shrinkage degrades
-smoothly rather than catastrophically. All four falsifiers
-survived: F1 (1.000 vs. 1.000), F2 (bit-identical at κ=0;
-never significantly below sc elsewhere), F3 (sweep means
-0.954 vs. 0.811), and F4 (the distortion and echo cells are
+Fig. 4. Structured vs. i.i.d. heterogeneity. Left: with an observable
+covariate, per-group tact (label-free) approaches the per-item oracle
+from the 0.808 floor with zero losses to sc. Right: the provably closed
+i.i.d. cell—every legitimate method at the floor; the negative control
+slightly below it.
 unreachable by either grid baseline). Against SignGrid-
 dev the honest margin is narrow on the homogeneous
 sweep—tact even trails by 0.005–0.015 in the mid-range,
@@ -767,10 +790,10 @@ no grid can perform.
 E. Verification of the implementation
 Because every claim in Sections IV–VI is a mathemat-
 ical property rather than an empirical trend, the released
-code pins each one with an executable test; the suite is 76
-tests for tact (84 including the follow-on work) and runs
-in 14 seconds. Table IV maps propositions to the tests
-that would fail if they stopped holding.
+code pins each one with an executable test; the suite is
+98 tests covering tact and the follow-on work, and runs in
+82 seconds. Table IV maps propositions to the tests that
+would fail if they stopped holding.
 Two
 entries
 deserve
@@ -778,11 +801,21 @@ comment.
 The
 permutation-
 invariance test was added after a defect in which the
-Fig. 4. Structured vs. i.i.d. heterogeneity. Left: with an observable
-covariate, per-group tact (label-free) approaches the per-item oracle
-from the 0.808 floor with zero losses to sc. Right: the provably closed
-i.i.d. cell—every legitimate method at the floor; the negative control
-slightly below it.
+memoisation key made the test pass while the estimator
+itself was order-dependent by up to 0.10; it now calls
+the internal routine directly. And the last two rows are
+counter-tests that assert failure of rejected alternatives —
+the Kish effective-sample-size formulation and the claim
+that the shipped default honours the SAFE stopping
+guarantee — so that neither can be silently reinstated
+by a later change.
+F. Real-trace validation
+Validation on real traces used Claude Haiku 4.5 as
+the frozen model: 100 items (50 GSM8K [23], 50 Com-
+monsenseQA), 12 independent chain-of-thought traces
+per item with verbalized confidence (1,200 traces total),
+
+<!-- PDF PAGE 7/9 -->
 TABLE IV
 What the test suite verifies. Every proposition in the paper has an
 executable counterpart; the counter-tests fail deliberately on
@@ -873,21 +906,6 @@ frozen_default_
 breaks_guarantee
 asserts the viola-
 tion
-memoisation key made the test pass while the estimator
-itself was order-dependent by up to 0.10; it now calls
-the internal routine directly. And the last two rows are
-counter-tests that assert failure of rejected alternatives —
-the Kish effective-sample-size formulation and the claim
-that the shipped default honours the SAFE stopping
-guarantee — so that neither can be silently reinstated
-by a later change.
-F. Real-trace validation
-Validation on real traces used Claude Haiku 4.5 as
-the frozen model: 100 items (50 GSM8K [23], 50 Com-
-monsenseQA), 12 independent chain-of-thought traces
-per item with verbalized confidence (1,200 traces total),
-
-<!-- PDF PAGE 7/9 -->
 evaluated at K=12 with a 40/60 dev/test split. Four
 findings.
 (a) The calibration–discrimination distinction reverses
@@ -935,7 +953,7 @@ Finding (c) predicts that a channel measured as null on
 saturated benchmarks should become measurable on items
 the model finds genuinely uncertain. A pre-registered
 follow-up tests that prediction: 119 MATH level-5 prob-
-lems [26], [27], 16 traces each from the same frozen model,
+lems [24], [25], 16 traces each from the same frozen model,
 a 30-item sign set and an 89-item evaluation set drawn
 from the registered list before any trace was collected, and
 five hypotheses (H1–H5) fixed in advance.
@@ -943,29 +961,6 @@ The channel is real. On the evaluation set the pooled
 statistic is bD = +0.250 with SE = 0.098, so z = +2.54 and
 H1 passes. This is the first real-trace evidence that verbal-
 ized confidence carries positive within-item discrimination;
-TABLE V
-Confirmatory campaign, MATH level-5 evaluation set (89 items,
-K=16). Every method replays the same cached pools. The
-duplication channel is inert because no reasoning text was
-collected, so dedup-sc coincides with sc by construction.
-Method
-Accuracy
-net vs. sc
-sc / dedup-sc / CISC-linear
-0.888
-—
-tact-LF
-0.888
-+0/ −0
-tact-semi-LF
-0.888
-+0/ −0
-best-single-confidence
-0.843
-+1/ −5
-in-pool oracle (ceiling)
-0.933
-+4/ −0
 the same measurement on GSM8K/CommonsenseQA gave
 −0.219 (z = −1.24).
 The endpoint was unpassable for any method. The
@@ -994,23 +989,31 @@ batches.
 H. How wide is the addressable stratum?
 Both campaigns failed their endpoint for the same
 reason, which suggests measuring that reason directly.
-Define the window as the fraction of items where the
-plurality is wrong and the correct answer is present in the
-pool: the ceiling for any label-free aggregation method,
-since nothing outside it can be changed.
-The window was measured on five substrates spanning
-two domains (Table VI). For code generation, where an
-executable test suite supplies per-sample ground truth and
-the window might reasonably be expected to widen, 40
-LeetCode Medium/Hard problems [28] were solved 8 times
-each and graded against the benchmark’s hidden suites,
-with the baseline taken as the largest behavioural cluster
-over probe inputs (never expected outputs). The window is
-3/40 = 7.5% (CI95 2.6–19.9%): wider than label-free QA,
-but the same order, and the composition is the same shape
-at 75% saturated, 18% capability wall, 8% rescuable. Nor
 
 <!-- PDF PAGE 8/9 -->
+TABLE V
+Confirmatory campaign, MATH level-5 evaluation set (89 items,
+K=16). Every method replays the same cached pools. The
+duplication channel is inert because no reasoning text was
+collected, so dedup-sc coincides with sc by construction.
+Method
+Accuracy
+net vs. sc
+sc / dedup-sc / CISC-linear
+0.888
+—
+tact-LF
+0.888
++0/ −0
+tact-semi-LF
+0.888
++0/ −0
+best-single-confidence
+0.843
++1/ −5
+in-pool oracle (ceiling)
+0.933
++4/ −0
 TABLE VI
 The addressable stratum across substrates. Rows marked † are
 measured here; HumanEval+/MBPP+ is recomputed from
@@ -1034,11 +1037,26 @@ HumanEval+ / MBPP+
 Code, executable
 LeetCode Med/Hard†
 7.5%
-does budget open it. The seven capability-wall problems
-produced zero correct solutions in 224 further attempts
-(per-problem 95% upper bound on the pass rate 0.088),
-and extrapolating oracle@N shows the window saturating
-by N=32.
+Define the window as the fraction of items where the
+plurality is wrong and the correct answer is present in the
+pool: the ceiling for any label-free aggregation method,
+since nothing outside it can be changed.
+The window was measured on five substrates spanning
+two domains (Table VI). For code generation, where an
+executable test suite supplies per-sample ground truth and
+the window might reasonably be expected to widen, 40
+LeetCode Medium/Hard problems [26] were solved 8 times
+each and graded against the benchmark’s hidden suites,
+with the baseline taken as the largest behavioural cluster
+over probe inputs (never expected outputs). The window
+is 3/40 = 7.5% (CI95 2.6–19.9%): wider than label-free
+QA, but the same order, and the composition is the same
+shape at 30 saturated, 7 capability wall and 3 rescuable,
+i.e. 75/17.5/7.5%. Nor does budget open it. The seven
+capability-wall problems produced zero correct solutions
+in 224 further attempts (per-problem 95% upper bound on
+the pass rate 0.088), and extrapolating oracle@N shows
+the window saturating by N=32.
 One precaution belongs with these numbers, because
 omitting it would have inverted them. The grading harness
 was validated against the benchmark’s own reference
@@ -1052,21 +1070,24 @@ their reference-solution pass rate for the same reason a
 calibration curve is reported: without it, a broken harness
 and a capability wall look identical.
 IX. Discussion and Limitations
-What the evidence does and does not show. All quan-
-titative claims are on a synthetic oracle whose confidence
-model (1) is, at the homogeneous cells, the very coupling
-the estimator measures. Three design choices limit the
-circularity: the adversarial regimes (distortions, hetero-
-geneity, echo) lie outside the estimator’s working model;
-mechanism-recovery claims (does bD track κ?) are reported
-separately from accuracy claims; and the pre-measured
-baseline landscape (Fig. 1) fixed the winnable cells before
-the method existed. Validation on real LLM traces is
-the remaining step; the cached-trace runner is committed
-and the prediction is falsifiable: if real confidence chan-
-nels never exhibit directional miscalibration or covariate
-structure, tact’s dead zone should make it operationally
-indistinguishable from CISC-devT there.
+What the evidence does and does not show. The
+accuracy claims are all on a synthetic oracle whose
+confidence model (1) is, at the homogeneous cells, the very
+coupling the estimator measures. Three design choices
+limit the circularity: the adversarial regimes (distortions,
+heterogeneity, echo) lie outside the estimator’s working
+model; mechanism-recovery claims (does bD track κ?) are
+reported separately from accuracy claims; and the pre-
+measured baseline landscape (Fig. 1) fixed the winnable
+cells before the method existed. The real-trace campaigns
+of Sections VIII-F and VIII-G test the premise and
+the abstention behaviour, and both predictions held: the
+channel is null on saturated benchmarks and positive on
+competition mathematics, and the dead zone kept the
+vote bit-identical to sc in each case. They do not test
+the accuracy claim, because on neither substrate was
+the addressable stratum large enough for any method to
+demonstrate a gain (Section VIII-H).
 Narrow margins where labels abound. When labels are
 plentiful and the confidence scale is trusted, a dev-picked
 signed grid captures most of the value; tact’s case rests
@@ -1099,12 +1120,14 @@ one exponent; per-item variation inside a group is un-
 exploitable by Propositions 5–7 unless further covariates
 exist.
 The thin window. Section VIII-H measures the stratum
-this whole family of methods can act on at 2–7.5% of
+this whole family of methods can act on at 3–7.5% of
 items on every substrate tried, in two domains, with
 no widening as items harden: they pass from saturated
 straight to capability-limited. Two consequences follow
 for the method proposed here. First, abstention is not
 a conservative compromise but the only correct default,
+
+<!-- PDF PAGE 9/9 -->
 and the measured cost of acting anyway was negative
 on both real substrates (best-single-confidence loses 4.5
 points in Table V where the dead zone holds tact at the sc
@@ -1121,58 +1144,60 @@ satisfies both.
 X. Conclusion
 tact turns “how much should this model’s confidence
 be trusted?” into a measured, signed, uncertainty-aware
-quantity with exact fallbacks at both ends, plain self-
-consistency when the evidence is absent and CISC when
-it is at full strength, and shows that the sign, long un-
-representable in this family of methods, can be recovered
-without any labels under stated and tested conditions. The
-accompanying impossibility results draw the boundary
-that any future per-item method must respect, and the
-falsification protocol, having already killed one of the
-author’s own systems, is offered as the more portable
-contribution.
+quantity with an exact fallback at one end, plain self-
+consistency whenever the evidence is absent, and an exact
+correspondence to CISC-power at the other under the
+log-value feature map (the shipped default uses van der
+Waerden scores, so that correspondence is a property
+of the family, not of the shipped configuration), and
+shows that the sign, long unrepresentable in this family of
+methods, can be recovered without any labels under stated
+and tested conditions. The accompanying impossibility
+results draw the boundary that any future per-item
+method must respect, and the falsification protocol, having
+already killed one of the author’s own systems, is offered
+as the more portable contribution.
 References
 [1] X. Wang, J. Wei, D. Schuurmans, Q. Le, E. Chi, S. Narang,
 A. Chowdhery, and D. Zhou, “Self-consistency improves chain
-
-<!-- PDF PAGE 9/9 -->
 of thought reasoning in language models,” in Proc. ICLR, 2023.
 https://arxiv.org/pdf/2203.11171
-[2] A. Taubenfeld et al., “Confidence improves self-consistency in
-LLMs,” in Findings of ACL, 2025, arXiv:2502.06233. https://
-aclanthology.org/2025.findings-acl.1030.pdf
-[3] P. Aggarwal, A. Madaan, Y. Yang, and Mausam, “Let’s sample
-step by step: Adaptive-consistency for eﬀicient reasoning and
-coding with LLMs,” in Proc. EMNLP, 2023, pp. 12375–12396.
-https://aclanthology.org/2023.emnlp-main.761.pdf
-[4] Y.
-Li
-et
-al.,
-“Escape
-sky-high
-cost: Early-stopping
-self-
-consistency for multi-step reasoning,” in Proc. ICLR, 2024.
-https://arxiv.org/pdf/2401.10480
-[5] S. Kadavath et al., “Language models (mostly) know what
-they know,” arXiv:2207.05221, 2022. https://arxiv.org/pdf/
-2207.05221
-[6] K. Tian et al., “Just ask for calibration: Strategies for elic-
+[2] K. Tian et al., “Just ask for calibration: Strategies for elic-
 iting calibrated confidence scores from language models fine-
 tuned with human feedback,” in Proc. EMNLP, 2023. https:
 //aclanthology.org/2023.emnlp-main.330.pdf
-[7] M. Xiong et al., “Can LLMs express their uncertainty? An
+[3] M. Xiong et al., “Can LLMs express their uncertainty? An
 empirical evaluation of confidence elicitation in LLMs,” in Proc.
 ICLR, 2024. https://openreview.net/pdf?id=gjeQKFxFpZ
+[4] S. Kadavath et al., “Language models (mostly) know what
+they know,” arXiv:2207.05221, 2022. https://arxiv.org/pdf/
+2207.05221
+[5] A. Taubenfeld et al., “Confidence improves self-consistency in
+LLMs,” in Findings of ACL, 2025, arXiv:2502.06233. https://
+aclanthology.org/2025.findings-acl.1030.pdf
+[6] J. Kim, N. Yang, K. Min, and K. Jung, “Reliability-aware
+adaptive self-consistency for eﬀicient sampling in LLM rea-
+soning,” in Findings of ACL, 2026, pp. 21575–21590. https:
+//aclanthology.org/2026.findings-acl.1085.pdf
+[7] Y. Fu et al., “Deep think with confidence,” arXiv:2508.15260,
+2025. https://arxiv.org/pdf/2508.15260
 [8] X. Huang, S. Li, M. Yu, M. Sesia, H. Hassani, I. Lee, O. Bastani,
 and E. Dobriban, “Uncertainty in language models: Assessment
 through rank-calibration,” in Proc. EMNLP, 2024, pp. 284–312.
 https://aclanthology.org/2024.emnlp-main.18.pdf
-[9] Y. Li et al., “Making language models better reasoners with
+[9] A. P. Dawid and A. M. Skene, “Maximum likelihood estimation
+of observer error-rates using the EM algorithm,” J. Roy. Statist.
+Soc. C, vol. 28, no. 1, pp. 20–28, 1979. https://doi.org/10.2307/
+2346806
+[10] F. Parisi, F. Strino, B. Nadler, and Y. Kluger, “Ranking
+and combining multiple predictors without labeled data,”
+Proc. Natl. Acad. Sci., vol. 111, no. 4, pp. 1253–1258, 2014.
+https://pmc.ncbi.nlm.nih.gov/articles/PMC3910607/pdf/
+pnas.201219097.pdf
+[11] Y. Li et al., “Making language models better reasoners with
 step-aware verifier,” in Proc. ACL, 2023. https://aclanthology.
 org/2023.acl-long.291.pdf
-[10] Z.
+[12] Z.
 Kang,
 X.
 Zhao,
@@ -1197,17 +1222,21 @@ NeurIPS,
 arXiv:2502.18581.
 https://proceedings.neurips.cc/paper_files/paper/2025/file/
 1c7eff166a8e345f664f0faa8f4e4d2e-Paper-Conference.pdf
-[11] J. Kim, N. Yang, K. Min, and K. Jung, “Reliability-aware
-adaptive self-consistency for eﬀicient sampling in LLM rea-
-soning,” in Findings of ACL, 2026, pp. 21575–21590. https:
-//aclanthology.org/2026.findings-acl.1085.pdf
-[12] Y. Fu et al., “Deep think with confidence,” arXiv:2508.15260,
-2025. https://arxiv.org/pdf/2508.15260
-[13] A. P. Dawid and A. M. Skene, “Maximum likelihood estimation
-of observer error-rates using the EM algorithm,” J. Roy. Statist.
-Soc. C, vol. 28, no. 1, pp. 20–28, 1979. https://doi.org/10.2307/
-2346806
-[14] J.
+[13] P. Aggarwal, A. Madaan, Y. Yang, and Mausam, “Let’s sample
+step by step: Adaptive-consistency for eﬀicient reasoning and
+coding with LLMs,” in Proc. EMNLP, 2023, pp. 12375–12396.
+https://aclanthology.org/2023.emnlp-main.761.pdf
+[14] Y.
+Li
+et
+al.,
+“Escape
+sky-high
+cost:
+Early-stopping self-
+consistency for multi-step reasoning,” in Proc. ICLR, 2024.
+https://arxiv.org/pdf/2401.10480
+[15] J.
 Whitehill
 et
 al.,
@@ -1231,7 +1260,7 @@ NeurIPS,
 2009.
 https://proceedings.neurips.cc/paper_files/paper/2009/file/
 f899139df5e1059396431415e770c6dd-Paper.pdf
-[15] D.
+[16] D.
 R.
 Karger,
 S.
@@ -1244,11 +1273,6 @@ learn-
 ing for reliable crowdsourcing systems,” in Proc. NeurIPS,
 2011. https://proceedings.neurips.cc/paper_files/paper/2011/
 file/c667d53acd899a97a85de0c201ba99be-Paper.pdf
-[16] F. Parisi, F. Strino, B. Nadler, and Y. Kluger, “Ranking
-and combining multiple predictors without labeled data,”
-Proc. Natl. Acad. Sci., vol. 111, no. 4, pp. 1253–1258, 2014.
-https://pmc.ncbi.nlm.nih.gov/articles/PMC3910607/pdf/
-pnas.201219097.pdf
 [17] J. Lee, V. Ma, S. Zhao, Y. Nair, A. Spector, R. Cohen, and E. J.
 Candès, “FUSE: Ensembling verifiers with zero labeled data,”
 arXiv:2604.18547, 2026. https://arxiv.org/pdf/2604.18547
@@ -1281,15 +1305,7 @@ no. 374, pp. 221–230, 1981. https://doi.org/10.1080/01621459.
 1981.10477633
 [23] K. Cobbe et al., “Training verifiers to solve math word prob-
 lems,” arXiv:2110.14168, 2021.
-[24] L. Kuhn, Y. Gal, and S. Farquhar, “Semantic uncertainty:
-Linguistic invariances for uncertainty estimation in natural
-language generation,” in Proc. ICLR, 2023. https://arxiv.org/
-pdf/2302.09664
-[25] G. Wan, Y. Wu, J. Chen, and S. Li, “Reasoning aware
-self-consistency: Leveraging reasoning paths for eﬀicient LLM
-sampling,” in Proc. NAACL, 2025, pp. 3613–3635. https://
-aclanthology.org/2025.naacl-long.184.pdf
-[26] D.
+[24] D.
 Hendrycks
 et
 al.,
@@ -1311,9 +1327,9 @@ Benchmarks,
 https:
 //datasets-benchmarks-proceedings.neurips.cc/paper/2021/
 file/be83ab3ecd0db773eb2dc1b0a17836a1-Paper-round2.pdf
-[27] H. Lightman et al., “Let’s verify step by step,” in Proc. ICLR,
+[25] H. Lightman et al., “Let’s verify step by step,” in Proc. ICLR,
 2024. (MATH-500 test subset.)
-[28] Y. Xia et al., “LeetCodeDataset: A temporal dataset for
+[26] Y. Xia et al., “LeetCodeDataset: A temporal dataset for
 robust
 evaluation
 and

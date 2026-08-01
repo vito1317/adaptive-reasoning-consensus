@@ -1,4 +1,4 @@
-# Problem Setup  (tact.tex lines 68-85, verbatim LaTeX)
+# Problem Setup  (tact.tex lines 68-86, verbatim LaTeX)
 
 \section{Problem Setup}\label{sec:setup}
 
@@ -18,3 +18,4 @@ with noise $\varepsilon\sim\mathcal{N}(0,0.1^2)$ and coupling $\kappa\in[-0.6,0.
 \caption{The pre-measured problem statement: accuracy of baseline confidence policies at fixed $K{=}15$ as the true coupling $\kappa$ varies. A trivial sign-corrected AUC gate (green) nearly saturates the homogeneous sweep; the headroom for any new method (shaded) concentrates in the mid-range and, off this plot, in distortion, heterogeneity, and label-free cells.}
 \label{fig:baselines}
 \end{figure}
+

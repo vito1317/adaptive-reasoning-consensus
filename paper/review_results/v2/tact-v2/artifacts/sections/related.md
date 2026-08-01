@@ -1,4 +1,4 @@
-# Related Work  (tact.tex lines 58-66, verbatim LaTeX)
+# Related Work  (tact.tex lines 58-67, verbatim LaTeX)
 
 \section{Related Work}\label{sec:related}
 
@@ -9,3 +9,4 @@
 \textbf{Shrinkage and rank statistics.} The estimator assembles classical parts: stratified rank statistics \cite{vanelteren1960}, the James--Stein positive-part estimator \cite{james1961estimation}, effective-sample-size corrections \cite{kish1965,rao1981analysis}, and normal-scores discriminant analysis. The claim is the assembly and its anchors, not the parts.
 
 \textbf{Honest sibling result.} A preceding system by the author (RLEV-VoI, redundancy-discounted voting with value-of-information stopping) was evaluated under the same falsification discipline and \emph{failed} it, dominated everywhere by a simple deduplication baseline, and is reported as a negative result. Its post-mortem isolated the confidence dilemma studied here.
+

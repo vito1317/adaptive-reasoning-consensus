@@ -1,199 +1,87 @@
 [
   {
-    "title": "Abstract presents the p-bar=1/2 special case as the method's general reduction",
-    "quote": "the method is a single expression whose exponent reduces to $\\gamma=z\\sqrt{2+z^2}$",
-    "explanation": "Eq. (13) gives the general exponent as gamma = [z*sqrt(2 + 4*p_bar*(1-p_bar)*z^2)] clipped, and Eq. (15) states gamma = z*sqrt(2+z^2) only 'At the default p_bar = 1/2'. The abstract drops that condition, so a reader takes the two-term form to be the method rather than one point in a p_bar-indexed family. The paper is precise about this in the body; only the abstract loses the qualifier.",
-    "comment_type": "claim_accuracy",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "llm",
-    "source_section": "abstract",
-    "related_sections": [
-      "method"
-    ],
-    "root_cause_key": "pbar-half-special-case-as-general",
-    "review_lane": "claims_vs_evidence",
-    "gate_blocker": false,
-    "verdict": "CONFIRMED",
-    "claim_strength": "observed",
-    "missing_evidence": [
-      "a statement that the two-term form holds only at the default base rate"
-    ],
-    "allowed_wording": "whose exponent reduces, at the default base rate p_bar = 1/2, to gamma = z*sqrt(2+z^2)",
-    "forbidden_wording": [
-      "whose exponent reduces to gamma = z*sqrt(2+z^2)"
-    ],
-    "evidence_anchor": [
-      {
-        "type": "metric",
-        "text": "Eq. (13) general form vs Eq. (15) p_bar=1/2 form"
-      }
-    ]
-  },
-  {
-    "title": "'No tuned constant anywhere' coexists with four variant-specific constants, and the clip decides every headline cell",
-    "quote": "one probit and one square root, with no tuned constant anywhere",
-    "explanation": "Four constants are set by hand and differ across the two variants the paper ships: nu_dev = 1.28 vs nu_LF = 2.33, and gamma_max = 4 (dev) vs 2 (label-free). The paper defends them as 'a significance level' and 'a clip' fixed before data, which is fair for nu, but results/tact_eval.json shows the clip is not inert: TACT-dev = +/-4.0 and TACT-LF = +/-2.0 exactly, i.e. gamma == gamma_max, in all four sweep cells reported as 1.000 (kappa = +/-0.4, +/-0.6) and in all three monotone-distortion cells. The derived expression is load-bearing only in the mid-range cells, which are the cells where TACT loses to SignGrid-dev. The paper itself concedes the cap is doing work when it attributes TACT-LF beating TACT-dev in the grouped cell to 'its lower exponent cap ($2$ vs.\\ $4$) regularizes better'.",
-    "comment_type": "claim_accuracy",
-    "severity": "major",
-    "confidence": "high",
-    "source_kind": "llm",
-    "source_section": "method",
-    "related_sections": [
-      "experiment",
-      "result"
-    ],
-    "root_cause_key": "gamma-max-clip-not-derived",
-    "review_lane": "claims_vs_evidence",
-    "gate_blocker": true,
-    "verdict": "CONFIRMED",
-    "claim_strength": "unsupported",
-    "missing_evidence": [
-      "a cap-sensitivity ablation",
-      "disclosure that gamma is saturated at the clip in the winning cells"
-    ],
-    "allowed_wording": "no constant is tuned on the evaluation data; nu is a significance level and gamma_max a clip fixed in advance, though in the saturated cells the clip rather than the link determines the exponent",
-    "forbidden_wording": [
-      "with no tuned constant anywhere",
-      "$\\gamma$ is \\emph{derived}, not grid-searched"
-    ],
-    "evidence_anchor": [
-      {
-        "type": "analysis_artifact",
-        "text": "results/tact_eval.json -> sweep_dev200[*].gamma, adversarial[*].gamma"
-      }
-    ]
-  },
-  {
-    "title": "'Beats the oracle over the entire raw-value weight family' rests on a 9-point grid whose maximum is its own boundary",
-    "quote": "``Oracle'' is the test-set best over \\emph{raw-value} weight policies; rank invariance beats that entire family under compression.",
-    "explanation": "The oracle is implemented in experiments/run_tact_eval.py as max over SIGN_GRID = [-4.0, -2.0, -1.0, -0.5, 0.0, 0.5, 1.0, 2.0, 4.0], nine points. For monotone_compress, results/tact_eval.json records oracle = {acc: 0.965, gamma: 4.0}: the argmax sits at the largest exponent in the grid, so no evidence bounds the family at gamma > 4, and the grid has no point between 2 and 4. 'That entire family' is a claim about a continuum; the evidence is a coarse grid truncated exactly where the maximum lands. The paper never states the grid in the text.",
-    "comment_type": "claim_accuracy",
-    "severity": "major",
-    "confidence": "high",
-    "source_kind": "llm",
-    "source_section": "result",
-    "related_sections": [
-      "experiment"
-    ],
-    "root_cause_key": "oracle-grid-boundary-truncation",
-    "review_lane": "claims_vs_evidence",
-    "gate_blocker": false,
-    "verdict": "CONFIRMED",
-    "claim_strength": "observed",
-    "missing_evidence": [
-      "oracle evaluated beyond gamma = 4",
-      "the grid stated in the text"
-    ],
-    "allowed_wording": "beats the best raw-value weight policy over the nine-point signed exponent grid evaluated here",
-    "forbidden_wording": [
-      "beats that entire family",
-      "beats the oracle over the entire raw-value weight family"
-    ],
-    "evidence_anchor": [
-      {
-        "type": "analysis_artifact",
-        "text": "experiments/run_tact_eval.py:42 SIGN_GRID; results/tact_eval.json adversarial.monotone_compress.oracle"
-      }
-    ]
-  },
-  {
-    "title": "Abstract's 'all of which the method survived' omits the flagship variant's documented catastrophic failure",
+    "title": "The abstract still ends on 'all of which the method survived' without the unguarded failure",
     "quote": "all of which the method survived",
-    "explanation": "The abstract's closing claim is literally true of the four pre-registered falsifiers, which were scoped to the sweep. But the paper's own Discussion reports that TACT-LF, the variant the abstract credits with the 1.000-vs-0.807 recovery, in a paraphrased wrong-majority cell 'mis-signs, saturates at $\\gamma=-2.0$, and scores $0.000$ against an \\SC{} floor of $0.340$', and that 'None of the four alarms fires'. A reader who stops at the abstract forms a materially wrong belief about the failure envelope. One clause fixes it, and omitting it converts the paper's real honesty into apparent concealment.",
+    "explanation": "Unchanged. The claim is true of the four pre-registered falsifiers, which were scoped to the sweep, while the Discussion reports that TACT-LF, the variant the abstract credits with the 1.000-vs-0.807 recovery, 'mis-signs, saturates at $\\gamma=-2.0$, and scores $0.000$ against an \\SC{} floor of $0.340$' in a paraphrased wrong-majority cell where 'None of the four alarms fires'. Now that the revision has tightened the oracle claim and the CISC anchor in exactly this spirit, this is the largest remaining gap between what the abstract promises and what the paper knows.",
     "comment_type": "claim_accuracy",
     "severity": "major",
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "abstract",
-    "related_sections": [
-      "discussion"
-    ],
+    "related_sections": [],
     "root_cause_key": "abstract-omits-unguarded-failure",
     "review_lane": "claims_vs_evidence",
     "gate_blocker": true,
     "verdict": "CONFIRMED",
+    "reaudit_status": "NOT_ADDRESSED",
     "claim_strength": "observed",
-    "missing_evidence": [
-      "abstract-level statement of the rho_bar > 1/2 unguarded failure"
-    ],
     "allowed_wording": "all four pre-registered falsifiers survived; a post-hoc paraphrased-majority cell outside the pre-registered sweep was not survived, and no alarm fires there",
     "forbidden_wording": [
       "all of which the method survived"
-    ],
-    "evidence_anchor": [
-      {
-        "type": "section",
-        "text": "Sec. VII, conditional label-free guarantee paragraph"
-      }
     ]
   },
   {
-    "title": "'Two real-trace campaigns confirm the premise' when the first measured discrimination in the wrong direction",
+    "title": "The abstract still credits both real-trace campaigns with confirming the premise",
     "quote": "Two real-trace campaigns on a frozen model confirm the premise and locate the binding constraint",
-    "explanation": "Campaign 1 (GSM8K/CommonsenseQA) measured D-hat = -0.219 with SE = 0.176, z = -1.24: not significant and pointing the wrong way, which the paper states plainly in Sec. V-G and correctly reads as confirming its null-direction prediction. What campaign 1 confirms is that calibration is uninformative about voting utility, not the premise that the channel carries signed discrimination. The abstract's plural 'campaigns ... confirm the premise' invites the reader to credit both campaigns with the positive finding that only the second one supports.",
+    "explanation": "Unchanged in the abstract, although the Discussion was revised to state it correctly ('the channel is null on saturated benchmarks and positive on competition mathematics'). Campaign 1 measured D-hat = -0.219, SE = 0.176, z = -1.24: not significant and pointing the wrong way. What it confirms is the null-direction prediction and the calibration-discrimination argument, not the premise that the channel carries signed discrimination. The Discussion's new sentence is the wording the abstract needs.",
     "comment_type": "claim_accuracy",
     "severity": "moderate",
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "abstract",
-    "related_sections": [
-      "result"
-    ],
+    "related_sections": [],
     "root_cause_key": "both-campaigns-confirm-premise",
     "review_lane": "claims_vs_evidence",
     "gate_blocker": false,
     "verdict": "CONFIRMED",
+    "reaudit_status": "NOT_ADDRESSED",
     "claim_strength": "observed",
-    "missing_evidence": [
-      "a positive within-item discrimination measurement in campaign 1"
-    ],
-    "allowed_wording": "one real-trace campaign confirms the premise on competition mathematics; the other confirms the null-direction prediction and the calibration-discrimination argument",
+    "allowed_wording": "one real-trace campaign confirms the premise on competition mathematics; the other confirms the null-direction prediction",
     "forbidden_wording": [
       "Two real-trace campaigns on a frozen model confirm the premise"
-    ],
-    "evidence_anchor": [
-      {
-        "type": "metric",
-        "text": "D-hat = -0.219, z = -1.24 (Sec. V-G) vs D-hat = +0.250, z = +2.54 (Sec. V-H)"
-      }
     ]
   },
   {
-    "title": "Conclusion promises an exact CISC fallback that the shipped feature map does not provide",
-    "quote": "plain self-consistency when the evidence is absent and CISC when it is at full strength",
-    "explanation": "Proposition 2 delivers exact CISC-power equivalence only under the log-value feature map, 'With the feature map $\\varphi^{\\log}_{q,i}=\\log c_{q,i}-\\overline{\\log c_q}$'. The shipped method uses the van der Waerden rank score of Eq. (2), and the paper's own C1 makes rank-only dependence the source of its monotone-invariance claim, so the two feature maps are mutually exclusive. As shipped, TACT has one exact anchor (bitwise SC at gamma = 0, a shared code path), not two. The abstract is more careful here ('a log-value feature map reproduces CISC-power'); the Conclusion drops the condition and states the fallback as a property of the method.",
+    "title": "The abstract still states the p-bar=1/2 special case as the method's general reduction",
+    "quote": "the method is a single expression whose exponent reduces to $\\gamma=z\\sqrt{2+z^2}$",
+    "explanation": "Unchanged. Eq. (13) gives the general exponent as gamma = [z*sqrt(2 + 4*p_bar*(1-p_bar)*z^2)] clipped, and Eq. (15) states the two-term form only 'At the default p_bar = 1/2'. The body is precise; the abstract drops the qualifier. Six words fix it.",
     "comment_type": "claim_accuracy",
-    "severity": "major",
+    "severity": "moderate",
     "confidence": "high",
     "source_kind": "llm",
-    "source_section": "conclusion",
-    "related_sections": [
-      "method"
-    ],
-    "root_cause_key": "cisc-anchor-requires-other-feature-map",
+    "source_section": "abstract",
+    "related_sections": [],
+    "root_cause_key": "pbar-half-special-case-as-general",
     "review_lane": "claims_vs_evidence",
-    "gate_blocker": true,
+    "gate_blocker": false,
     "verdict": "CONFIRMED",
-    "claim_strength": "unsupported",
-    "missing_evidence": [
-      "an exact CISC reduction for the van der Waerden feature map actually shipped"
-    ],
-    "allowed_wording": "plain self-consistency when the evidence is absent, and, under a log-value feature map, CISC when it is at full strength",
+    "reaudit_status": "NOT_ADDRESSED",
+    "claim_strength": "observed",
+    "allowed_wording": "whose exponent reduces, at the default base rate p_bar = 1/2, to gamma = z*sqrt(2+z^2)",
     "forbidden_wording": [
-      "exact fallbacks at both ends, plain self-consistency when the evidence is absent and CISC when it is at full strength"
-    ],
-    "evidence_anchor": [
-      {
-        "type": "section",
-        "text": "Prop. 2 (Exact CISC reduction) vs Eq. (2)"
-      }
+      "whose exponent reduces to gamma = z*sqrt(2+z^2)"
     ]
   },
   {
-    "title": "'Three times the SC floor' for a 2.93x ratio",
+    "title": "C1 still claims the exponent is derived rather than grid-searched, without the clause the Results now supply",
+    "quote": "$\\gamma$ is \\emph{derived}, not grid-searched",
+    "explanation": "The Results section was revised well: it now states that the cap binds where D-hat saturates and that in the four headline cells 'the derived magnitude is not doing the work there, the sign is'. C1 was revised in the same commit for the oracle claim but this phrase was left, so the contribution a reader carries away from page 1 is still the unqualified one, and the honest version is four pages later. Adding 'derived rather than grid-searched, though the clip binds where the statistic saturates (Section V-B)' to C1 closes the last gap on this root cause.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "llm",
+    "source_section": "introduction",
+    "related_sections": [],
+    "root_cause_key": "gamma-max-clip-not-derived",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": false,
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NOT_ADDRESSED"
+  },
+  {
+    "title": "'Three times the SC floor' still describes a 2.93x ratio",
     "quote": "the best result in the field ($0.585$; three times the \\SC{} floor)",
-    "explanation": "0.585 / 0.200 = 2.925. Rounding 2.93x up to 'three times' is trivial in most papers, but this one stakes its case on reporting margins honestly, including its own losses to a trivial baseline. A reviewer who checks one arithmetic claim and finds it rounded in the author's favour discounts the others.",
+    "explanation": "0.585 / 0.200 = 2.925. Trivial in most papers; in this one, which now states its own losses cell by cell, a rounded ratio in the author's favour is the odd one out. 'Nearly three times' costs one word.",
     "comment_type": "claim_accuracy",
     "severity": "minor",
     "confidence": "high",
@@ -204,7 +92,7 @@
     "review_lane": "claims_vs_evidence",
     "gate_blocker": false,
     "verdict": "CONFIRMED",
-    "claim_strength": "supported",
+    "reaudit_status": "NOT_ADDRESSED",
     "allowed_wording": "0.585, nearly three times the SC floor",
     "forbidden_wording": [
       "three times the SC floor"

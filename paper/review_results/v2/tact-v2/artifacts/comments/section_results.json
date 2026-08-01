@@ -1,36 +1,18 @@
 [
   {
-    "title": "Table I is placed in the Experimental Setup section but is only interpreted in Results",
+    "title": "Table I is still placed in the Experimental Setup section but interpreted only in Results",
     "quote": "\\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \\SC{} floor on the entire negative half-axis.}",
-    "explanation": "The float is declared before \\section{Results} and its caption already states the paper's first result ('Published protocols sit at the \\SC{} floor on the entire negative half-axis'), while the discussion of the table begins in Sec. V-A. In the rendered PDF the table therefore reaches the reader a column before the text that reads it. Moving the float after the Results heading costs nothing.",
+    "explanation": "The float is declared before \\section{Results} and its caption already states the paper's first result, while the text that reads it begins in Sec. V-A. Moving the float after the Results heading costs nothing.",
     "comment_type": "presentation",
     "severity": "minor",
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "experiment",
-    "related_sections": [
-      "result"
-    ],
+    "related_sections": [],
     "root_cause_key": "table1-float-before-results",
     "review_lane": "section_results",
     "gate_blocker": false,
-    "verdict": "CONFIRMED"
-  },
-  {
-    "title": "The same substrate is reported with two different stratum definitions in two places",
-    "quote": "accuracy is $0.958$ on GSM8K and $0.847$ on CommonsenseQA, so only $12$ of $100$",
-    "explanation": "Sec. V-G reports 12 of 100 items as the informative stratum for GSM8K/CommonsenseQA. Table VI reports the same substrate as '$12\\%$ informative, $9\\%$ decisive'. The 9% decisive figure appears nowhere in the section text, so a reader cannot see how it was obtained or which items it counts, and the window quantity the column is headed with, plurality wrong and correct answer in pool, is not reported for this substrate at all. Give all three counts with their denominator in one place.",
-    "comment_type": "missing_information",
-    "severity": "moderate",
-    "confidence": "medium",
-    "source_kind": "llm",
-    "source_section": "result",
-    "related_sections": [
-      "abstract"
-    ],
-    "root_cause_key": "window-column-heterogeneous",
-    "review_lane": "section_results",
-    "gate_blocker": false,
-    "verdict": "CONFIRMED"
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NOT_ADDRESSED"
   }
 ]

@@ -1,20 +1,20 @@
-# Deep Review Report
+# 深度审稿报告
 
-**Paper**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **Language**: EN | **Mode**: deep-review
-**Generated**: 2026-08-02 01:13
-**Artifacts**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
+**论文**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **语言**: EN | **模式**: deep-review
+**生成时间**: 2026-08-02 01:13
+**工件目录**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
 
-## Overall Assessment
+## 总体评估
 
 Round-2 re-audit of tact.tex at commit 4d75431, against the bundle raised on 62bc7c7. Ten root causes were fully closed and four partially, and in several cases the fix was better than the recommendation: the paper now discloses that the clip rather than the derived link sets the exponent in its headline cells, names the oracle's grid and states that the optimum sits at its boundary, scopes the CISC anchor to the log-value feature map, and has an internally consistent Limitations section. 38 findings remain: 10 major, 23 moderate, 5 minor. One is a mechanical submission blocker (still no code or data availability statement in a paper that delegates its proofs to a named test suite). Two were introduced by the revision itself: the new disclosure paragraph's gamma* = +/-38 recomputes to +/-12.1 with the paper's own gamma_of(), and the F4 sentence in Sec. V-D now contradicts the new paragraph one screen above it about whether the grid baselines reach the distortion and echo cells. Four claim-level residues live only in the abstract, and the honest wording for each already exists elsewhere in the manuscript.
 
-- **Major**: 10
-- **Moderate**: 23
-- **Minor**: 5
+- **主要**: 10
+- **中等**: 23
+- **次要**: 5
 
-## Academic Pre-Review Committee
+## 学术预审委员会
 
-### Editor (Desk Reject Screen)
+### 主编（直接拒稿筛查）
 
 ## Editor Pre-Screen (1-10)
 
@@ -107,7 +107,7 @@ No text in the manuscript, the extracted artifacts, or the repository files insp
 screen attempted to address the reviewer, issue instructions, or claim authority over the review.
 Nothing to report on that axis.
 
-### Reviewer 1 (Theory Contribution)
+### 评审 1（理论贡献）
 
 ## Theory Contribution Review
 
@@ -153,7 +153,7 @@ wrapper whose magnitude is set by a hand-fixed clip wherever it wins.
   either a real proof of law equality or a weaker statement matched to the sign-flip argument.
 - Re-center the theory claim on the impossibility results and the attenuation identity.
 
-### Reviewer 3 (Literature Dialogue)
+### 评审 3（文献对话）
 
 ## Literature Dialogue Review
 
@@ -187,7 +187,7 @@ wrapper whose magnitude is set by a hand-fixed clip wherever it wins.
 2. **Downgrade "cannot represent" to "does not search or estimate", and bound the quantifier.** In abstract, introduction and Related Work, replace "structurally monotone increasing" / "not representable" / "None of these can represent" with a scoped claim: "of the confidence-weighted self-consistency protocols surveyed here, all restrict the confidence exponent (or temperature) to non-negative values, so a negative association is never searched for and, being unmeasured, cannot be acted on." Keep "to the author's knowledge" in every instance. If `--literature-search` is enabled, add one sentence recording the search scope that licenses the universal.
 3. **Rewrite Related Work as three claims and give the rank axis its own paragraph.** (a) Promote `borda2025` out of the "refine the budget" clause into a named comparator: state what self-certainty Borda selection does, whether its rank aggregation is already invariant to monotone confidence distortion, and either add it to Table `tab:adv` or say explicitly why the raw-value oracle is the right envelope in its absence. (b) Give `fuse2026` and `beyondmajority2025` one sentence each on what structure they require and why a single exchangeable channel does not supply it. (c) Move the RLEV-VoI paragraph out of Related Work into Section `sec:limits` or an appendix with a citable report or repository tag, and cite `kuhn2023semantic` where the paraphrased-wrong-majority failure is discussed — either as the remedy not adopted (with a reason) or as future work.
 
-### Reviewer 2 (Methodology & Transparency)
+### 评审 2（方法与透明度）
 
 ## Methodology & Transparency Review
 
@@ -239,7 +239,7 @@ answer.
   grid evaluated.
 - Report the collection protocol (batch size) for every row of Table VI.
 
-### Reviewer 4 (Logic Chain)
+### 评审 4（逻辑链）
 
 ## Logic Chain Review
 
@@ -279,7 +279,7 @@ any method.
 - Delete the two stale sentences in Sec. VII para 1.
 - Scope "the correct default" to the substrates measured, or attach the interval.
 
-### Committee Consensus
+### 委员会共识
 
 ## Committee Consensus
 
@@ -337,7 +337,7 @@ author reviewing their own work rather than defending it.
    as the paper's most portable contribution, so its decision rule has to be in
    the paper.
 
-## Paper Summary
+## 论文摘要
 
 # Paper Summary: TACT: Trust-Anchored Confidence Tempering for\\ Self-Consistency Voting in Large Language Models
 
@@ -363,444 +363,444 @@ author reviewing their own work rather than defending it.
 ## Closure Targets
 - Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.
 
-## Major Issues
+## 主要问题
 
 ### M1: The abstract still ends on 'all of which the method survived' without the unguarded failure
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `claims_vs_evidence`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `abstract-omits-unguarded-failure`
-- **Quote Verified**: yes
-- **Quote**: `all of which the method survived`
-- **Explanation**: Unchanged. The claim is true of the four pre-registered falsifiers, which were scoped to the sweep, while the Discussion reports that TACT-LF, the variant the abstract credits with the 1.000-vs-0.807 recovery, 'mis-signs, saturates at $\gamma=-2.0$, and scores $0.000$ against an \SC{} floor of $0.340$' in a paraphrased wrong-majority cell where 'None of the four alarms fires'. Now that the revision has tightened the oracle claim and the CISC anchor in exactly this spirit, this is the largest remaining gap between what the abstract promises and what the paper knows.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `claims_vs_evidence`
+- **置信度**: high
+- **章节**: abstract
+- **关联章节**: abstract
+- **根因键**: `abstract-omits-unguarded-failure`
+- **原文已核对**: 是
+- **原文**: `all of which the method survived`
+- **说明**: Unchanged. The claim is true of the four pre-registered falsifiers, which were scoped to the sweep, while the Discussion reports that TACT-LF, the variant the abstract credits with the 1.000-vs-0.807 recovery, 'mis-signs, saturates at $\gamma=-2.0$, and scores $0.000$ against an \SC{} floor of $0.340$' in a paraphrased wrong-majority cell where 'None of the four alarms fires'. Now that the revision has tightened the oracle claim and the CISC anchor in exactly this spirit, this is the largest remaining gap between what the abstract promises and what the paper knows.
 
 ### M2: The paper bounds its own motivation and still does not close the argument
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `committee_logic`
-- **Confidence**: high
-- **Section**: discussion
-- **Related Sections**: discussion
-- **Root Cause Key**: `motivation-undercut-by-own-window-measurement`
-- **Quote Verified**: yes
-- **Quote**: `whole family of methods can act on at $3$--$7.5\%$ of items on every substrate`
-- **Explanation**: The revision closed part of this: the Discussion now says the real-trace campaigns 'do not test the accuracy claim, because on neither substrate was the addressable stratum large enough for any method to demonstrate a gain'. That joins step three to step two. The remaining gap is the step to the contribution claim. On the paper's own measurement the ceiling for the entire family, TACT included, is 3 to 7.5% of items, and the manuscript still leads with the estimator and never says why a method with that addressable stratum is worth adopting, nor reframes itself as the boundary measurement plus a method that abstains correctly inside it. This is the structural revision left, and it is a reframing rather than new experiments.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `committee_logic`
+- **置信度**: high
+- **章节**: discussion
+- **关联章节**: discussion
+- **根因键**: `motivation-undercut-by-own-window-measurement`
+- **原文已核对**: 是
+- **原文**: `whole family of methods can act on at $3$--$7.5\%$ of items on every substrate`
+- **说明**: The revision closed part of this: the Discussion now says the real-trace campaigns 'do not test the accuracy claim, because on neither substrate was the addressable stratum large enough for any method to demonstrate a gain'. That joins step three to step two. The remaining gap is the step to the contribution claim. On the paper's own measurement the ceiling for the entire family, TACT included, is 3 to 7.5% of items, and the manuscript still leads with the estimator and never says why a method with that addressable stratum is worth adopting, nor reframes itself as the boundary measurement plus a method that abstains correctly inside it. This is the structural revision left, and it is a reframing rather than new experiments.
 
 ### M3: 'Significantly below' in the falsifiers is still a hard-coded 0.02 accuracy margin with no statistical test
-- **Type**: methodology
-- **Source**: [LLM] via `self_standard_consistency`
-- **Confidence**: high
-- **Section**: experiment
-- **Related Sections**: experiment
-- **Root Cause Key**: `falsifier-tolerance-undisclosed`
-- **Quote Verified**: yes
-- **Quote**: `F1: \TACT-dev significantly below the best fixed-$\gamma$ CISC at $\kappa{=}{+}0.6$. F2: either variant significantly below \SC{} anywhere on the sweep.`
-- **Explanation**: experiments/run_tact_eval.py still renders every verdict on a fixed tolerance rather than a test: f1 = acc[TACT-dev] < best_cisc - 0.02; f2 = any(acc[TACT] < acc[SC] - 0.02); f4 = all(acc[SignGrid] >= acc[TACT] - 0.02). The constant 0.02 appears nowhere in the manuscript and Sec. V-D still repeats the statistical framing, 'never significantly below \SC{} elsewhere'. F4's survival still turns on the distortion cell's 0.035 exceeding that undisclosed 0.02 on a single seed. A paper that pre-registers falsification has to state the decision rule its falsifiers use; one sentence in Sec. IV does it.
+- **类型**: methodology
+- **来源**: [LLM] via `self_standard_consistency`
+- **置信度**: high
+- **章节**: experiment
+- **关联章节**: experiment
+- **根因键**: `falsifier-tolerance-undisclosed`
+- **原文已核对**: 是
+- **原文**: `F1: \TACT-dev significantly below the best fixed-$\gamma$ CISC at $\kappa{=}{+}0.6$. F2: either variant significantly below \SC{} anywhere on the sweep.`
+- **说明**: experiments/run_tact_eval.py still renders every verdict on a fixed tolerance rather than a test: f1 = acc[TACT-dev] < best_cisc - 0.02; f2 = any(acc[TACT] < acc[SC] - 0.02); f4 = all(acc[SignGrid] >= acc[TACT] - 0.02). The constant 0.02 appears nowhere in the manuscript and Sec. V-D still repeats the statistical framing, 'never significantly below \SC{} elsewhere'. F4's survival still turns on the distortion cell's 0.035 exceeding that undisclosed 0.02 on a single seed. A paper that pre-registers falsification has to state the decision rule its falsifiers use; one sentence in Sec. IV does it.
 
 ### M4: Still no repository URL, code-availability or data-availability statement, in a paper that delegates its proofs to code
-- **Type**: missing_information
-- **Source**: [LLM] via `evaluation_fairness_and_reproducibility`
-- **Confidence**: high
-- **Section**: method
-- **Related Sections**: method
-- **Root Cause Key**: `no-availability-statement`
-- **Quote Verified**: yes
-- **Quote**: `Proofs are elementary and pinned by unit tests in the released code (98 tests;`
-- **Explanation**: The test count in this sentence was corrected from 76 to 98, which confirms the author checked it against the suite, so the reader now has an accurate number for an artifact they still cannot obtain. 'Released' or 'committed' recurs in Secs. IV-B, V-C, V-F and VII, and Table IV is a whole table of test names standing in for proofs not given in the body. Nine pages still contain no URL, DOI, repository name, archive, or 'available upon publication' sentence. This remains the one finding that stops the manuscript at an editor's desk rather than at a reviewer's, and it is a one-line fix: name the repository and the commit or tag that produced Table IV.
+- **类型**: missing_information
+- **来源**: [LLM] via `evaluation_fairness_and_reproducibility`
+- **置信度**: high
+- **章节**: method
+- **关联章节**: method
+- **根因键**: `no-availability-statement`
+- **原文已核对**: 是
+- **原文**: `Proofs are elementary and pinned by unit tests in the released code (98 tests;`
+- **说明**: The test count in this sentence was corrected from 76 to 98, which confirms the author checked it against the suite, so the reader now has an accurate number for an artifact they still cannot obtain. 'Released' or 'committed' recurs in Secs. IV-B, V-C, V-F and VII, and Table IV is a whole table of test names standing in for proofs not given in the body. Nine pages still contain no URL, DOI, repository name, archive, or 'available upon publication' sentence. This remains the one finding that stops the manuscript at an editor's desk rather than at a reviewer's, and it is a one-line fix: name the repository and the commit or tag that produced Table IV.
 
 ### M5: The abstract still names the weaker of the two designated killer baselines
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `committee_literature`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `signgrid-omitted-from-headline`
-- **Quote Verified**: yes
-- **Quote**: `pin every published protocol to the majority-vote floor ($\kappa=-0.6$: $1.000$ vs.\ $0.807$)`
-- **Explanation**: The Results section now gives the full honest picture, so this is a positioning residue rather than a concealment. The delta a reader infers from the abstract is 0.193 over the published floor; in that cell results/tact_eval.json records TACT-dev_vs_SignGrid as {a_only: 0, b_only: 0, p_value: 1.0}, bit-identical decisions, and across the nine sweep cells SignGrid-dev ties five times and leads four times, never behind. The falsifier sentence still names only CISC-devT. One clause in the abstract, stating that a trivial dev-tuned signed grid also reaches 1.000 there and that the contribution on this axis is the label-free estimate of the sign, aligns the abstract with the Results the author has already written.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `committee_literature`
+- **置信度**: high
+- **章节**: abstract
+- **关联章节**: abstract
+- **根因键**: `signgrid-omitted-from-headline`
+- **原文已核对**: 是
+- **原文**: `pin every published protocol to the majority-vote floor ($\kappa=-0.6$: $1.000$ vs.\ $0.807$)`
+- **说明**: The Results section now gives the full honest picture, so this is a positioning residue rather than a concealment. The delta a reader infers from the abstract is 0.193 over the published floor; in that cell results/tact_eval.json records TACT-dev_vs_SignGrid as {a_only: 0, b_only: 0, p_value: 1.0}, bit-identical decisions, and across the nine sweep cells SignGrid-dev ties five times and leads four times, never behind. The falsifier sentence still names only CISC-devT. One clause in the abstract, stating that a trivial dev-tuned signed grid also reaches 1.000 there and that the contribution on this axis is the label-free estimate of the sign, aligns the abstract with the Results the author has already written.
 
 ### M6: Every synthetic cell is still a single seed with no dispersion, and the argument now rests on the mid-range comparison too
-- **Type**: methodology
-- **Source**: [LLM] via `evaluation_fairness_and_reproducibility`
-- **Confidence**: high
-- **Section**: experiment
-- **Related Sections**: experiment
-- **Root Cause Key**: `single-seed-no-dispersion`
-- **Quote Verified**: yes
-- **Quote**: `the net advantage concentrates exactly where pre-registered: distortion ($+0.035$), echo ($+0.035$), and label-free operation, which no grid can perform`
-- **Explanation**: results/tact_eval.json still runs at config {items: 400, k: 15, k_max: 20, seed: 0}: one seed per cell, no repetitions, no interval. The revision increased the exposure rather than reducing it: the new paragraph now also interprets four mid-range differences of 0.012 to 0.015 as evidence that 'the analytic map is not better at choosing a magnitude on these cells'. On 400 paired items 0.012 is five items. Both the +0.035 advantages and the new negative claim about the map are single-draw quantities. Rerunning each cell over 10-20 seeds, or giving the paired McNemar for each cell the paragraph interprets, would put all of it on the footing the grouped-cell result already has.
+- **类型**: methodology
+- **来源**: [LLM] via `evaluation_fairness_and_reproducibility`
+- **置信度**: high
+- **章节**: experiment
+- **关联章节**: experiment
+- **根因键**: `single-seed-no-dispersion`
+- **原文已核对**: 是
+- **原文**: `the net advantage concentrates exactly where pre-registered: distortion ($+0.035$), echo ($+0.035$), and label-free operation, which no grid can perform`
+- **说明**: results/tact_eval.json still runs at config {items: 400, k: 15, k_max: 20, seed: 0}: one seed per cell, no repetitions, no interval. The revision increased the exposure rather than reducing it: the new paragraph now also interprets four mid-range differences of 0.012 to 0.015 as evidence that 'the analytic map is not better at choosing a magnitude on these cells'. On 400 paired items 0.012 is five items. Both the +0.035 advantages and the new negative claim about the map are single-draw quantities. Rerunning each cell over 10-20 seeds, or giving the paired McNemar for each cell the paragraph interprets, would put all of it on the footing the grouped-cell result already has.
 
 ### M7: The contribution list still omits the real-trace campaigns and the window measurement
-- **Type**: missing_information
-- **Source**: [LLM] via `section_intro_related`
-- **Confidence**: high
-- **Section**: introduction
-- **Related Sections**: introduction
-- **Root Cause Key**: `contributions-omit-real-trace`
-- **Quote Verified**: yes
-- **Quote**: `This paper frames the problem as estimating one scalar: the \emph{signed} within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent. The contributions are:`
-- **Explanation**: Still four contributions, none mentioning real LLM traces, while Secs. V-G to V-I remain the larger part of the Results and Sec. V-I's window measurement bounds every confidence-weighted voting method rather than only TACT. The Discussion was revised to state that neither real substrate could demonstrate a gain, which is the honest framing; page 1 still does not carry it. Promoting the window measurement to C5, framed as a bound on the whole family, moves the paper's strongest transferable result to where it earns credit.
+- **类型**: missing_information
+- **来源**: [LLM] via `section_intro_related`
+- **置信度**: high
+- **章节**: introduction
+- **关联章节**: introduction
+- **根因键**: `contributions-omit-real-trace`
+- **原文已核对**: 是
+- **原文**: `This paper frames the problem as estimating one scalar: the \emph{signed} within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent. The contributions are:`
+- **说明**: Still four contributions, none mentioning real LLM traces, while Secs. V-G to V-I remain the larger part of the Results and Sec. V-I's window measurement bounds every confidence-weighted voting method rather than only TACT. The Discussion was revised to state that neither real substrate could demonstrate a gain, which is the honest framing; page 1 still does not carry it. Promoting the window measurement to C5, framed as a bound on the whole family, moves the paper's strongest transferable result to where it earns credit.
 
 ### M8: The Bayes-discriminant link assumes within-item normality of a statistic that is discrete and bounded by construction
-- **Type**: methodology
-- **Source**: [LLM] via `section_methods`
-- **Confidence**: high
-- **Section**: method
-- **Related Sections**: method
-- **Root Cause Key**: `link-assumes-normality-of-discrete-phi`
-- **Quote Verified**: yes
-- **Quote**: `Model $\varphi\,|\,y\sim\mathcal{N}(\mu_y,s^2)$ within item with the \emph{mixture} standardized to unit variance`
-- **Explanation**: The link of Eq. (11) is the sole theoretical justification for the magnitude of the exponent, and it is derived from a Gaussian model for phi. By Eq. (2) phi is the standardized van der Waerden score of a midrank, so at $m_q{=}4$ it takes four values before standardization. The paper handles the scale consequence (it standardizes by the realized sigma_q, noting '$0.62$ at $m{=}4$ but $0.95$ at $m{=}40$') and never the distributional one, in exactly the small-budget regime it advertises as transferable ('an exponent estimated at $m{=}40$ transfers to deployment at $m{=}8$'). The revision's new disclosure that the clip binds wherever the statistic saturates narrows where the link is load-bearing, which makes the small-m case the one place it still has to hold. State the m at which the Gaussian link is adequate, or add a discreteness correction.
+- **类型**: methodology
+- **来源**: [LLM] via `section_methods`
+- **置信度**: high
+- **章节**: method
+- **关联章节**: method
+- **根因键**: `link-assumes-normality-of-discrete-phi`
+- **原文已核对**: 是
+- **原文**: `Model $\varphi\,|\,y\sim\mathcal{N}(\mu_y,s^2)$ within item with the \emph{mixture} standardized to unit variance`
+- **说明**: The link of Eq. (11) is the sole theoretical justification for the magnitude of the exponent, and it is derived from a Gaussian model for phi. By Eq. (2) phi is the standardized van der Waerden score of a midrank, so at $m_q{=}4$ it takes four values before standardization. The paper handles the scale consequence (it standardizes by the realized sigma_q, noting '$0.62$ at $m{=}4$ but $0.95$ at $m{=}40$') and never the distributional one, in exactly the small-budget regime it advertises as transferable ('an exponent estimated at $m{=}40$ transfers to deployment at $m{=}8$'). The revision's new disclosure that the clip binds wherever the statistic saturates narrows where the link is load-bearing, which makes the small-m case the one place it still has to hold. State the m at which the Gaussian link is adequate, or add a discreteness correction.
 
 ### M9: 'Cannot represent' still overstates a search-range choice, and the paper's own trivial baseline still refutes it
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `prior_art_and_novelty_grounding`
-- **Confidence**: high
-- **Section**: related
-- **Related Sections**: related
-- **Root Cause Key**: `cannot-represent-vs-not-searched`
-- **Quote Verified**: yes
-- **Quote**: `None of these can represent, much less estimate, a negative confidence--correctness association.`
-- **Explanation**: Unchanged, in the abstract ('Every published weighting scheme is structurally monotone increasing'), the Introduction ('is not representable') and Related Work. SignGrid-dev is the same $c^{\gamma}$ family with the sign released and it reaches the signed oracle across the whole negative half-axis (1.000 at kappa=-0.6 and -0.4, 0.993 at -0.2, 0.892 at -0.1), so the barrier is one sign bit in a hyperparameter range, not representational capacity. The revision has already applied exactly this correction to the oracle claim in C1; the same move here would resize the contribution honestly: from a capability no published scheme has, to one no published scheme searches for, plus an estimator that finds it without labels.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `prior_art_and_novelty_grounding`
+- **置信度**: high
+- **章节**: related
+- **关联章节**: related
+- **根因键**: `cannot-represent-vs-not-searched`
+- **原文已核对**: 是
+- **原文**: `None of these can represent, much less estimate, a negative confidence--correctness association.`
+- **说明**: Unchanged, in the abstract ('Every published weighting scheme is structurally monotone increasing'), the Introduction ('is not representable') and Related Work. SignGrid-dev is the same $c^{\gamma}$ family with the sign released and it reaches the signed oracle across the whole negative half-axis (1.000 at kappa=-0.6 and -0.4, 0.993 at -0.2, 0.892 at -0.1), so the barrier is one sign bit in a hyperparameter range, not representational capacity. The revision has already applied exactly this correction to the oracle claim in C1; the same move here would resize the contribution honestly: from a capability no published scheme has, to one no published scheme searches for, plus an estimator that finds it without labels.
 
 ### M10: Two paragraphs of the Results section now contradict each other about whether the grid baselines reach the distortion and echo cells
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `numbers_vs_released_artifacts`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `f4-unreachable-now-self-contradictory`
-- **Quote Verified**: yes
-- **Quote**: `F4 (the distortion and echo cells are unreachable by either grid baseline)`
-- **Explanation**: The revision added a paragraph that reports exactly the opposite, and correctly: SignGrid-dev reaches 0.965 under monotone compression against TACT's 1.000, and in confident echo 'beats the grid optimum $\gamma=-1$ ($0.585$ vs.\ $0.550$)' describes a grid baseline scoring 0.550 in a cell the F4 sentence calls unreachable. Both statements are in Section V, one screen apart. The new paragraph is the accurate one; the F4 wording predates it and should now read that both grid baselines fall 0.035 short in those cells and that neither can operate label-free, which is the claim the artifacts support and is no weaker.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `numbers_vs_released_artifacts`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `f4-unreachable-now-self-contradictory`
+- **原文已核对**: 是
+- **原文**: `F4 (the distortion and echo cells are unreachable by either grid baseline)`
+- **说明**: The revision added a paragraph that reports exactly the opposite, and correctly: SignGrid-dev reaches 0.965 under monotone compression against TACT's 1.000, and in confident echo 'beats the grid optimum $\gamma=-1$ ($0.585$ vs.\ $0.550$)' describes a grid baseline scoring 0.550 in a cell the F4 sentence calls unreachable. Both statements are in Section V, one screen apart. The new paragraph is the accurate one; the F4 wording predates it and should now read that both grid baselines fall 0.035 short in those cells and that neither can operate label-free, which is the claim the artifacts support and is no weaker.
 
-## Moderate Issues
+## 中等问题
 
 ### M1: A universal operating default is still inferred from five substrates of 30 to 119 items
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `committee_logic`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `universal-default-from-five-small-samples`
-- **Quote Verified**: yes
-- **Quote**: `Abstention is therefore the correct default rather than a conservative one, and the dead zone implements it exactly.`
-- **Explanation**: The premises are five window measurements with denominators of 100, 89, 30, an unstated published table, and 40, and the paper reports the interval on one of them (CI95 2.6-19.9% on 3/40). The conclusion is stated in the abstract without qualification. The direction of the evidence supports it; 'the correct default' outruns five small samples in two domains. Scope it to the substrates measured, or attach the interval.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `committee_logic`
+- **置信度**: high
+- **章节**: abstract
+- **关联章节**: abstract
+- **根因键**: `universal-default-from-five-small-samples`
+- **原文已核对**: 是
+- **原文**: `Abstention is therefore the correct default rather than a conservative one, and the dead zone implements it exactly.`
+- **说明**: The premises are five window measurements with denominators of 100, 89, 30, an unstated published table, and 40, and the paper reports the interval on one of them (CI95 2.6-19.9% on 3/40). The conclusion is stated in the abstract without qualification. The direction of the evidence supports it; 'the correct default' outruns five small samples in two domains. Scope it to the substrates measured, or attach the interval.
 
 ### M2: Abstract is now 378 words in a single math-dense paragraph, against an IEEE norm of roughly 200
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `abstract-length-and-math`
-- **Quote Verified**: yes
-- **Quote**: `Confidence-weighted self-consistency (CISC and its successors) improves on majority voting when a frozen large language model's self-reported confidence is calibrated in \emph{direction}.`
-- **Explanation**: [Script] The revision's added precision on the oracle grid was worth its words, but the abstract grew from 371 to 378 and is still one paragraph filling the whole first column, still asking the reader to parse inline mathematics before the Introduction. The 95-word Conclusion is the mirror defect. Several of the remaining claim-level fixes above also need abstract space, so this is now the binding constraint on making them.
+- **类型**: presentation
+- **来源**: [Script] via `pre_submission_readiness`
+- **置信度**: high
+- **章节**: abstract
+- **关联章节**: abstract
+- **根因键**: `abstract-length-and-math`
+- **原文已核对**: 是
+- **原文**: `Confidence-weighted self-consistency (CISC and its successors) improves on majority voting when a frozen large language model's self-reported confidence is calibrated in \emph{direction}.`
+- **说明**: [Script] The revision's added precision on the oracle grid was worth its words, but the abstract grew from 371 to 378 and is still one paragraph filling the whole first column, still asking the reader to parse inline mathematics before the Introduction. The 95-word Conclusion is the mirror defect. Several of the remaining claim-level fixes above also need abstract space, so this is now the binding constraint on making them.
 
 ### M3: Nine pages in IEEEtran conference class, still with no named target track
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `page-budget-and-venue`
-- **Quote Verified**: yes
-- **Quote**: `\documentclass[conference]{IEEEtran}`
-- **Explanation**: [Script] The revision left the page count at 9 (body through p. 8, references to p. 9) with 6 tables and 4 figures. Most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees. Until a track with a sufficient limit is named this is a mechanical rejection unrelated to merit. The community question also stands: every substantive comparator cited is ACL/EMNLP/ICLR/NeurIPS work.
+- **类型**: presentation
+- **来源**: [Script] via `pre_submission_readiness`
+- **置信度**: high
+- **章节**: abstract
+- **关联章节**: abstract
+- **根因键**: `page-budget-and-venue`
+- **原文已核对**: 是
+- **原文**: `\documentclass[conference]{IEEEtran}`
+- **说明**: [Script] The revision left the page count at 9 (body through p. 8, references to p. 9) with 6 tables and 4 figures. Most IEEE conference tracks cap at 6 pages, some at 8 with over-length fees. Until a track with a sufficient limit is named this is a mechanical rejection unrelated to merit. The community question also stands: every substantive comparator cited is ACL/EMNLP/ICLR/NeurIPS work.
 
 ### M4: The abstract still credits both real-trace campaigns with confirming the premise
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `claims_vs_evidence`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `both-campaigns-confirm-premise`
-- **Quote Verified**: yes
-- **Quote**: `Two real-trace campaigns on a frozen model confirm the premise and locate the binding constraint`
-- **Explanation**: Unchanged in the abstract, although the Discussion was revised to state it correctly ('the channel is null on saturated benchmarks and positive on competition mathematics'). Campaign 1 measured D-hat = -0.219, SE = 0.176, z = -1.24: not significant and pointing the wrong way. What it confirms is the null-direction prediction and the calibration-discrimination argument, not the premise that the channel carries signed discrimination. The Discussion's new sentence is the wording the abstract needs.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `claims_vs_evidence`
+- **置信度**: high
+- **章节**: abstract
+- **关联章节**: abstract
+- **根因键**: `both-campaigns-confirm-premise`
+- **原文已核对**: 是
+- **原文**: `Two real-trace campaigns on a frozen model confirm the premise and locate the binding constraint`
+- **说明**: Unchanged in the abstract, although the Discussion was revised to state it correctly ('the channel is null on saturated benchmarks and positive on competition mathematics'). Campaign 1 measured D-hat = -0.219, SE = 0.176, z = -1.24: not significant and pointing the wrong way. What it confirms is the null-direction prediction and the calibration-discrimination argument, not the premise that the channel carries signed discrimination. The Discussion's new sentence is the wording the abstract needs.
 
 ### M5: The abstract still states the p-bar=1/2 special case as the method's general reduction
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `claims_vs_evidence`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `pbar-half-special-case-as-general`
-- **Quote Verified**: yes
-- **Quote**: `the method is a single expression whose exponent reduces to $\gamma=z\sqrt{2+z^2}$`
-- **Explanation**: Unchanged. Eq. (13) gives the general exponent as gamma = [z*sqrt(2 + 4*p_bar*(1-p_bar)*z^2)] clipped, and Eq. (15) states the two-term form only 'At the default p_bar = 1/2'. The body is precise; the abstract drops the qualifier. Six words fix it.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `claims_vs_evidence`
+- **置信度**: high
+- **章节**: abstract
+- **关联章节**: abstract
+- **根因键**: `pbar-half-special-case-as-general`
+- **原文已核对**: 是
+- **原文**: `the method is a single expression whose exponent reduces to $\gamma=z\sqrt{2+z^2}$`
+- **说明**: Unchanged. Eq. (13) gives the general exponent as gamma = [z*sqrt(2 + 4*p_bar*(1-p_bar)*z^2)] clipped, and Eq. (15) states the two-term form only 'At the default p_bar = 1/2'. The body is precise; the abstract drops the qualifier. Six words fix it.
 
 ### M6: The Limitations section still does not state the limitation the paper's own numbers make unavoidable
-- **Type**: methodology
-- **Source**: [LLM] via `section_discussion_conclusion`
-- **Confidence**: high
-- **Section**: discussion
-- **Related Sections**: discussion
-- **Root Cause Key**: `single-seed-no-dispersion`
-- **Quote Verified**: yes
-- **Quote**: `Three design choices limit the circularity`
-- **Explanation**: The circularity paragraph was revised and is now accurate about what the real-trace campaigns do and do not test, which was the substance of the earlier contradiction. It still lists no limitation covering statistical dispersion, and the revision widened the exposure by adding four mid-range comparisons of 0.012 to 0.015 to the interpreted set. One sentence stating that every synthetic cell is a single seed at 400 items with no interval would cover it.
+- **类型**: methodology
+- **来源**: [LLM] via `section_discussion_conclusion`
+- **置信度**: high
+- **章节**: discussion
+- **关联章节**: discussion
+- **根因键**: `single-seed-no-dispersion`
+- **原文已核对**: 是
+- **原文**: `Three design choices limit the circularity`
+- **说明**: The circularity paragraph was revised and is now accurate about what the real-trace campaigns do and do not test, which was the substance of the earlier contradiction. It still lists no limitation covering statistical dispersion, and the revision widened the exposure by adding four mid-range comparisons of 0.012 to 0.015 to the interpreted set. One sentence stating that every synthetic cell is a single seed at 400 items with no interval would cover it.
 
 ### M7: The remedy for the paper's sharpest failure mode has been removed from the bibliography rather than engaged with
-- **Type**: missing_information
-- **Source**: [LLM] via `prior_art_and_novelty_grounding`
-- **Confidence**: high
-- **Section**: discussion
-- **Related Sections**: discussion
-- **Root Cause Key**: `semantic-dedup-remedy-uncited`
-- **Quote Verified**: yes
-- **Quote**: `a dominant
+- **类型**: missing_information
+- **来源**: [LLM] via `prior_art_and_novelty_grounding`
+- **置信度**: high
+- **章节**: discussion
+- **关联章节**: discussion
+- **根因键**: `semantic-dedup-remedy-uncited`
+- **原文已核对**: 是
+- **原文**: `a dominant
 wrong cluster that is semantically tight but carries no verbatim signature, so
 deduplication has nothing to collapse`
-- **Explanation**: The uncited-reference finding was closed by deleting kuhn2023semantic and rasc2024, which fixes the IEEE hygiene issue and leaves the substantive one worse. The unguarded failure follows from deduplication being purely lexical ('single-linkage duplicate groups on the lexical-similarity channel at $0.95$'), and semantic-equivalence clustering is the standard published response. It is now absent from the manuscript entirely. Calling the mode 'unguarded' reads as a statement about the problem when it is a statement about one design choice; one sentence citing the alternative, either as not adopted with a reason or as future work, would restore the reference and answer the objection at once.
+- **说明**: The uncited-reference finding was closed by deleting kuhn2023semantic and rasc2024, which fixes the IEEE hygiene issue and leaves the substantive one worse. The unguarded failure follows from deduplication being purely lexical ('single-linkage duplicate groups on the lexical-similarity channel at $0.95$'), and semantic-equivalence clustering is the standard published response. It is now absent from the manuscript entirely. Calling the mode 'unguarded' reads as a statement about the problem when it is a statement about one design choice; one sentence citing the alternative, either as not adopted with a reason or as future work, would restore the reference and answer the objection at once.
 
 ### M8: Three of the five adversarial cells still lie inside the estimator's invariance group by construction
-- **Type**: methodology
-- **Source**: [LLM] via `evaluation_fairness_and_reproducibility`
-- **Confidence**: high
-- **Section**: discussion
-- **Related Sections**: discussion
-- **Root Cause Key**: `distortion-cells-inside-invariance-group`
-- **Quote Verified**: yes
-- **Quote**: `the adversarial regimes (distortions, heterogeneity, echo) lie outside the estimator's working model`
-- **Explanation**: The three monotone distortions are 'rank-preserving by construction' (Sec. IV) and C1 makes rank-only dependence the source of TACT's invariance, so 1.000 in those cells is entailed rather than discovered. The comparison against the raw-value family there is still the right comparison, and the revision has now correctly bounded what it shows. What it cannot also be is the circularity mitigation this sentence claims: of the five cells, only confident echo and the i.i.d. heterogeneity cell probe outside the working model.
+- **类型**: methodology
+- **来源**: [LLM] via `evaluation_fairness_and_reproducibility`
+- **置信度**: high
+- **章节**: discussion
+- **关联章节**: discussion
+- **根因键**: `distortion-cells-inside-invariance-group`
+- **原文已核对**: 是
+- **原文**: `the adversarial regimes (distortions, heterogeneity, echo) lie outside the estimator's working model`
+- **说明**: The three monotone distortions are 'rank-preserving by construction' (Sec. IV) and C1 makes rank-only dependence the source of TACT's invariance, so 1.000 in those cells is entailed rather than discovered. The comparison against the raw-value family there is still the right comparison, and the revision has now correctly bounded what it shows. What it cannot also be is the circularity mitigation this sentence claims: of the five cells, only confident echo and the i.i.d. heterogeneity cell probe outside the working model.
 
 ### M9: F4 as worded still cannot be tripped by the trivial baseline beating the method
-- **Type**: methodology
-- **Source**: [LLM] via `self_standard_consistency`
-- **Confidence**: high
-- **Section**: experiment
-- **Related Sections**: experiment
-- **Root Cause Key**: `f4-asymmetric-falsifier`
-- **Quote Verified**: yes
-- **Quote**: `F4: CISC-devT or SignGrid-dev matches \TACT-dev everywhere, including the distortion, heterogeneity, and small-dev cells.`
-- **Explanation**: The falsifier fires only if a grid baseline matches TACT everywhere, so SignGrid-dev strictly beating TACT-dev, which the revision now documents in four of nine sweep cells, cannot falsify anything. The new paragraph makes the asymmetry more visible, not less: the paper now reports the losses and still keeps a pre-registration that could not have registered them. Widening F4 to 'matches or beats' costs nothing and would have been survived anyway on the distortion and echo cells.
+- **类型**: methodology
+- **来源**: [LLM] via `self_standard_consistency`
+- **置信度**: high
+- **章节**: experiment
+- **关联章节**: experiment
+- **根因键**: `f4-asymmetric-falsifier`
+- **原文已核对**: 是
+- **原文**: `F4: CISC-devT or SignGrid-dev matches \TACT-dev everywhere, including the distortion, heterogeneity, and small-dev cells.`
+- **说明**: The falsifier fires only if a grid baseline matches TACT everywhere, so SignGrid-dev strictly beating TACT-dev, which the revision now documents in four of nine sweep cells, cannot falsify anything. The new paragraph makes the asymmetry more visible, not less: the paper now reports the losses and still keeps a pre-registration that could not have registered them. Widening F4 to 'matches or beats' costs nothing and would have been survived anyway on the distortion and echo cells.
 
 ### M10: Proposition 7's justification establishes a sign flip, not the identical observable laws it claims
-- **Type**: methodology
-- **Source**: [LLM] via `section_methods`
-- **Confidence**: high
-- **Section**: hetero
-- **Related Sections**: hetero
-- **Root Cause Key**: `prop7-sketch-weaker-than-claim`
-- **Quote Verified**: yes
-- **Quote**: `induce identical observable laws (constructively, $D$ computed against either truth satisfies $D^{w_1}=-D^{w_2}$)`
-- **Explanation**: The claim is that two worlds induce identical laws over the observable (a, c); the parenthetical establishes only that one functional of the data is sign-reversed under the two candidate truths. That does not rule out some other functional separating them. The proposition may well be true under the stated i.i.d. coupling, but the paper leans on it twice more, in Sec. V-B and the Discussion, to license 'No label-free method can separate them', so the justification should match the strength of the statement.
+- **类型**: methodology
+- **来源**: [LLM] via `section_methods`
+- **置信度**: high
+- **章节**: hetero
+- **关联章节**: hetero
+- **根因键**: `prop7-sketch-weaker-than-claim`
+- **原文已核对**: 是
+- **原文**: `induce identical observable laws (constructively, $D$ computed against either truth satisfies $D^{w_1}=-D^{w_2}$)`
+- **说明**: The claim is that two worlds induce identical laws over the observable (a, c); the parenthetical establishes only that one functional of the data is sign-reversed under the two candidate truths. That does not rule out some other functional separating them. The proposition may well be true under the stated i.i.d. coupling, but the paper leans on it twice more, in Sec. V-B and the Discussion, to license 'No label-free method can separate them', so the justification should match the strength of the statement.
 
 ### M11: Propositions 5 and 6 are still measured frequencies from one harness inside a proposition environment
-- **Type**: methodology
-- **Source**: [LLM] via `section_methods`
-- **Confidence**: high
-- **Section**: hetero
-- **Related Sections**: hetero
-- **Root Cause Key**: `empirical-frequencies-as-propositions`
-- **Quote Verified**: yes
-- **Quote**: `Empirically such a rule agrees with \SC{} on $97.5\%$ of items and its residual flips are net-harmful ($1$ right vs.\ $9$ wrong per $400$ items).`
-- **Explanation**: Proposition 5's opening is a structural claim but its quantitative content is a frequency measured on 400 synthetic items at one seed; Proposition 6 is entirely such a frequency. The blanket 'Proofs are elementary and pinned by unit tests' then extends to both. Restate them as remarks with sample sizes and intervals, or scope the proof sentence so it does not cover them.
+- **类型**: methodology
+- **来源**: [LLM] via `section_methods`
+- **置信度**: high
+- **章节**: hetero
+- **关联章节**: hetero
+- **根因键**: `empirical-frequencies-as-propositions`
+- **原文已核对**: 是
+- **原文**: `Empirically such a rule agrees with \SC{} on $97.5\%$ of items and its residual flips are net-harmful ($1$ right vs.\ $9$ wrong per $400$ items).`
+- **说明**: Proposition 5's opening is a structural claim but its quantitative content is a frequency measured on 400 synthetic items at one seed; Proposition 6 is entirely such a frequency. The blanket 'Proofs are elementary and pinned by unit tests' then extends to both. Restate them as remarks with sample sizes and intervals, or scope the proof sentence so it does not cover them.
 
 ### M12: The theoretical increment is still not the one the title and abstract advertise
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `committee_theory`
-- **Confidence**: high
-- **Section**: hetero
-- **Related Sections**: hetero
-- **Root Cause Key**: `theory-increment-mislocated`
-- **Quote Verified**: yes
-- **Quote**: `The claim is the assembly and its anchors, not the parts.`
-- **Explanation**: The revision strengthens this reading rather than weakening it. Now that the paper states the clip binds in every saturated cell and that the analytic map is not better at choosing a magnitude in the cells where it is active, what remains as the durable increment is the impossibility triple of Sec. VI and the attenuation identity E[D-hat_g] = (1-2*rho_bar)*D: boundary results about what any label-free method can do, plus the sign recovery. Those survive if TACT is superseded. Title, abstract and C1 still spend themselves on the tempering map.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `committee_theory`
+- **置信度**: high
+- **章节**: hetero
+- **关联章节**: hetero
+- **根因键**: `theory-increment-mislocated`
+- **原文已核对**: 是
+- **原文**: `The claim is the assembly and its anchors, not the parts.`
+- **说明**: The revision strengthens this reading rather than weakening it. Now that the paper states the clip binds in every saturated cell and that the analytic map is not better at choosing a magnitude in the cells where it is active, what remains as the durable increment is the impossibility triple of Sec. VI and the attenuation identity E[D-hat_g] = (1-2*rho_bar)*D: boundary results about what any label-free method can do, plus the sign recovery. Those survive if TACT is superseded. Title, abstract and C1 still spend themselves on the tempering map.
 
 ### M13: C1 still claims the exponent is derived rather than grid-searched, without the clause the Results now supply
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `claims_vs_evidence`
-- **Confidence**: high
-- **Section**: introduction
-- **Related Sections**: introduction
-- **Root Cause Key**: `gamma-max-clip-not-derived`
-- **Quote Verified**: yes
-- **Quote**: `$\gamma$ is \emph{derived}, not grid-searched`
-- **Explanation**: The Results section was revised well: it now states that the cap binds where D-hat saturates and that in the four headline cells 'the derived magnitude is not doing the work there, the sign is'. C1 was revised in the same commit for the oracle claim but this phrase was left, so the contribution a reader carries away from page 1 is still the unqualified one, and the honest version is four pages later. Adding 'derived rather than grid-searched, though the clip binds where the statistic saturates (Section V-B)' to C1 closes the last gap on this root cause.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `claims_vs_evidence`
+- **置信度**: high
+- **章节**: introduction
+- **关联章节**: introduction
+- **根因键**: `gamma-max-clip-not-derived`
+- **原文已核对**: 是
+- **原文**: `$\gamma$ is \emph{derived}, not grid-searched`
+- **说明**: The Results section was revised well: it now states that the cap binds where D-hat saturates and that in the four headline cells 'the derived magnitude is not doing the work there, the sign is'. C1 was revised in the same commit for the oracle claim but this phrase was left, so the contribution a reader carries away from page 1 is still the unqualified one, and the honest version is four pages later. Adding 'derived rather than grid-searched, though the clip binds where the statistic saturates (Section V-B)' to C1 closes the last gap on this root cause.
 
 ### M14: AUC-hat in the one-line formula is still the shrunken pooled statistic while AUC was defined per-item and raw
-- **Type**: presentation
-- **Source**: [LLM] via `notation_and_numeric_consistency`
-- **Confidence**: high
-- **Section**: method
-- **Related Sections**: method
-- **Root Cause Key**: `auc-hat-overload`
-- **Quote Verified**: yes
-- **Quote**: `\gamma=z\sqrt{2+z^{2}},\qquad z=\Phi^{-1}(\widehat{\mathrm{AUC}}),`
-- **Explanation**: Eq. (5) defines $\mathrm{AUC}_q = U_q/(n^1_q n^0_q)$, raw and per-item. Eq. (15) writes $z=\Phi^{-1}(\widehat{\mathrm{AUC}})$, where by Eq. (14) the argument must be the shrunk pooled value. The hat is the only distinguishing mark, and the abstract compounds it with 'the probit of the shrunk pooled AUC', a name the body never defines. Define it where Eq. (15) introduces it.
+- **类型**: presentation
+- **来源**: [LLM] via `notation_and_numeric_consistency`
+- **置信度**: high
+- **章节**: method
+- **关联章节**: method
+- **根因键**: `auc-hat-overload`
+- **原文已核对**: 是
+- **原文**: `\gamma=z\sqrt{2+z^{2}},\qquad z=\Phi^{-1}(\widehat{\mathrm{AUC}}),`
+- **说明**: Eq. (5) defines $\mathrm{AUC}_q = U_q/(n^1_q n^0_q)$, raw and per-item. Eq. (15) writes $z=\Phi^{-1}(\widehat{\mathrm{AUC}})$, where by Eq. (14) the argument must be the shrunk pooled value. The hat is the only distinguishing mark, and the abstract compounds it with 'the probit of the shrunk pooled AUC', a name the body never defines. Define it where Eq. (15) introduces it.
 
 ### M15: kappa still denotes both the confidence coupling and a per-item normalizing constant
-- **Type**: presentation
-- **Source**: [LLM] via `notation_and_numeric_consistency`
-- **Confidence**: high
-- **Section**: method
-- **Related Sections**: method
-- **Root Cause Key**: `kappa-symbol-collision`
-- **Quote Verified**: yes
-- **Quote**: `the weights equal $\smash{\kappa_q\,c_{q,i}^{\,\gamma}}$ with a per-item constant $\kappa_q>0$`
-- **Explanation**: kappa indexes the confidence-correctness coupling in Eq. (1), the sweep axis in Table I, the heterogeneity design, and the abstract's headline cell ($\kappa=-0.6$). Proposition 2 reuses it, subscripted by the same item index q, for an unrelated positive normalizer, with no announcement and no symbol table. Any free letter would do.
+- **类型**: presentation
+- **来源**: [LLM] via `notation_and_numeric_consistency`
+- **置信度**: high
+- **章节**: method
+- **关联章节**: method
+- **根因键**: `kappa-symbol-collision`
+- **原文已核对**: 是
+- **原文**: `the weights equal $\smash{\kappa_q\,c_{q,i}^{\,\gamma}}$ with a per-item constant $\kappa_q>0$`
+- **说明**: kappa indexes the confidence-correctness coupling in Eq. (1), the sweep axis in Table I, the heterogeneity design, and the abstract's headline cell ($\kappa=-0.6$). Proposition 2 reuses it, subscripted by the same item index q, for an unrelated positive normalizer, with no announcement and no symbol table. Any free letter would do.
 
 ### M16: Related Work is still a citation ledger: 20 of 26 references in 272 words, four uncharacterized
-- **Type**: presentation
-- **Source**: [LLM] via `committee_literature`
-- **Confidence**: high
-- **Section**: related
-- **Related Sections**: related
-- **Root Cause Key**: `related-work-is-a-ledger`
-- **Quote Verified**: yes
-- **Quote**: `Estimating worker reliability from agreement is classical \cite{dawid1979maximum,whitehill2009whose,karger2011iterative}`
-- **Explanation**: Nine keys in the first paragraph, six in one sentence of the second, four in one sentence of the third; li2023diverse, borda2025, aggarwal2023adaptive and li2024escape get no characterization. fuse2026 and beyondmajority2025 are the closest published neighbours to C2 and are separated from it by one unevidenced clause. No paragraph states what the field believes and where that belief breaks. The reordering and URL work in this commit improved the bibliography's mechanics without touching the section's argument.
+- **类型**: presentation
+- **来源**: [LLM] via `committee_literature`
+- **置信度**: high
+- **章节**: related
+- **关联章节**: related
+- **根因键**: `related-work-is-a-ledger`
+- **原文已核对**: 是
+- **原文**: `Estimating worker reliability from agreement is classical \cite{dawid1979maximum,whitehill2009whose,karger2011iterative}`
+- **说明**: Nine keys in the first paragraph, six in one sentence of the second, four in one sentence of the third; li2023diverse, borda2025, aggarwal2023adaptive and li2024escape get no characterization. fuse2026 and beyondmajority2025 are the closest published neighbours to C2 and are separated from it by one unevidenced clause. No paragraph states what the field believes and where that belief breaks. The reordering and URL work in this commit improved the bibliography's mechanics without touching the section's argument.
 
 ### M17: The sibling negative result is still uncitable, and still de-anonymizes inside Related Work
-- **Type**: missing_information
-- **Source**: [LLM] via `prior_art_and_novelty_grounding`
-- **Confidence**: high
-- **Section**: related
-- **Related Sections**: related
-- **Root Cause Key**: `rlev-voi-uncitable`
-- **Quote Verified**: yes
-- **Quote**: `\textbf{Honest sibling result.} A preceding system by the author (RLEV-VoI, redundancy-discounted voting with value-of-information stopping) was evaluated under the same falsification discipline and \emph{failed} it`
-- **Explanation**: The Conclusion offers the falsification protocol as the paper's most portable contribution on the strength of 'having already killed one of the author's own systems', so this paragraph carries argumentative weight. It has no cite, arXiv id, report, or artifact pointer, so a reader cannot check the killed system or the deduplication baseline that dominated it. It also identifies the author in Related Work, which matters if the target track is double-blind. Move it to Limitations or an appendix with a citable pointer.
+- **类型**: missing_information
+- **来源**: [LLM] via `prior_art_and_novelty_grounding`
+- **置信度**: high
+- **章节**: related
+- **关联章节**: related
+- **根因键**: `rlev-voi-uncitable`
+- **原文已核对**: 是
+- **原文**: `\textbf{Honest sibling result.} A preceding system by the author (RLEV-VoI, redundancy-discounted voting with value-of-information stopping) was evaluated under the same falsification discipline and \emph{failed} it`
+- **说明**: The Conclusion offers the falsification protocol as the paper's most portable contribution on the strength of 'having already killed one of the author's own systems', so this paragraph carries argumentative weight. It has no cite, arXiv id, report, or artifact pointer, so a reader cannot check the killed system or the deduplication baseline that dominated it. It also identifies the author in Related Work, which matters if the target track is double-blind. Move it to Limitations or an appendix with a citable pointer.
 
 ### M18: Table VI's single 'Window' column still reports four different quantities across five rows
-- **Type**: presentation
-- **Source**: [LLM] via `notation_and_numeric_consistency`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `window-column-heterogeneous`
-- **Quote Verified**: yes
-- **Quote**: `Domain & Substrate & Window`
-- **Explanation**: Sec. V-I defines the window as the fraction of items where the plurality is wrong and the correct answer is in the pool. Row 1 gives '$12\%$ informative, $9\%$ decisive', neither of which is that quantity; rows 2 and 3 give decisive and rescuable fractions; rows 4 and 5 give a bare percentage. The abstract's range now correctly bottoms out at the table's minimum, which makes the column's heterogeneity the remaining obstacle to checking it. One column per defined quantity, with the denominator in each cell.
+- **类型**: presentation
+- **来源**: [LLM] via `notation_and_numeric_consistency`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `window-column-heterogeneous`
+- **原文已核对**: 是
+- **原文**: `Domain & Substrate & Window`
+- **说明**: Sec. V-I defines the window as the fraction of items where the plurality is wrong and the correct answer is in the pool. Row 1 gives '$12\%$ informative, $9\%$ decisive', neither of which is that quantity; rows 2 and 3 give decisive and rescuable fractions; rows 4 and 5 give a bare percentage. The abstract's range now correctly bottoms out at the table's minimum, which makes the column's heterogeneity the remaining obstacle to checking it. One column per defined quantity, with the denominator in each cell.
 
 ### M19: The exponent cap still differs between the two arms being compared
-- **Type**: methodology
-- **Source**: [LLM] via `evaluation_fairness_and_reproducibility`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `asymmetric-cap-across-arms`
-- **Quote Verified**: yes
-- **Quote**: `because its lower exponent cap ($2$ vs.\ $4$) regularizes better when $|D|\approx1$; cap robustness is left as an ablation`
-- **Explanation**: TACT-dev and TACT-LF carry different clips (4 vs 2) and different significance floors (1.28 vs 2.33), and in the grouped cell the label-free arm wins 0.940 vs 0.923 with the paper attributing the win to the cap. The revision now states plainly that the cap binds wherever D-hat saturates, which makes this sharper rather than softer: a parameter the paper says decides the headline comparison differs across the arms being compared, and the ablation is still deferred. Running both arms at both caps is a small run.
+- **类型**: methodology
+- **来源**: [LLM] via `evaluation_fairness_and_reproducibility`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `asymmetric-cap-across-arms`
+- **原文已核对**: 是
+- **原文**: `because its lower exponent cap ($2$ vs.\ $4$) regularizes better when $|D|\approx1$; cap robustness is left as an ablation`
+- **说明**: TACT-dev and TACT-LF carry different clips (4 vs 2) and different significance floors (1.28 vs 2.33), and in the grouped cell the label-free arm wins 0.940 vs 0.923 with the paper attributing the win to the cap. The revision now states plainly that the cap binds wherever D-hat saturates, which makes this sharper rather than softer: a parameter the paper says decides the headline comparison differs across the arms being compared, and the ablation is still deferred. Running both arms at both caps is a small run.
 
 ### M20: The new disclosure paragraph's gamma* = +/-38 does not survive recomputation with the paper's own formula
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `numbers_vs_released_artifacts`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `gamma-star-38-miscomputed`
-- **Quote Verified**: yes
-- **Quote**: `saturates at $\pm1$, so the link returns $\gamma^\ast\approx\pm38$ and the cap`
-- **Explanation**: Calling src/rlev_voi/formula.py gamma_of(d_hat, se, nu=1.28, gamma_max=inf, p_bar=0.5) on the diagnostics stored in results/tact_eval.json gives the unclipped link value per cell: -12.093 at kappa=-0.6, -8.364 at -0.4, +9.755 at +0.4, +12.112 at +0.6, and +12.115 in each of the three monotone-distortion cells. None is near 38. The paragraph's argument is untouched, since every one of those values is far above gamma_max=4 and the cap does bind, so 'the derived magnitude is not doing the work there, the sign is' stands. But this paragraph exists to hand the reader a checkable number, and the number it hands over is wrong by a factor of three. Replace 38 with 12, or state the range -8.4 to +12.1 across the seven saturated cells.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `numbers_vs_released_artifacts`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `gamma-star-38-miscomputed`
+- **原文已核对**: 是
+- **原文**: `saturates at $\pm1$, so the link returns $\gamma^\ast\approx\pm38$ and the cap`
+- **说明**: Calling src/rlev_voi/formula.py gamma_of(d_hat, se, nu=1.28, gamma_max=inf, p_bar=0.5) on the diagnostics stored in results/tact_eval.json gives the unclipped link value per cell: -12.093 at kappa=-0.6, -8.364 at -0.4, +9.755 at +0.4, +12.112 at +0.6, and +12.115 in each of the three monotone-distortion cells. None is near 38. The paragraph's argument is untouched, since every one of those values is far above gamma_max=4 and the cap does bind, so 'the derived magnitude is not doing the work there, the sign is' stands. But this paragraph exists to hand the reader a checkable number, and the number it hands over is wrong by a factor of three. Replace 38 with 12, or state the range -8.4 to +12.1 across the seven saturated cells.
 
 ### M21: The unfavourable paired test is still the one paired test not reported
-- **Type**: methodology
-- **Source**: [LLM] via `self_standard_consistency`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `unreported-unfavourable-paired-test`
-- **Quote Verified**: yes
-- **Quote**: `Against SignGrid-dev the honest margin is narrow on the homogeneous sweep`
-- **Explanation**: The revision deserves credit here: the new paragraph now names all four cells where TACT-dev trails and gives the exact accuracies, which was the substance of the objection. What is still missing is the test. results/tact_eval.json holds TACT-dev_vs_SignGrid at every sweep point, and at kappa = -0.2 it reads {a_only: 0, b_only: 6, p_value: 0.03125}: significant at 0.05, and the only paired comparison in the paper that favours a baseline. The manuscript reports p=3.3e-24 for the grouped cell and p=1 for the dead-zone cells. Adding '(0/6 discordant, exact p=0.03)' to the new paragraph completes the disclosure and removes the objection entirely.
+- **类型**: methodology
+- **来源**: [LLM] via `self_standard_consistency`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `unreported-unfavourable-paired-test`
+- **原文已核对**: 是
+- **原文**: `Against SignGrid-dev the honest margin is narrow on the homogeneous sweep`
+- **说明**: The revision deserves credit here: the new paragraph now names all four cells where TACT-dev trails and gives the exact accuracies, which was the substance of the objection. What is still missing is the test. results/tact_eval.json holds TACT-dev_vs_SignGrid at every sweep point, and at kappa = -0.2 it reads {a_only: 0, b_only: 6, p_value: 0.03125}: significant at 0.05, and the only paired comparison in the paper that favours a baseline. The manuscript reports p=3.3e-24 for the grouped cell and p=1 for the dead-zone cells. Adding '(0/6 discordant, exact p=0.03)' to the new paragraph completes the disclosure and removes the objection entirely.
 
 ### M22: Contribution C3 and Proposition 6 still state the winner's-curse frequency under different conditioning
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `section_methods`
-- **Confidence**: medium
-- **Section**: introduction
-- **Related Sections**: introduction
-- **Root Cause Key**: `c3-prop6-conditioning-mismatch`
-- **Quote Verified**: yes
-- **Quote**: `the observable sign opposes the truth $96\%$ of the time`
-- **Explanation**: C3 attaches 96% to 'exactly the plurality-wrong items where a flip could help'; Proposition 6 states the complementary 4% but conditions additionally on $|D_q|>0.3$. Arithmetically consistent, different item sets, so the Introduction claims the stronger unconditional version. Add the magnitude condition to C3 or report both.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `section_methods`
+- **置信度**: medium
+- **章节**: introduction
+- **关联章节**: introduction
+- **根因键**: `c3-prop6-conditioning-mismatch`
+- **原文已核对**: 是
+- **原文**: `the observable sign opposes the truth $96\%$ of the time`
+- **说明**: C3 attaches 96% to 'exactly the plurality-wrong items where a flip could help'; Proposition 6 states the complementary 4% but conditions additionally on $|D_q|>0.3$. Arithmetically consistent, different item sets, so the Introduction claims the stronger unconditional version. Add the magnitude condition to C3 or report both.
 
 ### M23: The one rank-based comparator is still filed as a budget refinement and never run
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `prior_art_and_novelty_grounding`
-- **Confidence**: medium
-- **Section**: related
-- **Related Sections**: related
-- **Root Cause Key**: `borda2025-miscategorized-not-run`
-- **Quote Verified**: yes
-- **Quote**: `Weighted variants \cite{li2023diverse,borda2025} and early-stopping families \cite{aggarwal2023adaptive,li2024escape} refine the budget`
-- **Explanation**: borda2025 is, by the paper's own bibliography, Kang, Zhao and Song, 'Scalable best-of-N selection for large language models via self-certainty', NeurIPS 2025: an aggregation rule over a self-certainty signal, not a budget mechanism. C1's headline property is rank-based invariance and the adversarial envelope is explicitly raw-value, so no published rank-based aggregator appears in the baseline set. The comparator best placed to contest C1 gets one subordinate clause. State why its rank aggregation does not already confer monotone invariance, or add it to Table II.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `prior_art_and_novelty_grounding`
+- **置信度**: medium
+- **章节**: related
+- **关联章节**: related
+- **根因键**: `borda2025-miscategorized-not-run`
+- **原文已核对**: 是
+- **原文**: `Weighted variants \cite{li2023diverse,borda2025} and early-stopping families \cite{aggarwal2023adaptive,li2024escape} refine the budget`
+- **说明**: borda2025 is, by the paper's own bibliography, Kang, Zhao and Song, 'Scalable best-of-N selection for large language models via self-certainty', NeurIPS 2025: an aggregation rule over a self-certainty signal, not a budget mechanism. C1's headline property is rank-based invariance and the adversarial envelope is explicitly raw-value, so no published rank-based aggregator appears in the baseline set. The comparator best placed to contest C1 gets one subordinate clause. State why its rank aggregation does not already confer monotone invariance, or add it to Table II.
 
-## Minor Issues
+## 次要问题
 
 ### M1: Still six keywords where IEEE asks for three to five
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `keyword-count`
-- **Quote Verified**: yes
-- **Quote**: `large language models, self-consistency, confidence calibration, weighted voting, label-free estimation, rank statistics`
-- **Explanation**: [Script] Unchanged. Drop one or two; 'label-free estimation' and 'rank statistics' are the two that most distinguish this paper from its neighbours.
+- **类型**: presentation
+- **来源**: [Script] via `pre_submission_readiness`
+- **置信度**: high
+- **章节**: abstract
+- **关联章节**: abstract
+- **根因键**: `keyword-count`
+- **原文已核对**: 是
+- **原文**: `large language models, self-consistency, confidence calibration, weighted voting, label-free estimation, rank statistics`
+- **说明**: [Script] Unchanged. Drop one or two; 'label-free estimation' and 'rank statistics' are the two that most distinguish this paper from its neighbours.
 
 ### M2: Table I is still placed in the Experimental Setup section but interpreted only in Results
-- **Type**: presentation
-- **Source**: [LLM] via `section_results`
-- **Confidence**: high
-- **Section**: experiment
-- **Related Sections**: experiment
-- **Root Cause Key**: `table1-float-before-results`
-- **Quote Verified**: yes
-- **Quote**: `\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \SC{} floor on the entire negative half-axis.}`
-- **Explanation**: The float is declared before \section{Results} and its caption already states the paper's first result, while the text that reads it begins in Sec. V-A. Moving the float after the Results heading costs nothing.
+- **类型**: presentation
+- **来源**: [LLM] via `section_results`
+- **置信度**: high
+- **章节**: experiment
+- **关联章节**: experiment
+- **根因键**: `table1-float-before-results`
+- **原文已核对**: 是
+- **原文**: `\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \SC{} floor on the entire negative half-axis.}`
+- **说明**: The float is declared before \section{Results} and its caption already states the paper's first result, while the text that reads it begins in Sec. V-A. Moving the float after the Results heading costs nothing.
 
 ### M3: Citation stacking is unchanged: nine and six keys in single sentences
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: related
-- **Related Sections**: related
-- **Root Cause Key**: `citation-stacking`
-- **Quote Verified**: yes
-- **Quote**: `Weighted variants \cite{li2023diverse,borda2025} and early-stopping families \cite{aggarwal2023adaptive,li2024escape} refine the budget`
-- **Explanation**: [Script] Related Work still carries 20 of 26 references in 272 words with nine keys in one paragraph. The bibliography reordering and URL additions in this commit fixed the reference list's mechanics; the in-text density is a separate edit.
+- **类型**: presentation
+- **来源**: [Script] via `pre_submission_readiness`
+- **置信度**: high
+- **章节**: related
+- **关联章节**: related
+- **根因键**: `citation-stacking`
+- **原文已核对**: 是
+- **原文**: `Weighted variants \cite{li2023diverse,borda2025} and early-stopping families \cite{aggarwal2023adaptive,li2024escape} refine the budget`
+- **说明**: [Script] Related Work still carries 20 of 26 references in 272 words with nine keys in one paragraph. The bibliography reordering and URL additions in this commit fixed the reference list's mechanics; the in-text density is a separate edit.
 
 ### M4: 'Three times the SC floor' still describes a 2.93x ratio
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `claims_vs_evidence`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `three-times-sc-floor-rounding`
-- **Quote Verified**: yes
-- **Quote**: `the best result in the field ($0.585$; three times the \SC{} floor)`
-- **Explanation**: 0.585 / 0.200 = 2.925. Trivial in most papers; in this one, which now states its own losses cell by cell, a rounded ratio in the author's favour is the odd one out. 'Nearly three times' costs one word.
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `claims_vs_evidence`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `three-times-sc-floor-rounding`
+- **原文已核对**: 是
+- **原文**: `the best result in the field ($0.585$; three times the \SC{} floor)`
+- **说明**: 0.585 / 0.200 = 2.925. Trivial in most papers; in this one, which now states its own losses cell by cell, a rounded ratio in the author's favour is the odd one out. 'Nearly three times' costs one word.
 
 ### M5: Table II's footnote rows are still typeset inside the tabular after \bottomrule
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `table2-footnote-after-bottomrule`
-- **Quote Verified**: yes
-- **Quote**: `\multicolumn{6}{l}{\footnotesize $^{\dagger}$alarm fires and the method refuses to leave \SC---the conditional}\\`
-- **Explanation**: [Script] Two \multicolumn rows still follow \bottomrule inside the tabular, so booktabs' trailing rule is not the last element and the note inherits row spacing. Use a tablenotes environment or place the note after \end{tabular}.
+- **类型**: presentation
+- **来源**: [Script] via `pre_submission_readiness`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `table2-footnote-after-bottomrule`
+- **原文已核对**: 是
+- **原文**: `\multicolumn{6}{l}{\footnotesize $^{\dagger}$alarm fires and the method refuses to leave \SC---the conditional}\\`
+- **说明**: [Script] Two \multicolumn rows still follow \bottomrule inside the tabular, so booktabs' trailing rule is not the last element and the note inherits row spacing. Use a tablenotes environment or place the note after \end{tabular}.
 
-## Decision Signals
+## 决策信号
 
-- **Reviewer Recommendation**: Reject
-- **Issue Bundle**: 10 major / 23 moderate / 5 minor
+- **审稿推荐**: 拒稿
+- **问题包**: 主要 10 / 中等 23 / 次要 5
 
-## Revision Roadmap
+## 修订路线图
 
-### Priority 1 --- Must Address (Blocking)
+### 优先级 1 --- 必须处理（阻断）
 
 - [ ] Abstract and conclusion claims need explicit evidence traceability ([LLM]; abstract)
 
-### Priority 2 --- Strongly Recommended
+### 优先级 2 --- 强烈建议
 
 - [ ] Abstract five-element check is incomplete; missing background, conclusion, quantitative results ([Script]; abstract)
 - [ ] Comparison protocol should make fairness assumptions explicit ([LLM]; experiment)
@@ -808,6 +808,6 @@ deduplication has nothing to collapse`
 - [ ] Cross-section numeric consistency should be reconciled ([LLM]; introduction)
 - [ ] Novelty claim should be grounded against the closest prior work ([LLM]; related_work)
 
-### Priority 3 --- Optional Improvements
+### 优先级 3 --- 可选改进
 
 - [ ] Conclusion should close the loop on the paper's strongest claims ([LLM]; conclusion)

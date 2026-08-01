@@ -1,4 +1,4 @@
-# TACT (method)  (tact.tex lines 87-169, verbatim LaTeX)
+# TACT (method)  (tact.tex lines 87-172, verbatim LaTeX)
 
 \section{TACT}\label{sec:method}
 
@@ -63,9 +63,11 @@ default $\bar p=\tfrac12$ the exponent is exactly
 \begin{equation}\label{eq:half}
 \gamma=z\sqrt{2+z^{2}},\qquad z=\Phi^{-1}(\widehat{\mathrm{AUC}}),
 \end{equation}
-one probit and one square root, with no tuned constant anywhere: $\nu$ is a
-significance level and $\gamma_{\max}$ a clip, and both are fixed before any
-data is seen. The dead zone is now visible as a single condition,
+one probit and one square root. Nothing in it is fitted to outcomes: $\nu$ is a
+significance level and $\gamma_{\max}$ a clip, both fixed before any data is
+seen. The clip is not cosmetic, though. Where $\Dhat$ saturates it binds, and
+the vote then sees $\gamma_{\max}$ rather than the derived magnitude
+(Section~\ref{sec:results}). The dead zone is now visible as a single condition,
 $|\zeta|\le\nu$, on which $\gamma$ is identically zero and \eqref{eq:oneline}
 is bitwise \SC{} by Proposition~\ref{prop:sc}. Equations
 \eqref{eq:oneline}--\eqref{eq:half} are verified equivalent to the shipped
@@ -82,4 +84,5 @@ With the feature map $\varphi^{\log}_{q,i}=\log c_{q,i}-\overline{\log c_q}$, th
 \begin{proposition}[Regularity]\label{prop:reg}
 The composite $g(\Dhat,\mathrm{SE})$ is continuous, odd, nondecreasing in $\Dhat$, nonincreasing in $\mathrm{SE}$ in magnitude, with $g(D,0^+)=\gamma^\ast(D)$.
 \end{proposition}
-Proofs are elementary and pinned by unit tests in the released code (76 tests; the permutation-verified null variance, the EB identity in \eqref{eq:js}, and the link derivation \eqref{eq:link} are each tested numerically).
+Proofs are elementary and pinned by unit tests in the released code (98 tests; the permutation-verified null variance, the EB identity in \eqref{eq:js}, and the link derivation \eqref{eq:link} are each tested numerically).
+
