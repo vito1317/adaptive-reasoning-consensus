@@ -354,6 +354,29 @@ pools, not more traces per item.
 account for $49\%$ of all reports, activating the tie-safe degeneration path of
 \eqref{eq:vdw} on many items.
 
+\emph{(e) A second campaign on harder items confirms the prediction of (c).}
+A pre-registered follow-up collected $119$ MATH level-5 items \cite{math500}
+$\times$ $16$ traces from the same frozen model (sign set $30$, evaluation set
+$89$). The channel prediction came true: pooled $\Dhat=+0.250$,
+$\mathrm{SE}=0.098$ ($z=+2.54$) --- the first real-trace confirmation that the
+verbalized-confidence channel carries positive within-item discrimination.
+Saturation, however, still forecloses the aggregation endpoint: per-trace
+accuracy is $0.819$, \SC{} scores $0.888$, the decisive stratum is $10$ of $89$
+items, and the correct answer is present in the pool on only $4$ of those --
+so the in-pool \emph{oracle} tops out at $+4/-0$, exact one-sided
+$p=0.0625>0.05$: the registered endpoint was unpassable for \emph{any}
+aggregation method on the realized substrate. \TACT{} again abstained
+correctly ($\gamma=0$; alarms E4 and E2 both fired on the label-free path,
+and the $30$-item sign set contained too few informative items for the
+semi-label-free sign), remaining bit-identical to \SC{} while the
+best-single-confidence baseline lost $4.5$ points by acting ($0.843$).
+One methodological caveat from this campaign transfers beyond \TACT{}:
+measured difficulty depended strongly on the collection protocol --- a
+$30$-problem-per-call probe put level-5 plurality accuracy at $0.40$, while
+the $15$-problem-per-call confirmatory run yielded $0.888$ on the same
+stratum --- so batch size must be reported as an experimental parameter
+whenever traces are collected in batches.
+
 Scope: one model, two benchmarks, $K{=}12$. The result is a clean confirmation
 of the null-direction prediction and of the calibration--discrimination
 argument; it is \emph{not} evidence that \TACT{} improves accuracy on real
@@ -384,6 +407,26 @@ semi-label-free mode (sign from ${\sim}50$ labels) should be the default rather
 than an optional refinement.
 
 \textbf{Global exponent per group.} Within a group, \TACT{} ships one exponent; per-item variation inside a group is unexploitable by Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} unless further covariates exist.
+
+\textbf{The thin window.} Measurements across three substrates (GSM8K/CSQA,
+MATH level-5, AIME/AMC; $268$ items with pools) place a structural bound on
+this entire family of methods. The stratum any label-free aggregation method
+can act on --- plurality wrong \emph{and} the correct answer present in the
+pool \emph{and} the signal separable --- occupied $2$--$5\%$ of items at
+\emph{every} difficulty level: as items harden, they pass directly from
+saturated (plurality right) to capability-limited (the correct answer never
+sampled: $0$ of $6$ plurality-wrong AIME items had it in $16$ draws), and the
+addressable band between the two regimes does not widen. Classifying all $16$
+decisive items by error shape, $7$ were stable-wrong (tight wrong cluster ---
+the two-world regime where no label-free signal can help) and $9$ were
+scattered ($6$--$8$ distinct answers --- a capability wall that diversity
+interventions cannot cross, since diversity is already maximal). Under this
+accounting, abstention is not a conservative compromise but the \emph{only}
+correct default: on the confirmatory substrate the largest measured effect of
+acting anyway was negative (the best-single-confidence baseline loses $4.5$
+points where \TACT's dead zone holds it exactly at the \SC{} floor). The
+window widens only where an external anchor is cheap (executable tests,
+substitution checks), which is where this program continues.
 
 \section{Conclusion}
 \TACT{} turns ``how much should this model's confidence be trusted?'' into a measured, signed, uncertainty-aware quantity with exact fallbacks at both ends---plain self-consistency when the evidence is absent, CISC when it is at full strength---and shows that the sign, long unrepresentable in this family of methods, can be recovered without any labels under stated and tested conditions. The accompanying impossibility results draw the boundary that any future per-item method must respect, and the falsification protocol, having already killed one of the author's own systems, is offered as the more portable contribution.
