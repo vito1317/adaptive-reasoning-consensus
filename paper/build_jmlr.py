@@ -27,6 +27,8 @@ PREAMBLE = r"""\documentclass[twoside,11pt]{article}
 \usepackage{jmlr2e}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 \font\zhfont="[/System/Library/Fonts/Supplemental/Arial Unicode.ttf]" at 11pt
 
 % JMLR's measure is narrower than TMLR's at 11pt, and two paragraphs carrying

@@ -1,12 +1,14 @@
 {
-  "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact_tmlr_preprint.tex",
-  "round": 6,
-  "reviewed_commit": "c6a8321",
-  "previous_commit": "aed4605",
+  "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact_jmlr.tex",
+  "round": 7,
+  "reviewed_commit": "cd4e5d0",
+  "previous_commit": "c6a8321",
   "builds": {
-    "tact.tex": "IEEE conference, 11pp",
-    "tact_tmlr.tex": "TMLR anonymous submission, 17pp",
-    "tact_tmlr_preprint.tex": "TMLR named preprint, 17pp"
+    "tact.tex": "IEEE conference, 11pp, numeric \\cite (correct for IEEE)",
+    "tact_tmlr.tex": "TMLR anonymous, 17pp",
+    "tact_tmlr_preprint.tex": "TMLR named preprint, 17pp",
+    "tact_jmlr.tex": "JMLR, 22pp",
+    "tact_word.tex": "Word/docx build"
   },
   "history": {
     "62bc7c7": "38 / 10 major / Desk Reject",
@@ -14,28 +16,28 @@
     "f8641e8": "22 / 2",
     "d5154aa": "5 / 1",
     "aed4605": "3 / 2",
-    "c6a8321": "4 / 2"
+    "c6a8321": "4 / 2",
+    "cd4e5d0": "2 / 0 major"
   },
   "FULLY_ADDRESSED": [
-    "page-count-regressed-to-eleven -- CLOSED BY VENUE CHOICE. TMLR is a journal with no page limit, and its reviewer pool is the ML community every comparator in this paper is drawn from. 17 pages is unremarkable there. This was the last mechanical obstacle.",
-    "blind-review-identifiability -- the anonymous build is genuinely anonymous: verified no author name, no vito1317, no repository URL, and no 'by the author' phrasing anywhere in tact_tmlr.pdf, while the preprint retains all three.",
-    "singular-self-reference -- 'to the author's knowledge' now 'to the best of our knowledge' (c6a8321)"
+    "tmlr-cite-vs-citep -- all author-year builds now carry 27 \\citep and zero bare \\cite; the IEEE build correctly keeps numeric \\cite",
+    "table3-still-pre-fix -- .785/.752 now in all FIVE sources including tact_word.tex; verified against group_eval.json",
+    "cjk-name-dropped -- the JMLR build loads the system font directly via \\font\\zhfont, and CJK glyphs render in all three PDFs ('Wei-Chen Ko (柯瑋宸, vito1317)')",
+    "table1-float-before-results -- tab:sweep now declared after the Results heading in every build",
+    "negative-control-stale-claim -- self-caught: 'the naive self-referential control lands slightly below it' was pre-fix; group_eval.json iid gives 0.7517 for every method including the naive control, and the text now reads 'every method sits at the floor with zero discordant pairs, the naive self-referential control included'"
   ],
   "PARTIALLY_ADDRESSED": {},
   "NEW": {
-    "tmlr-cite-vs-citep": "29 \\cite, 0 \\citep, under tmlr's author-year natbib style: every parenthetical citation renders as running text.",
-    "cjk-name-dropped": "bsmi font unavailable; CJKutf8 drops the glyphs, leaving 'Wei-Chen Ko (, vito1317)' on line 1 of the preprint."
+    "citep-inside-parenthetical": "two \\citep calls inside author parentheses render as nested parens; want \\citealp",
+    "citet-position-parisi": "'the two-root ambiguity of (Parisi et al., 2014)' needs \\citet"
   },
-  "NOT_ADDRESSED": [
-    "table3-still-pre-fix",
-    "table1-float-before-results"
-  ],
+  "NOT_ADDRESSED": [],
   "independently_verified_this_round": {
-    "tact_tmlr.pdf anonymity": "no name / no vito1317 / no github URL / no 'by the author' -- clean",
-    "page counts": "both TMLR builds 17pp; TMLR imposes no limit",
-    "IEEE macro residue": "zero occurrences of IEEEkeywords, IEEEauthorblock, balance or subfig in the TMLR build",
-    "bibliography coverage": "27 cited keys, all present in references.bib; BibTeX emits only cited entries so the one extra key is harmless",
-    "TMLR heterogeneity prose": "post-fix and correct (0.923, within 0.023, +83/-0 at p=2.1e-25) -- it is the table that is stale, not the text",
-    "CJK": "kpsewhich finds no bsmi files; no CJK codepoint in either TMLR PDF"
+    "jmlr2e requirements": "\\ShortHeadings and \\firstpageno present; running head renders; no \\newtheorem clash (jmlr2e supplies proposition and remark)",
+    "shared theorem counter": "jmlr2e numbers proposition and remark off one counter, which renumbers them; grep finds zero hard-coded 'Proposition N' or 'Prop. N' in prose, so every cross-reference is symbolic and survives",
+    "Table III rendered": "label-free .923 .752 and link oracle (ceiling) .947 .973 in tact_jmlr.pdf, matching group_eval.json",
+    "citation rendering": "'Self-consistency (sc; Wang et al., 2023)', 'voting utility (Taubenfeld et al., ...)', '(Dawid and Skene, 1979; ...)' all parenthetical and correct",
+    "layout": "zero text blocks reaching within 54pt of the page edge across 22 pages",
+    "page budget": "22pp, and JMLR imposes no page limit"
   }
 }

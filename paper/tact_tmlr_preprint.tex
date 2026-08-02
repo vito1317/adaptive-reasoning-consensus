@@ -5,6 +5,8 @@
 \font\zhfont="[/System/Library/Fonts/Supplemental/Arial Unicode.ttf]" at 11pt
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 \usepackage{url}
 \usepackage[hidelinks,breaklinks=true]{hyperref}
 
@@ -51,7 +53,7 @@ stronger baseline than the published protocols, the advantage narrows to
 distortion, echo, and label-free operation. Two real-trace campaigns then
 bound the setting: the channel is null on saturated benchmarks
 ($z=-1.24$) and positive on competition mathematics ($\Dhat=+0.250$,
-$z=+2.54$), yet the stratum any such method can act on measures $3$--$7.5\%$
+$z=+2.54$), yet the stratum any such method can act on measures $2.5$--$7.5\%$
 of items across five substrates in two domains, so abstention is the correct
 default and the dead zone implements it.
 \end{abstract}
@@ -119,7 +121,7 @@ campaigns and a five-substrate window measurement bound what \emph{any}
 label-free aggregation method can do. The channel is null on saturated
 benchmarks ($\Dhat=-0.219$, $z=-1.24$) and positive on competition
 mathematics ($+0.250$, $z=+2.54$), so the premise holds where the model is
-uncertain; but the stratum such a method can act on is $3$--$7.5\%$ of items
+uncertain; but the stratum such a method can act on is $2.5$--$7.5\%$ of items
 on every substrate tried, in two domains, and does not widen as items harden.
 On both real substrates the in-pool oracle itself cannot clear the
 pre-registered endpoint, which makes abstention the correct default rather
@@ -250,6 +252,50 @@ is bitwise \SC{} by Proposition~\ref{prop:sc}. Equations
 implementation over randomised inputs including every boundary
 (\texttt{tests/test\_formula.py}).
 
+\begin{algorithm}[t]
+\caption{\TACT{}: derive the exponent, then vote}
+\label{alg:tact}
+\begin{algorithmic}[1]
+\Require labeled dev pools $\mathcal{D}$, test pools $\mathcal{T}$, budget $K$,
+floor $\nu$, cap $\gamma_{\max}$
+\Ensure one scalar $\gamma$; an answer $\hat a_q$ for each $q\in\mathcal{T}$
+\State $\mathcal{S}\gets\emptyset$,\; $H\gets\emptyset$
+\For{$q\in\mathcal{D}$}
+  \State $y_i\gets\mathbf{1}[a_{q,i}=a^\ast_q]$,\; $i\le K$;\quad $H\gets H\cup\{y\}$
+  \If{$0<\textstyle\sum_i y_i<K$} \Comment{informative items only}
+    \State $R\gets$ within-item midranks of $c_{q,1:K}$
+    \State $D_q\gets 2U_q/(n^1_qn^0_q)-1$, \; $U_q$ from $R$
+    \State $\mathcal{S}\gets\mathcal{S}\cup\{(D_q,\,N_q,\,\mathrm{Var}_0(D_q))\}$
+  \EndIf
+\EndFor
+\State $\Dhat\gets\sum_q N_qD_q\,/\sum_q N_q$ \Comment{van Elteren}
+\State $\mathrm{SE}\gets\max\{\mathrm{SE}_0,\ \mathrm{SE}_J,\ 1/(2\sqrt{N})\}$
+\State $\bar p\gets\mathrm{clip}(\mathrm{mean}(H),\,0.05,\,0.95)$
+\State $\zeta\gets\Dhat/\mathrm{SE}$
+\If{$|\zeta|\le\nu$} \Comment{dead zone}
+  \State $\gamma\gets 0$
+\Else
+  \State $\tilde D\gets\Dhat\,(1-\nu^2/\zeta^2)$ \Comment{positive-part JS}
+  \State $z\gets\Phi^{-1}\big((1+\tilde D)/2\big)$
+  \State $\gamma\gets\mathrm{clip}\big(z\sqrt{2+4\bar p(1-\bar p)z^2},\,\pm\gamma_{\max}\big)$
+\EndIf
+\For{$q\in\mathcal{T}$}
+  \If{$\gamma=0$}
+    \State $\hat a_q\gets\mathrm{SC}(a_{q,1:K})$ \Comment{same routine, bit-identical}
+  \Else
+    \State $\varphi\gets$ standardized van der Waerden scores of $c_{q,1:K}$
+    \State $\hat a_q\gets\arg\max_A\sum_{i:a_{q,i}=A}e^{\gamma\varphi_i}$
+  \EndIf
+\EndFor
+\State \Return $\gamma$, $\{\hat a_q\}$
+\end{algorithmic}
+\end{algorithm}
+
+Algorithm~\ref{alg:tact} states the labeled path end to end. Both loops cost
+$O(K\log K)$ per item, dominated by the within-item ranking, and the estimate
+is a single scalar: nothing item-specific crosses from dev to test, which is
+what makes the dead zone a global abstention rather than a per-item one.
+
 \subsection{Anchor properties}
 \begin{proposition}[Exact \SC{} reduction]\label{prop:sc}
 At $\gamma=0$, \eqref{eq:vote} equals plain \SC{} as a function on every trace pool, including tie-breaks. Under $D=0$, $P(\gamma=0)\to 2\Phi(\nu)-1$ ($80\%$ dev, $98\%$ label-free), and $\gamma$ is continuous through the dead-zone boundary, so a false positive applies an infinitesimal exponent.
@@ -266,6 +312,46 @@ Proofs are elementary and pinned by unit tests in the released code (102 tests; 
 
 \subsection{Pipeline}
 (i)~\emph{Dedup:} single-linkage duplicate groups on the lexical-similarity channel at $0.95$; each trace gets weight $1/|\text{group}|$ for plurality determination and pair weighting. (ii)~\emph{Pseudo-label:} $g_{q,i}=\mathbf{1}[a_{q,i}=M_q]$ with $M_q$ the dedup-weighted plurality. (iii)~\emph{Margin gate:} keep the top $60\%$ of items by dedup-weighted margin. (iv)~Compute \eqref{eq:pooled} with $\mathrm{lab}=g$, giving $(\Dhat_g,\mathrm{SE}_g,r_g)$.
+
+\begin{algorithm}[t]
+\caption{\TACT-LF: recovering the sign without labels}
+\label{alg:tactlf}
+\begin{algorithmic}[1]
+\Require pools $\mathcal{P}$, budget $K$, dedup threshold $\theta{=}0.95$,
+margin quantile $\beta{=}0.40$, floor $\nu_{\mathrm{LF}}$, cap $\gamma_{\max}$,
+splits $J{=}20$, attenuation floor $0.20$, $\mathrm{minGated}$
+\Ensure $\gamma$, equal to $0$ whenever any alarm fires
+\For{$q\in\mathcal{P}$}
+  \State $w_i\gets 1/|\text{group}(i)|$ from single linkage at $\mathrm{dup}\ge\theta$
+  \State $M_q\gets\arg\max_A\sum_{i:a_{q,i}=A}w_i$ \Comment{dedup-weighted plurality}
+  \State $\mathrm{mgn}_q\gets$ top-two dedup-weighted share gap
+\EndFor
+\State $G\gets\{q:\mathrm{mgn}_q\ge Q_\beta(\mathrm{mgn}),\ \text{$\ge 2$ distinct answers}\}$
+\State $E_1\gets[\ \mathrm{median}_q(\text{Kish ratio})<0.5\ ]$ \Comment{duplicate collapse}
+\State $E_4\gets[\ |G|<\mathrm{minGated}\ ]$
+\State $g_{q,i}\gets\mathbf{1}[a_{q,i}=M_q]$ for $q\in G$
+\State $(\Dhat_g,\mathrm{SE}_g,z_g)\gets$ pooled statistic over $G$ using $g$
+\State $s\gets\sign(\Dhat_g)$ \Comment{estimated trust direction}
+\State $E_2\gets[\ \psi(s)>0.05\ ]$ \Comment{\emph{sign-aware} margin decoupling}
+\State $\alpha\gets$ mean two-half plurality agreement over $J$ splits
+\State $k\gets$ inverse-Simpson size of the non-plurality mass
+\State $p\gets\big[1+\sqrt{1-(k{+}1)(1-k\alpha)}\,\big]/(k{+}1)$
+\State $E_3\gets[\ \text{discriminant}<0.02\ ]$ \Comment{root ambiguity}
+\State $\hat\rho\gets\mathrm{clip}\big(\mathrm{UCB}_{95}(2p-1),\,0.20,\,1\big)$
+\If{$E_1\lor E_2\lor E_3\lor E_4$ \textbf{ or } $|z_g|\le\nu_{\mathrm{LF}}$} \label{ln:gate}
+  \State \Return $0$ \Comment{refuse; the vote stays \SC}
+\EndIf
+\State \Return $\mathrm{Temper}\big(\Dhat_g/\hat\rho,\ \mathrm{SE}_g/\hat\rho\big)$ with $\bar p$ unset \label{ln:temper}
+\end{algorithmic}
+\end{algorithm}
+
+Two orderings in Algorithm~\ref{alg:tactlf} are load-bearing. The significance
+gate on line~\ref{ln:gate} tests the \emph{raw} $z_g$, whose sign is unbiased by
+Proposition~\ref{prop:ccn}, while the tempering on line~\ref{ln:temper} uses
+the de-attenuated pair; testing the inflated statistic instead would let the
+de-attenuation manufacture significance. And $\bar p$ is left unset on the
+label-free path, so the mixture correction of \eqref{eq:link} is not applied
+there: the base rate is exactly what no label-free estimator knows.
 
 \subsection{Sign consistency and its boundary}
 \begin{proposition}[Attenuation identity]\label{prop:ccn}
@@ -672,7 +758,11 @@ correct answer somewhere in the pool; both in per cent. The window is the ceilin
 aggregation method. Rows marked $\dagger$ are measured here; HumanEval+/MBPP+
 is recomputed from published oracle-minus-selector tables, which report the
 window only. As items harden the decisive fraction grows but the window does
-not: they pass from saturated to capability-limited.}
+not: they pass from saturated to capability-limited. The MATH L5 row is over
+the full registered list of $119$ items, the substrate being the object
+measured; Section~\ref{sec:hard} quotes the same quantities over the $89$-item
+evaluation set that remains after the sign set is split off ($10$ and $4$
+items, so $11.2$ and $4.5$).}
 \label{tab:window}
 \centering\footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -769,7 +859,7 @@ paper does not test it.
 \textbf{Global exponent per group.} Within a group, \TACT{} ships one exponent; per-item variation inside a group is unexploitable by Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} unless further covariates exist.
 
 \textbf{The thin window.} Section~\ref{sec:window} measures the stratum this
-whole family of methods can act on at $3$--$7.5\%$ of items on every substrate
+whole family of methods can act on at $2.5$--$7.5\%$ of items on every substrate
 tried, in two domains, with no widening as items harden: they pass from
 saturated straight to capability-limited. Two consequences follow for the
 method proposed here. First, abstention is not a conservative compromise but
@@ -790,7 +880,7 @@ measured, signed, uncertainty-aware scalar, and recovers the sign without
 labels under conditions this paper states and tests. The measurement that
 frames it matters more than the estimator: across five substrates in two
 domains, the stratum on which any label-free aggregation method can act is
-$3$--$7.5\%$ of items, and on both real substrates the in-pool oracle cannot
+$2.5$--$7.5\%$ of items, and on both real substrates the in-pool oracle cannot
 clear a pre-registered endpoint. In that regime the useful property of an
 estimator is knowing when not to act, which the dead zone does exactly.
 

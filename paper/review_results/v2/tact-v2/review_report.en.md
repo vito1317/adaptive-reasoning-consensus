@@ -1,16 +1,16 @@
 # Deep Review Report
 
 **Paper**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **Language**: EN | **Mode**: deep-review
-**Generated**: 2026-08-02 04:02
+**Generated**: 2026-08-02 13:41
 **Artifacts**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
 
 ## Overall Assessment
 
-Round-6 re-audit, now against the TMLR build (tact_tmlr_preprint.tex @ c6a8321). Three items closed, two new. The bundle is 4 findings: 2 major, 1 moderate, 1 minor. Moving to TMLR closes the page-count obstacle that survived five rounds without a single word of edit: TMLR is a journal with no page limit, and its reviewer pool is the ML community from which every comparator in this paper is drawn. The anonymous build was independently checked and is genuinely blind, carrying no author name, no handle, no repository URL and no 'by the author' phrasing, while the preprint retains all three. Two defects are specific to the conversion. Every citation still uses the numeric-era \cite under tmlr's author-year natbib style, 29 occurrences with zero \citep or \citet, so all parenthetical citations render as running text on every page. And the CJK author name is silently dropped because the requested bsmi font is not installed, leaving a comma inside empty parentheses on the first line of the preprint. The third major is carried over unfixed and has now spread: Table III is still pre-tie-break-fix in all three source files, and its headline cell reads .940 where the adjacent prose, which checks out against group_eval.json, reads 0.923. All four remaining items are mechanical; nothing left requires rerunning an experiment.
+Round-7 re-audit against the new JMLR build (tact_jmlr.tex @ cd4e5d0). Five items closed, two new, and for the first time in seven rounds there is no major finding open. The bundle is 2 minor items, both in the author-year citation conversion: two \citep calls sit inside author-written parentheses and render as nested parens, and one is the object of the preposition 'of' and needs \citet. Both are one-character-class edits, and the conversion already uses \citealp correctly elsewhere. Everything from round 6 is closed and verified: 27 \citep with zero bare \cite in all three author-year builds while the IEEE build correctly retains numeric \cite; Table III now carries .785/.752 in all five sources including the Word build; the CJK name renders in every PDF via the system-font route the IEEE build had used; and the Table I float sits after the Results heading everywhere. The author also self-caught a stale negative-control claim that survived the tie-break fix. The JMLR conversion itself is sound: jmlr2e's shared proposition/remark counter renumbers the theorem environments, and a grep confirms no prose anywhere hard-codes a proposition number, so every cross-reference is symbolic and survives; the required \ShortHeadings and \firstpageno are present; no text block comes within 54pt of the page edge across 22 pages; and JMLR imposes no page limit.
 
-- **Major**: 2
-- **Moderate**: 1
-- **Minor**: 1
+- **Major**: 0
+- **Moderate**: 0
+- **Minor**: 2
 
 ## Academic Pre-Review Committee
 
@@ -370,60 +370,34 @@ harder direction.
 ## Closure Targets
 - Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.
 
-## Major Issues
-
-### M1: Every citation in the TMLR build uses \cite under an author-year style, so all 29 render as bare in-text names
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `tmlr-cite-vs-citep`
-- **Quote Verified**: yes
-- **Quote**: `\bibliographystyle{tmlr}`
-- **Explanation**: [Script] The build declares tmlr's natbib author-year style but the body still uses the numeric-era command: 29 occurrences of \cite, zero of \citep or \citet. Under author-year, \cite emits the name and year with no enclosing parentheses, so every parenthetical citation reads as running text. From the rendered PDF: 'Self-consistency (sc) Wang et al. (2023) improves the reasoning accuracy...', 'CISC Taubenfeld et al. (2025) weights votes by...', 'fails an ECE gate for reasons irrelevant to voting utility Taubenfeld et al. (2025); Huang et al. (2024)', 'reliability-aware pseudo-counts Kim et al. (2026)'. This is the first thing a TMLR reviewer sees and it affects every page. The fix is mechanical: \cite -> \citep everywhere, then change back to \citet only where the citation is the grammatical subject ('Wang et al. (2023) show that...'). Roughly five of the 29 are genuine \citet positions.
-
-### M2: Table III is still pre-fix, and the stale values have now been propagated into both TMLR builds
-- **Type**: presentation
-- **Source**: [Script] via `numbers_vs_released_artifacts`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `table3-still-pre-fix`
-- **Quote Verified**: yes
-- **Quote**: `\SC{} (floor) & .808 & .827\\`
-- **Explanation**: Unfixed from round 5 and now in three files: tact.tex, tact_tmlr.tex and tact_tmlr_preprint.tex all carry '(floor) & .808 & .827'. Against results/group_eval.json every row of both columns is stale: SC floor .808/.827 should be .785/.752; TACT global (dev) the same; TACT-group (dev) .923/.827 -> .927/.752; TACT-group (label-free) .940/.827 -> .923/.752; naive per-item .803/.820 -> .787/.752; per-item link oracle .947/.983 -> .947/.973. The contradiction is on the page in every build: the TMLR prose one paragraph away reads 'the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle ... ($+83/-0$, $p=2.1\times10^{-25}$)', all of which check out against the artifact, while the table's headline cell still reads .940. Only the six table rows need replacing, in all three files.
-
-## Moderate Issues
-
-### M1: The CJK author name is dropped from the preprint, leaving an empty parenthetical with a stray comma
-- **Type**: presentation
-- **Source**: [Script] via `pre_submission_readiness`
-- **Confidence**: high
-- **Section**: abstract
-- **Related Sections**: abstract
-- **Root Cause Key**: `cjk-name-dropped`
-- **Quote Verified**: yes
-- **Quote**: `\author{\name Wei-Chen Ko (\begin{CJK}{UTF8}{bsmi}柯瑋宸\end{CJK}, vito1317) \email service@vito1317.com \\`
-- **Explanation**: [Script] The author line renders as 'Wei-Chen Ko (, vito1317)' in tact_tmlr_preprint.pdf: the CJK environment requests the bsmi font, kpsewhich finds no bsmi files in this TeX installation, and CJKutf8 drops the glyphs silently rather than erroring. No CJK codepoint appears anywhere in either TMLR PDF. The result is a comma inside empty parentheses on the first line of the paper. Either install a CJK font the build can resolve (the IEEE build sidestepped this by loading a system font directly with \font\zhfont), switch to xeCJK under XeLaTeX, or drop the CJK name from the preprint. The anonymous submission build is unaffected because it carries no name.
-
 ## Minor Issues
 
-### M1: Table I is still declared before the Results section
+### M1: Two citations sit inside an existing parenthetical and render as nested parentheses
 - **Type**: presentation
-- **Source**: [LLM] via `section_results`
+- **Source**: [Script] via `pre_submission_readiness`
 - **Confidence**: high
-- **Section**: experiment
-- **Related Sections**: experiment
-- **Root Cause Key**: `table1-float-before-results`
+- **Section**: introduction
+- **Related Sections**: introduction
+- **Root Cause Key**: `citep-inside-parenthetical`
 - **Quote Verified**: yes
-- **Quote**: `\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \SC{} floor on the entire negative half-axis.}`
-- **Explanation**: Unchanged, and cheaper to fix in the single-column TMLR layout than it was in two columns.
+- **Quote**: `(verbalized \citep{tian2023just,xiong2024can}, derived from token log-probabilities, or elicited as $P(\text{True})$ \citep{kadavath2022language})`
+- **Explanation**: [Script] Two \citep calls are already inside author-written parentheses, so the rendered text doubles up: 'Because each trace can also report a confidence score (verbalized (Tian et al., 2023; Xiong et al., 2024), derived from token log-probabilities, or elicited as P(True) (Kadavath et al., 2022)), a natural refinement...'. The second instance is in the real-trace section: '(50 GSM8K \citep{gsm8k2021}, 50 CommonsenseQA)'. Both want \citealp, which drops the citation's own parentheses. The conversion already uses \citealp correctly twice in the Introduction openers, 'Self-consistency (\SC; \citealp{wang2023selfconsistency})' and '(CISC; \citealp{taubenfeld2025cisc})', so this is two missed spots rather than a misunderstanding of the idiom.
+
+### M2: One citation is the object of a preposition and needs \citet rather than \citep
+- **Type**: presentation
+- **Source**: [Script] via `pre_submission_readiness`
+- **Confidence**: high
+- **Section**: labelfree
+- **Related Sections**: labelfree
+- **Root Cause Key**: `citet-position-parisi`
+- **Quote Verified**: yes
+- **Quote**: `(the two-root ambiguity of \citep{parisi2014ranking} restated for a single channel)`
+- **Explanation**: [Script] This renders as 'the two-root ambiguity of (Parisi et al., 2014) restated for a single channel', which is ungrammatical: the citation is the object of 'of', so the author name belongs in running text with only the year bracketed. \citet gives 'the two-root ambiguity of Parisi et al. (2014)'. This is the only genuine \citet position among the 27 citations; the other three that a naive scan flags ('sc (Wang et al., 2023) treats...', 'CISC (Taubenfeld et al., 2025) weights...', 'the rank-calibration line (Huang et al., 2024) reaches...') all have a real noun phrase as the subject and are correct as \citep.
 
 ## Decision Signals
 
-- **Reviewer Recommendation**: Reject
-- **Issue Bundle**: 2 major / 1 moderate / 1 minor
+- **Reviewer Recommendation**: Accept
+- **Issue Bundle**: 0 major / 0 moderate / 2 minor
 
 ## Revision Roadmap
 

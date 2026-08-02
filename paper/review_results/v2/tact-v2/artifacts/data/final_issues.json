@@ -1,74 +1,38 @@
 [
   {
-    "title": "Every citation in the TMLR build uses \\cite under an author-year style, so all 29 render as bare in-text names",
-    "quote": "\\bibliographystyle{tmlr}",
-    "explanation": "[Script] The build declares tmlr's natbib author-year style but the body still uses the numeric-era command: 29 occurrences of \\cite, zero of \\citep or \\citet. Under author-year, \\cite emits the name and year with no enclosing parentheses, so every parenthetical citation reads as running text. From the rendered PDF: 'Self-consistency (sc) Wang et al. (2023) improves the reasoning accuracy...', 'CISC Taubenfeld et al. (2025) weights votes by...', 'fails an ECE gate for reasons irrelevant to voting utility Taubenfeld et al. (2025); Huang et al. (2024)', 'reliability-aware pseudo-counts Kim et al. (2026)'. This is the first thing a TMLR reviewer sees and it affects every page. The fix is mechanical: \\cite -> \\citep everywhere, then change back to \\citet only where the citation is the grammatical subject ('Wang et al. (2023) show that...'). Roughly five of the 29 are genuine \\citet positions.",
-    "comment_type": "presentation",
-    "severity": "major",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "abstract",
-    "related_sections": [
-      "abstract"
-    ],
-    "root_cause_key": "tmlr-cite-vs-citep",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": true,
-    "quote_verified": true,
-    "source_file": "pre_submission_readiness.json"
-  },
-  {
-    "title": "Table III is still pre-fix, and the stale values have now been propagated into both TMLR builds",
-    "quote": "\\SC{} (floor) & .808 & .827\\\\",
-    "explanation": "Unfixed from round 5 and now in three files: tact.tex, tact_tmlr.tex and tact_tmlr_preprint.tex all carry '(floor) & .808 & .827'. Against results/group_eval.json every row of both columns is stale: SC floor .808/.827 should be .785/.752; TACT global (dev) the same; TACT-group (dev) .923/.827 -> .927/.752; TACT-group (label-free) .940/.827 -> .923/.752; naive per-item .803/.820 -> .787/.752; per-item link oracle .947/.983 -> .947/.973. The contradiction is on the page in every build: the TMLR prose one paragraph away reads 'the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle ... ($+83/-0$, $p=2.1\\times10^{-25}$)', all of which check out against the artifact, while the table's headline cell still reads .940. Only the six table rows need replacing, in all three files.",
-    "comment_type": "presentation",
-    "severity": "major",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
-    "root_cause_key": "table3-still-pre-fix",
-    "review_lane": "numbers_vs_released_artifacts",
-    "gate_blocker": true,
-    "quote_verified": true,
-    "source_file": "numbers_vs_released_artifacts.json"
-  },
-  {
-    "title": "The CJK author name is dropped from the preprint, leaving an empty parenthetical with a stray comma",
-    "quote": "\\author{\\name Wei-Chen Ko (\\begin{CJK}{UTF8}{bsmi}柯瑋宸\\end{CJK}, vito1317) \\email service@vito1317.com \\\\",
-    "explanation": "[Script] The author line renders as 'Wei-Chen Ko (, vito1317)' in tact_tmlr_preprint.pdf: the CJK environment requests the bsmi font, kpsewhich finds no bsmi files in this TeX installation, and CJKutf8 drops the glyphs silently rather than erroring. No CJK codepoint appears anywhere in either TMLR PDF. The result is a comma inside empty parentheses on the first line of the paper. Either install a CJK font the build can resolve (the IEEE build sidestepped this by loading a system font directly with \\font\\zhfont), switch to xeCJK under XeLaTeX, or drop the CJK name from the preprint. The anonymous submission build is unaffected because it carries no name.",
-    "comment_type": "presentation",
-    "severity": "moderate",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "abstract",
-    "related_sections": [
-      "abstract"
-    ],
-    "root_cause_key": "cjk-name-dropped",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": true,
-    "source_file": "pre_submission_readiness.json"
-  },
-  {
-    "title": "Table I is still declared before the Results section",
-    "quote": "\\caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \\SC{} floor on the entire negative half-axis.}",
-    "explanation": "Unchanged, and cheaper to fix in the single-column TMLR layout than it was in two columns.",
+    "title": "Two citations sit inside an existing parenthetical and render as nested parentheses",
+    "quote": "(verbalized \\citep{tian2023just,xiong2024can}, derived from token log-probabilities, or elicited as $P(\\text{True})$ \\citep{kadavath2022language})",
+    "explanation": "[Script] Two \\citep calls are already inside author-written parentheses, so the rendered text doubles up: 'Because each trace can also report a confidence score (verbalized (Tian et al., 2023; Xiong et al., 2024), derived from token log-probabilities, or elicited as P(True) (Kadavath et al., 2022)), a natural refinement...'. The second instance is in the real-trace section: '(50 GSM8K \\citep{gsm8k2021}, 50 CommonsenseQA)'. Both want \\citealp, which drops the citation's own parentheses. The conversion already uses \\citealp correctly twice in the Introduction openers, 'Self-consistency (\\SC; \\citealp{wang2023selfconsistency})' and '(CISC; \\citealp{taubenfeld2025cisc})', so this is two missed spots rather than a misunderstanding of the idiom.",
     "comment_type": "presentation",
     "severity": "minor",
     "confidence": "high",
-    "source_kind": "llm",
-    "source_section": "experiment",
+    "source_kind": "script",
+    "source_section": "introduction",
     "related_sections": [
-      "experiment"
+      "introduction"
     ],
-    "root_cause_key": "table1-float-before-results",
-    "review_lane": "section_results",
+    "root_cause_key": "citep-inside-parenthetical",
+    "review_lane": "pre_submission_readiness",
     "gate_blocker": false,
     "quote_verified": true,
-    "source_file": "section_results.json"
+    "source_file": "pre_submission_readiness.json"
+  },
+  {
+    "title": "One citation is the object of a preposition and needs \\citet rather than \\citep",
+    "quote": "(the two-root ambiguity of \\citep{parisi2014ranking} restated for a single channel)",
+    "explanation": "[Script] This renders as 'the two-root ambiguity of (Parisi et al., 2014) restated for a single channel', which is ungrammatical: the citation is the object of 'of', so the author name belongs in running text with only the year bracketed. \\citet gives 'the two-root ambiguity of Parisi et al. (2014)'. This is the only genuine \\citet position among the 27 citations; the other three that a naive scan flags ('sc (Wang et al., 2023) treats...', 'CISC (Taubenfeld et al., 2025) weights...', 'the rank-calibration line (Huang et al., 2024) reaches...') all have a real noun phrase as the subject and are correct as \\citep.",
+    "comment_type": "presentation",
+    "severity": "minor",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "labelfree",
+    "related_sections": [
+      "labelfree"
+    ],
+    "root_cause_key": "citet-position-parisi",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": true,
+    "source_file": "pre_submission_readiness.json"
   }
 ]

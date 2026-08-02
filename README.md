@@ -6,7 +6,7 @@
 
 ```bash
 python3.12 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
-./.venv/bin/python -m pytest -q          # 98 tests
+./.venv/bin/python -m pytest -q          # 102 tests
 ```
 
 ---
@@ -21,6 +21,7 @@ python3.12 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
 | **論文中文版** | [paper/tact_zh.pdf](paper/tact_zh.pdf) · [.docx](paper/tact_zh.docx) · [.md](paper/tact_zh.md) |
 | **公式參數逐項詳解**（中文） | [paper/tact_parameters_zh.pdf](paper/tact_parameters_zh.pdf) · [.docx](paper/tact_parameters_zh.docx) · [.md](paper/tact_parameters_zh.md) |
 | **演算法的一行式** | [src/rlev_voi/formula.py](src/rlev_voi/formula.py) |
+| **架構：偽碼 ↔ 模組對照** | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | **所有死亡設計與死因** | [docs/GRAVEYARD.md](docs/GRAVEYARD.md) ← 新想法動工前先讀這份 |
 | **薄窗結果**（本專案最強的發現） | [docs/REPORT-G1.md](docs/REPORT-G1.md) + GRAVEYARD 的「計畫級綜合」 |
 
@@ -46,12 +47,12 @@ $$\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 ### 薄窗（結構性邊界）
 
 跨**兩個領域、五個基質**的量測：任何無標籤聚合方法能作用的分層
-——多數決錯 **且** 正解在池內 **且** 訊號可分——只佔題目的 2–7.5%，
+——多數決錯 **且** 正解在池內——只佔題目的 2.5–7.5%，
 且**難度上升不會讓它變寬**（題目直接從「飽和」跳到「正解不可達」）。
 
 | 領域 | 基質 | 窗口 |
 |:--|:--|--:|
-| 無標籤 QA | GSM8K/CSQA、MATH-L5、AIME/AMC | 2–5% |
+| 無標籤 QA | GSM8K/CSQA、MATH-L5、AIME/AMC | 2.5–4% |
 | 程式碼（可執行真值） | HumanEval+/MBPP+（公開表格重算） | 3.56% |
 | 程式碼（可執行真值） | LeetCode Med/Hard（**本專案直接量測**） | 7.5% |
 
@@ -121,7 +122,7 @@ src/rlev_voi/
   simulate.py         合成軌跡（僅健全性檢查）
   evaluate.py         frontier、McNemar、Holm、ECE
   backends.py         Anthropic / OpenAI 後端 + 軌跡快取
-tests/                98 個測試，含強制單元測試 T1–T6
+tests/               102 個測試，含強制單元測試 T1–T6
 ```
 
 ---

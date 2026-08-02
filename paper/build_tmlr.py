@@ -26,6 +26,8 @@ PREAMBLE = r"""\documentclass{article}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 \usepackage{url}
 \usepackage[hidelinks,breaklinks=true]{hyperref}
 
