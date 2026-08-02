@@ -115,6 +115,56 @@ def build_supplementary(out: Path) -> None:
           "no identifying string present")
 
 
+SUPP_README_NAMED = """\
+Supplementary material for "TACT: Trust-Anchored Confidence Tempering for
+Self-Consistency Voting in Large Language Models", Wei-Chen Ko.
+
+Repository: https://github.com/vito1317/adaptive-reasoning-consensus
+
+Reproducing the tables:
+  pip install -r requirements.txt
+  pytest -q                                     # 102 tests
+  python experiments/run_tact_eval.py           # Tables 1-2 (synthetic)
+  python experiments/run_group_eval.py          # Table 3 (heterogeneity)
+  python experiments/run_seed_dispersion.py     # seed intervals
+  python experiments/run_cap_ablation.py        # cap ablation
+  python experiments/run_tact_hard_eval.py      # real-trace campaign
+  python experiments/run_g1_window.py           # window measurement
+  python experiments/run_abstention_identifiability.py
+                                                # finding (e): is the
+                                                # abstention a mechanism?
+  python experiments/run_planted_sensitivity.py # finding (f): planted-channel
+                                                # operating characteristic
+  python experiments/check_paper_numbers.py     # cross-checks every figure in
+                                                # the paper against results/
+Cached traces are in data/, so no API key is needed to reproduce any table.
+"""
+
+
+def build_supplementary_named(out: Path) -> None:
+    """The single-blind version: real names, real repository URL, no rewriting.
+
+    JMLR reviews single-blind, so the anonymised supplement is not merely
+    unnecessary there -- it is wrong. Its anonymiser substitutes a placeholder
+    anonymous.4open.science URL that does not exist, which would ship a dead
+    link to the editors.
+    """
+    files = collect([
+        (ROOT / "src", "*.py"), (ROOT / "experiments", "*.py"),
+        (ROOT / "tests", "*.py"), (ROOT / "results", "*.json"),
+        (ROOT / "data", "*.json"),
+    ])
+    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
+        for src, arc in files:
+            z.write(src, arc)
+        for extra in ("requirements.txt", "pytest.ini"):
+            pth = ROOT / extra
+            if pth.exists():
+                z.write(pth, extra)
+        z.writestr("README.txt", SUPP_README_NAMED)
+    print(f"wrote {out.name} ({len(files) + 3} files, {out.stat().st_size / 1e6:.1f} MB), named")
+
+
 def build_paper_bundle(out: Path) -> None:
     names = [
         "tact.pdf", "tact.tex", "tact.docx",
@@ -160,7 +210,9 @@ def build_jmlr_submission(outdir: Path) -> None:
             z.write(PAPER / name, f"03_source/{name}")
         for f in sorted((PAPER / "figs").glob("*.pdf")):
             z.write(f, f"03_source/figs/{f.name}")
-        z.write(PAPER / "supplementary_anonymous.zip", "04_supplementary_code_and_data.zip")
+        named = PAPER / "supplementary_named.zip"
+        build_supplementary_named(named)
+        z.write(named, "04_supplementary_code_and_data.zip")
         z.writestr("00_README.txt", JMLR_README)
     size = zip_path.stat().st_size / 1e6
     pdf = (PAPER / "tact_jmlr.pdf").stat().st_size / 1e6
