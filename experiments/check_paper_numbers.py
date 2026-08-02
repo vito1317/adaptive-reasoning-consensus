@@ -55,6 +55,7 @@ def main():
     g1 = load("g1_window.json")
     hard = load("tact_hard_eval.json")
     abst = load("abstention_identifiability.json")
+    plant = load("planted_sensitivity.json")
 
     checks: list[tuple[str, str, str]] = []
 
@@ -108,6 +109,12 @@ def main():
     want("perm false-open dev", abst["B_permutation_null"]["false_open_dev"], "abstention.B")
     want("gold oracle acc", abst["C_counterfactual"]["gold_oracle"]["acc"], "abstention.C")
     want("forced derived acc", abst["C_counterfactual"]["forced_derived"]["acc"], "abstention.C")
+
+    # planted-channel operating characteristic (finding (f))
+    want("planted floor Gaussian", plant["min_detectable_D"]["location@50"], "planted.min_detectable_D")
+    want("planted floor Laplace", plant["min_detectable_D"]["heavy_tail@50"], "planted.min_detectable_D")
+    want("rank-local max D", plant["cells"]["rank_local@0.8"]["abs_d_true"], "planted.rank_local")
+    want("rank-local oracle gain", plant["cells"]["rank_local@0.8"]["gain_oracle"], "planted.rank_local")
 
     # window table
     want("LeetCode window", g1["window"], "g1_window")

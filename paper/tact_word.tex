@@ -681,8 +681,8 @@ working safety mechanism from an absent signal not at all. Three replays of the
 same cached pools separate a little more. \emph{Stability:} bootstrapping the
 items, the dev gate opens in $50.4\%$ of resamples---with $|z|=1.24$ against
 $\nu=1.28$ the reported abstention is a $3\%$ margin, not a reading of the
-evidence---while the label-free gate opens in $16.2\%$ and is the stabler of the
-two. \emph{Specificity:} permuting confidences within items, which preserves the
+evidence---while the label-free gate opens in $16.2\%$---though finding (f) will show
+that figure describes the significance gate alone. \emph{Specificity:} permuting confidences within items, which preserves the
 real marginals, ties, pool composition and difficulty and destroys only the
 coupling, puts the false-open rate at $18.4\%$ against a nominal $20\%$
 ($1.6\%$ against $2\%$ label-free), with the null $z$ at mean $-0.002$ and SD
@@ -695,6 +695,38 @@ of two items. Neither approaches significance, so the substrate is null in the
 way that matters; but the sign the estimator derived is the sign the oracle
 wanted, and (b) should be read as \emph{costs nothing measurable at this $n$}
 rather than as a demonstration that abstaining was right.
+
+\emph{(f) What the gate could have detected here.} Finding (e) measures
+specificity; sensitivity needs a channel of known strength, so one is planted
+into these same pools---real answers, difficulty and duplication untouched,
+only the confidence vector replaced, conditioned on the real correctness
+pattern. Planting only the estimator's own location-shift model would prove
+nothing (the invariance-group pitfall of Section~\ref{sec:limits}), so four
+families are swept: the Gaussian location shift; the same shift under Laplace
+noise, violating the link's normality assumption while preserving $D$; a
+rank-concentrated channel that forces the top-confidence slot onto a correct
+trace; and a variance-only channel, informative but unsigned. Four results,
+$40$ seeds per cell. \emph{One:} the gate's operating characteristic is a
+function of the realized $|\Dhat|$ and not of the family---half-power near
+$|\Dhat|=0.247$ (Gaussian) and $0.208$ (Laplace), full power by ${\approx}0.49$
+on both, and the derived exponent captures the entire oracle gain from
+$|\Dhat|\approx0.83$ upward on both---so detection is a property of the rank
+functional rather than of the generator, and the link survives the normality
+violation. The measured channel of (a), $|\Dhat|=0.219$, sits at the half-power
+floor: finding (e)'s coin flip restated as an operating characteristic.
+\emph{Two:} conditional on the gate opening, the sign is never wrong, in any
+cell of any family. \emph{Three:} the scope boundaries are real. The
+rank-concentrated channel yields $|\Dhat|\le0.183$ at full strength---a pooled
+pair statistic barely sees information carried by a single rank position---and
+leaves the derived gain near zero where a gold-label exponent takes $+0.039$;
+the unsigned channel is invisible by construction and the gate correctly holds
+its nominal false-open rate on it. \emph{Four, a defect:} the label-free arm
+never acts in any cell, even on a saturating channel with the item floor
+lowered to one, because with $85$ of $100$ items unanimous the margin gate's
+$40\%$-quantile cut equals $1.0$, and no item satisfies margin $\ge 1.0$ with
+two distinct answers. Its abstention in (b) was therefore structural rather
+than a reading of the channel, and on saturated substrates the quantile gate
+needs an absolute cut.
 
 Scope of this first campaign: one model, two benchmarks, $K{=}12$. It confirms
 the null-direction prediction and the calibration--discrimination argument, and
@@ -946,7 +978,9 @@ is produced by \texttt{pytest} at commit \texttt{35ad160}; the synthetic results
 \texttt{experiments/run\_tact\_eval.py}, the real-trace campaigns by
 \texttt{run\_tact\_hard\_eval.py}, and the window measurements by
 \texttt{run\_g1\_window.py} and \texttt{run\_g1\_deepening.py}; the three
-abstention replays of finding~(e) by \texttt{run\_abstention\_identifiability.py}.
+abstention replays of finding~(e) by \texttt{run\_abstention\_identifiability.py};
+the planted-channel operating characteristic of finding~(f) by
+\texttt{run\_planted\_sensitivity.py}.
 Each script
 writes the artifact its table cites. Figures~\ref{fig:baselines}--\ref{fig:group}
 are vector output from \texttt{experiments/make\_paper\_figures.py}, which reads
