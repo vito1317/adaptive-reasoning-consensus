@@ -1,8 +1,9 @@
 {
   "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact_jmlr.tex",
-  "round": 8,
-  "reviewed_commit": "6b98a8e",
-  "previous_commit": "cd4e5d0",
+  "round": 9,
+  "reviewed_commit": "d0903f8",
+  "previous_commit": "6b98a8e",
+  "open_findings": 0,
   "history": {
     "62bc7c7": "38 / 10 major / Desk Reject",
     "4d75431": "38 / 10 / Conditional Pass",
@@ -11,29 +12,23 @@
     "aed4605": "3 / 2",
     "c6a8321": "4 / 2",
     "cd4e5d0": "2 / 0 major",
-    "6b98a8e": "1 / 0 major"
+    "6b98a8e": "1 / 0 major",
+    "d0903f8": "0"
   },
   "FULLY_ADDRESSED": [
-    "citep-inside-parenthetical -- both spots reworded rather than patched: the confidence-score sentence no longer nests, and the real-trace one became '100 items, 50 from GSM8K and 50 from CommonsenseQA'. Zero nested-parenthesis citations remain anywhere in the file.",
-    "citet-position-parisi -- now 'the two-root ambiguity of Parisi et al. (2014) restated for a single channel'; \\citet count is 1 and it is this one."
+    "table5-sixth-row-outside-range -- the caption now reads 'The last row is that same MATH L5 substrate under the budget manipulation of Section 8, not a sixth substrate: the 2.5-7.5% range quoted throughout is over the five above it.'",
+    "every-substrate-tried-overclaim (self-caught) -- zero occurrences remain; the phrase was refuted by Table 5's own budget row",
+    "zh-en-divergence-on-budget (self-caught) -- the budget material is now in the English body: 13 mentions, four instances of 11.8, two symbolic refs to sec:budget",
+    "rho-hat-symbol-collision (self-caught) -- \\hat\\rho is gone (0 occurrences), replaced by \\hat\\eta (4); \\bar\\rho stays as the plurality-error rate (10)"
   ],
   "PARTIALLY_ADDRESSED": {},
-  "NEW": {
-    "table5-sixth-row-outside-range": "Six rows against 'five substrates', with the budget-capped row's 11.8 outside the quoted 2.5-7.5% range and no caption clause saying it is excluded."
-  },
+  "NEW": {},
   "NOT_ADDRESSED": [],
-  "improvements_this_round_beyond_the_findings": [
-    "Two algorithm blocks added (labeled path and label-free path), which is the first place the method is stated end to end as executable steps.",
-    "The window range was tightened from 3-7.5% to 2.5-7.5%, which is now exactly the min and max of Table 5's Win. column over the five substrates. The original round-2 objection is closed properly rather than approximately.",
-    "The Table 5 caption now reconciles the two MATH L5 denominators: the row is over the full 119-item registered list, while Section 7 quotes 10 and 4 items over the 89-item evaluation set, so 11.2 and 4.5."
-  ],
   "independently_verified_this_round": {
-    "citations": "26 \\citep, 2 \\citealp, 1 \\citet, 0 bare \\cite; a scan for \\citep inside an unclosed author parenthesis returns zero",
-    "Algorithm 1 vs src/rlev_voi/tact.py": "p_bar = clip(mean(hits), 0.05, 0.95) matches line 72; dead zone, JS shrinkage and the clipped link match formula.py",
-    "Algorithm 2 vs src/rlev_voi/tact.py": "dup_threshold 0.95 (line 125), margin_quantile 0.40 (126), n_splits 20 (129), att_floor 0.20 (131), E2 psi>0.05 (221), E3 disc<0.02 (258) all match",
-    "the paper's new ordering claim": "'the significance gate tests the raw z_g while the tempering uses the de-attenuated pair' is exactly tact.py:285-291, which gates on pooled.z and then tempers d_hat/att and se/att",
-    "the paper's new p_bar claim": "'p_bar is left unset on the label-free path' is true: tact.py:291 passes p_bar=None, and formula.py:71 drops the mixture correction on None, while the dev path at tact.py:75 passes the estimated p_bar",
-    "window range": "Table 5 Win. column over the five substrates is 4.0, 2.5, 3.3, 3.6, 7.5, so min 2.5 and max 7.5 reproduce the quoted range exactly",
+    "cross-build consistency": "all five sources (tact, jmlr, tmlr, tmlr_preprint, word) agree exactly on every fix from this round and every earlier one: hat-rho 0, hat-eta 4, 'every substrate tried' 0, caption clause 1, sec:budget refs 2, window range 2.5-7.5 x5 with zero survivals of 3-7.5, Table III .785/.752, '102 tests' x2, availability section present",
+    "build_tmlr.py anonymisation guard": "exercised directly. assert_anonymous passes on the current anonymous source and raises on all six injected identifiers (vito1317, Wei-Chen Ko, the CJK name, a github URL, 'Independent Researcher', the email). The two rewrites now use re.subn with an n != 1 assertion, so a regex that silently stops matching fails the build instead of shipping a de-anonymised submission.",
+    "PDF metadata": "checked as a leak vector the source-level guard cannot see: neither TMLR PDF carries an Author, Title, Subject or Keywords field; only format, creator, producer and creationDate",
     "page count": "23pp; JMLR imposes no limit"
-  }
+  },
+  "closing_note": "No open findings. This means every issue raised across nine rounds is closed and independently verified against the released artifacts, the implementation, or the rendered PDFs. It is not a prediction about the review outcome: whether the contribution clears the bar given the paper's own 2.5-7.5% ceiling on the addressable stratum is a judgement for editors and reviewers, and the paper now argues that case explicitly rather than leaving it implicit."
 }

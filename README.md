@@ -90,7 +90,8 @@ $$\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 ./.venv/bin/python experiments/run_g1_deepening.py     # 能力牆確認
 ./.venv/bin/python experiments/verify_kappa_kill.py    # KAPPA 死因獨立重現
 ./.venv/bin/python experiments/rlsc_pilot.py           # RLSC 三項 pilot
-./.venv/bin/python experiments/make_figures.py         # 所有圖表
+./.venv/bin/python experiments/make_figures.py         # 所有探索性圖表
+./.venv/bin/python experiments/make_paper_figures.py   # 論文四張圖（向量 PDF）
 ```
 
 需要 API key：

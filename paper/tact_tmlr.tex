@@ -169,7 +169,7 @@ with noise $\varepsilon\sim\mathcal{N}(0,0.1^2)$ and coupling $\kappa\in[-0.6,0.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.62\linewidth]{figs/kappa_sweep.png}
+\includegraphics[width=0.62\linewidth]{figs/kappa_sweep}
 \caption{The pre-measured problem statement: accuracy of baseline confidence policies at fixed $K{=}15$ as the true coupling $\kappa$ varies. A trivial sign-corrected AUC gate (green) nearly saturates the homogeneous sweep; the headroom for any new method (shaded) concentrates in the mid-range and, off this plot, in distortion, heterogeneity, and label-free cells.}
 \label{fig:baselines}
 \end{figure}
@@ -433,7 +433,7 @@ mid-range a tie.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.62\linewidth]{figs/tact_sweep.png}
+\includegraphics[width=0.62\linewidth]{figs/tact_sweep}
 \caption{Main result on the confidence-usage frontier. \TACT-dev and the fully label-free \TACT-LF track the signed oracle across the sweep; CISC-devT and the ECE gate sit at the \SC{} floor for all $\kappa<0$.}
 \label{fig:sweep}
 \end{figure}
@@ -509,7 +509,7 @@ Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confide
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.62\linewidth]{figs/tact_adversarial.png}
+\includegraphics[width=0.62\linewidth]{figs/tact_adversarial}
 \caption{Adversarial regimes. Dotted line: the oracle over raw-value weights. Left group of bars: rank invariance beats that family under compression; right: the labeled variant counters the confident echo while the label-free variant alarms and refuses.}
 \label{fig:adv}
 \end{figure}
@@ -543,7 +543,7 @@ Per-item link oracle (ceiling) & .947 & .973\\
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.62\linewidth]{figs/group_eval.png}
+\includegraphics[width=0.62\linewidth]{figs/group_eval}
 \caption{Structured vs.\ i.i.d.\ heterogeneity. Left: with an observable covariate, per-group \TACT{} (label-free) approaches the per-item oracle from the $0.785$ floor with zero losses to \SC. Right: the provably closed i.i.d.\ cell---every method at the floor, the negative control included.}
 \label{fig:group}
 \end{figure}
@@ -880,6 +880,23 @@ Section~\ref{sec:budget} adds the one axis that does widen the window, and it
 cuts the same way: with the window at $11.8\%$ and an oracle able to convert
 nine items, confidence weighting still reaches fewer than half of them. The
 width of the window is not the only thing in the way.
+
+\textbf{Widening the window on purpose.} That result also names the most
+promising direction the paper does not pursue. Difficulty moves items from
+saturated straight to capability-limited, but the budget constraint of
+Section~\ref{sec:budget} moved them across the plurality boundary while leaving
+the answer inside the model's competence, which is the combination the decisive
+stratum needs; sampling temperature is a second knob with the same character,
+and neither was swept. If the sampling regime is a controllable input rather
+than a fixed property of the substrate, the question changes from ``how wide is
+the window?'' to ``what decoding configuration puts the most items in it, at
+what accuracy cost, and does the confidence channel stay signed there?'' The
+budget arm answers the first part once and suggests the channel gets
+\emph{stronger} under the constraint ($\Dhat$ from $+0.229$ to $+0.398$), which
+would be worth confirming on more than one substrate before it is believed. A
+method that chose its own decoding budget to maximise decisive-stratum mass,
+then aggregated, would be a different contribution from this one, and the
+measurement here is what makes it worth attempting.
 
 \section{Conclusion}
 \TACT{} turns ``how far should this model's confidence be trusted?'' into a

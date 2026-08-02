@@ -1,16 +1,16 @@
 # 深度审稿报告
 
 **论文**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **语言**: EN | **模式**: deep-review
-**生成时间**: 2026-08-02 14:11
+**生成时间**: 2026-08-02 14:28
 **工件目录**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
 
 ## 总体评估
 
-Round-8 re-audit of the JMLR build at 6b98a8e. Both round-7 items closed and one new minor found; no major, moderate or methodological finding is open. The two citation problems were reworded rather than patched, which is the better fix: the confidence-score sentence no longer nests parentheses and the real-trace one now reads '100 items, 50 from GSM8K and 50 from CommonsenseQA'. A scan for a \citep inside an unclosed author parenthesis returns zero across the file. Two additions this round go beyond the findings. The paper now carries algorithm blocks for both the labeled and the label-free path, and every constant and ordering in them was checked against src/rlev_voi/tact.py and matches, including the two the text singles out as load-bearing: the significance gate gates on the raw pooled z while tempering uses the de-attenuated pair, and p_bar is genuinely left unset on the label-free path so the mixture correction is not applied there. The window range was also tightened from 3-7.5% to 2.5-7.5%, which is now exactly the min and max of Table 5's window column over the five substrates, closing the round-2 objection properly rather than approximately, and the caption reconciles the 119-item and 89-item MATH L5 denominators. The one remaining item is that Table 5 shows six rows against a text that says five substrates, with the budget-capped row's 11.8 outside the quoted range and no caption clause marking it as excluded.
+Round-9 re-audit of the JMLR build at d0903f8. No open findings. The round-8 caption clause landed verbatim, and the three items the author's own self-audit raised are closed and verified: the 'every substrate tried' phrasing that Table 5's budget row refuted is gone, the budget material is back-ported into the English body, and the rho-hat / rho-bar collision is resolved in favour of eta-hat. All five builds agree exactly on every fix from this round and every earlier one. Two things were checked here that no earlier round covered. The anonymisation guard added to build_tmlr.py was exercised rather than read: assert_anonymous passes on the current anonymous source and raises on all six injected identifiers, and the two rewrites now assert that they fired, so a regex that silently stops matching fails the build instead of shipping a de-anonymised submission to a double-blind venue. And the PDF metadata was inspected as a leak vector the source-level guard cannot see; neither TMLR PDF carries an author field. Across nine rounds the bundle went from 38 findings with 10 major and a desk-reject verdict to zero. That is a statement about the audit, not a prediction about the review: whether the contribution clears the bar given the paper's own 2.5-7.5% ceiling on the addressable stratum is a judgement for editors and reviewers, and the paper now makes that case explicitly instead of leaving it for them to discover.
 
 - **主要**: 0
 - **中等**: 0
-- **次要**: 1
+- **次要**: 0
 
 ## 学术预审委员会
 
@@ -370,23 +370,10 @@ harder direction.
 ## Closure Targets
 - Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.
 
-## 次要问题
-
-### M1: Table 5 has six rows while every claim about it says five substrates, and the sixth sits outside the quoted range
-- **类型**: presentation
-- **来源**: [LLM] via `notation_and_numeric_consistency`
-- **置信度**: high
-- **章节**: result
-- **关联章节**: result, abstract
-- **根因键**: `table5-sixth-row-outside-range`
-- **原文已核对**: 是
-- **原文**: `QA, budget-capped & MATH L5$^\dagger$ & $18.5$ & $11.8$ \\`
-- **说明**: The count is defensible: the five substrates are GSM8K/CSQA, MATH L5, AIME/AMC, HumanEval+/MBPP+ and LeetCode, and the sixth row is MATH L5 again under the budget manipulation rather than a new substrate. The 2.5-7.5% range is exactly the min and max of the Win. column over those five (4.0, 2.5, 3.3, 3.6, 7.5), so it is now fully reconstructible, which closes the original objection. What remains is that a reader checking the table sees six rows and a Win. value of 11.8 that the abstract's range excludes without saying so at the point of reading. The information exists in the row label 'budget-capped' and in Section 8, which calls it 'the widest window measured anywhere in this paper', but not in the caption where the range is checked. One clause in the caption, saying that the last row is the same MATH L5 substrate under the Section 8 manipulation and is not one of the five, removes the only remaining way to misread this table.
-
 ## 决策信号
 
 - **审稿推荐**: 录用
-- **问题包**: 主要 0 / 中等 0 / 次要 1
+- **问题包**: 主要 0 / 中等 0 / 次要 0
 
 ## 修订路线图
 

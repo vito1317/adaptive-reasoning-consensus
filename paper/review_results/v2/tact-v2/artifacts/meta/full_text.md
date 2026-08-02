@@ -345,7 +345,7 @@ Y.~Xia et~al., ``LeetCodeDataset: A temporal dataset for robust evaluation and e
 thebibliography
 document
 
-<!-- === RAW LATEX SOURCE (tact_jmlr.tex @6b98a8e) === -->
+<!-- === RAW LATEX SOURCE (tact_jmlr.tex @d0903f8) === -->
 
 \documentclass[twoside,11pt]{article}
 
@@ -1131,7 +1131,10 @@ not: they pass from saturated to capability-limited. The MATH L5 row is over
 the full registered list of $119$ items, the substrate being the object
 measured; Section~\ref{sec:hard} quotes the same quantities over the $89$-item
 evaluation set that remains after the sign set is split off ($10$ and $4$
-items, so $11.2$ and $4.5$).}
+items, so $11.2$ and $4.5$). The last row is that same MATH L5 substrate
+under the budget manipulation of Section~\ref{sec:budget}, not a sixth
+substrate: the $2.5$--$7.5\%$ range quoted throughout is over the five
+above it.}
 \label{tab:window}
 \centering\footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -1273,7 +1276,7 @@ writes the artifact its table cites.
 \end{document}
 
 
-<!-- === PDF RENDERED TEXT (tact_jmlr.pdf) === -->
+<!-- === PDF RENDERED TEXT === -->
 
 <!-- PDF PAGE 1/23 -->
 Trust-Anchored Confidence Tempering
@@ -1382,11 +1385,11 @@ distortion, echo, and label-free operation, and tact trails it in the mid-range.
 C5: A measurement of the addressable stratum. Two real-trace campaigns and
 a five-substrate window measurement bound what any label-free aggregation method can
 do. The channel is null on saturated benchmarks ( bD = −0.219, z = −1.24) and positive
-on competition mathematics (+0.250, z = +2.54), so the premise holds where the model is
-uncertain; but the stratum such a method can act on is 2.5–7.5% of items on every substrate
-tried, in two domains, and does not widen as items harden. On both real substrates the
-in-pool oracle itself cannot clear the pre-registered endpoint, which makes abstention the
-correct default rather than a conservative one.
+on competition mathematics (+0.250, z = +2.54), so the premise holds where the model
+is uncertain; but the stratum such a method can act on is 2.5–7.5% of items across all five
+substrates, in two domains, and does not widen as items harden. On both real substrates
+the in-pool oracle itself cannot clear the pre-registered endpoint, which makes abstention
+the correct default rather than a conservative one.
 2 Related Work
 Confidence-weighted self-consistency. sc (Wang et al., 2023) treats sampled traces as
 i.i.d. votes. CISC (Taubenfeld et al., 2025) weights votes by softmax-normalized confidence
@@ -1720,7 +1723,8 @@ in bD, nonincreasing in SE in magnitude, with g(D, 0+) = γ∗(D).
 Ko
 Algorithm 2 tact-LF: recovering the sign without labels
 Require: pools P, budget K, dedup threshold θ=0.95, margin quantile β=0.40, floor νLF,
-cap γmax, splits J=20, attenuation floor 0.20, minGated
+cap γmax, splits J=20, attenuation floor 0.20, minGated; ˆη below is the estimated
+attenuation 1 −2¯ρ, not ¯ρ
 Ensure: γ, equal to 0 whenever any alarm fires
 1: for q ∈P do
 2:
@@ -1753,7 +1757,7 @@ p
 /(k+1)
 15: E3 ←[ discriminant < 0.02 ]
 ▷root ambiguity
-16: ˆρ ←clip
+16: ˆη ←clip
  UCB95(2p −1), 0.20, 1
 
 17: if E1 ∨E2 ∨E3 ∨E4 or |zg| ≤νLF then
@@ -1761,7 +1765,7 @@ p
 return 0
 ▷refuse; the vote stays sc
 19: return Temper
-  bDg/ˆρ, SEg/ˆρ
+  bDg/ˆη, SEg/ˆη
 
 with ¯p unset
 Proofs are elementary and pinned by unit tests in the released code (102 tests; the
@@ -2267,8 +2271,10 @@ oracle-minus-selector tables, which report the window only. As items harden the
 decisive fraction grows but the window does not: they pass from saturated to
 capability-limited. The MATH L5 row is over the full registered list of 119 items,
 the substrate being the object measured; Section 8.8 quotes the same quantities
-over the 89-item evaluation set that remains after the sign set is split off (10 and
-4 items, so 11.2 and 4.5).
+over the 89-item evaluation set that remains after the sign set is split off (10 and 4
+items, so 11.2 and 4.5). The last row is that same MATH L5 substrate under the
+budget manipulation of Section 8.10, not a sixth substrate: the 2.5–7.5% range
+quoted throughout is over the five above it.
 Domain
 Substrate
 Dec. Win.
@@ -2315,12 +2321,12 @@ run tests this on the same 119 items, same model, same K, with the model instruc
 answer without writing any working.
 The manipulation was weaker than pre-registered on its stated check (per-sample ac-
 curacy 0.853 →0.781, against a 0.10 drop required) and the correct answer did not leave
-the pool (0.950 →0.933), so what follows is exploratory. It is reported because the con-
-straint did not lower accuracy uniformly, it moved items across the plurality boundary: sc
 18
 
 <!-- PDF PAGE 19/23 -->
 Trust-Anchored Confidence Tempering
+the pool (0.950 →0.933), so what follows is exploratory. It is reported because the con-
+straint did not lower accuracy uniformly, it moved items across the plurality boundary: sc
 fell 0.924 →0.815, the window widened from 2.5% to 11.8% (paired exact McNemar on
 window membership, 13 in and 2 out, p = 0.0037), and the channel grew stronger, bD from
 +0.229 (z = 2.69) to +0.398 (z = 6.76). Forced to answer without working, the model’s
@@ -2363,12 +2369,12 @@ does not merely shrink toward sc: it mis-signs, saturates at γ = −2.0, and sc
 against an sc floor of 0.340. None of the four alarms fires, because E1 keys on verbatim
 duplication which is absent by construction. This is the method’s sharpest unguarded fail-
 ure mode: the guarantee is conditional, the condition is not observable label-free, and the
-existing diagnostics do not detect its violation. Where a systematically wrong majority
-is plausible, the semi-label-free mode (sign from ∼50 labels) should be the default rather
 19
 
 <!-- PDF PAGE 20/23 -->
 Ko
+existing diagnostics do not detect its violation. Where a systematically wrong majority
+is plausible, the semi-label-free mode (sign from ∼50 labels) should be the default rather
 than an optional refinement. The other standard remedy is not tried here and should be:
 the failure is driven by a semantically tight wrong cluster that lexical deduplication cannot
 see, which is precisely what semantic-equivalence clustering (Kuhn et al., 2023) is built to
@@ -2376,9 +2382,9 @@ collapse. Substituting a semantic pseudo-label for the lexical one is the obviou
 and this paper does not test it.
 Global exponent per group. Within a group, tact ships one exponent; per-item
 variation inside a group is unexploitable by Propositions 5–8 unless further covariates exist.
-The thin window. Section 8.9 measures the stratum this whole family of methods
-can act on at 2.5–7.5% of items on every substrate tried, in two domains, with no widening
-as items harden: they pass from saturated straight to capability-limited. Two consequences
+The thin window. Section 8.9 measures the stratum this whole family of methods can
+act on at 2.5–7.5% of items across all five substrates, in two domains, with no widening as
+items harden: they pass from saturated straight to capability-limited. Two consequences
 follow for the method proposed here. First, abstention is not a conservative compromise but
 the only correct default, and the measured cost of acting anyway was negative on both real
 substrates (best-single-confidence loses 4.5 points in Table 5 where the dead zone holds tact
@@ -2386,8 +2392,11 @@ at the sc floor). Second, an aggregation gain of the size reported on the synthe
 is not measurable on a benchmark of a few hundred items at these window widths, which is
 why the real-trace claim in this paper is confined to the premise (the channel exists and is
 signed) and to the abstention behaviour, and does not extend to accuracy. Demonstrating
-the gain needs a (model, benchmark) pair whose plurality is wrong on 30–60% of items with
-the correct answer still reachable, and no pair tried here satisfies both.
+the gain needs a (model, benchmark) pair whose plurality is wrong on 30–60% of items
+with the correct answer still reachable, and no pair tried here satisfies both. Section 8.10
+adds the one axis that does widen the window, and it cuts the same way: with the window
+at 11.8% and an oracle able to convert nine items, confidence weighting still reaches fewer
+than half of them. The width of the window is not the only thing in the way.
 10 Conclusion
 tact turns “how far should this model’s confidence be trusted?” into a measured, signed,
 uncertainty-aware scalar, and recovers the sign without labels under conditions this paper
@@ -2402,6 +2411,10 @@ com/vito1317/adaptive-reasoning-consensus. Table 4 is produced by pytest at com-
 mit 35ad160; the synthetic results by experiments/run_tact_eval.py, the real-trace cam-
 paigns by run_tact_hard_eval.py, and the window measurements by run_g1_window.py
 and run_g1_deepening.py. Each script writes the artifact its table cites.
+20
+
+<!-- PDF PAGE 21/23 -->
+Trust-Anchored Confidence Tempering
 References
 Pranjal Aggarwal, Aman Madaan, Yiming Yang, and Mausam. Let’s sample step by step:
 Adaptive-consistency for eﬀicient reasoning and coding with LLMs. In Proceedings of the
@@ -2409,10 +2422,6 @@ Adaptive-consistency for eﬀicient reasoning and coding with LLMs. In Proceedin
 12396, Singapore, December 2023. Association for Computational Linguistics.
 URL
 https://aclanthology.org/2023.emnlp-main.761/.
-20
-
-<!-- PDF PAGE 21/23 -->
-Trust-Anchored Confidence Tempering
 Rui Ai, Yuqi Pan, David Simchi-Levi, Milind Tambe, and Haifeng Xu. Beyond majority
 voting: LLM aggregation by leveraging higher-order information, 2025. URL https:
 //arxiv.org/abs/2510.01499. Accepted to ICML 2026.
@@ -2450,6 +2459,10 @@ Nicholas Schiefer, Zac Hatfield-Dodds, Nova DasSarma, Eli Tran-Johnson, Scott Jo
 ston, Sheer El-Showk, Andy Jones, Nelson Elhage, Tristan Hume, Anna Chen, Yuntao
 Bai, Sam Bowman, Stanislav Fort, Deep Ganguli, Danny Hernandez, Josh Jacobson,
 Jackson Kernion, Shauna Kravec, Liane Lovitt, Kamal Ndousse, Catherine Olsson, Sam
+21
+
+<!-- PDF PAGE 22/23 -->
+Ko
 Ringer, Dario Amodei, Tom Brown, Jack Clark, Nicholas Joseph, Ben Mann, Sam Mc-
 Candlish, Chris Olah, and Jared Kaplan. Language models (mostly) know what they
 know.
@@ -2459,10 +2472,6 @@ URL https://arxiv.org/abs/2207.
 Zhewei Kang, Xuandong Zhao, and Dawn Song. Scalable best-of-n selection for large lan-
 guage models via self-certainty. In Advances in Neural Information Processing Systems
 38 (NeurIPS 2025), 2025. URL https://arxiv.org/abs/2502.18581.
-21
-
-<!-- PDF PAGE 22/23 -->
-Ko
 David
 R.
 Karger,
@@ -2529,6 +2538,10 @@ Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy 
 Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe. Let’s verify step by step. In
 The Twelfth International Conference on Learning Representations (ICLR), 2024. URL
 https://arxiv.org/abs/2305.20050.
+22
+
+<!-- PDF PAGE 23/23 -->
+Trust-Anchored Confidence Tempering
 Fabio Parisi, Francesco Strino, Boaz Nadler, and Yuval Kluger. Ranking and combining
 multiple predictors without labeled data. Proceedings of the National Academy of Sci-
 ences, 111(4):1253–1258, 2014. doi: 10.1073/pnas.1219097111.
@@ -2536,10 +2549,6 @@ J. N. K. Rao and A. J. Scott. The analysis of categorical data from complex samp
 Chi-squared tests for goodness of fit and independence in two-way tables. Journal of the
 American Statistical Association, 76(374):221–230, 1981. doi: 10.1080/01621459.1981.
 10477633.
-22
-
-<!-- PDF PAGE 23/23 -->
-Trust-Anchored Confidence Tempering
 Amir Taubenfeld, Tom Sheffer, Eran Ofek, Amir Feder, Ariel Goldstein, Zorik Gekhman,
 and Gal Yona. Confidence improves self-consistency in LLMs. In Findings of the Associa-
 tion for Computational Linguistics: ACL 2025, pages 20090–20111, Vienna, Austria, July

@@ -70,6 +70,10 @@ def main() -> None:
     s = re.sub(r"\\smash\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}", r"\1", s)
     s = s.replace(r"\begin{abstract}", r"\section*{Abstract}").replace(r"\end{abstract}", "")
     s = s.replace("\\begin{thebibliography}{99}", "\\section*{References}\n\\begin{thebibliography}{99}")
+    # pandoc cannot place a PDF figure into .docx; the paper now includes
+    # figures without an extension so LaTeX takes the vector version.
+    s = re.sub(r"\\includegraphics(\[[^\]]*\])?\{figs/([a-z_]+)\}",
+               lambda m: f"\\includegraphics{m.group(1) or ''}{{figs/{m.group(2)}.png}}", s)
     s = hoist_equation_labels(s)
     s = resolve_citations(s)
     pathlib.Path("tact_word.tex").write_text(s)
