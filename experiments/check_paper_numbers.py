@@ -54,6 +54,7 @@ def main():
     bud = load("budget_paired.json")
     g1 = load("g1_window.json")
     hard = load("tact_hard_eval.json")
+    abst = load("abstention_identifiability.json")
 
     checks: list[tuple[str, str, str]] = []
 
@@ -100,6 +101,13 @@ def main():
     want("budget per-sample capped", bud["constrained"]["per_sample"], "budget_paired.constrained")
     want("budget window capped", bud["constrained"]["window"], "budget_paired.constrained")
     want("budget SC capped", bud["constrained"]["sc"], "budget_paired.constrained")
+
+    # abstention identifiability (finding (e) of the first real campaign)
+    want("boot open rate dev", abst["A_stability"]["pooled"]["boot_open_rate_dev"], "abstention.A")
+    want("boot open rate LF", abst["A_stability"]["pooled"]["boot_open_rate_lf"], "abstention.A")
+    want("perm false-open dev", abst["B_permutation_null"]["false_open_dev"], "abstention.B")
+    want("gold oracle acc", abst["C_counterfactual"]["gold_oracle"]["acc"], "abstention.C")
+    want("forced derived acc", abst["C_counterfactual"]["forced_derived"]["acc"], "abstention.C")
 
     # window table
     want("LeetCode window", g1["window"], "g1_window")

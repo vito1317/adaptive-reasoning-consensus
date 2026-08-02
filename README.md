@@ -86,6 +86,7 @@ $$\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 ./.venv/bin/python experiments/run_tact_eval.py        # TACT headline（合成）
 ./.venv/bin/python experiments/run_isc_eval.py         # ISC 證偽 + 儀器品質曲線
 ./.venv/bin/python experiments/run_tact_hard_eval.py   # TACT 真實資料 H1–H5
+./.venv/bin/python experiments/run_abstention_identifiability.py  # 棄權是機制還是無訊號
 ./.venv/bin/python experiments/run_g1_window.py        # 程式碼領域窗口閘門
 ./.venv/bin/python experiments/run_g1_deepening.py     # 能力牆確認
 ./.venv/bin/python experiments/verify_kappa_kill.py    # KAPPA 死因獨立重現

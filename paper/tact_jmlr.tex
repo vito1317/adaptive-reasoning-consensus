@@ -685,6 +685,27 @@ pools, not more traces per item.
 account for $49\%$ of all reports, activating the tie-safe degeneration path of
 \eqref{eq:vdw} on many items.
 
+\emph{(e) The abstention is a measurement, and a fragile one here.} A rule that
+never acts reproduces (b) exactly, so the campaign on its own separates a
+working safety mechanism from an absent signal not at all. Three replays of the
+same cached pools separate a little more. \emph{Stability:} bootstrapping the
+items, the dev gate opens in $50.4\%$ of resamples---with $|z|=1.24$ against
+$\nu=1.28$ the reported abstention is a $3\%$ margin, not a reading of the
+evidence---while the label-free gate opens in $16.2\%$ and is the stabler of the
+two. \emph{Specificity:} permuting confidences within items, which preserves the
+real marginals, ties, pool composition and difficulty and destroys only the
+coupling, puts the false-open rate at $18.4\%$ against a nominal $20\%$
+($1.6\%$ against $2\%$ label-free), with the null $z$ at mean $-0.002$ and SD
+$0.954$. The dead zone's null behaviour is therefore calibrated on the real
+substrate and not only on the generator it was derived from, which is the one
+piece of evidence here that the mechanism is doing work. \emph{Cost:}
+overriding the gate, the derived $\gamma=-0.40$ would have scored $0.933$
+($+1/-0$) and a gold-label oracle reaches $0.950$ at $\gamma=-1.25$, a ceiling
+of two items. Neither approaches significance, so the substrate is null in the
+way that matters; but the sign the estimator derived is the sign the oracle
+wanted, and (b) should be read as \emph{costs nothing measurable at this $n$}
+rather than as a demonstration that abstaining was right.
+
 Scope of this first campaign: one model, two benchmarks, $K{=}12$. It confirms
 the null-direction prediction and the calibration--discrimination argument, and
 it is not evidence that \TACT{} improves accuracy, since the channel carried no
@@ -934,7 +955,9 @@ All code, cached traces, and the JSON artifacts behind every table are at
 is produced by \texttt{pytest} at commit \texttt{35ad160}; the synthetic results by
 \texttt{experiments/run\_tact\_eval.py}, the real-trace campaigns by
 \texttt{run\_tact\_hard\_eval.py}, and the window measurements by
-\texttt{run\_g1\_window.py} and \texttt{run\_g1\_deepening.py}. Each script
+\texttt{run\_g1\_window.py} and \texttt{run\_g1\_deepening.py}; the three
+abstention replays of finding~(e) by \texttt{run\_abstention\_identifiability.py}.
+Each script
 writes the artifact its table cites. Figures~\ref{fig:baselines}--\ref{fig:group}
 are vector output from \texttt{experiments/make\_paper\_figures.py}, which reads
 the same JSON.

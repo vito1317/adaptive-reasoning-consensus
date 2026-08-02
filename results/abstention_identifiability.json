@@ -1,0 +1,88 @@
+{
+ "config": {
+  "k": 12,
+  "seed": 0,
+  "n_boot": 4000,
+  "n_perm": 4000,
+  "nu_dev": 1.2816,
+  "nu_lf": 2.326
+ },
+ "A_stability": {
+  "pooled": {
+   "n_items": 100,
+   "n_informative": 12,
+   "d_hat": -0.21862348178137653,
+   "se": 0.17587376709716396,
+   "z": -1.243070444158934,
+   "gap_to_nu_dev": 0.0385295558410661,
+   "gap_to_nu_dev_pct": 3.0063635955888026,
+   "boot_open_rate_dev": 0.50375,
+   "boot_open_rate_lf": 0.162,
+   "boot_open_negative_dev": 0.49225
+  },
+  "math": {
+   "n_items": 50,
+   "n_informative": 3,
+   "d_hat": -0.5151515151515151,
+   "se": 0.35187198885556276,
+   "z": -1.4640310438662845,
+   "gap_to_nu_dev": -0.1824310438662844,
+   "gap_to_nu_dev_pct": -14.23463201203842,
+   "boot_open_rate_dev": 0.57125,
+   "boot_open_rate_lf": 0.10175,
+   "boot_open_negative_dev": 0.57125
+  },
+  "commonsense": {
+   "n_items": 50,
+   "n_informative": 9,
+   "d_hat": -0.17289719626168223,
+   "se": 0.20164462538816705,
+   "z": -0.8574351829554304,
+   "gap_to_nu_dev": 0.42416481704456965,
+   "gap_to_nu_dev_pct": 33.09650569948265,
+   "boot_open_rate_dev": 0.369,
+   "boot_open_rate_lf": 0.10425,
+   "boot_open_negative_dev": 0.339
+  }
+ },
+ "B_permutation_null": {
+  "null_z_mean": -0.0020008189307276574,
+  "null_z_sd": 0.9544812559762689,
+  "false_open_dev": 0.184,
+  "nominal_dev": 0.2005999999999999,
+  "false_open_lf": 0.01575,
+  "nominal_lf": 0.020019999999999927,
+  "p_obs_under_null": 0.19325,
+  "z_obs": -1.243070444158934
+ },
+ "C_counterfactual": {
+  "n_test": 60,
+  "sc_acc": 0.9166666666666666,
+  "shipped": {
+   "gamma": 0.0,
+   "acc": 0.9166666666666666,
+   "plus": 0,
+   "minus": 0,
+   "p": 1.0
+  },
+  "forced_derived": {
+   "gamma": -0.3999663989322137,
+   "acc": 0.9333333333333333,
+   "plus": 1,
+   "minus": 0,
+   "p": 1.0
+  },
+  "forced_wrong_sign": {
+   "gamma": 0.3999663989322137,
+   "acc": 0.9,
+   "plus": 0,
+   "minus": 1,
+   "p": 1.0
+  },
+  "gold_oracle": {
+   "gamma": -1.25,
+   "acc": 0.95,
+   "gain_over_sc": 0.033333333333333326
+  }
+ }
+}
