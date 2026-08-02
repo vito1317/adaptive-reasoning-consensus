@@ -87,7 +87,7 @@ the pair-weighted plurality-error rate $\bar\rho$ is below $1/2$ the estimate
 can only \emph{under}-trust, never mis-sign. A split-half inversion
 de-attenuates conservatively and sign-aware alarms return the method to \SC{}
 at the identifiability boundary. Past $\bar\rho=1/2$ it does mis-sign, which
-Section~\ref{sec:limits} measures rather than assumes away.
+Section~\ref{sec:limits} measures.
 
 \textbf{C3: An impossibility result and its structured escape.} With i.i.d.\
 per-item coupling and no observable covariate, per-item label-free adaptation
@@ -117,16 +117,14 @@ uncertain; but the stratum such a method can act on is $2.5$--$7.5\%$ of items
 across all five substrates, in two domains, and does not widen as items
 harden.
 On both real substrates the in-pool oracle itself cannot clear the
-pre-registered endpoint, which makes abstention the correct default rather
-than a conservative one.
+pre-registered endpoint, which makes abstention the correct default.
 
 \section{Related Work}\label{sec:related}
 
 \textbf{Confidence-weighted self-consistency.} \SC{} [\hyperref[bib:wang2023selfconsistency]{1}] treats sampled traces as i.i.d.\ votes. CISC [\hyperref[bib:taubenfeld2025cisc]{5}] weights votes by softmax-normalized confidence with a temperature tuned on a labeled split, and its WQD metric makes the discrimination-vs-calibration point that also motivates this work; the rank-calibration line [\hyperref[bib:huang2024rankcalibration]{8}] reaches the same conclusion independently. Weighted variants [\hyperref[bib:li2023diverse]{11}] and early-stopping families
 [\hyperref[bib:aggarwal2023adaptive]{12},\hyperref[bib:li2024escape]{13}] refine the budget. Self-certainty
 [\hyperref[bib:borda2025]{14}] is the closest relative in spirit, being the one published
-selector that scores candidates by a rank-like quantity rather than by raw
-confidence, but it ranks \emph{across} candidates with a fixed positive
+selector that scores candidates by a rank-like quantity, but it ranks \emph{across} candidates with a fixed positive
 orientation and is not evaluated here; reliability-aware pseudo-counts [\hyperref[bib:reasc2026]{6}] and warmup-thresholded filtering [\hyperref[bib:deepconf2025]{7}] adapt online but only re-scale positive trust. None of these searches a negative exponent: the obstruction is a sign bit in
 the hyperparameter grid rather than the weight family itself, as this paper's
 own SignGrid-dev baseline shows by opening the same $c^{\gamma}$ family to
@@ -246,7 +244,7 @@ statistic of \eqref{eq:js} and not the per-item $\mathrm{AUC}_q$ of
 \eqref{eq:pooled}. Nothing in it is fitted to outcomes: $\nu$ is a
 significance level and $\gamma_{\max}$ a clip, both fixed before any data is
 seen. The clip is not cosmetic, though. Where $\Dhat$ saturates it binds, and
-the vote then sees $\gamma_{\max}$ rather than the derived magnitude
+what reaches the vote is $\gamma_{\max}$, not the derived magnitude
 (Section~\ref{sec:results}). The dead zone is now visible as a single condition,
 $|\zeta|\le\nu$, on which $\gamma$ is identically zero and \eqref{eq:oneline}
 is bitwise \SC{} by Proposition~\ref{prop:sc}. Equations
@@ -296,7 +294,7 @@ floor $\nu$, cap $\gamma_{\max}$
 Algorithm~\ref{alg:tact} states the labeled path end to end. Both loops cost
 $O(K\log K)$ per item, dominated by the within-item ranking, and the estimate
 is a single scalar: nothing item-specific crosses from dev to test, which is
-what makes the dead zone a global abstention rather than a per-item one.
+what makes the dead zone a global abstention.
 
 \subsection{Anchor properties}
 \begin{proposition}[Exact \SC{} reduction]\label{prop:sc}
@@ -362,7 +360,7 @@ Let $\bar\rho$ be the pair-weighted probability that an item's plurality is wron
 $\mathbb{E}[\Dhat_g]=(1-2\bar\rho)\,D$.
 In particular $\sign\mathbb{E}[\Dhat_g]=\sign D$ whenever $\bar\rho<1/2$: the label-free estimate can only under-trust, never mis-sign.
 \end{proposition}
-The identity fails when the flip is \emph{caused} by confidence, that is, under a confident echo. There the observable law under $\{$majority right, $D<0\}$ and $\{$majority wrong via confident echo, $D>0\}$ is identical (the two-root ambiguity of [\hyperref[bib:parisi2014ranking]{10}] restated for a single channel), so any label-free guarantee is necessarily conditional; it is stated as such rather than papered over.
+The identity fails when the flip is \emph{caused} by confidence, that is, under a confident echo. There the observable law under $\{$majority right, $D<0\}$ and $\{$majority wrong via confident echo, $D>0\}$ is identical (the two-root ambiguity of [\hyperref[bib:parisi2014ranking]{10}] restated for a single channel), so any label-free guarantee is necessarily conditional, and this paper states the condition.
 
 \subsection{De-attenuation and alarms}
 Split-half agreement over $R{=}20$ random half-splits estimates $\alpha=p^2+(1-p)^2/k$ under a one-coin model with $k$ effective wrong alternatives (inverse-Simpson), inverted as $p=[1+\sqrt{1-(k{+}1)(1-k\alpha)}]/(k{+}1)$; $\Dhat_g$ is divided by the \emph{upper} $95\%$ bootstrap bound of $2p-1$ (floored at $0.2$), which can only under-inflate. Four alarms force $\gamma=0$: duplicate collapse (median Kish ratio $<0.5$), sign-aware margin-decoupling, root ambiguity in the split-half quadratic, and insufficient gated items. The margin-decoupling alarm must condition on the estimated trust direction: a sign-naive version (``plurality has the highest mean $\varphi$'') false-alarms on every benign anti-correlated channel---a defect encountered, diagnosed, and fixed during development, and pinned by the released tests. Finally the significance gate acts on the \emph{raw} $z$ (unbiased sign under Proposition~\ref{prop:ccn}) and temper on the de-attenuated value. A semi-label-free mode takes only the sign from ${\sim}50$ dev labels, routing it into the pipeline and disabling only the proxy-sign alarm; this purchases immunity to the ambiguity above at negligible labeling cost.
@@ -380,7 +378,7 @@ Measured in this harness, such a rule agrees with \SC{} on $97.5\%$ of items and
 \end{remark}
 
 \begin{remark}[Winner's curse]\label{prop:curse}
-This is a measurement in the present harness rather than a theorem: on plurality-wrong items with $|D_q|>0.3$, the items where a flip could win, the agreement statistic's sign matches the true sign only $4\%$ of the time.
+This is a measurement in the present harness, not a theorem: on plurality-wrong items with $|D_q|>0.3$, the items where a flip could win, the agreement statistic's sign matches the true sign only $4\%$ of the time.
 \end{remark}
 
 \begin{proposition}[Two-world unidentifiability]\label{prop:twoworld}
@@ -552,7 +550,7 @@ Per-item link oracle (ceiling) & .947 & .973\\
 \end{figure}
 
 \subsection{Small dev sets and falsifiers}
-With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly rather than catastrophically. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; nowhere more than the pre-registered $0.02$ accuracy tolerance below \SC), F3 (sweep means $0.944$ vs.\ $0.768$), and F4 (both grid baselines trail by $0.037$ and $0.047$ on the distortion and echo cells, and neither can operate without labels). On the single seed the paired tests against SignGrid-dev are not significant
+With dev $n{=}50$ the conclusions are unchanged ($1.000$ at $|\kappa|{=}0.6$; $0.978$ at $-0.2$): the SE-aware shrinkage degrades smoothly. All four falsifiers survived: F1 ($1.000$ vs.\ $1.000$), F2 (bit-identical at $\kappa{=}0$; nowhere more than the pre-registered $0.02$ accuracy tolerance below \SC), F3 (sweep means $0.944$ vs.\ $0.768$), and F4 (both grid baselines trail by $0.037$ and $0.047$ on the distortion and echo cells, and neither can operate without labels). On the single seed the paired tests against SignGrid-dev are not significant
 anywhere ($\kappa{=}-0.2$: $3/7$ discordant, exact $p=0.34$; $\kappa{=}+0.1$:
 $8/18$, $p=0.08$), and the ten-seed intervals of Section~\ref{sec:seeds} are
 what establish the mid-range deficit. Against SignGrid-dev the honest margin is narrow on the homogeneous sweep---\TACT{} even trails by $0.007$--$0.025$ in the mid-range, the deliberate cost of shrinkage---and the net advantage concentrates exactly where pre-registered: distortion ($+0.037$), echo ($+0.047$), and label-free operation, which no grid can perform.
@@ -620,13 +618,13 @@ post-fix.
 \emph{Dispersion.} Ten seeds per cell, $400$ paired items each, bootstrap over
 seeds. The extremes are stable to the third decimal ($1.000\pm0.001$ at
 $|\kappa|\ge0.4$). The mid-range deficit against SignGrid-dev is small but
-real rather than noise: $-0.013$ $[-0.017,-0.009]$ at $\kappa=-0.2$, $-0.016$
+real, not noise: $-0.013$ $[-0.017,-0.009]$ at $\kappa=-0.2$, $-0.016$
 $[-0.024,-0.009]$ at $-0.1$, $-0.012$ $[-0.018,-0.005]$ at $+0.1$, $-0.013$
 $[-0.019,-0.008]$ at $+0.2$, all $p<0.001$. So is the advantage where the
 paper claims it: $+0.032$ $[+0.027,+0.037]$ on monotone compression and
 $+0.048$ $[+0.037,+0.059]$ on confident echo. The one cell that changes sign
-under the fix is heterogeneous-$\kappa$, now $+0.011$ $[0.000,+0.031]$ rather
-than a loss. Reporting a single seed would have hidden both the artifact and
+under the fix is heterogeneous-$\kappa$, now $+0.011$ $[0.000,+0.031]$, where it had
+been a loss. Reporting a single seed would have hidden both the artifact and
 the fact that the mid-range gap is systematic.
 
 
@@ -680,14 +678,14 @@ real marginals, ties, pool composition and difficulty and destroys only the
 coupling, puts the false-open rate at $18.4\%$ against a nominal $20\%$
 ($1.6\%$ against $2\%$ label-free), with the null $z$ at mean $-0.002$ and SD
 $0.954$. The dead zone's null behaviour is therefore calibrated on the real
-substrate and not only on the generator it was derived from, which is the one
-piece of evidence here that the mechanism is doing work. \emph{Cost:}
+substrate itself, which is the one piece of evidence here that the mechanism is
+doing work. \emph{Cost:}
 overriding the gate, the derived $\gamma=-0.40$ would have scored $0.933$
 ($+1/-0$) and a gold-label oracle reaches $0.950$ at $\gamma=-1.25$, a ceiling
 of two items. Neither approaches significance, so the substrate is null in the
 way that matters; but the sign the estimator derived is the sign the oracle
-wanted, and (b) should be read as \emph{costs nothing measurable at this $n$}
-rather than as a demonstration that abstaining was right.
+wanted, and (b) should be read as \emph{costs nothing measurable at this $n$}.
+It does not demonstrate that abstaining was right.
 
 \emph{(f) What the gate could have detected here.} Finding (e) measures
 specificity; sensitivity needs a channel of known strength, so one is planted
@@ -749,7 +747,7 @@ stratum of $10$ of $89$ items, and the correct answer present in the pool on
 only $4$ of those. The in-pool \emph{oracle} therefore tops out at $+4/-0$,
 exact one-sided $p=0.0625$. H2 fails, but it fails for every conceivable
 aggregation method including a perfect one, so the failure is a property of
-the substrate rather than of the estimator.
+the substrate, not of the estimator.
 
 \emph{Abstention behaved as designed.} \TACT{} returned $\gamma=0$, with
 alarms E4 and E2 firing on the label-free path and the sign set holding too
@@ -761,8 +759,7 @@ item-supply condition rather than a reading of the channel, and finding~(f)
 shows it has two routes: on the saturated pools of Section~\ref{sec:real} the
 margin gate's quantile cut degenerates to $1.0$ and the gated set is empty for
 \emph{any} channel, whereas here the cut is $0.875$ and the set is non-empty,
-so the alarm reports a genuine shortfall against the floor rather than a
-collapse. Only the first is a defect.
+so the alarm reports a genuine shortfall against the floor. Only the first is a defect.
 
 \begin{table}[t]
 \caption{Confirmatory campaign, MATH level-5 evaluation set ($89$ items,
@@ -852,7 +849,7 @@ inverted them. The grading harness was validated against the benchmark's own
 reference solutions before any candidate was scored: $178$ of $180$ pass
 under the sandbox's resource limits. The check is not a formality: a sandbox whose
 resource limits the host rejects outright fails $100\%$ of executions, and
-that condition presents as a candidate failure rather than as an error. Studies that grade by execution should report their
+that condition presents as a candidate failure, not an error. Studies that grade by execution should report their
 reference-solution pass rate for the same reason a calibration curve is
 reported: without it, a broken harness and a capability wall look identical.
 
@@ -883,7 +880,7 @@ $p=0.002$ on a decisive stratum of $17$). \TACT{} nonetheless returned
 $\gamma=0$: only $12$ items survived the margin gate against the threshold of
 $30$, so E4 fired---the same item-supply condition, with the quantile cut at
 $0.750$ and the gated set again non-empty, and not the degenerate case
-finding~(f) reports. That abstention is testable rather than a matter of taste,
+finding~(f) reports. That abstention is testable,
 and it cost nothing. Estimating $\gamma$ from gold labels, an upper bound no
 deployable method has access to, the best available is $+4/-1$ at $\gamma=1$
 ($p=0.19$); the derived $\gamma=0.670$ gives $+3/-1$. The gap that matters is
@@ -896,9 +893,8 @@ half of them, and none of the reachable configurations is significant.
 \textbf{What the evidence does and does not show.} The \emph{accuracy} claims are all on a synthetic oracle whose confidence model \eqref{eq:confmodel} is, at the homogeneous cells, the very coupling the estimator measures. Three design choices limit the circularity, and the first is weaker than it
 looks: heterogeneity and echo lie outside the estimator's working model, but
 the three distortion cells are rank-preserving by construction and therefore
-sit \emph{inside} \TACT's own invariance group, so passing them tests that the
-implementation respects an invariance it was built to have rather than
-probing an untested regime; mechanism-recovery claims (does $\Dhat$ track $\kappa$?) are reported separately from accuracy claims; and the pre-measured baseline landscape (Fig.~\ref{fig:baselines}) fixed the winnable cells before the method existed. The real-trace campaigns of Sections~\ref{sec:real} and~\ref{sec:hard} test the \emph{premise} and the \emph{abstention behaviour}, and both predictions held: the channel is null on saturated benchmarks and positive on competition mathematics, and the dead zone kept the vote bit-identical to \SC{} in each case. They do not test the accuracy claim, because on neither substrate was the addressable stratum large enough for any method to demonstrate a gain (Section~\ref{sec:window}).
+sit \emph{inside} \TACT's own invariance group, so passing them shows only that the
+implementation respects an invariance it was built to have; mechanism-recovery claims (does $\Dhat$ track $\kappa$?) are reported separately from accuracy claims; and the pre-measured baseline landscape (Fig.~\ref{fig:baselines}) fixed the winnable cells before the method existed. The real-trace campaigns of Sections~\ref{sec:real} and~\ref{sec:hard} test the \emph{premise} and the \emph{abstention behaviour}, and both predictions held: the channel is null on saturated benchmarks and positive on competition mathematics, and the dead zone kept the vote bit-identical to \SC{} in each case. They do not test the accuracy claim, because on neither substrate was the addressable stratum large enough for any method to demonstrate a gain (Section~\ref{sec:window}).
 
 \textbf{Narrow margins where labels abound.} When labels are plentiful and the confidence scale is trusted, a dev-picked signed grid captures most of the value; \TACT's case rests on the label-free setting, distorted scales, small dev sets, and the exactness of its anchors.
 
@@ -916,8 +912,8 @@ verbatim duplication which is absent by construction. This is the method's
 sharpest unguarded failure mode: the guarantee is conditional, the condition is
 not observable label-free, and the existing diagnostics do not detect its
 violation. Where a systematically wrong majority is plausible, the
-semi-label-free mode (sign from ${\sim}50$ labels) should be the default rather
-than an optional refinement. The other standard remedy is not tried here and
+semi-label-free mode (sign from ${\sim}50$ labels) should be the default, and
+treating it as an optional refinement is the mistake. The other standard remedy is not tried here and
 should be: the failure is driven by a semantically tight wrong cluster that
 lexical deduplication cannot see, which is precisely what semantic-equivalence
 clustering [\hyperref[bib:kuhn2023semantic]{27}] is built to collapse. Substituting a
@@ -952,8 +948,8 @@ saturated straight to capability-limited, but the budget constraint of
 Section~\ref{sec:budget} moved them across the plurality boundary while leaving
 the answer inside the model's competence, which is the combination the decisive
 stratum needs; sampling temperature is a second knob with the same character,
-and neither was swept. If the sampling regime is a controllable input rather
-than a fixed property of the substrate, the question changes from ``how wide is
+and neither was swept. If the sampling regime is a controllable input, not a fixed property
+of the substrate, the question changes from ``how wide is
 the window?'' to ``what decoding configuration puts the most items in it, at
 what accuracy cost, and does the confidence channel stay signed there?'' The
 budget arm answers the first part once and suggests the channel gets
