@@ -1,30 +1,50 @@
-\documentclass{article}
-\usepackage{tmlr}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{graphicx}
+\documentclass[twoside,11pt]{article}
+
+% jmlr2e loads natbib, graphicx, amssymb and hyperref itself, and defines both
+% theorem environments this paper uses (proposition, remark) off one shared
+% counter, plus its own \proof. Loading amsthm on top of it is a hard clash:
+% "Command \proof already defined". Every cross-reference here is symbolic
+% (\ref{prop:...}), so the shared counter renumbers without breaking anything.
+\usepackage{amsmath}
+\usepackage{jmlr2e}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{url}
-\usepackage[hidelinks,breaklinks=true]{hyperref}
+\font\zhfont="[/System/Library/Fonts/Supplemental/Arial Unicode.ttf]" at 11pt
 
-\newtheorem{proposition}{Proposition}
-\newtheorem{remark}{Remark}
+% JMLR's measure is narrower than TMLR's at 11pt, and two paragraphs carrying
+% long inline math overflowed the right margin. These are typographic knobs,
+% not edits to the text: the paragraphs stay byte-identical to the other
+% builds. \binoppenalty lets a long inline formula break after an operator
+% (the default 700 made TeX prefer a 34pt overflow to a break at \cdot).
+\emergencystretch=3em
+\binoppenalty=300
+\relpenalty=250
 
 \newcommand{\Dhat}{\widehat{D}}
 \newcommand{\sign}{\operatorname{sign}}
 \newcommand{\SC}{\textsc{sc}}
 \newcommand{\TACT}{\textsc{tact}}
 
-\title{TACT: Trust-Anchored Confidence Tempering for\\ Self-Consistency Voting
-in Large Language Models}
-
-\author{\name Anonymous \email anon@example.com \\ \addr Anonymous}
-
-\def\month{08}
-\def\year{2026}
-\def\openreview{\url{https://openreview.net/forum?id=XXXXXXXXXX}}
+\ShortHeadings{Trust-Anchored Confidence Tempering}{Ko}
+\firstpageno{1}
 
 \begin{document}
+
+\title{TACT: Trust-Anchored Confidence Tempering for\\
+       Self-Consistency Voting in Large Language Models}
+
+\author{\name Wei-Chen Ko ({\zhfont 柯瑋宸}, vito1317) \email service@vito1317.com \\
+        \addr Independent Researcher}
+
+% No action editor exists before submission, and jmlr2e prints the label
+% unconditionally, which leaves a dangling "Editor:" on the title page.
+% Blanking the label is presentation-only: once an editor is assigned, delete
+% this patch and put the name in \editor{}.
+\makeatletter
+\def\@starteditor{}
+\makeatother
+\editor{}
+
 \maketitle
 \begin{abstract}
 Confidence-weighted self-consistency improves on majority voting when a frozen
@@ -480,7 +500,7 @@ executable counterpart; the counter-tests fail deliberately on rejected
 alternatives so a regression cannot silently reinstate them.}
 \label{tab:tests}
 \setlength{\tabcolsep}{3.4pt}
-\begin{tabular}{p{3.0cm} p{4.8cm}}
+\begin{tabular}{p{5.2cm} p{9.2cm}}
 \toprule
 Claim & Evidence \\
 \midrule
@@ -793,11 +813,15 @@ clear a pre-registered endpoint. In that regime the useful property of an
 estimator is knowing when not to act, which the dead zone does exactly.
 
 \section*{Code and Data Availability}
-All code, cached traces, and the JSON artifacts behind every table are
-provided as anonymized supplementary material; the repository will be
-de-anonymized on acceptance.
+All code, cached traces, and the JSON artifacts behind every table are at
+\url{https://github.com/vito1317/adaptive-reasoning-consensus}. Table~\ref{tab:tests}
+is produced by \texttt{pytest} at commit \texttt{35ad160}; the synthetic results by
+\texttt{experiments/run\_tact\_eval.py}, the real-trace campaigns by
+\texttt{run\_tact\_hard\_eval.py}, and the window measurements by
+\texttt{run\_g1\_window.py} and \texttt{run\_g1\_deepening.py}. Each script
+writes the artifact its table cites.
 
-\bibliographystyle{tmlr}
+
 \bibliography{references}
 
 

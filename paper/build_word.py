@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Regenerate tact_word.tex (pandoc-friendly) from tact.tex, deterministically."""
 import pathlib
+import subprocess
 import re
 
 
@@ -73,6 +74,15 @@ def main() -> None:
     s = resolve_citations(s)
     pathlib.Path("tact_word.tex").write_text(s)
     print("tact_word.tex regenerated")
+
+    # The pandoc step used to live only in shell history, so tact.docx could
+    # silently lag tact.tex. --resource-path lets \includegraphics{figs/...}
+    # resolve when pandoc is invoked from anywhere.
+    subprocess.run(
+        ["pandoc", "tact_word.tex", "-o", "tact.docx", "--resource-path=.:figs"],
+        cwd=pathlib.Path(__file__).resolve().parent, check=True,
+    )
+    print("tact.docx regenerated")
 
 
 if __name__ == "__main__":

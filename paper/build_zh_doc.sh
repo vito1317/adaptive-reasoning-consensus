@@ -43,6 +43,12 @@ cjk = (
     "\\XeTeXlinebreakskip = 0pt plus 1pt\n"
     # figures are optional in these documents; a missing one should not abort
     "\\usepackage{graphicx}\n\\graphicspath{{./}{figs/}}\n"
+    # Pin figures where they are written. Markdown has no notion of a float,
+    # and letting them float collided with pandoc's longtable output: the
+    # page could not be broken, an overfull \\vbox pushed material past the
+    # page bottom, and a section heading plus most of a paragraph vanished
+    # from the PDF without the build failing.
+    "\\usepackage{float}\n\\floatplacement{figure}{H}\n"
 )
 open(path, "w").write(s.replace("\\begin{document}", cjk + "\n\\begin{document}", 1))
 PY
@@ -50,6 +56,15 @@ PY
 if ! tectonic "$TEX" --outdir "$OUTDIR" --keep-logs >/dev/null 2>"$OUTDIR/err"; then
     echo "PDF build FAILED for ${BASE}:" >&2
     grep -i -m 5 "^error" "$OUTDIR/err" >&2 || tail -20 "$OUTDIR/err" >&2
+    exit 1
+fi
+
+# An overfull \vbox during \output means material was pushed off the page.
+# tectonic exits 0 on it, and the lost text is invisible in the PDF, so this
+# has to be checked explicitly rather than left to the eye.
+if grep -q 'Overfull \\vbox.*\\output is active' "$OUTDIR/err"; then
+    echo "PDF build FAILED for ${BASE}: content pushed off a page" >&2
+    grep -m 3 'Overfull \\vbox' "$OUTDIR/err" >&2
     exit 1
 fi
 cp "$OUTDIR/$(basename "$TEX" .tex).pdf" "${BASE}.pdf"

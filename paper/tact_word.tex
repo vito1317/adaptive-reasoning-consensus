@@ -63,7 +63,7 @@ large language models, self-consistency, confidence calibration, label-free esti
 
 Self-consistency (\SC) [\hyperref[bib:wang2023selfconsistency]{1}] improves the reasoning accuracy of a frozen large language model (LLM) by sampling $K$ chain-of-thought traces and returning the plurality answer. Because each trace can also report a confidence score (verbalized [\hyperref[bib:tian2023just]{2},\hyperref[bib:xiong2024can]{3}], derived from token log-probabilities, or elicited as $P(\text{True})$ [\hyperref[bib:kadavath2022language]{4}]), a natural refinement is to weight votes by confidence. Confidence-Informed Self-Consistency (CISC) [\hyperref[bib:taubenfeld2025cisc]{5}] showed that this recovers the accuracy of plain \SC{} at a fraction of the sampling budget, and introduced Within-Question Discrimination (WQD) to argue that \emph{discrimination}, not calibration, is the property that makes a confidence signal useful for voting.
 
-This refinement carries a structural fragility that, to the author's knowledge, no published method addresses. Every existing weighting scheme is monotone \emph{increasing} in confidence, including CISC's softmax weights, reliability-aware pseudo-counts [\hyperref[bib:reasc2026]{6}], and warmup-thresholded filtering [\hyperref[bib:deepconf2025]{7}]. The trust decision is which magnitude of up-weighting to apply; the possibility that the channel is \emph{anti-correlated} with correctness is never searched for. Yet miscalibration of direction is not exotic: reinforcement fine-tuning is known to distort verbalized confidence, distribution shift can invert a signal that was informative in-domain, and in the experiments reported here a simple anti-correlated channel ($\kappa=-0.6$; Section~\ref{sec:setup}) drives confidence-weighted baselines from near-perfect accuracy to far below the majority-vote floor, while the same evidence, read with the correct sign, is a perfect signal. The defensive alternative, a binary dev-set gate that disables the channel when calibration error is high, survives the inversion but discards discriminative signal wholesale: a systematically under-confident yet perfectly ranked channel fails an ECE gate for reasons irrelevant to voting utility [\hyperref[bib:taubenfeld2025cisc]{5},\hyperref[bib:huang2024rankcalibration]{8}].
+This refinement carries a structural fragility that, to the best of our knowledge, no published method addresses. Every existing weighting scheme is monotone \emph{increasing} in confidence, including CISC's softmax weights, reliability-aware pseudo-counts [\hyperref[bib:reasc2026]{6}], and warmup-thresholded filtering [\hyperref[bib:deepconf2025]{7}]. The trust decision is which magnitude of up-weighting to apply; the possibility that the channel is \emph{anti-correlated} with correctness is never searched for. Yet miscalibration of direction is not exotic: reinforcement fine-tuning is known to distort verbalized confidence, distribution shift can invert a signal that was informative in-domain, and in the experiments reported here a simple anti-correlated channel ($\kappa=-0.6$; Section~\ref{sec:setup}) drives confidence-weighted baselines from near-perfect accuracy to far below the majority-vote floor, while the same evidence, read with the correct sign, is a perfect signal. The defensive alternative, a binary dev-set gate that disables the channel when calibration error is high, survives the inversion but discards discriminative signal wholesale: a systematically under-confident yet perfectly ranked channel fails an ECE gate for reasons irrelevant to voting utility [\hyperref[bib:taubenfeld2025cisc]{5},\hyperref[bib:huang2024rankcalibration]{8}].
 
 This paper frames the problem as estimating one scalar: the \emph{signed} within-item discrimination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent. The contributions are:
 
@@ -150,7 +150,7 @@ negative result. Its post-mortem isolated the confidence dilemma studied
 here.%
 % For a double-blind submission, replace the repository URL and commit in the
 % availability section with an anonymized artifact link; this paragraph and
-% that section are the only two places that identify the author.
+% that section are the only two places carrying identifying information.
 
 
 \section{Problem Setup}\label{sec:setup}
@@ -284,7 +284,7 @@ In particular $\sign\mathbb{E}[\Dhat_g]=\sign D$ whenever $\bar\rho<1/2$: the la
 The identity fails when the flip is \emph{caused} by confidence, that is, under a confident echo. There the observable law under $\{$majority right, $D<0\}$ and $\{$majority wrong via confident echo, $D>0\}$ is identical (the two-root ambiguity of [\hyperref[bib:parisi2014ranking]{10}] restated for a single channel), so any label-free guarantee is necessarily conditional; it is stated as such rather than papered over.
 
 \subsection{De-attenuation and alarms}
-Split-half agreement over $R{=}20$ random half-splits estimates $\alpha=p^2+(1-p)^2/k$ under a one-coin model with $k$ effective wrong alternatives (inverse-Simpson), inverted as $p=[1+\sqrt{1-(k{+}1)(1-k\alpha)}]/(k{+}1)$; $\Dhat_g$ is divided by the \emph{upper} $95\%$ bootstrap bound of $2p-1$ (floored at $0.2$), which can only under-inflate. Four alarms force $\gamma=0$: duplicate collapse (median Kish ratio $<0.5$), sign-aware margin-decoupling, root ambiguity in the split-half quadratic, and insufficient gated items. The margin-decoupling alarm must condition on the estimated trust direction: a sign-naive version (``plurality has the highest mean $\varphi$'') false-alarms on every benign anti-correlated channel---a defect the author hit, diagnosed, and fixed, and which the released tests pin. Finally the significance gate acts on the \emph{raw} $z$ (unbiased sign under Proposition~\ref{prop:ccn}) and temper on the de-attenuated value. A semi-label-free mode takes only the sign from ${\sim}50$ dev labels, routing it into the pipeline and disabling only the proxy-sign alarm; this purchases immunity to the ambiguity above at negligible labeling cost.
+Split-half agreement over $R{=}20$ random half-splits estimates $\alpha=p^2+(1-p)^2/k$ under a one-coin model with $k$ effective wrong alternatives (inverse-Simpson), inverted as $p=[1+\sqrt{1-(k{+}1)(1-k\alpha)}]/(k{+}1)$; $\Dhat_g$ is divided by the \emph{upper} $95\%$ bootstrap bound of $2p-1$ (floored at $0.2$), which can only under-inflate. Four alarms force $\gamma=0$: duplicate collapse (median Kish ratio $<0.5$), sign-aware margin-decoupling, root ambiguity in the split-half quadratic, and insufficient gated items. The margin-decoupling alarm must condition on the estimated trust direction: a sign-naive version (``plurality has the highest mean $\varphi$'') false-alarms on every benign anti-correlated channel---a defect encountered, diagnosed, and fixed during development, and pinned by the released tests. Finally the significance gate acts on the \emph{raw} $z$ (unbiased sign under Proposition~\ref{prop:ccn}) and temper on the de-attenuated value. A semi-label-free mode takes only the sign from ${\sim}50$ dev labels, routing it into the pipeline and disabling only the proxy-sign alarm; this purchases immunity to the ambiguity above at negligible labeling cost.
 
 \section{Heterogeneity: Impossibility and Escape}\label{sec:hetero}
 
@@ -352,6 +352,17 @@ it is the ten-seed bootstrap that resolves the mid-range gap as systematic.
 A protocol that had reported only the single-seed tests would have called the
 mid-range a tie.
 
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/tact_sweep.png}
+\caption{Main result on the confidence-usage frontier. \TACT-dev and the fully label-free \TACT-LF track the signed oracle across the sweep; CISC-devT and the ECE gate sit at the \SC{} floor for all $\kappa<0$.}
+\label{fig:sweep}
+\end{figure}
+
+\section{Results}\label{sec:results}
+
+
 \begin{table}[t]
 \centering
 \caption{Coupling sweep (accuracy at $K{=}15$; $400$ paired items per cell; dev $n{=}200$). Published protocols sit at the \SC{} floor on the entire negative half-axis.}
@@ -373,16 +384,6 @@ $+0.6$ & .780 & .780 & 1.000 & 1.000 & \textbf{1.000} & \textbf{1.000} & 1.000\\
 \bottomrule
 \end{tabular}
 \end{table}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figs/tact_sweep.png}
-\caption{Main result on the confidence-usage frontier. \TACT-dev and the fully label-free \TACT-LF track the signed oracle across the sweep; CISC-devT and the ECE gate sit at the \SC{} floor for all $\kappa<0$.}
-\label{fig:sweep}
-\end{figure}
-
-\section{Results}\label{sec:results}
-
 \subsection{Signed recovery, with and without labels}
 Table~\ref{tab:sweep} and Fig.~\ref{fig:sweep} give the sweep. Three observations. First, the published protocols never leave the floor on $\kappa<0$: CISC-devT's grid is positive-only and the ECE gate never opens (dev ECE ranges $0.10$--$0.80$ across the sweep while the signal's discrimination is perfect at the extremes). Second, the label-free variant matches the $200$-label variant nearly point-for-point---at $\kappa{=}{-}0.6$ the raw agreement statistic is $\Dhat_g=-0.81$ with $z=-17.6$, and the CCN identity's sign guarantee holds as predicted, yielding $1.000$ with zero labels. Third, at $\kappa=0$ the dead zone returns $\gamma=0$ exactly, so the paired accuracy difference to \SC{} is identically zero---``non-inferior'' is replaced by ``identical.''
 
@@ -436,9 +437,9 @@ Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confide
 \end{figure}
 
 \subsection{Heterogeneity}
-Table~\ref{tab:group} and Fig.~\ref{fig:group} give the group study. In the covariate-structured cell, per-group \TACT{} recovers each group's signed coupling (dev $\{+4.0,0.0,-4.0\}$, label-free $\{+2.0,0.0,-2.0\}$, the $\kappa{=}0$ group correctly dead-zoned---and cracks the floor that provably binds every global policy: the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle, with \emph{zero} paired losses to \SC{} over $600$ items ($+83/-0$, $p=2.1\times10^{-25}$). In the i.i.d.\ cell every legitimate method sits at the floor with zero discordant pairs, and the naive self-referential control lands slightly below it---the empirical face of Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld}. The two arms land within seed noise of each other here ($0.923$ and $0.927$ on
-one seed; $0.929\pm0.015$ each over five). An earlier draft attributed the
-gap to the arms' different exponent caps; the ablation says otherwise. Sweeping
+Table~\ref{tab:group} and Fig.~\ref{fig:group} give the group study. In the covariate-structured cell, per-group \TACT{} recovers each group's signed coupling (dev $\{+4.0,0.0,-4.0\}$, label-free $\{+2.0,0.0,-2.0\}$, the $\kappa{=}0$ group correctly dead-zoned---and cracks the floor that provably binds every global policy: the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle, with \emph{zero} paired losses to \SC{} over $600$ items ($+83/-0$, $p=2.1\times10^{-25}$). In the i.i.d.\ cell every method sits at the floor with zero discordant pairs, the naive self-referential control included: it cannot beat the plurality it is derived from. That control is the empirical face of Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld}, and the grouped cell is where it shows: given the same covariate the per-group estimator exploits, it reaches $0.787$ against the $0.785$ floor, two items in $600$. The two arms land within seed noise of each other here ($0.923$ and $0.927$ on
+one seed; $0.929\pm0.015$ each over five). A natural explanation would be the arms'
+different exponent caps; the ablation rules it out. Sweeping
 the cap over $\{1,2,3,4,6,8\}$ moves neither arm at all (spread $0.0000$ for
 both), so the cap is not load-bearing in this cell and the difference is
 sampling variation.
@@ -452,12 +453,12 @@ sampling variation.
 \toprule
 Method & Grouped & i.i.d.\\
 \midrule
-\SC{} (floor) & .808 & .827\\
-\TACT{} global (dev) & .808 & .827\\
-\TACT-group (dev) & .923 & .827\\
-\textbf{\TACT-group (label-free)} & \textbf{.940} & .827\\
-Naive per-item (neg.\ control) & .803 & .820\\
-Per-item link oracle (ceiling) & .947 & .983\\
+\SC{} (floor) & .785 & .752\\
+\TACT{} global (dev) & .785 & .752\\
+\TACT-group (dev) & \textbf{.927} & .752\\
+\textbf{\TACT-group (label-free)} & .923 & .752\\
+Naive per-item (neg.\ control) & .787 & .752\\
+Per-item link oracle (ceiling) & .947 & .973\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -465,7 +466,7 @@ Per-item link oracle (ceiling) & .947 & .983\\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figs/group_eval.png}
-\caption{Structured vs.\ i.i.d.\ heterogeneity. Left: with an observable covariate, per-group \TACT{} (label-free) approaches the per-item oracle from the $0.785$ floor with zero losses to \SC. Right: the provably closed i.i.d.\ cell---every legitimate method at the floor; the negative control slightly below it.}
+\caption{Structured vs.\ i.i.d.\ heterogeneity. Left: with an observable covariate, per-group \TACT{} (label-free) approaches the per-item oracle from the $0.785$ floor with zero losses to \SC. Right: the provably closed i.i.d.\ cell---every method at the floor, the negative control included.}
 \label{fig:group}
 \end{figure}
 
@@ -701,10 +702,9 @@ QA, budget-capped & MATH L5$^\dagger$ & $18.5$ & $11.8$ \\
 One precaution belongs with these numbers, because omitting it would have
 inverted them. The grading harness was validated against the benchmark's own
 reference solutions before any candidate was scored: $178$ of $180$ pass
-under the sandbox's resource limits. An earlier version of the same harness
-failed $100\%$ of executions because the host rejects one of the requested
-limits outright, and that condition presents as a candidate failure rather
-than as an error. Studies that grade by execution should report their
+under the sandbox's resource limits. The check is not a formality: a sandbox whose
+resource limits the host rejects outright fails $100\%$ of executions, and
+that condition presents as a candidate failure rather than as an error. Studies that grade by execution should report their
 reference-solution pass rate for the same reason a calibration curve is
 reported: without it, a broken harness and a capability wall look identical.
 

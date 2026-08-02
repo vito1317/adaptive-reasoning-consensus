@@ -21,7 +21,15 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-TEX = (ROOT / "paper" / "tact.tex").read_text()
+
+# Both the English source and the Chinese edition are checked. The Chinese one
+# is here because it silently fell three commits behind while the tables moved
+# under it, which is exactly the drift this script exists to catch.
+DOCS = {
+    "tact.tex": (ROOT / "paper" / "tact.tex").read_text(),
+    "tact_zh.md": (ROOT / "paper" / "tact_zh.md").read_text(),
+}
+TEX = DOCS["tact.tex"]
 
 
 def load(name):
@@ -50,7 +58,7 @@ def main():
     checks: list[tuple[str, str, str]] = []
 
     def want(label, value, artifact):
-        """Assert the formatted value appears somewhere in the paper."""
+        """Assert the formatted value appears in every edition of the paper."""
         s = fmt(value) if isinstance(value, float) else str(value)
         forms = {s}
         if s.startswith("0."):
@@ -58,9 +66,11 @@ def main():
         if isinstance(value, float) and 0 < value < 1:
             # the paper writes rates as per cent in places, e.g. 0.118 -> 11.8
             forms |= {f"{value*100:.1f}", f"{value*100:.2f}", f"{value*100:.0f}"}
-        present = any(x in TEX for x in forms)
-        checks.append((label, s, artifact if present else f"MISSING ({artifact})"))
-        return present
+        absent = [name for name, text in DOCS.items()
+                  if not any(x in text for x in forms)]
+        checks.append((label, s, artifact if not absent
+                       else f"MISSING in {','.join(absent)} ({artifact})"))
+        return not absent
 
     # headline sweep cells
     for k in (-0.6, -0.2, -0.1, 0.1, 0.2, 0.6):

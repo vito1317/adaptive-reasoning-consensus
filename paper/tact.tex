@@ -432,7 +432,7 @@ Under monotone compression (Table~\ref{tab:adv}, Fig.~\ref{fig:adv}) all confide
 \end{figure}
 
 \subsection{Heterogeneity}
-Table~\ref{tab:group} and Fig.~\ref{fig:group} give the group study. In the covariate-structured cell, per-group \TACT{} recovers each group's signed coupling (dev $\{+4.0,0.0,-4.0\}$, label-free $\{+2.0,0.0,-2.0\}$, the $\kappa{=}0$ group correctly dead-zoned---and cracks the floor that provably binds every global policy: the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle, with \emph{zero} paired losses to \SC{} over $600$ items ($+83/-0$, $p=2.1\times10^{-25}$). In the i.i.d.\ cell every legitimate method sits at the floor with zero discordant pairs, and the naive self-referential control lands slightly below it---the empirical face of Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld}. The two arms land within seed noise of each other here ($0.923$ and $0.927$ on
+Table~\ref{tab:group} and Fig.~\ref{fig:group} give the group study. In the covariate-structured cell, per-group \TACT{} recovers each group's signed coupling (dev $\{+4.0,0.0,-4.0\}$, label-free $\{+2.0,0.0,-2.0\}$, the $\kappa{=}0$ group correctly dead-zoned---and cracks the floor that provably binds every global policy: the label-free variant reaches $0.923$, within $0.023$ of the per-item link oracle, with \emph{zero} paired losses to \SC{} over $600$ items ($+83/-0$, $p=2.1\times10^{-25}$). In the i.i.d.\ cell every method sits at the floor with zero discordant pairs, the naive self-referential control included: it cannot beat the plurality it is derived from. That control is the empirical face of Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld}, and the grouped cell is where it shows: given the same covariate the per-group estimator exploits, it reaches $0.787$ against the $0.785$ floor, two items in $600$. The two arms land within seed noise of each other here ($0.923$ and $0.927$ on
 one seed; $0.929\pm0.015$ each over five). A natural explanation would be the arms'
 different exponent caps; the ablation rules it out. Sweeping
 the cap over $\{1,2,3,4,6,8\}$ moves neither arm at all (spread $0.0000$ for
@@ -461,7 +461,7 @@ Per-item link oracle (ceiling) & .947 & .973\\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figs/group_eval.png}
-\caption{Structured vs.\ i.i.d.\ heterogeneity. Left: with an observable covariate, per-group \TACT{} (label-free) approaches the per-item oracle from the $0.785$ floor with zero losses to \SC. Right: the provably closed i.i.d.\ cell---every legitimate method at the floor; the negative control slightly below it.}
+\caption{Structured vs.\ i.i.d.\ heterogeneity. Left: with an observable covariate, per-group \TACT{} (label-free) approaches the per-item oracle from the $0.785$ floor with zero losses to \SC. Right: the provably closed i.i.d.\ cell---every method at the floor, the negative control included.}
 \label{fig:group}
 \end{figure}
 
