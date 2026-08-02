@@ -1,34 +1,31 @@
 {
   "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact_jmlr.tex",
-  "round": 9,
-  "reviewed_commit": "d0903f8",
-  "previous_commit": "6b98a8e",
-  "open_findings": 0,
+  "round": 10,
+  "reviewed_commit": "989b532",
+  "previous_commit": "d0903f8",
   "history": {
     "62bc7c7": "38 / 10 major / Desk Reject",
-    "4d75431": "38 / 10 / Conditional Pass",
+    "4d75431": "38 / 10",
     "f8641e8": "22 / 2",
     "d5154aa": "5 / 1",
     "aed4605": "3 / 2",
     "c6a8321": "4 / 2",
     "cd4e5d0": "2 / 0 major",
     "6b98a8e": "1 / 0 major",
-    "d0903f8": "0"
+    "d0903f8": "0",
+    "989b532": "2 / 0 major"
   },
-  "FULLY_ADDRESSED": [
-    "table5-sixth-row-outside-range -- the caption now reads 'The last row is that same MATH L5 substrate under the budget manipulation of Section 8, not a sixth substrate: the 2.5-7.5% range quoted throughout is over the five above it.'",
-    "every-substrate-tried-overclaim (self-caught) -- zero occurrences remain; the phrase was refuted by Table 5's own budget row",
-    "zh-en-divergence-on-budget (self-caught) -- the budget material is now in the English body: 13 mentions, four instances of 11.8, two symbolic refs to sec:budget",
-    "rho-hat-symbol-collision (self-caught) -- \\hat\\rho is gone (0 occurrences), replaced by \\hat\\eta (4); \\bar\\rho stays as the plurality-error rate (10)"
-  ],
-  "PARTIALLY_ADDRESSED": {},
-  "NEW": {},
+  "NEW": {
+    "abstention-sections-not-reread-after-defect": "finding (f) re-reads (b) but not Sec. 7's 'Abstention behaved as designed' or Sec. 8's E4 sentence",
+    "planted-on-both-overstated": "'full power by ~0.49 on both' and 'the entire oracle gain from ~0.83 upward on both' are measured on the Gaussian family; the Laplace rungs are 0.975 and 0.9813"
+  },
   "NOT_ADDRESSED": [],
-  "independently_verified_this_round": {
-    "cross-build consistency": "all five sources (tact, jmlr, tmlr, tmlr_preprint, word) agree exactly on every fix from this round and every earlier one: hat-rho 0, hat-eta 4, 'every substrate tried' 0, caption clause 1, sec:budget refs 2, window range 2.5-7.5 x5 with zero survivals of 3-7.5, Table III .785/.752, '102 tests' x2, availability section present",
-    "build_tmlr.py anonymisation guard": "exercised directly. assert_anonymous passes on the current anonymous source and raises on all six injected identifiers (vito1317, Wei-Chen Ko, the CJK name, a github URL, 'Independent Researcher', the email). The two rewrites now use re.subn with an n != 1 assertion, so a regex that silently stops matching fails the build instead of shipping a de-anonymised submission.",
-    "PDF metadata": "checked as a leak vector the source-level guard cannot see: neither TMLR PDF carries an Author, Title, Subject or Keywords field; only format, creator, producer and creationDate",
-    "page count": "23pp; JMLR imposes no limit"
-  },
-  "closing_note": "No open findings. This means every issue raised across nine rounds is closed and independently verified against the released artifacts, the implementation, or the rendered PDFs. It is not a prediction about the review outcome: whether the contribution clears the bar given the paper's own 2.5-7.5% ceiling on the addressable stratum is a judgement for editors and reviewers, and the paper now argues that case explicitly rather than leaving it implicit."
+  "PARTIALLY_ADDRESSED": {},
+  "FULLY_ADDRESSED": [],
+  "new_material_verified_this_round": {
+    "finding (e) abstention identifiability": "every number exact: boot_open_rate_dev 0.50375 -> 50.4%, lf 0.162 -> 16.2%, gap_to_nu_dev_pct 3.006 -> 3%, false_open_dev 0.184 vs nominal 0.2006, false_open_lf 0.01575 vs 0.02002, null z mean -0.0020 SD 0.9545, forced_derived gamma -0.39997 acc 0.9333 +1/-0, gold oracle 0.95 at gamma -1.25; 0.95-0.9167 over 60 items is the stated two-item ceiling",
+    "finding (f) planted sensitivity": "min_detectable_D location@50 0.2472 and heavy_tail@50 0.2083 match; rank_local max |D| 0.183 at full strength matches; rank_local gain_derived 0.0017 vs gain_oracle 0.0388 matches '+0.039'; the variance family holds at or below the nominal false-open rate; p_sign_correct equals p_gate_open in all 40 cells, so 'conditional on the gate opening the sign is never wrong' is exactly right",
+    "the structural defect": "CONFIRMED, reasoning airtight. p_lf_acts = 0.0 in all 40 cells. With 85 of 100 items unanimous the margin distribution has 85 values at 1.0 and 15 below, so the 40% quantile is 1.0; a unanimous item clears margin >= 1.0 but fails the two-distinct-answers test and a non-unanimous item fails the margin test, so the gated set is necessarily empty.",
+    "check_paper_numbers.py": "runs clean, 39/39 values found in the paper; automates the exact failure mode that recurred three times, where prose was regenerated and a table was not"
+  }
 }

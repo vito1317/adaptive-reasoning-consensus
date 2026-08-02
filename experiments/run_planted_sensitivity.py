@@ -164,6 +164,47 @@ def _swap_conf(pool, c, k):
     return q
 
 
+def margin_diagnostics(k: int) -> dict:
+    """Why E4 fires, per substrate: the quantile cut and what survives it.
+
+    Finding (f) turns on the cut degenerating to 1.0 on the saturated pools,
+    and the paper contrasts that against MATH L5 where it does not. Both
+    numbers belong in an artifact rather than in prose only.
+    """
+    import collections
+    out = {}
+
+    def cut_of(answer_lists, budget):
+        margins, ndist = [], []
+        for ans in answer_lists:
+            a = [str(x) for x in ans][:budget]
+            cnt = collections.Counter(a)
+            top = cnt.most_common(2)
+            margins.append((top[0][1] - (top[1][1] if len(top) > 1 else 0)) / len(a))
+            ndist.append(len(cnt))
+        margins, ndist = np.array(margins), np.array(ndist)
+        cut = float(np.quantile(margins, 0.40))
+        return {"n_items": len(margins),
+                "n_unanimous": int((margins == 1.0).sum()),
+                "quantile_cut": cut,
+                "n_two_or_more_answers": int((ndist >= 2).sum()),
+                "n_gated": int(np.sum((margins >= cut) & (ndist >= 2)))}
+
+    raw = json.loads((ROOT / "data/real_traces_full.json").read_text())
+    out["gsm8k_csqa"] = cut_of([[t["answer"] for t in v] for v in raw.values()], 12)
+
+    for label, fname, budget, split in (("math_l5_eval", "math_confirm_raw.json", 16, True),
+                                        ("math_l5_budget_capped", "mathl5_budget_raw.json", 16, False)):
+        tr = json.loads((ROOT / "results" / fname).read_text())["traces"]
+        qids = list(tr)
+        if split:   # reproduce the pre-registered 30-item sign set
+            sign = set(np.array(qids)[np.random.default_rng(20260731)
+                                      .permutation(len(qids))[:30]])
+            qids = [q for q in qids if q not in sign]
+        out[label] = cut_of([[t["answer"] for t in tr[q]] for q in qids], budget)
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--traces", type=Path, default=ROOT / "data/real_traces_full.json")
@@ -225,9 +266,16 @@ def main() -> None:
     for kk, v in mdd.items():
         print(f"   {kk:22s} {'not reached' if v is None else f'{v:.3f}'}")
 
+    diag = margin_diagnostics(args.k)
+    print("\nwhy E4 fires, per substrate (margin gate at the 40% quantile):")
+    for name, r in diag.items():
+        print(f"   {name:22s} unanimous {r['n_unanimous']:3d}/{r['n_items']:3d}  "
+              f"cut {r['quantile_cut']:.3f}  gated {r['n_gated']:2d}")
+
     payload = {"config": {"k": args.k, "seeds": args.seeds, "ladder": LADDER,
                           "families": FAMILIES, "nu_dev": NU_DEV, "n_test": len(test_idx)},
-               "cells": cells, "min_detectable_D": mdd}
+               "cells": cells, "min_detectable_D": mdd,
+               "margin_diagnostics": diag}
     args.out.write_text(json.dumps(payload, indent=1))
     print(f"\nwrote {args.out.relative_to(ROOT)}")
 

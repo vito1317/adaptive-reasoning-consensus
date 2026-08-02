@@ -634,5 +634,28 @@
   "rank_local@80": null,
   "variance@50": null,
   "variance@80": null
+ },
+ "margin_diagnostics": {
+  "gsm8k_csqa": {
+   "n_items": 100,
+   "n_unanimous": 85,
+   "quantile_cut": 1.0,
+   "n_two_or_more_answers": 15,
+   "n_gated": 0
+  },
+  "math_l5_eval": {
+   "n_items": 89,
+   "n_unanimous": 43,
+   "quantile_cut": 0.875,
+   "n_two_or_more_answers": 46,
+   "n_gated": 17
+  },
+  "math_l5_budget_capped": {
+   "n_items": 119,
+   "n_unanimous": 51,
+   "quantile_cut": 0.75,
+   "n_two_or_more_answers": 68,
+   "n_gated": 23
+  }
  }
 }

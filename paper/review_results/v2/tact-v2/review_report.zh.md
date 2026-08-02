@@ -1,16 +1,16 @@
 # 深度审稿报告
 
 **论文**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **语言**: EN | **模式**: deep-review
-**生成时间**: 2026-08-02 14:28
+**生成时间**: 2026-08-02 21:13
 **工件目录**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
 
 ## 总体评估
 
-Round-9 re-audit of the JMLR build at d0903f8. No open findings. The round-8 caption clause landed verbatim, and the three items the author's own self-audit raised are closed and verified: the 'every substrate tried' phrasing that Table 5's budget row refuted is gone, the budget material is back-ported into the English body, and the rho-hat / rho-bar collision is resolved in favour of eta-hat. All five builds agree exactly on every fix from this round and every earlier one. Two things were checked here that no earlier round covered. The anonymisation guard added to build_tmlr.py was exercised rather than read: assert_anonymous passes on the current anonymous source and raises on all six injected identifiers, and the two rewrites now assert that they fired, so a regex that silently stops matching fails the build instead of shipping a de-anonymised submission to a double-blind venue. And the PDF metadata was inspected as a leak vector the source-level guard cannot see; neither TMLR PDF carries an author field. Across nine rounds the bundle went from 38 findings with 10 major and a desk-reject verdict to zero. That is a statement about the audit, not a prediction about the review: whether the contribution clears the bar given the paper's own 2.5-7.5% ceiling on the addressable stratum is a judgement for editors and reviewers, and the paper now makes that case explicitly instead of leaving it for them to discover.
+Round-10 re-audit of the JMLR build at 989b532, which adds two experiments, vector figures, a notation appendix, and moves the budget axis to future work. Two findings, neither major, and neither about a number: every value in the new material was checked against the new artifacts and all of them are exact. Finding (e) reproduces to the digit, including the two-item ceiling implied by 0.950 minus 0.9167 over 60 test items. Finding (f)'s half-power floors, the rank-concentrated ceiling of 0.183, the 0.0017-versus-0.0388 gap, and the claim that the sign is never wrong conditional on the gate opening all hold, the last one exactly: p_sign_correct equals p_gate_open in all forty cells. The structural defect the author reports against their own method is confirmed and the reasoning is airtight, with p_lf_acts zero in every cell and the empty gated set following necessarily from 85 unanimous items meeting a 40% quantile cut. Reporting that is the strongest single act of the ten rounds. What remains is two statement-level items. Finding (f) explicitly re-reads finding (b) in light of the defect but leaves Section 7's 'Abstention behaved as designed' heading and Section 8's E4 sentence standing, which is the round-4 shape again: new evidence added, an earlier section it bears on not revisited. And two claims in (f) are asserted 'on both' families when the Laplace rungs are 0.975 and 0.9813 rather than 1.0, a gap under two per cent that leaves the conclusion intact but is the one place this manuscript rounds in its own favour.
 
 - **主要**: 0
-- **中等**: 0
-- **次要**: 0
+- **中等**: 1
+- **次要**: 1
 
 ## 学术预审委员会
 
@@ -370,10 +370,36 @@ harder direction.
 ## Closure Targets
 - Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.
 
+## 中等问题
+
+### M1: Finding (f) re-reads (b) for the structural defect but leaves the two later abstention paragraphs standing as written
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `section_results`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `abstention-sections-not-reread-after-defect`
+- **原文已核对**: 是
+- **原文**: `\emph{Abstention behaved as designed.} \TACT{} returned $\gamma=0$, with`
+- **说明**: Finding (f) does the hard part and does it explicitly: 'Its abstention in (b) was therefore structural rather than a reading of the channel.' The same re-reading is owed to two later paragraphs and neither got it. Section 7's paragraph is titled 'Abstention behaved as designed' and attributes the null result to E4 and E2 firing; E4 is the too-few-gated-items alarm, the same alarm the margin-gate starvation of (f) drives. Section 8 reports the mechanism directly without naming it: 'only $12$ items survived the margin gate against the threshold of $30$, so E4 fired.' The numbers differ from (f)'s pathology, where the gated set is empty rather than merely small, so this is not a retraction. The fix is a cross-reference from both paragraphs to (f) plus a clause saying that on saturated substrates an E4 firing is partly a property of the quantile cut rather than only a reading of the channel. As written, a reader who reaches (f) has to work out alone that a section heading three pages earlier no longer means what it says. Same shape as the round-4 finding, where the Discussion had not been re-derived after the evidence base changed.
+
+## 次要问题
+
+### M1: Two 'on both' claims in finding (f) hold for the Gaussian family but not quite for the Laplace one
+- **类型**: claim_accuracy
+- **来源**: [LLM] via `section_results`
+- **置信度**: high
+- **章节**: result
+- **关联章节**: result
+- **根因键**: `planted-on-both-overstated`
+- **原文已核对**: 是
+- **原文**: `$|\Dhat|=0.247$ (Gaussian) and $0.208$ (Laplace), full power by ${\approx}0.49$`
+- **说明**: The half-power figures are exact: planted_sensitivity.json gives location@50 = 0.2472 and heavy_tail@50 = 0.2083. The two claims that follow are stated 'on both' and measured on one. Full power: the location family reaches p_gate_open = 1.0 at |D-hat| = 0.4927, but heavy_tail is at 0.975 at 0.4184 and does not reach 1.0 until 0.5623, so no measured Laplace rung sits at the quoted 0.49. Capture: 'captures the entire oracle gain from |D-hat| ~ 0.83 upward on both' is exactly right for location, which shows capture = 1.0 at 0.831, while heavy_tail at 0.8495 shows 0.9813 and reaches 1.0 only at 0.9522. The qualitative conclusion is untouched and the gap is under two per cent in both cases. But this paper has spent nine rounds refusing to round in its own favour, and 'on both' is the one phrase here that does. Quote the Laplace rungs, or write 'on both to within 2%'.
+
 ## 决策信号
 
-- **审稿推荐**: 录用
-- **问题包**: 主要 0 / 中等 0 / 次要 0
+- **审稿推荐**: 小修
+- **问题包**: 主要 0 / 中等 1 / 次要 1
 
 ## 修订路线图
 

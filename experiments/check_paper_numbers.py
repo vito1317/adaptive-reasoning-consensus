@@ -116,6 +116,12 @@ def main():
     want("rank-local max D", plant["cells"]["rank_local@0.8"]["abs_d_true"], "planted.rank_local")
     want("rank-local oracle gain", plant["cells"]["rank_local@0.8"]["gain_oracle"], "planted.rank_local")
 
+    # why E4 fires, per substrate: the two routes contrasted in (f)
+    md = plant["margin_diagnostics"]
+    want("cut gsm8k/csqa", md["gsm8k_csqa"]["quantile_cut"], "planted.margin_diagnostics")
+    want("cut math L5 eval", md["math_l5_eval"]["quantile_cut"], "planted.margin_diagnostics")
+    want("cut math L5 budget", md["math_l5_budget_capped"]["quantile_cut"], "planted.margin_diagnostics")
+
     # window table
     want("LeetCode window", g1["window"], "g1_window")
     want("hard-campaign D", hard["h1"]["d_hat"], "tact_hard_eval.h1")

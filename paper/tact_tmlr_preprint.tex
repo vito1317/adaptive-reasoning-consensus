@@ -700,9 +700,10 @@ rank-concentrated channel that forces the top-confidence slot onto a correct
 trace; and a variance-only channel, informative but unsigned. Four results,
 $40$ seeds per cell. \emph{One:} the gate's operating characteristic is a
 function of the realized $|\Dhat|$ and not of the family---half-power near
-$|\Dhat|=0.247$ (Gaussian) and $0.208$ (Laplace), full power by ${\approx}0.49$
-on both, and the derived exponent captures the entire oracle gain from
-$|\Dhat|\approx0.83$ upward on both---so detection is a property of the rank
+$|\Dhat|=0.247$ (Gaussian) and $0.208$ (Laplace), full power by $0.49$ and
+$0.56$, and the derived exponent capturing the whole oracle gain from $0.83$
+and $0.95$; at the Gaussian thresholds the Laplace family is already at
+$0.975$ power and $0.98$ capture---so detection is a property of the rank
 functional rather than of the generator, and the link survives the normality
 violation. The measured channel of (a), $|\Dhat|=0.219$, sits at the half-power
 floor: finding (e)'s coin flip restated as an operating characteristic.
@@ -754,7 +755,13 @@ alarms E4 and E2 firing on the label-free path and the sign set holding too
 few informative items to supply a semi-label-free sign. The vote is therefore
 bit-identical to \SC{} at $0.888$ (H3, H4 pass). The cost of acting anyway is
 visible in the same table: best-single-confidence, the trivial baseline that
-always trusts the channel, loses $4.5$ points at $0.843$.
+always trusts the channel, loses $4.5$ points at $0.843$. E4 is an
+item-supply condition rather than a reading of the channel, and finding~(f)
+shows it has two routes: on the saturated pools of Section~\ref{sec:real} the
+margin gate's quantile cut degenerates to $1.0$ and the gated set is empty for
+\emph{any} channel, whereas here the cut is $0.875$ and the set is non-empty,
+so the alarm reports a genuine shortfall against the floor rather than a
+collapse. Only the first is a defect.
 
 \begin{table}[t]
 \caption{Confirmatory campaign, MATH level-5 evaluation set ($89$ items,
@@ -873,7 +880,9 @@ This is the widest window measured anywhere in this paper, and the first
 substrate on which the in-pool oracle clears the endpoint at all ($+9/-0$,
 $p=0.002$ on a decisive stratum of $17$). \TACT{} nonetheless returned
 $\gamma=0$: only $12$ items survived the margin gate against the threshold of
-$30$, so E4 fired. That abstention is testable rather than a matter of taste,
+$30$, so E4 fired---the same item-supply condition, with the quantile cut at
+$0.750$ and the gated set again non-empty, and not the degenerate case
+finding~(f) reports. That abstention is testable rather than a matter of taste,
 and it cost nothing. Estimating $\gamma$ from gold labels, an upper bound no
 deployable method has access to, the best available is $+4/-1$ at $\gamma=1$
 ($p=0.19$); the derived $\gamma=0.670$ gives $+3/-1$. The gap that matters is

@@ -8,14 +8,12 @@
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
+    "related_sections": [],
     "root_cause_key": "abstention-sections-not-reread-after-defect",
     "review_lane": "section_results",
     "gate_blocker": false,
-    "quote_verified": true,
-    "source_file": "section_results.json"
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NEW"
   },
   {
     "title": "Two 'on both' claims in finding (f) hold for the Gaussian family but not quite for the Laplace one",
@@ -26,13 +24,11 @@
     "confidence": "high",
     "source_kind": "llm",
     "source_section": "result",
-    "related_sections": [
-      "result"
-    ],
+    "related_sections": [],
     "root_cause_key": "planted-on-both-overstated",
     "review_lane": "section_results",
     "gate_blocker": false,
-    "quote_verified": true,
-    "source_file": "section_results.json"
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NEW"
   }
 ]
