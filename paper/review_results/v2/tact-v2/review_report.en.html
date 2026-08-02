@@ -230,7 +230,7 @@
         &nbsp;|&nbsp; Mode: deep-review
       </div>
       <div>
-        Generated: 2026-08-02 13:42
+        Generated: 2026-08-02 14:11
         
         
       </div>
@@ -243,11 +243,11 @@
 
     <section id="overall-assessment">
       <h2>Overall Assessment<a class="anchor-link" href="#overall-assessment">§</a></h2>
-      <p>Round-7 re-audit against the new JMLR build (tact_jmlr.tex @ cd4e5d0). Five items closed, two new, and for the first time in seven rounds there is no major finding open. The bundle is 2 minor items, both in the author-year citation conversion: two \citep calls sit inside author-written parentheses and render as nested parens, and one is the object of the preposition 'of' and needs \citet. Both are one-character-class edits, and the conversion already uses \citealp correctly elsewhere. Everything from round 6 is closed and verified: 27 \citep with zero bare \cite in all three author-year builds while the IEEE build correctly retains numeric \cite; Table III now carries .785/.752 in all five sources including the Word build; the CJK name renders in every PDF via the system-font route the IEEE build had used; and the Table I float sits after the Results heading everywhere. The author also self-caught a stale negative-control claim that survived the tie-break fix. The JMLR conversion itself is sound: jmlr2e's shared proposition/remark counter renumbers the theorem environments, and a grep confirms no prose anywhere hard-codes a proposition number, so every cross-reference is symbolic and survives; the required \ShortHeadings and \firstpageno are present; no text block comes within 54pt of the page edge across 22 pages; and JMLR imposes no page limit.</p>
+      <p>Round-8 re-audit of the JMLR build at 6b98a8e. Both round-7 items closed and one new minor found; no major, moderate or methodological finding is open. The two citation problems were reworded rather than patched, which is the better fix: the confidence-score sentence no longer nests parentheses and the real-trace one now reads '100 items, 50 from GSM8K and 50 from CommonsenseQA'. A scan for a \citep inside an unclosed author parenthesis returns zero across the file. Two additions this round go beyond the findings. The paper now carries algorithm blocks for both the labeled and the label-free path, and every constant and ordering in them was checked against src/rlev_voi/tact.py and matches, including the two the text singles out as load-bearing: the significance gate gates on the raw pooled z while tempering uses the de-attenuated pair, and p_bar is genuinely left unset on the label-free path so the mixture correction is not applied there. The window range was also tightened from 3-7.5% to 2.5-7.5%, which is now exactly the min and max of Table 5's window column over the five substrates, closing the round-2 objection properly rather than approximately, and the caption reconciles the 119-item and 89-item MATH L5 denominators. The one remaining item is that Table 5 shows six rows against a text that says five substrates, with the budget-capped row's 11.8 outside the quoted range and no caption clause marking it as excluded.</p>
       <div class="ribbon-bundle">
         <span class="pill">Major: 0</span>
         <span class="pill">Moderate: 0</span>
-        <span class="pill">Minor: 2</span>
+        <span class="pill">Minor: 1</span>
       </div>
     </section>
 
@@ -629,43 +629,23 @@ harder direction.
       <h2>Minor Issues<a class="anchor-link" href="#minor-issues">§</a></h2>
       
       <article class="issue">
-        <h3><span class="severity-tag severity-minor">Minor</span>N1: Two citations sit inside an existing parenthetical and render as nested parentheses</h3>
+        <h3><span class="severity-tag severity-minor">Minor</span>N1: Table 5 has six rows while every claim about it says five substrates, and the sixth sits outside the quoted range</h3>
         <div class="issue-meta">
           Type: presentation
-          &nbsp;|&nbsp; Source: [Script]
+          &nbsp;|&nbsp; Source: [LLM]
           &nbsp;|&nbsp; Confidence: high
-          &nbsp;|&nbsp; Section: introduction
+          &nbsp;|&nbsp; Section: result
           
-            &nbsp;|&nbsp; Related Sections: introduction
+            &nbsp;|&nbsp; Related Sections: result, abstract
           
           
             &nbsp;|&nbsp; Quote Verified: yes
           
         </div>
         
-        <div class="issue-quote">(verbalized \citep{tian2023just,xiong2024can}, derived from token log-probabilities, or elicited as $P(\text{True})$ \citep{kadavath2022language})</div>
+        <div class="issue-quote">QA, budget-capped & MATH L5$^\dagger$ & $18.5$ & $11.8$ \\</div>
         
-        <p>[Script] Two \citep calls are already inside author-written parentheses, so the rendered text doubles up: 'Because each trace can also report a confidence score (verbalized (Tian et al., 2023; Xiong et al., 2024), derived from token log-probabilities, or elicited as P(True) (Kadavath et al., 2022)), a natural refinement...'. The second instance is in the real-trace section: '(50 GSM8K \citep{gsm8k2021}, 50 CommonsenseQA)'. Both want \citealp, which drops the citation's own parentheses. The conversion already uses \citealp correctly twice in the Introduction openers, 'Self-consistency (\SC; \citealp{wang2023selfconsistency})' and '(CISC; \citealp{taubenfeld2025cisc})', so this is two missed spots rather than a misunderstanding of the idiom.</p>
-      </article>
-      
-      <article class="issue">
-        <h3><span class="severity-tag severity-minor">Minor</span>N2: One citation is the object of a preposition and needs \citet rather than \citep</h3>
-        <div class="issue-meta">
-          Type: presentation
-          &nbsp;|&nbsp; Source: [Script]
-          &nbsp;|&nbsp; Confidence: high
-          &nbsp;|&nbsp; Section: labelfree
-          
-            &nbsp;|&nbsp; Related Sections: labelfree
-          
-          
-            &nbsp;|&nbsp; Quote Verified: yes
-          
-        </div>
-        
-        <div class="issue-quote">(the two-root ambiguity of \citep{parisi2014ranking} restated for a single channel)</div>
-        
-        <p>[Script] This renders as 'the two-root ambiguity of (Parisi et al., 2014) restated for a single channel', which is ungrammatical: the citation is the object of 'of', so the author name belongs in running text with only the year bracketed. \citet gives 'the two-root ambiguity of Parisi et al. (2014)'. This is the only genuine \citet position among the 27 citations; the other three that a naive scan flags ('sc (Wang et al., 2023) treats...', 'CISC (Taubenfeld et al., 2025) weights...', 'the rank-calibration line (Huang et al., 2024) reaches...') all have a real noun phrase as the subject and are correct as \citep.</p>
+        <p>The count is defensible: the five substrates are GSM8K/CSQA, MATH L5, AIME/AMC, HumanEval+/MBPP+ and LeetCode, and the sixth row is MATH L5 again under the budget manipulation rather than a new substrate. The 2.5-7.5% range is exactly the min and max of the Win. column over those five (4.0, 2.5, 3.3, 3.6, 7.5), so it is now fully reconstructible, which closes the original objection. What remains is that a reader checking the table sees six rows and a Win. value of 11.8 that the abstract's range excludes without saying so at the point of reading. The information exists in the row label 'budget-capped' and in Section 8, which calls it 'the widest window measured anywhere in this paper', but not in the caption where the range is checked. One clause in the caption, saying that the last row is the same MATH L5 substrate under the Section 8 manipulation and is not one of the five, removes the only remaining way to misread this table.</p>
       </article>
       
     </section>
@@ -678,12 +658,12 @@ harder direction.
         
         
         <li>Reviewer Recommendation: Accept</li>
-        <li>Issue Bundle: 0 major / 0 moderate / 2 minor</li>
+        <li>Issue Bundle: 0 major / 0 moderate / 1 minor</li>
       </ul>
     </section>
 
     <footer>
-      paper-audit · generated 2026-08-02 13:42
+      paper-audit · generated 2026-08-02 14:11
     </footer>
   </main>
 </div>

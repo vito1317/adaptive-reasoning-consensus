@@ -1,16 +1,16 @@
 # 深度审稿报告
 
 **论文**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **语言**: EN | **模式**: deep-review
-**生成时间**: 2026-08-02 13:42
+**生成时间**: 2026-08-02 14:11
 **工件目录**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
 
 ## 总体评估
 
-Round-7 re-audit against the new JMLR build (tact_jmlr.tex @ cd4e5d0). Five items closed, two new, and for the first time in seven rounds there is no major finding open. The bundle is 2 minor items, both in the author-year citation conversion: two \citep calls sit inside author-written parentheses and render as nested parens, and one is the object of the preposition 'of' and needs \citet. Both are one-character-class edits, and the conversion already uses \citealp correctly elsewhere. Everything from round 6 is closed and verified: 27 \citep with zero bare \cite in all three author-year builds while the IEEE build correctly retains numeric \cite; Table III now carries .785/.752 in all five sources including the Word build; the CJK name renders in every PDF via the system-font route the IEEE build had used; and the Table I float sits after the Results heading everywhere. The author also self-caught a stale negative-control claim that survived the tie-break fix. The JMLR conversion itself is sound: jmlr2e's shared proposition/remark counter renumbers the theorem environments, and a grep confirms no prose anywhere hard-codes a proposition number, so every cross-reference is symbolic and survives; the required \ShortHeadings and \firstpageno are present; no text block comes within 54pt of the page edge across 22 pages; and JMLR imposes no page limit.
+Round-8 re-audit of the JMLR build at 6b98a8e. Both round-7 items closed and one new minor found; no major, moderate or methodological finding is open. The two citation problems were reworded rather than patched, which is the better fix: the confidence-score sentence no longer nests parentheses and the real-trace one now reads '100 items, 50 from GSM8K and 50 from CommonsenseQA'. A scan for a \citep inside an unclosed author parenthesis returns zero across the file. Two additions this round go beyond the findings. The paper now carries algorithm blocks for both the labeled and the label-free path, and every constant and ordering in them was checked against src/rlev_voi/tact.py and matches, including the two the text singles out as load-bearing: the significance gate gates on the raw pooled z while tempering uses the de-attenuated pair, and p_bar is genuinely left unset on the label-free path so the mixture correction is not applied there. The window range was also tightened from 3-7.5% to 2.5-7.5%, which is now exactly the min and max of Table 5's window column over the five substrates, closing the round-2 objection properly rather than approximately, and the caption reconciles the 119-item and 89-item MATH L5 denominators. The one remaining item is that Table 5 shows six rows against a text that says five substrates, with the budget-capped row's 11.8 outside the quoted range and no caption clause marking it as excluded.
 
 - **主要**: 0
 - **中等**: 0
-- **次要**: 2
+- **次要**: 1
 
 ## 学术预审委员会
 
@@ -372,32 +372,21 @@ harder direction.
 
 ## 次要问题
 
-### M1: Two citations sit inside an existing parenthetical and render as nested parentheses
+### M1: Table 5 has six rows while every claim about it says five substrates, and the sixth sits outside the quoted range
 - **类型**: presentation
-- **来源**: [Script] via `pre_submission_readiness`
+- **来源**: [LLM] via `notation_and_numeric_consistency`
 - **置信度**: high
-- **章节**: introduction
-- **关联章节**: introduction
-- **根因键**: `citep-inside-parenthetical`
+- **章节**: result
+- **关联章节**: result, abstract
+- **根因键**: `table5-sixth-row-outside-range`
 - **原文已核对**: 是
-- **原文**: `(verbalized \citep{tian2023just,xiong2024can}, derived from token log-probabilities, or elicited as $P(\text{True})$ \citep{kadavath2022language})`
-- **说明**: [Script] Two \citep calls are already inside author-written parentheses, so the rendered text doubles up: 'Because each trace can also report a confidence score (verbalized (Tian et al., 2023; Xiong et al., 2024), derived from token log-probabilities, or elicited as P(True) (Kadavath et al., 2022)), a natural refinement...'. The second instance is in the real-trace section: '(50 GSM8K \citep{gsm8k2021}, 50 CommonsenseQA)'. Both want \citealp, which drops the citation's own parentheses. The conversion already uses \citealp correctly twice in the Introduction openers, 'Self-consistency (\SC; \citealp{wang2023selfconsistency})' and '(CISC; \citealp{taubenfeld2025cisc})', so this is two missed spots rather than a misunderstanding of the idiom.
-
-### M2: One citation is the object of a preposition and needs \citet rather than \citep
-- **类型**: presentation
-- **来源**: [Script] via `pre_submission_readiness`
-- **置信度**: high
-- **章节**: labelfree
-- **关联章节**: labelfree
-- **根因键**: `citet-position-parisi`
-- **原文已核对**: 是
-- **原文**: `(the two-root ambiguity of \citep{parisi2014ranking} restated for a single channel)`
-- **说明**: [Script] This renders as 'the two-root ambiguity of (Parisi et al., 2014) restated for a single channel', which is ungrammatical: the citation is the object of 'of', so the author name belongs in running text with only the year bracketed. \citet gives 'the two-root ambiguity of Parisi et al. (2014)'. This is the only genuine \citet position among the 27 citations; the other three that a naive scan flags ('sc (Wang et al., 2023) treats...', 'CISC (Taubenfeld et al., 2025) weights...', 'the rank-calibration line (Huang et al., 2024) reaches...') all have a real noun phrase as the subject and are correct as \citep.
+- **原文**: `QA, budget-capped & MATH L5$^\dagger$ & $18.5$ & $11.8$ \\`
+- **说明**: The count is defensible: the five substrates are GSM8K/CSQA, MATH L5, AIME/AMC, HumanEval+/MBPP+ and LeetCode, and the sixth row is MATH L5 again under the budget manipulation rather than a new substrate. The 2.5-7.5% range is exactly the min and max of the Win. column over those five (4.0, 2.5, 3.3, 3.6, 7.5), so it is now fully reconstructible, which closes the original objection. What remains is that a reader checking the table sees six rows and a Win. value of 11.8 that the abstract's range excludes without saying so at the point of reading. The information exists in the row label 'budget-capped' and in Section 8, which calls it 'the widest window measured anywhere in this paper', but not in the caption where the range is checked. One clause in the caption, saying that the last row is the same MATH L5 substrate under the Section 8 manipulation and is not one of the five, removes the only remaining way to misread this table.
 
 ## 决策信号
 
 - **审稿推荐**: 录用
-- **问题包**: 主要 0 / 中等 0 / 次要 2
+- **问题包**: 主要 0 / 中等 0 / 次要 1
 
 ## 修订路线图
 

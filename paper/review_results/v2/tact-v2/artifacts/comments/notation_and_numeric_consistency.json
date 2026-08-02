@@ -9,13 +9,12 @@
     "source_kind": "llm",
     "source_section": "result",
     "related_sections": [
-      "result",
       "abstract"
     ],
     "root_cause_key": "table5-sixth-row-outside-range",
     "review_lane": "notation_and_numeric_consistency",
     "gate_blocker": false,
-    "quote_verified": null,
-    "source_file": "notation_and_numeric_consistency.json"
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NEW"
   }
 ]

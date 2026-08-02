@@ -125,7 +125,8 @@ label-free aggregation method can do. The channel is null on saturated
 benchmarks ($\Dhat=-0.219$, $z=-1.24$) and positive on competition
 mathematics ($+0.250$, $z=+2.54$), so the premise holds where the model is
 uncertain; but the stratum such a method can act on is $2.5$--$7.5\%$ of items
-on every substrate tried, in two domains, and does not widen as items harden.
+across all five substrates, in two domains, and does not widen as items
+harden.
 On both real substrates the in-pool oracle itself cannot clear the
 pre-registered endpoint, which makes abstention the correct default rather
 than a conservative one.
@@ -322,7 +323,8 @@ Proofs are elementary and pinned by unit tests in the released code (102 tests; 
 \begin{algorithmic}[1]
 \Require pools $\mathcal{P}$, budget $K$, dedup threshold $\theta{=}0.95$,
 margin quantile $\beta{=}0.40$, floor $\nu_{\mathrm{LF}}$, cap $\gamma_{\max}$,
-splits $J{=}20$, attenuation floor $0.20$, $\mathrm{minGated}$
+splits $J{=}20$, attenuation floor $0.20$, $\mathrm{minGated}$; $\hat\eta$ below is the
+estimated attenuation $1-2\bar\rho$, not $\bar\rho$
 \Ensure $\gamma$, equal to $0$ whenever any alarm fires
 \For{$q\in\mathcal{P}$}
   \State $w_i\gets 1/|\text{group}(i)|$ from single linkage at $\mathrm{dup}\ge\theta$
@@ -340,11 +342,11 @@ splits $J{=}20$, attenuation floor $0.20$, $\mathrm{minGated}$
 \State $k\gets$ inverse-Simpson size of the non-plurality mass
 \State $p\gets\big[1+\sqrt{1-(k{+}1)(1-k\alpha)}\,\big]/(k{+}1)$
 \State $E_3\gets[\ \text{discriminant}<0.02\ ]$ \Comment{root ambiguity}
-\State $\hat\rho\gets\mathrm{clip}\big(\mathrm{UCB}_{95}(2p-1),\,0.20,\,1\big)$
+\State $\hat\eta\gets\mathrm{clip}\big(\mathrm{UCB}_{95}(2p-1),\,0.20,\,1\big)$
 \If{$E_1\lor E_2\lor E_3\lor E_4$ \textbf{ or } $|z_g|\le\nu_{\mathrm{LF}}$} \label{ln:gate}
   \State \Return $0$ \Comment{refuse; the vote stays \SC}
 \EndIf
-\State \Return $\mathrm{Temper}\big(\Dhat_g/\hat\rho,\ \mathrm{SE}_g/\hat\rho\big)$ with $\bar p$ unset \label{ln:temper}
+\State \Return $\mathrm{Temper}\big(\Dhat_g/\hat\eta,\ \mathrm{SE}_g/\hat\eta\big)$ with $\bar p$ unset \label{ln:temper}
 \end{algorithmic}
 \end{algorithm}
 
@@ -862,8 +864,8 @@ paper does not test it.
 \textbf{Global exponent per group.} Within a group, \TACT{} ships one exponent; per-item variation inside a group is unexploitable by Propositions~\ref{prop:selfreinf}--\ref{prop:twoworld} unless further covariates exist.
 
 \textbf{The thin window.} Section~\ref{sec:window} measures the stratum this
-whole family of methods can act on at $2.5$--$7.5\%$ of items on every substrate
-tried, in two domains, with no widening as items harden: they pass from
+whole family of methods can act on at $2.5$--$7.5\%$ of items across all five
+substrates, in two domains, with no widening as items harden: they pass from
 saturated straight to capability-limited. Two consequences follow for the
 method proposed here. First, abstention is not a conservative compromise but
 the only correct default, and the measured cost of acting anyway was negative
@@ -876,6 +878,10 @@ which is why the real-trace claim in this paper is confined to the premise
 not extend to accuracy. Demonstrating the gain needs a (model, benchmark)
 pair whose plurality is wrong on $30$--$60\%$ of items with the correct answer
 still reachable, and no pair tried here satisfies both.
+Section~\ref{sec:budget} adds the one axis that does widen the window, and it
+cuts the same way: with the window at $11.8\%$ and an oracle able to convert
+nine items, confidence weighting still reaches fewer than half of them. The
+width of the window is not the only thing in the way.
 
 \section{Conclusion}
 \TACT{} turns ``how far should this model's confidence be trusted?'' into a

@@ -1,15 +1,8 @@
 {
   "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact_jmlr.tex",
-  "round": 7,
-  "reviewed_commit": "cd4e5d0",
-  "previous_commit": "c6a8321",
-  "builds": {
-    "tact.tex": "IEEE conference, 11pp, numeric \\cite (correct for IEEE)",
-    "tact_tmlr.tex": "TMLR anonymous, 17pp",
-    "tact_tmlr_preprint.tex": "TMLR named preprint, 17pp",
-    "tact_jmlr.tex": "JMLR, 22pp",
-    "tact_word.tex": "Word/docx build"
-  },
+  "round": 8,
+  "reviewed_commit": "6b98a8e",
+  "previous_commit": "cd4e5d0",
   "history": {
     "62bc7c7": "38 / 10 major / Desk Reject",
     "4d75431": "38 / 10 / Conditional Pass",
@@ -17,27 +10,30 @@
     "d5154aa": "5 / 1",
     "aed4605": "3 / 2",
     "c6a8321": "4 / 2",
-    "cd4e5d0": "2 / 0 major"
+    "cd4e5d0": "2 / 0 major",
+    "6b98a8e": "1 / 0 major"
   },
   "FULLY_ADDRESSED": [
-    "tmlr-cite-vs-citep -- all author-year builds now carry 27 \\citep and zero bare \\cite; the IEEE build correctly keeps numeric \\cite",
-    "table3-still-pre-fix -- .785/.752 now in all FIVE sources including tact_word.tex; verified against group_eval.json",
-    "cjk-name-dropped -- the JMLR build loads the system font directly via \\font\\zhfont, and CJK glyphs render in all three PDFs ('Wei-Chen Ko (柯瑋宸, vito1317)')",
-    "table1-float-before-results -- tab:sweep now declared after the Results heading in every build",
-    "negative-control-stale-claim -- self-caught: 'the naive self-referential control lands slightly below it' was pre-fix; group_eval.json iid gives 0.7517 for every method including the naive control, and the text now reads 'every method sits at the floor with zero discordant pairs, the naive self-referential control included'"
+    "citep-inside-parenthetical -- both spots reworded rather than patched: the confidence-score sentence no longer nests, and the real-trace one became '100 items, 50 from GSM8K and 50 from CommonsenseQA'. Zero nested-parenthesis citations remain anywhere in the file.",
+    "citet-position-parisi -- now 'the two-root ambiguity of Parisi et al. (2014) restated for a single channel'; \\citet count is 1 and it is this one."
   ],
   "PARTIALLY_ADDRESSED": {},
   "NEW": {
-    "citep-inside-parenthetical": "two \\citep calls inside author parentheses render as nested parens; want \\citealp",
-    "citet-position-parisi": "'the two-root ambiguity of (Parisi et al., 2014)' needs \\citet"
+    "table5-sixth-row-outside-range": "Six rows against 'five substrates', with the budget-capped row's 11.8 outside the quoted 2.5-7.5% range and no caption clause saying it is excluded."
   },
   "NOT_ADDRESSED": [],
+  "improvements_this_round_beyond_the_findings": [
+    "Two algorithm blocks added (labeled path and label-free path), which is the first place the method is stated end to end as executable steps.",
+    "The window range was tightened from 3-7.5% to 2.5-7.5%, which is now exactly the min and max of Table 5's Win. column over the five substrates. The original round-2 objection is closed properly rather than approximately.",
+    "The Table 5 caption now reconciles the two MATH L5 denominators: the row is over the full 119-item registered list, while Section 7 quotes 10 and 4 items over the 89-item evaluation set, so 11.2 and 4.5."
+  ],
   "independently_verified_this_round": {
-    "jmlr2e requirements": "\\ShortHeadings and \\firstpageno present; running head renders; no \\newtheorem clash (jmlr2e supplies proposition and remark)",
-    "shared theorem counter": "jmlr2e numbers proposition and remark off one counter, which renumbers them; grep finds zero hard-coded 'Proposition N' or 'Prop. N' in prose, so every cross-reference is symbolic and survives",
-    "Table III rendered": "label-free .923 .752 and link oracle (ceiling) .947 .973 in tact_jmlr.pdf, matching group_eval.json",
-    "citation rendering": "'Self-consistency (sc; Wang et al., 2023)', 'voting utility (Taubenfeld et al., ...)', '(Dawid and Skene, 1979; ...)' all parenthetical and correct",
-    "layout": "zero text blocks reaching within 54pt of the page edge across 22 pages",
-    "page budget": "22pp, and JMLR imposes no page limit"
+    "citations": "26 \\citep, 2 \\citealp, 1 \\citet, 0 bare \\cite; a scan for \\citep inside an unclosed author parenthesis returns zero",
+    "Algorithm 1 vs src/rlev_voi/tact.py": "p_bar = clip(mean(hits), 0.05, 0.95) matches line 72; dead zone, JS shrinkage and the clipped link match formula.py",
+    "Algorithm 2 vs src/rlev_voi/tact.py": "dup_threshold 0.95 (line 125), margin_quantile 0.40 (126), n_splits 20 (129), att_floor 0.20 (131), E2 psi>0.05 (221), E3 disc<0.02 (258) all match",
+    "the paper's new ordering claim": "'the significance gate tests the raw z_g while the tempering uses the de-attenuated pair' is exactly tact.py:285-291, which gates on pooled.z and then tempers d_hat/att and se/att",
+    "the paper's new p_bar claim": "'p_bar is left unset on the label-free path' is true: tact.py:291 passes p_bar=None, and formula.py:71 drops the mixture correction on None, while the dev path at tact.py:75 passes the estimated p_bar",
+    "window range": "Table 5 Win. column over the five substrates is 4.0, 2.5, 3.3, 3.6, 7.5, so min 2.5 and max 7.5 reproduce the quoted range exactly",
+    "page count": "23pp; JMLR imposes no limit"
   }
 }

@@ -1,38 +1,21 @@
 [
   {
-    "title": "Two citations sit inside an existing parenthetical and render as nested parentheses",
-    "quote": "(verbalized \\citep{tian2023just,xiong2024can}, derived from token log-probabilities, or elicited as $P(\\text{True})$ \\citep{kadavath2022language})",
-    "explanation": "[Script] Two \\citep calls are already inside author-written parentheses, so the rendered text doubles up: 'Because each trace can also report a confidence score (verbalized (Tian et al., 2023; Xiong et al., 2024), derived from token log-probabilities, or elicited as P(True) (Kadavath et al., 2022)), a natural refinement...'. The second instance is in the real-trace section: '(50 GSM8K \\citep{gsm8k2021}, 50 CommonsenseQA)'. Both want \\citealp, which drops the citation's own parentheses. The conversion already uses \\citealp correctly twice in the Introduction openers, 'Self-consistency (\\SC; \\citealp{wang2023selfconsistency})' and '(CISC; \\citealp{taubenfeld2025cisc})', so this is two missed spots rather than a misunderstanding of the idiom.",
+    "title": "Table 5 has six rows while every claim about it says five substrates, and the sixth sits outside the quoted range",
+    "quote": "QA, budget-capped & MATH L5$^\\dagger$ & $18.5$ & $11.8$ \\\\",
+    "explanation": "The count is defensible: the five substrates are GSM8K/CSQA, MATH L5, AIME/AMC, HumanEval+/MBPP+ and LeetCode, and the sixth row is MATH L5 again under the budget manipulation rather than a new substrate. The 2.5-7.5% range is exactly the min and max of the Win. column over those five (4.0, 2.5, 3.3, 3.6, 7.5), so it is now fully reconstructible, which closes the original objection. What remains is that a reader checking the table sees six rows and a Win. value of 11.8 that the abstract's range excludes without saying so at the point of reading. The information exists in the row label 'budget-capped' and in Section 8, which calls it 'the widest window measured anywhere in this paper', but not in the caption where the range is checked. One clause in the caption, saying that the last row is the same MATH L5 substrate under the Section 8 manipulation and is not one of the five, removes the only remaining way to misread this table.",
     "comment_type": "presentation",
     "severity": "minor",
     "confidence": "high",
-    "source_kind": "script",
-    "source_section": "introduction",
+    "source_kind": "llm",
+    "source_section": "result",
     "related_sections": [
-      "introduction"
+      "result",
+      "abstract"
     ],
-    "root_cause_key": "citep-inside-parenthetical",
-    "review_lane": "pre_submission_readiness",
+    "root_cause_key": "table5-sixth-row-outside-range",
+    "review_lane": "notation_and_numeric_consistency",
     "gate_blocker": false,
     "quote_verified": true,
-    "source_file": "pre_submission_readiness.json"
-  },
-  {
-    "title": "One citation is the object of a preposition and needs \\citet rather than \\citep",
-    "quote": "(the two-root ambiguity of \\citep{parisi2014ranking} restated for a single channel)",
-    "explanation": "[Script] This renders as 'the two-root ambiguity of (Parisi et al., 2014) restated for a single channel', which is ungrammatical: the citation is the object of 'of', so the author name belongs in running text with only the year bracketed. \\citet gives 'the two-root ambiguity of Parisi et al. (2014)'. This is the only genuine \\citet position among the 27 citations; the other three that a naive scan flags ('sc (Wang et al., 2023) treats...', 'CISC (Taubenfeld et al., 2025) weights...', 'the rank-calibration line (Huang et al., 2024) reaches...') all have a real noun phrase as the subject and are correct as \\citep.",
-    "comment_type": "presentation",
-    "severity": "minor",
-    "confidence": "high",
-    "source_kind": "script",
-    "source_section": "labelfree",
-    "related_sections": [
-      "labelfree"
-    ],
-    "root_cause_key": "citet-position-parisi",
-    "review_lane": "pre_submission_readiness",
-    "gate_blocker": false,
-    "quote_verified": true,
-    "source_file": "pre_submission_readiness.json"
+    "source_file": "notation_and_numeric_consistency.json"
   }
 ]
