@@ -310,5 +310,29 @@
   "canonical_url": "https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html",
   "pdf_url": "https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/file/be83ab3ecd0db773eb2dc1b0a17836a1-Paper-round2.pdf",
   "problems": "The work is real and title/authors/year are exactly right, but the entry is typed wrongly: it is an @article with journal = {NeurIPS Datasets and Benchmarks}, whereas this is a conference-track proceedings paper. Use @inproceedings with booktitle = {Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks 1 (NeurIPS Datasets and Benchmarks 2021)}. Also missing a url/eprint field (arXiv:2103.03874). The note is accurate: MATH-500 is the 500-problem test subset released by Lightman et al., 'Let's Verify Step by Step' (arXiv:2305.20050, later ICLR 2024) in the PRM800K repo — if that subset is what the paper actually evaluates on, Lightman et al. should be given its own full citation rather than living only in a note. No DOI exists for the Datasets and Benchmarks proceedings entry, so do not add one."
+ },
+ {
+  "key": "gsm8k2021",
+  "status": "VERIFIED",
+  "correct_title": "Training Verifiers to Solve Math Word Problems",
+  "correct_authors": "Cobbe, Karl and Kosaraju, Vineet and Bavarian, Mohammad and Chen, Mark and Jun, Heewoo and Kaiser, Lukasz and Plappert, Matthias and Tworek, Jerry and Hilton, Jacob and Nakano, Reiichiro and Hesse, Christopher and Schulman, John",
+  "correct_venue": "arXiv preprint arXiv:2110.14168",
+  "correct_year": "2021",
+  "doi": "",
+  "canonical_url": "https://arxiv.org/abs/2110.14168",
+  "pdf_url": "https://arxiv.org/pdf/2110.14168",
+  "problems": "none -- PDF retrieved and the title page reads 'arXiv:2110.14168v2 [cs.LG] 18 Nov 2021 / Training Verifiers to Solve Math Word Problems', matching the .bib title, eprint ID and year. Cited for the GSM8K benchmark used in the first real-trace campaign."
+ },
+ {
+  "key": "lightman2024verify",
+  "status": "VERIFIED",
+  "correct_title": "Let's Verify Step by Step",
+  "correct_authors": "Lightman, Hunter and Kosaraju, Vineet and Burda, Yura and Edwards, Harri and Baker, Bowen and Lee, Teddy and Leike, Jan and Schulman, John and Sutskever, Ilya and Cobbe, Karl",
+  "correct_venue": "The Twelfth International Conference on Learning Representations (ICLR 2024)",
+  "correct_year": "2024",
+  "doi": "",
+  "canonical_url": "https://arxiv.org/abs/2305.20050",
+  "pdf_url": "https://arxiv.org/pdf/2305.20050",
+  "problems": "none -- PDF retrieved and the title page reads 'arXiv:2305.20050v1 [cs.LG] 31 May 2023 / Let\\u2019s Verify Step by Step', matching the .bib title and eprint ID. The arXiv posting predates the ICLR 2024 booktitle, which is normal; cited jointly with math500 for the MATH-500 subset as distributed by these authors."
  }
 ]

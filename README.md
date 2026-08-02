@@ -94,6 +94,8 @@ $$\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 ./.venv/bin/python experiments/rlsc_pilot.py           # RLSC 三項 pilot
 ./.venv/bin/python experiments/make_figures.py         # 所有探索性圖表
 ./.venv/bin/python experiments/make_paper_figures.py   # 論文四張圖（向量 PDF）
+./.venv/bin/python paper/build_references_doc.py     # 參考文獻導覽（27 筆）
+./.venv/bin/python paper/build_bundles.py            # 兩個發布壓縮包（含匿名洩漏掃描）
 ```
 
 需要 API key：

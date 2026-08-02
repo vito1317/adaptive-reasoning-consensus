@@ -43,7 +43,7 @@ GROUPS = [
     ("統計方法（收縮、秩統計、抽樣設計）", [
         "vanelteren1960", "james1961estimation", "kish1965", "rao1981analysis",
     ]),
-    ("資料集", ["math500", "leetcodedataset"]),
+    ("資料集", ["math500", "lightman2024verify", "gsm8k2021", "leetcodedataset"]),
 ]
 
 
@@ -52,6 +52,16 @@ def cite_counts() -> dict[str, int]:
     txt = TEX.read_text()
     keys = [k.strip() for grp in re.findall(r"\\cite\{([^}]*)\}", txt) for k in grp.split(",")]
     return {k: keys.count(k) for k in set(keys)}
+
+
+def is_cited(key: str, counts: dict[str, int]) -> bool:
+    """Only entries the paper actually cites belong in the guide.
+
+    rasc2024 was verified during an earlier round and then dropped from the
+    text; listing it would overstate the bibliography by one and make the
+    guide's count disagree with the paper's.
+    """
+    return counts.get(key, 0) > 0
 
 
 def clean_note(r: dict) -> str:
@@ -82,8 +92,14 @@ def fmt_authors(a: str, limit: int = 4) -> str:
 def main():
     if not VERIF.exists():
         sys.exit(f"missing {VERIF} -- run the verification pass first")
-    refs = {r["key"]: r for r in json.loads(VERIF.read_text())}
     counts = cite_counts()
+    refs = {r["key"]: r for r in json.loads(VERIF.read_text())
+            if is_cited(r["key"], counts)}
+    missing = sorted(set(counts) - set(refs))
+    if missing:
+        raise AssertionError(
+            "cited but unverified, so the guide would claim coverage it does "
+            f"not have: {missing}")
 
     listed = {k for _, ks in GROUPS for k in ks}
     extra = sorted(set(refs) - listed)

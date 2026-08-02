@@ -2,9 +2,9 @@
 
 **作者：柯瑋宸（vito1317）**
 
-全部 26 筆文獻皆已對照實際文獻查證：確認存在、核對標題與作者、更正出處，並附上正式頁面與（若為開放取用）PDF 直連。
+全部 27 筆文獻皆已對照實際文獻查證：確認存在、核對標題與作者、更正出處，並附上正式頁面與（若為開放取用）PDF 直連。
 
-- 可直接下載 PDF：**22/26**
+- 可直接下載 PDF：**23/27**
 - 原始 BibTeX 有誤、**已修正**：**3** 筆（各條目下列出證據）
 - 論文中的引用次數標示於每筆之後
 
@@ -54,13 +54,6 @@ Fu, Yichao, Wang, Xuewei, Zhang, Hao, Tian, Yuandong 等
 Kim, Junseok, Yang, Nakyeong, Min, Kyungmin, Jung, Kyomin  
 *Findings of the Association for Computational Linguistics: ACL 2026, pages 21575--21590, San Diego, California, United States. Association for Computational Linguistics*, 2026  
 [正式頁面](https://aclanthology.org/2026.findings-acl.1085/) · [PDF 直連](https://aclanthology.org/2026.findings-acl.1085.pdf) · [DOI](https://doi.org/10.18653/v1/2026.findings-acl.1085)  
-
-### `rasc2024` （未引用）
-
-**Reasoning Aware Self-Consistency: Leveraging Reasoning Paths for Efficient LLM Sampling**  
-Wan, Guangya, Wu, Yuqi, Chen, Jie, Li, Sheng  
-*Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers), pages 3613-3635, Albuquerque, New Mexico, Association for Computational Linguistics*, 2025  
-[正式頁面](https://aclanthology.org/2025.naacl-long.184/) · [PDF 直連](https://aclanthology.org/2025.naacl-long.184.pdf) · [DOI](https://doi.org/10.18653/v1/2025.naacl-long.184)  
 
 ### `beyondmajority2025` （引用 1 次）
 
@@ -117,7 +110,7 @@ Huang, Xinmeng, Li, Shuo, Yu, Mengxin, Sesia, Matteo 等
 *Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP 2024), pages 284--312, Miami, Florida, USA, Association for Computational Linguistics*, 2024  
 [正式頁面](https://aclanthology.org/2024.emnlp-main.18/) · [PDF 直連](https://aclanthology.org/2024.emnlp-main.18.pdf) · [DOI](https://doi.org/10.18653/v1/2024.emnlp-main.18)  
 
-### `kuhn2023semantic` （未引用）
+### `kuhn2023semantic` （引用 1 次）
 
 **Semantic Uncertainty: Linguistic Invariances for Uncertainty Estimation in Natural Language Generation**  
 Kuhn, Lorenz, Gal, Yarin, Farquhar, Sebastian  
@@ -206,6 +199,20 @@ Hendrycks, Dan, Burns, Collin, Kadavath, Saurav, Arora, Akul 等
 [正式頁面](https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/hash/be83ab3ecd0db773eb2dc1b0a17836a1-Abstract-round2.html) · [PDF 直連](https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/file/be83ab3ecd0db773eb2dc1b0a17836a1-Paper-round2.pdf)  
 
 > **已修正**：The work is real and title/authors/year are exactly right, but the entry is typed wrongly: it is an @article with journal = {NeurIPS Datasets and Benchmarks}, whereas this is a conference-track proceedings paper. Use @inproceedings with booktitle = {Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks 1 (NeurIPS Datasets and Benchmarks 2021)}. Also missing a url/eprint field (arXiv:2103.03874). The note is accurate: MATH-500 is the 500-problem test subset released by Lightman et al., 'Let's Verify Step by Step' (arXiv:2305.20050, later ICLR 2024) in the PRM800K repo — if that subset is what the paper actually evaluates on, Lightman et al. should be given its own full citation rather than living only in a note. No DOI exists for the Datasets and Benchmarks proceedings entry, so do not add one.  
+
+### `lightman2024verify` （引用 1 次）
+
+**Let's Verify Step by Step**  
+Lightman, Hunter, Kosaraju, Vineet, Burda, Yura, Edwards, Harri 等  
+*The Twelfth International Conference on Learning Representations (ICLR 2024)*, 2024  
+[正式頁面](https://arxiv.org/abs/2305.20050) · [PDF 直連](https://arxiv.org/pdf/2305.20050)  
+
+### `gsm8k2021` （引用 1 次）
+
+**Training Verifiers to Solve Math Word Problems**  
+Cobbe, Karl, Kosaraju, Vineet, Bavarian, Mohammad, Chen, Mark 等  
+*arXiv preprint arXiv:2110.14168*, 2021  
+[正式頁面](https://arxiv.org/abs/2110.14168) · [PDF 直連](https://arxiv.org/pdf/2110.14168)  
 
 ### `leetcodedataset` （引用 1 次）
 
