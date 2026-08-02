@@ -63,7 +63,7 @@ large language models, self-consistency, confidence calibration, label-free esti
 
 \section{Introduction}
 
-Self-consistency (\SC) [\hyperref[bib:wang2023selfconsistency]{1}] improves the reasoning accuracy of a frozen large language model (LLM) by sampling $K$ chain-of-thought traces and returning the plurality answer. Because each trace can also report a confidence score (verbalized [\hyperref[bib:tian2023just]{2},\hyperref[bib:xiong2024can]{3}], derived from token log-probabilities, or elicited as $P(\text{True})$ [\hyperref[bib:kadavath2022language]{4}]), a natural refinement is to weight votes by confidence. Confidence-Informed Self-Consistency (CISC) [\hyperref[bib:taubenfeld2025cisc]{5}] showed that this recovers the accuracy of plain \SC{} at a fraction of the sampling budget, and introduced Within-Question Discrimination (WQD) to argue that \emph{discrimination}, not calibration, is the property that makes a confidence signal useful for voting.
+Self-consistency (\SC) [\hyperref[bib:wang2023selfconsistency]{1}] improves the reasoning accuracy of a frozen large language model (LLM) by sampling $K$ chain-of-thought traces and returning the plurality answer. Each trace can also report a confidence score, verbalized [\hyperref[bib:tian2023just]{2},\hyperref[bib:xiong2024can]{3}], derived from token log-probabilities, or elicited as $P(\text{True})$ [\hyperref[bib:kadavath2022language]{4}], so weighting votes by confidence is a natural refinement. Confidence-Informed Self-Consistency (CISC) [\hyperref[bib:taubenfeld2025cisc]{5}] showed that this recovers the accuracy of plain \SC{} at a fraction of the sampling budget, and introduced Within-Question Discrimination (WQD) to argue that \emph{discrimination}, not calibration, is the property that makes a confidence signal useful for voting.
 
 This refinement carries a structural fragility that, to the best of our knowledge, no published method addresses. Every existing weighting scheme is monotone \emph{increasing} in confidence, including CISC's softmax weights, reliability-aware pseudo-counts [\hyperref[bib:reasc2026]{6}], and warmup-thresholded filtering [\hyperref[bib:deepconf2025]{7}]. The trust decision is which magnitude of up-weighting to apply; the possibility that the channel is \emph{anti-correlated} with correctness is never searched for. Yet miscalibration of direction is not exotic: reinforcement fine-tuning is known to distort verbalized confidence, distribution shift can invert a signal that was informative in-domain, and in the experiments reported here a simple anti-correlated channel ($\kappa=-0.6$; Section~\ref{sec:setup}) drives confidence-weighted baselines from near-perfect accuracy to far below the majority-vote floor, while the same evidence, read with the correct sign, is a perfect signal. The defensive alternative, a binary dev-set gate that disables the channel when calibration error is high, survives the inversion but discards discriminative signal wholesale: a systematically under-confident yet perfectly ranked channel fails an ECE gate for reasons irrelevant to voting utility [\hyperref[bib:taubenfeld2025cisc]{5},\hyperref[bib:huang2024rankcalibration]{8}].
 
@@ -636,9 +636,9 @@ the fact that the mid-range gap is systematic.
 
 
 \subsection{Real-trace validation}\label{sec:real}
-Validation on real traces used Claude Haiku 4.5 as the frozen model: 100 items
-(50 GSM8K [\hyperref[bib:gsm8k2021]{23}], 50 CommonsenseQA), \emph{12} independent
-chain-of-thought traces per item with verbalized confidence (1{,}200 traces
+Validation on real traces used Claude Haiku 4.5 as the frozen model: 100 items, 50 from
+GSM8K [\hyperref[bib:gsm8k2021]{23}] and 50 from CommonsenseQA, with \emph{12} independent
+chain-of-thought traces and a verbalized confidence per item (1{,}200 traces
 total), evaluated at $K{=}12$ with a 40/60 dev/test split. Four findings.
 
 \emph{(a) The calibration--discrimination distinction reverses on real data,

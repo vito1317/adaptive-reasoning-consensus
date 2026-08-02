@@ -18,6 +18,8 @@ from __future__ import annotations
 import pathlib
 import re
 
+from cite_convert import convert_citations
+
 HERE = pathlib.Path(__file__).resolve().parent
 
 PREAMBLE = r"""\documentclass{article}
@@ -117,15 +119,9 @@ def convert(src: str, preprint: bool) -> str:
 
     # --- citation commands ------------------------------------------
     # tmlr.bst is an author-year style, in which plain \cite emits an
-    # unbracketed "Wang et al. (2023)" mid-sentence. Every citation in this
-    # paper is a parenthetical attribution to a noun phrase that precedes it,
-    # never the grammatical subject, so \citep is right throughout and no
-    # \citet is needed. Two sites already carry a parenthesised abbreviation
-    # and would render as adjacent bracket pairs; those fold the citation into
-    # the existing parentheses with \citealp.
-    s = re.sub(r"\((\\SC|CISC)\)\s*\\cite\{([^}]*)\}",
-               lambda m: f"({m.group(1)}; \\citealp{{{m.group(2)}}})", s)
-    s = s.replace(r"\cite{", r"\citep{")
+    # unbracketed "Wang et al. (2023)" mid-sentence. cite_convert picks the
+    # right command per site; see that module for why it is not a one-liner.
+    s = convert_citations(s)
 
     # --- bibliography: TMLR's natbib runs in author-year mode, which a manual
     # numeric thebibliography cannot satisfy. Switch to bibtex with tmlr.bst;

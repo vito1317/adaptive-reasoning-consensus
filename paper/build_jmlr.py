@@ -14,6 +14,8 @@ from __future__ import annotations
 import pathlib
 import re
 
+from cite_convert import convert_citations
+
 HERE = pathlib.Path(__file__).resolve().parent
 
 PREAMBLE = r"""\documentclass[twoside,11pt]{article}
@@ -96,14 +98,9 @@ def convert(src: str) -> str:
 
     # --- citation commands --------------------------------------------
     # jmlr2e runs natbib in author-year mode, where plain \cite emits an
-    # unbracketed "Wang et al. (2023)" mid-sentence. Every citation in this
-    # paper is a parenthetical attribution to a preceding noun phrase, never
-    # the grammatical subject, so \citep is right throughout. Two sites already
-    # carry a parenthesised abbreviation and would render as adjacent bracket
-    # pairs; those fold into the existing parentheses with \citealp.
-    s = re.sub(r"\((\\SC|CISC)\)\s*\\cite\{([^}]*)\}",
-               lambda m: f"({m.group(1)}; \\citealp{{{m.group(2)}}})", s)
-    s = s.replace(r"\cite{", r"\citep{")
+    # unbracketed "Wang et al. (2023)" mid-sentence. cite_convert picks the
+    # right command per site; see that module for why it is not a one-liner.
+    s = convert_citations(s)
 
     # --- bibliography: a manual numeric thebibliography cannot satisfy
     # author-year natbib. Switch to bibtex; jmlr2e sets its own style, and

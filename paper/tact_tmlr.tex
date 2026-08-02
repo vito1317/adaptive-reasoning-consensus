@@ -62,7 +62,7 @@ large language models, self-consistency, confidence calibration, label-free esti
 
 \section{Introduction}
 
-Self-consistency (\SC; \citealp{wang2023selfconsistency}) improves the reasoning accuracy of a frozen large language model (LLM) by sampling $K$ chain-of-thought traces and returning the plurality answer. Because each trace can also report a confidence score (verbalized \citep{tian2023just,xiong2024can}, derived from token log-probabilities, or elicited as $P(\text{True})$ \citep{kadavath2022language}), a natural refinement is to weight votes by confidence. Confidence-Informed Self-Consistency (CISC; \citealp{taubenfeld2025cisc}) showed that this recovers the accuracy of plain \SC{} at a fraction of the sampling budget, and introduced Within-Question Discrimination (WQD) to argue that \emph{discrimination}, not calibration, is the property that makes a confidence signal useful for voting.
+Self-consistency (\SC; \citealp{wang2023selfconsistency}) improves the reasoning accuracy of a frozen large language model (LLM) by sampling $K$ chain-of-thought traces and returning the plurality answer. Each trace can also report a confidence score, verbalized \citep{tian2023just,xiong2024can}, derived from token log-probabilities, or elicited as $P(\text{True})$ \citep{kadavath2022language}, so weighting votes by confidence is a natural refinement. Confidence-Informed Self-Consistency (CISC; \citealp{taubenfeld2025cisc}) showed that this recovers the accuracy of plain \SC{} at a fraction of the sampling budget, and introduced Within-Question Discrimination (WQD) to argue that \emph{discrimination}, not calibration, is the property that makes a confidence signal useful for voting.
 
 This refinement carries a structural fragility that, to the best of our knowledge, no published method addresses. Every existing weighting scheme is monotone \emph{increasing} in confidence, including CISC's softmax weights, reliability-aware pseudo-counts \citep{reasc2026}, and warmup-thresholded filtering \citep{deepconf2025}. The trust decision is which magnitude of up-weighting to apply; the possibility that the channel is \emph{anti-correlated} with correctness is never searched for. Yet miscalibration of direction is not exotic: reinforcement fine-tuning is known to distort verbalized confidence, distribution shift can invert a signal that was informative in-domain, and in the experiments reported here a simple anti-correlated channel ($\kappa=-0.6$; Section~\ref{sec:setup}) drives confidence-weighted baselines from near-perfect accuracy to far below the majority-vote floor, while the same evidence, read with the correct sign, is a perfect signal. The defensive alternative, a binary dev-set gate that disables the channel when calibration error is high, survives the inversion but discards discriminative signal wholesale: a systematically under-confident yet perfectly ranked channel fails an ECE gate for reasons irrelevant to voting utility \citep{taubenfeld2025cisc,huang2024rankcalibration}.
 
@@ -357,7 +357,7 @@ Let $\bar\rho$ be the pair-weighted probability that an item's plurality is wron
 $\mathbb{E}[\Dhat_g]=(1-2\bar\rho)\,D$.
 In particular $\sign\mathbb{E}[\Dhat_g]=\sign D$ whenever $\bar\rho<1/2$: the label-free estimate can only under-trust, never mis-sign.
 \end{proposition}
-The identity fails when the flip is \emph{caused} by confidence, that is, under a confident echo. There the observable law under $\{$majority right, $D<0\}$ and $\{$majority wrong via confident echo, $D>0\}$ is identical (the two-root ambiguity of \citep{parisi2014ranking} restated for a single channel), so any label-free guarantee is necessarily conditional; it is stated as such rather than papered over.
+The identity fails when the flip is \emph{caused} by confidence, that is, under a confident echo. There the observable law under $\{$majority right, $D<0\}$ and $\{$majority wrong via confident echo, $D>0\}$ is identical (the two-root ambiguity of \citet{parisi2014ranking} restated for a single channel), so any label-free guarantee is necessarily conditional; it is stated as such rather than papered over.
 
 \subsection{De-attenuation and alarms}
 Split-half agreement over $R{=}20$ random half-splits estimates $\alpha=p^2+(1-p)^2/k$ under a one-coin model with $k$ effective wrong alternatives (inverse-Simpson), inverted as $p=[1+\sqrt{1-(k{+}1)(1-k\alpha)}]/(k{+}1)$; $\Dhat_g$ is divided by the \emph{upper} $95\%$ bootstrap bound of $2p-1$ (floored at $0.2$), which can only under-inflate. Four alarms force $\gamma=0$: duplicate collapse (median Kish ratio $<0.5$), sign-aware margin-decoupling, root ambiguity in the split-half quadratic, and insufficient gated items. The margin-decoupling alarm must condition on the estimated trust direction: a sign-naive version (``plurality has the highest mean $\varphi$'') false-alarms on every benign anti-correlated channel---a defect encountered, diagnosed, and fixed during development, and pinned by the released tests. Finally the significance gate acts on the \emph{raw} $z$ (unbiased sign under Proposition~\ref{prop:ccn}) and temper on the de-attenuated value. A semi-label-free mode takes only the sign from ${\sim}50$ dev labels, routing it into the pipeline and disabling only the proxy-sign alarm; this purchases immunity to the ambiguity above at negligible labeling cost.
@@ -626,9 +626,9 @@ the fact that the mid-range gap is systematic.
 
 
 \subsection{Real-trace validation}\label{sec:real}
-Validation on real traces used Claude Haiku 4.5 as the frozen model: 100 items
-(50 GSM8K \citep{gsm8k2021}, 50 CommonsenseQA), \emph{12} independent
-chain-of-thought traces per item with verbalized confidence (1{,}200 traces
+Validation on real traces used Claude Haiku 4.5 as the frozen model: 100 items, 50 from
+GSM8K \citep{gsm8k2021} and 50 from CommonsenseQA, with \emph{12} independent
+chain-of-thought traces and a verbalized confidence per item (1{,}200 traces
 total), evaluated at $K{=}12$ with a 40/60 dev/test split. Four findings.
 
 \emph{(a) The calibration--discrimination distinction reverses on real data,
