@@ -56,7 +56,7 @@ PREAMBLE = r"""\documentclass[twoside,11pt]{article}
        Self-Consistency Voting in Large Language Models}
 
 \author{\name Wei-Chen Ko ({\zhfont 柯瑋宸}, vito1317) \email service@vito1317.com \\
-        \addr Independent Researcher}
+        \addr Independent Researcher (corresponding author)}
 
 % No action editor exists before submission, and jmlr2e prints the label
 % unconditionally, which leaves a dangling "Editor:" on the title page.

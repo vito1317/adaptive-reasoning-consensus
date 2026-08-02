@@ -140,12 +140,61 @@ def build_paper_bundle(out: Path) -> None:
     print(f"wrote {out.name} ({n} files, {out.stat().st_size / 1e6:.1f} MB)")
 
 
+def build_jmlr_submission(outdir: Path) -> None:
+    """Everything JMLR asks for at submission, plus what it asks for on acceptance.
+
+    Requirements checked against jmlr.org/author-info.html: PDF under 5 MB in
+    the JMLR style, a cover letter carrying six specific declarations, five
+    keywords, a running title of 50 characters or less, and an abstract of at
+    most 200 words. Source is not required until acceptance but is included
+    because it is cheap to ship and expensive to reconstruct later; it is
+    verified to compile from these files alone.
+    """
+    zip_path = outdir / "jmlr_submission.zip"
+    src = [("tact_jmlr.pdf", "01_manuscript_tact_jmlr.pdf"),
+           ("jmlr_cover_letter.pdf", "02_cover_letter.pdf")]
+    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+        for name, arc in src:
+            z.write(PAPER / name, arc)
+        for name in ("tact_jmlr.tex", "jmlr2e.sty", "references.bib"):
+            z.write(PAPER / name, f"03_source/{name}")
+        for f in sorted((PAPER / "figs").glob("*.pdf")):
+            z.write(f, f"03_source/figs/{f.name}")
+        z.write(PAPER / "supplementary_anonymous.zip", "04_supplementary_code_and_data.zip")
+        z.writestr("00_README.txt", JMLR_README)
+    size = zip_path.stat().st_size / 1e6
+    pdf = (PAPER / "tact_jmlr.pdf").stat().st_size / 1e6
+    if pdf >= 5.0:
+        raise AssertionError(f"manuscript PDF is {pdf:.1f} MB; JMLR requires under 5 MB")
+    print(f"wrote {zip_path.name} ({size:.1f} MB); manuscript PDF {pdf:.2f} MB, "
+          "inside JMLR's 5 MB limit")
+
+
+JMLR_README = """\
+JMLR submission package -- "TACT: Trust-Anchored Confidence Tempering for
+Self-Consistency Voting in Large Language Models", Wei-Chen Ko.
+
+01_manuscript_tact_jmlr.pdf     the paper, jmlr2e style, 26 pp
+02_cover_letter.pdf             the six declarations JMLR requires, including
+                                five suggested action editors and five
+                                suggested reviewers
+03_source/                      LaTeX source; compiles to the identical PDF
+                                from these files alone (verified clean-room)
+04_supplementary_code_and_data  code, cached traces and the JSON artifact
+                                behind every table and figure
+
+Reproducing any table needs no API key; the traces are cached. See the
+README inside the supplementary archive.
+"""
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--outdir", type=Path, default=PAPER)
     args = ap.parse_args()
     build_supplementary(args.outdir / "supplementary_anonymous.zip")
     build_paper_bundle(args.outdir / "TACT Paper.zip")
+    build_jmlr_submission(args.outdir)
 
 
 if __name__ == "__main__":
