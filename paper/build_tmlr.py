@@ -56,6 +56,24 @@ in Large Language Models}
 """
 
 
+# Anything in the anonymous submission that would identify the author. The
+# checks above assert that each rewrite fired; this asserts the result, so a
+# leak arriving by some route nobody anticipated still stops the build. TMLR
+# is double-blind and a leaked submission cannot be recalled.
+IDENTIFYING = [
+    "vito1317", "Wei-Chen", "\u67ef\u744b\u5bb8", "service@vito1317.com",
+    "github.com", "adaptive-reasoning-consensus", "Independent Researcher",
+]
+
+
+def assert_anonymous(s: str) -> None:
+    found = [k for k in IDENTIFYING if k in s]
+    if found:
+        raise AssertionError(
+            "anonymous TMLR submission would identify the author: "
+            + ", ".join(found))
+
+
 def convert(src: str, preprint: bool) -> str:
     s = src
 
@@ -71,9 +89,13 @@ def convert(src: str, preprint: bool) -> str:
         # anonymous submission: tmlr.sty replaces the author block itself, but
         # the CJK name must not survive into it
         head = PREAMBLE % {"opt": opt}
-        head = re.sub(r"\\author\{.*?\\addr Independent Researcher\}",
-                      r"\\author{\\name Anonymous \\email anon@example.com \\\\ \\addr Anonymous}",
-                      head, flags=re.S)
+        head, n = re.subn(r"\\author\{.*?\\addr Independent Researcher\}",
+                          r"\\author{\\name Anonymous \\email anon@example.com \\\\ \\addr Anonymous}",
+                          head, flags=re.S)
+        if n != 1:
+            raise AssertionError(
+                "author block not replaced, so the anonymous submission would "
+                "carry the real author block")
     s = head + body
 
     # --- strip IEEE-only constructs -----------------------------------
@@ -109,13 +131,17 @@ def convert(src: str, preprint: bool) -> str:
 
     # --- availability section identifies the author; drop it when blind
     if not preprint:
-        s = re.sub(
+        s, n = re.subn(
             r"\\section\*\{Code and Data Availability\}.*?(?=\\section\{Conclusion\}|\\begin\{thebibliography\})",
             "\\\\section*{Code and Data Availability}\n"
             "All code, cached traces, and the JSON artifacts behind every table are\n"
             "provided as anonymized supplementary material; the repository will be\n"
             "de-anonymized on acceptance.\n\n",
             s, flags=re.S)
+        if n != 1:
+            raise AssertionError(
+                "availability section not replaced, so the anonymous submission "
+                "would ship the real repository URL and commit hash")
 
     # --- citation commands ------------------------------------------
     # tmlr.bst is an author-year style, in which plain \cite emits an
@@ -134,6 +160,8 @@ def convert(src: str, preprint: bool) -> str:
     s = re.sub(r"\\begin\{thebibliography\}.*?\\end\{thebibliography\}",
                lambda _: "\\bibliographystyle{tmlr}\n\\bibliography{references}",
                s, flags=re.S)
+    if not preprint:
+        assert_anonymous(s)
     return s
 
 
