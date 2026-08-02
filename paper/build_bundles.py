@@ -191,52 +191,79 @@ def build_paper_bundle(out: Path) -> None:
 
 
 def build_jmlr_submission(outdir: Path) -> None:
-    """Everything JMLR asks for at submission, plus what it asks for on acceptance.
+    """Emit exactly the files the JMLR form asks for, named after its rows.
+
+    This used to produce a single jmlr_submission.zip containing the manuscript,
+    the cover letter, the source and the supplement. That archive was for the
+    author's records, but it sat in the same directory under a name one letter
+    away from the supplement's, and it got uploaded into the form's "Other"
+    slot -- which is marked viewable by reviewers. The cover letter inside it,
+    separately and deliberately marked NOT viewable, was therefore exposed
+    along with its list of suggested reviewers.
+
+    A combined archive has no use the per-row files do not serve, so it is no
+    longer produced. What is emitted instead is one file per form row, prefixed
+    with the row number and carrying the viewability setting in the name, so
+    picking the wrong file requires ignoring the filename.
 
     Requirements checked against jmlr.org/author-info.html: PDF under 5 MB in
-    the JMLR style, a cover letter carrying six specific declarations, five
-    keywords, a running title of 50 characters or less, and an abstract of at
-    most 200 words. Source is not required until acceptance but is included
-    because it is cheap to ship and expensive to reconstruct later; it is
-    verified to compile from these files alone.
+    the JMLR style, a cover letter carrying six declarations, five keywords, a
+    running title of at most 50 characters, an abstract of at most 200 words.
     """
-    zip_path = outdir / "jmlr_submission.zip"
-    src = [("tact_jmlr.pdf", "01_manuscript_tact_jmlr.pdf"),
-           ("jmlr_cover_letter.pdf", "02_cover_letter.pdf")]
-    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
-        for name, arc in src:
-            z.write(PAPER / name, arc)
-        for name in ("tact_jmlr.tex", "jmlr2e.sty", "references.bib"):
-            z.write(PAPER / name, f"03_source/{name}")
-        for f in sorted((PAPER / "figs").glob("*.pdf")):
-            z.write(f, f"03_source/figs/{f.name}")
-        named = PAPER / "supplementary_named.zip"
-        build_supplementary_named(named)
-        z.write(named, "04_supplementary_code_and_data.zip")
-        z.writestr("00_README.txt", JMLR_README)
-    size = zip_path.stat().st_size / 1e6
-    pdf = (PAPER / "tact_jmlr.pdf").stat().st_size / 1e6
-    if pdf >= 5.0:
-        raise AssertionError(f"manuscript PDF is {pdf:.1f} MB; JMLR requires under 5 MB")
-    print(f"wrote {zip_path.name} ({size:.1f} MB); manuscript PDF {pdf:.2f} MB, "
-          "inside JMLR's 5 MB limit")
+    up = outdir / "jmlr_upload"
+    up.mkdir(exist_ok=True)
+    for f in up.glob("*"):
+        f.unlink()
+
+    pdf_mb = (PAPER / "tact_jmlr.pdf").stat().st_size / 1e6
+    if pdf_mb >= 5.0:
+        raise AssertionError(f"manuscript PDF is {pdf_mb:.1f} MB; JMLR requires under 5 MB")
+
+    named = PAPER / "supplementary_named.zip"
+    build_supplementary_named(named)
+
+    rows = [
+        ("tact_jmlr.pdf",          "row1_Manuscript__viewable_YES.pdf"),
+        ("jmlr_cover_letter.pdf",  "row2_CoverLetter__viewable_NO.pdf"),
+        (named.name,               "row3_Other_supplementary__viewable_YES.zip"),
+    ]
+    for src, dst in rows:
+        (up / dst).write_bytes((PAPER / src).read_bytes())
+    (up / "00_HOW_TO_UPLOAD.txt").write_text(JMLR_UPLOAD_README)
+
+    # The combined archive is the hazard this function exists to remove.
+    stale = outdir / "jmlr_submission.zip"
+    if stale.exists():
+        stale.unlink()
+        print(f"removed {stale.name} (contained the cover letter; see docstring)")
+    print(f"wrote {up.name}/ -- 3 upload files named after the form rows, "
+          f"manuscript {pdf_mb:.2f} MB")
 
 
-JMLR_README = """\
-JMLR submission package -- "TACT: Trust-Anchored Confidence Tempering for
-Self-Consistency Voting in Large Language Models", Wei-Chen Ko.
+JMLR_UPLOAD_README = """\
+JMLR submission form -- upload exactly these three files, one per row.
 
-01_manuscript_tact_jmlr.pdf     the paper, jmlr2e style, 26 pp
-02_cover_letter.pdf             the six declarations JMLR requires, including
-                                five suggested action editors and five
-                                suggested reviewers
-03_source/                      LaTeX source; compiles to the identical PDF
-                                from these files alone (verified clean-room)
-04_supplementary_code_and_data  code, cached traces and the JSON artifact
-                                behind every table and figure
+  row1_Manuscript__viewable_YES.pdf            File Type: Manuscript
+                                               Viewable by reviewers: yes (fixed)
 
-Reproducing any table needs no API key; the traces are cached. See the
-README inside the supplementary archive.
+  row2_CoverLetter__viewable_NO.pdf            File Type: Cover Letter
+                                               Viewable by reviewers: NO
+                                               It names five suggested reviewers.
+                                               A reviewer who is one of them must
+                                               not see that they were suggested.
+
+  row3_Other_supplementary__viewable_YES.zip   File Type: Other
+                                               Viewable by reviewers: yes
+                                               Code, cached traces, and the JSON
+                                               artifacts behind every table, so
+                                               reviewers can verify the claims.
+
+Title:  TACT: Trust-Anchored Confidence Tempering for Self-Consistency Voting
+        in Large Language Models
+Special issue: No
+
+Notes added to the manuscript record must have "viewable by: reviewers"
+UNCHECKED; the form checks it by default.
 """
 
 
