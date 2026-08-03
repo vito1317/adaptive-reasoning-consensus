@@ -36,3 +36,17 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Every figure quoted in the paper matches its artifact
         run: python experiments/check_paper_numbers.py
+
+  docx-links:
+    # The "[n] jumps to the top of the document" defect returned twice and is
+    # invisible without an explicit check: the .docx opens fine either way.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Every internal link in the Word exports lands
+        run: python experiments/check_docx_links.py

@@ -97,6 +97,7 @@ $$\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 ./.venv/bin/python experiments/make_paper_figures.py   # 論文四張圖（向量 PDF）
 ./.venv/bin/python paper/build_references_doc.py     # 參考文獻導覽（27 筆）
 ./.venv/bin/python paper/build_bundles.py            # 兩個發布壓縮包（含匿名洩漏掃描）
+./.venv/bin/python experiments/check_docx_links.py   # Word 內部連結是否都有落點
 ```
 
 需要 API key：

@@ -382,56 +382,56 @@ TACT 將「該信任模型的信心到什麼程度」轉化為可量測、帶符
 
 ## 參考文獻
 
-[]{#ref1}**[1]** X. Wang, J. Wei, D. Schuurmans, Q. Le, E. Chi, S. Narang, A. Chowdhery, and D. Zhou, "Self-consistency improves chain of thought reasoning in language models," in *Proc. ICLR*, 2023. · [PDF](https://arxiv.org/pdf/2203.11171)
+[**[1]**]{#ref1} X. Wang, J. Wei, D. Schuurmans, Q. Le, E. Chi, S. Narang, A. Chowdhery, and D. Zhou, "Self-consistency improves chain of thought reasoning in language models," in *Proc. ICLR*, 2023. · [PDF](https://arxiv.org/pdf/2203.11171)
 
-[]{#ref2}**[2]** K. Tian *et al.*, "Just ask for calibration: Strategies for eliciting calibrated confidence scores from language models fine-tuned with human feedback," in *Proc. EMNLP*, 2023. · [PDF](https://aclanthology.org/2023.emnlp-main.330.pdf)
+[**[2]**]{#ref2} K. Tian *et al.*, "Just ask for calibration: Strategies for eliciting calibrated confidence scores from language models fine-tuned with human feedback," in *Proc. EMNLP*, 2023. · [PDF](https://aclanthology.org/2023.emnlp-main.330.pdf)
 
-[]{#ref3}**[3]** M. Xiong *et al.*, "Can LLMs express their uncertainty? An empirical evaluation of confidence elicitation in LLMs," in *Proc. ICLR*, 2024. · [PDF](https://openreview.net/pdf?id=gjeQKFxFpZ)
+[**[3]**]{#ref3} M. Xiong *et al.*, "Can LLMs express their uncertainty? An empirical evaluation of confidence elicitation in LLMs," in *Proc. ICLR*, 2024. · [PDF](https://openreview.net/pdf?id=gjeQKFxFpZ)
 
-[]{#ref4}**[4]** S. Kadavath *et al.*, "Language models (mostly) know what they know," arXiv:2207.05221, 2022. · [PDF](https://arxiv.org/pdf/2207.05221)
+[**[4]**]{#ref4} S. Kadavath *et al.*, "Language models (mostly) know what they know," arXiv:2207.05221, 2022. · [PDF](https://arxiv.org/pdf/2207.05221)
 
-[]{#ref5}**[5]** A. Taubenfeld *et al.*, "Confidence improves self-consistency in LLMs," in *Findings of ACL*, 2025, arXiv:2502.06233. · [PDF](https://aclanthology.org/2025.findings-acl.1030.pdf)
+[**[5]**]{#ref5} A. Taubenfeld *et al.*, "Confidence improves self-consistency in LLMs," in *Findings of ACL*, 2025, arXiv:2502.06233. · [PDF](https://aclanthology.org/2025.findings-acl.1030.pdf)
 
-[]{#ref6}**[6]** J. Kim, N. Yang, K. Min, and K. Jung, "Reliability-aware adaptive self-consistency for efficient sampling in LLM reasoning," in *Findings of ACL*, 2026, pp. 21575–21590. · [PDF](https://aclanthology.org/2026.findings-acl.1085.pdf)
+[**[6]**]{#ref6} J. Kim, N. Yang, K. Min, and K. Jung, "Reliability-aware adaptive self-consistency for efficient sampling in LLM reasoning," in *Findings of ACL*, 2026, pp. 21575–21590. · [PDF](https://aclanthology.org/2026.findings-acl.1085.pdf)
 
-[]{#ref7}**[7]** Y. Fu *et al.*, "Deep think with confidence," arXiv:2508.15260, 2025. · [PDF](https://arxiv.org/pdf/2508.15260)
+[**[7]**]{#ref7} Y. Fu *et al.*, "Deep think with confidence," arXiv:2508.15260, 2025. · [PDF](https://arxiv.org/pdf/2508.15260)
 
-[]{#ref8}**[8]** X. Huang, S. Li, M. Yu, M. Sesia, H. Hassani, I. Lee, O. Bastani, and E. Dobriban, "Uncertainty in language models: Assessment through rank-calibration," in *Proc. EMNLP*, 2024, pp. 284–312. · [PDF](https://aclanthology.org/2024.emnlp-main.18.pdf)
+[**[8]**]{#ref8} X. Huang, S. Li, M. Yu, M. Sesia, H. Hassani, I. Lee, O. Bastani, and E. Dobriban, "Uncertainty in language models: Assessment through rank-calibration," in *Proc. EMNLP*, 2024, pp. 284–312. · [PDF](https://aclanthology.org/2024.emnlp-main.18.pdf)
 
-[]{#ref9}**[9]** A. P. Dawid and A. M. Skene, "Maximum likelihood estimation of observer error-rates using the EM algorithm," *J. Roy. Statist. Soc. C*, vol. 28, no. 1, pp. 20–28, 1979. · [PDF](https://doi.org/10.2307/2346806)
+[**[9]**]{#ref9} A. P. Dawid and A. M. Skene, "Maximum likelihood estimation of observer error-rates using the EM algorithm," *J. Roy. Statist. Soc. C*, vol. 28, no. 1, pp. 20–28, 1979. · [PDF](https://doi.org/10.2307/2346806)
 
-[]{#ref10}**[10]** F. Parisi, F. Strino, B. Nadler, and Y. Kluger, "Ranking and combining multiple predictors without labeled data," *Proc. Natl. Acad. Sci.*, vol. 111, no. 4, pp. 1253–1258, 2014. · [PDF](https://pmc.ncbi.nlm.nih.gov/articles/PMC3910607/pdf/pnas.201219097.pdf)
+[**[10]**]{#ref10} F. Parisi, F. Strino, B. Nadler, and Y. Kluger, "Ranking and combining multiple predictors without labeled data," *Proc. Natl. Acad. Sci.*, vol. 111, no. 4, pp. 1253–1258, 2014. · [PDF](https://pmc.ncbi.nlm.nih.gov/articles/PMC3910607/pdf/pnas.201219097.pdf)
 
-[]{#ref11}**[11]** Y. Li *et al.*, "Making language models better reasoners with step-aware verifier," in *Proc. ACL*, 2023. · [PDF](https://aclanthology.org/2023.acl-long.291.pdf)
+[**[11]**]{#ref11} Y. Li *et al.*, "Making language models better reasoners with step-aware verifier," in *Proc. ACL*, 2023. · [PDF](https://aclanthology.org/2023.acl-long.291.pdf)
 
-[]{#ref12}**[12]** P. Aggarwal, A. Madaan, Y. Yang, and Mausam, "Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with LLMs," in *Proc. EMNLP*, 2023, pp. 12375–12396. · [PDF](https://aclanthology.org/2023.emnlp-main.761.pdf)
+[**[12]**]{#ref12} P. Aggarwal, A. Madaan, Y. Yang, and Mausam, "Let's sample step by step: Adaptive-consistency for efficient reasoning and coding with LLMs," in *Proc. EMNLP*, 2023, pp. 12375–12396. · [PDF](https://aclanthology.org/2023.emnlp-main.761.pdf)
 
-[]{#ref13}**[13]** Y. Li *et al.*, "Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning," in *Proc. ICLR*, 2024. · [PDF](https://arxiv.org/pdf/2401.10480)
+[**[13]**]{#ref13} Y. Li *et al.*, "Escape sky-high cost: Early-stopping self-consistency for multi-step reasoning," in *Proc. ICLR*, 2024. · [PDF](https://arxiv.org/pdf/2401.10480)
 
-[]{#ref14}**[14]** Z. Kang, X. Zhao, and D. Song, "Scalable best-of-N selection for large language models via self-certainty," in *Proc. NeurIPS*, 2025, arXiv:2502.18581. · [PDF](https://proceedings.neurips.cc/paper_files/paper/2025/file/1c7eff166a8e345f664f0faa8f4e4d2e-Paper-Conference.pdf)
+[**[14]**]{#ref14} Z. Kang, X. Zhao, and D. Song, "Scalable best-of-N selection for large language models via self-certainty," in *Proc. NeurIPS*, 2025, arXiv:2502.18581. · [PDF](https://proceedings.neurips.cc/paper_files/paper/2025/file/1c7eff166a8e345f664f0faa8f4e4d2e-Paper-Conference.pdf)
 
-[]{#ref15}**[15]** J. Whitehill *et al.*, "Whose vote should count more: Optimal integration of labels from labelers of unknown expertise," in *Proc. NeurIPS*, 2009. · [PDF](https://proceedings.neurips.cc/paper_files/paper/2009/file/f899139df5e1059396431415e770c6dd-Paper.pdf)
+[**[15]**]{#ref15} J. Whitehill *et al.*, "Whose vote should count more: Optimal integration of labels from labelers of unknown expertise," in *Proc. NeurIPS*, 2009. · [PDF](https://proceedings.neurips.cc/paper_files/paper/2009/file/f899139df5e1059396431415e770c6dd-Paper.pdf)
 
-[]{#ref16}**[16]** D. R. Karger, S. Oh, and D. Shah, "Iterative learning for reliable crowdsourcing systems," in *Proc. NeurIPS*, 2011. · [PDF](https://proceedings.neurips.cc/paper_files/paper/2011/file/c667d53acd899a97a85de0c201ba99be-Paper.pdf)
+[**[16]**]{#ref16} D. R. Karger, S. Oh, and D. Shah, "Iterative learning for reliable crowdsourcing systems," in *Proc. NeurIPS*, 2011. · [PDF](https://proceedings.neurips.cc/paper_files/paper/2011/file/c667d53acd899a97a85de0c201ba99be-Paper.pdf)
 
-[]{#ref17}**[17]** J. Lee, V. Ma, S. Zhao, Y. Nair, A. Spector, R. Cohen, and E. J. Candès, "FUSE: Ensembling verifiers with zero labeled data," arXiv:2604.18547, 2026. · [PDF](https://arxiv.org/pdf/2604.18547)
+[**[17]**]{#ref17} J. Lee, V. Ma, S. Zhao, Y. Nair, A. Spector, R. Cohen, and E. J. Candès, "FUSE: Ensembling verifiers with zero labeled data," arXiv:2604.18547, 2026. · [PDF](https://arxiv.org/pdf/2604.18547)
 
-[]{#ref18}**[18]** R. Ai, Y. Pan, D. Simchi-Levi, M. Tambe, and H. Xu, "Beyond majority voting: LLM aggregation by leveraging higher-order information," arXiv:2510.01499, 2025（已獲 ICML 2026 接受）. · [PDF](https://arxiv.org/pdf/2510.01499)
+[**[18]**]{#ref18} R. Ai, Y. Pan, D. Simchi-Levi, M. Tambe, and H. Xu, "Beyond majority voting: LLM aggregation by leveraging higher-order information," arXiv:2510.01499, 2025（已獲 ICML 2026 接受）. · [PDF](https://arxiv.org/pdf/2510.01499)
 
-[]{#ref19}**[19]** P. van Elteren, "On the combination of independent two-sample tests of Wilcoxon," *Bull. Int. Statist. Inst.*, vol. 37, pp. 351–361, 1960. · [PDF](https://catalog.hathitrust.org/Record/008896012)
+[**[19]**]{#ref19} P. van Elteren, "On the combination of independent two-sample tests of Wilcoxon," *Bull. Int. Statist. Inst.*, vol. 37, pp. 351–361, 1960. · [PDF](https://catalog.hathitrust.org/Record/008896012)
 
-[]{#ref20}**[20]** W. James and C. Stein, "Estimation with quadratic loss," in *Proc. 4th Berkeley Symp. Math. Statist. Prob.*, 1961, pp. 361–379. · [PDF](https://digitalassets.lib.berkeley.edu/math/ucb/text/math_s4_v1_article-19.pdf)
+[**[20]**]{#ref20} W. James and C. Stein, "Estimation with quadratic loss," in *Proc. 4th Berkeley Symp. Math. Statist. Prob.*, 1961, pp. 361–379. · [PDF](https://digitalassets.lib.berkeley.edu/math/ucb/text/math_s4_v1_article-19.pdf)
 
-[]{#ref21}**[21]** L. Kish, *Survey Sampling*. New York, NY, USA: Wiley, 1965. · [PDF](https://www.wiley.com/en-us/Survey+Sampling-p-9780471109495)
+[**[21]**]{#ref21} L. Kish, *Survey Sampling*. New York, NY, USA: Wiley, 1965. · [PDF](https://www.wiley.com/en-us/Survey+Sampling-p-9780471109495)
 
-[]{#ref22}**[22]** J. N. K. Rao and A. J. Scott, "The analysis of categorical data from complex sample surveys," *J. Amer. Statist. Assoc.*, vol. 76, no. 374, pp. 221–230, 1981. · [PDF](https://doi.org/10.1080/01621459.1981.10477633)
+[**[22]**]{#ref22} J. N. K. Rao and A. J. Scott, "The analysis of categorical data from complex sample surveys," *J. Amer. Statist. Assoc.*, vol. 76, no. 374, pp. 221–230, 1981. · [PDF](https://doi.org/10.1080/01621459.1981.10477633)
 
-[]{#ref23}**[23]** K. Cobbe *et al.*, "Training verifiers to solve math word problems," arXiv:2110.14168, 2021. · [PDF](https://arxiv.org/pdf/2110.14168)
+[**[23]**]{#ref23} K. Cobbe *et al.*, "Training verifiers to solve math word problems," arXiv:2110.14168, 2021. · [PDF](https://arxiv.org/pdf/2110.14168)
 
-[]{#ref24}**[24]** D. Hendrycks, C. Burns, S. Kadavath, A. Arora, S. Basart, E. Tang, D. Song, and J. Steinhardt, "Measuring mathematical problem solving with the MATH dataset," in *Proc. NeurIPS Datasets and Benchmarks*, 2021. · [PDF](https://arxiv.org/pdf/2103.03874)
+[**[24]**]{#ref24} D. Hendrycks, C. Burns, S. Kadavath, A. Arora, S. Basart, E. Tang, D. Song, and J. Steinhardt, "Measuring mathematical problem solving with the MATH dataset," in *Proc. NeurIPS Datasets and Benchmarks*, 2021. · [PDF](https://arxiv.org/pdf/2103.03874)
 
-[]{#ref25}**[25]** H. Lightman, V. Kosaraju, Y. Burda, H. Edwards, B. Baker, T. Lee, J. Leike, J. Schulman, I. Sutskever, and K. Cobbe, "Let's verify step by step," in *Proc. ICLR*, 2024. · [PDF](https://arxiv.org/pdf/2305.20050)
+[**[25]**]{#ref25} H. Lightman, V. Kosaraju, Y. Burda, H. Edwards, B. Baker, T. Lee, J. Leike, J. Schulman, I. Sutskever, and K. Cobbe, "Let's verify step by step," in *Proc. ICLR*, 2024. · [PDF](https://arxiv.org/pdf/2305.20050)
 
-[]{#ref26}**[26]** Y. Xia, W. Shen, Y. Wang, J. K. Liu, H. Sun, S. Wu, J. Hu, and X. Xu, "LeetCodeDataset: A temporal dataset for robust evaluation and efficient training of code LLMs," arXiv:2504.14655, 2025. · [PDF](https://arxiv.org/pdf/2504.14655)
+[**[26]**]{#ref26} Y. Xia, W. Shen, Y. Wang, J. K. Liu, H. Sun, S. Wu, J. Hu, and X. Xu, "LeetCodeDataset: A temporal dataset for robust evaluation and efficient training of code LLMs," arXiv:2504.14655, 2025. · [PDF](https://arxiv.org/pdf/2504.14655)
 
-[]{#ref27}**[27]** L. Kuhn, Y. Gal, and S. Farquhar, "Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation," in *Proc. ICLR*, 2023. · [PDF](https://arxiv.org/pdf/2302.09664)
+[**[27]**]{#ref27} L. Kuhn, Y. Gal, and S. Farquhar, "Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation," in *Proc. ICLR*, 2023. · [PDF](https://arxiv.org/pdf/2302.09664)
