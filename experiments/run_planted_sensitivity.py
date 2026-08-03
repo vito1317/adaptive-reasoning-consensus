@@ -58,7 +58,8 @@ sys.path.insert(0, str(ROOT / "src"))
 from rlev_voi.backends import Trace, build_pool  # noqa: E402
 from rlev_voi.discrimination import item_discrimination, pooled_discrimination, vdw_scores  # noqa: E402
 from rlev_voi.formula import gamma_of  # noqa: E402
-from rlev_voi.tact import estimate_label_free  # noqa: E402
+from rlev_voi.math_grade import build_math_pool  # noqa: E402
+from rlev_voi.tact import _dedup_weights, estimate_label_free  # noqa: E402
 from rlev_voi.tempering import GAMMA_MAX_DEV, NU_DEV  # noqa: E402
 
 LADDER = [0.0, 0.03, 0.05, 0.07, 0.10, 0.20, 0.30, 0.45, 0.60, 0.80]
@@ -164,24 +165,34 @@ def _swap_conf(pool, c, k):
     return q
 
 
-def margin_diagnostics(k: int) -> dict:
+def margin_diagnostics() -> dict:
     """Why E4 fires, per substrate: the quantile cut and what survives it.
 
-    Finding (f) turns on the cut degenerating to 1.0 on the saturated pools,
-    and the paper contrasts that against MATH L5 where it does not. Both
-    numbers belong in an artifact rather than in prose only.
+    Each substrate is measured at ITS OWN budget: K=12 for the QA campaign and
+    K=16 for both MATH ones. Taking a single k argument was a third defect --
+    it inherited this script's --k default of 12, so the MATH margins were
+    computed over 12 traces instead of 16, which moved the quantile cut from
+    0.875 to 1.0 and the gated count from 13 to 0.
+
+    Two further defects lived here and both are fixed. The first version bucketed
+    answers by raw string equality, so 1/2, 0.5 and \\frac{1}{2} were three
+    buckets on a LaTeX substrate; each substrate now goes through the builder
+    its own campaign uses. The second split MATH on the traces dict's ordering
+    instead of sorted(gold), so its 89-item evaluation set was not the
+    campaign's. Both inflated the counts the paper quotes.
     """
-    import collections
     out = {}
 
-    def cut_of(answer_lists, budget):
+    def panel(pools, k):
         margins, ndist = [], []
-        for ans in answer_lists:
-            a = [str(x) for x in ans][:budget]
-            cnt = collections.Counter(a)
-            top = cnt.most_common(2)
-            margins.append((top[0][1] - (top[1][1] if len(top) > 1 else 0)) / len(a))
-            ndist.append(len(cnt))
+        for p in pools:
+            a = p.answers[:k]
+            _, w = _dedup_weights(p.dup[: len(a), : len(a)], 0.95)
+            share = np.bincount(a, weights=w, minlength=p.n_answers)
+            share = share / share.sum()
+            order = np.argsort(share)[::-1]
+            margins.append(float(share[order[0]] - (share[order[1]] if order.size > 1 else 0.0)))
+            ndist.append(len(set(a.tolist())))
         margins, ndist = np.array(margins), np.array(ndist)
         cut = float(np.quantile(margins, 0.40))
         return {"n_items": len(margins),
@@ -190,18 +201,32 @@ def margin_diagnostics(k: int) -> dict:
                 "n_two_or_more_answers": int((ndist >= 2).sum()),
                 "n_gated": int(np.sum((margins >= cut) & (ndist >= 2)))}
 
-    raw = json.loads((ROOT / "data/real_traces_full.json").read_text())
-    out["gsm8k_csqa"] = cut_of([[t["answer"] for t in v] for v in raw.values()], 12)
+    # QA: integer and multiple-choice answers, where string folding is right.
+    tr = json.loads((ROOT / "data/real_traces_full.json").read_text())
+    meta = {it["qid"]: it for it in json.loads((ROOT / "data/real_items.json").read_text())}
+    qa = []
+    for qid, lst in tr.items():
+        if qid not in meta or len(lst) < 6:
+            continue
+        tl = [Trace(text=str(t.get("reasoning", "")), answer=str(t["answer"]),
+                    confidence=float(np.clip(t["confidence"], 0.01, 0.99)),
+                    gen_tokens=max(len(str(t.get("reasoning", "")).split()), 1)) for t in lst]
+        qa.append(build_pool(tl, str(meta[qid]["gold"])))
+    out["gsm8k_csqa"] = panel(qa, 12)
 
-    for label, fname, budget, split in (("math_l5_eval", "math_confirm_raw.json", 16, True),
-                                        ("math_l5_budget_capped", "mathl5_budget_raw.json", 16, False)):
-        tr = json.loads((ROOT / "results" / fname).read_text())["traces"]
-        qids = list(tr)
-        if split:   # reproduce the pre-registered 30-item sign set
+    # MATH: equivalence-class bucketing, and the campaign's own split.
+    for label, fname, split in (("math_l5_eval", "math_confirm_raw.json", True),
+                                ("math_l5_budget_capped", "mathl5_budget_raw.json", False)):
+        raw = json.loads((ROOT / "results" / fname).read_text())["traces"]
+        gold = {x["qid"]: x["gold"]
+                for x in json.loads((ROOT / "data/math_confirm_items.json").read_text())}
+        qids = sorted(q for q in raw if q in gold)
+        if split:
             sign = set(np.array(qids)[np.random.default_rng(20260731)
                                       .permutation(len(qids))[:30]])
             qids = [q for q in qids if q not in sign]
-        out[label] = cut_of([[t["answer"] for t in tr[q]] for q in qids], budget)
+        ps = [p for p in (build_math_pool(q, raw[q], gold[q]) for q in qids) if p is not None]
+        out[label] = panel(ps, 16)
     return out
 
 
@@ -266,7 +291,7 @@ def main() -> None:
     for kk, v in mdd.items():
         print(f"   {kk:22s} {'not reached' if v is None else f'{v:.3f}'}")
 
-    diag = margin_diagnostics(args.k)
+    diag = margin_diagnostics()
     print("\nwhy E4 fires, per substrate (margin gate at the 40% quantile):")
     for name, r in diag.items():
         print(f"   {name:22s} unanimous {r['n_unanimous']:3d}/{r['n_items']:3d}  "

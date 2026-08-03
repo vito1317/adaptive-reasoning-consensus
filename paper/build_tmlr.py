@@ -132,7 +132,11 @@ def convert(src: str, preprint: bool) -> str:
     # --- availability section identifies the author; drop it when blind
     if not preprint:
         s, n = re.subn(
-            r"\\section\*\{Code and Data Availability\}.*?(?=\\section\{Conclusion\}|\\begin\{thebibliography\})",
+            # The lookahead must include \appendix: the notation appendix sits between
+            # the availability section and the bibliography, and without it the
+            # non-greedy .*? swallowed the entire appendix out of the ANONYMOUS
+            # build while leaving the named preprint intact.
+            r"\\section\*\{Code and Data Availability\}.*?(?=\\appendix|\\section\{Conclusion\}|\\begin\{thebibliography\})",
             "\\\\section*{Code and Data Availability}\n"
             "All code, cached traces, and the JSON artifacts behind every table are\n"
             "provided as anonymized supplementary material; the repository will be\n"

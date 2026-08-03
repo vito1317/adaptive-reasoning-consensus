@@ -16,8 +16,8 @@ python3.12 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
 | 你想看什麼 | 去哪裡 |
 |:--|:--|
 | **論文**（IEEE 格式，13 頁） | [paper/tact.pdf](paper/tact.pdf) · [tact.tex](paper/tact.tex) · [tact.docx](paper/tact.docx) |
-| **投稿版：TMLR**（雙盲，20 頁） | [tact_tmlr.pdf](paper/tact_tmlr.pdf)（匿名） · [tact_tmlr_preprint.pdf](paper/tact_tmlr_preprint.pdf)（具名） |
-| **投稿版：JMLR**（單盲，26 頁） | [tact_jmlr.pdf](paper/tact_jmlr.pdf) · [build_jmlr.py](paper/build_jmlr.py) |
+| **投稿版：TMLR**（雙盲，21 頁） | [tact_tmlr.pdf](paper/tact_tmlr.pdf)（匿名） · [tact_tmlr_preprint.pdf](paper/tact_tmlr_preprint.pdf)（具名） |
+| **投稿版：JMLR**（單盲，28 頁） | [tact_jmlr.pdf](paper/tact_jmlr.pdf) · [build_jmlr.py](paper/build_jmlr.py) |
 | **論文中文版** | [paper/tact_zh.pdf](paper/tact_zh.pdf) · [.docx](paper/tact_zh.docx) · [.md](paper/tact_zh.md) |
 | **公式參數逐項詳解**（中文） | [paper/tact_parameters_zh.pdf](paper/tact_parameters_zh.pdf) · [.docx](paper/tact_parameters_zh.docx) · [.md](paper/tact_parameters_zh.md) |
 | **演算法的一行式** | [src/rlev_voi/formula.py](src/rlev_voi/formula.py) |

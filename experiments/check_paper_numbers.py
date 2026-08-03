@@ -157,6 +157,9 @@ def main():
     agree("MATH L5 decisive_n",
           hard["substrate"]["decisive_n"], "tact_hard_eval",
           health["math_l5_eval"]["decisive_n"], "substrate_health")
+    agree("MATH L5 n_gated",
+          health["math_l5_eval"]["n_gated_shipped"], "substrate_health",
+          plant["margin_diagnostics"]["math_l5_eval"]["n_gated"], "planted.margin_diagnostics")
     agree("MATH L5 eval z",
           round(hard["h1"]["z"], 2), "tact_hard_eval.h1",
           round(health["math_l5_eval"]["sign_set"]["eval_set_z_for_contrast"], 2),

@@ -645,17 +645,17 @@
   },
   "math_l5_eval": {
    "n_items": 89,
-   "n_unanimous": 43,
+   "n_unanimous": 50,
    "quantile_cut": 0.875,
-   "n_two_or_more_answers": 46,
-   "n_gated": 17
+   "n_two_or_more_answers": 39,
+   "n_gated": 13
   },
   "math_l5_budget_capped": {
    "n_items": 119,
-   "n_unanimous": 51,
-   "quantile_cut": 0.75,
-   "n_two_or_more_answers": 68,
-   "n_gated": 23
+   "n_unanimous": 61,
+   "quantile_cut": 0.875,
+   "n_two_or_more_answers": 58,
+   "n_gated": 11
   }
  }
 }

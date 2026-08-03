@@ -1,8 +1,8 @@
 {
   "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact_jmlr.tex",
-  "round": 11,
-  "reviewed_commit": "9eed466",
-  "previous_commit": "989b532",
+  "round": 12,
+  "reviewed_commit": "bfc9c11",
+  "previous_commit": "9eed466",
   "history": {
     "62bc7c7": "38 / 10 major / Desk Reject",
     "4d75431": "38 / 10",
@@ -14,21 +14,23 @@
     "6b98a8e": "1 / 0 major",
     "d0903f8": "0",
     "989b532": "2 / 0 major",
-    "9eed466": "1 / 0 major"
+    "9eed466": "1 / 0 major",
+    "bfc9c11": "1 / 0 major"
   },
   "FULLY_ADDRESSED": [
-    "planted-on-both-overstated -- now 'full power by 0.49 and 0.56, and the derived exponent capturing the whole oracle gain from 0.83 and 0.95; at the Gaussian thresholds the Laplace family is already at 0.975 power and 0.98 capture'. Both Laplace rungs quoted, which is more than was asked for.",
-    "abstention-sections-not-reread-after-defect -- fixed well beyond a cross-reference. Sec. 7's heading is now 'Abstention behaved as designed, for two different reasons' and separates the fully label-free failure (13 items reach the margin gate against a floor of 50; relaxing the quantile to 0 reaches only 40, so the arm is untestable here at any channel strength) from the semi-label-free one (a 30-item sign set at z = +0.73 against a |z| > 1 gate while the evaluation set reaches +2.33, a power shortfall whose remedy is more labels). It then distinguishes the two E4 routes by their actual cuts -- 1.0 with an empty gated set in Sec. 6 versus 0.875 here and 0.750 in Sec. 8, both non-empty -- and closes with 'Only the first is a defect.'"
+    "substrate-health-argmax-tiebreak -- closed, and the cause was not what round 11 diagnosed. The reviewer attributed the 13-versus-10 gap to the argmax tie-break of Sec. 9. The author found the real cause: the two scripts bucketed answers differently, one by mathematical equivalence and one by string equality, which splits 1/2 from 0.5, inflates the answer count and deflates margins. The fix extracts build_math_pool into src/rlev_voi/math_grade.py as one shared rule with a union-find merge over equivalence classes, documents the incident in its docstring, and routes both scripts through it. substrate_health.math_l5_eval now reports decisive 10 and window 4 (11.24% / 4.49%), agreeing exactly with tact_hard_eval and with the paper. The reviewer's proposed fix, changing strata() to use SC's decision, would have left the bucketing bug in place.",
+    "artifact-vs-artifact gap -- check_paper_numbers.py now cross-asserts across artifacts and fails on contradiction, printing '!!' per conflict. Runs clean at 47/47 values with zero contradictions."
   ],
   "NEW": {
-    "substrate-health-argmax-tiebreak": "results/substrate_health.json reports decisive 13 / window 3 (14.61% / 3.37%) for the 89-item MATH L5 set against the paper's 10 and 4 (11.2% / 4.5%), because run_substrate_health.py strata() decides with raw np.argmax, the tie convention Sec. 9 identifies as the artifact it fixed. No paper claim moves; the script needs the fix."
+    "planted-margin-diagnostics-string-bucketing": "run_planted_sensitivity.py margin_diagnostics() still buckets by raw string equality; its two MATH rows disagree with the corrected pipeline (17 vs 13 gated at the 0.40 quantile) and the paper quotes its 0.875 and 0.750 cuts."
   },
   "NOT_ADDRESSED": [],
   "PARTIALLY_ADDRESSED": {},
   "verified_this_round": {
-    "the six new Sec. 7 and Sec. 8 numbers": "all exact against results/substrate_health.json and the new margin_diagnostics block in planted_sensitivity.json: n_gated_shipped 13, min_gated_items 50, n_gated_by_margin_quantile['0.00'] 40, sign_set z 0.7306 with threshold 1.0, eval_set_z_for_contrast 2.3289, quantile_cut 0.875 with n_gated 17 for MATH L5 eval and 0.75 with n_gated 23 for the budget-capped arm",
-    "the round-10 defect, re-confirmed": "margin_diagnostics.gsm8k_csqa gives n_unanimous 85, quantile_cut 1.0, n_gated 0, matching the round-10 derivation exactly",
-    "cover letter": "jmlr_cover_letter.tex added. Full cover-letter review routes to a different skill, so this is a courtesy numeric check only: 102 tests, the 2.5-7.5% range, five substrates and the structural defect all agree with the paper, and no conflicting number appears.",
-    "prose hygiene": "the 'rather than' habit was cut from 2.59 to 0.87 per thousand words and the abstract tightened; spot checks found no meaning changed by the edits"
+    "artifacts now agree": "substrate_health.math_l5_eval decisive_n 10 == tact_hard_eval decisive_n 10; window 4; 11.24% and 4.49% match the paper's 11.2 and 4.5. gsm8k_csqa gives decisive 9 and window 4, matching Table 5 row 1.",
+    "a second consistency gained": "substrate_health.sign_set.eval_set_z_for_contrast is now 2.5428, equal to tact_hard_eval.h1.z, where the old bucketing gave 2.33 for the same quantity",
+    "the paper tracked the shifts": "three numbers were updated in every build for the corrected bucketing: quantile-0 gate supply 40 -> 39, sign-set z +0.73 -> +0.83, contrast z +2.33 -> +2.54. All three re-verified exactly (39, 0.8335, 2.5428).",
+    "the round-10 defect still stands": "margin_diagnostics.gsm8k_csqa gives n_unanimous 85, cut 1.0, n_gated 0, and substrate_health.gsm8k_csqa.n_gated_shipped = 0 corroborates it through the corrected pipeline. QA answers are integers and letters, so string equality is correct there.",
+    "check_paper_numbers.py": "47/47, up from 39/39, with two cross-artifact assertions and a contradiction path that fails the run"
   }
 }

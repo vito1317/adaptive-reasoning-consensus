@@ -1,8 +1,8 @@
 [
   {
-    "title": "A newly released artifact reports a decisive/window pair for the 89-item MATH L5 set that conflicts with the pair the paper quotes, because it uses the argmax tie-break Section 9 identifies as the artifact",
-    "quote": "evaluation set that remains after the sign set is split off ($10$ and $4$",
-    "explanation": "The paper is right and the new artifact is wrong, which is the awkward direction. Section 7 and the Table 5 caption quote 10 decisive and 4 in-window items over the 89-item evaluation set, so 11.2% and 4.5%, and results/tact_hard_eval.json backs that with decisive_n = 10 computed as np.sum(sc_right == 0), the items SC actually gets wrong. results/substrate_health.json, added this round, reports the same substrate as decisive_n 13, gold_in_pool_of_decisive 3, decisive_pct 14.61 and window_pct 3.37. The cause is a definition, not noise: run_substrate_health.py's strata() decides with int(np.argmax(counts)) != p.correct, and Section 9 is a subsection about exactly that convention -- 'the correct answer the code 0 on every item, and argmax breaks ties toward the lowest index' -- being the artifact that was fixed. So the round-9 tie convention has come back in one new script, and it has shipped a conflicting pair for a substrate the paper reports. No paper claim moves: the gate numbers the new Section 7 text quotes (13 gated, 40 at quantile 0, floor 50, sign-set z = +0.73 against threshold 1.0, eval-set z = +2.33) come from gate_supply() and sign_set, which do not use strata(), and all six verify exactly. What needs fixing is strata(), and the reason this slipped is worth noting: check_paper_numbers.py compares the paper against the artifacts, so it structurally cannot catch two artifacts disagreeing with each other. An artifact-versus-artifact assertion on the shared substrates would close that gap.",
+    "title": "The shared bucketing rule reached two scripts but not the planted-sensitivity margin diagnostics, and the paper quotes two cut values from the uncorrected side",
+    "quote": "margin gate's quantile cut degenerates to $1.0$ and the gated set is empty for",
+    "explanation": "math_grade.py's docstring sets the rule and states it plainly: 'Anything grading LaTeX must come through here.' run_substrate_health.py and run_tact_hard_eval.py now both do, and their MATH L5 numbers agree exactly. run_planted_sensitivity.py does not. Its margin_diagnostics() computes margins with collections.Counter([str(x) for x in ans]), plain string equality on the raw answer, not even normalise_answer, so on LaTeX answers 1/2, 0.5 and \\frac{1}{2} are three buckets. The consequence is measurable: for the 89-item MATH L5 evaluation set at the same 0.40 quantile, substrate_health's gate_supply reports 13 gated items over build_math_pool classes while margin_diagnostics reports 17 over raw strings. The paper quotes the uncorrected side twice, 'here the cut is $0.875$' in Section 7 and 'the quantile cut at $0.750$' in Section 8. Also note the direction: n_unanimous 43 is a floor when equivalent answers split, so the corrected cut for that substrate is likely above 0.875 rather than below. The argument is not at risk. The finding-(f) defect is on GSM8K/CSQA, whose answers are integers and multiple-choice letters where string equality is correct, and substrate_health.gsm8k_csqa.n_gated_shipped = 0 corroborates the empty gated set independently through the corrected pipeline. What is at risk is two printed constants. The new artifact-vs-artifact check is also one assertion short of catching this: it cross-asserts decisive_n and the evaluation-set z, not the margin cut or the gated count, so the 13-versus-17 gap on a substrate both files measure stays invisible to it.",
     "comment_type": "presentation",
     "severity": "moderate",
     "confidence": "high",
@@ -12,7 +12,7 @@
       "result",
       "experiment"
     ],
-    "root_cause_key": "substrate-health-argmax-tiebreak",
+    "root_cause_key": "planted-margin-diagnostics-string-bucketing",
     "review_lane": "numbers_vs_released_artifacts",
     "gate_blocker": false,
     "quote_verified": true,

@@ -8,6 +8,7 @@
 \usepackage{balance}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
+\usepackage{float}
 
 \usepackage[hidelinks,breaklinks=true]{hyperref}
 \usepackage{cleveref}
@@ -154,6 +155,7 @@ here.%
 \section{Problem Setup}\label{sec:setup}
 
 \subsection{Notation}
+Every symbol used in the paper is collected in Table~\ref{tab:notation} (Appendix~\ref{app:notation}), grouped by the section that introduces it.
 Items $q=1,\dots,Q$; item $q$ has $m_q$ sampled traces. Trace $(q,i)$ yields an answer $a_{q,i}$ in a discrete set and a confidence $c_{q,i}\in(0,1)$; correctness is $y_{q,i}=\mathbf{1}[a_{q,i}=a_q^\ast]$, unobserved at test time. Plain \SC{} returns $\arg\max_A n_q(A)$ where $n_q(A)$ counts votes for answer $A$. CISC-power weights votes by $c_{q,i}^{\,\gamma}$ with a fixed $\gamma>0$.
 
 \subsection{The confidence dilemma}
@@ -882,7 +884,7 @@ substrate on which the in-pool oracle clears the endpoint at all ($+9/-0$,
 $p=0.002$ on a decisive stratum of $17$). \TACT{} nonetheless returned
 $\gamma=0$: only $12$ items survived the margin gate against the threshold of
 $30$, so E4 fired---the same item-supply condition, with the quantile cut at
-$0.750$ and the gated set again non-empty, and not the degenerate case
+$0.875$ and the gated set again non-empty, and not the degenerate case
 finding~(f) reports. That abstention is testable,
 and it cost nothing. Estimating $\gamma$ from gold labels, an upper bound no
 deployable method has access to, the best available is $+4/-1$ at $\gamma=1$
@@ -992,7 +994,10 @@ the same JSON.
 \begingroup
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.12}
-\begin{table}[h]
+% [H], not [h]: this table IS the appendix. Allowed to float it was
+% deferred past the entire bibliography and printed four pages after its
+% own heading.
+\begin{table}[H]
 \centering
 \caption{Symbols, in order of first use. Quantities carrying a subscript $q$
 are per item; the estimator ships one global scalar unless a group covariate is
