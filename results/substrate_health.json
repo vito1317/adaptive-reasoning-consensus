@@ -1,0 +1,49 @@
+{
+ "gsm8k_csqa": {
+  "k": 12,
+  "n_items": 100,
+  "decisive_n": 9,
+  "gold_in_pool_of_decisive": 4,
+  "decisive_pct": 9.0,
+  "window_pct": 4.0,
+  "min_gated_items": 50,
+  "n_gated_shipped": 0,
+  "n_gated_by_margin_quantile": {
+   "0.40": 0,
+   "0.30": 0,
+   "0.20": 0,
+   "0.10": 5,
+   "0.00": 15
+  },
+  "n_gated_best_case": 15,
+  "label_free_testable": false
+ },
+ "math_l5_eval": {
+  "k": 16,
+  "n_items": 89,
+  "decisive_n": 13,
+  "gold_in_pool_of_decisive": 3,
+  "decisive_pct": 14.606741573033707,
+  "window_pct": 3.3707865168539324,
+  "min_gated_items": 50,
+  "n_gated_shipped": 13,
+  "n_gated_by_margin_quantile": {
+   "0.40": 13,
+   "0.30": 13,
+   "0.20": 22,
+   "0.10": 31,
+   "0.00": 40
+  },
+  "n_gated_best_case": 40,
+  "label_free_testable": false,
+  "sign_set": {
+   "n_items": 30,
+   "z": 0.7306251819026461,
+   "d_hat": 0.1404109589041096,
+   "se": 0.1921791944516073,
+   "threshold": 1.0,
+   "semi_lf_testable": false,
+   "eval_set_z_for_contrast": 2.3288495534336957
+  }
+ }
+}

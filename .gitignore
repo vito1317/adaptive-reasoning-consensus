@@ -38,3 +38,18 @@ paper/*.log
 paper/*.out
 paper/*.bbl
 paper/*.blg
+
+# Third-party PDFs of cited work. Publisher and arXiv copies, so redistributing
+# them from a public repository is both bloat (42 MB) and a licensing question
+# nobody needs. paper/fetch_references.py downloads them on demand.
+paper/refs_pdf/
+
+# Release archives and the per-row upload set, all emitted by
+# paper/build_bundles.py from tracked inputs.
+paper/*.zip
+paper/jmlr_upload/
+
+# Review-pipeline context dumps: copies of the paper's own text, regenerable
+# and carrying no information the manuscript does not. The reports themselves
+# stay tracked.
+paper/review_results/**/artifacts/meta/

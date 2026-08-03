@@ -1,0 +1,36 @@
+MIT License
+
+Copyright (c) 2026 Wei-Chen Ko (柯瑋宸, vito1317)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Scope. The MIT terms above cover the code in src/, experiments/ and tests/,
+and the JSON artifacts in results/.
+
+The manuscript in paper/ is not covered by them. On acceptance JMLR publishes
+under CC-BY 4.0 and copyright stays with the author; until then the manuscript
+sources are provided for review and reproduction only.
+
+Third-party material. data/ contains items drawn from public benchmarks
+(GSM8K, CommonsenseQA, MATH, AIME/AMC, LeetCodeDataset), each under its own
+licence and cited in the paper. paper/refs_pdf/ is not tracked in this
+repository: those are publisher and arXiv PDFs of cited work, and
+paper/fetch_references.py downloads them on demand instead.

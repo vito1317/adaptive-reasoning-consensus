@@ -15,15 +15,15 @@ python3.12 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
 
 | 你想看什麼 | 去哪裡 |
 |:--|:--|
-| **論文**（IEEE 格式，11 頁） | [paper/tact.pdf](paper/tact.pdf) · [tact.tex](paper/tact.tex) · [tact.docx](paper/tact.docx) |
-| **投稿版：TMLR**（雙盲，17 頁） | [tact_tmlr.pdf](paper/tact_tmlr.pdf)（匿名） · [tact_tmlr_preprint.pdf](paper/tact_tmlr_preprint.pdf)（具名） |
-| **投稿版：JMLR**（單盲，22 頁） | [tact_jmlr.pdf](paper/tact_jmlr.pdf) · [build_jmlr.py](paper/build_jmlr.py) |
+| **論文**（IEEE 格式，13 頁） | [paper/tact.pdf](paper/tact.pdf) · [tact.tex](paper/tact.tex) · [tact.docx](paper/tact.docx) |
+| **投稿版：TMLR**（雙盲，20 頁） | [tact_tmlr.pdf](paper/tact_tmlr.pdf)（匿名） · [tact_tmlr_preprint.pdf](paper/tact_tmlr_preprint.pdf)（具名） |
+| **投稿版：JMLR**（單盲，26 頁） | [tact_jmlr.pdf](paper/tact_jmlr.pdf) · [build_jmlr.py](paper/build_jmlr.py) |
 | **論文中文版** | [paper/tact_zh.pdf](paper/tact_zh.pdf) · [.docx](paper/tact_zh.docx) · [.md](paper/tact_zh.md) |
 | **公式參數逐項詳解**（中文） | [paper/tact_parameters_zh.pdf](paper/tact_parameters_zh.pdf) · [.docx](paper/tact_parameters_zh.docx) · [.md](paper/tact_parameters_zh.md) |
 | **演算法的一行式** | [src/rlev_voi/formula.py](src/rlev_voi/formula.py) |
 | **架構：偽碼 ↔ 模組對照** | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | **所有死亡設計與死因** | [docs/GRAVEYARD.md](docs/GRAVEYARD.md) ← 新想法動工前先讀這份 |
-| **薄窗結果**（本專案最強的發現） | [docs/REPORT-G1.md](docs/REPORT-G1.md) + GRAVEYARD 的「計畫級綜合」 |
+| **薄窗現象**（本專案最強的發現） | [docs/REPORT-G1.md](docs/REPORT-G1.md) + GRAVEYARD 的「計畫級綜合」 |
 
 ---
 
@@ -44,7 +44,7 @@ $$\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 - 合成結果（四項證偽全過）：[docs/REPORT-TACT.md](docs/REPORT-TACT.md)
 - 真實資料結果：[docs/REPORT-TACT-HARD.md](docs/REPORT-TACT-HARD.md)
 
-### 薄窗（結構性邊界）
+### 薄窗現象（結構性邊界）
 
 跨**兩個領域、五個基質**的量測：任何無標籤聚合方法能作用的分層
 ——多數決錯 **且** 正解在池內——只佔題目的 2.5–7.5%，
@@ -53,7 +53,7 @@ $$\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 | 領域 | 基質 | 窗口 |
 |:--|:--|--:|
 | 無標籤 QA | GSM8K/CSQA、MATH-L5、AIME/AMC | 2.5–4% |
-| 程式碼（可執行真值） | HumanEval+/MBPP+（公開表格重算） | 3.56% |
+| 程式碼（可執行真值） | HumanEval+/MBPP+（公開表格重算） | 3.6% |
 | 程式碼（可執行真值） | LeetCode Med/Hard（**本專案直接量測**） | 7.5% |
 
 這條邊界解釋了六個設計為什麼會死，也說明 TACT 的**棄權設計**（$\gamma=0$）
@@ -88,6 +88,7 @@ $$\hat a_q=\arg\max_A \sum_{i:\,a_{q,i}=A}\exp\big(\gamma\,\varphi_{q,i}\big),
 ./.venv/bin/python experiments/run_tact_hard_eval.py   # TACT 真實資料 H1–H5
 ./.venv/bin/python experiments/run_abstention_identifiability.py  # 棄權是機制還是無訊號
 ./.venv/bin/python experiments/run_planted_sensitivity.py         # 植入通道的偵測曲線（敏感度）
+./.venv/bin/python experiments/run_substrate_health.py            # 基質健康度（設計階段先跑這個）
 ./.venv/bin/python experiments/run_g1_window.py        # 程式碼領域窗口閘門
 ./.venv/bin/python experiments/run_g1_deepening.py     # 能力牆確認
 ./.venv/bin/python experiments/verify_kappa_kill.py    # KAPPA 死因獨立重現
@@ -159,7 +160,7 @@ tests/               102 個測試，含強制單元測試 T1–T6
 ## 文件索引
 
 **規格（動工前寫的）**
-[SPEC.md](docs/SPEC.md) · [SPEC-TACT.md](docs/SPEC-TACT.md) · [SPEC-TACT-HARD.md](docs/SPEC-TACT-HARD.md) · [SPEC-ISC.md](docs/SPEC-ISC.md) · [SPEC-KAPPA-P.md](docs/SPEC-KAPPA-P.md)
+[SPEC-NEXT-CAMPAIGN.md](docs/SPEC-NEXT-CAMPAIGN.md)（下一輪：決定性的 G1 + 能力階梯）· [SPEC.md](docs/SPEC.md) · [SPEC-TACT.md](docs/SPEC-TACT.md) · [SPEC-TACT-HARD.md](docs/SPEC-TACT-HARD.md) · [SPEC-ISC.md](docs/SPEC-ISC.md) · [SPEC-KAPPA-P.md](docs/SPEC-KAPPA-P.md)
 
 **報告（實驗後寫的）**
 [REPORT.md](docs/REPORT.md) · [REPORT-TACT.md](docs/REPORT-TACT.md) · [REPORT-TACT-HARD.md](docs/REPORT-TACT-HARD.md) · [REPORT-ISC.md](docs/REPORT-ISC.md) · [REPORT-G1.md](docs/REPORT-G1.md)

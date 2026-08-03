@@ -54,6 +54,7 @@ def main():
     bud = load("budget_paired.json")
     g1 = load("g1_window.json")
     hard = load("tact_hard_eval.json")
+    health = load("substrate_health.json")
     abst = load("abstention_identifiability.json")
     plant = load("planted_sensitivity.json")
 
@@ -65,6 +66,11 @@ def main():
         forms = {s}
         if s.startswith("0."):
             forms.add(s.lstrip("0"))
+        if isinstance(value, float):
+            # z statistics and similar read naturally at two decimals; accept
+            # that rounding rather than forcing the prose to carry three.
+            two = f"{value:.2f}"
+            forms |= {two, two.lstrip("0") if two.startswith("0.") else two}
         if isinstance(value, float) and 0 < value < 1:
             # the paper writes rates as per cent in places, e.g. 0.118 -> 11.8
             forms |= {f"{value*100:.1f}", f"{value*100:.2f}", f"{value*100:.0f}"}
@@ -121,6 +127,14 @@ def main():
     want("cut gsm8k/csqa", md["gsm8k_csqa"]["quantile_cut"], "planted.margin_diagnostics")
     want("cut math L5 eval", md["math_l5_eval"]["quantile_cut"], "planted.margin_diagnostics")
     want("cut math L5 budget", md["math_l5_budget_capped"]["quantile_cut"], "planted.margin_diagnostics")
+
+    # substrate health: the two distinct abstention causes on MATH L5
+    ml = health["math_l5_eval"]
+    want("n_gated shipped", ml["n_gated_shipped"], "substrate_health.math_l5")
+    want("n_gated best case", ml["n_gated_best_case"], "substrate_health.math_l5")
+    want("min_gated_items floor", ml["min_gated_items"], "substrate_health.math_l5")
+    want("sign set z", abs(ml["sign_set"]["z"]), "substrate_health.sign_set")
+    want("eval z for contrast", abs(ml["sign_set"]["eval_set_z_for_contrast"]), "substrate_health.sign_set")
 
     # window table
     want("LeetCode window", g1["window"], "g1_window")

@@ -739,9 +739,17 @@ exact one-sided $p=0.0625$. H2 fails, but it fails for every conceivable
 aggregation method including a perfect one, so the failure is a property of
 the substrate, not of the estimator.
 
-\emph{Abstention behaved as designed.} \TACT{} returned $\gamma=0$, with
-alarms E4 and E2 firing on the label-free path and the sign set holding too
-few informative items to supply a semi-label-free sign. The vote is therefore
+\emph{Abstention behaved as designed, for two different reasons.} \TACT{}
+returned $\gamma=0$ on both label-free paths, and the two failures are worth
+separating. The fully label-free arm was stopped by alarms E4 and E2: only
+$13$ items reach the margin gate with a pseudo-label that varies, against a
+floor of $50$, and relaxing the gate's quantile all the way to $0$ raises
+that only to $40$, so the arm is untestable here at any channel strength.
+The semi-label-free arm was stopped by something else entirely: its $30$-item
+sign set reaches $z=+0.73$ against a $|z|>1$ gate, while the evaluation set on
+the same substrate reaches $z=+2.33$. That is a power shortfall in the sign
+set, not an absent channel, and the remedy is more labels rather than a
+different method. The vote is therefore
 bit-identical to \SC{} at $0.888$ (H3, H4 pass). The cost of acting anyway is
 visible in the same table: best-single-confidence, the trivial baseline that
 always trusts the channel, loses $4.5$ points at $0.843$. E4 is an

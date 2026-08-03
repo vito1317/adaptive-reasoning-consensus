@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this software or its measurements, please cite the paper below."
+title: "TACT: Trust-Anchored Confidence Tempering for Self-Consistency Voting in Large Language Models"
+abstract: >-
+  Confidence-weighted self-consistency beats majority voting only when a frozen
+  model's confidence is calibrated in direction. TACT derives the vote exponent
+  from the measured, signed, within-item discrimination of the confidence
+  channel, and is bit-identical to plain self-consistency inside its shrinkage
+  dead zone. The repository also carries the negative measurements: the stratum
+  on which any label-free aggregation method can act is 2.5-7.5% of items
+  across five substrates in two domains.
+type: software
+authors:
+  - family-names: Ko
+    given-names: Wei-Chen
+    alias: vito1317
+    email: service@vito1317.com
+    affiliation: Independent Researcher
+repository-code: "https://github.com/vito1317/adaptive-reasoning-consensus"
+license: MIT
+date-released: "2026-08-02"
+keywords:
+  - large language models
+  - self-consistency
+  - confidence calibration
+  - label-free estimation
+  - rank statistics
+preferred-citation:
+  type: unpublished
+  title: "TACT: Trust-Anchored Confidence Tempering for Self-Consistency Voting in Large Language Models"
+  authors:
+    - family-names: Ko
+      given-names: Wei-Chen
+      email: service@vito1317.com
+      affiliation: Independent Researcher
+  year: 2026
+  notes: "Under review at the Journal of Machine Learning Research (manuscript 26-2518)."

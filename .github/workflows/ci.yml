@@ -1,0 +1,38 @@
+name: CI
+
+# The two checks that have actually caught defects in this project: the test
+# suite, which pins every proposition to an executable counterpart, and the
+# artifact cross-check, which catches the failure mode that bit three times --
+# prose or a table updated while the JSON it quotes moved, or the reverse.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Test suite
+        run: python -m pytest -q
+
+  paper-numbers:
+    # Runs even if the suite fails: a number drifting and a proposition
+    # breaking are independent faults and both should be reported.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Every figure quoted in the paper matches its artifact
+        run: python experiments/check_paper_numbers.py

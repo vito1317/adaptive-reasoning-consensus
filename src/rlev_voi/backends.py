@@ -85,14 +85,30 @@ class OpenAIBackend(LLMBackend):
     confidence signal; the verbalized number is the secondary one.
     """
 
-    def __init__(self, model: str = "gpt-4o-mini", max_tokens: int = 1024, use_logprobs: bool = True):
+    def __init__(self, model: str = "gpt-4o-mini", max_tokens: int = 1024,
+                 use_logprobs: bool = True, base_url: str | None = None):
+        """``base_url`` points the OpenAI client at any compatible server.
+
+        This is what makes the capability-ladder campaign possible without new
+        code: vLLM, OpenRouter and llama.cpp all speak this API, so a 3B and a
+        frontier model differ only by ``model`` and ``base_url``. It also
+        reaches the open-weight models that actually return logprobs, which is
+        the pre-registered primary confidence signal and the one the
+        Anthropic-backed campaigns could not collect.
+
+        Falls back to ``OPENAI_BASE_URL`` so a ladder can be swept from the
+        environment. The API key requirement is relaxed when a base_url is
+        given, because local servers usually do not want one.
+        """
         try:
             from openai import OpenAI
         except ImportError as e:  # pragma: no cover - environment dependent
             raise ImportError("pip install openai") from e
-        if not os.environ.get("OPENAI_API_KEY"):
+        base_url = base_url or os.environ.get("OPENAI_BASE_URL")
+        if not base_url and not os.environ.get("OPENAI_API_KEY"):
             raise RuntimeError("OPENAI_API_KEY is not set")
-        self._client = OpenAI()
+        self._client = OpenAI(base_url=base_url) if base_url else OpenAI()
+        self.base_url = base_url
         self.model = model
         self.max_tokens = max_tokens
         self.use_logprobs = use_logprobs
