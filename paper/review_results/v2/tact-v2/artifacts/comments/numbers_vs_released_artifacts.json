@@ -9,13 +9,12 @@
     "source_kind": "script",
     "source_section": "result",
     "related_sections": [
-      "result",
       "experiment"
     ],
     "root_cause_key": "substrate-health-argmax-tiebreak",
     "review_lane": "numbers_vs_released_artifacts",
     "gate_blocker": false,
-    "quote_verified": true,
-    "source_file": "numbers_vs_released_artifacts.json"
+    "verdict": "CONFIRMED",
+    "reaudit_status": "NEW"
   }
 ]

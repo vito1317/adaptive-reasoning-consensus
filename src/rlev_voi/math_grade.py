@@ -16,6 +16,10 @@ from __future__ import annotations
 import re
 from functools import lru_cache
 
+import numpy as np
+
+from .traces import TracePool
+
 _LATEX_JUNK = [
     (r"\\boxed\{(.*)\}", r"\1"),
     (r"\\left|\\right|\\!|\\,|\\;|\\ ", ""),
@@ -103,3 +107,62 @@ def equivalent(pred: str, gold: str) -> bool:
         return bool(abs(complex(diff)) < 1e-9)
     except Exception:
         return False
+
+def build_math_pool(qid: str, samples: list[dict], gold: str) -> TracePool | None:
+    """Bucket answers into mathematical-equivalence classes and grade against gold.
+
+    Lives here rather than in a script because two scripts bucketing the same
+    substrate differently is a defect that already happened: a screening panel
+    used backends.build_pool, whose normalise_answer only folds case and
+    whitespace, and reported 13 decisive items on a MATH L5 evaluation set where
+    the campaign reports 10. Plain string equality splits 1/2 from 0.5, which
+    inflates the answer count, deflates margins, and can hand the plurality to a
+    wrong answer that merely happens to be spelled one way.
+
+    backends.build_pool stays correct for the QA campaigns, where answers are
+    integers or multiple-choice letters and normalise_answer is sufficient.
+    Anything grading LaTeX must come through here.
+    """
+    if len(samples) < 6:
+        return None
+    raw = [canon(s["answer"]) for s in samples]
+    conf = np.clip([float(s.get("confidence", 0.5)) for s in samples], 0.0, 1.0)
+
+    # union-find over distinct canonical strings by mathematical equivalence
+    uniq = sorted(set(raw))
+    parent = list(range(len(uniq)))
+
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    for i in range(len(uniq)):
+        for j in range(i + 1, len(uniq)):
+            if find(i) != find(j) and equivalent(uniq[i], uniq[j]):
+                parent[find(j)] = find(i)
+    roots = sorted({find(i) for i in range(len(uniq))})
+    code_of_root = {r: c for c, r in enumerate(roots)}
+    code = {u: code_of_root[find(i)] for i, u in enumerate(uniq)}
+
+    answers = np.array([code[r] for r in raw])
+    n_answers = len(roots)
+    correct = -1
+    for u, c in code.items():
+        if equivalent(u, gold):
+            correct = c
+            break
+
+    k = len(samples)
+    eye = np.eye(k)
+    return TracePool(
+        answers=answers,
+        confidences=np.asarray(conf),
+        sem=eye.copy(),
+        dup=eye.copy(),   # no reasoning text -> duplication channel inert
+        gen_tokens=np.ones(k),
+        correct=correct,
+        n_answers=n_answers,
+        meta={"qid": qid, "group": 0},
+    )

@@ -140,7 +140,33 @@ def main():
     want("LeetCode window", g1["window"], "g1_window")
     want("hard-campaign D", hard["h1"]["d_hat"], "tact_hard_eval.h1")
 
-    bad = [c for c in checks if c[2].startswith("MISSING")]
+    # --- artifact vs artifact -------------------------------------------
+    # Everything above compares the paper against an artifact, so two artifacts
+    # contradicting each other about one substrate is invisible to it. That is
+    # exactly what happened: a screening panel bucketed MATH answers by string
+    # equality and reported 13 decisive items where the campaign reports 10.
+    # Cross-assert the quantities both sides compute.
+    cross: list[tuple[str, str, str]] = []
+
+    def agree(label, a_val, a_src, b_val, b_src):
+        ok = a_val == b_val
+        cross.append((label, f"{a_val} vs {b_val}",
+                      f"{a_src} == {b_src}" if ok
+                      else f"CONTRADICTION {a_src}={a_val} {b_src}={b_val}"))
+
+    agree("MATH L5 decisive_n",
+          hard["substrate"]["decisive_n"], "tact_hard_eval",
+          health["math_l5_eval"]["decisive_n"], "substrate_health")
+    agree("MATH L5 eval z",
+          round(hard["h1"]["z"], 2), "tact_hard_eval.h1",
+          round(health["math_l5_eval"]["sign_set"]["eval_set_z_for_contrast"], 2),
+          "substrate_health.sign_set")
+
+    contradictions = [c for c in cross if c[2].startswith("CONTRADICTION")]
+    for label, val, src in cross:
+        print(f"{'!!' if src.startswith('CONTRADICTION') else '  '} {label:36s} {val:>14s}  {src}")
+
+    bad = [c for c in checks if c[2].startswith("MISSING")] + contradictions
     for label, val, src in checks:
         mark = "  " if not src.startswith("MISSING") else "!!"
         print(f"{mark} {label:36s} {val:>8s}  {src}")

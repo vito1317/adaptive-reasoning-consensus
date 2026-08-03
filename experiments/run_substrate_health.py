@@ -27,12 +27,14 @@ The panel extends the two figures the paper already reports:
                  reason that has nothing to do with the label-free pipeline's
                  alarms, and the two failures should not be reported as one.
 
-Scope. This is a screening panel, not a re-run of the campaigns. Its counts sit
-within a couple of items of the published ones (it resolves plurality ties by
-plain argmax, where the campaigns route through sc_answer), which is close
-enough to decide whether a substrate can support an experiment and not close
-enough to quote in the paper. The campaign artifacts remain the source for
-anything the manuscript states.
+Bucketing. Each substrate is bucketed the way its own campaign buckets it:
+integers and multiple-choice letters through backends.build_pool, LaTeX through
+math_grade.build_math_pool, which folds mathematical-equivalence classes. An
+earlier version of this panel sent MATH through the former and reported 13
+decisive items where the campaign reports 10, because plain string equality
+splits 1/2 from 0.5. Two artifacts disagreeing about one substrate is worse than
+no panel at all, so the counts here are asserted against the campaign's in
+check_paper_numbers.py.
 
 Reading rule. n_gated below min_gated_items means the label-free arm is
 untestable on this substrate at any channel strength; sign_set_z below 1 means
@@ -55,6 +57,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from rlev_voi.backends import Trace, build_pool  # noqa: E402
+from rlev_voi.math_grade import build_math_pool  # noqa: E402
 from rlev_voi.tact import estimate_dev, estimate_label_free  # noqa: E402
 
 MARGIN_SWEEP = [0.40, 0.30, 0.20, 0.10, 0.0]
@@ -114,13 +117,19 @@ def main() -> None:
     report["gsm8k_csqa"] = {"k": 12, **strata(ps, 12), **gate_supply(ps, 12, 50)}
 
     # --- MATH level-5, K=16, with the pre-registered 30-item sign set -------
+    # Bucketing MUST come through build_math_pool, the same equivalence-class
+    # builder the campaign uses. Going through backends.build_pool here is what
+    # produced a panel that disagreed with the campaign on the same substrate
+    # (13 decisive items against 10), because string equality splits 1/2 from
+    # 0.5 and over-counts distinct answers.
     raw = json.loads((ROOT / "results/math_confirm_raw.json").read_text())["traces"]
     mi = {it["qid"]: it for it in json.loads((ROOT / "data/math_confirm_items.json").read_text())}
     allq = sorted(q for q in raw if q in mi)
     g = {q: str(mi[q]["gold"]) for q in allq}
     sign_q = set(np.array(allq)[np.random.default_rng(20260731).permutation(len(allq))[:30]])
     ev_q = [q for q in allq if q not in sign_q]
-    ev, sg = pools_from(raw, g, ev_q), pools_from(raw, g, sorted(sign_q))
+    ev = [p for p in (build_math_pool(q, raw[q], g[q]) for q in ev_q) if p is not None]
+    sg = [p for p in (build_math_pool(q, raw[q], g[q]) for q in sorted(sign_q)) if p is not None]
 
     sp = estimate_dev(sg, 16).pooled
     ep = estimate_dev(ev, 16).pooled

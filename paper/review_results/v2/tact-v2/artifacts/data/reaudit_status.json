@@ -1,8 +1,8 @@
 {
   "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact_jmlr.tex",
-  "round": 10,
-  "reviewed_commit": "989b532",
-  "previous_commit": "d0903f8",
+  "round": 11,
+  "reviewed_commit": "9eed466",
+  "previous_commit": "989b532",
   "history": {
     "62bc7c7": "38 / 10 major / Desk Reject",
     "4d75431": "38 / 10",
@@ -13,19 +13,22 @@
     "cd4e5d0": "2 / 0 major",
     "6b98a8e": "1 / 0 major",
     "d0903f8": "0",
-    "989b532": "2 / 0 major"
+    "989b532": "2 / 0 major",
+    "9eed466": "1 / 0 major"
   },
+  "FULLY_ADDRESSED": [
+    "planted-on-both-overstated -- now 'full power by 0.49 and 0.56, and the derived exponent capturing the whole oracle gain from 0.83 and 0.95; at the Gaussian thresholds the Laplace family is already at 0.975 power and 0.98 capture'. Both Laplace rungs quoted, which is more than was asked for.",
+    "abstention-sections-not-reread-after-defect -- fixed well beyond a cross-reference. Sec. 7's heading is now 'Abstention behaved as designed, for two different reasons' and separates the fully label-free failure (13 items reach the margin gate against a floor of 50; relaxing the quantile to 0 reaches only 40, so the arm is untestable here at any channel strength) from the semi-label-free one (a 30-item sign set at z = +0.73 against a |z| > 1 gate while the evaluation set reaches +2.33, a power shortfall whose remedy is more labels). It then distinguishes the two E4 routes by their actual cuts -- 1.0 with an empty gated set in Sec. 6 versus 0.875 here and 0.750 in Sec. 8, both non-empty -- and closes with 'Only the first is a defect.'"
+  ],
   "NEW": {
-    "abstention-sections-not-reread-after-defect": "finding (f) re-reads (b) but not Sec. 7's 'Abstention behaved as designed' or Sec. 8's E4 sentence",
-    "planted-on-both-overstated": "'full power by ~0.49 on both' and 'the entire oracle gain from ~0.83 upward on both' are measured on the Gaussian family; the Laplace rungs are 0.975 and 0.9813"
+    "substrate-health-argmax-tiebreak": "results/substrate_health.json reports decisive 13 / window 3 (14.61% / 3.37%) for the 89-item MATH L5 set against the paper's 10 and 4 (11.2% / 4.5%), because run_substrate_health.py strata() decides with raw np.argmax, the tie convention Sec. 9 identifies as the artifact it fixed. No paper claim moves; the script needs the fix."
   },
   "NOT_ADDRESSED": [],
   "PARTIALLY_ADDRESSED": {},
-  "FULLY_ADDRESSED": [],
-  "new_material_verified_this_round": {
-    "finding (e) abstention identifiability": "every number exact: boot_open_rate_dev 0.50375 -> 50.4%, lf 0.162 -> 16.2%, gap_to_nu_dev_pct 3.006 -> 3%, false_open_dev 0.184 vs nominal 0.2006, false_open_lf 0.01575 vs 0.02002, null z mean -0.0020 SD 0.9545, forced_derived gamma -0.39997 acc 0.9333 +1/-0, gold oracle 0.95 at gamma -1.25; 0.95-0.9167 over 60 items is the stated two-item ceiling",
-    "finding (f) planted sensitivity": "min_detectable_D location@50 0.2472 and heavy_tail@50 0.2083 match; rank_local max |D| 0.183 at full strength matches; rank_local gain_derived 0.0017 vs gain_oracle 0.0388 matches '+0.039'; the variance family holds at or below the nominal false-open rate; p_sign_correct equals p_gate_open in all 40 cells, so 'conditional on the gate opening the sign is never wrong' is exactly right",
-    "the structural defect": "CONFIRMED, reasoning airtight. p_lf_acts = 0.0 in all 40 cells. With 85 of 100 items unanimous the margin distribution has 85 values at 1.0 and 15 below, so the 40% quantile is 1.0; a unanimous item clears margin >= 1.0 but fails the two-distinct-answers test and a non-unanimous item fails the margin test, so the gated set is necessarily empty.",
-    "check_paper_numbers.py": "runs clean, 39/39 values found in the paper; automates the exact failure mode that recurred three times, where prose was regenerated and a table was not"
+  "verified_this_round": {
+    "the six new Sec. 7 and Sec. 8 numbers": "all exact against results/substrate_health.json and the new margin_diagnostics block in planted_sensitivity.json: n_gated_shipped 13, min_gated_items 50, n_gated_by_margin_quantile['0.00'] 40, sign_set z 0.7306 with threshold 1.0, eval_set_z_for_contrast 2.3289, quantile_cut 0.875 with n_gated 17 for MATH L5 eval and 0.75 with n_gated 23 for the budget-capped arm",
+    "the round-10 defect, re-confirmed": "margin_diagnostics.gsm8k_csqa gives n_unanimous 85, quantile_cut 1.0, n_gated 0, matching the round-10 derivation exactly",
+    "cover letter": "jmlr_cover_letter.tex added. Full cover-letter review routes to a different skill, so this is a courtesy numeric check only: 102 tests, the 2.5-7.5% range, five substrates and the structural defect all agree with the paper, and no conflicting number appears.",
+    "prose hygiene": "the 'rather than' habit was cut from 2.59 to 0.87 per thousand words and the abstract tightened; spot checks found no meaning changed by the edits"
   }
 }

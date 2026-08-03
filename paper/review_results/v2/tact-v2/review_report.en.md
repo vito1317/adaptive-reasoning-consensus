@@ -1,16 +1,16 @@
 # Deep Review Report
 
 **Paper**: `/Users/vito/development/adaptive-reasoning-consensus/paper/tact.tex` | **Language**: EN | **Mode**: deep-review
-**Generated**: 2026-08-02 21:13
+**Generated**: 2026-08-03 19:08
 **Artifacts**: `/Users/vito/development/adaptive-reasoning-consensus/paper/review_results/v2/tact-v2`
 
 ## Overall Assessment
 
-Round-10 re-audit of the JMLR build at 989b532, which adds two experiments, vector figures, a notation appendix, and moves the budget axis to future work. Two findings, neither major, and neither about a number: every value in the new material was checked against the new artifacts and all of them are exact. Finding (e) reproduces to the digit, including the two-item ceiling implied by 0.950 minus 0.9167 over 60 test items. Finding (f)'s half-power floors, the rank-concentrated ceiling of 0.183, the 0.0017-versus-0.0388 gap, and the claim that the sign is never wrong conditional on the gate opening all hold, the last one exactly: p_sign_correct equals p_gate_open in all forty cells. The structural defect the author reports against their own method is confirmed and the reasoning is airtight, with p_lf_acts zero in every cell and the empty gated set following necessarily from 85 unanimous items meeting a 40% quantile cut. Reporting that is the strongest single act of the ten rounds. What remains is two statement-level items. Finding (f) explicitly re-reads finding (b) in light of the defect but leaves Section 7's 'Abstention behaved as designed' heading and Section 8's E4 sentence standing, which is the round-4 shape again: new evidence added, an earlier section it bears on not revisited. And two claims in (f) are asserted 'on both' families when the Laplace rungs are 0.975 and 0.9813 rather than 1.0, a gap under two per cent that leaves the conclusion intact but is the one place this manuscript rounds in its own favour.
+Round-11 re-audit of the JMLR build at 9eed466. Both round-10 items closed and one new moderate found. The 'on both' overstatement was fixed by quoting the Laplace rungs outright (full power at 0.49 and 0.56, capture from 0.83 and 0.95, with the Laplace family at 0.975 power and 0.98 capture at the Gaussian thresholds), which is more than was asked for. The abstention paragraph was rebuilt rather than cross-referenced: Section 7 now separates the fully label-free failure, where 13 items reach the margin gate against a floor of 50 and relaxing the quantile to zero reaches only 40, from the semi-label-free one, where a 30-item sign set sits at z = +0.73 against a |z| > 1 gate while the evaluation set reaches +2.33, then distinguishes the two E4 routes by their actual cuts, 1.0 with an empty gated set against 0.875 and 0.750 with non-empty ones, and closes with 'Only the first is a defect.' All six new numbers verify exactly against substrate_health.json and the new margin_diagnostics block. The one new finding runs the awkward direction: the paper is right and a newly released artifact is wrong. substrate_health.json reports the 89-item MATH L5 set as 13 decisive and 3 in-window, against the 10 and 4 the paper quotes, because run_substrate_health.py's strata() decides with a raw np.argmax and Section 9 is a subsection about that exact tie convention being the artifact it fixed. No paper claim moves, since the Section 7 gate numbers come from gate_supply() and sign_set rather than strata(). Worth noting why it slipped: check_paper_numbers.py compares the paper against the artifacts and so cannot see two artifacts disagreeing with each other.
 
 - **Major**: 0
 - **Moderate**: 1
-- **Minor**: 1
+- **Minor**: 0
 
 ## Academic Pre-Review Committee
 
@@ -372,34 +372,21 @@ harder direction.
 
 ## Moderate Issues
 
-### M1: Finding (f) re-reads (b) for the structural defect but leaves the two later abstention paragraphs standing as written
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `section_results`
+### M1: A newly released artifact reports a decisive/window pair for the 89-item MATH L5 set that conflicts with the pair the paper quotes, because it uses the argmax tie-break Section 9 identifies as the artifact
+- **Type**: presentation
+- **Source**: [Script] via `numbers_vs_released_artifacts`
 - **Confidence**: high
 - **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `abstention-sections-not-reread-after-defect`
+- **Related Sections**: result, experiment
+- **Root Cause Key**: `substrate-health-argmax-tiebreak`
 - **Quote Verified**: yes
-- **Quote**: `\emph{Abstention behaved as designed.} \TACT{} returned $\gamma=0$, with`
-- **Explanation**: Finding (f) does the hard part and does it explicitly: 'Its abstention in (b) was therefore structural rather than a reading of the channel.' The same re-reading is owed to two later paragraphs and neither got it. Section 7's paragraph is titled 'Abstention behaved as designed' and attributes the null result to E4 and E2 firing; E4 is the too-few-gated-items alarm, the same alarm the margin-gate starvation of (f) drives. Section 8 reports the mechanism directly without naming it: 'only $12$ items survived the margin gate against the threshold of $30$, so E4 fired.' The numbers differ from (f)'s pathology, where the gated set is empty rather than merely small, so this is not a retraction. The fix is a cross-reference from both paragraphs to (f) plus a clause saying that on saturated substrates an E4 firing is partly a property of the quantile cut rather than only a reading of the channel. As written, a reader who reaches (f) has to work out alone that a section heading three pages earlier no longer means what it says. Same shape as the round-4 finding, where the Discussion had not been re-derived after the evidence base changed.
-
-## Minor Issues
-
-### M1: Two 'on both' claims in finding (f) hold for the Gaussian family but not quite for the Laplace one
-- **Type**: claim_accuracy
-- **Source**: [LLM] via `section_results`
-- **Confidence**: high
-- **Section**: result
-- **Related Sections**: result
-- **Root Cause Key**: `planted-on-both-overstated`
-- **Quote Verified**: yes
-- **Quote**: `$|\Dhat|=0.247$ (Gaussian) and $0.208$ (Laplace), full power by ${\approx}0.49$`
-- **Explanation**: The half-power figures are exact: planted_sensitivity.json gives location@50 = 0.2472 and heavy_tail@50 = 0.2083. The two claims that follow are stated 'on both' and measured on one. Full power: the location family reaches p_gate_open = 1.0 at |D-hat| = 0.4927, but heavy_tail is at 0.975 at 0.4184 and does not reach 1.0 until 0.5623, so no measured Laplace rung sits at the quoted 0.49. Capture: 'captures the entire oracle gain from |D-hat| ~ 0.83 upward on both' is exactly right for location, which shows capture = 1.0 at 0.831, while heavy_tail at 0.8495 shows 0.9813 and reaches 1.0 only at 0.9522. The qualitative conclusion is untouched and the gap is under two per cent in both cases. But this paper has spent nine rounds refusing to round in its own favour, and 'on both' is the one phrase here that does. Quote the Laplace rungs, or write 'on both to within 2%'.
+- **Quote**: `evaluation set that remains after the sign set is split off ($10$ and $4$`
+- **Explanation**: The paper is right and the new artifact is wrong, which is the awkward direction. Section 7 and the Table 5 caption quote 10 decisive and 4 in-window items over the 89-item evaluation set, so 11.2% and 4.5%, and results/tact_hard_eval.json backs that with decisive_n = 10 computed as np.sum(sc_right == 0), the items SC actually gets wrong. results/substrate_health.json, added this round, reports the same substrate as decisive_n 13, gold_in_pool_of_decisive 3, decisive_pct 14.61 and window_pct 3.37. The cause is a definition, not noise: run_substrate_health.py's strata() decides with int(np.argmax(counts)) != p.correct, and Section 9 is a subsection about exactly that convention -- 'the correct answer the code 0 on every item, and argmax breaks ties toward the lowest index' -- being the artifact that was fixed. So the round-9 tie convention has come back in one new script, and it has shipped a conflicting pair for a substrate the paper reports. No paper claim moves: the gate numbers the new Section 7 text quotes (13 gated, 40 at quantile 0, floor 50, sign-set z = +0.73 against threshold 1.0, eval-set z = +2.33) come from gate_supply() and sign_set, which do not use strata(), and all six verify exactly. What needs fixing is strata(), and the reason this slipped is worth noting: check_paper_numbers.py compares the paper against the artifacts, so it structurally cannot catch two artifacts disagreeing with each other. An artifact-versus-artifact assertion on the shared substrates would close that gap.
 
 ## Decision Signals
 
 - **Reviewer Recommendation**: Minor Revision
-- **Issue Bundle**: 0 major / 1 moderate / 1 minor
+- **Issue Bundle**: 0 major / 1 moderate / 0 minor
 
 ## Revision Roadmap
 

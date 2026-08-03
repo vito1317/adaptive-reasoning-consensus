@@ -27,7 +27,7 @@ from scipy.stats import binomtest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from rlev_voi.math_grade import canon, equivalent  # noqa: E402
+from rlev_voi.math_grade import build_math_pool as build_pool  # noqa: E402
 from rlev_voi.tact import (  # noqa: E402
     estimate_dev,
     estimate_label_free,
@@ -36,53 +36,6 @@ from rlev_voi.tact import (  # noqa: E402
     tact_vote,
 )
 from rlev_voi.traces import TracePool  # noqa: E402
-
-
-def build_pool(qid: str, samples: list[dict], gold: str) -> TracePool | None:
-    """Bucket answers on math-equivalence classes and grade against gold."""
-    if len(samples) < 6:
-        return None
-    raw = [canon(s["answer"]) for s in samples]
-    conf = np.clip([float(s.get("confidence", 0.5)) for s in samples], 0.0, 1.0)
-
-    # union-find over distinct canonical strings by mathematical equivalence
-    uniq = sorted(set(raw))
-    parent = list(range(len(uniq)))
-
-    def find(i):
-        while parent[i] != i:
-            parent[i] = parent[parent[i]]
-            i = parent[i]
-        return i
-
-    for i in range(len(uniq)):
-        for j in range(i + 1, len(uniq)):
-            if find(i) != find(j) and equivalent(uniq[i], uniq[j]):
-                parent[find(j)] = find(i)
-    roots = sorted({find(i) for i in range(len(uniq))})
-    code_of_root = {r: c for c, r in enumerate(roots)}
-    code = {u: code_of_root[find(i)] for i, u in enumerate(uniq)}
-
-    answers = np.array([code[r] for r in raw])
-    n_answers = len(roots)
-    correct = -1
-    for u, c in code.items():
-        if equivalent(u, gold):
-            correct = c
-            break
-
-    k = len(samples)
-    eye = np.eye(k)
-    return TracePool(
-        answers=answers,
-        confidences=np.asarray(conf),
-        sem=eye.copy(),
-        dup=eye.copy(),   # no reasoning text -> duplication channel inert
-        gen_tokens=np.ones(k),
-        correct=correct,
-        n_answers=n_answers,
-        meta={"qid": qid, "group": 0},
-    )
 
 
 def cisc_vote(pool: TracePool, k: int) -> int:
