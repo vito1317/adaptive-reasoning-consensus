@@ -1,0 +1,55 @@
+TMLR submission -- "TACT: Trust-Anchored Confidence Tempering for
+Self-Consistency Voting in Large Language Models".
+
+*** DO NOT SUBMIT WHILE THE JMLR SUBMISSION IS LIVE ***
+
+TMLR's editorial policy: "There should not be any reuse of written text,
+figures or results between the submitted paper and any paper which has been
+published, accepted for publication, or submitted in parallel at another
+archival, peer-reviewed venue."
+
+This manuscript is under review at JMLR (26-2518, submitted 2 August 2026).
+JMLR is an archival peer-reviewed venue, so submitting this to TMLR before
+JMLR renders a decision would breach TMLR's policy and would also falsify the
+declaration in the JMLR cover letter that the work is not under review
+elsewhere. Submit only after a JMLR decision, or after withdrawing from JMLR.
+
+Everything below is ready for that moment.
+
+  row1_Manuscript_ANONYMOUS.pdf   the paper, tmlr.sty, 21 pp, double-blind.
+                                  Verified: no author name, handle, e-mail,
+                                  affiliation, repository URL or commit hash in
+                                  the text, and no Author/Title fields in the
+                                  PDF metadata.
+
+  row2_Supplementary_ANONYMOUS.zip  code, cached traces and the JSON artifact
+                                  behind every table. Anonymised and scanned;
+                                  packing aborts on any identifying string.
+
+OpenReview form fields
+  Title      TACT: Trust-Anchored Confidence Tempering for Self-Consistency
+             Voting in Large Language Models
+  Abstract   as printed in the PDF (200 words; TMLR sets no cap, this is the
+             JMLR limit and it is kept for a single source of truth)
+  Keywords   large language models; self-consistency; confidence calibration;
+             label-free estimation; rank statistics
+
+Broader Impact Statement
+  TMLR requires one only where the work "carries a significant risk of harm".
+  This paper aggregates a frozen model's own outputs at inference time and its
+  headline recommendation is to abstain; it introduces no new capability, no
+  training, and no data collection about people. No statement is included on
+  that reading. The action editor may take a different view, so be ready to add
+  one rather than surprised to be asked.
+
+Which upload slot
+  PDF                 row1_Manuscript_ANONYMOUS.pdf
+  Supplementary       row2_Supplementary_ANONYMOUS.zip
+  Beyond PDF          NOTHING. That slot is for interactive webpage code, not
+                      supplementary material. Putting the supplement there
+                      submits it as an alternative rendering of the paper.
+
+Declared in the OpenReview PROFILE, not in the paper
+  affiliations, conflicts of interest, publication history, funding, IRB.
+  TMLR takes these from the profile, which is why the paper carries none of
+  them. Check the profile is current before submitting.

@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Cross-section numeric consistency should be reconciled",
+    "quote": "tact derives the vote exponent from the measured signed within- item discrimination of the channel: a pooled van Elteren Somers’ D, shrunk toward zero and mapped through a Bayes-discriminant link that at base rate 1 2 collapses to γ = z √ 2 + z2.",
+    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "method"
+    ],
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false
+  }
+]

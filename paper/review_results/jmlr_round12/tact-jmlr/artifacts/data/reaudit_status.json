@@ -1,0 +1,17 @@
+{
+  "paper": "/Users/vito/development/adaptive-reasoning-consensus/paper/tact_jmlr.pdf",
+  "mode": "re-audit",
+  "reviewed_commit": "bfc9c11",
+  "previous_open_root_cause": "planted-margin-diagnostics-string-bucketing",
+  "status": "FULLY_ADDRESSED",
+  "open_findings": 0,
+  "independently_verified": {
+    "math_l5_decisive_n": "tact_hard_eval=10; substrate_health=10",
+    "math_l5_in_window": 4,
+    "math_l5_percentages": "11.24% decisive; 4.49% window",
+    "math_l5_n_gated_beta_0_40": "substrate_health=13; planted.margin_diagnostics=13",
+    "math_l5_z": "sign set=+0.8335; evaluation contrast=+2.5428; tact_hard_eval.h1.z=+2.5428",
+    "paper_number_check": "47/47 values found; artifact cross-checks pass",
+    "pdf": "28 pages; Algorithm 1 and 2 visually inspected; no clipped text blocks"
+  }
+}

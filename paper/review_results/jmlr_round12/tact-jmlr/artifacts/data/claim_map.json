@@ -1,0 +1,207 @@
+{
+  "headline_claims": [
+    "This paper frames the problem as estimating one scalar: the signed within-item discrim- ination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+    "None of these searches a negative exponent: the obstruction is a sign bit in the hyperparameter grid rather than the weight family itself, as this paper’s own SignGrid-dev baseline shows by opening the same cγ family to negative γ and reaching the signed oracle across the negative half-axis."
+  ],
+  "closure_targets": [],
+  "section_claims": {
+    "abstract": [
+      "This paper frames the problem as estimating one scalar: the signed within-item discrim- ination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+      "None of these searches a negative exponent: the obstruction is a sign bit in the hyperparameter grid rather than the weight family itself, as this paper’s own SignGrid-dev baseline shows by opening the same cγ family to negative γ and reaching the signed oracle across the negative half-axis."
+    ],
+    "method": [
+      "This is the widest window measured anywhere in this paper, and the first substrate on which the in-pool oracle clears the endpoint at all (+9/ −0, p = 0.002 on a decisive stratum of 17). tact nonetheless returned γ = 0: only 12 items survived the margin gate against the threshold of 30, so E4 fired—the same item-supply condition, with the quantile cut at 0.875 and the gated set again non-empty, and not the degenerate case finding (f) reports.",
+      "Substituting a semantic pseudo-label for the lexical one is the obvious next guard, and this paper does not test it.",
+      "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.",
+      "10 Conclusion tact turns “how far should this model’s confidence be trusted?” into a measured, signed, uncertainty-aware scalar, and recovers the sign without labels under conditions this paper states and tests."
+    ]
+  },
+  "claim_candidates": [
+    {
+      "id": "abstract:1",
+      "section_key": "abstract",
+      "claim": "This paper frames the problem as estimating one scalar: the signed within-item discrim- ination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+      "evidence_anchor": [],
+      "claim_strength": "unsupported",
+      "missing_evidence": [
+        "add an evidence anchor or soften the claim boundary"
+      ],
+      "allowed_wording": "This paper frames the problem as estimating one scalar: the signed within-item discrim- ination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    },
+    {
+      "id": "abstract:2",
+      "section_key": "abstract",
+      "claim": "None of these searches a negative exponent: the obstruction is a sign bit in the hyperparameter grid rather than the weight family itself, as this paper’s own SignGrid-dev baseline shows by opening the same cγ family to negative γ and reaching the signed oracle across the negative half-axis.",
+      "evidence_anchor": [],
+      "claim_strength": "unsupported",
+      "missing_evidence": [
+        "add an evidence anchor or soften the claim boundary"
+      ],
+      "allowed_wording": "None of these searches a negative exponent: the obstruction is a sign bit in the hyperparameter grid rather than the weight family itself, as this paper’s own SignGrid-dev baseline shows by opening the same cγ family to negative γ and reaching the signed oracle across the negative half-axis.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    },
+    {
+      "id": "method:1",
+      "section_key": "method",
+      "claim": "This is the widest window measured anywhere in this paper, and the first substrate on which the in-pool oracle clears the endpoint at all (+9/ −0, p = 0.002 on a decisive stratum of 17). tact nonetheless returned γ = 0: only 12 items survived the margin gate against the threshold of 30, so E4 fired—the same item-supply condition, with the quantile cut at 0.875 and the gated set again non-empty, and not the degenerate case finding (f) reports.",
+      "evidence_anchor": [
+        {
+          "type": "metric",
+          "text": "p = 0.002"
+        }
+      ],
+      "claim_strength": "observed",
+      "missing_evidence": [],
+      "allowed_wording": "This is the widest window measured anywhere in this paper, and the first substrate on which the in-pool oracle clears the endpoint at all (+9/ −0, p = 0.002 on a decisive stratum of 17). tact nonetheless returned γ = 0: only 12 items survived the margin gate against the threshold of 30, so E4 fired—the same item-supply condition, with the quantile cut at 0.875 and the gated set again non-empty, and not the degenerate case finding (f) reports.",
+      "forbidden_wording": [
+        "unbounded superiority, novelty, or significance wording"
+      ]
+    },
+    {
+      "id": "method:2",
+      "section_key": "method",
+      "claim": "Substituting a semantic pseudo-label for the lexical one is the obvious next guard, and this paper does not test it.",
+      "evidence_anchor": [],
+      "claim_strength": "unsupported",
+      "missing_evidence": [
+        "add an evidence anchor or soften the claim boundary"
+      ],
+      "allowed_wording": "Substituting a semantic pseudo-label for the lexical one is the obvious next guard, and this paper does not test it.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    },
+    {
+      "id": "method:3",
+      "section_key": "method",
+      "claim": "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.",
+      "evidence_anchor": [
+        {
+          "type": "metric",
+          "text": "accuracy"
+        }
+      ],
+      "claim_strength": "observed",
+      "missing_evidence": [],
+      "allowed_wording": "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    },
+    {
+      "id": "method:4",
+      "section_key": "method",
+      "claim": "10 Conclusion tact turns “how far should this model’s confidence be trusted?” into a measured, signed, uncertainty-aware scalar, and recovers the sign without labels under conditions this paper states and tests.",
+      "evidence_anchor": [],
+      "claim_strength": "unsupported",
+      "missing_evidence": [
+        "add an evidence anchor or soften the claim boundary"
+      ],
+      "allowed_wording": "10 Conclusion tact turns “how far should this model’s confidence be trusted?” into a measured, signed, uncertainty-aware scalar, and recovers the sign without labels under conditions this paper states and tests.",
+      "forbidden_wording": [
+        "unqualified conclusion without visible evidence"
+      ]
+    }
+  ],
+  "section_claim_candidates": {
+    "abstract": [
+      {
+        "id": "abstract:1",
+        "section_key": "abstract",
+        "claim": "This paper frames the problem as estimating one scalar: the signed within-item discrim- ination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+        "evidence_anchor": [],
+        "claim_strength": "unsupported",
+        "missing_evidence": [
+          "add an evidence anchor or soften the claim boundary"
+        ],
+        "allowed_wording": "This paper frames the problem as estimating one scalar: the signed within-item discrim- ination of the confidence channel, and mapping that scalar, with its uncertainty, to a vote exponent.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      },
+      {
+        "id": "abstract:2",
+        "section_key": "abstract",
+        "claim": "None of these searches a negative exponent: the obstruction is a sign bit in the hyperparameter grid rather than the weight family itself, as this paper’s own SignGrid-dev baseline shows by opening the same cγ family to negative γ and reaching the signed oracle across the negative half-axis.",
+        "evidence_anchor": [],
+        "claim_strength": "unsupported",
+        "missing_evidence": [
+          "add an evidence anchor or soften the claim boundary"
+        ],
+        "allowed_wording": "None of these searches a negative exponent: the obstruction is a sign bit in the hyperparameter grid rather than the weight family itself, as this paper’s own SignGrid-dev baseline shows by opening the same cγ family to negative γ and reaching the signed oracle across the negative half-axis.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      }
+    ],
+    "method": [
+      {
+        "id": "method:1",
+        "section_key": "method",
+        "claim": "This is the widest window measured anywhere in this paper, and the first substrate on which the in-pool oracle clears the endpoint at all (+9/ −0, p = 0.002 on a decisive stratum of 17). tact nonetheless returned γ = 0: only 12 items survived the margin gate against the threshold of 30, so E4 fired—the same item-supply condition, with the quantile cut at 0.875 and the gated set again non-empty, and not the degenerate case finding (f) reports.",
+        "evidence_anchor": [
+          {
+            "type": "metric",
+            "text": "p = 0.002"
+          }
+        ],
+        "claim_strength": "observed",
+        "missing_evidence": [],
+        "allowed_wording": "This is the widest window measured anywhere in this paper, and the first substrate on which the in-pool oracle clears the endpoint at all (+9/ −0, p = 0.002 on a decisive stratum of 17). tact nonetheless returned γ = 0: only 12 items survived the margin gate against the threshold of 30, so E4 fired—the same item-supply condition, with the quantile cut at 0.875 and the gated set again non-empty, and not the degenerate case finding (f) reports.",
+        "forbidden_wording": [
+          "unbounded superiority, novelty, or significance wording"
+        ]
+      },
+      {
+        "id": "method:2",
+        "section_key": "method",
+        "claim": "Substituting a semantic pseudo-label for the lexical one is the obvious next guard, and this paper does not test it.",
+        "evidence_anchor": [],
+        "claim_strength": "unsupported",
+        "missing_evidence": [
+          "add an evidence anchor or soften the claim boundary"
+        ],
+        "allowed_wording": "Substituting a semantic pseudo-label for the lexical one is the obvious next guard, and this paper does not test it.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      },
+      {
+        "id": "method:3",
+        "section_key": "method",
+        "claim": "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.",
+        "evidence_anchor": [
+          {
+            "type": "metric",
+            "text": "accuracy"
+          }
+        ],
+        "claim_strength": "observed",
+        "missing_evidence": [],
+        "allowed_wording": "Second, an aggregation gain of the size reported on the synthetic harness is not measurable on a benchmark of a few hundred items at these window widths, which is why the real-trace claim in this paper is confined to the premise (the channel exists and is signed) and to the abstention behaviour, and does not extend to accuracy.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      },
+      {
+        "id": "method:4",
+        "section_key": "method",
+        "claim": "10 Conclusion tact turns “how far should this model’s confidence be trusted?” into a measured, signed, uncertainty-aware scalar, and recovers the sign without labels under conditions this paper states and tests.",
+        "evidence_anchor": [],
+        "claim_strength": "unsupported",
+        "missing_evidence": [
+          "add an evidence anchor or soften the claim boundary"
+        ],
+        "allowed_wording": "10 Conclusion tact turns “how far should this model’s confidence be trusted?” into a measured, signed, uncertainty-aware scalar, and recovers the sign without labels under conditions this paper states and tests.",
+        "forbidden_wording": [
+          "unqualified conclusion without visible evidence"
+        ]
+      }
+    ]
+  }
+}

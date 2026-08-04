@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Cross-section numeric consistency should be reconciled",
+    "quote": "tact derives the vote exponent from the measured signed within- item discrimination of the channel: a pooled van Elteren Somers’ D, shrunk toward zero and mapped through a Bayes-discriminant link that at base rate 1 2 collapses to γ = z √ 2 + z2.",
+    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "method"
+    ],
+    "root_cause_key": "cross-section-numeric-consistency-should-be-reconciled",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": false
+  },
+  {
+    "title": "Comparison protocol should make fairness assumptions explicit",
+    "quote": "Method Accuracy net vs.",
+    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method"
+    ],
+    "root_cause_key": "comparison-protocol-should-make-fairness-assumptions-explicit",
+    "review_lane": "committee_methodology",
+    "gate_blocker": false,
+    "quote_verified": false
+  }
+]

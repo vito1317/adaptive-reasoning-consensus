@@ -1,0 +1,125 @@
+[
+  {
+    "title": "Abstract and conclusion claims need explicit evidence traceability",
+    "quote": "The dev-calibrated variant must therefore be positioned honestly: CISC’s tuned temperature is already a dev-calibrated sc↔CISC interpolation, so the novelty of tact-dev lies in the sign, the rank invariance, and the analytic (grid-free) map, not in dev calibration itself.",
+    "explanation": "At least one headline claim was detected. Deep review should check whether experiments and conclusion language trace back to the same bounded evidence base.",
+    "comment_type": "claim_accuracy",
+    "severity": "major",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results",
+      "conclusion"
+    ],
+    "root_cause_key": "abstract-and-conclusion-claims-need-explicit-evidence-traceability",
+    "review_lane": "claims_vs_evidence",
+    "gate_blocker": false,
+    "quote_verified": false
+  },
+  {
+    "title": "Cross-section numeric consistency should be reconciled",
+    "quote": "tact derives the vote exponent from the measured signed within- item discrimination of the channel: a pooled van Elteren Somers’ D, shrunk toward zero and mapped through a Bayes-discriminant link that at base rate 1 2 collapses to γ = z √ 2 + z2.",
+    "explanation": "Multiple sections contain numeric claims. Confirm that the same quantities reconcile across main text, tables, and appendix material.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "method"
+    ],
+    "root_cause_key": "cross-section-numeric-consistency-should-be-reconciled",
+    "review_lane": "notation_and_numeric_consistency",
+    "gate_blocker": false,
+    "quote_verified": false
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": false
+  },
+  {
+    "title": "Novelty claim should be grounded against the closest prior work",
+    "quote": "2 Related Work Confidence-weighted self-consistency.",
+    "explanation": "The paper positions itself against prior work, but the current wording should make the closest comparator and the real novelty delta explicit instead of relying on broad superiority language.",
+    "comment_type": "claim_accuracy",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "abstract",
+    "related_sections": [
+      "abstract",
+      "results"
+    ],
+    "root_cause_key": "novelty-claim-should-be-grounded-against-the-closest-prior-work",
+    "review_lane": "prior_art_and_novelty_grounding",
+    "gate_blocker": false,
+    "quote_verified": false
+  },
+  {
+    "title": "Comparison protocol should make fairness assumptions explicit",
+    "quote": "Method Accuracy net vs.",
+    "explanation": "Comparative evaluation language was detected. Deep review should verify that baseline tuning, data splits, and reporting conventions are described symmetrically.",
+    "comment_type": "methodology",
+    "severity": "moderate",
+    "confidence": "medium",
+    "source_kind": "llm",
+    "source_section": "method",
+    "related_sections": [
+      "method"
+    ],
+    "root_cause_key": "comparison-protocol-should-make-fairness-assumptions-explicit",
+    "review_lane": "evaluation_fairness_and_reproducibility",
+    "gate_blocker": false,
+    "quote_verified": false
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "method",
+    "related_sections": [
+      "method"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": false
+  },
+  {
+    "title": "Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is...",
+    "quote": "",
+    "explanation": "[G1] Em dash found; replace it with a comma, colon, parenthesis, or sentence boundary unless it is part of a preserved quotation. This is a mechanical pre-submission readiness finding and should be fixed before the final submission package.",
+    "comment_type": "presentation",
+    "severity": "moderate",
+    "confidence": "high",
+    "source_kind": "script",
+    "source_section": "unknown",
+    "related_sections": [
+      "unknown"
+    ],
+    "root_cause_key": "presubmission-g1",
+    "review_lane": "pre_submission_readiness",
+    "gate_blocker": false,
+    "quote_verified": false
+  }
+]

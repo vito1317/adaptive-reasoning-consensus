@@ -21,6 +21,7 @@ drift. They are now built from a manifest.
 from __future__ import annotations
 
 import argparse
+import subprocess
 import zipfile
 from pathlib import Path
 
@@ -190,6 +191,99 @@ def build_paper_bundle(out: Path) -> None:
     print(f"wrote {out.name} ({n} files, {out.stat().st_size / 1e6:.1f} MB)")
 
 
+TMLR_UPLOAD_README = """\
+TMLR submission -- "TACT: Trust-Anchored Confidence Tempering for
+Self-Consistency Voting in Large Language Models".
+
+*** DO NOT SUBMIT WHILE THE JMLR SUBMISSION IS LIVE ***
+
+TMLR's editorial policy: "There should not be any reuse of written text,
+figures or results between the submitted paper and any paper which has been
+published, accepted for publication, or submitted in parallel at another
+archival, peer-reviewed venue."
+
+This manuscript is under review at JMLR (26-2518, submitted 2 August 2026).
+JMLR is an archival peer-reviewed venue, so submitting this to TMLR before
+JMLR renders a decision would breach TMLR's policy and would also falsify the
+declaration in the JMLR cover letter that the work is not under review
+elsewhere. Submit only after a JMLR decision, or after withdrawing from JMLR.
+
+Everything below is ready for that moment.
+
+  row1_Manuscript_ANONYMOUS.pdf   the paper, tmlr.sty, 21 pp, double-blind.
+                                  Verified: no author name, handle, e-mail,
+                                  affiliation, repository URL or commit hash in
+                                  the text, and no Author/Title fields in the
+                                  PDF metadata.
+
+  row2_Supplementary_ANONYMOUS.zip  code, cached traces and the JSON artifact
+                                  behind every table. Anonymised and scanned;
+                                  packing aborts on any identifying string.
+
+OpenReview form fields
+  Title      TACT: Trust-Anchored Confidence Tempering for Self-Consistency
+             Voting in Large Language Models
+  Abstract   as printed in the PDF (200 words; TMLR sets no cap, this is the
+             JMLR limit and it is kept for a single source of truth)
+  Keywords   large language models; self-consistency; confidence calibration;
+             label-free estimation; rank statistics
+
+Broader Impact Statement
+  TMLR requires one only where the work "carries a significant risk of harm".
+  This paper aggregates a frozen model's own outputs at inference time and its
+  headline recommendation is to abstain; it introduces no new capability, no
+  training, and no data collection about people. No statement is included on
+  that reading. The action editor may take a different view, so be ready to add
+  one rather than surprised to be asked.
+
+Which upload slot
+  PDF                 row1_Manuscript_ANONYMOUS.pdf
+  Supplementary       row2_Supplementary_ANONYMOUS.zip
+  Beyond PDF          NOTHING. That slot is for interactive webpage code, not
+                      supplementary material. Putting the supplement there
+                      submits it as an alternative rendering of the paper.
+
+Declared in the OpenReview PROFILE, not in the paper
+  affiliations, conflicts of interest, publication history, funding, IRB.
+  TMLR takes these from the profile, which is why the paper carries none of
+  them. Check the profile is current before submitting.
+"""
+
+
+def build_tmlr_submission(outdir: Path) -> None:
+    """The double-blind package, with the dual-submission block stated up front.
+
+    Named after the form rows for the same reason the JMLR set is: a combined
+    archive sitting beside the per-row files is how the wrong file got uploaded
+    once already.
+    """
+    up = outdir / "tmlr_upload"
+    up.mkdir(exist_ok=True)
+    for f in up.glob("*"):
+        f.unlink()
+
+    pdf = PAPER / "tact_tmlr.pdf"
+    text = subprocess.run(["pdftotext", str(pdf), "-"],
+                          capture_output=True, text=True).stdout
+    # "Ko" is not scanned: it appears inside cited authors such as Kosaraju.
+    leaks = [k for k in ("vito1317", "Wei-Chen", "柯瑋宸", "service@vito1317.com",
+                         "adaptive-reasoning-consensus", "Independent Researcher")
+             if k in text]
+    if leaks:
+        raise AssertionError(f"anonymous TMLR manuscript would identify the author: {leaks}")
+    meta = subprocess.run(["pdfinfo", str(pdf)], capture_output=True, text=True).stdout
+    for field in ("Author:", "Title:", "Subject:", "Keywords:"):
+        if field in meta:
+            raise AssertionError(f"PDF metadata carries {field} in a double-blind submission")
+
+    (up / "row1_Manuscript_ANONYMOUS.pdf").write_bytes(pdf.read_bytes())
+    (up / "row2_Supplementary_ANONYMOUS.zip").write_bytes(
+        (PAPER / "supplementary_anonymous.zip").read_bytes())
+    (up / "00_READ_THIS_FIRST.txt").write_text(TMLR_UPLOAD_README)
+    print(f"wrote {up.name}/ -- manuscript and supplement, both scanned anonymous; "
+          "README states the JMLR dual-submission block")
+
+
 def build_jmlr_submission(outdir: Path) -> None:
     """Emit exactly the files the JMLR form asks for, named after its rows.
 
@@ -274,6 +368,7 @@ def main() -> None:
     build_supplementary(args.outdir / "supplementary_anonymous.zip")
     build_paper_bundle(args.outdir / "TACT Paper.zip")
     build_jmlr_submission(args.outdir)
+    build_tmlr_submission(args.outdir)
 
 
 if __name__ == "__main__":
