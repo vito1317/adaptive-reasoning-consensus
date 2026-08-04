@@ -221,13 +221,22 @@ Everything below is ready for that moment.
                                   behind every table. Anonymised and scanned;
                                   packing aborts on any identifying string.
 
-OpenReview form fields
-  Title      TACT: Trust-Anchored Confidence Tempering for Self-Consistency
-             Voting in Large Language Models
-  Abstract   as printed in the PDF (200 words; TMLR sets no cap, this is the
-             JMLR limit and it is kept for a single source of truth)
-  Keywords   large language models; self-consistency; confidence calibration;
-             label-free estimation; rank statistics
+OpenReview form fields, in the order the form asks
+  Title*                  field_Title.txt
+  Abstract*               field_Abstract.txt          (200 words, 1410 chars)
+  Authors*                already set to the author's OpenReview profile
+  PDF*                    row1_Manuscript_ANONYMOUS.pdf
+  Beyond PDF              LEAVE EMPTY. The form's own warning: "This is not
+                          supplementary material."
+  Submission Type*        field_Submission_Type.txt
+  Supplementary Material  row2_Supplementary_ANONYMOUS.zip
+  Previous TMLR Sub. Url  LEAVE EMPTY. Only for a resubmission after a TMLR
+                          rejection; this is a first submission.
+  Changes Since Last Sub. LEAVE EMPTY, same reason.
+  Competing Interests*    field_Competing_Interests.txt
+  Human Subjects*         field_Human_Subjects_Reporting.txt
+
+  There is no keywords field on this form. Keywords are a JMLR requirement.
 
 Broader Impact Statement
   TMLR requires one only where the work "carries a significant risk of harm".
@@ -365,9 +374,9 @@ def build_tmlr_submission(outdir: Path) -> None:
         "TACT: Trust-Anchored Confidence Tempering for Self-Consistency "
         "Voting in Large Language Models\n")
     (up / "field_Abstract.txt").write_text(abstract + "\n")
-    (up / "field_Keywords.txt").write_text(
-        "large language models; self-consistency; confidence calibration; "
-        "label-free estimation; rank statistics\n")
+    # No Keywords file: the TMLR form has no keywords field. Keywords are a
+    # JMLR requirement, declared in its cover letter. A file here with no
+    # corresponding field is how the wrong thing gets uploaded.
     (up / "field_Competing_Interests.txt").write_text(TMLR_COMPETING_INTERESTS)
     (up / "field_Human_Subjects_Reporting.txt").write_text(TMLR_HUMAN_SUBJECTS)
 
