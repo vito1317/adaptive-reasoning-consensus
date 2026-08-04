@@ -21,6 +21,7 @@ drift. They are now built from a manifest.
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 import zipfile
 from pathlib import Path
@@ -250,6 +251,34 @@ Declared in the OpenReview PROFILE, not in the paper
 """
 
 
+def openreview_abstract() -> str:
+    """The abstract as OpenReview wants it pasted, derived from tact.tex.
+
+    Not hand-copied: the abstract has been rewritten several times and a stale
+    copy in a text file is exactly the drift this project keeps catching. Three
+    conversions matter. OpenReview renders $...$ inline, so real math stays;
+    LaTeX's -- becomes an en-dash because the form is plain text; and the per
+    cent sign moves OUT of math mode, since $7.5\\%$ either breaks the formula
+    or starts a comment depending on the renderer.
+    """
+    src = (PAPER / "tact.tex").read_text()
+    t = re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}", src, re.S).group(1)
+    t = t.replace("\\TACT{}", "TACT").replace("\\TACT", "TACT")
+    t = t.replace("\\Dhat", "\\widehat{D}").replace("\\tfrac12", "\\frac{1}{2}")
+    t = re.sub(r"\\emph\{([^}]*)\}", r"\1", t)
+    t = t.replace("$2.5$--$7.5\\%$", "2.5\u20137.5%")
+    t = t.replace("--", "\u2013").replace("\\%", "%")
+    t = t.replace("\\ ", " ").replace("~", " ")
+    t = re.sub(r"\s+", " ", t).strip()
+    if "--" in t or "\\%" in t:
+        raise AssertionError("abstract still carries LaTeX-only markup")
+    if any("%" in m for m in re.findall(r"\$[^$]*\$", t)):
+        raise AssertionError("a per cent sign is inside math mode; OpenReview will mangle it")
+    words = len([w for w in re.sub(r"\$[^$]*\$", " X ", t).split()
+                 if re.search(r"[A-Za-z0-9]", w)])
+    return t, words
+
+
 def build_tmlr_submission(outdir: Path) -> None:
     """The double-blind package, with the dual-submission block stated up front.
 
@@ -280,8 +309,15 @@ def build_tmlr_submission(outdir: Path) -> None:
     (up / "row2_Supplementary_ANONYMOUS.zip").write_bytes(
         (PAPER / "supplementary_anonymous.zip").read_bytes())
     (up / "00_READ_THIS_FIRST.txt").write_text(TMLR_UPLOAD_README)
-    print(f"wrote {up.name}/ -- manuscript and supplement, both scanned anonymous; "
-          "README states the JMLR dual-submission block")
+    abstract, words = openreview_abstract()
+    (up / "field_Title.txt").write_text(
+        "TACT: Trust-Anchored Confidence Tempering for Self-Consistency "
+        "Voting in Large Language Models\n")
+    (up / "field_Abstract.txt").write_text(abstract + "\n")
+    (up / "field_Keywords.txt").write_text(
+        "large language models; self-consistency; confidence calibration; "
+        "label-free estimation; rank statistics\n")
+    print(f"wrote {up.name}/ -- manuscript, supplement and the three paste-ready\n      form fields (abstract {words} words), all scanned anonymous; README states\n      the JMLR dual-submission block")
 
 
 def build_jmlr_submission(outdir: Path) -> None:

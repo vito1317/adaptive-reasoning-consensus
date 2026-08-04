@@ -48,6 +48,7 @@ paper/refs_pdf/
 # paper/build_bundles.py from tracked inputs.
 paper/*.zip
 paper/jmlr_upload/
+paper/tmlr_upload/
 
 # Review-pipeline context dumps: copies of the paper's own text, regenerable
 # and carrying no information the manuscript does not. The reports themselves
