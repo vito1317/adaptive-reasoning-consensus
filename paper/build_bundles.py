@@ -251,6 +251,57 @@ Declared in the OpenReview PROFILE, not in the paper
 """
 
 
+#: Answers to the TMLR form's required free-text fields. Kept here rather than
+#: typed into the browser so they are versioned and reviewable.
+TMLR_COMPETING_INTERESTS = """\
+N/A.
+
+The author has no relationship, financial or otherwise, with any entity that
+could be perceived to influence this work, in the 36 months before submission:
+no employment, sabbatical, stipend, consultancy or honorarium from a commercial
+company or startup, and no donated hardware or cloud computing.
+
+One item is disclosed for completeness rather than because it is a competing
+interest. The real-trace experiments sample a frozen commercial model through
+its public API. That access was purchased at standard rates as an ordinary
+paying customer; it was not donated, discounted, or provided under any
+agreement, and the author has no relationship with the vendor. The paper's
+findings about that model are predominantly negative -- its verbalized
+confidence carries no usable within-item discrimination on saturated
+benchmarks -- which no such relationship would have encouraged.
+"""
+
+TMLR_HUMAN_SUBJECTS = """\
+N/A. No experiments involving human subjects were conducted, and no data about
+people was collected.
+
+The experiments sample a frozen language model on items drawn from public
+benchmarks (GSM8K, CommonsenseQA, MATH, AIME/AMC, LeetCodeDataset). These are
+published collections of problems and reference answers, not human-subjects
+data, and no annotators, participants or crowdworkers were recruited: every
+label used is either a benchmark's own reference answer or, in the label-free
+arm, derived from the model's own outputs.
+"""
+
+
+def main_content_pages(pdf: Path) -> int:
+    """Pages before references and appendices, which is TMLR's own definition.
+
+    Read off the rendered PDF rather than counted by hand: the paper has grown
+    from 17 pages to 21 over the last few rounds, and a hard-coded page count is
+    the kind of number this project keeps catching after it goes stale.
+    """
+    n = int(re.search(r"Pages:\s+(\d+)",
+                      subprocess.run(["pdfinfo", str(pdf)], capture_output=True,
+                                     text=True).stdout).group(1))
+    for page in range(1, n + 1):
+        text = subprocess.run(["pdftotext", "-f", str(page), "-l", str(page),
+                               str(pdf), "-"], capture_output=True, text=True).stdout
+        if re.search(r"^\s*References\s*$", text, re.M) or "Symbols, in order" in text:
+            return page - 1
+    return n
+
+
 def openreview_abstract() -> str:
     """The abstract as OpenReview wants it pasted, derived from tact.tex.
 
@@ -317,6 +368,22 @@ def build_tmlr_submission(outdir: Path) -> None:
     (up / "field_Keywords.txt").write_text(
         "large language models; self-consistency; confidence calibration; "
         "label-free estimation; rank statistics\n")
+    (up / "field_Competing_Interests.txt").write_text(TMLR_COMPETING_INTERESTS)
+    (up / "field_Human_Subjects_Reporting.txt").write_text(TMLR_HUMAN_SUBJECTS)
+
+    # Submission Type is decided by the form's own definition -- "all pages
+    # before references and appendices" -- so it is computed, not guessed.
+    body = main_content_pages(PAPER / "tact_tmlr.pdf")
+    kind = ("Regular submission (no more than 12 pages of main content)"
+            if body <= 12 else
+            "Long submission (more than 12 pages of main content)")
+    (up / "field_Submission_Type.txt").write_text(
+        f"{kind}\n\n"
+        f"Main content is {body} pages: references and the notation appendix both\n"
+        f"begin on the page after. TMLR defines main content as all pages before\n"
+        f"references and appendices, so the threshold of 12 is exceeded.\n"
+        f"Beyond PDF does not apply: this is a standard PDF submission and the\n"
+        f"Beyond PDF upload slot must be left empty.\n")
     print(f"wrote {up.name}/ -- manuscript, supplement and the three paste-ready\n      form fields (abstract {words} words), all scanned anonymous; README states\n      the JMLR dual-submission block")
 
 
