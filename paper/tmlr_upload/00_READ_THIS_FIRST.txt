@@ -16,13 +16,13 @@ elsewhere. Submit only after a JMLR decision, or after withdrawing from JMLR.
 
 Everything below is ready for that moment.
 
-  row1_Manuscript_ANONYMOUS.pdf   the paper, tmlr.sty, 21 pp, double-blind.
+  tact_tmlr_anonymous.pdf         the paper, tmlr.sty, 21 pp, double-blind.
                                   Verified: no author name, handle, e-mail,
                                   affiliation, repository URL or commit hash in
                                   the text, and no Author/Title fields in the
                                   PDF metadata.
 
-  row2_Supplementary_ANONYMOUS.zip  code, cached traces and the JSON artifact
+  tact_supplementary_anonymous.zip  code, cached traces and the JSON artifact
                                   behind every table. Anonymised and scanned;
                                   packing aborts on any identifying string.
 
@@ -42,6 +42,14 @@ OpenReview form fields, in the order the form asks
   Human Subjects*         field_Human_Subjects_Reporting.txt
 
   There is no keywords field on this form. Keywords are a JMLR requirement.
+
+Check the OpenReview profile's name order before submitting
+  The paper, CITATION.cff and the JMLR record all take Ko as the family name
+  and Wei-Chen as the given name, which cites as "Ko, W.-C.". OpenReview
+  displays the profile as "Ko Weichen", i.e. given name first. If the profile
+  has First = Ko and Last = Weichen the two are swapped, and the published
+  citation would read "Weichen, K.". Fix it in the profile, not here, and do it
+  before submitting: TMLR restricts author changes afterwards.
 
 Broader Impact Statement
   TMLR requires one only where the work "carries a significant risk of harm".

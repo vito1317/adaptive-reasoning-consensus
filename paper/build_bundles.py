@@ -211,13 +211,13 @@ elsewhere. Submit only after a JMLR decision, or after withdrawing from JMLR.
 
 Everything below is ready for that moment.
 
-  row1_Manuscript_ANONYMOUS.pdf   the paper, tmlr.sty, 21 pp, double-blind.
+  tact_tmlr_anonymous.pdf         the paper, tmlr.sty, 21 pp, double-blind.
                                   Verified: no author name, handle, e-mail,
                                   affiliation, repository URL or commit hash in
                                   the text, and no Author/Title fields in the
                                   PDF metadata.
 
-  row2_Supplementary_ANONYMOUS.zip  code, cached traces and the JSON artifact
+  tact_supplementary_anonymous.zip  code, cached traces and the JSON artifact
                                   behind every table. Anonymised and scanned;
                                   packing aborts on any identifying string.
 
@@ -237,6 +237,14 @@ OpenReview form fields, in the order the form asks
   Human Subjects*         field_Human_Subjects_Reporting.txt
 
   There is no keywords field on this form. Keywords are a JMLR requirement.
+
+Check the OpenReview profile's name order before submitting
+  The paper, CITATION.cff and the JMLR record all take Ko as the family name
+  and Wei-Chen as the given name, which cites as "Ko, W.-C.". OpenReview
+  displays the profile as "Ko Weichen", i.e. given name first. If the profile
+  has First = Ko and Last = Weichen the two are swapped, and the published
+  citation would read "Weichen, K.". Fix it in the profile, not here, and do it
+  before submitting: TMLR restricts author changes afterwards.
 
 Broader Impact Statement
   TMLR requires one only where the work "carries a significant risk of harm".
@@ -263,16 +271,15 @@ Declared in the OpenReview PROFILE, not in the paper
 #: Answers to the TMLR form's required free-text fields. Kept here rather than
 #: typed into the browser so they are versioned and reviewable.
 TMLR_COMPETING_INTERESTS = """\
-N/A.
+No competing interests to declare. One item is noted below for completeness.
 
 The author has no relationship, financial or otherwise, with any entity that
 could be perceived to influence this work, in the 36 months before submission:
 no employment, sabbatical, stipend, consultancy or honorarium from a commercial
 company or startup, and no donated hardware or cloud computing.
 
-One item is disclosed for completeness rather than because it is a competing
-interest. The real-trace experiments sample a frozen commercial model through
-its public API. That access was purchased at standard rates as an ordinary
+The item, which is not a competing interest: the real-trace experiments
+sample a frozen commercial model through its public API. That access was purchased at standard rates as an ordinary
 paying customer; it was not donated, discounted, or provided under any
 agreement, and the author has no relationship with the vendor. The paper's
 findings about that model are predominantly negative -- its verbalized
@@ -327,6 +334,9 @@ def openreview_abstract() -> str:
     t = t.replace("\\Dhat", "\\widehat{D}").replace("\\tfrac12", "\\frac{1}{2}")
     t = re.sub(r"\\emph\{([^}]*)\}", r"\1", t)
     t = t.replace("$2.5$--$7.5\\%$", "2.5\u20137.5%")
+    # Bare numerals do not belong in math mode: OpenReview would set them in a
+    # math font for no reason. Only quantities with a symbol stay wrapped.
+    t = re.sub(r"\$(\d+\.\d+)\$", r"\1", t)
     t = t.replace("--", "\u2013").replace("\\%", "%")
     t = t.replace("\\ ", " ").replace("~", " ")
     t = re.sub(r"\s+", " ", t).strip()
@@ -365,8 +375,8 @@ def build_tmlr_submission(outdir: Path) -> None:
         if field in meta:
             raise AssertionError(f"PDF metadata carries {field} in a double-blind submission")
 
-    (up / "row1_Manuscript_ANONYMOUS.pdf").write_bytes(pdf.read_bytes())
-    (up / "row2_Supplementary_ANONYMOUS.zip").write_bytes(
+    (up / "tact_tmlr_anonymous.pdf").write_bytes(pdf.read_bytes())
+    (up / "tact_supplementary_anonymous.zip").write_bytes(
         (PAPER / "supplementary_anonymous.zip").read_bytes())
     (up / "00_READ_THIS_FIRST.txt").write_text(TMLR_UPLOAD_README)
     abstract, words = openreview_abstract()
