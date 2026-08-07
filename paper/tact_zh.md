@@ -413,7 +413,7 @@ TACT 將「該信任模型的信心到什麼程度」轉化為可量測、帶符
 
 ## 程式碼與資料可得性
 
-全部程式碼、快取軌跡，以及每張表背後的 JSON artifact，均位於 <https://github.com/vito1317/adaptive-reasoning-consensus>。8.5 節的測試表由 `pytest` 於 commit `35ad160` 產生；合成結果由 `experiments/run_tact_eval.py` 產生，真實軌跡實驗由 `run_tact_hard_eval.py`，窗口量測由 `run_g1_window.py` 與 `run_g1_deepening.py`；發現（e）的三組棄權重放由 `run_abstention_identifiability.py` 產生，發現（f）的植入通道操作特性則由 `run_planted_sensitivity.py` 產生。每支腳本都會寫出其對應表格所引用的 artifact。圖 1 至圖 4 是 `experiments/make_paper_figures.py` 讀取同一批 JSON 後輸出的向量圖。
+全部程式碼、快取軌跡，以及每張表背後的 JSON artifact，均位於 <https://github.com/vito1317/adaptive-reasoning-consensus>。8.5 節的測試表由 `pytest` 於 commit `5f14b20` 產生；合成結果由 `experiments/run_tact_eval.py` 產生，真實軌跡實驗由 `run_tact_hard_eval.py`，窗口量測由 `run_g1_window.py` 與 `run_g1_deepening.py`；發現（e）的三組棄權重放由 `run_abstention_identifiability.py` 產生，發現（f）的植入通道操作特性則由 `run_planted_sensitivity.py` 產生。每支腳本都會寫出其對應表格所引用的 artifact。圖 1 至圖 4 是 `experiments/make_paper_figures.py` 讀取同一批 JSON 後輸出的向量圖。
 
 ## 附錄：符號表
 
