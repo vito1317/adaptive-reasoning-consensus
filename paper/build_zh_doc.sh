@@ -81,6 +81,28 @@ python3 - "$TEX" "$CJK_FONT" <<'PY'
 import sys
 path, font = sys.argv[1], sys.argv[2]
 s = open(path).read()
+
+# Pandoc infers 40/30/30 widths from the Markdown alignment row used by the
+# two pseudocode tables.  In PDF that turns the line-number column into a
+# large empty block and squeezes the actual algorithm into 30% of the page.
+# Keep both Algorithm 1 and Algorithm 2 as separate blocks, but give their
+# line/code/comment columns proportions that match a conventional algorithmic
+# layout.  Require exactly two replacements so a future source change cannot
+# silently reintroduce the defect.
+algorithm_columns = r"""  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}"""
+balanced_algorithm_columns = r"""  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0600}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.6200}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3200}}@{}}"""
+algorithm_count = s.count(algorithm_columns)
+if algorithm_count != 2:
+    raise RuntimeError(
+        f"expected two algorithm tables, found {algorithm_count}; "
+        "update the PDF column-width transform"
+    )
+s = s.replace(algorithm_columns, balanced_algorithm_columns)
+
 cjk = (
     "\n\\usepackage{xeCJK}\n"
     f"\\setCJKmainfont{{{font}}}\n"

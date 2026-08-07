@@ -114,7 +114,7 @@ $$\gamma=z\sqrt{2+z^2},\qquad z=\Phi^{-1}\!\big(\tfrac{1+\widetilde D}{2}\big)$$
 
 這裡的 $\widetilde D$ 是式（4.2）跨題合併後再收縮的統計量，不能換成單題的 $\mathrm{AUC}_q$。$\gamma_{\max}$ 也不是裝飾性的記號：當 $\widehat D$ 接近飽和時，真正進入投票的是截斷後的 $\gamma_{\max}$，不是連結函數算出的原始幅度。因此飽和格主要驗證符號是否正確；連結函數的形狀真正承重之處，是尚未碰到截斷的中等耦合區。
 
-**演算法 1：TACT（有標籤 dev 路徑）。**
+### 演算法 1：TACT（有標籤 dev 路徑） {#alg-tact}
 
 **輸入（Require）：** 帶真值的 dev 軌跡池 $\mathcal D$、測試軌跡池 $\mathcal T$、每題預算 $K$、顯著性下限 $\nu$、截斷 $\gamma_{\max}$。
 
@@ -165,7 +165,7 @@ dev 與測試兩個迴圈的成本皆為每題 $O(K\log K)$，主要來自題內
 
 估計流程分四步。第一步去重：在字面相似度通道上以門檻 $0.95$ 做單鏈結分群，每條軌跡於多數決判定與成對加權中的權重為其所屬群大小的倒數。第二步偽標籤：$g_{q,i}=\mathbf{1}[a_{q,i}=M_q]$，其中 $M_q$ 為去重加權多數。第三步 margin 閘門：僅保留去重加權 margin 位居前六成的題目。第四步以 $\mathrm{lab}=g$ 計算 4.2 節的統計量，得 $(\widehat{D}_g,\mathrm{SE}_g,r_g)$。
 
-**演算法 2：TACT-LF（完全無標籤路徑）。**
+### 演算法 2：TACT-LF（完全無標籤路徑） {#alg-tact-lf}
 
 **輸入（Require）：** 軌跡池 $\mathcal P$、預算 $K$、去重門檻 $\theta=0.95$、margin 分位數 $\beta=0.40$、顯著性下限 $\nu_{\mathrm{LF}}$、截斷 $\gamma_{\max}$、隨機分割次數 $J=20$、衰減量下限 $0.20$、$\mathrm{minGated}$。下列 $\widehat\eta$ 代表估計的衰減量 $1-2\bar\rho$，不是 $\bar\rho$。
 
