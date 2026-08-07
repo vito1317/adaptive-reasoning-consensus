@@ -2,8 +2,26 @@
 numpy>=2.0
 scipy>=1.13
 matplotlib>=3.8
+# Answer grading by mathematical equivalence (src/rlev_voi/math_grade.py).
+# Required, not optional: without it the LaTeX equivalence classes degrade to
+# string identity and the MATH results do not reproduce.
+sympy>=1.12
+
+# Test suite. The README's first command runs pytest straight after installing
+# this file, and the paper's availability section tells a reader to do the same,
+# so it belongs here rather than in a separate dev file.
+pytest>=8.0
+
+# Word exports: paper/build_zh_doc.sh rebalances the pseudocode tables through
+# python-docx after pandoc has written the .docx.
+python-docx>=1.1
 
 # Optional real-LLM backends (only needed to run the real-API experiments).
 # Install with:  pip install anthropic openai
 # anthropic>=0.40
 # openai>=1.40
+
+# Optional, for experiments/make_contributions_pdf.py only.
+# Install with:  pip install reportlab Pillow
+# reportlab>=4.0
+# Pillow>=10.0

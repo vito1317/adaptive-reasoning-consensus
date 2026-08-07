@@ -60,9 +60,18 @@ def canon(a: str) -> str:
     return a
 
 
-@lru_cache(maxsize=8192)
-def _sympy_val(expr: str):
-    """Parse a canonicalised answer into a sympy object, or None."""
+@lru_cache(maxsize=1)
+def _sympy():
+    """Import sympy, or say what its absence would do to the numbers.
+
+    This used to be imported inside a bare ``except Exception``, which caught
+    ImportError alongside genuine parse failures and returned None for both.
+    An environment without sympy therefore judged every non-identical answer
+    pair inequivalent: the equivalence classes collapse toward string
+    identity, the pools gain clusters, and the MATH figures in the paper do not
+    reproduce -- with no error, no warning, and plausible-looking output. A
+    missing dependency has to be louder than a wrong number is quiet.
+    """
     try:
         import sympy
         from sympy.parsing.sympy_parser import (
@@ -70,10 +79,29 @@ def _sympy_val(expr: str):
             parse_expr,
             standard_transformations,
         )
+    except ImportError as e:  # pragma: no cover - environment, not logic
+        raise ImportError(
+            "sympy is required to grade LaTeX answers by mathematical "
+            "equivalence. Without it the equivalence classes degrade to string "
+            "identity and the MATH results do not reproduce. "
+            "Install it with: pip install sympy"
+        ) from e
+    return sympy, parse_expr, standard_transformations, implicit_multiplication_application
 
+
+@lru_cache(maxsize=8192)
+def _sympy_val(expr: str):
+    """Parse a canonicalised answer into a sympy object, or None.
+
+    None means "this string is not parseable as an expression", which is a
+    legitimate outcome for free-form answers. It no longer also means "sympy is
+    not installed" -- that raises.
+    """
+    sympy, parse_expr, standard, implicit = _sympy()
+    try:
         e = parse_expr(
             expr.replace("^", "**"),
-            transformations=standard_transformations + (implicit_multiplication_application,),
+            transformations=standard + (implicit,),
             evaluate=True,
         )
         return sympy.simplify(e)
@@ -98,9 +126,8 @@ def equivalent(pred: str, gold: str) -> bool:
     vp, vg = _sympy_val(cp), _sympy_val(cg)
     if vp is None or vg is None:
         return False
+    sympy = _sympy()[0]
     try:
-        import sympy
-
         diff = sympy.simplify(vp - vg)
         if diff == 0:
             return True
