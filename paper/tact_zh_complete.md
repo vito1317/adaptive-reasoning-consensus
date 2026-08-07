@@ -116,13 +116,36 @@ $$\gamma=z\sqrt{2+z^2},\qquad z=\Phi^{-1}\!\big(\tfrac{1+\widetilde D}{2}\big)$$
 
 **演算法 1：TACT（有標籤 dev 路徑）。**
 
-輸入為帶真值的 dev 軌跡池 $\mathcal D$、測試軌跡池 $\mathcal T$、每題預算 $K$、顯著性下限 $\nu$ 與截斷 $\gamma_{\max}$；輸出是一個全域指數 $\gamma$，以及每個測試題的答案。
+**輸入（Require）：** 帶真值的 dev 軌跡池 $\mathcal D$、測試軌跡池 $\mathcal T$、每題預算 $K$、顯著性下限 $\nu$、截斷 $\gamma_{\max}$。
 
-1. 對每個 dev 題 $q$，令 $y_i=\mathbf 1[a_{q,i}=a_q^*]$。只有同時含正確與錯誤軌跡的題目能提供題內辨別資訊，其餘題目只用來估計正確軌跡的基礎率 $\bar p$。
-2. 在每個有效題內計算信心中位秩、Mann–Whitney $U_q$、$D_q=2U_q/(n_q^1n_q^0)-1$、成對權重 $N_q$，以及同分校正的零假設變異數。
-3. 以 van Elteren 權重合併成 $\widehat D$，並令 $\mathrm{SE}=\max(\mathrm{SE}_0,\mathrm{SE}_J,1/(2\sqrt N))$；$\bar p$ 由 dev 標籤平均估計後截在 $[0.05,0.95]$。
-4. 計算 $\zeta=\widehat D/\mathrm{SE}$。若 $|\zeta|\le\nu$，令 $\gamma=0$；否則先做正部 James–Stein 收縮，再以 Bayes 判別連結取得 $\gamma$，最後截在 $[-\gamma_{\max},\gamma_{\max}]$。
-5. 測試時，若 $\gamma=0$，直接呼叫原本的 SC 常式；否則把每題信心轉成標準化 van der Waerden 分數，以 $\exp(\gamma\varphi_i)$ 加權各答案的票數。
+**輸出（Ensure）：** 一個全域純量 $\gamma$；每個 $q\in\mathcal T$ 的答案 $\widehat a_q$。
+
+| 行 | 完整偽程式碼 | 說明 |
+|---:|---|---|
+| 1 | $\mathcal S\gets\varnothing,\quad H\gets\varnothing$ | 初始化統計集合與標籤集合 |
+| 2 | **對每個** $q\in\mathcal D$ **執行** | dev 題目迴圈 |
+| 3 | $\quad y_i\gets\mathbf 1[a_{q,i}=a_q^\ast],\ i\le K;\quad H\gets H\cup\{y\}$ | 建立正確性標籤並保存所有標籤 |
+| 4 | $\quad$ **若** $0<\sum_i y_i<K$ **則** | 只讓同時含正確與錯誤軌跡的題目進入辨別度估計 |
+| 5 | $\qquad R\gets c_{q,1:K}$ 的題內中位秩 | 同分取平均秩 |
+| 6 | $\qquad D_q\gets 2U_q/(n_q^1n_q^0)-1$，其中 $U_q$ 由 $R$ 計算 | 題內 Somers' $D$ |
+| 7 | $\qquad\mathcal S\gets\mathcal S\cup\{(D_q,N_q,\operatorname{Var}_0(D_q))\}$ | 保存效果量、成對權重與零假設變異數 |
+| 8 | $\widehat D\gets\sum_qN_qD_q\big/\sum_qN_q$ | van Elteren 合併 |
+| 9 | $\mathrm{SE}\gets\max\{\mathrm{SE}_0,\mathrm{SE}_J,1/(2\sqrt N)\}$ | 採用保守標準誤 |
+| 10 | $\bar p\gets\operatorname{clip}(\operatorname{mean}(H),0.05,0.95)$ | 估計正確軌跡基礎率 |
+| 11 | $\zeta\gets\widehat D/\mathrm{SE}$ | 合併的 $z$ 統計量 |
+| 12 | **若** $\lvert\zeta\rvert\le\nu$ **則** | 死區 |
+| 13 | $\quad\gamma\gets0$ | 完全退回 SC |
+| 14 | **否則** | 證據超過顯著性下限 |
+| 15 | $\quad\widetilde D\gets\widehat D(1-\nu^2/\zeta^2)$ | 正部 James–Stein 收縮 |
+| 16 | $\quad z\gets\Phi^{-1}((1+\widetilde D)/2)$ | probit 映射 |
+| 17 | $\quad\gamma\gets\operatorname{clip}\!\left(z\sqrt{2+4\bar p(1-\bar p)z^2},\,\pm\gamma_{\max}\right)$ | Bayes 判別連結與截斷 |
+| 18 | **對每個** $q\in\mathcal T$ **執行** | 測試題目迴圈 |
+| 19 | $\quad$ **若** $\gamma=0$ **則** | 零信任分支 |
+| 20 | $\qquad\widehat a_q\gets\operatorname{SC}(a_{q,1:K})$ | 呼叫同一個 SC 常式，確保位元完全相同 |
+| 21 | $\quad$ **否則** | 信心加權分支 |
+| 22 | $\qquad\varphi\gets c_{q,1:K}$ 的標準化 van der Waerden 分數 | 僅使用題內排名 |
+| 23 | $\qquad\widehat a_q\gets\arg\max_A\sum_{i:a_{q,i}=A}e^{\gamma\varphi_i}$ | 合併加權票數 |
+| 24 | **回傳** $\gamma,\{\widehat a_q\}$ | 輸出全域指數與各題答案 |
 
 dev 與測試兩個迴圈的成本皆為每題 $O(K\log K)$，主要來自題內排序。從 dev 傳到測試的只有一個純量 $\gamma$，沒有逐題參數；死區因此代表全域棄權，不是事後挑掉不利題目。
 
@@ -144,12 +167,31 @@ dev 與測試兩個迴圈的成本皆為每題 $O(K\log K)$，主要來自題內
 
 **演算法 2：TACT-LF（完全無標籤路徑）。**
 
-1. 以字面重複相似度 $\theta=0.95$ 做單鏈結分群，令每條軌跡的去重權重為其群組大小的倒數；用這些權重決定多數答案 $M_q$ 與前兩名票數差 $\mathrm{mgn}_q$。
-2. 保留 $\mathrm{mgn}_q$ 不低於第 $40$ 百分位、且至少有兩個相異答案的題目，形成閘後集合 $G$。若 $|G|$ 低於事先設定的 `min_gated_items`，觸發 E4 並回傳 $\gamma=0$。
-3. 對 $q\in G$ 設 $g_{q,i}=\mathbf 1[a_{q,i}=M_q]$，計算合併的 $(\widehat D_g,\mathrm{SE}_g,z_g)$。估計的信任方向為 $s=\operatorname{sign}(\widehat D_g)$；margin 去耦檢定必須以 $s$ 為條件，否則良性的負相關通道會被誤判。
-4. 以 $J=20$ 次隨機對半分割估計兩半多數決一致率 $\alpha$，再以非多數答案質量的逆 Simpson 指數估計有效錯誤選項數 $k$。由二次式反解 $p$，並以 $2p-1$ 的 95% 自助法上界估計衰減係數 $\widehat\eta$，截在 $[0.20,1]$。
-5. 四項警報分別檢查重複塌縮（E1）、符號感知的 margin 去耦（E2）、二次式根歧義（E3）與有效題數不足（E4）。任一警報觸發，或原始 $|z_g|\le\nu_{\mathrm{LF}}$，都回傳 $\gamma=0$。
-6. 僅在通過上述檢查後，才以 $(\widehat D_g/\widehat\eta,\mathrm{SE}_g/\widehat\eta)$ 進入調節映射。
+**輸入（Require）：** 軌跡池 $\mathcal P$、預算 $K$、去重門檻 $\theta=0.95$、margin 分位數 $\beta=0.40$、顯著性下限 $\nu_{\mathrm{LF}}$、截斷 $\gamma_{\max}$、隨機分割次數 $J=20$、衰減量下限 $0.20$、$\mathrm{minGated}$。下列 $\widehat\eta$ 代表估計的衰減量 $1-2\bar\rho$，不是 $\bar\rho$。
+
+**輸出（Ensure）：** 指數 $\gamma$；任一警報觸發時，$\gamma$ 必為 $0$。
+
+| 行 | 完整偽程式碼 | 說明 |
+|---:|---|---|
+| 1 | **對每個** $q\in\mathcal P$ **執行** | 題目迴圈 |
+| 2 | $\quad w_i\gets1/\lvert\operatorname{group}(i)\rvert$，群組由 $\operatorname{dup}\ge\theta$ 的單鏈結分群取得 | 去重權重 |
+| 3 | $\quad M_q\gets\arg\max_A\sum_{i:a_{q,i}=A}w_i$ | 去重加權多數答案 |
+| 4 | $\quad\mathrm{mgn}_q\gets$ 前兩名去重加權得票份額之差 | 多數決 margin |
+| 5 | $G\gets\{q:\mathrm{mgn}_q\ge Q_\beta(\mathrm{mgn}),\ \text{至少有兩個相異答案}\}$ | margin 閘後集合 |
+| 6 | $E_1\gets[\operatorname{median}_q(\text{Kish 比})<0.5]$ | 重複塌縮警報 |
+| 7 | $E_4\gets[\lvert G\rvert<\mathrm{minGated}]$ | 有效題數不足警報 |
+| 8 | 對 $q\in G$，令 $g_{q,i}\gets\mathbf 1[a_{q,i}=M_q]$ | 建立一致性偽標籤 |
+| 9 | $(\widehat D_g,\mathrm{SE}_g,z_g)\gets$ 以 $g$ 在 $G$ 上計算的合併統計量 | 原始帶符號辨別度 |
+| 10 | $s\gets\operatorname{sign}(\widehat D_g)$ | 估計信任方向 |
+| 11 | $E_2\gets[\psi(s)>0.05]$ | 符號感知的 margin 去耦警報 |
+| 12 | $\alpha\gets J$ 次分割所得的兩半多數決平均一致率 | split-half 一致性 |
+| 13 | $k\gets$ 非多數答案質量的逆 Simpson 有效數 | 有效錯誤選項數 |
+| 14 | $p\gets[1+\sqrt{1-(k+1)(1-k\alpha)}]/(k+1)$ | 反解單硬幣模型 |
+| 15 | $E_3\gets[\text{判別式}<0.02]$ | 根歧義警報 |
+| 16 | $\widehat\eta\gets\operatorname{clip}(\mathrm{UCB}_{95}(2p-1),0.20,1)$ | 保守估計衰減量 |
+| 17 | **若** $E_1\lor E_2\lor E_3\lor E_4$，**或** $\lvert z_g\rvert\le\nu_{\mathrm{LF}}$ **則** | 警報或原始顯著性不足 |
+| 18 | $\quad$ **回傳** $0$ | 拒絕加權，投票維持 SC |
+| 19 | **回傳** $\operatorname{Temper}(\widehat D_g/\widehat\eta,\mathrm{SE}_g/\widehat\eta)$，且不設定 $\bar p$ | 只在通過檢查後去衰減並調節 |
 
 第 5、6 步的順序不能交換。顯著性閘門檢驗的是原始 $z_g$，因為命題 4 只保證它的符號在條件成立時不偏；去衰減只用來估計信任幅度。若先放大再檢驗，去衰減本身就可能製造顯著性。完全無標籤路徑也不套用式（4.3）的混合基礎率校正，因為 $\bar p$ 正是無標籤設定不知道的量；實作將它保持為未設定，而不是以多數比例冒充正確率。
 

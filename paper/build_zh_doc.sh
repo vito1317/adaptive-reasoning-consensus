@@ -21,6 +21,53 @@ CJK_FONT="${CJK_FONT:-Songti SC}"
 cd "$(dirname "$0")"
 
 pandoc "${BASE}.md" -o "${BASE}.docx"
+
+# Pandoc gives a three-column Markdown table a 40/30/30 DOCX grid even when
+# its first column only contains line numbers.  That left less than 1.7 in for
+# the pseudocode and caused long equations to be visually clipped by Word and
+# LibreOffice.  Rebalance only the explicitly identified algorithm tables;
+# all other document tables retain Pandoc's widths.
+python3 - "${BASE}.docx" <<'PY'
+import sys
+
+from docx import Document
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.shared import Inches
+
+path = sys.argv[1]
+doc = Document(path)
+widths_in = (0.35, 3.90, 1.25)
+widths_dxa = tuple(round(width * 1440) for width in widths_in)
+
+for table in doc.tables:
+    if not table.rows or len(table.rows[0].cells) != 3:
+        continue
+    headings = [cell.text.strip() for cell in table.rows[0].cells]
+    if headings != ["行", "完整偽程式碼", "說明"]:
+        continue
+
+    table.autofit = False
+    for grid_col, width in zip(table._tbl.tblGrid.gridCol_lst, widths_dxa):
+        grid_col.set(qn("w:w"), str(width))
+
+    for row in table.rows:
+        tr_pr = row._tr.get_or_add_trPr()
+        if tr_pr.find(qn("w:cantSplit")) is None:
+            tr_pr.append(OxmlElement("w:cantSplit"))
+
+        for cell, width_in, width_dxa in zip(row.cells, widths_in, widths_dxa):
+            cell.width = Inches(width_in)
+            tc_pr = cell._tc.get_or_add_tcPr()
+            tc_w = tc_pr.find(qn("w:tcW"))
+            if tc_w is None:
+                tc_w = OxmlElement("w:tcW")
+                tc_pr.append(tc_w)
+            tc_w.set(qn("w:w"), str(width_dxa))
+            tc_w.set(qn("w:type"), "dxa")
+
+doc.save(path)
+PY
 echo "wrote ${BASE}.docx"
 
 TEX="._${BASE}_zhbuild.tex"
