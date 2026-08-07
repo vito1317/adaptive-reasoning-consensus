@@ -77,9 +77,15 @@ trap cleanup EXIT
 
 pandoc "${BASE}.md" -s -o "$TEX" -V geometry:margin=2.2cm -V fontsize=11pt
 
-python3 - "$TEX" "$CJK_FONT" <<'PY'
+# How many pseudocode tables to expect is a property of the source, not a
+# constant. Hard-coding two broke tact_parameters_zh, which has no pseudocode
+# at all and so could not be built. Count them here and let the transform
+# assert against that.
+LISTINGS="$(grep -c '^| 行 | 完整偽程式碼 | 說明 |' "${BASE}.md" || true)"
+
+python3 - "$TEX" "$CJK_FONT" "$LISTINGS" <<'PY'
 import sys
-path, font = sys.argv[1], sys.argv[2]
+path, font, listings = sys.argv[1], sys.argv[2], int(sys.argv[3])
 s = open(path).read()
 
 # Pandoc infers 40/30/30 widths from the Markdown alignment row used by the
@@ -87,8 +93,9 @@ s = open(path).read()
 # large empty block and squeezes the actual algorithm into 30% of the page.
 # Keep both Algorithm 1 and Algorithm 2 as separate blocks, but give their
 # line/code/comment columns proportions that match a conventional algorithmic
-# layout.  Require exactly two replacements so a future source change cannot
-# silently reintroduce the defect.
+# layout.  Require one replacement per pseudocode table in the source, so a
+# future source change cannot silently reintroduce the defect -- and so a
+# document with no pseudocode still builds.
 algorithm_columns = r"""  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}"""
@@ -96,9 +103,10 @@ balanced_algorithm_columns = r"""  >{\raggedleft\arraybackslash}p{(\linewidth - 
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.6200}}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3200}}@{}}"""
 algorithm_count = s.count(algorithm_columns)
-if algorithm_count != 2:
+if algorithm_count != listings:
     raise RuntimeError(
-        f"expected two algorithm tables, found {algorithm_count}; "
+        f"source has {listings} pseudocode table(s) but the rendered LaTeX "
+        f"offers {algorithm_count} column spec(s) to rebalance; "
         "update the PDF column-width transform"
     )
 s = s.replace(algorithm_columns, balanced_algorithm_columns)

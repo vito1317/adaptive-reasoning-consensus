@@ -114,7 +114,7 @@ $$\tilde D=\hat D\cdot\text{gain},
 
 $\tilde D$ 是**縮水後**的 $\hat D$：訊號越不確定（$\zeta$ 越小）縮得越多。
 這是正部 James–Stein 收縮——在 $\nu=1$ 時它**恰好**等於常態先驗
-$\mathcal{N}(0,\tau^2)$ 下的經驗貝氏後驗均值（代入 $\hat\tau^2=\max(0,\hat D^2-\mathrm{SE}^2)$），
+$\mathcal{N}(0,\tau^2)$ 下的經驗貝氏後驗平均值（代入 $\hat\tau^2=\max(0,\hat D^2-\mathrm{SE}^2)$），
 並非隨手添加的正則化項。
 
 $z$ 只是把 $\tilde D$ 換算回 probit 尺度：$\frac{1+\tilde D}{2}$ 即收縮後的 AUC，
