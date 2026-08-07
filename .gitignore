@@ -54,3 +54,13 @@ paper/tmlr_upload/
 # and carrying no information the manuscript does not. The reports themselves
 # stay tracked.
 paper/review_results/**/artifacts/meta/
+
+# Submission-private material, kept on the author's disk and out of a public
+# repository. The JMLR cover letter names five suggested reviewers: publishing
+# it would show a reviewer who was put forward, and would post those five
+# people's names without their agreement. jmlr_submission/ is the 2 August
+# upload set, kept as the record of what manuscript 26-2518 actually received;
+# build_bundles.py emits jmlr_upload/ instead, one file per form row.
+paper/jmlr_cover_letter.tex
+paper/jmlr_cover_letter.pdf
+paper/jmlr_submission/

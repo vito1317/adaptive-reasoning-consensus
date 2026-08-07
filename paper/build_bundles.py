@@ -438,13 +438,27 @@ def build_jmlr_submission(outdir: Path) -> None:
     named = PAPER / "supplementary_named.zip"
     build_supplementary_named(named)
 
+    # The cover letter is not in the repository. It names five suggested
+    # reviewers, and the repository is public, so publishing it would tell any
+    # reviewer who found it whose names the author put forward -- and would post
+    # those five people's names without their agreement. It stays on the
+    # author's disk and is git-ignored, which means a fresh clone cannot emit
+    # row 2. That is the intended trade: skip the row and say so, rather than
+    # fail the whole build or quietly produce an incomplete upload set.
     rows = [
-        ("tact_jmlr.pdf",          "row1_Manuscript__viewable_YES.pdf"),
-        ("jmlr_cover_letter.pdf",  "row2_CoverLetter__viewable_NO.pdf"),
-        (named.name,               "row3_Other_supplementary__viewable_YES.zip"),
+        ("tact_jmlr.pdf",          "row1_Manuscript__viewable_YES.pdf", True),
+        ("jmlr_cover_letter.pdf",  "row2_CoverLetter__viewable_NO.pdf", False),
+        (named.name,               "row3_Other_supplementary__viewable_YES.zip", True),
     ]
-    for src, dst in rows:
-        (up / dst).write_bytes((PAPER / src).read_bytes())
+    missing = []
+    for src, dst, required in rows:
+        path = PAPER / src
+        if not path.exists():
+            if required:
+                raise FileNotFoundError(f"{src} is required for the JMLR upload set")
+            missing.append(src)
+            continue
+        (up / dst).write_bytes(path.read_bytes())
     (up / "00_HOW_TO_UPLOAD.txt").write_text(JMLR_UPLOAD_README)
 
     # The combined archive is the hazard this function exists to remove.
@@ -452,8 +466,10 @@ def build_jmlr_submission(outdir: Path) -> None:
     if stale.exists():
         stale.unlink()
         print(f"removed {stale.name} (contained the cover letter; see docstring)")
-    print(f"wrote {up.name}/ -- 3 upload files named after the form rows, "
-          f"manuscript {pdf_mb:.2f} MB")
+    print(f"wrote {up.name}/ -- {len(rows) - len(missing)} upload files named "
+          f"after the form rows, manuscript {pdf_mb:.2f} MB")
+    for src in missing:
+        print(f"      row for {src} skipped: not in the repository, by design")
 
 
 JMLR_UPLOAD_README = """\
