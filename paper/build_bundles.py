@@ -225,11 +225,11 @@ OpenReview form fields, in the order the form asks
   Title*                  field_Title.txt
   Abstract*               field_Abstract.txt          (200 words, 1410 chars)
   Authors*                already set to the author's OpenReview profile
-  PDF*                    row1_Manuscript_ANONYMOUS.pdf
+  PDF*                    tact_tmlr_anonymous.pdf
   Beyond PDF              LEAVE EMPTY. The form's own warning: "This is not
                           supplementary material."
   Submission Type*        field_Submission_Type.txt
-  Supplementary Material  row2_Supplementary_ANONYMOUS.zip
+  Supplementary Material  tact_supplementary_anonymous.zip
   Previous TMLR Sub. Url  LEAVE EMPTY. Only for a resubmission after a TMLR
                           rejection; this is a first submission.
   Changes Since Last Sub. LEAVE EMPTY, same reason.
@@ -255,8 +255,8 @@ Broader Impact Statement
   one rather than surprised to be asked.
 
 Which upload slot
-  PDF                 row1_Manuscript_ANONYMOUS.pdf
-  Supplementary       row2_Supplementary_ANONYMOUS.zip
+  PDF                 tact_tmlr_anonymous.pdf
+  Supplementary       tact_supplementary_anonymous.zip
   Beyond PDF          NOTHING. That slot is for interactive webpage code, not
                       supplementary material. Putting the supplement there
                       submits it as an alternative rendering of the paper.
@@ -403,11 +403,46 @@ def build_tmlr_submission(outdir: Path) -> None:
         f"references and appendices, so the threshold of 12 is exceeded.\n"
         f"Beyond PDF does not apply: this is a standard PDF submission and the\n"
         f"Beyond PDF upload slot must be left empty.\n")
+    assert_readme_names_match(up, "00_READ_THIS_FIRST.txt")
     print(f"wrote {up.name}/ -- manuscript, supplement and the three paste-ready\n      form fields (abstract {words} words), all scanned anonymous; README states\n      the JMLR dual-submission block")
 
 
+def assert_readme_names_match(up: Path, readme: str) -> None:
+    """An upload directory and its README must name the same files.
+
+    Both halves of that have failed. The TMLR README went on telling the reader
+    to upload row1_Manuscript_ANONYMOUS.pdf and row2_Supplementary_ANONYMOUS.zip
+    long after those two were renamed, while listing the real names a dozen
+    lines above -- a document that contradicts itself about which file goes in
+    which slot is how the wrong file gets uploaded, which has happened here
+    once already.
+    """
+    text = (up / readme).read_text()
+    # Dotfiles are excluded: the Finder drops .DS_Store into any directory it
+    # displays, and a stray one is not a documentation failure.
+    present = {p.name for p in up.iterdir()
+               if p.name != readme and not p.name.startswith(".")}
+    mentioned = set(re.findall(r"[\w.-]+\.(?:pdf|zip|txt)", text)) - {readme}
+    if undocumented := present - mentioned:
+        raise AssertionError(
+            f"{up.name}/{readme} does not mention {sorted(undocumented)}")
+    if absent := mentioned - present:
+        raise AssertionError(
+            f"{up.name}/{readme} names {sorted(absent)}, which is not there")
+
+
 def build_jmlr_submission(outdir: Path) -> None:
-    """Emit exactly the files the JMLR form asks for, named after its rows.
+    """Emit exactly the files the JMLR form asks for, one per form row.
+
+    The row number and the viewability setting used to be in the filenames --
+    row1_Manuscript__viewable_YES.pdf and so on. That was meant to make picking
+    the wrong file hard, and inside a local directory it did. But the filename
+    travels with the upload, and the submission page states that every uploaded
+    file is viewable by the action editor and reviewers: the cover letter's name
+    therefore announced to those reviewers both that a file was meant to be
+    hidden from them and that it exists. Build metadata does not belong in a
+    name a reviewer reads. The names now describe their contents, which is
+    enough to tell them apart, and the row mapping lives in the README.
 
     This used to produce a single jmlr_submission.zip containing the manuscript,
     the cover letter, the source and the supplement. That archive was for the
@@ -446,9 +481,9 @@ def build_jmlr_submission(outdir: Path) -> None:
     # row 2. That is the intended trade: skip the row and say so, rather than
     # fail the whole build or quietly produce an incomplete upload set.
     rows = [
-        ("tact_jmlr.pdf",          "row1_Manuscript__viewable_YES.pdf", True),
-        ("jmlr_cover_letter.pdf",  "row2_CoverLetter__viewable_NO.pdf", False),
-        (named.name,               "row3_Other_supplementary__viewable_YES.zip", True),
+        ("tact_jmlr.pdf",          "tact_manuscript.pdf", True),
+        ("jmlr_cover_letter.pdf",  "tact_cover_letter.pdf", False),
+        (named.name,               "tact_supplementary_code_and_data.zip", True),
     ]
     missing = []
     for src, dst, required in rows:
@@ -466,6 +501,7 @@ def build_jmlr_submission(outdir: Path) -> None:
     if stale.exists():
         stale.unlink()
         print(f"removed {stale.name} (contained the cover letter; see docstring)")
+    assert_readme_names_match(up, "00_HOW_TO_UPLOAD.txt")
     print(f"wrote {up.name}/ -- {len(rows) - len(missing)} upload files named "
           f"after the form rows, manuscript {pdf_mb:.2f} MB")
     for src in missing:
@@ -475,20 +511,24 @@ def build_jmlr_submission(outdir: Path) -> None:
 JMLR_UPLOAD_README = """\
 JMLR submission form -- upload exactly these three files, one per row.
 
-  row1_Manuscript__viewable_YES.pdf            File Type: Manuscript
-                                               Viewable by reviewers: yes (fixed)
+Add the rows first, then pick the files. The form says so and means it: the
+File Type list only appears once a row exists, and choosing a file before the
+type means reselecting it.
 
-  row2_CoverLetter__viewable_NO.pdf            File Type: Cover Letter
-                                               Viewable by reviewers: NO
-                                               It names five suggested reviewers.
-                                               A reviewer who is one of them must
-                                               not see that they were suggested.
+  Row 1  File Type: Manuscript      tact_manuscript.pdf
+         Viewable by reviewers: yes (fixed by the form)
 
-  row3_Other_supplementary__viewable_YES.zip   File Type: Other
-                                               Viewable by reviewers: yes
-                                               Code, cached traces, and the JSON
-                                               artifacts behind every table, so
-                                               reviewers can verify the claims.
+  Row 2  File Type: Cover Letter    tact_cover_letter.pdf
+         Viewable by reviewers: NO
+         It names five suggested reviewers. A reviewer who is one of them must
+         not see that they were suggested. If the form will not let this row be
+         non-viewable, stop and ask editor@jmlr.org how to file the cover
+         letter -- do not upload it viewable.
+
+  Row 3  File Type: Other           tact_supplementary_code_and_data.zip
+         Viewable by reviewers: yes
+         Code, cached traces, and the JSON artifacts behind every table, so
+         reviewers can verify the claims.
 
 Title:  TACT: Trust-Anchored Confidence Tempering for Self-Consistency Voting
         in Large Language Models
