@@ -3,6 +3,9 @@
 import pathlib
 import subprocess
 import re
+import os
+import tempfile
+import zipfile
 
 
 def resolve_citations(s: str) -> str:
@@ -82,6 +85,72 @@ def hoist_labels(s: str) -> str:
     return re.sub(r"\\begin\{algorithm\}(.*?)\\end\{algorithm\}", hoist_alg, s, flags=re.S)
 
 
+def repair_pandoc_docx(path: pathlib.Path) -> None:
+    """Repair two OOXML defects emitted by the installed pandoc build.
+
+    The package declares each PNG with an Override but omits the required
+    extension-level Default.  Pandoc also serializes ``m:nor`` before
+    ``m:sty`` in math run properties, whereas the WordprocessingML schema
+    requires the style first.  Word is permissive about both defects; the
+    package validator is not.
+    """
+    with zipfile.ZipFile(path, "r") as src:
+        members = [(info, src.read(info.filename)) for info in src.infolist()]
+
+    repaired: list[tuple[zipfile.ZipInfo, bytes]] = []
+    for info, payload in members:
+        if info.filename == "[Content_Types].xml":
+            text = payload.decode("utf-8")
+            if 'Default Extension="png"' not in text:
+                text = text.replace(
+                    '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">',
+                    '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+                    '<Default Extension="png" ContentType="image/png" />',
+                    1,
+                )
+            payload = text.encode("utf-8")
+        elif info.filename == "word/document.xml":
+            text = payload.decode("utf-8")
+            # CT_RPR defines normal-text (nor) and mathematical style (sty) as
+            # alternatives, not an ordered pair.  Pandoc emits both for text
+            # such as ``P(True)``; retain the explicit normal-text marker.
+            text = re.sub(
+                r"<m:rPr>\s*(?:"
+                r"<m:nor\s*/>\s*<m:sty\s+m:val=\"[^\"]+\"\s*/>"
+                r"|<m:sty\s+m:val=\"[^\"]+\"\s*/>\s*<m:nor\s*/>)"
+                r"\s*</m:rPr>",
+                r"<m:rPr><m:nor/></m:rPr>",
+                text,
+            )
+
+            def preserve_math_space(match: re.Match[str]) -> str:
+                attrs, body = match.group(1), match.group(2)
+                if body and (body[0].isspace() or body[-1].isspace()):
+                    return f'<m:t{attrs} xml:space="preserve">{body}</m:t>'
+                return match.group(0)
+
+            text = re.sub(
+                r"<m:t((?![^>]*xml:space)[^>]*)>([^<]*)</m:t>",
+                preserve_math_space,
+                text,
+            )
+            payload = text.encode("utf-8")
+        repaired.append((info, payload))
+
+    with tempfile.NamedTemporaryFile(
+        prefix="tact-docx-", suffix=".docx", dir=path.parent, delete=False
+    ) as handle:
+        temp_path = pathlib.Path(handle.name)
+    try:
+        with zipfile.ZipFile(temp_path, "w", zipfile.ZIP_DEFLATED) as dst:
+            for info, payload in repaired:
+                dst.writestr(info, payload)
+        os.replace(temp_path, path)
+    finally:
+        if temp_path.exists():
+            temp_path.unlink()
+
+
 def main() -> None:
     s = pathlib.Path("tact.tex").read_text()
     s = s.replace('\\font\\zhfont="[/System/Library/Fonts/Supplemental/Arial Unicode.ttf]" at 10pt', "")
@@ -117,6 +186,7 @@ def main() -> None:
         ["pandoc", "tact_word.tex", "-o", "tact.docx", "--resource-path=.:figs"],
         cwd=pathlib.Path(__file__).resolve().parent, check=True,
     )
+    repair_pandoc_docx(pathlib.Path(__file__).resolve().parent / "tact.docx")
     print("tact.docx regenerated")
 
 

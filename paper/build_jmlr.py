@@ -89,6 +89,10 @@ def convert(src: str) -> str:
     # (7.8cm); left alone they occupy half of JMLR's 6in block and wrap hard
     s = s.replace(r"\begin{tabular}{p{3.0cm} p{4.8cm}}",
                   r"\begin{tabular}{p{5.2cm} p{9.2cm}}")
+    # Expand the notation appendix from an IEEE column to the JMLR block.
+    # Keeping 5.55 cm here makes the rows wrap until the table hits the footer.
+    s = s.replace(r"\begin{tabular}{@{}l p{5.55cm}@{}}",
+                  r"\begin{tabular}{@{}p{2.7cm} p{11.5cm}@{}}")
 
     # --- CJK name: CJKutf8 needs a bsmi font this TeX tree lacks, and drops
     # the characters silently rather than failing. Load a Unicode system font

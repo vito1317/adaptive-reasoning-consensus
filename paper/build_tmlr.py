@@ -111,6 +111,12 @@ def convert(src: str, preprint: bool) -> str:
     s = s.replace(r"\columnwidth", r"\linewidth")
     # table/figure star environments are meaningless outside two-column
     s = re.sub(r"\\(begin|end)\{(table|figure)\*\}", r"\\\1{\2}", s)
+    # Tables sized for an IEEE column should use the single-column TMLR block.
+    s = s.replace(r"\begin{tabular}{p{3.0cm} p{4.8cm}}",
+                  r"\begin{tabular}{p{5.2cm} p{9.2cm}}")
+    s = s.replace(r"\begin{tabular}{@{}l p{5.55cm}@{}}",
+                  r"\begin{tabular}{@{}p{2.7cm} p{11.5cm}@{}}")
+
     # centre the floats that were column-width by construction
     s = s.replace(r"\begin{figure}[t]" + "\n" + r"\centering",
                   r"\begin{figure}[t]" + "\n" + r"\centering")
