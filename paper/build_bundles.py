@@ -223,7 +223,7 @@ Everything below is ready for that moment.
 
 OpenReview form fields, in the order the form asks
   Title*                  field_Title.txt
-  Abstract*               field_Abstract.txt          (200 words, 1410 chars)
+  Abstract*               field_Abstract.txt          (see the file; length is asserted at build)
   Authors*                already set to the author's OpenReview profile
   PDF*                    tact_tmlr_anonymous.pdf
   Beyond PDF              LEAVE EMPTY. The form's own warning: "This is not

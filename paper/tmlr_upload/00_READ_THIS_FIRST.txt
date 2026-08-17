@@ -28,13 +28,13 @@ Everything below is ready for that moment.
 
 OpenReview form fields, in the order the form asks
   Title*                  field_Title.txt
-  Abstract*               field_Abstract.txt          (200 words, 1410 chars)
+  Abstract*               field_Abstract.txt          (see the file; length is asserted at build)
   Authors*                already set to the author's OpenReview profile
-  PDF*                    row1_Manuscript_ANONYMOUS.pdf
+  PDF*                    tact_tmlr_anonymous.pdf
   Beyond PDF              LEAVE EMPTY. The form's own warning: "This is not
                           supplementary material."
   Submission Type*        field_Submission_Type.txt
-  Supplementary Material  row2_Supplementary_ANONYMOUS.zip
+  Supplementary Material  tact_supplementary_anonymous.zip
   Previous TMLR Sub. Url  LEAVE EMPTY. Only for a resubmission after a TMLR
                           rejection; this is a first submission.
   Changes Since Last Sub. LEAVE EMPTY, same reason.
@@ -60,8 +60,8 @@ Broader Impact Statement
   one rather than surprised to be asked.
 
 Which upload slot
-  PDF                 row1_Manuscript_ANONYMOUS.pdf
-  Supplementary       row2_Supplementary_ANONYMOUS.zip
+  PDF                 tact_tmlr_anonymous.pdf
+  Supplementary       tact_supplementary_anonymous.zip
   Beyond PDF          NOTHING. That slot is for interactive webpage code, not
                       supplementary material. Putting the supplement there
                       submits it as an alternative rendering of the paper.

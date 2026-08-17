@@ -30,25 +30,24 @@ in Large Language Models}
 \maketitle
 \begin{abstract}
 Confidence-weighted self-consistency beats majority voting when a frozen
-model's confidence is calibrated in \emph{direction}. Every published scheme is monotone increasing in confidence, so an
+model's confidence is \emph{directionally} calibrated. Every published scheme is monotone increasing in confidence, so an
 anti-correlated channel poisons the vote, and calibration gates survive
-inversion only by discarding signal. \TACT{} derives the vote exponent from the measured
-\emph{signed} within-item discrimination of the channel: a pooled
+inversion only by discarding signal. \TACT{} derives the vote exponent from the channel's measured
+\emph{signed} within-item discrimination: a pooled
 van~Elteren Somers' $D$, shrunk toward zero and mapped through a
-Bayes-discriminant link that at base rate $\tfrac12$ collapses to
+Bayes-discriminant link collapsing at base rate $\tfrac12$ to
 $\gamma=z\sqrt{2+z^2}$. Inside the dead zone the vote is
-bit-identical to plain self-consistency. Under a class-conditional-noise
-assumption, a label-free variant preserves the sign of the estimate when the
-pair-weighted plurality-error rate is below one half. Controlled experiments
-beyond that boundary show sign reversal. On a synthetic oracle it recovers channels that pin published protocols to
+bit-identical to plain self-consistency. Assuming class-conditional noise, a label-free variant preserves the estimate's sign below a
+pair-weighted plurality-error rate of one half; beyond it,
+experiments show sign reversal. On a synthetic oracle it recovers channels pinning published protocols to
 the majority floor ($1.000$ vs.\ $0.762$) and cracks the
 heterogeneity floor with zero paired losses ($0.923$ vs.\ $0.785$); against a
 dev-picked \emph{signed} grid the advantage narrows to distortion, echo and
 label-free operation. Two real-trace campaigns bound it: the channel is null on saturated
-benchmarks and positive on competition mathematics ($\Dhat=+0.250$), yet the
+benchmarks, positive on competition mathematics ($\Dhat=+0.250$), yet the
 stratum any such method can act on measures $2.5$--$7.5\%$ of items across five
-substrates in two domains. Accordingly, the dead zone leaves the vote unchanged
-whenever the pooled evidence does not clear its pre-specified threshold.
+substrates in two domains. Unless the pooled evidence clears its pre-specified threshold, the dead zone
+leaves the vote unchanged.
 \end{abstract}
 
 \noindent\textbf{Keywords:} 
