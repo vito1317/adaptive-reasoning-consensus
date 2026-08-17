@@ -64,3 +64,8 @@ paper/review_results/**/artifacts/meta/
 paper/jmlr_cover_letter.tex
 paper/jmlr_cover_letter.pdf
 paper/jmlr_submission/
+# Unpacked contents of TACT Paper.zip. build_bundles.py writes the archive, never
+# this directory, so it sat tracked and drifted: 2 August copies carrying the
+# wrong commit pin, the pre-rename alarm names, 協變量 for covariate and a
+# 216-word abstract. Nothing reads it that the archive does not serve.
+paper/TACT Paper/
