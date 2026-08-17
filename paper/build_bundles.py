@@ -470,6 +470,16 @@ def build_jmlr_submission(outdir: Path) -> None:
     if pdf_mb >= 5.0:
         raise AssertionError(f"manuscript PDF is {pdf_mb:.1f} MB; JMLR requires under 5 MB")
 
+    # The 200-word abstract limit was recorded in this function's docstring and
+    # nowhere else, so a prose revision took the abstract to 215 words and the
+    # build went on emitting a non-compliant upload set without a word. A
+    # requirement written down but never checked is not a requirement.
+    _, abstract_words = openreview_abstract()
+    if abstract_words > 200:
+        raise AssertionError(
+            f"abstract is {abstract_words} words; JMLR requires at most 200. "
+            f"Trim it in tact.tex, rebuild the PDFs, and run this again.")
+
     named = PAPER / "supplementary_named.zip"
     build_supplementary_named(named)
 
